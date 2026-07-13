@@ -1,28 +1,28 @@
-# Torneo Pokémon: Duelo de Homólogos
+# Liga Pokémon: Torneo de Favoritos
 
 Sitio estático (HTML/CSS/JS puro, sin build ni framework) inspirado en
 [cajunavenger.github.io](https://cajunavenger.github.io), pero con una mecánica
-de selección distinta: en vez de elegir por tipo/generación, se comparan
-**Pokémon parecidos entre sí ("homólogos")** cabeza a cabeza hasta llegar a 32
-finalistas, que compiten en una **eliminación directa** clásica (dieciseisavos
-→ octavos → cuartos → semis → final), terminando en un **Hall de la Fama** con
-tus 8 cuartofinalistas favoritos.
+de selección distinta: en vez de elegir por tipo/generación con cientos de
+comparaciones, eliges **un solo favorito por grupo** (por generación o por
+categoría) y con esas elecciones se arma automáticamente un cuadro de
+**eliminación directa** al estilo de la Liga Pokémon del anime, terminando en
+un **Hall de la Fama** con tus favoritos según cómo de lejos llegaron.
 
 ## Cómo funciona
 
-1. **Filtra el repositorio completo** (nombre, tipo, generación, categoría:
-   iniciales, legendarios, pseudolegendarios, Megas, Gigamax, formas
-   regionales, Eeveelutions, Pokémon paradójicos...) y decide cuántos entran
-   al torneo.
-2. **Duelos de homólogos**: mientras haya más de 32 en pie, la web va
-   enfrentando de uno en uno a los Pokémon más "parecidos" disponibles
-   (primero de la misma familia evolutiva, luego iniciales entre sí,
-   pseudolegendarios entre sí, mismo tipo y generación, etc.) hasta dejar
-   exactamente 32.
-3. **Eliminación directa**: con 32 finalistas, bracket clásico con nombres de
-   ronda en español hasta coronar un campeón.
-4. **Hall de la Fama**: los 8 cuartofinalistas quedan inmortalizados, con
-   medalla especial para semifinalistas, subcampeón y campeón.
+1. **Elige tus favoritos**: escoges el modo (por generación, 9 grupos; o por
+   categoría: iniciales, legendarios, míticos, pseudolegendarios, Megas,
+   Gigamax, formas regionales, Eeveelutions, Pokémon paradójicos...), decides
+   qué grupos entran al torneo y marcas un único favorito por grupo (con
+   buscador si el grupo es grande). Nada de enfrentamientos en esta fase.
+2. **Liga Pokémon**: con esos favoritos se arma un cuadro de eliminación
+   directa (dieciseisavos/octavos/cuartos/semis/final, según cuántos
+   participantes haya) mostrando **todas las rondas a la vez**, como un
+   tablero de torneo: eliges quién avanza en cada enfrentamiento y ves la
+   progresión completa en pantalla. Si el número de favoritos no es potencia
+   de 2, se reparten "byes" (pases automáticos) en la primera ronda.
+3. **Hall de la Fama**: tus favoritos quedan inmortalizados según hasta dónde
+   llegaron, con medalla especial para semifinalistas, subcampeón y campeón.
 
 Todo el progreso se guarda en `localStorage` del navegador — puedes cerrar la
 pestaña y seguir después donde lo dejaste, o pulsar "Reiniciar torneo" para
@@ -64,7 +64,7 @@ no por elección de diseño):
 
 ## Diseño
 
-- **Tipografía uniforme**: [Titan One](https://fonts.google.com/specimen/Titan+One)
+- **Tipografía uniforme**: [Russo One](https://fonts.google.com/specimen/Russo+One)
   (Google Fonts, licencia SIL OFL) en toda la web — deliberadamente no la
   fuente por defecto del navegador.
 - **Fondo**: patrón original en SVG (`assets/bg-pattern.svg`) con siluetas de

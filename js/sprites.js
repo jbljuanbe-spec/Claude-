@@ -10,14 +10,18 @@ const ARTWORK_BASE =
 const PLACEHOLDER = "./assets/placeholder.svg";
 
 export function spriteCandidates(entry) {
-  const urls = [];
-  if (entry.id !== entry.pokemonId) {
-    urls.push(`${SHOWDOWN_BASE}${entry.id}.gif`);
-  }
-  urls.push(`${SHOWDOWN_BASE}${entry.pokemonId}.gif`);
-  urls.push(`${ARTWORK_BASE}${entry.speciesId}.png`);
-  urls.push(PLACEHOLDER);
-  return urls;
+  // OJO: no se usa entry.id (la clave propia de pokemon_forms.csv) para
+  // construir la URL del sprite. Esa numeración es independiente de la de
+  // pokemon.csv y coincide por pura casualidad con IDs de otros Pokémon
+  // (p. ej. el id de forma de "arceus-flying" coincidía con el id de
+  // pokemon.csv de "heracross-mega", mostrando el sprite equivocado).
+  // pokemonId sí es seguro: es el id real del recurso "pokemon" con el que
+  // está nombrado el sprite.
+  return [
+    `${SHOWDOWN_BASE}${entry.pokemonId}.gif`,
+    `${ARTWORK_BASE}${entry.speciesId}.png`,
+    PLACEHOLDER,
+  ];
 }
 
 // Aplica una cadena de fallback vía onerror a un <img> ya existente.

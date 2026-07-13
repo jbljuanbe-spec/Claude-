@@ -1,46 +1,40 @@
 import { loadData, getMeta, getById } from "./data.js";
 import { loadState, saveState, resetState } from "./state.js";
-import { renderFilterPhase } from "./filters.js";
-import { getNextDuel, resolveDuel, renderDuelPhase, duelLogEntry } from "./duel.js";
+import { renderModeAndGroupSelection, renderGroupPicker } from "./favorites.js";
 import {
   initBracket,
-  getNextMatch,
-  resolveMatch,
+  autoAdvance,
   isRoundComplete,
   isFinalComplete,
   advanceRound,
-  bracketLogEntry,
-  renderBracketPhase,
+  renderBracketBoard,
+  getRoundLabel,
 } from "./bracket.js";
 import { computeHallOfFame, renderHallOfFame } from "./halloffame.js";
-import { el, clear, appendToLog, entryCard } from "./render.js";
+import { el, entryCard } from "./render.js";
 
 const dom = {
-  phaseFilter: document.getElementById("phase-filter"),
+  phaseFavorites: document.getElementById("phase-favorites"),
   phaseActive: document.getElementById("phase-active"),
   hofContainer: document.getElementById("hof-container"),
-  scrapbookLog: document.getElementById("scrapbook-log"),
   resetBtn: document.getElementById("reset-btn"),
 };
 
 let state;
+let meta;
 
 function setSectionVisible(node, visible) {
   node.hidden = !visible;
 }
 
 function renderApp() {
-  const isFilterPhase = state.phase === "filter";
-  setSectionVisible(dom.phaseFilter, isFilterPhase);
-  setSectionVisible(dom.phaseActive, !isFilterPhase);
-  dom.resetBtn.hidden = isFilterPhase && state.duelHistory.length === 0;
+  const isFavoritesPhase = state.phase === "pickFavorites";
+  setSectionVisible(dom.phaseFavorites, isFavoritesPhase);
+  setSectionVisible(dom.phaseActive, !isFavoritesPhase);
+  dom.resetBtn.hidden = isFavoritesPhase && state.groupOrder.length === 0;
 
-  if (isFilterPhase) {
-    renderFilterPhase(dom.phaseFilter, getMeta(), state.filters, {
-      onStart: startTournament,
-    });
-  } else if (state.phase === "duels") {
-    renderDuelStep();
+  if (isFavoritesPhase) {
+    renderFavoritesStep();
   } else if (state.phase === "bracket") {
     renderBracketStep();
   } else if (state.phase === "hallOfFame") {
@@ -51,60 +45,79 @@ function renderApp() {
   renderHallOfFame(dom.hofContainer, hof);
 }
 
-function startTournament(filteredIds) {
-  state.pool = [...filteredIds];
-  state.facedPairs = [];
-  state.duelHistory = [];
-  state.bracket = null;
-  clear(dom.scrapbookLog);
-
-  if (state.pool.length === 32) {
-    state.bracket = initBracket(state.pool);
-    state.phase = "bracket";
-  } else {
-    state.phase = "duels";
+function renderFavoritesStep() {
+  if (state.groupOrder.length === 0) {
+    renderModeAndGroupSelection(dom.phaseFavorites, meta, state, {
+      onModeChange: renderApp,
+      onStart: (groups) => {
+        state.groupOrder = groups;
+        state.groupIndex = 0;
+        saveState();
+        renderApp();
+      },
+    });
+    return;
   }
+
+  const group = state.groupOrder[state.groupIndex];
+  renderGroupPicker(
+    dom.phaseFavorites,
+    group,
+    state.groupIndex,
+    state.groupOrder.length,
+    state.favorites[group.id] ?? null,
+    {
+      onPick: (groupId, pokemonId) => {
+        state.favorites[groupId] = pokemonId;
+        if (state.groupIndex < state.groupOrder.length - 1) {
+          state.groupIndex += 1;
+          saveState();
+          renderApp();
+        } else {
+          startTournament();
+        }
+      },
+      onBack: () => {
+        state.groupIndex = Math.max(0, state.groupIndex - 1);
+        saveState();
+        renderApp();
+      },
+    }
+  );
+}
+
+function startTournament() {
+  const participantIds = state.groupOrder.map((g) => state.favorites[g.id]).filter(Boolean);
+  state.bracket = autoAdvance(initBracket(participantIds));
+  state.phase = isFinalComplete(state.bracket) ? "hallOfFame" : "bracket";
   saveState();
   renderApp();
 }
 
-function renderDuelStep() {
-  const duel = getNextDuel(state.pool, state.facedPairs);
-  if (!duel) {
-    // Salvaguarda: si por alguna razón no hay más duelos posibles pero el
-    // pool sigue por encima de 32, pasamos al bracket con lo que quede.
-    state.bracket = initBracket(state.pool.slice(0, 32));
-    state.phase = "bracket";
-    saveState();
-    renderApp();
-    return;
-  }
-
-  renderDuelPhase(dom.phaseActive, state.pool, duel, (entry) => {
-    resolveDuel(state, duel, entry.id);
-    appendToLog(dom.scrapbookLog, duelLogEntry(state.duelHistory.at(-1)));
-
-    if (state.pool.length === 32) {
-      state.bracket = initBracket(state.pool);
-      state.phase = "bracket";
-    }
-    saveState();
-    renderApp();
-  });
-}
-
 function renderBracketStep() {
   const bracket = state.bracket;
-  const match = getNextMatch(bracket);
 
-  renderBracketPhase(dom.phaseActive, bracket, match, (entry) => {
-    resolveMatch(bracket, match, entry.id);
-    appendToLog(dom.scrapbookLog, bracketLogEntry(bracket.round, match));
+  dom.phaseActive.replaceChildren(
+    el("div", { class: "bracket-panel" }, [
+      el("h2", { text: "2. Liga Pokémon" }),
+      el("p", {
+        class: "phase-help",
+        text: `${getRoundLabel(bracket.round)} — elige quién avanza.`,
+      }),
+      el("div", { id: "bracket-board-mount" }),
+    ])
+  );
+
+  const mount = document.getElementById("bracket-board-mount");
+  renderBracketBoard(mount, bracket, (match, winnerId) => {
+    match.winner = winnerId;
 
     if (isFinalComplete(bracket)) {
       state.phase = "hallOfFame";
     } else if (isRoundComplete(bracket)) {
       advanceRound(bracket);
+      autoAdvance(bracket);
+      if (isFinalComplete(bracket)) state.phase = "hallOfFame";
     }
     saveState();
     renderApp();
@@ -112,19 +125,24 @@ function renderBracketStep() {
 }
 
 function renderChampionBanner() {
-  const championId = state.bracket.matches[0]?.winner;
-  const championCard = championId
-    ? entryCard(getById(championId), { badge: "🥇 Campeón" })
+  const hof = computeHallOfFame(state.bracket);
+  const championCard = hof.champion
+    ? entryCard(getById(hof.champion), { badge: "🥇 Campeón de la Liga" })
     : null;
+  const boardMount = el("div");
+
   dom.phaseActive.replaceChildren(
     el("div", { class: "champion-banner" }, [
-      el("h2", { text: "¡Torneo completado!" }),
+      el("h2", { text: "¡Tenemos campeón de la Liga!" }),
       championCard,
       el("p", {
-        text: "Tu campeón encabeza el Hall de la Fama, aquí abajo, junto al resto de tus favoritos.",
+        text: "Repasa el cuadro completo aquí abajo, y a tu campeón en el Hall de la Fama.",
       }),
+      boardMount,
     ])
   );
+
+  renderBracketBoard(boardMount, state.bracket, () => {});
 }
 
 dom.resetBtn.addEventListener("click", () => {
@@ -132,28 +150,14 @@ dom.resetBtn.addEventListener("click", () => {
     return;
   }
   state = resetState();
-  clear(dom.scrapbookLog);
   renderApp();
 });
 
 async function main() {
   await loadData();
+  meta = getMeta();
   state = loadState();
   renderApp();
-
-  // Si veníamos de una sesión anterior a mitad de duelos/bracket, repoblamos
-  // el historial visible del "diario del torneo" para no perder contexto.
-  if (state.duelHistory.length || (state.bracket && state.bracket.history.length)) {
-    clear(dom.scrapbookLog);
-    for (const d of state.duelHistory) dom.scrapbookLog.appendChild(duelLogEntry(d));
-    if (state.bracket) {
-      for (const round of state.bracket.history) {
-        for (const m of round.matches) {
-          dom.scrapbookLog.appendChild(bracketLogEntry(round.round, m));
-        }
-      }
-    }
-  }
 }
 
 main();

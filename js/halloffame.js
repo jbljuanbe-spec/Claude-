@@ -1,17 +1,33 @@
 import { getById } from "./data.js";
 import { el, entryCard } from "./render.js";
 
-// Deriva el estado del Hall de la Fama (top 8 = cuartofinalistas en adelante)
-// a partir del historial de rondas del bracket, en cualquier punto del torneo.
+function getFirstRoundMatches(bracket) {
+  return bracket.history.length ? bracket.history[0].matches : bracket.matches;
+}
+
+// Deriva el estado del Hall de la Fama a partir del historial de rondas.
+// Con torneos grandes (bracketSize >= 16) el top 8 son los cuartofinalistas
+// clásicos. Con torneos más pequeños (pocas categorías/generaciones
+// elegidas) se ajusta para que el Hall de la Fama nunca quede vacío.
 export function computeHallOfFame(bracket) {
   const hof = { top8: [], semifinalists: [], runnerUp: null, champion: null };
   if (!bracket) return hof;
 
   const octavos = bracket.history.find((h) => h.round === "octavos");
-  if (octavos) hof.top8 = octavos.matches.map((m) => m.winner);
+  if (octavos) {
+    hof.top8 = octavos.matches.map((m) => m.winner);
+  } else if (bracket.bracketSize <= 8) {
+    hof.top8 = [
+      ...new Set(getFirstRoundMatches(bracket).flatMap((m) => [m.a, m.b]).filter((id) => id != null)),
+    ];
+  }
 
   const cuartos = bracket.history.find((h) => h.round === "cuartos");
-  if (cuartos) hof.semifinalists = cuartos.matches.map((m) => m.winner);
+  if (cuartos) {
+    hof.semifinalists = cuartos.matches.map((m) => m.winner);
+  } else if (bracket.bracketSize <= 4 && hof.top8.length) {
+    hof.semifinalists = hof.top8;
+  }
 
   if (bracket.round === "final" && bracket.matches[0]?.winner != null) {
     const final = bracket.matches[0];
@@ -47,7 +63,7 @@ export function renderHallOfFame(container, hof) {
       el("h2", { text: "Hall de la Fama" }),
       el("p", {
         class: "phase-help",
-        text: "Tus favoritos: los ocho cuartofinalistas del torneo, con medalla especial para semifinalistas, subcampeón y campeón.",
+        text: "Tus favoritos según cómo de lejos llegaron en el torneo.",
       }),
       el(
         "div",

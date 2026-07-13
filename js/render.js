@@ -7,7 +7,12 @@ export function el(tag, props = {}, children = []) {
     else if (key === "text") node.textContent = value;
     else if (key.startsWith("on") && typeof value === "function") {
       node.addEventListener(key.slice(2).toLowerCase(), value);
-    } else if (value !== undefined && value !== null) {
+    } else if (value === true) {
+      node.setAttribute(key, "");
+    } else if (value === false || value === undefined || value === null) {
+      // atributo booleano en false (o ausente): se omite a propósito, ya que
+      // setAttribute(key, "false") lo dejaría activado igualmente en HTML.
+    } else {
       node.setAttribute(key, value);
     }
   }
@@ -59,9 +64,4 @@ export function pickableCard(entry, onPick, { badge } = {}) {
     }
   });
   return card;
-}
-
-export function appendToLog(logContainer, node) {
-  logContainer.appendChild(node);
-  node.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }

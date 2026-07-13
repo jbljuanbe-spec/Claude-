@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Torneo Pokémon: Duelo de Homólogos</title>
+  <title>Liga Pokémon: Torneo de Favoritos</title>
   <meta
     name="description"
-    content="Elige tus Pokémon favoritos comparando homólogos entre especies parecidas hasta llegar a una eliminación directa de 32, con Hall de la Fama incluido."
+    content="Elige tu Pokémon favorito de cada generación o categoría y compite en un cuadro de eliminación directa estilo Liga Pokémon, con Hall de la Fama incluido."
   />
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="./css/style.css" />
@@ -20,10 +20,10 @@
 <body>
   <header id="site-header">
     <div class="header-inner">
-      <h1>Torneo Pokémon<span>Duelo de Homólogos</span></h1>
+      <h1>Liga Pokémon<span>Torneo de Favoritos</span></h1>
       <p class="tagline">
-        Filtra el repositorio completo de Pokémon, compara parecidos cabeza a
-        cabeza y corona a tu campeón en una eliminación directa de 32.
+        Elige tu favorito de cada generación o categoría y compite en un
+        cuadro de eliminación directa hasta coronar a tu campeón.
       </p>
       <button id="reset-btn" class="btn btn-ghost" type="button" hidden>
         Reiniciar torneo
@@ -32,20 +32,11 @@
   </header>
 
   <main id="app">
-    <section id="phase-filter" class="phase-section"></section>
+    <section id="phase-favorites" class="phase-section"></section>
 
     <section id="phase-active" class="phase-section" hidden></section>
 
     <section id="hof-container" class="phase-section"></section>
-
-    <section id="scrapbook" class="phase-section">
-      <h2>Diario del torneo</h2>
-      <p class="phase-help">
-        Cada decisión que tomas se añade aquí abajo, como un álbum de
-        recortes de todo tu recorrido.
-      </p>
-      <div id="scrapbook-log"></div>
-    </section>
   </main>
 
   <footer id="site-footer">

@@ -1,18 +1,17 @@
 // Persistencia del progreso del torneo en localStorage.
 
-const KEY = "pokeTorneo:v1:state";
+const KEY = "pokeTorneo:v2:state";
 
 function initialState() {
   return {
-    version: 1,
-    phase: "filter", // filter | duels | bracket | hallOfFame
-    filters: { query: "", types: [], generations: [], categories: [] },
-    pool: [],
-    facedPairs: [],
-    duelHistory: [],
+    version: 2,
+    phase: "pickFavorites", // pickFavorites | bracket | hallOfFame
+    groupMode: null, // "generacion" | "categoria"
+    groupSelection: [], // ids de grupo incluidos en el torneo
+    groupOrder: [], // orden en el que se van pidiendo los favoritos
+    groupIndex: 0,
+    favorites: {}, // { [groupId]: pokemonId }
     bracket: null,
-    hallOfFame: { top8: [], semifinalists: [], runnerUp: null, champion: null },
-    log: [],
     createdAt: Date.now(),
     updatedAt: Date.now(),
   };
@@ -26,7 +25,7 @@ export function loadState() {
     const raw = localStorage.getItem(KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
-      if (parsed && parsed.version === 1) {
+      if (parsed && parsed.version === 2) {
         state = parsed;
         return state;
       }
@@ -53,8 +52,4 @@ export function resetState() {
 export function getState() {
   if (!state) return loadState();
   return state;
-}
-
-export function pushLog(entry) {
-  getState().log.push({ ...entry, ts: Date.now() });
 }

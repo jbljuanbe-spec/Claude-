@@ -1,23 +1,24 @@
 /* ---------------------------------------------------------------------
-   Torneo Pokémon: Duelo de Homólogos
-   Tipografía única y uniforme en toda la web (Titan One, no la fuente por
-   defecto del navegador) + fondo original en SVG (patrón de Poké Balls,
-   sin usar ningún arte oficial con copyright).
+   Liga Pokémon: Torneo de Favoritos
+   Tipografía única y uniforme (Russo One, no la fuente por defecto del
+   navegador) + fondo original en SVG (patrón de Poké Balls, sin usar
+   ningún arte oficial con copyright) + cuadro de eliminación visible de
+   principio a fin, al estilo de la Liga Pokémon del anime.
 --------------------------------------------------------------------- */
 
 :root {
-  --font-display: "Titan One", "Arial Black", sans-serif;
+  --font-display: "Russo One", "Arial Black", sans-serif;
 
-  --bg-0: #14141f;
-  --bg-1: #1c1c2c;
-  --bg-2: #262640;
-  --panel: #23233a;
+  --bg-0: #0e1020;
+  --bg-1: #171a30;
+  --bg-2: #20233f;
+  --panel: #1b1e38;
   --ink: #f4f4fb;
-  --ink-dim: #b6b6d0;
-  --accent: #ffcb05; /* amarillo Pikachu */
+  --ink-dim: #a9acc9;
+  --accent: #ffcb05; /* amarillo Pikachu / trofeo */
   --accent-2: #3d7dca; /* azul Pokédex */
   --danger: #e3350d; /* rojo Poké Ball */
-  --success: #4caf78;
+  --gold: #ffd23f;
   --radius: 14px;
 }
 
@@ -35,8 +36,8 @@ body {
   font-family: var(--font-display);
   color: var(--ink);
   background-color: var(--bg-0);
-  background-image: radial-gradient(circle at 20% -10%, #2b2b4a 0%, transparent 55%),
-    radial-gradient(circle at 100% 20%, #2a1f3d 0%, transparent 45%),
+  background-image: radial-gradient(circle at 20% -10%, #26295c 0%, transparent 55%),
+    radial-gradient(circle at 100% 15%, #3a1f4d 0%, transparent 45%),
     url("../assets/bg-pattern.svg");
   background-repeat: no-repeat, no-repeat, repeat;
   background-size: cover, cover, 160px 160px;
@@ -85,22 +86,23 @@ a {
 
 #site-header h1 span {
   display: block;
-  font-size: 0.45em;
-  color: var(--accent);
-  margin-top: 0.3em;
+  font-size: 0.4em;
+  color: var(--gold);
+  margin-top: 0.4em;
+  letter-spacing: 0.08em;
 }
 
 .tagline {
   color: #ffe8d6;
   max-width: 60ch;
   margin: 0.75rem auto 1.25rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 /* --- layout --- */
 
 #app {
-  max-width: 880px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem 1rem 4rem;
   display: flex;
@@ -113,6 +115,10 @@ a {
   border: 2px solid #33335a;
   border-radius: var(--radius);
   padding: 1.5rem;
+}
+
+.phase-section:empty {
+  display: none;
 }
 
 .phase-help {
@@ -129,7 +135,7 @@ a {
   border-radius: 999px;
   padding: 0.7em 1.4em;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: transform 0.08s ease, filter 0.15s ease;
 }
 
@@ -147,8 +153,8 @@ a {
 }
 
 .btn-primary:disabled {
-  background: #55554a;
-  color: #999;
+  background: #4b4b5c;
+  color: #8d8da3;
   cursor: not-allowed;
 }
 
@@ -165,19 +171,8 @@ a {
   border: 2px solid #4a4a70;
   background: var(--bg-1);
   color: var(--ink);
-  font-size: 0.95rem;
-  margin: 0.75rem 0 1.25rem;
-}
-
-.filter-group {
-  margin-bottom: 1.25rem;
-}
-
-.filter-group h3 {
   font-size: 0.9rem;
-  color: var(--ink-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  margin: 0.75rem 0 1.25rem;
 }
 
 .filter-chips {
@@ -193,7 +188,7 @@ a {
   border: 2px solid #3a3a5c;
   border-radius: 999px;
   padding: 0.35em 0.9em;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   cursor: pointer;
 }
 
@@ -203,15 +198,6 @@ a {
   border-color: var(--accent-2);
 }
 
-.filter-count {
-  font-size: 0.85rem;
-  color: var(--ink-dim);
-}
-
-.filter-count.warn {
-  color: #ffb266;
-}
-
 .filter-actions {
   display: flex;
   gap: 0.75rem;
@@ -219,7 +205,69 @@ a {
   flex-wrap: wrap;
 }
 
-/* --- duel / bracket cards --- */
+/* --- fase 1: favoritos por grupo --- */
+
+.mode-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.5rem;
+}
+
+.mode-card {
+  flex: 1 1 220px;
+  font-family: var(--font-display);
+  text-align: left;
+  background: var(--bg-1);
+  border: 2px solid #3a3a5c;
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.mode-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  color: var(--gold);
+}
+
+.mode-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+  line-height: 1.4;
+}
+
+.mode-card.active {
+  border-color: var(--accent);
+  background: var(--bg-2);
+}
+
+.group-select-block {
+  border-top: 2px dashed #33335a;
+  padding-top: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.group-checklist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.9rem;
+  margin-top: 1rem;
+  max-height: 560px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+/* --- tarjetas de Pokémon --- */
 
 .duel-versus {
   display: flex;
@@ -241,7 +289,7 @@ a {
   border: 2px solid #3a3a5c;
   border-radius: var(--radius);
   padding: 1rem;
-  width: 190px;
+  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -261,16 +309,21 @@ a {
   outline: none;
 }
 
+.poke-card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(255, 210, 63, 0.35);
+}
+
 .sprite {
-  width: 96px;
-  height: 96px;
+  width: 88px;
+  height: 88px;
   object-fit: contain;
   image-rendering: pixelated;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
 }
 
 .poke-name {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 .type-chips {
@@ -281,7 +334,7 @@ a {
 }
 
 .chip {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   padding: 0.2em 0.6em;
   border-radius: 999px;
   background: #3a3a5c;
@@ -296,7 +349,7 @@ a {
   transform: translateX(-50%);
   background: var(--accent);
   color: #241a00;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   padding: 0.25em 0.7em;
   border-radius: 999px;
   white-space: nowrap;
@@ -310,10 +363,121 @@ a {
   gap: 1rem;
 }
 
+.champion-banner .poke-card {
+  width: 220px;
+  border-color: var(--gold);
+  box-shadow: 0 0 24px rgba(255, 210, 63, 0.35);
+}
+
+.champion-banner .sprite {
+  width: 128px;
+  height: 128px;
+}
+
+/* --- fase 2: cuadro de la Liga Pokémon --- */
+
+.bracket-board {
+  display: flex;
+  gap: 1.75rem;
+  overflow-x: auto;
+  padding: 0.5rem 0.25rem 1.25rem;
+}
+
+.bracket-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 190px;
+  flex: 0 0 auto;
+}
+
+.bracket-round-title {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--bg-2);
+  border-radius: 999px;
+  padding: 0.4em 0.8em;
+  margin-bottom: 1rem;
+}
+
+.bracket-column-matches {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.bracket-match {
+  background: var(--bg-1);
+  border: 2px solid #33335a;
+  border-radius: 10px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: stretch;
+}
+
+.bracket-match-active {
+  border-color: var(--accent-2);
+}
+
+.bracket-vs {
+  text-align: center;
+  font-size: 0.6rem;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+}
+
+.bracket-slot {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  min-height: 2.6rem;
+}
+
+.bracket-slot.pickable {
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.bracket-slot.pickable:hover,
+.bracket-slot.pickable:focus-visible {
+  background: var(--bg-2);
+  outline: none;
+}
+
+.bracket-slot-winner {
+  background: rgba(255, 210, 63, 0.12);
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.bracket-slot-bye {
+  color: var(--ink-dim);
+  font-style: italic;
+  justify-content: center;
+  font-size: 0.7rem;
+}
+
+.bracket-sprite {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
 /* --- hall of fame --- */
 
 .hof-panel h2 {
-  color: var(--accent);
+  color: var(--gold);
 }
 
 .hof-grid {
@@ -322,41 +486,6 @@ a {
   gap: 1rem;
   justify-content: center;
   margin-top: 1rem;
-}
-
-/* --- scrapbook log --- */
-
-#scrapbook-log {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  max-height: 360px;
-  overflow-y: auto;
-  padding-right: 0.25rem;
-}
-
-.log-entry {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  background: var(--bg-1);
-  border-left: 4px solid var(--accent-2);
-  border-radius: 8px;
-  padding: 0.5rem 0.8rem;
-  font-size: 0.8rem;
-}
-
-.log-bracket {
-  border-left-color: var(--accent);
-}
-
-.log-tier {
-  color: var(--ink-dim);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
 }
 
 /* --- footer --- */
@@ -377,7 +506,7 @@ a {
 /* --- responsive --- */
 
 @media (max-width: 480px) {
-  .poke-card {
-    width: 42vw;
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
 }

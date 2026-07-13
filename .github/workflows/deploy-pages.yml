@@ -2,7 +2,7 @@ name: Deploy Pages
 
 on:
   push:
-    branches: [main]
+    branches: [claude/pokemon-tournament-bracket-0nymkf]
   workflow_dispatch:
 
 permissions:

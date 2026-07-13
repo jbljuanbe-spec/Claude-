@@ -1,6 +1,6 @@
 import { loadData, getMeta, getById } from "./data.js";
 import { loadState, saveState, resetState } from "./state.js";
-import { renderModeAndGroupSelection, renderGroupPicker } from "./favorites.js";
+import { renderSetup, renderGroupPicker, renderTrimPhase } from "./favorites.js";
 import {
   initBracket,
   autoAdvance,
@@ -28,13 +28,28 @@ function setSectionVisible(node, visible) {
 }
 
 function renderApp() {
-  const isFavoritesPhase = state.phase === "pickFavorites";
-  setSectionVisible(dom.phaseFavorites, isFavoritesPhase);
-  setSectionVisible(dom.phaseActive, !isFavoritesPhase);
-  dom.resetBtn.hidden = isFavoritesPhase && state.groupOrder.length === 0;
+  const isSetupOrPicking = state.phase === "setup" || state.phase === "pickFavorites" || state.phase === "trim";
+  setSectionVisible(dom.phaseFavorites, isSetupOrPicking);
+  setSectionVisible(dom.phaseActive, !isSetupOrPicking);
+  dom.resetBtn.hidden = state.phase === "setup" && !state.targetSize;
 
-  if (isFavoritesPhase) {
+  if (state.phase === "setup") {
+    renderSetup(dom.phaseFavorites, meta, state, {
+      onChange: renderApp,
+      onStart: (groups, perGroup) => {
+        state.groupOrder = groups;
+        state.perGroup = perGroup;
+        state.groupIndex = 0;
+        state.favorites = {};
+        state.phase = "pickFavorites";
+        saveState();
+        renderApp();
+      },
+    });
+  } else if (state.phase === "pickFavorites") {
     renderFavoritesStep();
+  } else if (state.phase === "trim") {
+    renderTrimStep();
   } else if (state.phase === "bracket") {
     renderBracketStep();
   } else if (state.phase === "hallOfFame") {
@@ -42,39 +57,33 @@ function renderApp() {
   }
 
   const hof = computeHallOfFame(state.bracket);
-  renderHallOfFame(dom.hofContainer, hof);
+  renderHallOfFame(dom.hofContainer, hof, {
+    trainerId: state.trainerId,
+    elapsedMs: hof.champion ? (state.finishedAt ?? Date.now()) - state.createdAt : null,
+  });
 }
 
 function renderFavoritesStep() {
-  if (state.groupOrder.length === 0) {
-    renderModeAndGroupSelection(dom.phaseFavorites, meta, state, {
-      onModeChange: renderApp,
-      onStart: (groups) => {
-        state.groupOrder = groups;
-        state.groupIndex = 0;
-        saveState();
-        renderApp();
-      },
-    });
-    return;
-  }
-
   const group = state.groupOrder[state.groupIndex];
   renderGroupPicker(
     dom.phaseFavorites,
     group,
     state.groupIndex,
     state.groupOrder.length,
-    state.favorites[group.id] ?? null,
+    state.perGroup,
+    state.favorites[group.id] ?? [],
     {
-      onPick: (groupId, pokemonId) => {
-        state.favorites[groupId] = pokemonId;
+      onSelectionChange: (selected) => {
+        state.favorites[group.id] = selected;
+        saveState();
+      },
+      onComplete: () => {
         if (state.groupIndex < state.groupOrder.length - 1) {
           state.groupIndex += 1;
           saveState();
           renderApp();
         } else {
-          startTournament();
+          finishPicking();
         }
       },
       onBack: () => {
@@ -86,10 +95,36 @@ function renderFavoritesStep() {
   );
 }
 
+function finishPicking() {
+  const allPicked = state.groupOrder.flatMap((g) => state.favorites[g.id] ?? []);
+  if (allPicked.length > state.targetSize) {
+    state.trimPool = allPicked;
+    state.phase = "trim";
+    saveState();
+    renderApp();
+  } else {
+    state.finalists = allPicked;
+    startTournament();
+  }
+}
+
+function renderTrimStep() {
+  renderTrimPhase(dom.phaseFavorites, state.trimPool, state.targetSize, (id) => {
+    state.trimPool = state.trimPool.filter((x) => x !== id);
+    saveState();
+    if (state.trimPool.length === state.targetSize) {
+      state.finalists = state.trimPool;
+      startTournament();
+    } else {
+      renderApp();
+    }
+  });
+}
+
 function startTournament() {
-  const participantIds = state.groupOrder.map((g) => state.favorites[g.id]).filter(Boolean);
-  state.bracket = autoAdvance(initBracket(participantIds));
+  state.bracket = autoAdvance(initBracket(state.finalists));
   state.phase = isFinalComplete(state.bracket) ? "hallOfFame" : "bracket";
+  if (state.phase === "hallOfFame") state.finishedAt = Date.now();
   saveState();
   renderApp();
 }
@@ -99,7 +134,7 @@ function renderBracketStep() {
 
   dom.phaseActive.replaceChildren(
     el("div", { class: "bracket-panel" }, [
-      el("h2", { text: "2. Liga Pokémon" }),
+      el("h2", { text: "Liga Pokémon" }),
       el("p", {
         class: "phase-help",
         text: `${getRoundLabel(bracket.round)} — elige quién avanza.`,
@@ -114,10 +149,14 @@ function renderBracketStep() {
 
     if (isFinalComplete(bracket)) {
       state.phase = "hallOfFame";
+      state.finishedAt = Date.now();
     } else if (isRoundComplete(bracket)) {
       advanceRound(bracket);
       autoAdvance(bracket);
-      if (isFinalComplete(bracket)) state.phase = "hallOfFame";
+      if (isFinalComplete(bracket)) {
+        state.phase = "hallOfFame";
+        state.finishedAt = Date.now();
+      }
     }
     saveState();
     renderApp();
@@ -150,6 +189,8 @@ dom.resetBtn.addEventListener("click", () => {
     return;
   }
   state = resetState();
+  state.trainerId = Math.floor(10000 + Math.random() * 90000);
+  saveState();
   renderApp();
 });
 
@@ -157,6 +198,10 @@ async function main() {
   await loadData();
   meta = getMeta();
   state = loadState();
+  if (!state.trainerId) {
+    state.trainerId = Math.floor(10000 + Math.random() * 90000);
+    saveState();
+  }
   renderApp();
 }
 

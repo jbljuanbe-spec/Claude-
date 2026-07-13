@@ -3,26 +3,35 @@
 Sitio estático (HTML/CSS/JS puro, sin build ni framework) inspirado en
 [cajunavenger.github.io](https://cajunavenger.github.io), pero con una mecánica
 de selección distinta: en vez de elegir por tipo/generación con cientos de
-comparaciones, eliges **un solo favorito por grupo** (por generación o por
-categoría) y con esas elecciones se arma automáticamente un cuadro de
-**eliminación directa** al estilo de la Liga Pokémon del anime, terminando en
-un **Hall de la Fama** con tus favoritos según cómo de lejos llegaron.
+comparaciones, eliges cuántos favoritos por grupo hacen falta (por generación
+o por categoría) para llegar exactamente al tamaño de torneo que quieras, y
+con esas elecciones se arma un cuadro de **eliminación directa** al estilo de
+la Liga Pokémon del anime, terminando en una pantalla de **Hall de la Fama**
+al estilo de los juegos clásicos.
 
 ## Cómo funciona
 
-1. **Elige tus favoritos**: escoges el modo (por generación, 9 grupos; o por
-   categoría: iniciales, legendarios, míticos, pseudolegendarios, Megas,
-   Gigamax, formas regionales, Eeveelutions, Pokémon paradójicos...), decides
-   qué grupos entran al torneo y marcas un único favorito por grupo (con
-   buscador si el grupo es grande). Nada de enfrentamientos en esta fase.
-2. **Liga Pokémon**: con esos favoritos se arma un cuadro de eliminación
-   directa (dieciseisavos/octavos/cuartos/semis/final, según cuántos
-   participantes haya) mostrando **todas las rondas a la vez**, como un
-   tablero de torneo: eliges quién avanza en cada enfrentamiento y ves la
-   progresión completa en pantalla. Si el número de favoritos no es potencia
-   de 2, se reparten "byes" (pases automáticos) en la primera ronda.
-3. **Hall de la Fama**: tus favoritos quedan inmortalizados según hasta dónde
-   llegaron, con medalla especial para semifinalistas, subcampeón y campeón.
+1. **Tamaño del torneo**: eliges cuántos participantes quieres (Top 8, 16, 32
+   o 64) — nada de "byes" ni pases automáticos, vas a elegir justo los que
+   hacen falta.
+2. **Grupos**: eliges el modo (por generación, 9 grupos; o por categoría:
+   iniciales, legendarios, míticos, pseudolegendarios, Megas, Gigamax, formas
+   regionales, Eeveelutions, Pokémon paradójicos...) y qué grupos entran. La
+   web calcula sola cuántos favoritos hace falta elegir de cada grupo para
+   acercarse al tamaño elegido.
+3. **Favoritos**: marcas esos favoritos por grupo (con buscador si el grupo es
+   grande). Si al final sobran candidatos (por ejemplo, 9 generaciones para un
+   Top 8), pasas a una fase de **recorte manual**: ves a todos los elegidos
+   juntos y haces clic en quien no pase, hasta dejar el número exacto.
+4. **Liga Pokémon**: con el cuadro ya cerrado (potencia de 2, sin byes) se
+   arma la eliminación directa (dieciseisavos/octavos/cuartos/semis/final,
+   según el tamaño) mostrando **todas las rondas a la vez**, como un tablero
+   de torneo real: eliges quién avanza y ves la progresión completa en
+   pantalla.
+5. **Hall de la Fama**: al coronar campeón, tus favoritos quedan
+   inmortalizados en una pantalla al estilo del Hall de la Fama de los juegos
+   clásicos (fondo azul de puntos, sprites en fila, medalla según cómo de
+   lejos llegó cada uno).
 
 Todo el progreso se guarda en `localStorage` del navegador — puedes cerrar la
 pestaña y seguir después donde lo dejaste, o pulsar "Reiniciar torneo" para

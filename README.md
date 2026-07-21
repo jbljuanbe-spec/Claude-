@@ -1,94 +1,41 @@
-# Liga Pokémon: Torneo de Favoritos
+# 言葉 Kotoba
 
-Sitio estático (HTML/CSS/JS puro, sin build ni framework) inspirado en
-[cajunavenger.github.io](https://cajunavenger.github.io), pero con una mecánica
-de selección distinta: en vez de elegir por tipo/generación con cientos de
-comparaciones, eliges cuántos favoritos por grupo hacen falta (por generación
-o por categoría) para llegar exactamente al tamaño de torneo que quieras, y
-con esas elecciones se arma un cuadro de **eliminación directa** al estilo de
-la Liga Pokémon del anime, terminando en una pantalla de **Hall de la Fama**
-al estilo de los juegos clásicos.
+App personal de estudio de japonés (Genki I/II + Minna no Nihongo). Repetición espaciada real, recall activo y ejercicios estilo Duolingo, alimentada por el `contenido_japones.json` que exporto desde mi chat de lecciones.
 
-## Cómo funciona
+## Arrancar
 
-1. **Tamaño del torneo**: eliges cuántos participantes quieres (Top 8, 16, 32
-   o 64) — nada de "byes" ni pases automáticos, vas a elegir justo los que
-   hacen falta.
-2. **Grupos**: eliges el modo (por generación, 9 grupos; o por categoría:
-   iniciales, legendarios, míticos, pseudolegendarios, Megas, Gigamax, formas
-   regionales, Eeveelutions, Pokémon paradójicos...) y qué grupos entran. La
-   web calcula sola cuántos favoritos hace falta elegir de cada grupo para
-   acercarse al tamaño elegido.
-3. **Favoritos**: marcas esos favoritos por grupo (con buscador si el grupo es
-   grande). Si al final sobran candidatos (por ejemplo, 9 generaciones para un
-   Top 8), pasas a una fase de **recorte manual**: ves a todos los elegidos
-   juntos y haces clic en quien no pase, hasta dejar el número exacto.
-4. **Liga Pokémon**: con el cuadro ya cerrado (potencia de 2, sin byes) se
-   arma la eliminación directa (dieciseisavos/octavos/cuartos/semis/final,
-   según el tamaño) mostrando **todas las rondas a la vez**, como un tablero
-   de torneo real: eliges quién avanza y ves la progresión completa en
-   pantalla.
-5. **Hall de la Fama**: al coronar campeón, tus favoritos quedan
-   inmortalizados en una pantalla al estilo del Hall de la Fama de los juegos
-   clásicos (fondo azul de puntos, sprites en fila, medalla según cómo de
-   lejos llegó cada uno).
-
-Todo el progreso se guarda en `localStorage` del navegador — puedes cerrar la
-pestaña y seguir después donde lo dejaste, o pulsar "Reiniciar torneo" para
-empezar de cero.
-
-## Datos y sprites
-
-Los datos (nombres en español, tipos, generación, familia evolutiva, formas)
-se generan una vez a partir de los CSV públicos de
-[PokeAPI](https://github.com/PokeAPI/pokeapi) con:
-
-```
-node scripts/fetch-csv.mjs   # descarga y cachea los CSV en scripts/.cache/
-node scripts/build-data.mjs  # cruza los CSV -> data/pokemon.json, groups.json, meta.json
+```bash
+npm install   # solo la primera vez
+npm run dev
 ```
 
-No hace falta ninguna dependencia externa (usa el `fetch`/`fs` nativos de
-Node ≥ 18). Solo hay que volver a ejecutar estos scripts si PokeAPI actualiza
-sus datos (nueva generación, nuevas formas...).
+Abre `http://localhost:3000`. El progreso se guarda en `progreso.db` (SQLite, en la raíz del proyecto; está fuera de git).
 
-Los sprites **no se alojan en este repositorio**: se referencian en vivo desde
-el mirror público [PokeAPI/sprites](https://github.com/PokeAPI/sprites),
-carpeta `sprites/pokemon/other/showdown/` (el mismo estilo de pixel-art de
-Pokémon Showdown / Smogon Sprite Project que usa el sitio de referencia). Si
-una forma concreta no tiene sprite propio en ese estilo (por ejemplo, la
-mayoría de los sabores decorativos de Alcremie comparten un único sprite base),
-la web cae automáticamente al artwork oficial y, en último caso, a un icono
-de repuesto.
+## Actualizar el contenido
 
-**Limitaciones de cobertura conocidas** (por disponibilidad real de datos,
-no por elección de diseño):
+1. Sustituye `contenido_japones.json` en la raíz por la versión nueva exportada del chat.
+2. En la app, ve a **Biblioteca** y pulsa **Actualizar contenido**.
 
-- **Spinda** se incluye una sola vez: sus manchas se generan de forma
-  procedural en los juegos (más de 4 mil millones de combinaciones) y PokeAPI
-  no las enumera como formas distintas.
-- Algunas variantes puramente cosméticas de **Alcremie** comparten el mismo
-  sprite base porque Pokémon Showdown no tiene arte único para cada
-  combinación de nata/decoración.
+Las tarjetas con id nuevo entran con progreso desde cero; las que ya existían actualizan su texto pero **conservan intervalos, racha e historial**. Reimportar nunca resetea nada.
 
-## Diseño
+## Qué hay dentro
 
-- **Tipografía uniforme**: [Russo One](https://fonts.google.com/specimen/Russo+One)
-  (Google Fonts, licencia SIL OFL) en toda la web — deliberadamente no la
-  fuente por defecto del navegador.
-- **Fondo**: patrón original en SVG (`assets/bg-pattern.svg`) con siluetas de
-  Poké Ball, dibujado para este proyecto — no se ha usado ningún arte oficial
-  con copyright para el fondo.
+- **Repaso**: motor SRS (SM-2 adaptado) que mezcla vocabulario, gramática y conjugación en la misma sesión. Vocab y conjugación se responden escribiendo (acepta kanji, kana o romaji, que se convierte solo); la gramática se autoevalúa tras leer la explicación. Fallar una tarjeta la resetea a minutos; acertarla varias veces la espacia hasta 180 días, sin eliminarla nunca.
+- **Ejercicios**: partículas (rellenar hueco), ordenar frases (refuerza el orden SOV) y traducción libre con corrección aproximada. Los datos viven en `data/ejercicios.json`, generados en el estilo del contenido de las lecciones.
+- **Biblioteca**: todo el contenido por lección, con kanji en grande, furigana conmutable, audio y estado de cada tarjeta. Aquí está el botón de actualizar contenido.
+- **Progreso**: racha de días, actividad de las últimas dos semanas, dominadas por lección y hora del próximo repaso.
+- **Audio**: Web Speech API del navegador con voz `ja-JP` (mejor soporte en Chrome/Edge).
 
-## Desplegar en GitHub Pages
+## Estructura
 
-Este repo incluye `.github/workflows/deploy-pages.yml`, listo para desplegar
-en cuanto se habilite GitHub Pages (Settings → Pages → Source: "GitHub
-Actions") — ese paso es manual y hay que hacerlo una vez desde la
-configuración del repositorio.
+```
+server.js               Express: API + estáticos
+src/db.js               SQLite (better-sqlite3), importación idempotente, racha
+src/srs.js              Algoritmo SM-2 adaptado, cola con interleaving
+public/                 Frontend (vanilla JS, ES modules)
+data/ejercicios.json    Ejercicios de partículas / ordenar / traducción
+contenido_japones.json  Contenido de las lecciones (se reemplaza al actualizar)
+progreso.db             Tu progreso (no tocar, no está en git)
+```
 
-## Aviso
-
-Proyecto de fans sin ánimo de lucro. Pokémon y todos los nombres, sprites y
-datos asociados son propiedad de Nintendo, Game Freak y The Pokémon Company;
-este sitio no tiene ninguna afiliación con ellos.
+Notas de los ejercicios de ordenar: se acepta solo el orden canónico de la frase; los adverbios de tiempo van al principio.

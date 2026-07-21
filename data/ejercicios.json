@@ -1,0 +1,284 @@
+{
+  "particulas": [
+    {
+      "id": "p_gakkou_ni",
+      "l": "L3",
+      "frase": "学校＿行きます",
+      "trad": "Voy a la escuela",
+      "opciones": ["に", "で", "を", "は"],
+      "correcta": "に",
+      "explicacion": "に marca el destino del movimiento: 学校に行きます. で sería el lugar donde ocurre una acción, no adonde vas."
+    },
+    {
+      "id": "p_gakkou_de",
+      "l": "L3",
+      "frase": "学校＿勉強します",
+      "trad": "Estudio en la escuela",
+      "opciones": ["で", "に", "を", "と"],
+      "correcta": "で",
+      "explicacion": "で marca el lugar donde ocurre la acción: 学校で勉強します. に sería destino u hora exacta."
+    },
+    {
+      "id": "p_sushi_wo",
+      "l": "L5",
+      "frase": "寿司＿食べます",
+      "trad": "Como sushi",
+      "opciones": ["を", "が", "は", "に"],
+      "correcta": "を",
+      "explicacion": "を marca el objeto directo del verbo: lo que se come, se bebe, se ve..."
+    },
+    {
+      "id": "p_suki_ga",
+      "l": "L5",
+      "frase": "私は寿司＿好きです",
+      "trad": "Me gusta el sushi",
+      "opciones": ["が", "を", "は", "に"],
+      "correcta": "が",
+      "explicacion": "Lo que te gusta va con が, no を: 好き es un adjetivo -な, no un verbo como \"gustar\" en español."
+    },
+    {
+      "id": "p_imasu_ga",
+      "l": "L4",
+      "frase": "教室に学生＿います",
+      "trad": "Hay un estudiante en la clase",
+      "opciones": ["が", "は", "を", "の"],
+      "correcta": "が",
+      "explicacion": "Con あります/います casi siempre が: anuncias información nueva (\"esto es lo que hay\")."
+    },
+    {
+      "id": "p_ashita_nada",
+      "l": "L3",
+      "frase": "明日＿映画を見ます",
+      "trad": "Mañana veo una película",
+      "opciones": ["∅ (nada)", "に", "で", "は"],
+      "correcta": "∅ (nada)",
+      "explicacion": "Los tiempos relativos (今日/明日/昨日...) nunca llevan に. Solo los días de la semana y las horas exactas la llevan."
+    },
+    {
+      "id": "p_getsuyoubi_ni",
+      "l": "L3",
+      "frase": "月曜日＿学校に行きます",
+      "trad": "El lunes voy a la escuela",
+      "opciones": ["に", "∅ (nada)", "で", "を"],
+      "correcta": "に",
+      "explicacion": "Los días de la semana sí llevan に (月曜日に), igual que las horas exactas (7時に)."
+    },
+    {
+      "id": "p_kanojo_to",
+      "l": "General",
+      "frase": "彼女＿映画館に行きます",
+      "trad": "Voy al cine con mi novia",
+      "opciones": ["と", "の", "に", "が"],
+      "correcta": "と",
+      "explicacion": "と = compañía (\"con\"). 彼女の映画館 significaría \"el cine DE mi novia\" (posesión)."
+    },
+    {
+      "id": "p_sensei_no",
+      "l": "L2",
+      "frase": "これは先生＿本です",
+      "trad": "Este es el libro del profesor",
+      "opciones": ["の", "と", "が", "を"],
+      "correcta": "の",
+      "explicacion": "の marca posesión o pertenencia: AのB = \"B de A\". 先生の本 = el libro del profesor."
+    },
+    {
+      "id": "p_kare_mo",
+      "l": "L1",
+      "frase": "私は学生です。彼＿学生です",
+      "trad": "Yo soy estudiante. Él también es estudiante",
+      "opciones": ["も", "は", "が", "と"],
+      "correcta": "も",
+      "explicacion": "も sustituye a は/が cuando quieres decir \"también\": 彼も学生です."
+    },
+    {
+      "id": "p_shichiji_ni",
+      "l": "L3",
+      "frase": "毎日7時＿起きます",
+      "trad": "Todos los días me levanto a las 7",
+      "opciones": ["に", "∅ (nada)", "で", "は"],
+      "correcta": "に",
+      "explicacion": "Las horas exactas llevan に (7時に). Ojo: 毎日 es tiempo relativo y por eso va sin partícula."
+    },
+    {
+      "id": "p_namae_wa",
+      "l": "L1",
+      "frase": "名前＿エレナです",
+      "trad": "Mi nombre es Elena",
+      "opciones": ["は", "∅ (nada)", "を", "の"],
+      "correcta": "は",
+      "explicacion": "Siempre hace falta は (o が) entre el tema y el predicado: 名前はエレナです, nunca 名前エレナです."
+    },
+    {
+      "id": "p_hon_to",
+      "l": "L2",
+      "frase": "本＿辞書を買いました",
+      "trad": "Compré un libro y un diccionario",
+      "opciones": ["と", "の", "も", "で"],
+      "correcta": "と",
+      "explicacion": "と une SUSTANTIVOS (AとB). Para unir acciones se usa la forma て o dos frases separadas."
+    },
+    {
+      "id": "p_okinawa_de",
+      "l": "L5",
+      "frase": "沖縄＿料理を食べました",
+      "trad": "En Okinawa comí (buena) comida",
+      "opciones": ["で", "に", "を", "が"],
+      "correcta": "で",
+      "explicacion": "で marca el lugar donde ocurre la acción de comer. 沖縄に行きます sería con に porque ahí es destino."
+    },
+    {
+      "id": "p_nihon_ni",
+      "l": "L3",
+      "frase": "日本＿帰ります",
+      "trad": "Vuelvo a Japón",
+      "opciones": ["に", "で", "と", "を"],
+      "correcta": "に",
+      "explicacion": "帰る es un verbo de movimiento: el sitio adonde vuelves es destino y va con に."
+    },
+    {
+      "id": "p_kissaten_de",
+      "l": "L6",
+      "frase": "コーヒーを飲んで、本＿読みます",
+      "trad": "Tomo un café y leo un libro",
+      "opciones": ["を", "が", "に", "で"],
+      "correcta": "を",
+      "explicacion": "読みます (leer) lleva objeto directo con を. La forma て (飲んで) encadena las dos acciones."
+    }
+  ],
+  "ordenar": [
+    {
+      "id": "o_gakusei",
+      "l": "L1",
+      "es": "Yo soy estudiante",
+      "tokens": ["私", "は", "学生", "です"]
+    },
+    {
+      "id": "o_suki",
+      "l": "L5",
+      "es": "Me gusta el sushi",
+      "tokens": ["私", "は", "寿司", "が", "好きです"]
+    },
+    {
+      "id": "o_toshokan",
+      "l": "L3",
+      "es": "Hoy estudio en la escuela",
+      "tokens": ["今日", "学校", "で", "勉強します"]
+    },
+    {
+      "id": "o_ashita",
+      "l": "L3",
+      "es": "Mañana voy a Japón",
+      "tokens": ["明日", "日本", "に", "行きます"]
+    },
+    {
+      "id": "o_okimasu",
+      "l": "L3",
+      "es": "Todos los días me levanto a las siete",
+      "tokens": ["毎日", "7時", "に", "起きます"]
+    },
+    {
+      "id": "o_eiga",
+      "l": "L4",
+      "es": "Ayer vi una película",
+      "tokens": ["昨日", "映画", "を", "見ました"]
+    },
+    {
+      "id": "o_kyoushitsu",
+      "l": "L4",
+      "es": "Hay un estudiante en la clase",
+      "tokens": ["教室", "に", "学生", "が", "います"]
+    },
+    {
+      "id": "o_kanojo",
+      "l": "General",
+      "es": "Voy al cine con mi novia",
+      "tokens": ["彼女", "と", "映画館", "に", "行きます"]
+    },
+    {
+      "id": "o_umi",
+      "l": "L5",
+      "es": "El mar de Okinawa es bonito",
+      "tokens": ["沖縄", "の", "海", "は", "きれいです"]
+    },
+    {
+      "id": "o_te_form",
+      "l": "L6",
+      "es": "Tomo un café y estudio",
+      "tokens": ["コーヒー", "を", "飲んで", "勉強します"]
+    },
+    {
+      "id": "o_nani",
+      "l": "L3",
+      "es": "¿Qué comes?",
+      "tokens": ["何", "を", "食べます", "か"]
+    },
+    {
+      "id": "o_kono_hon",
+      "l": "L2",
+      "es": "Este libro es caro",
+      "tokens": ["この", "本", "は", "高い", "です"]
+    }
+  ],
+  "traduccion": [
+    {
+      "id": "t_gakusei",
+      "l": "L1",
+      "es": "Yo soy estudiante",
+      "respuestas": ["私は学生です", "わたしはがくせいです", "学生です", "がくせいです"]
+    },
+    {
+      "id": "t_gakkou",
+      "l": "L3",
+      "es": "Voy a la escuela",
+      "respuestas": ["学校に行きます", "がっこうにいきます"]
+    },
+    {
+      "id": "t_takai",
+      "l": "L2",
+      "es": "El libro es caro",
+      "respuestas": ["本は高いです", "ほんはたかいです"]
+    },
+    {
+      "id": "t_suki",
+      "l": "L5",
+      "es": "Me gusta el sushi",
+      "respuestas": ["私は寿司が好きです", "寿司が好きです", "すしがすきです", "わたしはすしがすきです"]
+    },
+    {
+      "id": "t_kinou",
+      "l": "L3",
+      "es": "Ayer estudié",
+      "respuestas": ["昨日勉強しました", "きのうべんきょうしました"]
+    },
+    {
+      "id": "t_umi",
+      "l": "L5",
+      "es": "El mar es bonito",
+      "respuestas": ["海はきれいです", "うみはきれいです"]
+    },
+    {
+      "id": "t_natto",
+      "l": "L5",
+      "es": "No como natto",
+      "respuestas": ["納豆を食べません", "なっとうをたべません", "納豆は食べません"]
+    },
+    {
+      "id": "t_ikura",
+      "l": "L2",
+      "es": "¿Cuánto cuesta?",
+      "respuestas": ["いくらですか"]
+    },
+    {
+      "id": "t_eiga",
+      "l": "L4",
+      "es": "Todos los días veo una película",
+      "respuestas": ["毎日映画を見ます", "まいにちえいがをみます"]
+    },
+    {
+      "id": "t_kaerimasu",
+      "l": "L3",
+      "es": "Vuelvo a casa a las 7",
+      "respuestas": ["7時に帰ります", "しちじにかえります", "七時に帰ります"]
+    }
+  ]
+}

@@ -3,8 +3,7 @@
 // lección: solo aprobar sus ejercicios (≥80%) la marca como superada.
 import { api } from './api.js';
 import { hablar } from './tts.js';
-import { ciudadDeLeccion } from './ciudades.js';
-import { TOTAL_PREVISTO } from './roadmap.js';
+import { ciudadDeLeccion, CIUDADES, CIUDADES_FUTURAS } from './ciudades.js';
 import { comprobarJapones, comprobarEspanol, comprobarTraduccion, romajiAHiragana, contieneJapones } from './kana.js';
 
 function esc(s) {
@@ -20,7 +19,6 @@ function barajar(arr) {
   return a;
 }
 
-const CONOCIDAS = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'General'];
 const UMBRAL_APROBADO = 0.8;
 const TIENE_KANJI = /[一-龯]/;
 
@@ -30,70 +28,84 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     api.viaje(), api.biblioteca(), api.ejercicios()
   ]);
 
-  let extra = 0;
-  const conCiudad = paradas.map(p => ({
-    ...p,
-    ciudad: ciudadDeLeccion(p.codigo, CONOCIDAS.includes(p.codigo) ? 0 : extra++)
-  }));
-  const ordenadas = [
-    ...conCiudad.filter(p => p.codigo !== 'General').sort((a, b) => a.orden - b.orden),
-    ...conCiudad.filter(p => p.codigo === 'General')
-  ];
+  const conCiudad = paradas.map(p => ({ ...p, ciudad: ciudadDeLeccion(p.codigo) }));
   const porCodigo = Object.fromEntries(conCiudad.map(p => [p.codigo, p]));
   const tarjetasDe = cod => biblioteca.tarjetas.filter(t => t.leccion === cod);
+
+  // Agrupa las lecciones por su ciudad, en el orden de la hoja de ruta.
+  const ciudadesConHitos = CIUDADES.map(ciudad => ({
+    ciudad,
+    hitos: ciudad.hitos.map(h => porCodigo[h.codigo]).filter(Boolean)
+  })).filter(g => g.hitos.length);
 
   // Si venimos del mapa ("Hacer los ejercicios"), se abre esa lección.
   const abrir = sessionStorage.getItem('kotoba-leccion');
   sessionStorage.removeItem('kotoba-leccion');
 
   function chipEstado(p) {
-    if (!p.hasContent) return '<span class="chip chip-futura">Próximamente</span>';
-    if (p.estado === 'COMPLETED') return '<span class="chip chip-superada">✓ Superada</span>';
-    if (p.estado === 'ACTIVE') return '<span class="chip chip-activa">En curso</span>';
-    return '<span class="chip">🔒 Bloqueada</span>';
+    if (p.estado === 'COMPLETED') return '<span class="chip chip-superada">✓ Conquistado</span>';
+    if (p.estado === 'ACTIVE') return '<span class="chip chip-activa">Disponible</span>';
+    return '<span class="chip">🔒 Bloqueado</span>';
   }
 
-  // ---------- Lista del temario ----------
+  function filaHito(p) {
+    const c = p.ciudad;
+    const bloqueada = p.estado === 'LOCKED';
+    return `
+      <div class="fila-leccion-tema ${bloqueada ? 'bloqueada' : ''}" data-codigo="${esc(p.codigo)}">
+        <span class="hito-emoji-grande">${c.emoji}</span>
+        <div class="leccion-titulo-fila">
+          <b>${esc(c.nombre)} <span lang="ja" style="color:var(--tinta-tenue);font-weight:500">${esc(c.kanji)}</span></b>
+          <div class="carta-ciudad-leccion">${esc(p.codigo)} · ${esc(lecciones[p.codigo] || '')} · ${p.stats.total} tarjetas${p.needsReview ? ' · 🍵 repasos' : ''}</div>
+          ${p.estado === 'COMPLETED' ? `<div class="hito-logro" style="color:var(--ambar)">🏅 ${esc(c.insignia)}</div>` : ''}
+        </div>
+        ${chipEstado(p)}
+        <div class="fila-botones" style="margin:0">
+          <button class="boton boton-secundario btn-teoria" data-codigo="${esc(p.codigo)}" style="padding:8px 14px">Teoría</button>
+          ${bloqueada ? '' : `<button class="boton ${p.estado === 'COMPLETED' ? 'boton-secundario' : 'boton-primario'} btn-practica" data-codigo="${esc(p.codigo)}" style="padding:8px 14px">Ejercicios</button>`}
+        </div>
+      </div>`;
+  }
+
+  // ---------- Lista del temario, agrupada por ciudad ----------
   function pintarLista() {
-    const filas = ordenadas.map(p => {
-      const c = p.ciudad;
-      if (!p.hasContent) {
-        return `
-          <div class="fila-leccion-tema futura">
-            <span class="leccion-numero">${esc(p.codigo)}</span>
-            <div class="leccion-titulo-fila"><b>Próximamente</b>
-              <div class="carta-ciudad-leccion">Estación ${esc(c.nombre)} · aún sin contenido</div></div>
-            ${chipEstado(p)}
-          </div>`;
-      }
-      const bloqueada = p.estado === 'LOCKED';
+    const grupos = ciudadesConHitos.map(({ ciudad, hitos }) => {
+      const req = ciudad.hitos.filter(h => !h.bonus).map(h => h.codigo);
+      const superados = req.filter(c => porCodigo[c] && porCodigo[c].estado === 'COMPLETED').length;
+      const conquistada = req.length && superados === req.length;
       return `
-        <div class="fila-leccion-tema ${bloqueada ? 'bloqueada' : ''}" data-codigo="${esc(p.codigo)}">
-          <span class="leccion-numero">${esc(p.codigo)}</span>
-          <div class="leccion-titulo-fila">
-            <b>${esc(lecciones[p.codigo] || '')}</b>
-            <div class="carta-ciudad-leccion">${c.emoji} ${esc(c.nombre)} · ${p.stats.total} tarjetas${p.needsReview ? ' · 🍵 repasos pendientes' : ''}</div>
+        <div class="grupo-ciudad">
+          <div class="grupo-ciudad-cab">
+            <span class="carta-ciudad-emoji">${conquistada ? '🏯' : ciudad.emoji}</span>
+            <div>
+              <b>${esc(ciudad.nombre)} <span lang="ja">${esc(ciudad.kanji)}</span></b>
+              ${conquistada ? '<span class="chip chip-superada">★ Conquistada</span>' : ''}
+              <div class="carta-ciudad-leccion">${esc(ciudad.prefectura)} · ${esc(ciudad.region)} · ${superados}/${req.length} hitos</div>
+            </div>
           </div>
-          ${chipEstado(p)}
-          <div class="fila-botones" style="margin:0">
-            <button class="boton boton-secundario btn-teoria" data-codigo="${esc(p.codigo)}" style="padding:8px 14px">Teoría</button>
-            ${bloqueada
-              ? ''
-              : `<button class="boton ${p.estado === 'COMPLETED' ? 'boton-secundario' : 'boton-primario'} btn-practica" data-codigo="${esc(p.codigo)}" style="padding:8px 14px">Ejercicios</button>`}
-          </div>
+          <div class="lista-temario">${hitos.map(filaHito).join('')}</div>
         </div>`;
     }).join('');
+
+    const futuras = CIUDADES_FUTURAS.map(c => `
+      <div class="fila-leccion-tema futura">
+        <span class="hito-emoji-grande">${c.emoji}</span>
+        <div class="leccion-titulo-fila"><b>${esc(c.nombre)} <span lang="ja" style="font-weight:500">${esc(c.kanji)}</span></b>
+          <div class="carta-ciudad-leccion">${esc(c.prefectura)} · ${esc(c.region)} · aún sin contenido</div></div>
+        <span class="chip chip-futura">Próximamente</span>
+      </div>`).join('');
 
     cont.innerHTML = `
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap">
         <div>
           <h1 class="vista-titulo">📖 Lecciones</h1>
-          <p class="vista-sub">El temario del viaje, en orden. Leer la teoría no completa la lección: hay que aprobar sus ejercicios (${Math.round(UMBRAL_APROBADO * 100)}%).</p>
+          <p class="vista-sub">El temario agrupado por ciudad. Cada lección es un hito: leer la teoría no basta, hay que aprobar sus ejercicios (${Math.round(UMBRAL_APROBADO * 100)}%) para ganar su insignia.</p>
         </div>
         <button class="boton boton-secundario" id="btn-importar">Actualizar contenido</button>
       </div>
-      <div class="lista-temario">${filas}</div>
-      <p class="vista-sub" style="margin-top:14px">La hoja de ruta está trazada hasta la lección ${TOTAL_PREVISTO}: las estaciones se irán llenando con cada exportación del chat.</p>`;
+      ${grupos}
+      <h2 class="seccion-titulo">Próximas ciudades <small>se abren con cada paquete de lecciones</small></h2>
+      <div class="lista-temario">${futuras}</div>`;
 
     cont.querySelectorAll('.btn-teoria').forEach(b => b.onclick = () => pintarTeoria(b.dataset.codigo));
     cont.querySelectorAll('.btn-practica').forEach(b => b.onclick = () => pintarPractica(b.dataset.codigo));
@@ -398,15 +410,21 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
       const aprobado = pct >= UMBRAL_APROBADO;
       if (aprobado) {
         const r = await api.superarLeccion(codigo).catch(() => null);
+        const conq = r && r.ciudadConquistada;
         cont.innerHTML = `
           <div class="zona-repaso"><div class="tarjeta fin-sesion">
             <div class="fin-kanji" lang="ja">合格</div>
-            <h2>¡Ejercicios superados!</h2>
-            <p class="vista-sub" style="margin-top:6px">${sesion.aciertos} de ${items.length} · ${c.emoji} ${esc(c.nombre)} conquistada${r && r.nueva ? ' · 🎫 +1 billete de Shinkansen' : ''}</p>
+            <h2>🏅 ¡Insignia conseguida!</h2>
+            <p class="vista-sub" style="margin-top:6px">${sesion.aciertos} de ${items.length} · ${c.emoji} <b>${esc(c.insignia)}</b></p>
+            <p class="vista-sub">${esc(c.logro)}</p>
+            ${conq ? `<div class="aviso-nivel" style="margin-top:14px">🏯 ¡Y con esto conquistas <b>${esc(conq.nombre)}</b> entera!</div>` : ''}
+            ${r && r.nueva ? '<p class="vista-sub">🎫 +1 billete de Shinkansen</p>' : ''}
             <p class="vista-sub">Rumbo al mapa...</p>
           </div></div>`;
         sessionStorage.setItem('kotoba-conquista', codigo);
-        setTimeout(() => { location.hash = '#viaje'; }, 1400);
+        if (conq) sessionStorage.setItem('kotoba-ciudad-conq', conq.id);
+        sessionStorage.setItem('kotoba-sel', c.ciudadId);
+        setTimeout(() => { location.hash = '#viaje'; }, conq ? 2200 : 1500);
       } else {
         cont.innerHTML = `
           <div class="zona-repaso"><div class="tarjeta fin-sesion">
@@ -428,6 +446,6 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     pintarItem();
   }
 
-  if (abrir && porCodigo[abrir] && porCodigo[abrir].hasContent) pintarTeoria(abrir);
+  if (abrir && porCodigo[abrir]) pintarTeoria(abrir);
   else pintarLista();
 }

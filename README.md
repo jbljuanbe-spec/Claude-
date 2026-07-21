@@ -20,10 +20,10 @@ Las tarjetas con id nuevo entran con progreso desde cero; las existentes actuali
 
 La app se organiza en cuatro pestañas:
 
-1. **📍 El Viaje**: mapa real de Japón con la ruta de aprendizaje por estaciones. Una lección se supera SOLO aprobando sus ejercicios (leer la teoría no basta); al conseguirlo, la estación se vuelve dorada con animación de conquista y se abre el tramo hasta la siguiente. Billetes de Shinkansen 🎫 para adelantar paradas. La ruta está trazada hasta la lección 300: las estaciones sin contenido aparecen como "Próximamente" sin romper nada.
+1. **📍 El Viaje**: mapa real de Japón **interactivo** (zoom con rueda/pinza, arrastre y vuelo animado a cada parada, con botones ＋ / − / ⌂) más una **línea de tren** con todo tu recorrido hecho y futuro. Jerarquía **Región › Prefectura › Ciudad › Hito**: cada lección es un *hito* de una ciudad (una estación, un barrio, una comida, un festival), y superarlo da su **insignia local** (logro). Completar todos los hitos **conquista la ciudad** (animación dorada + confeti + billete extra). Las ciudades futuras salen en gris ("Próximamente") para ver la escala del viaje.
 2. **📖 Lecciones**: el temario ordenado. Teoría de cada lección (vocabulario, gramática, conjugación con audio) y sus ejercicios prácticos: partículas, ordenar frases, traducción, lectura de kanji, conjugación y vocabulario escrito. Aprobado = 80%. El fallo da +0 XP (nunca resta).
 3. **⚔️ Repaso**: la sesión SRS diaria (SM-2 adaptado, interleaving, corrección tolerante con romaji→kana). Se puede filtrar por ciudad desde el mapa.
-4. **🏆 Perfil**: racha con congeladores automáticos (1 cada 4 días activos, máx. 4, se usan solos), nivel y XP, medallero por retención real, tarjetas sanguijuela (5+ fallos), actividad y copia de seguridad.
+4. **🏆 Perfil**: racha con congeladores automáticos (1 cada 4 días activos, máx. 4, se usan solos), nivel y XP, **galería de insignias locales** (una por hito, consultable como logros de videojuego, con fecha), tarjetas sanguijuela (5+ fallos), actividad y copia de seguridad.
 
 ### Notas de las piezas
 

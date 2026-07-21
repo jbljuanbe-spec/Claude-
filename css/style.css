@@ -926,6 +926,101 @@ input { font-family: inherit; }
   .col-mapa { position: static; max-width: 440px; margin: 0 auto; width: 100%; }
 }
 
+/* ---------- Temario (pestaña Lecciones) ---------- */
+.lista-temario { display: flex; flex-direction: column; gap: 10px; }
+
+.fila-leccion-tema {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.fila-leccion-tema.bloqueada { opacity: 0.65; }
+.fila-leccion-tema.futura { opacity: 0.55; background: var(--fondo); border-style: dashed; }
+
+.leccion-numero {
+  font-weight: 700;
+  color: var(--acento);
+  background: var(--acento-claro);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  min-width: 42px;
+  text-align: center;
+}
+
+.leccion-titulo-fila { flex: 1; min-width: 180px; }
+
+.chip-superada { background: #f6efd8; color: #8a6a10; border-color: transparent; }
+.chip-activa { background: var(--acento-claro); color: var(--acento); border-color: transparent; }
+.chip-futura { background: var(--fondo); color: var(--tinta-tenue); border-style: dashed; }
+
+/* ---------- Perfil: medallero y sanguijuelas ---------- */
+.fila-medallero {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.fila-medallero:last-child { border-bottom: none; }
+.fila-medallero.sin-medallas { opacity: 0.6; }
+
+.fila-sanguijuela {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--borde);
+  flex-wrap: wrap;
+}
+
+.fila-sanguijuela:last-child { border-bottom: none; }
+.sanguijuela-prompt { font-family: var(--fuente-jp); font-size: 1.1rem; font-weight: 500; }
+.chip-sanguijuela { margin-left: auto; background: var(--error-fondo); color: var(--error); border-color: transparent; }
+
+/* ---------- Conquista en el mapa ---------- */
+.nodo-futura { stroke-dasharray: 2 2; }
+.etiqueta-futura { fill: var(--tinta-tenue); font-size: 8px; }
+.sello-superada { margin-left: auto; color: #c9971c; font-weight: 700; font-size: 1.1rem; }
+
+.nodo.conquistando .nodo-forma {
+  animation: conquista 0.55s ease-in-out 5;
+  fill: #c9971c !important;
+}
+
+@keyframes conquista {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.9); }
+}
+
+.via-dibujando {
+  stroke: #c9971c !important;
+  stroke-width: 2.4;
+  opacity: 1 !important;
+  transition: stroke-dashoffset 1.6s ease 0.4s;
+}
+
+.confeti {
+  position: absolute;
+  top: -10px;
+  z-index: 5;
+  pointer-events: none;
+  animation: confeti-cae 2.4s ease-in forwards;
+}
+
+@keyframes confeti-cae {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(420px) rotate(340deg); opacity: 0; }
+}
+
 /* ---------- Toast ---------- */
 .toast {
   position: fixed;

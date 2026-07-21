@@ -86,9 +86,21 @@ export async function vistaViaje(cont, avisar) {
   let posMap = {};       // codigo -> {x,y}
   let posFuji = null;
 
+  // Estado de cada prefectura (por su kanji): se colorea el fondo al conquistar
+  // su ciudad (dorado) o al tener hitos en marcha (tinte suave).
+  const prefEstado = {};
+  ciudades.forEach(c => {
+    if (!c.pref) return;
+    prefEstado[c.pref] = c.conquistada ? 'conquistada' : (c.superados > 0 ? 'progreso' : prefEstado[c.pref] || '');
+  });
+
   // ---------- SVG base (prefecturas + vía) ----------
   function svgBase() {
-    const prefs = PREFECTURAS.map(pr => `<path d="${pr.d}" class="pref" data-nombre="${esc(pr.nombre)}" data-rom="${esc(pr.rom || '')}"><title>${esc(pr.nombre)}</title></path>`).join('');
+    const prefs = PREFECTURAS.map(pr => {
+      const estado = prefEstado[pr.nombre];
+      const clase = 'pref' + (estado === 'conquistada' ? ' pref-conquistada' : estado === 'progreso' ? ' pref-progreso' : '');
+      return `<path d="${pr.d}" class="${clase}" data-nombre="${esc(pr.nombre)}" data-rom="${esc(pr.rom || '')}"><title>${esc(pr.nombre)}</title></path>`;
+    }).join('');
     const regiones = etiquetasRegion().map(r =>
       `<text x="${r.x.toFixed(1)}" y="${(r.y - 12).toFixed(1)}" class="mapa-region">${esc(r.region)}</text>`).join('');
     return `<svg viewBox="${VISTA}" class="mapa-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa del viaje por Japón">
@@ -442,7 +454,15 @@ export async function vistaViaje(cont, avisar) {
       caja.appendChild(conf);
       setTimeout(() => conf.remove(), 3400);
     }
-    if (ciudadIdConq && porId[ciudadIdConq] && avisar) avisar(`🏯 ¡${porId[ciudadIdConq].nombre} conquistada! Has completado todos sus hitos.`);
+    // Al conquistar la ciudad, se colorea el fondo de su prefectura con destello.
+    if (ciudadIdConq && porId[ciudadIdConq] && porId[ciudadIdConq].pref) {
+      const kanji = porId[ciudadIdConq].pref;
+      cont.querySelectorAll(`.pref[data-nombre="${kanji}"]`).forEach(pr => {
+        pr.classList.add('pref-conquistada', 'pref-recien');
+        pr.addEventListener('animationend', () => pr.classList.remove('pref-recien'), { once: true });
+      });
+    }
+    if (ciudadIdConq && porId[ciudadIdConq] && avisar) avisar(`🏯 ¡${porId[ciudadIdConq].nombre} conquistada! Se ilumina su prefectura en el mapa.`);
     else if (avisar) {
       const c = porId[seleccion];
       const h = c && c.hitos.find(x => x.codigo === codigo);

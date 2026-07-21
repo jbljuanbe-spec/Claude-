@@ -713,7 +713,10 @@ input { font-family: inherit; }
 
 /* Mapa a lo ancho (no arrinconado) */
 .mapa-full { margin-bottom: 18px; }
-.mapa-full .caja-mapa { padding: 10px; }
+.mapa-full .caja-mapa {
+  padding: 10px;
+  background: linear-gradient(160deg, #eef2fb 0%, #e7edf8 100%);
+}
 
 /* Vía principal y estaciones autogeneradas */
 .via-base { fill: none; stroke: #c8cbd8; stroke-width: 2.2; stroke-linecap: round; opacity: 0.5; }
@@ -745,15 +748,27 @@ input { font-family: inherit; }
 .ruta-futura { stroke-dasharray: 2 6; opacity: 0.5; }
 
 .pref {
-  fill: #e6e8f3;
-  stroke: #fff;
+  fill: #e2e6f2;
+  stroke: #fbfcfe;
   stroke-width: 0.6;
-  transition: fill 0.15s;
+  cursor: pointer;
+  transition: fill 0.5s ease;
 }
 
-.pref:hover { fill: #d9dcef; }
-.pref { cursor: pointer; }
-.pref.activa-pref { fill: var(--acento-claro); stroke: var(--acento); stroke-width: 1; }
+.pref:hover { fill: #d4d9ec; }
+/* Prefectura con lecciones en marcha: tinte frío suave */
+.pref-progreso { fill: #cfd6f0; }
+.pref-progreso:hover { fill: #c4cdec; }
+/* Prefectura conquistada: fondo dorado cálido */
+.pref-conquistada { fill: #f0dfa4; }
+.pref-conquistada:hover { fill: #ecd894; }
+.pref.activa-pref { stroke: var(--acento); stroke-width: 1.1; }
+.pref-recien { animation: prefGana 1.5s ease; }
+@keyframes prefGana {
+  0% { fill: #cfd6f0; }
+  35% { fill: #ffe38f; }
+  100% { fill: #f0dfa4; }
+}
 .pref-etiqueta {
   position: absolute;
   top: 12px; left: 50%;

@@ -52,6 +52,29 @@ export const CIUDADES_FUTURAS = [
   { id: 'naha', nombre: 'Naha', kanji: '那覇', emoji: '🏝️', prefectura: 'Okinawa', region: 'Okinawa (沖縄)', jlpt: 'N1', lat: 26.21, lon: 127.68, dxEtiqueta: 0, dyEtiqueta: 14 }
 ];
 
+// Hitos madre (anchor waypoints): 11 puntos fijos por los que pasa la vía
+// principal del tren. La curva se traza entre ellos y las estaciones (lecciones)
+// se reparten AUTOMÁTICAMENTE a lo largo de la curva por interpolación, así que
+// el mapa crece solo al añadir lecciones sin tocar coordenadas. La ruta baja por
+// el Pacífico hasta Kyūshū y sube por la costa del Mar de Japón hasta Hokkaidō.
+export const ANCLAS = [
+  { lat: 35.68, lon: 139.69, region: 'Kantō' },      // Tokio (inicio)
+  { lat: 35.18, lon: 136.91 },                        // Nagoya
+  { lat: 35.01, lon: 135.77, region: 'Kansai' },      // Kioto
+  { lat: 34.69, lon: 135.50 },                        // Osaka
+  { lat: 34.39, lon: 132.46, region: 'Chūgoku' },     // Hiroshima
+  { lat: 33.59, lon: 130.40, region: 'Kyūshū' },      // Fukuoka (extremo suroeste)
+  { lat: 35.47, lon: 133.05 },                        // Matsue (subida por el Mar de Japón)
+  { lat: 36.56, lon: 136.66, region: 'Chūbu' },       // Kanazawa
+  { lat: 37.90, lon: 139.02 },                        // Niigata
+  { lat: 38.27, lon: 140.87, region: 'Tōhoku' },      // Sendai
+  { lat: 43.06, lon: 141.35, region: 'Hokkaidō' }     // Sapporo (extremo norte)
+];
+
+// Total de lecciones previstas en todo el curso (para dibujar la escala del
+// viaje). El reparto real usa las que existan + un margen, y se recalcula solo.
+export const TOTAL_PREVISTO = 300;
+
 // ---------- Índices y helpers ----------
 const HITO_POR_CODIGO = {};
 for (const ciudad of CIUDADES) {

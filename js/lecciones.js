@@ -38,6 +38,18 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     hitos: ciudad.hitos.map(h => porCodigo[h.codigo]).filter(Boolean)
   })).filter(g => g.hitos.length);
 
+  // Robustez: lecciones con contenido que aún no están en el curriculum (las que
+  // añadas nuevas en el JSON) se agrupan solas, sin tocar código.
+  const cubiertas = new Set(CIUDADES.flatMap(c => c.hitos.map(h => h.codigo)));
+  const huerfanas = conCiudad.filter(p => /^L\d+$/.test(p.codigo) && !cubiertas.has(p.codigo))
+    .sort((a, b) => a.codigo.localeCompare(b.codigo, 'es', { numeric: true }));
+  if (huerfanas.length) {
+    ciudadesConHitos.push({
+      ciudad: { nombre: 'Nuevas lecciones', kanji: '新', emoji: '🆕', prefectura: '—', region: 'recién añadidas', hitos: huerfanas.map(p => ({ codigo: p.codigo })) },
+      hitos: huerfanas
+    });
+  }
+
   // Si venimos del mapa ("Hacer los ejercicios"), se abre esa lección.
   const abrir = sessionStorage.getItem('kotoba-leccion');
   sessionStorage.removeItem('kotoba-leccion');

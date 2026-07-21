@@ -51,8 +51,7 @@ export const api = {
 
   registrarEjercicio: async () => {
     await asegurar();
-    await motor.registrarEjercicio();
-    return { ok: true };
+    return motor.registrarEjercicio();
   },
 
   dashboard: async () => {

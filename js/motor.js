@@ -1,6 +1,7 @@
 // Motor de la app en el navegador: importación de contenido, SRS (SM-2 adaptado),
 // actividad diaria y estadísticas. Todo persiste en IndexedDB (ver almacen.js).
 import { leer, guardar, pedirPersistencia } from './almacen.js';
+import { nivelDeXp, tiersConseguidos } from './ciudades.js';
 
 const MIN = 60 * 1000;
 const DIA = 24 * 60 * 60 * 1000;
@@ -16,11 +17,23 @@ export const UMBRAL_DOMINADA = 21; // días de intervalo para considerarla domin
 const estado = {
   cards: {},      // id -> tarjeta original del JSON (+ leccion, tipo)
   progreso: {},   // id -> { estado, ease, intervalo, due_at, reps, fallos, racha, ultimo }
-  actividad: {},  // fecha -> { repasos, ejercicios }
+  actividad: {},  // fecha -> { repasos, ejercicios, congelado? }
+  juego: null,    // { xp, congeladoresUsados, insignias: [] } -- solo crece, nunca resta
   lecciones: {},
   meta: {},
   listo: false
 };
+
+// XP por acción: responder siempre suma (también al fallar: el esfuerzo cuenta).
+const XP_ACIERTO = 10;
+const XP_FALLO = 3;
+const XP_EJERCICIO = 6;
+const DIAS_POR_CONGELADOR = 4;   // cada 4 días activos se gana un congelador de racha
+const MAX_CONGELADORES = 4;
+
+function juegoNuevo() {
+  return { xp: 0, congeladoresUsados: 0, insignias: [] };
+}
 
 function progresoNuevo() {
   return { estado: 'nueva', ease: 2.5, intervalo: 0, due_at: 0, reps: 0, fallos: 0, racha: 0, ultimo: null };
@@ -29,17 +42,20 @@ function progresoNuevo() {
 async function persistir() {
   await guardar('progreso', estado.progreso);
   await guardar('actividad', estado.actividad);
+  await guardar('juego', estado.juego);
   await guardar('contenido', { cards: estado.cards, lecciones: estado.lecciones, meta: estado.meta });
 }
 
 export async function iniciar() {
   if (estado.listo) return;
   pedirPersistencia();
-  const [progreso, actividad, contenido] = await Promise.all([
-    leer('progreso'), leer('actividad'), leer('contenido')
+  const [progreso, actividad, contenido, juego] = await Promise.all([
+    leer('progreso'), leer('actividad'), leer('contenido'), leer('juego')
   ]);
   estado.progreso = progreso || {};
   estado.actividad = actividad || {};
+  estado.juego = juego || juegoNuevo();
+  aplicarCongeladores();
   if (contenido) {
     estado.cards = contenido.cards || {};
     estado.lecciones = contenido.lecciones || {};
@@ -82,6 +98,68 @@ function fuzz(dias) {
   return dias * (0.95 + Math.random() * 0.1);
 }
 
+// ---------- Juego (siempre aditivo, nunca resta) ----------
+
+function diasActivosReales() {
+  return Object.values(estado.actividad).filter(a => !a.congelado).length;
+}
+
+export function congeladoresDisponibles() {
+  const ganados = Math.floor(diasActivosReales() / DIAS_POR_CONGELADOR);
+  return Math.max(0, Math.min(MAX_CONGELADORES, ganados - estado.juego.congeladoresUsados));
+}
+
+// Si faltan días recientes en la racha, los congeladores los cubren solos
+// (red de seguridad automática y gratuita: la racha se pausa, no se rompe).
+function aplicarCongeladores() {
+  const fechas = Object.keys(estado.actividad).filter(f => !estado.actividad[f].congelado).sort();
+  if (!fechas.length) return;
+  const pad = n => String(n).padStart(2, '0');
+  const fmt = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+
+  const ayer = new Date(); ayer.setDate(ayer.getDate() - 1);
+  const ultimo = new Date(fechas[fechas.length - 1] + 'T12:00:00');
+  const cursor = new Date(ultimo); cursor.setDate(cursor.getDate() + 1);
+
+  const huecos = [];
+  while (fmt(cursor) <= fmt(ayer)) {
+    if (!estado.actividad[fmt(cursor)]) huecos.push(fmt(cursor));
+    cursor.setDate(cursor.getDate() + 1);
+  }
+  if (!huecos.length) return;
+  if (huecos.length <= congeladoresDisponibles()) {
+    for (const fecha of huecos) {
+      estado.actividad[fecha] = { repasos: 0, ejercicios: 0, congelado: true };
+      estado.juego.congeladoresUsados++;
+    }
+  }
+  // Si los huecos superan los congeladores, la racha simplemente empieza de
+  // nuevo con la actividad reciente: sin culpa, sin borrar nada más.
+}
+
+function sumarXp(cantidad) {
+  const antes = nivelDeXp(estado.juego.xp).nivel;
+  estado.juego.xp += cantidad;
+  const despues = nivelDeXp(estado.juego.xp);
+  return { xpGanado: cantidad, nivel: despues, subeNivel: despues.nivel > antes };
+}
+
+// Las insignias son permanentes: aquí solo se AÑADEN las nuevas, jamás se quitan.
+function actualizarInsignias() {
+  const { porLeccion } = resumen();
+  const nuevas = [];
+  for (const [leccion, stats] of Object.entries(porLeccion)) {
+    for (const tier of tiersConseguidos(stats)) {
+      const id = `${leccion}:${tier}`;
+      if (!estado.juego.insignias.includes(id)) {
+        estado.juego.insignias.push(id);
+        nuevas.push({ leccion, tier });
+      }
+    }
+  }
+  return nuevas;
+}
+
 export async function responder(cardId, resultado) {
   const p = estado.progreso[cardId];
   if (!p) throw new Error(`Tarjeta sin progreso: ${cardId}`);
@@ -112,8 +190,10 @@ export async function responder(cardId, resultado) {
   }
   p.ultimo = ahora;
   registrarActividad('repaso');
+  const juego = sumarXp(resultado === 'mal' ? XP_FALLO : XP_ACIERTO);
+  const insigniasNuevas = actualizarInsignias();
   await persistir();
-  return { estado: p.estado, intervalo_dias: p.intervalo, due_at: p.due_at };
+  return { estado: p.estado, intervalo_dias: p.intervalo, due_at: p.due_at, ...juego, insigniasNuevas };
 }
 
 // Cola de estudio: pendientes mezcladas con nuevas, interleaving por tipo.
@@ -160,7 +240,10 @@ export function registrarActividad(tipo) {
 
 export async function registrarEjercicio() {
   registrarActividad('ejercicio');
+  const juego = sumarXp(XP_EJERCICIO);
   await guardar('actividad', estado.actividad);
+  await guardar('juego', estado.juego);
+  return juego;
 }
 
 export function calcularRacha() {
@@ -215,7 +298,18 @@ export function datosDashboard() {
     .map(([fecha, a]) => ({ fecha, n: a.repasos + a.ejercicios }))
     .sort((a, b) => b.fecha.localeCompare(a.fecha))
     .slice(0, 14);
-  return { resumen: resumen(), racha: calcularRacha(), hoy, ultimos14, lecciones: estado.lecciones };
+  return {
+    resumen: resumen(),
+    racha: calcularRacha(),
+    hoy,
+    ultimos14,
+    lecciones: estado.lecciones,
+    juego: {
+      nivel: nivelDeXp(estado.juego.xp),
+      congeladores: congeladoresDisponibles(),
+      insignias: [...estado.juego.insignias]
+    }
+  };
 }
 
 export function metaApp() {
@@ -229,7 +323,8 @@ export function exportarCopia() {
     version: 1,
     exportado: new Date().toISOString(),
     progreso: estado.progreso,
-    actividad: estado.actividad
+    actividad: estado.actividad,
+    juego: estado.juego
   };
 }
 
@@ -239,6 +334,7 @@ export async function restaurarCopia(datos) {
   }
   estado.progreso = datos.progreso;
   estado.actividad = datos.actividad || {};
+  estado.juego = datos.juego || juegoNuevo();
   for (const id of Object.keys(estado.cards)) {
     if (!estado.progreso[id]) estado.progreso[id] = progresoNuevo();
   }

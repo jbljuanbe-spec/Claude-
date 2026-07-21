@@ -60,7 +60,10 @@ export async function vistaEjercicios(cont) {
         ${extraHtml}
       </div>
       <div class="fila-botones"><button class="boton boton-primario" id="btn-sig">Otro ejercicio</button></div>`);
-    api.registrarEjercicio().catch(() => {});
+    api.registrarEjercicio().then(r => {
+      const t = zona.querySelector('.panel-feedback .feedback-titulo');
+      if (t && r && r.xpGanado) t.insertAdjacentHTML('beforeend', `<span class="chip-xp">+${r.xpGanado} XP</span>`);
+    }).catch(() => {});
     const btn = zona.querySelector('#btn-sig');
     btn.focus();
     btn.onclick = pintarEjercicio;

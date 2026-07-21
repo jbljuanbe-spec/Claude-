@@ -21,7 +21,7 @@ Las tarjetas con id nuevo entran con progreso desde cero; las existentes actuali
 - **Repaso**: motor SRS (SM-2 adaptado) que mezcla vocabulario, gramática y conjugación en la misma sesión. Vocab y conjugación se responden escribiendo (acepta kanji, kana o romaji, que se convierte solo); la gramática se autoevalúa tras leer la explicación. Fallar una tarjeta la resetea a minutos; acertarla varias veces la espacia hasta 180 días, sin eliminarla nunca.
 - **Ejercicios**: partículas (rellenar hueco), ordenar frases (refuerza el orden SOV) y traducción libre con corrección aproximada. Los datos viven en `data/ejercicios.json`.
 - **Biblioteca**: todo el contenido por lección, con kanji en grande, furigana conmutable, audio y estado de cada tarjeta. Aquí está el botón de actualizar contenido.
-- **Progreso**: racha de días, actividad de las últimas dos semanas, dominadas por lección, hora del próximo repaso y copia de seguridad.
+- **Progreso (Tu viaje por Japón)**: cada lección es una ciudad real en un mapa de Japón. Gamificación no punitiva: XP que solo sube (responder siempre suma, también al fallar), niveles de viajero con títulos en japonés, insignias bronce/plata/oro por ciudad que certifican retención real (nunca se retiran), racha con congeladores automáticos y gratuitos (se gana uno cada 4 días activos: un día sin estudiar pausa la racha, no la rompe), y barras de progreso que nunca arrancan visualmente de cero. Nada de lo ganado se pierde jamás.
 - **Audio**: Web Speech API del navegador con voz `ja-JP` (mejor soporte en Chrome/Edge).
 
 ## Estructura

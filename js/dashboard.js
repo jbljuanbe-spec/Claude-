@@ -1,5 +1,8 @@
-// Progreso: racha, actividad, dominadas por lección y próximo repaso.
+// Progreso: nivel de viajero, racha protegida, mapa de ciudades de Japón,
+// insignias por retención, actividad y copia de seguridad.
+// Regla de oro: nada de lo que se muestra aquí puede bajar ni desaparecer.
 import { api } from './api.js';
+import { ciudadDeLeccion, tiersConseguidos, TIERS } from './ciudades.js';
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -18,45 +21,137 @@ function formatearProximo(ts) {
   return d.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) + ` a las ${hora}`;
 }
 
+const ORDEN_RUTA = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6'];
+
+const ISLAS = [
+  'M272,38 Q300,20 322,40 Q340,60 326,84 Q314,102 292,96 Q286,88 276,92 Q258,96 254,78 Q252,56 272,38 Z',
+  'M302,112 Q318,132 308,158 Q300,184 286,204 Q272,226 250,240 Q230,256 210,264 Q192,272 174,280 Q158,284 154,272 Q152,260 166,252 Q182,242 198,234 Q214,224 228,210 Q242,196 252,178 Q262,158 272,140 Q282,122 302,112 Z',
+  'M178,288 Q192,282 202,290 Q208,300 196,306 Q184,310 176,302 Q172,294 178,288 Z',
+  'M112,296 Q126,292 132,304 Q136,318 128,330 Q118,340 108,332 Q100,320 104,308 Q106,300 112,296 Z',
+  'M48,422 Q56,416 60,424 Q62,432 54,436 Q46,436 46,428 Z'
+];
+
+const COLOR_TIER = { ninguna: 'var(--tinta-tenue)', bronce: '#a8763e', plata: '#8a93a6', oro: '#c9971c' };
+
+function mejorTier(insignias, leccion) {
+  if (insignias.includes(`${leccion}:oro`)) return 'oro';
+  if (insignias.includes(`${leccion}:plata`)) return 'plata';
+  if (insignias.includes(`${leccion}:bronce`)) return 'bronce';
+  return 'ninguna';
+}
+
+function mapaJapon(codigos, lecciones, insignias) {
+  const puntos = [];
+  const coordenadas = {};
+  let extra = 0;
+  for (const cod of codigos) {
+    const conocida = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'General'].includes(cod);
+    coordenadas[cod] = ciudadDeLeccion(cod, conocida ? 0 : extra++);
+  }
+
+  const ruta = ORDEN_RUTA.filter(c => coordenadas[c]);
+  let caminoSvg = '';
+  if (ruta.length > 1) {
+    const pts = ruta.map(c => `${coordenadas[c].x},${coordenadas[c].y}`);
+    caminoSvg = `<path class="mapa-ruta" d="M${pts.join(' L')}" />`;
+  }
+
+  for (const [cod, c] of Object.entries(coordenadas)) {
+    const tier = mejorTier(insignias, cod);
+    const titulo = `${c.nombre} · ${lecciones[cod] || cod}`;
+    if (cod === 'General') {
+      puntos.push(`
+        <g class="mapa-ciudad" data-titulo="${esc(titulo)}">
+          <path d="M${c.x - 8},${c.y + 5} L${c.x},${c.y - 8} L${c.x + 8},${c.y + 5} Z" fill="${COLOR_TIER[tier]}" stroke="#fff" stroke-width="1.5"/>
+          <text x="${c.x}" y="${c.y + 17}" class="mapa-etiqueta">${esc(c.nombre)}</text>
+        </g>`);
+    } else {
+      puntos.push(`
+        <g class="mapa-ciudad" data-titulo="${esc(titulo)}">
+          <circle cx="${c.x}" cy="${c.y}" r="6.5" fill="${COLOR_TIER[tier]}" stroke="#fff" stroke-width="2"/>
+          <text x="${c.x}" y="${c.y + 18}" class="mapa-etiqueta">${esc(c.nombre)}</text>
+        </g>`);
+    }
+  }
+
+  return `
+    <svg viewBox="20 10 340 450" class="mapa-svg" role="img" aria-label="Mapa del viaje por Japón">
+      ${ISLAS.map(d => `<path d="${d}" class="mapa-isla"/>`).join('')}
+      ${caminoSvg}
+      ${puntos.join('')}
+    </svg>`;
+}
+
 export async function vistaProgreso(cont, avisar) {
   cont.innerHTML = '<p class="vista-sub">Cargando progreso...</p>';
-  const { resumen, racha, hoy, ultimos14, lecciones } = await api.dashboard();
+  const { resumen, racha, hoy, ultimos14, lecciones, juego } = await api.dashboard();
 
   const totalHoy = hoy.repasos + hoy.ejercicios;
   const maxActividad = Math.max(1, ...ultimos14.map(d => d.n));
   const dias = [...ultimos14].reverse();
+  const nivel = juego.nivel;
 
-  const filasLeccion = Object.entries(resumen.porLeccion)
-    .sort(([a], [b]) => {
-      if (a === 'General') return 1;
-      if (b === 'General') return -1;
-      return a.localeCompare(b, 'es', { numeric: true });
-    })
-    .map(([cod, l]) => {
-      const pctDom = (l.dominadas / l.total) * 100;
-      const pctApr = (l.aprendiendo / l.total) * 100;
-      return `
-        <div class="fila-leccion">
-          <div class="fila-leccion-cab">
-            <b>${esc(cod)} · ${esc(lecciones[cod] || '')}</b>
-            <span>${l.dominadas} dominadas · ${l.aprendiendo} en estudio · ${l.nuevas} nuevas</span>
+  const codigos = Object.keys(resumen.porLeccion).sort((a, b) => {
+    if (a === 'General') return 1;
+    if (b === 'General') return -1;
+    return a.localeCompare(b, 'es', { numeric: true });
+  });
+
+  let extraIdx = 0;
+  const cartasCiudad = codigos.map(cod => {
+    const stats = resumen.porLeccion[cod];
+    const esConocida = ['L1','L2','L3','L4','L5','L6','General'].includes(cod);
+    const ciudad = ciudadDeLeccion(cod, esConocida ? 0 : extraIdx++);
+    const tiers = TIERS.map(t => ({ ...t, ganada: juego.insignias.includes(`${cod}:${t.id}`) }));
+    const conquistada = juego.insignias.includes(`${cod}:plata`);
+    const pctReal = stats.total ? (stats.dominadas / stats.total) * 100 : 0;
+    const pctEnMarcha = stats.total ? ((stats.dominadas + stats.aprendiendo) / stats.total) * 100 : 0;
+    // Progreso "dotado": la barra nunca arranca visualmente de cero (Nunes & Drèze).
+    const pctBarra = Math.max(8, pctReal);
+    const pctBarraMarcha = Math.max(pctBarra, pctEnMarcha);
+
+    return `
+      <div class="carta-ciudad ${conquistada ? 'conquistada' : ''}">
+        <div class="carta-ciudad-cab">
+          <span class="carta-ciudad-emoji">${ciudad.emoji}</span>
+          <div>
+            <div class="carta-ciudad-nombre">${esc(ciudad.nombre)} <span lang="ja">${esc(ciudad.kanji)}</span></div>
+            <div class="carta-ciudad-leccion">${esc(cod)} · ${esc(lecciones[cod] || '')}</div>
           </div>
-          <div class="barra-leccion">
-            <div class="seg-dominadas" style="width:${pctDom}%"></div>
-            <div class="seg-aprendiendo" style="width:${pctApr}%"></div>
-          </div>
-        </div>`;
-    }).join('');
+        </div>
+        <div class="fila-medallas">
+          ${tiers.map(t => `<span class="medalla ${t.ganada ? 'ganada' : ''}" title="${esc(t.nombre)}: ${esc(t.descripcion)}">${t.icono}</span>`).join('')}
+        </div>
+        <div class="barra-ciudad" title="${stats.dominadas} de ${stats.total} dominadas">
+          <div class="barra-ciudad-marcha" style="width:${pctBarraMarcha}%"></div>
+          <div class="barra-ciudad-dominio" style="width:${pctBarra}%"></div>
+        </div>
+        <div class="carta-ciudad-datos">${stats.dominadas} dominadas · ${stats.aprendiendo} en estudio · ${stats.nuevas} nuevas</div>
+        <div class="carta-ciudad-habilidad">
+          ${conquistada ? `<b>Conquistada:</b> ${esc(ciudad.habilidad)}` : `<b>Al conquistarla:</b> ${esc(ciudad.habilidad)}`}
+        </div>
+      </div>`;
+  }).join('');
 
   cont.innerHTML = `
-    <h1 class="vista-titulo">Progreso</h1>
-    <p class="vista-sub">Tu estudio de un vistazo.</p>
+    <h1 class="vista-titulo">Tu viaje por Japón</h1>
+    <p class="vista-sub">Cada lección es una ciudad. Las insignias certifican lo que ya sabes hacer, y nada de lo ganado se pierde nunca.</p>
 
     <div class="rejilla-stats">
+      <div class="stat-caja stat-nivel">
+        <div class="nivel-cab">
+          <span class="nivel-numero">${nivel.nivel}</span>
+          <div>
+            <b style="font-size:1.15rem">${esc(nivel.titulo)} <span lang="ja" style="color:var(--acento)">${esc(nivel.kanji)}</span></b>
+            <span style="display:block">${nivel.xp} XP ${nivel.xpSiguiente ? `· siguiente nivel a ${nivel.xpSiguiente}` : '· nivel máximo'}</span>
+          </div>
+        </div>
+        <div class="barra-nivel"><div style="width:${Math.round(nivel.haciaSiguiente * 100)}%"></div></div>
+      </div>
       <div class="stat-caja">
-        <b>${racha} ${racha === 1 ? 'día' : 'días'}</b>
+        <b>${racha} ${racha === 1 ? 'día' : 'días'} 🔥</b>
         <span>racha de estudio</span>
-        <div class="stat-detalle">${racha > 0 ? 'Sigue así, no la rompas' : 'Estudia hoy para empezar una'}</div>
+        <div class="stat-detalle">❄️ ${juego.congeladores} ${juego.congeladores === 1 ? 'congelador listo' : 'congeladores listos'}: si un día no estudias, la racha se pausa sola, no se rompe</div>
       </div>
       <div class="stat-caja">
         <b>${totalHoy}</b>
@@ -64,15 +159,23 @@ export async function vistaProgreso(cont, avisar) {
         <div class="stat-detalle">${hoy.repasos} repasos · ${hoy.ejercicios} ejercicios</div>
       </div>
       <div class="stat-caja">
-        <b>${resumen.pendientesAhora}</b>
-        <span>pendientes ahora</span>
-        <div class="stat-detalle">${resumen.pendientesAhora > 0 ? 'Te esperan en Repaso' : `Próximo repaso: ${formatearProximo(resumen.proximoDue)}`}</div>
-      </div>
-      <div class="stat-caja">
         <b>${resumen.dominadas} / ${resumen.total}</b>
         <span>tarjetas dominadas</span>
-        <div class="stat-detalle">${resumen.nuevas} aún sin empezar</div>
+        <div class="stat-detalle">${resumen.pendientesAhora > 0 ? `${resumen.pendientesAhora} pendientes te esperan en Repaso` : `Próximo repaso: ${formatearProximo(resumen.proximoDue)}`}</div>
       </div>
+    </div>
+
+    <div class="zona-viaje">
+      <div class="caja-mapa">
+        ${mapaJapon(codigos, lecciones, juego.insignias)}
+        <div class="leyenda-mapa">
+          <span><i style="background:${COLOR_TIER.ninguna}"></i> Por visitar</span>
+          <span><i style="background:${COLOR_TIER.bronce}"></i> Bronce</span>
+          <span><i style="background:${COLOR_TIER.plata}"></i> Plata</span>
+          <span><i style="background:${COLOR_TIER.oro}"></i> Oro</span>
+        </div>
+      </div>
+      <div class="lista-ciudades">${cartasCiudad}</div>
     </div>
 
     <h2 class="seccion-titulo">Actividad de los últimos 14 días</h2>
@@ -85,9 +188,6 @@ export async function vistaProgreso(cont, avisar) {
         }).join('')}
       </div>
     </div>
-
-    <h2 class="seccion-titulo">Por lección</h2>
-    ${filasLeccion || '<p class="vista-sub">Aún no hay contenido importado.</p>'}
 
     <h2 class="seccion-titulo">Copia de seguridad</h2>
     <div class="stat-caja">

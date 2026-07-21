@@ -2,6 +2,7 @@
 import { api } from './api.js';
 import { hablar } from './tts.js';
 import { comprobarJapones, comprobarEspanol, romajiAHiragana, contieneJapones } from './kana.js';
+import { ciudadDeLeccion, TIERS } from './ciudades.js';
 
 const NOMBRES_TIPO = { vocab: 'Vocabulario', grammar: 'Gramática', conj: 'Conjugación' };
 
@@ -29,7 +30,7 @@ export async function vistaRepaso(cont, refrescarBadge) {
     return;
   }
 
-  const sesion = { idx: 0, aciertos: 0, fallos: 0 };
+  const sesion = { idx: 0, aciertos: 0, fallos: 0, xp: 0, insignias: [], nivelNuevo: null };
 
   function pintarTarjeta() {
     if (sesion.idx >= cola.length) return pintarFin();
@@ -131,7 +132,14 @@ export async function vistaRepaso(cont, refrescarBadge) {
 
   async function resolver(t, acierto, valorUsuario) {
     if (acierto) sesion.aciertos++; else sesion.fallos++;
-    api.responder(t.id, acierto ? 'bien' : 'mal').then(refrescarBadge).catch(() => {});
+    api.responder(t.id, acierto ? 'bien' : 'mal').then(r => {
+      sesion.xp += r.xpGanado || 0;
+      if (r.insigniasNuevas) sesion.insignias.push(...r.insigniasNuevas);
+      if (r.subeNivel) sesion.nivelNuevo = r.nivel;
+      const titulo = cont.querySelector('.panel-feedback .feedback-titulo');
+      if (titulo && r.xpGanado) titulo.insertAdjacentHTML('beforeend', `<span class="chip-xp">+${r.xpGanado} XP</span>`);
+      refrescarBadge();
+    }).catch(() => {});
 
     const tarjeta = cont.querySelector('.tarjeta');
     tarjeta.querySelectorAll('.fila-botones, .campo-respuesta, .vista-kana').forEach(el => el.remove());
@@ -172,6 +180,22 @@ export async function vistaRepaso(cont, refrescarBadge) {
   function pintarFin() {
     const total = sesion.aciertos + sesion.fallos;
     const pct = total ? Math.round((sesion.aciertos / total) * 100) : 0;
+
+    const nivelHtml = sesion.nivelNuevo ? `
+      <div class="aviso-nivel">🎉 ¡Nivel ${sesion.nivelNuevo.nivel}! Ahora eres <b>${esc(sesion.nivelNuevo.titulo)}</b> <span lang="ja">${esc(sesion.nivelNuevo.kanji)}</span></div>` : '';
+
+    const insigniasHtml = sesion.insignias.length ? `
+      <div class="fin-insignias">
+        ${sesion.insignias.map(i => {
+          const ciudad = ciudadDeLeccion(i.leccion, 0);
+          const tier = TIERS.find(t => t.id === i.tier);
+          return `<div class="insignia-nueva">
+            <span class="insignia-icono">${tier.icono}</span>
+            <div><b>${esc(ciudad.nombre)} · ${esc(tier.nombre)}</b><br><small>${esc(i.tier === 'bronce' ? tier.descripcion : ciudad.habilidad)}</small></div>
+          </div>`;
+        }).join('')}
+      </div>` : '';
+
     cont.innerHTML = `
       <div class="zona-repaso"><div class="tarjeta fin-sesion">
         <div class="fin-kanji" lang="ja">${pct >= 80 ? 'お見事' : 'お疲れ様'}</div>
@@ -180,11 +204,13 @@ export async function vistaRepaso(cont, refrescarBadge) {
           <div class="fin-stat"><b>${total}</b><span>tarjetas</span></div>
           <div class="fin-stat"><b style="color:var(--exito)">${sesion.aciertos}</b><span>aciertos</span></div>
           <div class="fin-stat"><b style="color:var(--error)">${sesion.fallos}</b><span>fallos</span></div>
-          <div class="fin-stat"><b>${pct}%</b><span>precisión</span></div>
+          <div class="fin-stat"><b style="color:var(--acento)">+${sesion.xp}</b><span>XP</span></div>
         </div>
+        ${nivelHtml}
+        ${insigniasHtml}
         <div class="fila-botones" style="justify-content:center">
           <button class="boton boton-primario" id="btn-otra">Seguir estudiando</button>
-          <button class="boton boton-secundario" id="btn-progreso">Ver progreso</button>
+          <button class="boton boton-secundario" id="btn-progreso">Ver mi viaje</button>
         </div>
       </div></div>`;
     cont.querySelector('#btn-otra').onclick = () => vistaRepaso(cont, refrescarBadge);

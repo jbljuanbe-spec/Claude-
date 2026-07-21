@@ -3,6 +3,7 @@ import { api } from './api.js';
 import { hablar } from './tts.js';
 import { comprobarJapones, comprobarEspanol, romajiAHiragana, contieneJapones } from './kana.js';
 import { ciudadDeLeccion, TIERS } from './ciudades.js';
+import { animar } from './lottie.js';
 
 const NOMBRES_TIPO = { vocab: 'Vocabulario', grammar: 'Gramática', conj: 'Conjugación' };
 
@@ -12,25 +13,32 @@ function esc(s) {
 
 export async function vistaRepaso(cont, refrescarBadge) {
   cont.innerHTML = '<p class="vista-sub">Cargando tarjetas...</p>';
-  const { cola } = await api.cola(20);
+  // Si se llega desde el mapa ("Estudiar aquí" / "Pausa para el té"),
+  // la sesión se limita a esa ciudad.
+  const ciudadFiltro = sessionStorage.getItem('kotoba-ciudad');
+  sessionStorage.removeItem('kotoba-ciudad');
+  const { cola } = await api.cola(20, ciudadFiltro);
+  const nombreCiudad = ciudadFiltro ? ciudadDeLeccion(ciudadFiltro, 0).nombre : null;
 
   if (!cola.length) {
     cont.innerHTML = `
       <div class="zona-repaso"><div class="tarjeta fin-sesion">
+        <div class="lottie-fin" id="lottie-descanso"></div>
         <div class="fin-kanji" lang="ja">休憩</div>
-        <h2>Todo al día</h2>
-        <p class="vista-sub" style="margin-top:6px">No hay tarjetas pendientes ahora mismo. Puedes hacer ejercicios o pasarte por la biblioteca.</p>
+        <h2>Todo al día${nombreCiudad ? ` en ${esc(nombreCiudad)}` : ''}</h2>
+        <p class="vista-sub" style="margin-top:6px">No hay tarjetas pendientes ahora mismo. Momento perfecto para un té, unos ejercicios o la biblioteca.</p>
         <div class="fila-botones" style="justify-content:center">
           <button class="boton boton-primario" id="ir-ejercicios">Hacer ejercicios</button>
-          <button class="boton boton-secundario" id="ir-progreso">Ver progreso</button>
+          <button class="boton boton-secundario" id="ir-progreso">Ver mi viaje</button>
         </div>
       </div></div>`;
+    animar(cont.querySelector('#lottie-descanso'), 'matcha');
     cont.querySelector('#ir-ejercicios').onclick = () => location.hash = '#ejercicios';
     cont.querySelector('#ir-progreso').onclick = () => location.hash = '#progreso';
     return;
   }
 
-  const sesion = { idx: 0, aciertos: 0, fallos: 0, xp: 0, insignias: [], nivelNuevo: null };
+  const sesion = { idx: 0, aciertos: 0, fallos: 0, xp: 0, insignias: [], billetes: 0, nivelNuevo: null };
 
   function pintarTarjeta() {
     if (sesion.idx >= cola.length) return pintarFin();
@@ -78,7 +86,7 @@ export async function vistaRepaso(cont, refrescarBadge) {
     cont.innerHTML = `
       <div class="zona-repaso">
         <div class="repaso-meta">
-          <span>${sesion.idx + 1} de ${cola.length}</span>
+          <span>${nombreCiudad ? `${esc(nombreCiudad)} · ` : ''}${sesion.idx + 1} de ${cola.length}</span>
           <div class="barra-progreso"><div style="width:${(sesion.idx / cola.length) * 100}%"></div></div>
           <span>${sesion.aciertos} &#10003; · ${sesion.fallos} &#10007;</span>
         </div>
@@ -135,6 +143,7 @@ export async function vistaRepaso(cont, refrescarBadge) {
     api.responder(t.id, acierto ? 'bien' : 'mal').then(r => {
       sesion.xp += r.xpGanado || 0;
       if (r.insigniasNuevas) sesion.insignias.push(...r.insigniasNuevas);
+      if (r.billetesNuevos) sesion.billetes += r.billetesNuevos.length;
       if (r.subeNivel) sesion.nivelNuevo = r.nivel;
       const titulo = cont.querySelector('.panel-feedback .feedback-titulo');
       if (titulo && r.xpGanado) titulo.insertAdjacentHTML('beforeend', `<span class="chip-xp">+${r.xpGanado} XP</span>`);
@@ -184,6 +193,9 @@ export async function vistaRepaso(cont, refrescarBadge) {
     const nivelHtml = sesion.nivelNuevo ? `
       <div class="aviso-nivel">🎉 ¡Nivel ${sesion.nivelNuevo.nivel}! Ahora eres <b>${esc(sesion.nivelNuevo.titulo)}</b> <span lang="ja">${esc(sesion.nivelNuevo.kanji)}</span></div>` : '';
 
+    const billetesHtml = sesion.billetes ? `
+      <div class="aviso-nivel">🎫 ${sesion.billetes === 1 ? '¡Billete de Shinkansen conseguido!' : `¡${sesion.billetes} billetes de Shinkansen conseguidos!`} Puedes usarlo en el mapa para adelantar el viaje.</div>` : '';
+
     const insigniasHtml = sesion.insignias.length ? `
       <div class="fin-insignias">
         ${sesion.insignias.map(i => {
@@ -198,6 +210,7 @@ export async function vistaRepaso(cont, refrescarBadge) {
 
     cont.innerHTML = `
       <div class="zona-repaso"><div class="tarjeta fin-sesion">
+        <div class="lottie-fin" id="lottie-fin"></div>
         <div class="fin-kanji" lang="ja">${pct >= 80 ? 'お見事' : 'お疲れ様'}</div>
         <h2>Sesión terminada</h2>
         <div class="fin-stats">
@@ -207,12 +220,14 @@ export async function vistaRepaso(cont, refrescarBadge) {
           <div class="fin-stat"><b style="color:var(--acento)">+${sesion.xp}</b><span>XP</span></div>
         </div>
         ${nivelHtml}
+        ${billetesHtml}
         ${insigniasHtml}
         <div class="fila-botones" style="justify-content:center">
           <button class="boton boton-primario" id="btn-otra">Seguir estudiando</button>
           <button class="boton boton-secundario" id="btn-progreso">Ver mi viaje</button>
         </div>
       </div></div>`;
+    animar(cont.querySelector('#lottie-fin'), 'conejos');
     cont.querySelector('#btn-otra').onclick = () => vistaRepaso(cont, refrescarBadge);
     cont.querySelector('#btn-progreso').onclick = () => location.hash = '#progreso';
     refrescarBadge();

@@ -4,45 +4,45 @@
 
 export const CIUDADES = {
   L1: {
-    nombre: 'Tokio', kanji: '東京', emoji: '🗼', x: 268, y: 200,
+    nombre: 'Tokio', kanji: '東京', emoji: '🗼', lat: 35.68, lon: 139.69, jlpt: 'N5', dxEtiqueta: 14, dyEtiqueta: 3,
     habilidad: 'Sabes saludar, presentarte y decir a qué te dedicas'
   },
   L2: {
-    nombre: 'Osaka', kanji: '大阪', emoji: '🛍️', x: 200, y: 253,
+    nombre: 'Osaka', kanji: '大阪', emoji: '🛍️', lat: 34.69, lon: 135.50, jlpt: 'N5', dxEtiqueta: -14, dyEtiqueta: 8,
     habilidad: 'Sobrevives a una compra: precios, objetos y preguntas'
   },
   L3: {
-    nombre: 'Kioto', kanji: '京都', emoji: '⛩️', x: 208, y: 232,
+    nombre: 'Kioto', kanji: '京都', emoji: '⛩️', lat: 35.01, lon: 135.77, jlpt: 'N5', dxEtiqueta: -16, dyEtiqueta: -6,
     habilidad: 'Puedes proponer planes: verbos, tiempos y frecuencia'
   },
   L4: {
-    nombre: 'Nara', kanji: '奈良', emoji: '🦌', x: 224, y: 262,
+    nombre: 'Nara', kanji: '奈良', emoji: '🦌', lat: 34.69, lon: 135.80, jlpt: 'N5', dxEtiqueta: 14, dyEtiqueta: 10,
     habilidad: 'Describes qué hay a tu alrededor y qué hiciste ayer'
   },
   L5: {
-    nombre: 'Naha', kanji: '那覇', emoji: '🏝️', x: 52, y: 428,
+    nombre: 'Naha', kanji: '那覇', emoji: '🏝️', lat: 26.21, lon: 127.68, jlpt: 'N5', dxEtiqueta: 0, dyEtiqueta: 14,
     habilidad: 'Opinas sobre lugares y comida con adjetivos bien conjugados'
   },
   L6: {
-    nombre: 'Sapporo', kanji: '札幌', emoji: '☕', x: 296, y: 64,
+    nombre: 'Sapporo', kanji: '札幌', emoji: '☕', lat: 43.06, lon: 141.35, jlpt: 'N5', dxEtiqueta: 0, dyEtiqueta: -10,
     habilidad: 'Encadenas acciones con la forma て como un local'
   },
   General: {
-    nombre: 'Monte Fuji', kanji: '富士山', emoji: '🗻', x: 252, y: 222,
+    nombre: 'Monte Fuji', kanji: '富士山', emoji: '🗻', lat: 35.36, lon: 138.73, jlpt: 'N5', dxEtiqueta: 6, dyEtiqueta: 12,
     habilidad: 'Los matices transversales que hacen que suene natural'
   }
 };
 
 // Ciudades reservadas para lecciones futuras (se asignan en orden de aparición).
 const CIUDADES_FUTURAS = [
-  { nombre: 'Yokohama', kanji: '横浜', emoji: '🚢', x: 262, y: 214 },
-  { nombre: 'Nagoya', kanji: '名古屋', emoji: '🏯', x: 228, y: 240 },
-  { nombre: 'Hiroshima', kanji: '広島', emoji: '🕊️', x: 152, y: 280 },
-  { nombre: 'Fukuoka', kanji: '福岡', emoji: '🍜', x: 110, y: 305 },
-  { nombre: 'Sendai', kanji: '仙台', emoji: '🎋', x: 288, y: 152 },
-  { nombre: 'Kanazawa', kanji: '金沢', emoji: '🍁', x: 222, y: 205 },
-  { nombre: 'Kobe', kanji: '神戸', emoji: '⛰️', x: 192, y: 258 },
-  { nombre: 'Nagasaki', kanji: '長崎', emoji: '🌉', x: 92, y: 322 }
+  { nombre: 'Yokohama', kanji: '横浜', emoji: '🚢', lat: 35.44, lon: 139.64, jlpt: 'N4', dxEtiqueta: 10, dyEtiqueta: 12 },
+  { nombre: 'Nagoya', kanji: '名古屋', emoji: '🏯', lat: 35.18, lon: 136.91, jlpt: 'N4', dxEtiqueta: 0, dyEtiqueta: 13 },
+  { nombre: 'Hiroshima', kanji: '広島', emoji: '🕊️', lat: 34.39, lon: 132.46, jlpt: 'N4', dxEtiqueta: 0, dyEtiqueta: -10 },
+  { nombre: 'Fukuoka', kanji: '福岡', emoji: '🍜', lat: 33.59, lon: 130.40, jlpt: 'N4', dxEtiqueta: -6, dyEtiqueta: -10 },
+  { nombre: 'Sendai', kanji: '仙台', emoji: '🎋', lat: 38.27, lon: 140.87, jlpt: 'N4', dxEtiqueta: 12, dyEtiqueta: 0 },
+  { nombre: 'Kanazawa', kanji: '金沢', emoji: '🍁', lat: 36.56, lon: 136.66, jlpt: 'N3', dxEtiqueta: 0, dyEtiqueta: -10 },
+  { nombre: 'Kobe', kanji: '神戸', emoji: '⛰️', lat: 34.69, lon: 135.19, jlpt: 'N3', dxEtiqueta: -14, dyEtiqueta: 0 },
+  { nombre: 'Nagasaki', kanji: '長崎', emoji: '🌉', lat: 32.75, lon: 129.87, jlpt: 'N3', dxEtiqueta: -8, dyEtiqueta: 10 }
 ];
 
 export function ciudadDeLeccion(codigo, indiceExtra = 0) {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kotoba · Estudio de japonés</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80'>言</text></svg>">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="cabecera-inner">
+      <a class="marca" href="#repaso">
+        <span class="marca-kanji" lang="ja">言葉</span>
+        <span class="marca-nombre">Kotoba</span>
+      </a>
+      <nav class="navegacion">
+        <a href="#repaso" data-vista="repaso">Repaso <span id="badge-pendientes" class="badge oculto"></span></a>
+        <a href="#ejercicios" data-vista="ejercicios">Ejercicios</a>
+        <a href="#biblioteca" data-vista="biblioteca">Biblioteca</a>
+        <a href="#progreso" data-vista="progreso">Progreso</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="vista" class="vista"></main>
+
+  <div id="toast" class="toast oculto"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,718 @@
+{
+  "meta": {
+    "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
+    "metodo": "Genki I como columna vertebral, con anadidos de Minna no Nihongo, NHK Easy Japanese y matices de gramatica surgidos en el chat",
+    "leccion_actual": 6
+  },
+  "lecciones": {
+    "L1": "あいさつ・自己紹介 (Saludos y autopresentación)",
+    "L2": "かいもの (Compras)",
+    "L3": "デートの約束 (Quedar con alguien)",
+    "L4": "初めてのデート (La primera cita)",
+    "L5": "沖縄旅行 (Viaje a Okinawa)",
+    "L6": "ロバートさんの一日 (Un día en la vida de Robert)",
+    "General": "Matices transversales (varias lecciones)"
+  },
+  "tarjetas": [
+    {
+      "id": "l1_watashi",
+      "l": "L1",
+      "kanji": "私",
+      "reading": "わたし",
+      "es": "yo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l1_anata",
+      "l": "L1",
+      "kanji": "あなた",
+      "reading": "あなた",
+      "es": "tú (úsalo poco)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l1_namae",
+      "l": "L1",
+      "kanji": "名前",
+      "reading": "なまえ",
+      "es": "nombre",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l1_gakusei",
+      "l": "L1",
+      "kanji": "学生",
+      "reading": "がくせい",
+      "es": "estudiante",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l1_sensei",
+      "l": "L1",
+      "kanji": "先生",
+      "reading": "せんせい",
+      "es": "profesor/a",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l1_kaishain",
+      "l": "L1",
+      "kanji": "会社員",
+      "reading": "かいしゃいん",
+      "es": "empleado de empresa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l1_isha",
+      "l": "L1",
+      "kanji": "医者",
+      "reading": "いしゃ",
+      "es": "médico/a",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l1_nihon",
+      "l": "L1",
+      "kanji": "日本",
+      "reading": "にほん",
+      "es": "Japón",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l1_supein",
+      "l": "L1",
+      "kanji": "スペイン",
+      "reading": "すぺいん",
+      "es": "España",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l1_yoroshiku",
+      "l": "L1",
+      "kanji": "よろしくお願いします",
+      "reading": "よろしくおねがいします",
+      "es": "fórmula al presentarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l1_kochirakoso",
+      "l": "L1",
+      "kanji": "こちらこそ",
+      "reading": "こちらこそ",
+      "es": "el gusto es mío",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l1_soudesu",
+      "l": "L1",
+      "kanji": "そうです",
+      "reading": "そうです",
+      "es": "así es / correcto",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l2_kasa",
+      "l": "L2",
+      "kanji": "傘",
+      "reading": "かさ",
+      "es": "paraguas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l2_tokei",
+      "l": "L2",
+      "kanji": "時計",
+      "reading": "とけい",
+      "es": "reloj",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l2_hon",
+      "l": "L2",
+      "kanji": "本",
+      "reading": "ほん",
+      "es": "libro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l2_jisho",
+      "l": "L2",
+      "kanji": "辞書",
+      "reading": "じしょ",
+      "es": "diccionario",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l2_kaban",
+      "l": "L2",
+      "kanji": "かばん",
+      "reading": "かばん",
+      "es": "bolso/maletín",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l2_dare",
+      "l": "L2",
+      "kanji": "だれ",
+      "reading": "だれ",
+      "es": "quién",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l2_nani",
+      "l": "L2",
+      "kanji": "何",
+      "reading": "なに",
+      "readingAlt": [
+        "なん"
+      ],
+      "es": "qué",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l2_ikura",
+      "l": "L2",
+      "kanji": "いくらですか",
+      "reading": "いくらですか",
+      "es": "¿cuánto cuesta?",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l2_sumimasen",
+      "l": "L2",
+      "kanji": "すみません",
+      "reading": "すみません",
+      "es": "perdona/disculpa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l2_takai",
+      "l": "L2",
+      "kanji": "高い",
+      "reading": "たかい",
+      "es": "caro / alto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l2_tenki",
+      "l": "L2",
+      "kanji": "天気",
+      "reading": "てんき",
+      "es": "tiempo (clima)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_tabemasu",
+      "l": "L3",
+      "kanji": "食べます",
+      "reading": "たべます",
+      "es": "comer / comeré",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_nomimasu",
+      "l": "L3",
+      "kanji": "飲みます",
+      "reading": "のみます",
+      "es": "beber",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_mimasu",
+      "l": "L3",
+      "kanji": "見ます",
+      "reading": "みます",
+      "es": "ver",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_kikimasu",
+      "l": "L3",
+      "kanji": "聞きます",
+      "reading": "ききます",
+      "es": "escuchar / preguntar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_ikimasu",
+      "l": "L3",
+      "kanji": "行きます",
+      "reading": "いきます",
+      "es": "ir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_kimasu",
+      "l": "L3",
+      "kanji": "来ます",
+      "reading": "きます",
+      "es": "venir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_kaerimasu",
+      "l": "L3",
+      "kanji": "帰ります",
+      "reading": "かえります",
+      "es": "volver a casa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_okimasu",
+      "l": "L3",
+      "kanji": "起きます",
+      "reading": "おきます",
+      "es": "levantarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_nemasu",
+      "l": "L3",
+      "kanji": "寝ます",
+      "reading": "ねます",
+      "es": "dormir / acostarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_benkyou",
+      "l": "L3",
+      "kanji": "勉強します",
+      "reading": "べんきょうします",
+      "es": "estudiar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_kyou",
+      "l": "L3",
+      "kanji": "今日",
+      "reading": "きょう",
+      "es": "hoy",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_ashita",
+      "l": "L3",
+      "kanji": "明日",
+      "reading": "あした",
+      "es": "mañana",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_kinou",
+      "l": "L3",
+      "kanji": "昨日",
+      "reading": "きのう",
+      "es": "ayer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_mainichi",
+      "l": "L3",
+      "kanji": "毎日",
+      "reading": "まいにち",
+      "es": "todos los días",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_itsumo",
+      "l": "L3",
+      "kanji": "いつも",
+      "reading": "いつも",
+      "es": "siempre",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_taitei",
+      "l": "L3",
+      "kanji": "たいてい",
+      "reading": "たいてい",
+      "es": "normalmente",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_yoku",
+      "l": "L3",
+      "kanji": "よく",
+      "reading": "よく",
+      "es": "a menudo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_tokidoki",
+      "l": "L3",
+      "kanji": "ときどき",
+      "reading": "ときどき",
+      "es": "a veces",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l3_amari",
+      "l": "L3",
+      "kanji": "あまり",
+      "reading": "あまり",
+      "es": "casi no (+negativo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l3_zenzen",
+      "l": "L3",
+      "kanji": "ぜんぜん",
+      "reading": "ぜんぜん",
+      "es": "para nada (+negativo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "g_neg4formas",
+      "l": "L2",
+      "type": "grammar",
+      "question": "¿En qué se diferencian じゃないです y じゃありません?",
+      "explanation": "En nada — dos caminos gramaticales distintos para negar です. Existen 4 combinaciones (じゃ/では + ありません/ないです), todas igual de correctas y educadas."
+    },
+    {
+      "id": "g_hawa",
+      "l": "L2",
+      "type": "grammar",
+      "question": "¿Por qué じゃありません no se escribe con わ (でわ)?",
+      "explanation": "じゃ es la contracción hablada de では, se escribe distinto aunque suene parecido. Aparte: la partícula は suena \"wa\" pero SIEMPRE se escribe は, nunca わ."
+    },
+    {
+      "id": "g_kore_kono",
+      "l": "L2",
+      "type": "grammar",
+      "question": "¿Diferencia entre これ y この?",
+      "explanation": "これ/それ/あれ/どれ van SOLOS, reemplazan al sustantivo. この/その/あの/どの SIEMPRE necesitan un sustantivo detrás, nunca van solos."
+    },
+    {
+      "id": "g_dore_doko",
+      "l": "L2",
+      "type": "grammar",
+      "question": "¿Diferencia entre どれ y どこ?",
+      "explanation": "どれ = ¿cuál? (elegir entre varias cosas). どこ = ¿dónde? (ubicación). Suenan parecido, son categorías distintas."
+    },
+    {
+      "id": "g_ne_yo",
+      "l": "L2",
+      "type": "grammar",
+      "question": "¿Cuándo se usa ね y cuándo よ?",
+      "explanation": "ね = buscas acuerdo o reaccionas a algo que te acaban de decir. よ = TÚ informas de algo nuevo que el otro no sabe. No uses よ para reaccionar a información recién recibida."
+    },
+    {
+      "id": "g_de_ni",
+      "l": "L3",
+      "type": "grammar",
+      "question": "¿Diferencia entre で y に con verbos de acción?",
+      "explanation": "に = destino u hora exacta (学校に行きます). で = lugar donde ocurre la acción (学校で勉強します)."
+    },
+    {
+      "id": "g_amari_neg",
+      "l": "L3",
+      "type": "grammar",
+      "question": "¿あまり y ぜんぜん pueden usarse en afirmativo?",
+      "explanation": "No — con el significado de \"casi no\"/\"para nada\" EXIGEN un verbo en negativo detrás, siempre."
+    },
+    {
+      "id": "g_ou_sound",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Cómo se escriben los sonidos largos tipo \"soo\" o \"benkyoo\"?",
+      "explanation": "Los alargamientos que vienen de -au/-ou casi siempre se escriben con う, no con お: そう, べんきょう, ありがとう, おはよう."
+    },
+    {
+      "id": "g_takusan_no",
+      "l": "L4",
+      "type": "grammar",
+      "question": "¿Cuándo たくさん lleva の y cuándo no?",
+      "explanation": "たくさん solo = adverbio (sin partícula, modifica el verbo, se mueve libre). たくさんの+sustantivo = actúa como adjetivo pegado al sustantivo. Mismo significado, cambia el foco."
+    },
+    {
+      "id": "g_ga_wa_exist",
+      "l": "L4",
+      "type": "grammar",
+      "question": "¿Por qué 学生 lleva が y no は en 教室に学生がいます?",
+      "explanation": "が anuncia información nueva: \"esto es lo que hay\". は marca tema ya conocido o contraste. Con あります/います casi siempre が, porque por naturaleza anuncias que algo existe."
+    },
+    {
+      "id": "g_movie_theater",
+      "l": "L4",
+      "type": "grammar",
+      "question": "¿Diferencia entre 映画 y 映画館?",
+      "explanation": "映画 = la película (el contenido). 映画館 = el cine (el edificio, adónde vas). \"映画に行く\" no es natural — mejor 映画館に行く o simplemente 映画を見る."
+    },
+    {
+      "id": "g_to_no_verbs",
+      "l": "L4",
+      "type": "grammar",
+      "question": "¿Puedo usar と para unir dos verbos, como \"fui y comí\"?",
+      "explanation": "No — と solo une SUSTANTIVOS (AとB). Para unir acciones sin forma て (Lección 6), usa dos frases separadas: 映画を見ました。たくさん食べました。"
+    },
+    {
+      "id": "g_reltime_ni",
+      "l": "L3",
+      "type": "grammar",
+      "question": "¿今日/明日/先週 llevan に?",
+      "explanation": "No, nunca — los tiempos relativos (今日/明日/昨日/先週/今週/来週) no llevan に. Solo los días de la semana (月曜日に) y horas exactas (7時に) sí."
+    },
+    {
+      "id": "l5_umi",
+      "l": "L5",
+      "kanji": "海",
+      "reading": "うみ",
+      "es": "mar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l5_ryouri",
+      "l": "L5",
+      "kanji": "料理",
+      "reading": "りょうり",
+      "es": "comida / cocina",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l5_oishii",
+      "l": "L5",
+      "kanji": "美味しい",
+      "reading": "おいしい",
+      "es": "delicioso",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l5_kirei",
+      "l": "L5",
+      "kanji": "きれい(な)",
+      "reading": "きれい",
+      "es": "bonito / limpio",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l5_shizuka",
+      "l": "L5",
+      "kanji": "静か(な)",
+      "reading": "しずか",
+      "es": "tranquilo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l5_sushi",
+      "l": "L5",
+      "kanji": "寿司",
+      "reading": "すし",
+      "es": "sushi",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l5_natto",
+      "l": "L5",
+      "kanji": "納豆",
+      "reading": "なっとう",
+      "es": "natto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "g_iadj_past",
+      "l": "L5",
+      "type": "grammar",
+      "question": "¿Cómo se conjuga el pasado de un adjetivo en -い, como 高い?",
+      "explanation": "Quita la い final y añade かった: 高い → 高かったです. NO se combina con でした (eso es solo para な-adjetivos y sustantivos)."
+    },
+    {
+      "id": "g_suki_ga",
+      "l": "L5",
+      "type": "grammar",
+      "question": "¿Con qué partícula va lo que te gusta en 好きです?",
+      "explanation": "Con が, no を: 私は寿司が好きです (me gusta el sushi). 好き/嫌い son adjetivos -な, no verbos como \"gustar cosas\" en español."
+    },
+    {
+      "id": "g_kirei_na",
+      "l": "L5",
+      "type": "grammar",
+      "question": "きれい y 嫌い terminan en い, ¿por qué son -な y no -い?",
+      "explanation": "Porque si les quitas la い no queda una raíz real (きれ/きら no significan nada). Los -い de verdad sí conjugan al quitarla (高い→高く). きれい y 嫌い son las dos trampas clásicas: suenan a -い pero son -な."
+    },
+    {
+      "id": "c_takai_negpas",
+      "l": "L5",
+      "type": "conj",
+      "front": "高い → pasado negativo",
+      "answer": "高くなかったです",
+      "alt": [
+        "高くありませんでした",
+        "たかくなかったです"
+      ]
+    },
+    {
+      "id": "c_takai_afpas",
+      "l": "L5",
+      "type": "conj",
+      "front": "高い → pasado afirmativo",
+      "answer": "高かったです",
+      "alt": [
+        "たかかったです"
+      ]
+    },
+    {
+      "id": "c_isogashii_negpres",
+      "l": "L5",
+      "type": "conj",
+      "front": "忙しい(いそがしい) → presente negativo",
+      "answer": "忙しくないです",
+      "alt": [
+        "忙しくありません",
+        "いそがしくないです"
+      ]
+    },
+    {
+      "id": "c_isogashii_afpas",
+      "l": "L5",
+      "type": "conj",
+      "front": "忙しい(いそがしい) → pasado afirmativo",
+      "answer": "忙しかったです",
+      "alt": [
+        "いそがしかったです"
+      ]
+    },
+    {
+      "id": "c_ii_negpres",
+      "l": "L5",
+      "type": "conj",
+      "front": "いい → presente negativo",
+      "answer": "よくないです",
+      "alt": [
+        "よくありません"
+      ]
+    },
+    {
+      "id": "c_ii_afpas",
+      "l": "L5",
+      "type": "conj",
+      "front": "いい → pasado afirmativo",
+      "answer": "よかったです"
+    },
+    {
+      "id": "c_kirei_negpres",
+      "l": "L5",
+      "type": "conj",
+      "front": "きれい(な) → presente negativo",
+      "answer": "きれいじゃないです",
+      "alt": [
+        "きれいではありません"
+      ]
+    },
+    {
+      "id": "c_shizuka_negpres",
+      "l": "L5",
+      "type": "conj",
+      "front": "静か(な) → presente negativo",
+      "answer": "静かじゃないです",
+      "alt": [
+        "しずかじゃないです",
+        "静かではありません"
+      ]
+    },
+    {
+      "id": "g_adj_no_particle",
+      "l": "L5",
+      "type": "grammar",
+      "question": "¿Por qué a veces un adjetivo va con な o con く y otras veces con nada?",
+      "explanation": "Los adjetivos NUNCA llevan partícula propia. Solo cambian según su trabajo: predicado (これは高いです), modificar sustantivo (高い本 / きれいな部屋 — el な no es partícula), o modificar verbo (早く起きます / きれいに書きます — く/に tampoco son partículas)."
+    },
+    {
+      "id": "g_no_vs_to",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Diferencia entre の y と cuando hablo de otra persona?",
+      "explanation": "の = posesión/pertenencia (AのB = \"B de A\"): 彼女の映画館 = \"el cine DE mi novia\" (como si fuera suyo). と = compañía (\"con\"): 彼女と映画館 = \"al cine CON mi novia\". Fácil de mezclar, revisa siempre cuál de las dos quieres decir."
+    },
+    {
+      "id": "g_no_dropped_wa",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Puedo omitir は antes de です al nombrar algo (ej. 名前はエレナです)?",
+      "explanation": "No — siempre necesitas は (o が) entre el sustantivo-tema y el predicado: 名前はエレナです, no 名前エレナです. Se olvida fácil al escribir rápido; revisa que cada frase tenga su partícula de tema antes del predicado."
+    },
+    {
+      "id": "c_te_nomu",
+      "l": "L6",
+      "type": "conj",
+      "front": "飲む → forma て",
+      "answer": "飲んで",
+      "alt": [
+        "のんで"
+      ]
+    },
+    {
+      "id": "c_te_kau",
+      "l": "L6",
+      "type": "conj",
+      "front": "買う → forma て",
+      "answer": "買って",
+      "alt": [
+        "かって"
+      ]
+    },
+    {
+      "id": "c_te_taberu",
+      "l": "L6",
+      "type": "conj",
+      "front": "食べる → forma て",
+      "answer": "食べて",
+      "alt": [
+        "たべて"
+      ]
+    },
+    {
+      "id": "c_te_iku",
+      "l": "L6",
+      "type": "conj",
+      "front": "行く → forma て (¡ojo, excepción!)",
+      "answer": "行って",
+      "alt": [
+        "いって"
+      ]
+    },
+    {
+      "id": "c_te_hanasu",
+      "l": "L6",
+      "type": "conj",
+      "front": "話す → forma て",
+      "answer": "話して",
+      "alt": [
+        "はなして"
+      ]
+    },
+    {
+      "id": "c_te_matsu",
+      "l": "L6",
+      "type": "conj",
+      "front": "待つ → forma て",
+      "answer": "待って",
+      "alt": [
+        "まって"
+      ]
+    },
+    {
+      "id": "c_te_kaeru",
+      "l": "L6",
+      "type": "conj",
+      "front": "帰る → forma て",
+      "answer": "帰って",
+      "alt": [
+        "かえって"
+      ]
+    },
+    {
+      "id": "c_te_suru",
+      "l": "L6",
+      "type": "conj",
+      "front": "する → forma て",
+      "answer": "して"
+    },
+    {
+      "id": "g_te_groups",
+      "l": "L6",
+      "type": "grammar",
+      "question": "¿Cómo sé qué terminación て le toca a un verbo del Grupo 1?",
+      "explanation": "Según la última sílaba del diccionario: う/つ/る→って, ぬ/む/ぶ→んで, く→いて, ぐ→いで, す→して. Excepción: 行く→行って (no 行いて)."
+    }
+  ]
+}

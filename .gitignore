@@ -1,3 +1,4 @@
-scripts/.cache/
 node_modules/
+progreso.db
+progreso.db-*
 .DS_Store

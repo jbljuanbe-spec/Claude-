@@ -2,7 +2,7 @@ name: Deploy Pages
 
 on:
   push:
-    branches: [main, claude/new-session-o3knqf]
+    branches: [main, claude/pokemon-tournament-bracket-0nymkf, claude/new-session-o3knqf]
   workflow_dispatch:
 
 permissions:

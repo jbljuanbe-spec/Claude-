@@ -32,7 +32,12 @@ const DIAS_POR_CONGELADOR = 4;   // cada 4 días activos se gana un congelador d
 const MAX_CONGELADORES = 4;
 
 function juegoNuevo() {
-  return { xp: 0, congeladoresUsados: 0, insignias: [] };
+  return { xp: 0, congeladoresUsados: 0, insignias: [], billetes: 0, eventosBilletes: [], desbloqueadas: [] };
+}
+
+function normalizarJuego(j) {
+  const base = juegoNuevo();
+  return { ...base, ...j };
 }
 
 function progresoNuevo() {
@@ -54,7 +59,7 @@ export async function iniciar() {
   ]);
   estado.progreso = progreso || {};
   estado.actividad = actividad || {};
-  estado.juego = juego || juegoNuevo();
+  estado.juego = normalizarJuego(juego || {});
   aplicarCongeladores();
   if (contenido) {
     estado.cards = contenido.cards || {};
@@ -68,6 +73,8 @@ export async function iniciar() {
     if (!Object.keys(estado.cards).length) throw e;
     // Sin red pero con contenido cacheado: se puede estudiar igual.
   }
+  // Reconoce paradas ya completadas por progreso anterior a esta versión.
+  if (actualizarViaje().length || actualizarInsignias().length) await persistir();
   estado.listo = true;
 }
 
@@ -160,6 +167,92 @@ function actualizarInsignias() {
   return nuevas;
 }
 
+// ---------- El viaje: paradas ordenadas, sin saltos (salvo billete) ----------
+// COMPLETED es permanente: se concede una vez y no se revierte aunque lleguen
+// tarjetas nuevas a esa lección al reimportar contenido.
+
+function ordenParadas() {
+  return Object.keys(estado.lecciones)
+    .filter(c => c !== 'General')
+    .sort((a, b) => a.localeCompare(b, 'es', { numeric: true }));
+}
+
+function concederBillete(evento) {
+  if (estado.juego.eventosBilletes.includes(evento)) return false;
+  estado.juego.eventosBilletes.push(evento);
+  estado.juego.billetes++;
+  return true;
+}
+
+// Concede "parada completada" (todo su contenido en marcha) y su billete.
+function actualizarViaje() {
+  const { porLeccion } = resumen();
+  const billetesNuevos = [];
+  for (const cod of [...ordenParadas(), 'General']) {
+    const stats = porLeccion[cod];
+    if (!stats || !stats.total) continue;
+    const evento = `${cod}:completa`;
+    if (stats.nuevas === 0 && !estado.juego.eventosBilletes.includes(evento)) {
+      if (concederBillete(evento)) billetesNuevos.push({ motivo: 'completa', leccion: cod });
+    }
+  }
+  return billetesNuevos;
+}
+
+export function paradas() {
+  const { porLeccion } = resumen();
+  const orden = ordenParadas();
+  const lista = [];
+  let activaAsignada = false;
+
+  orden.forEach((cod, i) => {
+    const stats = porLeccion[cod] || { total: 0, nuevas: 0, aprendiendo: 0, dominadas: 0 };
+    const completada = estado.juego.eventosBilletes.includes(`${cod}:completa`);
+    let estadoParada;
+    if (completada) estadoParada = 'COMPLETED';
+    else if (!activaAsignada) { estadoParada = 'ACTIVE'; activaAsignada = true; }
+    else if (estado.juego.desbloqueadas.includes(cod)) estadoParada = 'ACTIVE';
+    else estadoParada = 'LOCKED';
+    lista.push({ codigo: cod, orden: i + 1, estado: estadoParada, stats });
+  });
+
+  // El Monte Fuji (General) es la parada transversal: siempre accesible.
+  if (porLeccion.General) {
+    lista.push({ codigo: 'General', orden: 0, estado: 'ACTIVE', stats: porLeccion.General });
+  }
+
+  const ahora = Date.now();
+  for (const parada of lista) {
+    let pendientes = 0;
+    for (const [id, c] of Object.entries(estado.cards)) {
+      if (c.leccion !== parada.codigo) continue;
+      const p = estado.progreso[id];
+      if (p && p.estado !== 'nueva' && p.due_at <= ahora) pendientes++;
+    }
+    parada.pendientes = pendientes;
+    parada.needsReview = pendientes > 0;
+    parada.conquistada = estado.juego.insignias.includes(`${parada.codigo}:plata`);
+  }
+  return lista;
+}
+
+function leccionesConNuevasPermitidas() {
+  const permitidas = new Set(['General']);
+  for (const p of paradas()) {
+    if (p.estado !== 'LOCKED') permitidas.add(p.codigo);
+  }
+  return permitidas;
+}
+
+export async function gastarBillete(codigo) {
+  if (estado.juego.billetes <= 0) throw new Error('No te quedan billetes de Shinkansen');
+  if (estado.juego.desbloqueadas.includes(codigo)) return { billetes: estado.juego.billetes };
+  estado.juego.billetes--;
+  estado.juego.desbloqueadas.push(codigo);
+  await guardar('juego', estado.juego);
+  return { billetes: estado.juego.billetes };
+}
+
 export async function responder(cardId, resultado) {
   const p = estado.progreso[cardId];
   if (!p) throw new Error(`Tarjeta sin progreso: ${cardId}`);
@@ -192,20 +285,31 @@ export async function responder(cardId, resultado) {
   registrarActividad('repaso');
   const juego = sumarXp(resultado === 'mal' ? XP_FALLO : XP_ACIERTO);
   const insigniasNuevas = actualizarInsignias();
+  // La conquista (plata) también premia con un billete de Shinkansen.
+  for (const i of insigniasNuevas) {
+    if (i.tier === 'plata') concederBillete(`${i.leccion}:plata`);
+  }
+  const billetesNuevos = actualizarViaje();
   await persistir();
-  return { estado: p.estado, intervalo_dias: p.intervalo, due_at: p.due_at, ...juego, insigniasNuevas };
+  return { estado: p.estado, intervalo_dias: p.intervalo, due_at: p.due_at, ...juego, insigniasNuevas, billetesNuevos };
 }
 
 // Cola de estudio: pendientes mezcladas con nuevas, interleaving por tipo.
-export function colaDeEstudio(limite = 20, maxNuevas = 8) {
+// Los repasos pendientes entran siempre (nunca se bloquea repasar lo aprendido);
+// las tarjetas NUEVAS solo entran de paradas desbloqueadas del viaje.
+export function colaDeEstudio(limite = 20, maxNuevas = 8, soloLeccion = null) {
   const ahora = Date.now();
-  const filas = Object.entries(estado.cards).map(([id, c]) => ({
+  let filas = Object.entries(estado.cards).map(([id, c]) => ({
     id, ...c, estadoSrs: estado.progreso[id]?.estado || 'nueva',
     due: estado.progreso[id]?.due_at || 0
   }));
+  if (soloLeccion) filas = filas.filter(f => f.leccion === soloLeccion);
 
+  const permitidas = leccionesConNuevasPermitidas();
   const pendientes = filas.filter(f => f.estadoSrs !== 'nueva' && f.due <= ahora);
-  const nuevas = filas.filter(f => f.estadoSrs === 'nueva').slice(0, maxNuevas);
+  const nuevas = filas
+    .filter(f => f.estadoSrs === 'nueva' && permitidas.has(f.leccion))
+    .slice(0, maxNuevas);
 
   const mazo = barajar([...pendientes, ...nuevas]).slice(0, limite);
   const mezclado = [];
@@ -307,8 +411,10 @@ export function datosDashboard() {
     juego: {
       nivel: nivelDeXp(estado.juego.xp),
       congeladores: congeladoresDisponibles(),
-      insignias: [...estado.juego.insignias]
-    }
+      insignias: [...estado.juego.insignias],
+      billetes: estado.juego.billetes
+    },
+    paradas: paradas()
   };
 }
 

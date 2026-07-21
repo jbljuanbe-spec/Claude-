@@ -1,8 +1,10 @@
-// Progreso: nivel de viajero, racha protegida, mapa de ciudades de Japón,
-// insignias por retención, actividad y copia de seguridad.
+// Progreso: nivel, racha protegida, billetes, mapa real de Japón interactivo
+// (paradas ordenadas del viaje), insignias por retención, actividad y copia.
 // Regla de oro: nada de lo que se muestra aquí puede bajar ni desaparecer.
 import { api } from './api.js';
-import { ciudadDeLeccion, tiersConseguidos, TIERS } from './ciudades.js';
+import { ciudadDeLeccion, TIERS } from './ciudades.js';
+import { PREFECTURAS, VISTA, proyectar } from './mapa-japon.js';
+import { animar } from './lottie.js';
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -12,26 +14,14 @@ function formatearProximo(ts) {
   if (!ts) return 'nada programado';
   const d = new Date(ts);
   const hoy = new Date();
-  const esHoy = d.toDateString() === hoy.toDateString();
   const manana = new Date(hoy); manana.setDate(hoy.getDate() + 1);
-  const esManana = d.toDateString() === manana.toDateString();
   const hora = d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-  if (esHoy) return `hoy a las ${hora}`;
-  if (esManana) return `mañana a las ${hora}`;
+  if (d.toDateString() === hoy.toDateString()) return `hoy a las ${hora}`;
+  if (d.toDateString() === manana.toDateString()) return `mañana a las ${hora}`;
   return d.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) + ` a las ${hora}`;
 }
 
-const ORDEN_RUTA = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6'];
-
-const ISLAS = [
-  'M272,38 Q300,20 322,40 Q340,60 326,84 Q314,102 292,96 Q286,88 276,92 Q258,96 254,78 Q252,56 272,38 Z',
-  'M302,112 Q318,132 308,158 Q300,184 286,204 Q272,226 250,240 Q230,256 210,264 Q192,272 174,280 Q158,284 154,272 Q152,260 166,252 Q182,242 198,234 Q214,224 228,210 Q242,196 252,178 Q262,158 272,140 Q282,122 302,112 Z',
-  'M178,288 Q192,282 202,290 Q208,300 196,306 Q184,310 176,302 Q172,294 178,288 Z',
-  'M112,296 Q126,292 132,304 Q136,318 128,330 Q118,340 108,332 Q100,320 104,308 Q106,300 112,296 Z',
-  'M48,422 Q56,416 60,424 Q62,432 54,436 Q46,436 46,428 Z'
-];
-
-const COLOR_TIER = { ninguna: 'var(--tinta-tenue)', bronce: '#a8763e', plata: '#8a93a6', oro: '#c9971c' };
+const COLOR_TIER = { ninguna: '#9a9aa2', bronce: '#a8763e', plata: '#8a93a6', oro: '#c9971c' };
 
 function mejorTier(insignias, leccion) {
   if (insignias.includes(`${leccion}:oro`)) return 'oro';
@@ -40,191 +30,311 @@ function mejorTier(insignias, leccion) {
   return 'ninguna';
 }
 
-function mapaJapon(codigos, lecciones, insignias) {
-  const puntos = [];
-  const coordenadas = {};
-  let extra = 0;
-  for (const cod of codigos) {
-    const conocida = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'General'].includes(cod);
-    coordenadas[cod] = ciudadDeLeccion(cod, conocida ? 0 : extra++);
-  }
-
-  const ruta = ORDEN_RUTA.filter(c => coordenadas[c]);
-  let caminoSvg = '';
-  if (ruta.length > 1) {
-    const pts = ruta.map(c => `${coordenadas[c].x},${coordenadas[c].y}`);
-    caminoSvg = `<path class="mapa-ruta" d="M${pts.join(' L')}" />`;
-  }
-
-  for (const [cod, c] of Object.entries(coordenadas)) {
-    const tier = mejorTier(insignias, cod);
-    const titulo = `${c.nombre} · ${lecciones[cod] || cod}`;
-    if (cod === 'General') {
-      puntos.push(`
-        <g class="mapa-ciudad" data-titulo="${esc(titulo)}">
-          <path d="M${c.x - 8},${c.y + 5} L${c.x},${c.y - 8} L${c.x + 8},${c.y + 5} Z" fill="${COLOR_TIER[tier]}" stroke="#fff" stroke-width="1.5"/>
-          <text x="${c.x}" y="${c.y + 17}" class="mapa-etiqueta">${esc(c.nombre)}</text>
-        </g>`);
-    } else {
-      puntos.push(`
-        <g class="mapa-ciudad" data-titulo="${esc(titulo)}">
-          <circle cx="${c.x}" cy="${c.y}" r="6.5" fill="${COLOR_TIER[tier]}" stroke="#fff" stroke-width="2"/>
-          <text x="${c.x}" y="${c.y + 18}" class="mapa-etiqueta">${esc(c.nombre)}</text>
-        </g>`);
-    }
-  }
-
-  return `
-    <svg viewBox="20 10 340 450" class="mapa-svg" role="img" aria-label="Mapa del viaje por Japón">
-      ${ISLAS.map(d => `<path d="${d}" class="mapa-isla"/>`).join('')}
-      ${caminoSvg}
-      ${puntos.join('')}
-    </svg>`;
-}
+const NOMBRE_ESTADO = { LOCKED: 'Bloqueada', ACTIVE: 'Parada actual', COMPLETED: 'Completada' };
 
 export async function vistaProgreso(cont, avisar) {
   cont.innerHTML = '<p class="vista-sub">Cargando progreso...</p>';
-  const { resumen, racha, hoy, ultimos14, lecciones, juego } = await api.dashboard();
+  const { resumen, racha, hoy, ultimos14, lecciones, juego, paradas } = await api.dashboard();
 
   const totalHoy = hoy.repasos + hoy.ejercicios;
   const maxActividad = Math.max(1, ...ultimos14.map(d => d.n));
   const dias = [...ultimos14].reverse();
   const nivel = juego.nivel;
 
-  const codigos = Object.keys(resumen.porLeccion).sort((a, b) => {
-    if (a === 'General') return 1;
-    if (b === 'General') return -1;
-    return a.localeCompare(b, 'es', { numeric: true });
-  });
+  // Asignación estable de ciudad a cada parada (las conocidas van fijas).
+  const CONOCIDAS = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'General'];
+  let extra = 0;
+  const conCiudad = paradas.map(p => ({
+    ...p,
+    ciudad: ciudadDeLeccion(p.codigo, CONOCIDAS.includes(p.codigo) ? 0 : extra++)
+  }));
+  const ruta = conCiudad.filter(p => p.codigo !== 'General').sort((a, b) => a.orden - b.orden);
+  const porCodigo = Object.fromEntries(conCiudad.map(p => [p.codigo, p]));
 
-  let extraIdx = 0;
-  const cartasCiudad = codigos.map(cod => {
-    const stats = resumen.porLeccion[cod];
-    const esConocida = ['L1','L2','L3','L4','L5','L6','General'].includes(cod);
-    const ciudad = ciudadDeLeccion(cod, esConocida ? 0 : extraIdx++);
-    const tiers = TIERS.map(t => ({ ...t, ganada: juego.insignias.includes(`${cod}:${t.id}`) }));
-    const conquistada = juego.insignias.includes(`${cod}:plata`);
-    const pctReal = stats.total ? (stats.dominadas / stats.total) * 100 : 0;
-    const pctEnMarcha = stats.total ? ((stats.dominadas + stats.aprendiendo) / stats.total) * 100 : 0;
-    // Progreso "dotado": la barra nunca arranca visualmente de cero (Nunes & Drèze).
-    const pctBarra = Math.max(8, pctReal);
-    const pctBarraMarcha = Math.max(pctBarra, pctEnMarcha);
+  const recordada = sessionStorage.getItem('kotoba-sel');
+  let seleccion = (recordada && porCodigo[recordada]) ? recordada
+    : (ruta.find(p => p.estado === 'ACTIVE') || ruta[0] || conCiudad[0])?.codigo;
+  sessionStorage.removeItem('kotoba-sel');
+
+  function construirMapa() {
+    const prefs = PREFECTURAS.map(pr =>
+      `<path d="${pr.d}" class="pref"><title>${esc(pr.nombre)}</title></path>`).join('');
+
+    let rutaSvg = '';
+    for (let i = 0; i < ruta.length - 1; i++) {
+      const a = proyectar(ruta[i].ciudad.lat, ruta[i].ciudad.lon);
+      const b = proyectar(ruta[i + 1].ciudad.lat, ruta[i + 1].ciudad.lon);
+      const hecha = ruta[i].estado === 'COMPLETED' && ruta[i + 1].estado !== 'LOCKED';
+      rutaSvg += `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" class="ruta ${hecha ? 'ruta-hecha' : ''}"/>`;
+    }
+
+    const nodos = conCiudad.map(p => {
+      const { x, y } = proyectar(p.ciudad.lat, p.ciudad.lon);
+      const tier = mejorTier(juego.insignias, p.codigo);
+      const sel = p.codigo === seleccion ? 'seleccionada' : '';
+      const dx = p.ciudad.dxEtiqueta || 0, dy = p.ciudad.dyEtiqueta || 0;
+      const etiquetaY = dy >= 0 ? y + 13 + dy : y - 8 + dy;
+      let nucleo;
+      if (p.codigo === 'General') {
+        nucleo = `<path d="M${x - 7},${y + 4} L${x},${y - 7} L${x + 7},${y + 4} Z" class="nodo-forma" fill="${p.estado === 'COMPLETED' ? COLOR_TIER[tier] : 'var(--acento)'}"/>`;
+      } else if (p.estado === 'LOCKED') {
+        nucleo = `<circle cx="${x}" cy="${y}" r="5.5" class="nodo-forma" fill="#c9c9cf"/>
+                  <text x="${x}" y="${y + 3}" class="nodo-candado">🔒</text>`;
+      } else {
+        const color = p.estado === 'COMPLETED' && tier !== 'ninguna' ? COLOR_TIER[tier] : 'var(--acento)';
+        const halo = p.estado === 'ACTIVE' ? `<circle cx="${x}" cy="${y}" r="6.5" class="nodo-halo"/>` : '';
+        nucleo = `${halo}<circle cx="${x}" cy="${y}" r="6.5" class="nodo-forma" fill="${color}"/>`;
+      }
+      const te = p.needsReview && p.estado !== 'LOCKED'
+        ? `<text x="${x + 8}" y="${y - 6}" class="nodo-te">🍵</text>` : '';
+      return `
+        <g class="nodo ${sel}" data-codigo="${esc(p.codigo)}" tabindex="0" role="button"
+           aria-label="${esc(p.ciudad.nombre)}: ${NOMBRE_ESTADO[p.estado]}">
+          <circle cx="${x}" cy="${y}" r="13" fill="transparent"/>
+          ${nucleo}${te}
+          <text x="${x + dx}" y="${etiquetaY}" class="mapa-etiqueta">${esc(p.ciudad.nombre)}</text>
+        </g>`;
+    }).join('');
+
+    return `<svg viewBox="${VISTA}" class="mapa-svg" role="img" aria-label="Mapa del viaje por Japón">
+      ${prefs}${rutaSvg}${nodos}
+    </svg>`;
+  }
+
+  function panelParada() {
+    const p = porCodigo[seleccion];
+    if (!p) return '';
+    const c = p.ciudad;
+    const idx = ruta.findIndex(r => r.codigo === p.codigo);
+    const anterior = idx > 0 ? ruta[idx - 1] : null;
+    const tiers = TIERS.map(t => ({ ...t, ganada: juego.insignias.includes(`${p.codigo}:${t.id}`) }));
+
+    let acciones = '';
+    if (p.estado === 'LOCKED') {
+      acciones = `
+        <p class="panel-nota">🔒 Se desbloquea al completar ${anterior ? `<b>${esc(anterior.ciudad.nombre)}</b>` : 'la parada anterior'} (o con un billete).</p>
+        ${juego.billetes > 0
+          ? `<button class="boton boton-primario" id="btn-billete">🎫 Usar un billete de Shinkansen (tienes ${juego.billetes})</button>`
+          : '<p class="panel-nota">Consigue billetes completando y conquistando ciudades.</p>'}`;
+    } else {
+      const te = p.needsReview
+        ? `<button class="boton boton-secundario" id="btn-te">🍵 Pausa para el té: ${p.pendientes} ${p.pendientes === 1 ? 'repaso' : 'repasos'}</button>`
+        : '';
+      acciones = `
+        <div class="fila-botones" style="margin-top:12px">
+          <button class="boton boton-primario" id="btn-estudiar">Estudiar aquí</button>
+          ${te}
+        </div>`;
+    }
 
     return `
-      <div class="carta-ciudad ${conquistada ? 'conquistada' : ''}">
-        <div class="carta-ciudad-cab">
-          <span class="carta-ciudad-emoji">${ciudad.emoji}</span>
-          <div>
-            <div class="carta-ciudad-nombre">${esc(ciudad.nombre)} <span lang="ja">${esc(ciudad.kanji)}</span></div>
-            <div class="carta-ciudad-leccion">${esc(cod)} · ${esc(lecciones[cod] || '')}</div>
+      <div class="panel-cab">
+        <span class="carta-ciudad-emoji">${c.emoji}</span>
+        <div>
+          <div class="carta-ciudad-nombre">${esc(c.nombre)} <span lang="ja">${esc(c.kanji)}</span></div>
+          <div class="carta-ciudad-leccion">
+            ${p.codigo === 'General' ? 'Parada transversal' : `Parada ${p.orden} de ${ruta.length}`}
+            · <span class="chip chip-jlpt">${esc(c.jlpt)}</span>
+            · ${NOMBRE_ESTADO[p.estado]}
           </div>
         </div>
-        <div class="fila-medallas">
-          ${tiers.map(t => `<span class="medalla ${t.ganada ? 'ganada' : ''}" title="${esc(t.nombre)}: ${esc(t.descripcion)}">${t.icono}</span>`).join('')}
-        </div>
-        <div class="barra-ciudad" title="${stats.dominadas} de ${stats.total} dominadas">
-          <div class="barra-ciudad-marcha" style="width:${pctBarraMarcha}%"></div>
-          <div class="barra-ciudad-dominio" style="width:${pctBarra}%"></div>
-        </div>
-        <div class="carta-ciudad-datos">${stats.dominadas} dominadas · ${stats.aprendiendo} en estudio · ${stats.nuevas} nuevas</div>
-        <div class="carta-ciudad-habilidad">
-          ${conquistada ? `<b>Conquistada:</b> ${esc(ciudad.habilidad)}` : `<b>Al conquistarla:</b> ${esc(ciudad.habilidad)}`}
-        </div>
-      </div>`;
-  }).join('');
+        <div class="panel-lottie ${p.needsReview && p.estado !== 'LOCKED' ? '' : 'oculto'}" id="lottie-matcha"></div>
+      </div>
+      <div class="carta-ciudad-leccion" style="margin:6px 0 8px">${esc(lecciones[p.codigo] || '')}</div>
+      <div class="fila-medallas" style="margin:6px 0">
+        ${tiers.map(t => `<span class="medalla ${t.ganada ? 'ganada' : ''}" title="${esc(t.nombre)}: ${esc(t.descripcion)}">${t.icono}</span>`).join('')}
+      </div>
+      <div class="carta-ciudad-datos">${p.stats.dominadas} dominadas · ${p.stats.aprendiendo} en estudio · ${p.stats.nuevas} nuevas</div>
+      <div class="carta-ciudad-habilidad" style="border:none;padding-top:6px">
+        <b>${p.conquistada ? 'Conquistada:' : 'Al conquistarla:'}</b> ${esc(c.habilidad)}
+      </div>
+      ${acciones}`;
+  }
 
-  cont.innerHTML = `
-    <h1 class="vista-titulo">Tu viaje por Japón</h1>
-    <p class="vista-sub">Cada lección es una ciudad. Las insignias certifican lo que ya sabes hacer, y nada de lo ganado se pierde nunca.</p>
-
-    <div class="rejilla-stats">
-      <div class="stat-caja stat-nivel">
-        <div class="nivel-cab">
-          <span class="nivel-numero">${nivel.nivel}</span>
-          <div>
-            <b style="font-size:1.15rem">${esc(nivel.titulo)} <span lang="ja" style="color:var(--acento)">${esc(nivel.kanji)}</span></b>
-            <span style="display:block">${nivel.xp} XP ${nivel.xpSiguiente ? `· siguiente nivel a ${nivel.xpSiguiente}` : '· nivel máximo'}</span>
+  function cartas() {
+    return conCiudad.map(p => {
+      const c = p.ciudad;
+      const tiers = TIERS.map(t => ({ ...t, ganada: juego.insignias.includes(`${p.codigo}:${t.id}`) }));
+      const pctReal = p.stats.total ? (p.stats.dominadas / p.stats.total) * 100 : 0;
+      const pctMarcha = p.stats.total ? ((p.stats.dominadas + p.stats.aprendiendo) / p.stats.total) * 100 : 0;
+      // Progreso "dotado": la barra nunca arranca visualmente de cero.
+      const pctBarra = Math.max(8, pctReal);
+      return `
+        <div class="carta-ciudad ${p.conquistada ? 'conquistada' : ''} ${p.estado === 'LOCKED' ? 'bloqueada' : ''} ${p.codigo === seleccion ? 'seleccionada' : ''}" data-codigo="${esc(p.codigo)}">
+          <div class="carta-ciudad-cab">
+            <span class="carta-ciudad-emoji">${p.estado === 'LOCKED' ? '🔒' : c.emoji}</span>
+            <div>
+              <div class="carta-ciudad-nombre">${esc(c.nombre)} <span lang="ja">${esc(c.kanji)}</span></div>
+              <div class="carta-ciudad-leccion">${esc(p.codigo)} · ${esc(lecciones[p.codigo] || '')}</div>
+            </div>
+            ${p.needsReview && p.estado !== 'LOCKED' ? '<span class="aviso-te" title="Hay repasos pendientes aquí">🍵</span>' : ''}
           </div>
+          <div class="fila-medallas">
+            ${tiers.map(t => `<span class="medalla ${t.ganada ? 'ganada' : ''}" title="${esc(t.nombre)}: ${esc(t.descripcion)}">${t.icono}</span>`).join('')}
+          </div>
+          <div class="barra-ciudad" title="${p.stats.dominadas} de ${p.stats.total} dominadas">
+            <div class="barra-ciudad-marcha" style="width:${Math.max(pctBarra, pctMarcha)}%"></div>
+            <div class="barra-ciudad-dominio" style="width:${pctBarra}%"></div>
+          </div>
+          <div class="carta-ciudad-datos">${p.stats.dominadas} dominadas · ${p.stats.aprendiendo} en estudio · ${p.stats.nuevas} nuevas</div>
+        </div>`;
+    }).join('');
+  }
+
+  function pintar() {
+    cont.innerHTML = `
+      <h1 class="vista-titulo">Tu viaje por Japón</h1>
+      <p class="vista-sub">Un viaje con paradas en orden: completa cada ciudad para abrir la siguiente, o adelanta con un billete. Nada de lo ganado se pierde nunca.</p>
+
+      <div class="rejilla-stats">
+        <div class="stat-caja stat-nivel">
+          <div class="nivel-cab">
+            <span class="nivel-numero">${nivel.nivel}</span>
+            <div>
+              <b style="font-size:1.15rem">${esc(nivel.titulo)} <span lang="ja" style="color:var(--acento)">${esc(nivel.kanji)}</span></b>
+              <span style="display:block">${nivel.xp} XP ${nivel.xpSiguiente ? `· siguiente nivel a ${nivel.xpSiguiente}` : '· nivel máximo'}</span>
+            </div>
+          </div>
+          <div class="barra-nivel"><div style="width:${Math.round(nivel.haciaSiguiente * 100)}%"></div></div>
         </div>
-        <div class="barra-nivel"><div style="width:${Math.round(nivel.haciaSiguiente * 100)}%"></div></div>
-      </div>
-      <div class="stat-caja">
-        <b>${racha} ${racha === 1 ? 'día' : 'días'} 🔥</b>
-        <span>racha de estudio</span>
-        <div class="stat-detalle">❄️ ${juego.congeladores} ${juego.congeladores === 1 ? 'congelador listo' : 'congeladores listos'}: si un día no estudias, la racha se pausa sola, no se rompe</div>
-      </div>
-      <div class="stat-caja">
-        <b>${totalHoy}</b>
-        <span>respuestas hoy</span>
-        <div class="stat-detalle">${hoy.repasos} repasos · ${hoy.ejercicios} ejercicios</div>
-      </div>
-      <div class="stat-caja">
-        <b>${resumen.dominadas} / ${resumen.total}</b>
-        <span>tarjetas dominadas</span>
-        <div class="stat-detalle">${resumen.pendientesAhora > 0 ? `${resumen.pendientesAhora} pendientes te esperan en Repaso` : `Próximo repaso: ${formatearProximo(resumen.proximoDue)}`}</div>
-      </div>
-    </div>
-
-    <div class="zona-viaje">
-      <div class="caja-mapa">
-        ${mapaJapon(codigos, lecciones, juego.insignias)}
-        <div class="leyenda-mapa">
-          <span><i style="background:${COLOR_TIER.ninguna}"></i> Por visitar</span>
-          <span><i style="background:${COLOR_TIER.bronce}"></i> Bronce</span>
-          <span><i style="background:${COLOR_TIER.plata}"></i> Plata</span>
-          <span><i style="background:${COLOR_TIER.oro}"></i> Oro</span>
+        <div class="stat-caja">
+          <b>${racha} ${racha === 1 ? 'día' : 'días'} 🔥</b>
+          <span>racha de estudio</span>
+          <div class="stat-detalle">❄️ ${juego.congeladores} ${juego.congeladores === 1 ? 'congelador' : 'congeladores'}: un día sin estudiar pausa la racha, no la rompe</div>
+        </div>
+        <div class="stat-caja">
+          <b>🎫 ${juego.billetes}</b>
+          <span>billetes de Shinkansen</span>
+          <div class="stat-detalle">Se ganan completando y conquistando ciudades; sirven para adelantar el viaje</div>
+        </div>
+        <div class="stat-caja">
+          <b>${resumen.dominadas} / ${resumen.total}</b>
+          <span>tarjetas dominadas</span>
+          <div class="stat-detalle">${totalHoy} respuestas hoy · ${resumen.pendientesAhora > 0 ? `${resumen.pendientesAhora} pendientes ahora` : `próximo repaso: ${formatearProximo(resumen.proximoDue)}`}</div>
         </div>
       </div>
-      <div class="lista-ciudades">${cartasCiudad}</div>
-    </div>
 
-    <h2 class="seccion-titulo">Actividad de los últimos 14 días</h2>
-    <div class="stat-caja">
-      <div class="actividad-mini">
-        ${Array.from({ length: 14 }, (_, i) => {
-          const d = dias[i - (14 - dias.length)];
-          if (!d) return '<div class="actividad-dia vacio" style="height:3px"></div>';
-          return `<div class="actividad-dia ${d.n ? '' : 'vacio'}" style="height:${Math.max(6, (d.n / maxActividad) * 100)}%" title="${esc(d.fecha)}: ${d.n}"></div>`;
-        }).join('')}
+      <div class="zona-viaje">
+        <div class="col-mapa">
+          <div class="caja-mapa">
+            <div class="mapa-lottie" id="lottie-japon" title="日本"></div>
+            ${construirMapa()}
+            <div class="leyenda-mapa">
+              <span><i style="background:var(--acento)"></i> Actual</span>
+              <span><i style="background:#c9c9cf"></i> Bloqueada</span>
+              <span><i style="background:${COLOR_TIER.bronce}"></i> Bronce</span>
+              <span><i style="background:${COLOR_TIER.plata}"></i> Plata</span>
+              <span><i style="background:${COLOR_TIER.oro}"></i> Oro</span>
+              <span>🍵 repasos pendientes</span>
+            </div>
+          </div>
+          <div class="panel-parada" id="panel-parada">${panelParada()}</div>
+        </div>
+        <div class="lista-ciudades">${cartas()}</div>
       </div>
-    </div>
 
-    <h2 class="seccion-titulo">Copia de seguridad</h2>
-    <div class="stat-caja">
-      <p style="color:var(--tinta-suave); font-size:0.92rem; margin-bottom:14px">
-        Tu progreso vive en este navegador. Descarga una copia de vez en cuando por si cambias
-        de navegador o de dispositivo, y restáurala aquí cuando la necesites.
-      </p>
-      <div class="fila-botones" style="margin-top:0">
-        <button class="boton boton-secundario" id="btn-exportar">Descargar copia</button>
-        <button class="boton boton-secundario" id="btn-restaurar">Restaurar copia</button>
-        <input type="file" id="archivo-copia" accept="application/json" class="oculto">
+      <h2 class="seccion-titulo">Actividad de los últimos 14 días</h2>
+      <div class="stat-caja">
+        <div class="actividad-mini">
+          ${Array.from({ length: 14 }, (_, i) => {
+            const d = dias[i - (14 - dias.length)];
+            if (!d) return '<div class="actividad-dia vacio" style="height:3px"></div>';
+            return `<div class="actividad-dia ${d.n ? '' : 'vacio'}" style="height:${Math.max(6, (d.n / maxActividad) * 100)}%" title="${esc(d.fecha)}: ${d.n}"></div>`;
+          }).join('')}
+        </div>
       </div>
-    </div>
-  `;
 
-  cont.querySelector('#btn-exportar').onclick = async () => {
-    const datos = await api.exportarCopia();
-    const blob = new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `kotoba-progreso-${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-    URL.revokeObjectURL(a.href);
-  };
+      <h2 class="seccion-titulo">Copia de seguridad</h2>
+      <div class="stat-caja">
+        <p style="color:var(--tinta-suave); font-size:0.92rem; margin-bottom:14px">
+          Tu progreso vive en este navegador. Descarga una copia de vez en cuando por si cambias
+          de navegador o de dispositivo, y restáurala aquí cuando la necesites.
+        </p>
+        <div class="fila-botones" style="margin-top:0">
+          <button class="boton boton-secundario" id="btn-exportar">Descargar copia</button>
+          <button class="boton boton-secundario" id="btn-restaurar">Restaurar copia</button>
+          <input type="file" id="archivo-copia" accept="application/json" class="oculto">
+        </div>
+      </div>
+    `;
+    enganchar();
+  }
 
-  const inputArchivo = cont.querySelector('#archivo-copia');
-  cont.querySelector('#btn-restaurar').onclick = () => inputArchivo.click();
-  inputArchivo.onchange = async () => {
-    const archivo = inputArchivo.files[0];
-    if (!archivo) return;
-    try {
-      const datos = JSON.parse(await archivo.text());
-      await api.restaurarCopia(datos);
-      if (avisar) avisar('Copia restaurada. Tu progreso está de vuelta.');
-      vistaProgreso(cont, avisar);
-    } catch (e) {
-      if (avisar) avisar(e.message);
-    }
-  };
+  function seleccionar(codigo) {
+    seleccion = codigo;
+    cont.querySelectorAll('.nodo').forEach(n => n.classList.toggle('seleccionada', n.dataset.codigo === codigo));
+    cont.querySelectorAll('.carta-ciudad').forEach(c => c.classList.toggle('seleccionada', c.dataset.codigo === codigo));
+    const panel = cont.querySelector('#panel-parada');
+    panel.innerHTML = panelParada();
+    engancharPanel();
+  }
+
+  function engancharPanel() {
+    const p = porCodigo[seleccion];
+    const btnEstudiar = cont.querySelector('#btn-estudiar');
+    if (btnEstudiar) btnEstudiar.onclick = () => {
+      sessionStorage.setItem('kotoba-ciudad', seleccion);
+      location.hash = '#repaso';
+    };
+    const btnTe = cont.querySelector('#btn-te');
+    if (btnTe) btnTe.onclick = () => {
+      sessionStorage.setItem('kotoba-ciudad', seleccion);
+      location.hash = '#repaso';
+    };
+    const btnBillete = cont.querySelector('#btn-billete');
+    if (btnBillete) btnBillete.onclick = async () => {
+      try {
+        await api.gastarBillete(seleccion);
+        if (avisar) avisar(`🎫 ¡Billete usado! ${p.ciudad.nombre} queda abierta desde ya.`);
+        sessionStorage.setItem('kotoba-sel', seleccion);
+        vistaProgreso(cont, avisar);
+      } catch (e) {
+        if (avisar) avisar(e.message);
+      }
+    };
+    const cajaMatcha = cont.querySelector('#lottie-matcha');
+    if (cajaMatcha && !cajaMatcha.classList.contains('oculto')) animar(cajaMatcha, 'matcha');
+  }
+
+  function enganchar() {
+    cont.querySelectorAll('.nodo').forEach(n => {
+      n.addEventListener('click', () => seleccionar(n.dataset.codigo));
+      n.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); seleccionar(n.dataset.codigo); } });
+    });
+    cont.querySelectorAll('.carta-ciudad').forEach(c => {
+      c.addEventListener('click', () => {
+        seleccionar(c.dataset.codigo);
+        cont.querySelector('.caja-mapa').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+    engancharPanel();
+    animar(cont.querySelector('#lottie-japon'), 'japon');
+
+    cont.querySelector('#btn-exportar').onclick = async () => {
+      const datos = await api.exportarCopia();
+      const blob = new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `kotoba-progreso-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    };
+
+    const inputArchivo = cont.querySelector('#archivo-copia');
+    cont.querySelector('#btn-restaurar').onclick = () => inputArchivo.click();
+    inputArchivo.onchange = async () => {
+      const archivo = inputArchivo.files[0];
+      if (!archivo) return;
+      try {
+        const datos = JSON.parse(await archivo.text());
+        await api.restaurarCopia(datos);
+        if (avisar) avisar('Copia restaurada. Tu progreso está de vuelta.');
+        vistaProgreso(cont, avisar);
+      } catch (e) {
+        if (avisar) avisar(e.message);
+      }
+    };
+  }
+
+  pintar();
 }

@@ -15,9 +15,14 @@ export const api = {
     return { ...motor.metaApp(), resumen: motor.resumen(), racha: motor.calcularRacha() };
   },
 
-  cola: async (limite = 20) => {
+  cola: async (limite = 20, soloLeccion = null) => {
     await asegurar();
-    return { cola: motor.colaDeEstudio(limite) };
+    return { cola: motor.colaDeEstudio(limite, 8, soloLeccion) };
+  },
+
+  gastarBillete: async (codigo) => {
+    await asegurar();
+    return motor.gastarBillete(codigo);
   },
 
   responder: async (cardId, resultado) => {

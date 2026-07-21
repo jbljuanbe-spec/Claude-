@@ -18,7 +18,7 @@ function formatearProximo(ts) {
   return d.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) + ` a las ${hora}`;
 }
 
-export async function vistaProgreso(cont) {
+export async function vistaProgreso(cont, avisar) {
   cont.innerHTML = '<p class="vista-sub">Cargando progreso...</p>';
   const { resumen, racha, hoy, ultimos14, lecciones } = await api.dashboard();
 
@@ -88,5 +88,43 @@ export async function vistaProgreso(cont) {
 
     <h2 class="seccion-titulo">Por lección</h2>
     ${filasLeccion || '<p class="vista-sub">Aún no hay contenido importado.</p>'}
+
+    <h2 class="seccion-titulo">Copia de seguridad</h2>
+    <div class="stat-caja">
+      <p style="color:var(--tinta-suave); font-size:0.92rem; margin-bottom:14px">
+        Tu progreso vive en este navegador. Descarga una copia de vez en cuando por si cambias
+        de navegador o de dispositivo, y restáurala aquí cuando la necesites.
+      </p>
+      <div class="fila-botones" style="margin-top:0">
+        <button class="boton boton-secundario" id="btn-exportar">Descargar copia</button>
+        <button class="boton boton-secundario" id="btn-restaurar">Restaurar copia</button>
+        <input type="file" id="archivo-copia" accept="application/json" class="oculto">
+      </div>
+    </div>
   `;
+
+  cont.querySelector('#btn-exportar').onclick = async () => {
+    const datos = await api.exportarCopia();
+    const blob = new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `kotoba-progreso-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
+  const inputArchivo = cont.querySelector('#archivo-copia');
+  cont.querySelector('#btn-restaurar').onclick = () => inputArchivo.click();
+  inputArchivo.onchange = async () => {
+    const archivo = inputArchivo.files[0];
+    if (!archivo) return;
+    try {
+      const datos = JSON.parse(await archivo.text());
+      await api.restaurarCopia(datos);
+      if (avisar) avisar('Copia restaurada. Tu progreso está de vuelta.');
+      vistaProgreso(cont, avisar);
+    } catch (e) {
+      if (avisar) avisar(e.message);
+    }
+  };
 }

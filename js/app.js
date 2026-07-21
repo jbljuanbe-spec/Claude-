@@ -30,7 +30,7 @@ const RUTAS = {
   repaso: () => vistaRepaso(vista, refrescarBadge),
   ejercicios: () => vistaEjercicios(vista),
   biblioteca: () => vistaBiblioteca(vista, avisar, refrescarBadge),
-  progreso: () => vistaProgreso(vista)
+  progreso: () => vistaProgreso(vista, avisar)
 };
 
 function enrutar() {
@@ -40,7 +40,7 @@ function enrutar() {
     a.classList.toggle('activa', a.dataset.vista === (RUTAS[nombre] ? nombre : 'repaso'));
   });
   render().catch(e => {
-    vista.innerHTML = `<p class="vista-sub">Algo ha fallado: ${e.message}. Recarga la página o revisa que el servidor esté corriendo.</p>`;
+    vista.innerHTML = `<p class="vista-sub">Algo ha fallado: ${e.message}. Recarga la página o revisa tu conexión.</p>`;
   });
 }
 

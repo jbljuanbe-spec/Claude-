@@ -708,8 +708,38 @@ input { font-family: inherit; }
   position: relative;
 }
 
-.mapa-svg { width: 100%; height: auto; display: block; touch-action: none; cursor: grab; }
+.mapa-svg { width: 100%; height: min(74vh, 820px); display: block; touch-action: none; cursor: grab; }
 .mapa-svg:active { cursor: grabbing; }
+
+/* Mapa a lo ancho (no arrinconado) */
+.mapa-full { margin-bottom: 18px; }
+.mapa-full .caja-mapa { padding: 10px; }
+
+/* Vía principal y estaciones autogeneradas */
+.via-base { fill: none; stroke: #c8cbd8; stroke-width: 2.2; stroke-linecap: round; opacity: 0.5; }
+.via-progreso { fill: none; stroke: #c9971c; stroke-width: 3.2; stroke-linecap: round; transition: stroke-dasharray 0.9s ease; }
+.mapa-region {
+  font-size: 8.5px; fill: var(--tinta-tenue); text-anchor: middle; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.65; pointer-events: none;
+}
+.estacion { cursor: pointer; outline: none; }
+.estacion-punto {
+  stroke: #fff; stroke-width: 1.5;
+  transition: transform 0.15s; transform-box: fill-box; transform-origin: center;
+}
+.estacion.placeholder .estacion-punto { fill: #dcdce2; stroke-width: 0.7; }
+.estacion.bloqueada .estacion-punto { fill: #c3c3ca; }
+.estacion.activa .estacion-punto { fill: var(--acento); }
+.estacion.superada .estacion-punto { fill: #c9971c; }
+.estacion:hover .estacion-punto, .estacion:focus-visible .estacion-punto { transform: scale(1.4); }
+.estacion.seleccionada .estacion-punto { stroke: var(--tinta); stroke-width: 2.2; }
+.estacion-halo {
+  fill: var(--acento); opacity: 0.32; pointer-events: none;
+  transform-box: fill-box; transform-origin: center; animation: pulso 1.8s ease-out infinite;
+}
+.estacion-check { font-size: 5px; text-anchor: middle; fill: #fff; font-weight: 700; pointer-events: none; }
+.estacion.conquistando .estacion-punto { animation: conquista 0.55s ease-in-out 5; fill: #c9971c !important; }
+.fuji-forma { stroke: #fff; stroke-width: 1.2; }
 .nodo-emoji { font-size: 9px; text-anchor: middle; fill: #fff; pointer-events: none; font-weight: 700; }
 .nodo-progreso { font-size: 8px; text-anchor: middle; fill: var(--tinta-suave); font-weight: 700; pointer-events: none; }
 .ruta-futura { stroke-dasharray: 2 6; opacity: 0.5; }
@@ -722,6 +752,27 @@ input { font-family: inherit; }
 }
 
 .pref:hover { fill: #d9dcef; }
+.pref { cursor: pointer; }
+.pref.activa-pref { fill: var(--acento-claro); stroke: var(--acento); stroke-width: 1; }
+.pref-etiqueta {
+  position: absolute;
+  top: 12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--tinta);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 99px;
+  font-size: 1.05rem;
+  box-shadow: var(--sombra);
+  z-index: 4;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  white-space: nowrap;
+  animation: aparecer 0.2s ease;
+}
+.pref-etiqueta [lang="ja"] { font-size: 1.15rem; }
+.pref-etiqueta small { color: #b9c0e0; font-size: 0.8rem; }
 
 .ruta {
   stroke: var(--tinta-tenue);

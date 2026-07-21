@@ -20,7 +20,8 @@ Las tarjetas con id nuevo entran con progreso desde cero; las existentes actuali
 
 La app se organiza en cuatro pestañas:
 
-1. **📍 El Viaje**: mapa real de Japón **interactivo** (zoom con rueda/pinza, arrastre y vuelo animado a cada parada, con botones ＋ / − / ⌂) más una **línea de tren** con todo tu recorrido hecho y futuro. Jerarquía **Región › Prefectura › Ciudad › Hito**: cada lección es un *hito* de una ciudad (una estación, un barrio, una comida, un festival), y superarlo da su **insignia local** (logro). Completar todos los hitos **conquista la ciudad** (animación dorada + confeti + billete extra). Las ciudades futuras salen en gris ("Próximamente") para ver la escala del viaje.
+1. **📍 El Viaje**: mapa real de Japón **a pantalla completa e interactivo** (zoom con rueda/pinza, arrastre y vuelo de cámara ~2.5× a la parada conquistada; botones ＋ / − / ⌂). Las estaciones (lecciones) se **reparten solas** a lo largo de la vía principal (curva Bézier entre 11 hitos madre) por interpolación con `getPointAtLength()`: da igual que haya 6, 86 o 300 lecciones, el mapa crece y se redistribuye sin tocar coordenadas. Cada lección es un *hito* de una ciudad (estación, barrio, comida, festival) y superarla da su **insignia local**; completar todos los hitos **conquista la ciudad** (estación dorada + vía que se rellena + confeti). Las estaciones futuras salen como puntos grises "en construcción" hasta la ~L300. **Al tocar una prefectura** aparece su nombre (kanji + romaji + tipo), para aprender geografía y cultura mientras juegas.
+
 2. **📖 Lecciones**: el temario ordenado. Teoría de cada lección (vocabulario, gramática, conjugación con audio) y sus ejercicios prácticos: partículas, ordenar frases, traducción, lectura de kanji, conjugación y vocabulario escrito. Aprobado = 80%. El fallo da +0 XP (nunca resta).
 3. **⚔️ Repaso**: la sesión SRS diaria (SM-2 adaptado, interleaving, corrección tolerante con romaji→kana). Se puede filtrar por ciudad desde el mapa.
 4. **🏆 Perfil**: racha con congeladores automáticos (1 cada 4 días activos, máx. 4, se usan solos), nivel y XP, **galería de insignias locales** (una por hito, consultable como logros de videojuego, con fecha), tarjetas sanguijuela (5+ fallos), actividad y copia de seguridad.
@@ -35,19 +36,27 @@ La app se organiza en cuatro pestañas:
 ## Estructura
 
 ```
-index.html              Punto de entrada
-js/motor.js             SRS, importación idempotente, racha y estadísticas
+index.html              Punto de entrada + pestañas
+js/app.js               Enrutado por hash de las 4 pestañas
+js/motor.js             SRS, importación idempotente, viaje, racha y estadísticas
 js/almacen.js           Persistencia en IndexedDB
 js/api.js               Fachada que usan las vistas
-js/review.js            Vista de Repaso
-js/exercises.js         Vista de Ejercicios
-js/library.js           Vista de Biblioteca
-js/dashboard.js         Vista de Progreso + copia de seguridad
+js/curriculum.js        Jerarquía Región › Prefectura › Ciudad › Hito + hitos madre del mapa
+js/mapa-render.js       Vía Bézier + reparto automático de estaciones (getPointAtLength)
+js/mapa-japon.js        Geometría de las 47 prefecturas (GeoJSON simplificado, con romaji)
+js/viaje.js             📍 El Viaje: mapa interactivo + línea de tren
+js/lecciones.js         📖 Lecciones: teoría + ejercicios que superan la lección
+js/review.js            ⚔️ Repaso: sesión SRS
+js/perfil.js            🏆 Perfil: nivel, insignias, sanguijuelas, copia de seguridad
+js/ciudades.js          Niveles de viajero y tiers de dominio
 js/kana.js              Romaji -> kana, normalización y corrección tolerante
 js/tts.js               Pronunciación (Web Speech API)
+js/lottie.js            Carga diferida de animaciones Lottie
 data/ejercicios.json    Ejercicios de partículas / ordenar / traducción
 contenido_japones.json  Contenido de las lecciones (se reemplaza al actualizar)
 ```
+
+Para añadir lecciones nuevas solo tocas `contenido_japones.json`: aparecen solas como estaciones en el mapa y como lecciones jugables (agrupadas bajo "Nuevas lecciones" si aún no las has asignado a una ciudad en `js/curriculum.js`, que es opcional y solo sirve para ponerles nombre de hito e insignia bonitos).
 
 Para trastear en local basta cualquier servidor estático, por ejemplo `python3 -m http.server` en la raíz.
 

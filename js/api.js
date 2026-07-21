@@ -59,9 +59,19 @@ export const api = {
     return motor.registrarEjercicio();
   },
 
-  dashboard: async () => {
+  viaje: async () => {
     await asegurar();
-    return motor.datosDashboard();
+    return motor.datosViaje();
+  },
+
+  perfil: async () => {
+    await asegurar();
+    return motor.datosPerfil();
+  },
+
+  superarLeccion: async (codigo) => {
+    await asegurar();
+    return motor.superarLeccion(codigo);
   },
 
   exportarCopia: async () => {

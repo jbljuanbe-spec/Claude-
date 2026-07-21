@@ -1,9 +1,10 @@
-// Enrutado por hash + arranque.
+// Enrutado por hash + arranque. Cuatro pestañas independientes:
+// El Viaje (mapa), Lecciones (teoría + ejercicios), Repaso (SRS) y Perfil.
 import { api } from './api.js';
 import { vistaRepaso } from './review.js';
-import { vistaEjercicios } from './exercises.js';
-import { vistaBiblioteca } from './library.js';
-import { vistaProgreso } from './dashboard.js';
+import { vistaLecciones } from './lecciones.js';
+import { vistaViaje } from './viaje.js';
+import { vistaPerfil } from './perfil.js';
 
 const vista = document.getElementById('vista');
 const badge = document.getElementById('badge-pendientes');
@@ -27,17 +28,21 @@ async function refrescarBadge() {
 }
 
 const RUTAS = {
+  viaje: () => vistaViaje(vista, avisar),
+  lecciones: () => vistaLecciones(vista, avisar, refrescarBadge),
   repaso: () => vistaRepaso(vista, refrescarBadge),
-  ejercicios: () => vistaEjercicios(vista),
-  biblioteca: () => vistaBiblioteca(vista, avisar, refrescarBadge),
-  progreso: () => vistaProgreso(vista, avisar)
+  perfil: () => vistaPerfil(vista, avisar)
 };
 
+// Rutas antiguas que siguen funcionando.
+const ALIAS = { progreso: 'viaje', biblioteca: 'lecciones', ejercicios: 'lecciones' };
+
 function enrutar() {
-  const nombre = (location.hash || '#repaso').slice(1);
-  const render = RUTAS[nombre] || RUTAS.repaso;
+  let nombre = (location.hash || '#viaje').slice(1);
+  if (ALIAS[nombre]) nombre = ALIAS[nombre];
+  const render = RUTAS[nombre] || RUTAS.viaje;
   document.querySelectorAll('.navegacion a').forEach(a => {
-    a.classList.toggle('activa', a.dataset.vista === (RUTAS[nombre] ? nombre : 'repaso'));
+    a.classList.toggle('activa', a.dataset.vista === (RUTAS[nombre] ? nombre : 'viaje'));
   });
   render().catch(e => {
     vista.innerHTML = `<p class="vista-sub">Algo ha fallado: ${e.message}. Recarga la página o revisa tu conexión.</p>`;

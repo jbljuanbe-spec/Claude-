@@ -28,17 +28,17 @@ export async function vistaRepaso(cont, refrescarBadge) {
         <h2>Todo al día${nombreCiudad ? ` en ${esc(nombreCiudad)}` : ''}</h2>
         <p class="vista-sub" style="margin-top:6px">No hay tarjetas pendientes ahora mismo. Momento perfecto para un té, unos ejercicios o la biblioteca.</p>
         <div class="fila-botones" style="justify-content:center">
-          <button class="boton boton-primario" id="ir-ejercicios">Hacer ejercicios</button>
-          <button class="boton boton-secundario" id="ir-progreso">Ver mi viaje</button>
+          <button class="boton boton-primario" id="ir-ejercicios">Ir a las lecciones</button>
+          <button class="boton boton-secundario" id="ir-progreso">Ver el mapa</button>
         </div>
       </div></div>`;
     animar(cont.querySelector('#lottie-descanso'), 'matcha');
-    cont.querySelector('#ir-ejercicios').onclick = () => location.hash = '#ejercicios';
-    cont.querySelector('#ir-progreso').onclick = () => location.hash = '#progreso';
+    cont.querySelector('#ir-ejercicios').onclick = () => location.hash = '#lecciones';
+    cont.querySelector('#ir-progreso').onclick = () => location.hash = '#viaje';
     return;
   }
 
-  const sesion = { idx: 0, aciertos: 0, fallos: 0, xp: 0, insignias: [], billetes: 0, nivelNuevo: null };
+  const sesion = { idx: 0, aciertos: 0, fallos: 0, xp: 0, insignias: [], nivelNuevo: null };
 
   function pintarTarjeta() {
     if (sesion.idx >= cola.length) return pintarFin();
@@ -143,7 +143,6 @@ export async function vistaRepaso(cont, refrescarBadge) {
     api.responder(t.id, acierto ? 'bien' : 'mal').then(r => {
       sesion.xp += r.xpGanado || 0;
       if (r.insigniasNuevas) sesion.insignias.push(...r.insigniasNuevas);
-      if (r.billetesNuevos) sesion.billetes += r.billetesNuevos.length;
       if (r.subeNivel) sesion.nivelNuevo = r.nivel;
       const titulo = cont.querySelector('.panel-feedback .feedback-titulo');
       if (titulo && r.xpGanado) titulo.insertAdjacentHTML('beforeend', `<span class="chip-xp">+${r.xpGanado} XP</span>`);
@@ -193,8 +192,6 @@ export async function vistaRepaso(cont, refrescarBadge) {
     const nivelHtml = sesion.nivelNuevo ? `
       <div class="aviso-nivel">🎉 ¡Nivel ${sesion.nivelNuevo.nivel}! Ahora eres <b>${esc(sesion.nivelNuevo.titulo)}</b> <span lang="ja">${esc(sesion.nivelNuevo.kanji)}</span></div>` : '';
 
-    const billetesHtml = sesion.billetes ? `
-      <div class="aviso-nivel">🎫 ${sesion.billetes === 1 ? '¡Billete de Shinkansen conseguido!' : `¡${sesion.billetes} billetes de Shinkansen conseguidos!`} Puedes usarlo en el mapa para adelantar el viaje.</div>` : '';
 
     const insigniasHtml = sesion.insignias.length ? `
       <div class="fin-insignias">
@@ -220,7 +217,6 @@ export async function vistaRepaso(cont, refrescarBadge) {
           <div class="fin-stat"><b style="color:var(--acento)">+${sesion.xp}</b><span>XP</span></div>
         </div>
         ${nivelHtml}
-        ${billetesHtml}
         ${insigniasHtml}
         <div class="fila-botones" style="justify-content:center">
           <button class="boton boton-primario" id="btn-otra">Seguir estudiando</button>
@@ -229,7 +225,7 @@ export async function vistaRepaso(cont, refrescarBadge) {
       </div></div>`;
     animar(cont.querySelector('#lottie-fin'), 'conejos');
     cont.querySelector('#btn-otra').onclick = () => vistaRepaso(cont, refrescarBadge);
-    cont.querySelector('#btn-progreso').onclick = () => location.hash = '#progreso';
+    cont.querySelector('#btn-progreso').onclick = () => location.hash = '#viaje';
     refrescarBadge();
   }
 

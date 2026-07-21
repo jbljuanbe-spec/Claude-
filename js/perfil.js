@@ -1,0 +1,152 @@
+// 🏆 Perfil y estadísticas: nivel, racha protegida, medallas, tarjetas
+// sanguijuela, actividad y copia de seguridad. Nada de esto baja nunca.
+import { api } from './api.js';
+import { ciudadDeLeccion, TIERS } from './ciudades.js';
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function formatearProximo(ts) {
+  if (!ts) return 'nada programado';
+  const d = new Date(ts);
+  const hoy = new Date();
+  const manana = new Date(hoy); manana.setDate(hoy.getDate() + 1);
+  const hora = d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+  if (d.toDateString() === hoy.toDateString()) return `hoy a las ${hora}`;
+  if (d.toDateString() === manana.toDateString()) return `mañana a las ${hora}`;
+  return d.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) + ` a las ${hora}`;
+}
+
+const CONOCIDAS = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'General'];
+
+export async function vistaPerfil(cont, avisar) {
+  cont.innerHTML = '<p class="vista-sub">Cargando perfil...</p>';
+  const { resumen, racha, hoy, ultimos14, lecciones, juego, sanguijuelas } = await api.perfil();
+
+  const totalHoy = hoy.repasos + hoy.ejercicios;
+  const maxActividad = Math.max(1, ...ultimos14.map(d => d.n));
+  const dias = [...ultimos14].reverse();
+  const nivel = juego.nivel;
+
+  const codigos = Object.keys(resumen.porLeccion).sort((a, b) => {
+    if (a === 'General') return 1;
+    if (b === 'General') return -1;
+    return a.localeCompare(b, 'es', { numeric: true });
+  });
+
+  let extra = 0;
+  const medallero = codigos.map(cod => {
+    const ciudad = ciudadDeLeccion(cod, CONOCIDAS.includes(cod) ? 0 : extra++);
+    const tiers = TIERS.map(t => ({ ...t, ganada: juego.insignias.includes(`${cod}:${t.id}`) }));
+    const alguna = tiers.some(t => t.ganada);
+    return `
+      <div class="fila-medallero ${alguna ? '' : 'sin-medallas'}">
+        <span class="carta-ciudad-emoji" style="font-size:1.3rem">${ciudad.emoji}</span>
+        <div>
+          <b>${esc(ciudad.nombre)}</b>
+          <small style="color:var(--tinta-tenue)"> · ${esc(cod)}</small>
+          <div class="carta-ciudad-leccion">${esc(ciudad.habilidad)}</div>
+        </div>
+        <div class="fila-medallas" style="margin:0; margin-left:auto">
+          ${tiers.map(t => `<span class="medalla ${t.ganada ? 'ganada' : ''}" title="${esc(t.nombre)}: ${esc(t.descripcion)}">${t.icono}</span>`).join('')}
+        </div>
+      </div>`;
+  }).join('');
+
+  const filasSanguijuelas = sanguijuelas.length ? sanguijuelas.map(s => `
+    <div class="fila-sanguijuela">
+      <span class="sanguijuela-prompt" lang="ja">${esc(s.prompt)}</span>
+      <span class="carta-ciudad-leccion">${esc(s.respuesta)}${s.es ? ' · ' + esc(s.es) : ''}</span>
+      <span class="chip chip-sanguijuela" title="Fallos acumulados">${s.fallos} fallos</span>
+    </div>`).join('')
+    : '<p class="vista-sub" style="margin:0">Ninguna por ahora. Las tarjetas que falles 5 o más veces aparecerán aquí para que las vigiles de cerca.</p>';
+
+  cont.innerHTML = `
+    <h1 class="vista-titulo">🏆 Perfil</h1>
+    <p class="vista-sub">Tu historial de viajero. Nada de lo ganado se pierde nunca.</p>
+
+    <div class="rejilla-stats">
+      <div class="stat-caja stat-nivel">
+        <div class="nivel-cab">
+          <span class="nivel-numero">${nivel.nivel}</span>
+          <div>
+            <b style="font-size:1.15rem">${esc(nivel.titulo)} <span lang="ja" style="color:var(--acento)">${esc(nivel.kanji)}</span></b>
+            <span style="display:block">${nivel.xp} XP ${nivel.xpSiguiente ? `· siguiente nivel a ${nivel.xpSiguiente}` : '· nivel máximo'}</span>
+          </div>
+        </div>
+        <div class="barra-nivel"><div style="width:${Math.round(nivel.haciaSiguiente * 100)}%"></div></div>
+      </div>
+      <div class="stat-caja">
+        <b>${racha} ${racha === 1 ? 'día' : 'días'} 🔥</b>
+        <span>racha de estudio</span>
+        <div class="stat-detalle">❄️ ${juego.congeladores} ${juego.congeladores === 1 ? 'congelador' : 'congeladores'} (1 cada 4 días activos, máx. 4): se usan solos en días sin actividad</div>
+      </div>
+      <div class="stat-caja">
+        <b>🎫 ${juego.billetes}</b>
+        <span>billetes de Shinkansen</span>
+        <div class="stat-detalle">Se ganan superando y conquistando ciudades</div>
+      </div>
+      <div class="stat-caja">
+        <b>${resumen.dominadas} / ${resumen.total}</b>
+        <span>tarjetas dominadas</span>
+        <div class="stat-detalle">${totalHoy} respuestas hoy · ${resumen.pendientesAhora > 0 ? `${resumen.pendientesAhora} pendientes ahora` : `próximo repaso: ${formatearProximo(resumen.proximoDue)}`}</div>
+      </div>
+    </div>
+
+    <h2 class="seccion-titulo">Medallero <small>bronce al arrancar una ciudad, plata y oro por retención real</small></h2>
+    <div class="stat-caja" style="padding:10px 20px">${medallero}</div>
+
+    <h2 class="seccion-titulo">🩸 Tarjetas sanguijuela <small>las que más se te resisten</small></h2>
+    <div class="stat-caja">${filasSanguijuelas}</div>
+
+    <h2 class="seccion-titulo">Actividad de los últimos 14 días</h2>
+    <div class="stat-caja">
+      <div class="actividad-mini">
+        ${Array.from({ length: 14 }, (_, i) => {
+          const d = dias[i - (14 - dias.length)];
+          if (!d) return '<div class="actividad-dia vacio" style="height:3px"></div>';
+          return `<div class="actividad-dia ${d.n ? '' : 'vacio'}" style="height:${Math.max(6, (d.n / maxActividad) * 100)}%" title="${esc(d.fecha)}: ${d.n}"></div>`;
+        }).join('')}
+      </div>
+    </div>
+
+    <h2 class="seccion-titulo">Copia de seguridad</h2>
+    <div class="stat-caja">
+      <p style="color:var(--tinta-suave); font-size:0.92rem; margin-bottom:14px">
+        Tu progreso vive en este navegador. Descarga una copia de vez en cuando por si cambias
+        de navegador o de dispositivo, y restáurala aquí cuando la necesites.
+      </p>
+      <div class="fila-botones" style="margin-top:0">
+        <button class="boton boton-secundario" id="btn-exportar">Descargar copia</button>
+        <button class="boton boton-secundario" id="btn-restaurar">Restaurar copia</button>
+        <input type="file" id="archivo-copia" accept="application/json" class="oculto">
+      </div>
+    </div>
+  `;
+
+  cont.querySelector('#btn-exportar').onclick = async () => {
+    const datos = await api.exportarCopia();
+    const blob = new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `kotoba-progreso-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
+  const inputArchivo = cont.querySelector('#archivo-copia');
+  cont.querySelector('#btn-restaurar').onclick = () => inputArchivo.click();
+  inputArchivo.onchange = async () => {
+    const archivo = inputArchivo.files[0];
+    if (!archivo) return;
+    try {
+      const datos = JSON.parse(await archivo.text());
+      await api.restaurarCopia(datos);
+      if (avisar) avisar('Copia restaurada. Tu progreso está de vuelta.');
+      vistaPerfil(cont, avisar);
+    } catch (e) {
+      if (avisar) avisar(e.message);
+    }
+  };
+}

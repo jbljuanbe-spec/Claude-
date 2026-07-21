@@ -2,6 +2,7 @@
 // actividad diaria y estadísticas. Todo persiste en IndexedDB (ver almacen.js).
 import { leer, guardar, pedirPersistencia } from './almacen.js';
 import { nivelDeXp, tiersConseguidos } from './ciudades.js';
+import { paradasFuturas } from './roadmap.js';
 
 const MIN = 60 * 1000;
 const DIA = 24 * 60 * 60 * 1000;
@@ -24,9 +25,9 @@ const estado = {
   listo: false
 };
 
-// XP por acción: responder siempre suma (también al fallar: el esfuerzo cuenta).
+// XP por acción: el fallo no resta nada, pero tampoco suma (+0).
 const XP_ACIERTO = 10;
-const XP_FALLO = 3;
+const XP_FALLO = 0;
 const XP_EJERCICIO = 6;
 const DIAS_POR_CONGELADOR = 4;   // cada 4 días activos se gana un congelador de racha
 const MAX_CONGELADORES = 4;
@@ -73,8 +74,8 @@ export async function iniciar() {
     if (!Object.keys(estado.cards).length) throw e;
     // Sin red pero con contenido cacheado: se puede estudiar igual.
   }
-  // Reconoce paradas ya completadas por progreso anterior a esta versión.
-  if (actualizarViaje().length || actualizarInsignias().length) await persistir();
+  // Reconoce insignias ganadas por progreso previo a esta versión.
+  if (actualizarInsignias().length) await persistir();
   estado.listo = true;
 }
 
@@ -184,19 +185,19 @@ function concederBillete(evento) {
   return true;
 }
 
-// Concede "parada completada" (todo su contenido en marcha) y su billete.
-function actualizarViaje() {
-  const { porLeccion } = resumen();
-  const billetesNuevos = [];
-  for (const cod of [...ordenParadas(), 'General']) {
-    const stats = porLeccion[cod];
-    if (!stats || !stats.total) continue;
-    const evento = `${cod}:completa`;
-    if (stats.nuevas === 0 && !estado.juego.eventosBilletes.includes(evento)) {
-      if (concederBillete(evento)) billetesNuevos.push({ motivo: 'completa', leccion: cod });
-    }
+// Leer la teoría NO completa una lección: solo aprobar sus ejercicios
+// prácticos la marca como superada (y eso es permanente).
+export async function superarLeccion(codigo) {
+  if (!estado.lecciones[codigo] && codigo !== 'General') {
+    throw new Error(`La lección ${codigo} no tiene contenido todavía`);
   }
-  return billetesNuevos;
+  const nueva = concederBillete(`${codigo}:completa`);
+  await guardar('juego', estado.juego);
+  return { nueva, billetes: estado.juego.billetes };
+}
+
+export function estaSuperada(codigo) {
+  return estado.juego.eventosBilletes.includes(`${codigo}:completa`);
 }
 
 export function paradas() {
@@ -207,18 +208,26 @@ export function paradas() {
 
   orden.forEach((cod, i) => {
     const stats = porLeccion[cod] || { total: 0, nuevas: 0, aprendiendo: 0, dominadas: 0 };
-    const completada = estado.juego.eventosBilletes.includes(`${cod}:completa`);
+    const completada = estaSuperada(cod);
     let estadoParada;
     if (completada) estadoParada = 'COMPLETED';
     else if (!activaAsignada) { estadoParada = 'ACTIVE'; activaAsignada = true; }
     else if (estado.juego.desbloqueadas.includes(cod)) estadoParada = 'ACTIVE';
     else estadoParada = 'LOCKED';
-    lista.push({ codigo: cod, orden: i + 1, estado: estadoParada, stats });
+    lista.push({ codigo: cod, orden: i + 1, estado: estadoParada, stats, hasContent: true });
+  });
+
+  // Paradas futuras sin contenido: visibles como "Próximamente".
+  paradasFuturas(orden).forEach((cod, i) => {
+    lista.push({
+      codigo: cod, orden: orden.length + i + 1, estado: 'LOCKED', hasContent: false,
+      stats: { total: 0, nuevas: 0, aprendiendo: 0, dominadas: 0 }
+    });
   });
 
   // El Monte Fuji (General) es la parada transversal: siempre accesible.
   if (porLeccion.General) {
-    lista.push({ codigo: 'General', orden: 0, estado: 'ACTIVE', stats: porLeccion.General });
+    lista.push({ codigo: 'General', orden: 0, estado: estaSuperada('General') ? 'COMPLETED' : 'ACTIVE', stats: porLeccion.General, hasContent: true });
   }
 
   const ahora = Date.now();
@@ -245,6 +254,7 @@ function leccionesConNuevasPermitidas() {
 }
 
 export async function gastarBillete(codigo) {
+  if (!estado.lecciones[codigo]) throw new Error('Esa parada aún no tiene contenido');
   if (estado.juego.billetes <= 0) throw new Error('No te quedan billetes de Shinkansen');
   if (estado.juego.desbloqueadas.includes(codigo)) return { billetes: estado.juego.billetes };
   estado.juego.billetes--;
@@ -289,9 +299,8 @@ export async function responder(cardId, resultado) {
   for (const i of insigniasNuevas) {
     if (i.tier === 'plata') concederBillete(`${i.leccion}:plata`);
   }
-  const billetesNuevos = actualizarViaje();
   await persistir();
-  return { estado: p.estado, intervalo_dias: p.intervalo, due_at: p.due_at, ...juego, insigniasNuevas, billetesNuevos };
+  return { estado: p.estado, intervalo_dias: p.intervalo, due_at: p.due_at, ...juego, insigniasNuevas };
 }
 
 // Cola de estudio: pendientes mezcladas con nuevas, interleaving por tipo.
@@ -396,7 +405,41 @@ export function datosBiblioteca() {
   return { lecciones: estado.lecciones, tarjetas };
 }
 
-export function datosDashboard() {
+// Tarjetas "sanguijuela": las que fallas una y otra vez (5+ fallos).
+export function sanguijuelas(minFallos = 5, limite = 12) {
+  return Object.entries(estado.progreso)
+    .filter(([, p]) => p.fallos >= minFallos)
+    .sort(([, a], [, b]) => b.fallos - a.fallos)
+    .slice(0, limite)
+    .map(([id, p]) => {
+      const c = estado.cards[id] || {};
+      return {
+        id,
+        leccion: c.leccion,
+        tipo: c.tipo,
+        prompt: c.kanji || c.front || c.question || id,
+        respuesta: c.reading || c.answer || '',
+        es: c.es || '',
+        fallos: p.fallos,
+        aciertosSeguidos: p.racha
+      };
+    });
+}
+
+function juegoResumen() {
+  return {
+    nivel: nivelDeXp(estado.juego.xp),
+    congeladores: congeladoresDisponibles(),
+    insignias: [...estado.juego.insignias],
+    billetes: estado.juego.billetes
+  };
+}
+
+export function datosViaje() {
+  return { paradas: paradas(), lecciones: estado.lecciones, juego: juegoResumen() };
+}
+
+export function datosPerfil() {
   const hoy = estado.actividad[hoyLocal()] || { repasos: 0, ejercicios: 0 };
   const ultimos14 = Object.entries(estado.actividad)
     .map(([fecha, a]) => ({ fecha, n: a.repasos + a.ejercicios }))
@@ -408,13 +451,8 @@ export function datosDashboard() {
     hoy,
     ultimos14,
     lecciones: estado.lecciones,
-    juego: {
-      nivel: nivelDeXp(estado.juego.xp),
-      congeladores: congeladoresDisponibles(),
-      insignias: [...estado.juego.insignias],
-      billetes: estado.juego.billetes
-    },
-    paradas: paradas()
+    juego: juegoResumen(),
+    sanguijuelas: sanguijuelas()
   };
 }
 

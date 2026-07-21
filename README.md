@@ -18,6 +18,15 @@ Las tarjetas con id nuevo entran con progreso desde cero; las existentes actuali
 
 ## Qué hay dentro
 
+La app se organiza en cuatro pestañas:
+
+1. **📍 El Viaje**: mapa real de Japón con la ruta de aprendizaje por estaciones. Una lección se supera SOLO aprobando sus ejercicios (leer la teoría no basta); al conseguirlo, la estación se vuelve dorada con animación de conquista y se abre el tramo hasta la siguiente. Billetes de Shinkansen 🎫 para adelantar paradas. La ruta está trazada hasta la lección 300: las estaciones sin contenido aparecen como "Próximamente" sin romper nada.
+2. **📖 Lecciones**: el temario ordenado. Teoría de cada lección (vocabulario, gramática, conjugación con audio) y sus ejercicios prácticos: partículas, ordenar frases, traducción, lectura de kanji, conjugación y vocabulario escrito. Aprobado = 80%. El fallo da +0 XP (nunca resta).
+3. **⚔️ Repaso**: la sesión SRS diaria (SM-2 adaptado, interleaving, corrección tolerante con romaji→kana). Se puede filtrar por ciudad desde el mapa.
+4. **🏆 Perfil**: racha con congeladores automáticos (1 cada 4 días activos, máx. 4, se usan solos), nivel y XP, medallero por retención real, tarjetas sanguijuela (5+ fallos), actividad y copia de seguridad.
+
+### Detalle de las piezas
+
 - **Repaso**: motor SRS (SM-2 adaptado) que mezcla vocabulario, gramática y conjugación en la misma sesión. Vocab y conjugación se responden escribiendo (acepta kanji, kana o romaji, que se convierte solo); la gramática se autoevalúa tras leer la explicación. Fallar una tarjeta la resetea a minutos; acertarla varias veces la espacia hasta 180 días, sin eliminarla nunca.
 - **Ejercicios**: partículas (rellenar hueco), ordenar frases (refuerza el orden SOV) y traducción libre con corrección aproximada. Los datos viven en `data/ejercicios.json`.
 - **Biblioteca**: todo el contenido por lección, con kanji en grande, furigana conmutable, audio y estado de cada tarjeta. Aquí está el botón de actualizar contenido.

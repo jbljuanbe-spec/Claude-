@@ -14,7 +14,7 @@
 export const CIUDADES = [
   {
     id: 'tokio', nombre: 'Tokio', kanji: '東京', emoji: '🗼',
-    prefectura: 'Tokio', region: 'Kantō (関東)', jlpt: 'N5',
+    prefectura: 'Tokio', pref: '東京都', region: 'Kantō (関東)', jlpt: 'N5',
     lat: 35.68, lon: 139.69, dxEtiqueta: 14, dyEtiqueta: 3,
     lema: 'Tu llegada a Japón. Aquí das tus primeros pasos.',
     hitos: [
@@ -40,16 +40,16 @@ export const CIUDADES = [
 // para que se vea la escala del viaje. Al añadir lecciones nuevas del chat, se
 // irán convirtiendo en ciudades reales con sus hitos.
 export const CIUDADES_FUTURAS = [
-  { id: 'yokohama', nombre: 'Yokohama', kanji: '横浜', emoji: '🚢', prefectura: 'Kanagawa', region: 'Kantō (関東)', jlpt: 'N5', lat: 35.44, lon: 139.64, dxEtiqueta: 12, dyEtiqueta: 12 },
-  { id: 'kioto', nombre: 'Kioto', kanji: '京都', emoji: '⛩️', prefectura: 'Kioto', region: 'Kansai (関西)', jlpt: 'N4', lat: 35.01, lon: 135.77, dxEtiqueta: -16, dyEtiqueta: -6 },
-  { id: 'osaka', nombre: 'Osaka', kanji: '大阪', emoji: '🐙', prefectura: 'Osaka', region: 'Kansai (関西)', jlpt: 'N4', lat: 34.69, lon: 135.50, dxEtiqueta: -14, dyEtiqueta: 8 },
-  { id: 'nara', nombre: 'Nara', kanji: '奈良', emoji: '🦌', prefectura: 'Nara', region: 'Kansai (関西)', jlpt: 'N4', lat: 34.69, lon: 135.80, dxEtiqueta: 14, dyEtiqueta: 12 },
-  { id: 'kanazawa', nombre: 'Kanazawa', kanji: '金沢', emoji: '🍁', prefectura: 'Ishikawa', region: 'Chūbu (中部)', jlpt: 'N4', lat: 36.56, lon: 136.66, dxEtiqueta: 0, dyEtiqueta: -10 },
-  { id: 'hiroshima', nombre: 'Hiroshima', kanji: '広島', emoji: '🕊️', prefectura: 'Hiroshima', region: 'Chūgoku (中国)', jlpt: 'N3', lat: 34.39, lon: 132.46, dxEtiqueta: 0, dyEtiqueta: -10 },
-  { id: 'fukuoka', nombre: 'Fukuoka', kanji: '福岡', emoji: '🍜', prefectura: 'Fukuoka', region: 'Kyūshū (九州)', jlpt: 'N3', lat: 33.59, lon: 130.40, dxEtiqueta: -6, dyEtiqueta: -10 },
-  { id: 'sendai', nombre: 'Sendai', kanji: '仙台', emoji: '🎋', prefectura: 'Miyagi', region: 'Tōhoku (東北)', jlpt: 'N3', lat: 38.27, lon: 140.87, dxEtiqueta: 12, dyEtiqueta: 0 },
-  { id: 'sapporo', nombre: 'Sapporo', kanji: '札幌', emoji: '❄️', prefectura: 'Hokkaidō', region: 'Hokkaidō (北海道)', jlpt: 'N2', lat: 43.06, lon: 141.35, dxEtiqueta: 0, dyEtiqueta: -10 },
-  { id: 'naha', nombre: 'Naha', kanji: '那覇', emoji: '🏝️', prefectura: 'Okinawa', region: 'Okinawa (沖縄)', jlpt: 'N1', lat: 26.21, lon: 127.68, dxEtiqueta: 0, dyEtiqueta: 14 }
+  { id: 'yokohama', nombre: 'Yokohama', kanji: '横浜', emoji: '🚢', prefectura: 'Kanagawa', pref: '神奈川県', region: 'Kantō (関東)', jlpt: 'N5', lat: 35.44, lon: 139.64, dxEtiqueta: 12, dyEtiqueta: 12 },
+  { id: 'kioto', nombre: 'Kioto', kanji: '京都', emoji: '⛩️', prefectura: 'Kioto', pref: '京都府', region: 'Kansai (関西)', jlpt: 'N4', lat: 35.01, lon: 135.77, dxEtiqueta: -16, dyEtiqueta: -6 },
+  { id: 'osaka', nombre: 'Osaka', kanji: '大阪', emoji: '🐙', prefectura: 'Osaka', pref: '大阪府', region: 'Kansai (関西)', jlpt: 'N4', lat: 34.69, lon: 135.50, dxEtiqueta: -14, dyEtiqueta: 8 },
+  { id: 'nara', nombre: 'Nara', kanji: '奈良', emoji: '🦌', prefectura: 'Nara', pref: '奈良県', region: 'Kansai (関西)', jlpt: 'N4', lat: 34.69, lon: 135.80, dxEtiqueta: 14, dyEtiqueta: 12 },
+  { id: 'kanazawa', nombre: 'Kanazawa', kanji: '金沢', emoji: '🍁', prefectura: 'Ishikawa', pref: '石川県', region: 'Chūbu (中部)', jlpt: 'N4', lat: 36.56, lon: 136.66, dxEtiqueta: 0, dyEtiqueta: -10 },
+  { id: 'hiroshima', nombre: 'Hiroshima', kanji: '広島', emoji: '🕊️', prefectura: 'Hiroshima', pref: '広島県', region: 'Chūgoku (中国)', jlpt: 'N3', lat: 34.39, lon: 132.46, dxEtiqueta: 0, dyEtiqueta: -10 },
+  { id: 'fukuoka', nombre: 'Fukuoka', kanji: '福岡', emoji: '🍜', prefectura: 'Fukuoka', pref: '福岡県', region: 'Kyūshū (九州)', jlpt: 'N3', lat: 33.59, lon: 130.40, dxEtiqueta: -6, dyEtiqueta: -10 },
+  { id: 'sendai', nombre: 'Sendai', kanji: '仙台', emoji: '🎋', prefectura: 'Miyagi', pref: '宮城県', region: 'Tōhoku (東北)', jlpt: 'N3', lat: 38.27, lon: 140.87, dxEtiqueta: 12, dyEtiqueta: 0 },
+  { id: 'sapporo', nombre: 'Sapporo', kanji: '札幌', emoji: '❄️', prefectura: 'Hokkaidō', pref: '北海道', region: 'Hokkaidō (北海道)', jlpt: 'N2', lat: 43.06, lon: 141.35, dxEtiqueta: 0, dyEtiqueta: -10 },
+  { id: 'naha', nombre: 'Naha', kanji: '那覇', emoji: '🏝️', prefectura: 'Okinawa', pref: '沖縄県', region: 'Okinawa (沖縄)', jlpt: 'N1', lat: 26.21, lon: 127.68, dxEtiqueta: 0, dyEtiqueta: 14 }
 ];
 
 // Hitos madre (anchor waypoints): 11 puntos fijos por los que pasa la vía

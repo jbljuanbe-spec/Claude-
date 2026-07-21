@@ -708,7 +708,11 @@ input { font-family: inherit; }
   position: relative;
 }
 
-.mapa-svg { width: 100%; height: auto; display: block; }
+.mapa-svg { width: 100%; height: auto; display: block; touch-action: none; cursor: grab; }
+.mapa-svg:active { cursor: grabbing; }
+.nodo-emoji { font-size: 9px; text-anchor: middle; fill: #fff; pointer-events: none; font-weight: 700; }
+.nodo-progreso { font-size: 8px; text-anchor: middle; fill: var(--tinta-suave); font-weight: 700; pointer-events: none; }
+.ruta-futura { stroke-dasharray: 2 6; opacity: 0.5; }
 
 .pref {
   fill: #e6e8f3;
@@ -1020,6 +1024,182 @@ input { font-family: inherit; }
   85% { opacity: 1; }
   100% { transform: translateY(420px) rotate(340deg); opacity: 0; }
 }
+
+/* ---------- Controles del mapa ---------- */
+.caja-mapa { position: relative; }
+.controles-mapa {
+  position: absolute;
+  top: 12px; left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 3;
+}
+.control-mapa {
+  width: 34px; height: 34px;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  border-radius: 9px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--tinta-suave);
+  box-shadow: var(--sombra);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.control-mapa:hover { background: var(--acento-claro); color: var(--acento); }
+
+/* ---------- Línea de tren (recorrido) ---------- */
+.linea-tren {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+.linea-tren-cab {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.linea-tren-cab span { color: var(--tinta-suave); font-size: 0.85rem; }
+.linea-tren-pista {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
+.tren-ciudad {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 8px 10px;
+  background: var(--fondo);
+  flex-shrink: 0;
+}
+.tren-ciudad.conq { border-color: #e3d29a; background: #fffdf4; }
+.tren-ciudad.futuro-bloque { opacity: 0.7; border-style: dashed; }
+.tren-ciudad-nombre { font-size: 0.8rem; font-weight: 700; margin-bottom: 6px; white-space: nowrap; }
+.tren-paradas { display: flex; gap: 6px; }
+.tren-flecha { align-self: center; color: var(--tinta-tenue); flex-shrink: 0; }
+.parada-tren {
+  border: none;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 9px;
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 62px;
+  max-width: 84px;
+  transition: transform 0.12s, border-color 0.12s;
+}
+.parada-tren:hover { transform: translateY(-2px); border-color: var(--acento); }
+.parada-tren .pt-punto { font-size: 1.1rem; line-height: 1; }
+.parada-tren .pt-nombre {
+  font-size: 0.68rem;
+  color: var(--tinta-suave);
+  text-align: center;
+  line-height: 1.15;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.parada-tren.hecha { background: #f6efd8; border-color: #e3d29a; }
+.parada-tren.hecha .pt-punto { color: var(--ambar); }
+.parada-tren.actual { border-color: var(--acento); box-shadow: 0 0 0 2px var(--acento-claro); }
+.parada-tren.cerrada { opacity: 0.6; }
+.parada-tren.futura { opacity: 0.5; border-style: dashed; }
+
+/* ---------- Panel: lista de hitos de la ciudad ---------- */
+.lista-hitos { display: flex; flex-direction: column; gap: 8px; }
+.hito-fila {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 11px;
+  background: var(--superficie);
+  transition: background 0.2s;
+}
+.hito-fila.superado { border-color: #e3d29a; background: #fffdf5; }
+.hito-fila.bloqueado { opacity: 0.6; }
+.hito-fila.resaltado { animation: destello 1.4s ease; }
+@keyframes destello {
+  0%, 100% { box-shadow: none; }
+  30% { box-shadow: 0 0 0 3px var(--acento-claro); }
+}
+.hito-emoji { font-size: 1.5rem; flex-shrink: 0; }
+.hito-emoji-grande { font-size: 1.6rem; flex-shrink: 0; }
+.hito-texto { flex: 1; min-width: 0; }
+.hito-nombre { font-weight: 600; font-size: 0.95rem; }
+.hito-logro { font-size: 0.82rem; color: var(--tinta-suave); }
+.hito-acciones { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
+.chip-bonus { background: var(--acento-claro); color: var(--acento); border-color: transparent; }
+
+/* ---------- Lecciones agrupadas por ciudad ---------- */
+.grupo-ciudad { margin-bottom: 26px; }
+.grupo-ciudad-cab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--borde);
+}
+.grupo-ciudad-cab .chip { margin-left: 6px; }
+
+/* ---------- Galería de insignias (perfil) ---------- */
+.galeria-ciudad { margin-bottom: 20px; }
+.galeria-ciudad-cab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.galeria-insignias {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+.insignia-card {
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+  background: var(--fondo);
+  opacity: 0.72;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.insignia-card.ganada {
+  opacity: 1;
+  background: radial-gradient(circle at 50% 30%, #fff9e8, var(--superficie));
+  border-color: #e3d29a;
+}
+.insignia-card.ganada:hover { transform: translateY(-3px); box-shadow: var(--sombra); }
+.insignia-medalla {
+  font-size: 2rem;
+  width: 54px; height: 54px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--superficie);
+  border: 2px solid var(--borde);
+}
+.insignia-card.ganada .insignia-medalla { border-color: var(--ambar); background: #fffdf4; }
+.insignia-nombre { font-weight: 600; font-size: 0.85rem; line-height: 1.2; }
+.insignia-sub { font-size: 0.72rem; color: var(--tinta-tenue); margin-top: 3px; }
+.insignia-tiers { margin-top: 5px; font-size: 0.8rem; letter-spacing: 1px; }
 
 /* ---------- Toast ---------- */
 .toast {

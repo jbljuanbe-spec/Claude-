@@ -1,7 +1,7 @@
 // 🏆 Perfil y estadísticas: nivel, racha protegida, medallas, tarjetas
 // sanguijuela, actividad y copia de seguridad. Nada de esto baja nunca.
 import { api } from './api.js';
-import { ciudadDeLeccion, TIERS } from './ciudades.js';
+import { TIERS, CIUDADES } from './ciudades.js';
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -18,7 +18,9 @@ function formatearProximo(ts) {
   return d.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) + ` a las ${hora}`;
 }
 
-const CONOCIDAS = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'General'];
+function fechaCorta(ts) {
+  return ts ? new Date(ts).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+}
 
 export async function vistaPerfil(cont, avisar) {
   cont.innerHTML = '<p class="vista-sub">Cargando perfil...</p>';
@@ -28,29 +30,34 @@ export async function vistaPerfil(cont, avisar) {
   const maxActividad = Math.max(1, ...ultimos14.map(d => d.n));
   const dias = [...ultimos14].reverse();
   const nivel = juego.nivel;
+  const superadas = new Set(juego.superadas || []);
+  const ciudadesConq = new Set(juego.ciudadesConquistadas || []);
+  const fechas = juego.fechas || {};
 
-  const codigos = Object.keys(resumen.porLeccion).sort((a, b) => {
-    if (a === 'General') return 1;
-    if (b === 'General') return -1;
-    return a.localeCompare(b, 'es', { numeric: true });
-  });
+  // Galería de insignias locales: una por hito (lección), agrupada por ciudad.
+  const totalHitos = CIUDADES.reduce((n, c) => n + c.hitos.length, 0);
+  const ganadas = CIUDADES.reduce((n, c) => n + c.hitos.filter(h => superadas.has(h.codigo)).length, 0);
 
-  let extra = 0;
-  const medallero = codigos.map(cod => {
-    const ciudad = ciudadDeLeccion(cod, CONOCIDAS.includes(cod) ? 0 : extra++);
-    const tiers = TIERS.map(t => ({ ...t, ganada: juego.insignias.includes(`${cod}:${t.id}`) }));
-    const alguna = tiers.some(t => t.ganada);
+  const galeria = CIUDADES.map(ciudad => {
+    const conq = ciudadesConq.has(ciudad.id);
+    const cartas = ciudad.hitos.map(h => {
+      const tiene = superadas.has(h.codigo);
+      const tiers = TIERS.filter(t => juego.insignias.includes(`${h.codigo}:${t.id}`));
+      return `
+        <div class="insignia-card ${tiene ? 'ganada' : ''}" title="${tiene ? esc(h.logro) : 'Aún por conquistar'}">
+          <div class="insignia-medalla">${tiene ? h.emoji : '🔒'}</div>
+          <div class="insignia-nombre">${esc(h.insignia)}</div>
+          <div class="insignia-sub">${tiene ? (fechas[h.codigo] ? fechaCorta(fechas[h.codigo]) : 'Conquistada') : esc(h.tipo)}</div>
+          ${tiers.length ? `<div class="insignia-tiers">${tiers.map(t => t.icono).join('')}</div>` : ''}
+        </div>`;
+    }).join('');
     return `
-      <div class="fila-medallero ${alguna ? '' : 'sin-medallas'}">
-        <span class="carta-ciudad-emoji" style="font-size:1.3rem">${ciudad.emoji}</span>
-        <div>
-          <b>${esc(ciudad.nombre)}</b>
-          <small style="color:var(--tinta-tenue)"> · ${esc(cod)}</small>
-          <div class="carta-ciudad-leccion">${esc(ciudad.habilidad)}</div>
+      <div class="galeria-ciudad">
+        <div class="galeria-ciudad-cab">
+          <span>${conq ? '🏯' : ciudad.emoji} <b>${esc(ciudad.nombre)}</b> <span lang="ja" style="color:var(--tinta-tenue)">${esc(ciudad.kanji)}</span></span>
+          ${conq ? '<span class="chip chip-superada">★ Conquistada</span>' : ''}
         </div>
-        <div class="fila-medallas" style="margin:0; margin-left:auto">
-          ${tiers.map(t => `<span class="medalla ${t.ganada ? 'ganada' : ''}" title="${esc(t.nombre)}: ${esc(t.descripcion)}">${t.icono}</span>`).join('')}
-        </div>
+        <div class="galeria-insignias">${cartas}</div>
       </div>`;
   }).join('');
 
@@ -94,8 +101,8 @@ export async function vistaPerfil(cont, avisar) {
       </div>
     </div>
 
-    <h2 class="seccion-titulo">Medallero <small>bronce al arrancar una ciudad, plata y oro por retención real</small></h2>
-    <div class="stat-caja" style="padding:10px 20px">${medallero}</div>
+    <h2 class="seccion-titulo">🏅 Insignias locales <small>${ganadas} de ${totalHitos} conquistadas · una por hito superado</small></h2>
+    ${galeria}
 
     <h2 class="seccion-titulo">🩸 Tarjetas sanguijuela <small>las que más se te resisten</small></h2>
     <div class="stat-caja">${filasSanguijuelas}</div>

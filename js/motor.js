@@ -2,7 +2,7 @@
 // actividad diaria y estadísticas. Todo persiste en IndexedDB (ver almacen.js).
 import { leer, guardar, pedirPersistencia } from './almacen.js';
 import { nivelDeXp, tiersConseguidos } from './ciudades.js';
-import { paradasFuturas } from './roadmap.js';
+import { ciudadDeCodigo, hitosRequeridos } from './curriculum.js';
 
 const MIN = 60 * 1000;
 const DIA = 24 * 60 * 60 * 1000;
@@ -33,7 +33,7 @@ const DIAS_POR_CONGELADOR = 4;   // cada 4 días activos se gana un congelador d
 const MAX_CONGELADORES = 4;
 
 function juegoNuevo() {
-  return { xp: 0, congeladoresUsados: 0, insignias: [], billetes: 0, eventosBilletes: [], desbloqueadas: [] };
+  return { xp: 0, congeladoresUsados: 0, insignias: [], billetes: 0, eventosBilletes: [], desbloqueadas: [], fechas: {} };
 }
 
 function normalizarJuego(j) {
@@ -192,8 +192,28 @@ export async function superarLeccion(codigo) {
     throw new Error(`La lección ${codigo} no tiene contenido todavía`);
   }
   const nueva = concederBillete(`${codigo}:completa`);
+  if (nueva) estado.juego.fechas[codigo] = Date.now();
+
+  // ¿Se conquista la ciudad entera? (todos sus hitos requeridos superados)
+  let ciudadConquistada = null;
+  const ciudad = ciudadDeCodigo(codigo);
+  if (ciudad) {
+    const req = hitosRequeridos(ciudad.id);
+    const completa = req.length && req.every(c => estaSuperada(c));
+    const evento = `ciudad:${ciudad.id}`;
+    if (completa && !estado.juego.eventosBilletes.includes(evento)) {
+      concederBillete(evento); // billete extra por conquistar la ciudad
+      estado.juego.fechas[evento] = Date.now();
+      ciudadConquistada = { id: ciudad.id, nombre: ciudad.nombre };
+    }
+  }
+
   await guardar('juego', estado.juego);
-  return { nueva, billetes: estado.juego.billetes };
+  return { nueva, billetes: estado.juego.billetes, ciudadConquistada };
+}
+
+export function ciudadEstaConquistada(ciudadId) {
+  return estado.juego.eventosBilletes.includes(`ciudad:${ciudadId}`);
 }
 
 export function estaSuperada(codigo) {
@@ -215,14 +235,6 @@ export function paradas() {
     else if (estado.juego.desbloqueadas.includes(cod)) estadoParada = 'ACTIVE';
     else estadoParada = 'LOCKED';
     lista.push({ codigo: cod, orden: i + 1, estado: estadoParada, stats, hasContent: true });
-  });
-
-  // Paradas futuras sin contenido: visibles como "Próximamente".
-  paradasFuturas(orden).forEach((cod, i) => {
-    lista.push({
-      codigo: cod, orden: orden.length + i + 1, estado: 'LOCKED', hasContent: false,
-      stats: { total: 0, nuevas: 0, aprendiendo: 0, dominadas: 0 }
-    });
   });
 
   // El Monte Fuji (General) es la parada transversal: siempre accesible.
@@ -431,7 +443,10 @@ function juegoResumen() {
     nivel: nivelDeXp(estado.juego.xp),
     congeladores: congeladoresDisponibles(),
     insignias: [...estado.juego.insignias],
-    billetes: estado.juego.billetes
+    billetes: estado.juego.billetes,
+    fechas: { ...estado.juego.fechas },
+    superadas: estado.juego.eventosBilletes.filter(e => e.endsWith(':completa')).map(e => e.replace(':completa', '')),
+    ciudadesConquistadas: estado.juego.eventosBilletes.filter(e => e.startsWith('ciudad:')).map(e => e.replace('ciudad:', ''))
   };
 }
 

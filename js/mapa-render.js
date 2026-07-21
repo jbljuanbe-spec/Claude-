@@ -5,10 +5,9 @@
 import { ANCLAS } from './curriculum.js';
 import { proyectar } from './mapa-japon.js';
 
-// Catmull-Rom -> Bézier: curva continua y suave que pasa por todos los puntos.
-export function caminoBezier() {
-  const pts = ANCLAS.map(a => proyectar(a.lat, a.lon));
-  if (pts.length < 2) return { d: '', puntos: pts };
+// Catmull-Rom -> Bézier: curva continua y suave que pasa por todos los puntos {x,y}.
+export function bezierDesdePuntos(pts) {
+  if (!pts || pts.length < 2) return '';
   let d = `M ${pts[0].x.toFixed(2)} ${pts[0].y.toFixed(2)}`;
   for (let i = 0; i < pts.length - 1; i++) {
     const p0 = pts[i - 1] || pts[i];
@@ -19,7 +18,12 @@ export function caminoBezier() {
     const c2x = p2.x - (p3.x - p1.x) / 6, c2y = p2.y - (p3.y - p1.y) / 6;
     d += ` C ${c1x.toFixed(2)} ${c1y.toFixed(2)} ${c2x.toFixed(2)} ${c2y.toFixed(2)} ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`;
   }
-  return { d, puntos: pts };
+  return d;
+}
+
+export function caminoBezier() {
+  const pts = ANCLAS.map(a => proyectar(a.lat, a.lon));
+  return { d: bezierDesdePuntos(pts), puntos: pts };
 }
 
 // Dado un <path> de la vía ya en el DOM y el número de estaciones a repartir,

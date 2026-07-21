@@ -1,16 +1,12 @@
-// 📍 El Viaje: mapa real de Japón a pantalla completa e interactivo (zoom,
-// arrastre y vuelo de cámara). Las estaciones (lecciones) se reparten SOLAS a
-// lo largo de la vía principal (curva Bézier entre hitos madre) por
-// interpolación con getPointAtLength(): da igual que haya 6, 86 o 300 lecciones,
-// el mapa se redistribuye automáticamente sin tocar coordenadas.
-//
-// Jerarquía conceptual (en el panel y en Lecciones/Perfil): cada lección es un
-// HITO de una ciudad; superar sus ejercicios da su insignia local; completar
-// todos los hitos conquista la ciudad.
+// 📍 El Viaje: mapa real de Japón a pantalla completa e interactivo.
+// UN PUNTO POR CIUDAD (no por lección): todas las lecciones de una ciudad son
+// barrios/hitos DENTRO de ella. Cada lección superada da la insignia de su
+// barrio/comida/festival; completar TODA la ciudad da un billete de Shinkansen
+// para viajar a la siguiente. Las ciudades futuras salen en gris.
 import { api } from './api.js';
-import { CIUDADES, CIUDADES_FUTURAS, ciudadDeLeccion, TOTAL_PREVISTO } from './curriculum.js';
+import { CIUDADES, CIUDADES_FUTURAS, ciudadDeLeccion } from './curriculum.js';
 import { PREFECTURAS, VISTA, proyectar } from './mapa-japon.js';
-import { caminoBezier, repartirEstaciones, etiquetasRegion } from './mapa-render.js';
+import { bezierDesdePuntos } from './mapa-render.js';
 import { animar } from './lottie.js';
 
 function esc(s) {
@@ -19,15 +15,10 @@ function esc(s) {
 function fecha(ts) {
   return ts ? new Date(ts).toLocaleDateString('es-ES', { day: 'numeric', month: 'long' }) : '';
 }
-function numLeccion(codigo) {
-  const m = /^L(\d+)$/.exec(codigo);
-  return m ? parseInt(m[1], 10) : null;
-}
 
 const ORO = '#c9971c';
-const AZUL = 'var(--acento)';
 const SVGNS = 'http://www.w3.org/2000/svg';
-const BUFFER_FUTURO = 14; // estaciones "en construcción" visibles por delante
+const TIPO_PREF = { Fu: 'prefectura urbana (府)', Ken: 'prefectura (県)', To: 'metrópoli (都)', Do: 'circunscripción (道)' };
 
 export async function vistaViaje(cont, avisar) {
   cont.innerHTML = '<p class="vista-sub">Cargando el viaje...</p>';
@@ -43,15 +34,16 @@ export async function vistaViaje(cont, avisar) {
       return { ...h, estado: st.estado, stats: st.stats, needsReview: st.needsReview, pendientes: st.pendientes,
         superado: st.estado === 'COMPLETED', fecha: juego.fechas ? juego.fechas[h.codigo] : null };
     });
-    const req = ciudad.hitos.filter(h => !h.bonus).map(h => h.codigo);
-    const conquistada = req.length > 0 && req.every(c => estadoPorCodigo[c] && estadoPorCodigo[c].estado === 'COMPLETED');
-    return { ...ciudad, hitos, conquistada, superados: hitos.filter(h => h.superado).length };
+    const req = ciudad.hitos.filter(h => !h.bonus).map(h => h.codigo).filter(c => estadoPorCodigo[c]);
+    const conquistada = req.length > 0 && req.every(c => estadoPorCodigo[c].estado === 'COMPLETED');
+    const bloqueada = hitos.length > 0 && hitos.every(h => h.estado === 'LOCKED');
+    return { ...ciudad, hitos, conquistada, bloqueada, superados: hitos.filter(h => h.superado).length, futura: false };
   }).filter(c => c.hitos.length);
 
-  // Robustez: lecciones con contenido que aún no están mapeadas a una ciudad
-  // (p. ej. las que añadas nuevas en el JSON) se agrupan solas, sin tocar código.
+  // Lecciones nuevas aún sin ciudad temática: grupo aparte (no va al mapa).
   const mapeadas = new Set(Object.keys(codeCiudad));
-  const huerfanas = paradas.filter(p => numLeccion(p.codigo) && !mapeadas.has(p.codigo));
+  const huerfanas = paradas.filter(p => /^L\d+$/.test(p.codigo) && !mapeadas.has(p.codigo));
+  let ciudadNuevas = null;
   if (huerfanas.length) {
     const hitos = huerfanas.map(p => {
       codeCiudad[p.codigo] = 'nuevas';
@@ -61,11 +53,18 @@ export async function vistaViaje(cont, avisar) {
         estado: p.estado, stats: p.stats, needsReview: p.needsReview, pendientes: p.pendientes,
         superado: p.estado === 'COMPLETED', fecha: juego.fechas ? juego.fechas[p.codigo] : null };
     });
-    ciudades.push({ id: 'nuevas', nombre: 'Nuevas lecciones', kanji: '新', emoji: '🆕', prefectura: '—',
-      region: '—', jlpt: '', lema: 'Lecciones recién añadidas del chat, aún sin ciudad temática asignada.',
-      hitos, conquistada: false, superados: hitos.filter(h => h.superado).length });
+    ciudadNuevas = { id: 'nuevas', nombre: 'Nuevas lecciones', kanji: '新', emoji: '🆕', prefectura: '—',
+      region: '—', jlpt: '', lema: 'Lecciones recién añadidas, aún sin ciudad temática asignada.', hitos,
+      conquistada: false, bloqueada: false, superados: hitos.filter(h => h.superado).length, futura: false };
   }
-  const porId = Object.fromEntries(ciudades.map(c => [c.id, c]));
+
+  const futuras = CIUDADES_FUTURAS.map(c => ({ ...c, hitos: [], futura: true, conquistada: false, bloqueada: true, superados: 0 }));
+  const enMapa = [...ciudades, ...futuras];                 // lo que se dibuja como nodo
+  const porId = Object.fromEntries([...ciudades, ...(ciudadNuevas ? [ciudadNuevas] : []), ...futuras].map(c => [c.id, c]));
+
+  // Prefecturas: fondo dorado al conquistar su ciudad; tinte suave en progreso.
+  const prefEstado = {};
+  ciudades.forEach(c => { if (c.pref) prefEstado[c.pref] = c.conquistada ? 'conquistada' : (c.superados > 0 ? 'progreso' : prefEstado[c.pref] || ''); });
 
   const conquista = sessionStorage.getItem('kotoba-conquista');
   const ciudadConq = sessionStorage.getItem('kotoba-ciudad-conq');
@@ -73,148 +72,70 @@ export async function vistaViaje(cont, avisar) {
   sessionStorage.removeItem('kotoba-ciudad-conq');
   const recordada = sessionStorage.getItem('kotoba-sel');
   sessionStorage.removeItem('kotoba-sel');
-
   let seleccion = (recordada && porId[recordada]) ? recordada
-    : (ciudades.find(c => !c.conquistada) || ciudades[0])?.id;
+    : (ciudades.find(c => !c.conquistada && !c.bloqueada) || ciudades[0] || enMapa[0])?.id;
   let hitoResaltado = conquista || null;
 
-  // Reparto de estaciones: nº total = última lección + margen (auto-escala).
-  const numeros = paradas.map(p => numLeccion(p.codigo)).filter(Boolean);
-  const maxNum = numeros.length ? Math.max(...numeros) : 6;
-  const N = Math.min(TOTAL_PREVISTO, Math.max(maxNum + BUFFER_FUTURO, 20));
-  const via = caminoBezier();
-  let posMap = {};       // codigo -> {x,y}
-  let posFuji = null;
+  function colorCiudad(c) {
+    if (c.conquistada) return ORO;
+    if (c.futura || c.bloqueada) return '#c7c7ce';
+    return 'var(--acento)';
+  }
 
-  // Estado de cada prefectura (por su kanji): se colorea el fondo al conquistar
-  // su ciudad (dorado) o al tener hitos en marcha (tinte suave).
-  const prefEstado = {};
-  ciudades.forEach(c => {
-    if (!c.pref) return;
-    prefEstado[c.pref] = c.conquistada ? 'conquistada' : (c.superados > 0 ? 'progreso' : prefEstado[c.pref] || '');
-  });
-
-  // ---------- SVG base (prefecturas + vía) ----------
+  // ---------- Mapa ----------
   function svgBase() {
     const prefs = PREFECTURAS.map(pr => {
-      const estado = prefEstado[pr.nombre];
-      const clase = 'pref' + (estado === 'conquistada' ? ' pref-conquistada' : estado === 'progreso' ? ' pref-progreso' : '');
+      const e = prefEstado[pr.nombre];
+      const clase = 'pref' + (e === 'conquistada' ? ' pref-conquistada' : e === 'progreso' ? ' pref-progreso' : '');
       return `<path d="${pr.d}" class="${clase}" data-nombre="${esc(pr.nombre)}" data-rom="${esc(pr.rom || '')}"><title>${esc(pr.nombre)}</title></path>`;
     }).join('');
-    const regiones = etiquetasRegion().map(r =>
-      `<text x="${r.x.toFixed(1)}" y="${(r.y - 12).toFixed(1)}" class="mapa-region">${esc(r.region)}</text>`).join('');
+
+    // Vía del tren a través de las ciudades (curva suave). Dorada la parte ya hecha.
+    const pos = enMapa.map(c => proyectar(c.lat, c.lon));
+    const viaBase = bezierDesdePuntos(pos);
+    let goldN = 0;
+    while (goldN < ciudades.length && ciudades[goldN].conquistada) goldN++;
+    const viaOro = goldN >= 2 ? bezierDesdePuntos(pos.slice(0, goldN)) : '';
+
+    const nodos = enMapa.map(c => {
+      const { x, y } = proyectar(c.lat, c.lon);
+      const dx = c.dxEtiqueta || 0, dy = c.dyEtiqueta || 0;
+      const etiquetaY = dy >= 0 ? y + 16 + dy : y - 10 + dy;
+      const sel = c.id === seleccion ? 'seleccionada' : '';
+      let nucleo;
+      if (c.futura) {
+        nucleo = `<circle cx="${x}" cy="${y}" r="5" class="nodo-forma nodo-futura" fill="${colorCiudad(c)}"/>`;
+      } else {
+        const halo = (!c.conquistada && !c.bloqueada) ? `<circle cx="${x}" cy="${y}" r="8.5" class="nodo-halo"/>` : '';
+        nucleo = `${halo}<circle cx="${x}" cy="${y}" r="8.5" class="nodo-forma" fill="${colorCiudad(c)}"/>
+          <text x="${x}" y="${y + 3.6}" class="nodo-emoji">${c.conquistada ? '★' : ''}</text>`;
+      }
+      const total = c.hitos.filter(h => !h.bonus).length;
+      const badge = (!c.futura && total) ? `<text x="${x}" y="${y - 12}" class="nodo-progreso">${c.superados}/${total}</text>` : '';
+      const te = c.hitos.some(h => h.needsReview) ? `<text x="${x + 9}" y="${y - 6}" class="nodo-te">🍵</text>` : '';
+      return `
+        <g class="nodo ${sel}" data-id="${esc(c.id)}" tabindex="0" role="button"
+           aria-label="${esc(c.nombre)}: ${c.futura ? 'Próximamente' : c.conquistada ? 'Conquistada' : c.bloqueada ? 'Bloqueada' : 'En curso'}">
+          <circle cx="${x}" cy="${y}" r="12" fill="transparent"/>
+          ${nucleo}${badge}${te}
+          <text x="${x + dx}" y="${etiquetaY}" class="mapa-etiqueta ${c.futura ? 'etiqueta-futura' : ''}">${esc(c.nombre)}</text>
+        </g>`;
+    }).join('');
+
     return `<svg viewBox="${VISTA}" class="mapa-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa del viaje por Japón">
       ${prefs}
-      <path id="via-base" class="via-base" d="${via.d}"/>
-      <path id="via-progreso" class="via-progreso" d="${via.d}"/>
-      <g id="capa-estaciones"></g>
-      ${regiones}
+      <path class="via-base" d="${viaBase}"/>
+      ${viaOro ? `<path class="via-progreso-fija" d="${viaOro}"/>` : ''}
+      ${nodos}
     </svg>`;
   }
 
-  function decorarEstaciones() {
-    const svg = cont.querySelector('.mapa-svg');
-    const viaBase = svg.querySelector('#via-base');
-    const capa = svg.querySelector('#capa-estaciones');
-    const { posiciones, paso } = repartirEstaciones(viaBase, N);
-    posMap = {};
-
-    // Vía dorada: progreso conquistado hasta la última lección superada.
-    let maxSuperadaIdx = -1;
-    posiciones.forEach((_, i) => {
-      const code = 'L' + (i + 1);
-      if (estadoPorCodigo[code] && estadoPorCodigo[code].estado === 'COMPLETED') maxSuperadaIdx = i;
-    });
-    const prog = svg.querySelector('#via-progreso');
-    const total = viaBase.getTotalLength();
-    const goldLen = maxSuperadaIdx >= 0 ? maxSuperadaIdx * paso : 0;
-    prog.style.strokeDasharray = `${goldLen.toFixed(1)} ${(total + 1).toFixed(1)}`;
-
-    posiciones.forEach((pt, i) => {
-      const num = i + 1;
-      const code = 'L' + num;
-      const st = estadoPorCodigo[code];
-      posMap[code] = pt;
-      const g = document.createElementNS(SVGNS, 'g');
-      g.setAttribute('class', 'estacion');
-      g.setAttribute('data-codigo', code);
-      g.setAttribute('tabindex', '0');
-      g.setAttribute('role', 'button');
-
-      let clase, r;
-      if (!st) { clase = 'placeholder'; r = 2; }
-      else if (st.estado === 'COMPLETED') { clase = 'superada'; r = 5.5; }
-      else if (st.estado === 'ACTIVE') { clase = 'activa'; r = 5.5; }
-      else { clase = 'bloqueada'; r = 4.5; }
-      g.classList.add(clase);
-      if (code === seleccion + '__none') {/* noop */}
-
-      // área de toque
-      const hit = document.createElementNS(SVGNS, 'circle');
-      hit.setAttribute('cx', pt.x); hit.setAttribute('cy', pt.y); hit.setAttribute('r', 9);
-      hit.setAttribute('fill', 'transparent');
-      g.appendChild(hit);
-
-      if (st && st.estado === 'ACTIVE') {
-        const halo = document.createElementNS(SVGNS, 'circle');
-        halo.setAttribute('cx', pt.x); halo.setAttribute('cy', pt.y); halo.setAttribute('r', r);
-        halo.setAttribute('class', 'estacion-halo');
-        g.appendChild(halo);
-      }
-      const c = document.createElementNS(SVGNS, 'circle');
-      c.setAttribute('cx', pt.x); c.setAttribute('cy', pt.y); c.setAttribute('r', r);
-      c.setAttribute('class', 'estacion-punto');
-      g.appendChild(c);
-
-      if (st && st.estado === 'COMPLETED') {
-        const t = document.createElementNS(SVGNS, 'text');
-        t.setAttribute('x', pt.x); t.setAttribute('y', pt.y + 2.6); t.setAttribute('class', 'estacion-check');
-        t.textContent = '✓'; g.appendChild(t);
-      }
-      if (st && (st.needsReview) && st.estado !== 'LOCKED') {
-        const te = document.createElementNS(SVGNS, 'text');
-        te.setAttribute('x', pt.x + 7); te.setAttribute('y', pt.y - 5); te.setAttribute('class', 'nodo-te');
-        te.textContent = '🍵'; g.appendChild(te);
-      }
-      capa.appendChild(g);
-    });
-
-    // Monte Fuji (General): hito transversal fuera de la vía principal.
-    const gen = estadoPorCodigo.General;
-    if (gen) {
-      const f = ciudadDeLeccion('General');
-      const p = proyectar(f.lat, f.lon);
-      posFuji = p; posMap.General = p;
-      const g = document.createElementNS(SVGNS, 'g');
-      g.setAttribute('class', 'estacion fuji ' + (gen.estado === 'COMPLETED' ? 'superada' : 'activa'));
-      g.setAttribute('data-codigo', 'General');
-      g.setAttribute('tabindex', '0'); g.setAttribute('role', 'button');
-      g.innerHTML = `<circle cx="${p.x}" cy="${p.y}" r="9" fill="transparent"/>
-        <path d="M${p.x - 6},${p.y + 4} L${p.x},${p.y - 6} L${p.x + 6},${p.y + 4} Z" class="fuji-forma" fill="${gen.estado === 'COMPLETED' ? ORO : AZUL}"/>
-        <text x="${p.x}" y="${p.y + 15}" class="mapa-etiqueta">富士</text>`;
-      capa.appendChild(g);
-    }
-
-    // Etiquetas de la primera y última estación con contenido, para orientar.
-    marcarEtiqueta(capa, posMap['L1'], 'Inicio');
-    if (maxNum >= 1) marcarEtiqueta(capa, posMap['L' + maxNum], `L${maxNum}`);
-    marcarEtiqueta(capa, posiciones[N - 1], `~L${TOTAL_PREVISTO}`, true);
-  }
-
-  function marcarEtiqueta(capa, pt, texto, tenue) {
-    if (!pt) return;
-    const t = document.createElementNS(SVGNS, 'text');
-    t.setAttribute('x', pt.x); t.setAttribute('y', pt.y - 9);
-    t.setAttribute('class', 'mapa-etiqueta' + (tenue ? ' etiqueta-futura' : ''));
-    t.textContent = texto;
-    capa.appendChild(t);
-  }
-
-  // ---------- Línea de tren (índice lineal compacto) ----------
+  // ---------- Línea de tren ----------
   function lineaTren() {
-    const totalReq = ciudades.reduce((n, c) => n + c.hitos.filter(h => !h.bonus).length, 0);
-    const hechos = ciudades.reduce((n, c) => n + c.hitos.filter(h => h.superado && !h.bonus).length, 0);
-    const tramos = ciudades.map(c => {
+    const grupos = [...ciudades, ...(ciudadNuevas ? [ciudadNuevas] : [])];
+    const totalReq = grupos.reduce((n, c) => n + c.hitos.filter(h => !h.bonus).length, 0);
+    const hechos = grupos.reduce((n, c) => n + c.hitos.filter(h => h.superado && !h.bonus).length, 0);
+    const tramos = grupos.map(c => {
       const paradas = c.hitos.map(h => {
         const clase = h.superado ? 'hecha' : h.estado === 'ACTIVE' ? 'actual' : 'cerrada';
         const icono = h.superado ? '✓' : h.estado === 'ACTIVE' ? h.emoji : '🔒';
@@ -233,10 +154,17 @@ export async function vistaViaje(cont, avisar) {
         <div class="tren-ciudad futuro-bloque"><div class="tren-ciudad-nombre">Próximas</div><div class="tren-paradas">${fut}</div></div></div></div>`;
   }
 
-  // ---------- Panel de la ciudad seleccionada ----------
+  // ---------- Panel de la ciudad ----------
   function panelCiudad() {
     const c = porId[seleccion];
     if (!c) return '';
+    if (c.futura || (c.bloqueada && !c.hitos.length)) {
+      return `<div class="panel-cab"><span class="carta-ciudad-emoji">${c.emoji}</span>
+          <div><div class="carta-ciudad-nombre">${esc(c.nombre)} <span lang="ja">${esc(c.kanji)}</span></div>
+          <div class="carta-ciudad-leccion">${esc(c.prefectura)} · ${esc(c.region)}${c.jlpt ? ` · <span class="chip chip-jlpt">${esc(c.jlpt)}</span>` : ''}</div></div></div>
+        <p class="panel-nota">🚧 Próximamente. Esta ciudad se abrirá cuando exportes nuevas lecciones del chat: cada paquete de lecciones conquista una ciudad y te da el billete de Shinkansen para viajar aquí.</p>
+        ${juego.billetes > 0 ? `<button class="boton boton-primario" id="btn-billete">🎫 Usar billete de Shinkansen para adelantar (${juego.billetes})</button>` : ''}`;
+    }
     const totalReq = c.hitos.filter(h => !h.bonus).length;
     const filas = c.hitos.map(h => {
       const clase = h.superado ? 'superado' : h.estado === 'ACTIVE' ? 'activo' : 'bloqueado';
@@ -252,53 +180,43 @@ export async function vistaViaje(cont, avisar) {
           <button class="boton boton-secundario btn-hito-rep" data-codigo="${esc(h.codigo)}" style="padding:6px 12px;font-size:0.85rem">⚔️</button>
         </div></div>`;
     }).join('');
-    return `<div class="panel-cab">
-        <span class="carta-ciudad-emoji">${c.conquistada ? '🏯' : c.emoji}</span>
-        <div>
-          <div class="carta-ciudad-nombre">${esc(c.nombre)} <span lang="ja">${esc(c.kanji)}</span>${c.conquistada ? ' <span class="chip chip-superada">★ Conquistada</span>' : ''}</div>
-          <div class="carta-ciudad-leccion">${esc(c.prefectura)} · ${esc(c.region)}${c.jlpt ? ` · <span class="chip chip-jlpt">${esc(c.jlpt)}</span>` : ''}</div>
-        </div>
-      </div>
-      <p class="carta-ciudad-leccion" style="margin:4px 0 10px">${esc(c.lema)} · ${c.superados}/${totalReq} hitos superados</p>
+    return `<div class="panel-cab"><span class="carta-ciudad-emoji">${c.conquistada ? '🏯' : c.emoji}</span>
+        <div><div class="carta-ciudad-nombre">${esc(c.nombre)} <span lang="ja">${esc(c.kanji)}</span>${c.conquistada ? ' <span class="chip chip-superada">★ Conquistada</span>' : ''}</div>
+        <div class="carta-ciudad-leccion">${esc(c.prefectura)} · ${esc(c.region)}${c.jlpt ? ` · <span class="chip chip-jlpt">${esc(c.jlpt)}</span>` : ''}</div></div></div>
+      <p class="carta-ciudad-leccion" style="margin:4px 0 10px">${esc(c.lema || '')} · ${c.superados}/${totalReq} barrios conquistados${totalReq && c.superados === totalReq ? ' · 🎫 billete conseguido' : ''}</p>
       <div class="lista-hitos">${filas}</div>`;
   }
 
   // ---------- Render ----------
   function pintar() {
     cont.innerHTML = `
-      <div class="viaje-cab">
-        <div>
-          <h1 class="vista-titulo">📍 El Viaje</h1>
-          <p class="vista-sub">Cada estación es una lección. Se reparten solas a lo largo de Japón; supera sus ejercicios para conquistarlas. Tienes 🎫 ${juego.billetes} ${juego.billetes === 1 ? 'billete' : 'billetes'}.</p>
-        </div>
-      </div>
+      <div class="viaje-cab"><div>
+        <h1 class="vista-titulo">📍 El Viaje</h1>
+        <p class="vista-sub">Un punto por ciudad. Cada lección es un barrio/hito dentro de ella con su insignia; completa toda la ciudad para ganar el 🎫 billete de Shinkansen y viajar a la siguiente. Tienes 🎫 ${juego.billetes}.</p>
+      </div></div>
       ${lineaTren()}
-      <div class="mapa-full">
-        <div class="caja-mapa">
-          <div class="mapa-lottie" id="lottie-japon" title="日本"></div>
-          ${svgBase()}
-          <div class="pref-etiqueta oculto" id="pref-nombre"></div>
-          <div class="controles-mapa">
-            <button class="control-mapa" id="zoom-mas" title="Acercar">＋</button>
-            <button class="control-mapa" id="zoom-menos" title="Alejar">−</button>
-            <button class="control-mapa" id="zoom-reset" title="Ver todo Japón">⌂</button>
-          </div>
-          <div class="leyenda-mapa">
-            <span><i style="background:var(--acento)"></i> Actual</span>
-            <span><i style="background:${ORO}"></i> Conquistada</span>
-            <span><i style="background:#c9c9cf"></i> Bloqueada</span>
-            <span><i style="background:#dcdce2"></i> En construcción</span>
-            <span>Rueda para zoom · arrastra para mover</span>
-          </div>
+      <div class="mapa-full"><div class="caja-mapa">
+        <div class="mapa-lottie" id="lottie-japon" title="日本"></div>
+        ${svgBase()}
+        <div class="pref-etiqueta oculto" id="pref-nombre"></div>
+        <div class="controles-mapa">
+          <button class="control-mapa" id="zoom-mas" title="Acercar">＋</button>
+          <button class="control-mapa" id="zoom-menos" title="Alejar">−</button>
+          <button class="control-mapa" id="zoom-reset" title="Ver todo Japón">⌂</button>
         </div>
-      </div>
+        <div class="leyenda-mapa">
+          <span><i style="background:var(--acento)"></i> En curso</span>
+          <span><i style="background:${ORO}"></i> Conquistada</span>
+          <span><i style="background:#c7c7ce"></i> Próximamente</span>
+          <span>Toca una prefectura para ver su nombre</span>
+        </div>
+      </div></div>
       <div class="panel-parada" id="panel-ciudad">${panelCiudad()}</div>`;
-    decorarEstaciones();
     enganchar();
-    if (conquista && posMap[conquista]) celebrar(conquista, ciudadConq);
+    if (conquista && porId[seleccion]) celebrar(conquista, ciudadConq);
   }
 
-  // ---------- Zoom, arrastre y vuelo de cámara ----------
+  // ---------- Zoom, arrastre y vuelo ----------
   const base = VISTA.split(' ').map(Number);
   let vb = [...base];
   let volando = null;
@@ -324,14 +242,14 @@ export async function vistaViaje(cont, avisar) {
     const desde = [...vb], inicio = performance.now();
     const paso = ahora => {
       const t = Math.min(1, (ahora - inicio) / dur);
-      const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; // easeInOutCubic
+      const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
       vb = desde.map((v, i) => v + (hasta[i] - v) * e);
       aplicarVb(svg);
       if (t < 1) volando = requestAnimationFrame(paso);
     };
     volando = requestAnimationFrame(paso);
   }
-  function volarA(svg, x, y, zoom = 2.6) {
+  function volarA(svg, x, y, zoom = 2.4) {
     const w = base[2] / zoom, h = base[3] / zoom;
     animarVb(svg, [x - w / 2, y - h / 2, w, h]);
   }
@@ -341,10 +259,7 @@ export async function vistaViaje(cont, avisar) {
     aplicarVb(svg);
     svg.addEventListener('wheel', e => { e.preventDefault(); const [cx, cy] = puntoSvg(svg, e.clientX, e.clientY); zoomHacia(svg, e.deltaY < 0 ? 1.25 : 0.8, cx, cy); }, { passive: false });
     const punteros = new Map(); let arrastre = null, seArrastro = false;
-    svg.addEventListener('pointerdown', e => {
-      punteros.set(e.pointerId, [e.clientX, e.clientY]);
-      if (punteros.size === 1) { arrastre = { x: e.clientX, y: e.clientY, vb: [...vb] }; seArrastro = false; svg.setPointerCapture(e.pointerId); }
-    });
+    svg.addEventListener('pointerdown', e => { punteros.set(e.pointerId, [e.clientX, e.clientY]); if (punteros.size === 1) { arrastre = { x: e.clientX, y: e.clientY, vb: [...vb] }; seArrastro = false; svg.setPointerCapture(e.pointerId); } });
     svg.addEventListener('pointermove', e => {
       if (!punteros.has(e.pointerId)) return;
       const previo = [...punteros.values()];
@@ -371,14 +286,16 @@ export async function vistaViaje(cont, avisar) {
     cont.querySelector('#zoom-reset').onclick = () => animarVb(svg, [...base], 500);
   }
 
-  function seleccionarCiudad(id, codigoVuelo) {
+  function seleccionar(id, conVuelo = true) {
     seleccion = id;
-    cont.querySelectorAll('.estacion').forEach(n => n.classList.toggle('seleccionada', codeCiudad[n.dataset.codigo] === id));
+    cont.querySelectorAll('.nodo').forEach(n => n.classList.toggle('seleccionada', n.dataset.id === id));
     cont.querySelector('#panel-ciudad').innerHTML = panelCiudad();
     engancharPanel();
-    if (codigoVuelo && posMap[codigoVuelo]) {
+    const c = porId[id];
+    if (conVuelo && c && c.lat != null) {
       const svg = cont.querySelector('.mapa-svg');
-      volarA(svg, posMap[codigoVuelo].x, posMap[codigoVuelo].y, 2.4);
+      const { x, y } = proyectar(c.lat, c.lon);
+      volarA(svg, x, y, c.futura ? 2 : 2.6);
     }
   }
 
@@ -388,6 +305,11 @@ export async function vistaViaje(cont, avisar) {
   function engancharPanel() {
     cont.querySelectorAll('.btn-hito-lec').forEach(b => b.onclick = () => irLeccion(b.dataset.codigo));
     cont.querySelectorAll('.btn-hito-rep').forEach(b => b.onclick = () => irRepaso(b.dataset.codigo));
+    const bt = cont.querySelector('#btn-billete');
+    if (bt) bt.onclick = async () => {
+      try { await api.gastarBillete(seleccion); if (avisar) avisar(`🎫 ¡Billete usado! ${porId[seleccion].nombre} queda abierta.`); sessionStorage.setItem('kotoba-sel', seleccion); vistaViaje(cont, avisar); }
+      catch (e) { if (avisar) avisar(e.message); }
+    };
     if (hitoResaltado) {
       const fila = cont.querySelector(`.hito-fila[data-hito="${hitoResaltado}"]`);
       if (fila) { fila.classList.add('resaltado'); fila.scrollIntoView({ block: 'nearest' }); }
@@ -395,27 +317,6 @@ export async function vistaViaje(cont, avisar) {
     }
   }
 
-  function enganchar() {
-    iniciarInteraccion();
-    cont.querySelectorAll('.estacion').forEach(n => {
-      const code = n.dataset.codigo;
-      const ciudad = codeCiudad[code];
-      const ir = () => {
-        if (ciudad) { hitoResaltado = code; seleccionarCiudad(ciudad, code); }
-      };
-      n.addEventListener('click', ir);
-      n.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ir(); } });
-    });
-    cont.querySelectorAll('.parada-tren[data-id]').forEach(t => {
-      t.addEventListener('click', () => { hitoResaltado = t.dataset.hito || null; seleccionarCiudad(t.dataset.id, t.dataset.hito); cont.querySelector('.caja-mapa').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); });
-    });
-    engancharPanel();
-    engancharPrefecturas();
-    animar(cont.querySelector('#lottie-japon'), 'japon');
-  }
-
-  // Al tocar una prefectura, muestra su nombre (kanji + romaji): cultura mientras juegas.
-  const TIPO_PREF = { Fu: 'prefectura urbana (府)', Ken: 'prefectura (県)', To: 'metrópoli (都)', Do: 'circunscripción (道)' };
   function engancharPrefecturas() {
     const chip = cont.querySelector('#pref-nombre');
     let temporizador;
@@ -435,16 +336,31 @@ export async function vistaViaje(cont, avisar) {
     });
   }
 
-  // ---------- Celebración de conquista (cámara + confeti) ----------
+  function enganchar() {
+    iniciarInteraccion();
+    cont.querySelectorAll('.nodo').forEach(n => {
+      n.addEventListener('click', () => seleccionar(n.dataset.id));
+      n.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); seleccionar(n.dataset.id); } });
+    });
+    cont.querySelectorAll('.parada-tren[data-id]').forEach(t => {
+      t.addEventListener('click', () => { hitoResaltado = t.dataset.hito || null; seleccionar(t.dataset.id); cont.querySelector('.caja-mapa').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); });
+    });
+    engancharPanel();
+    engancharPrefecturas();
+    animar(cont.querySelector('#lottie-japon'), 'japon');
+  }
+
+  // ---------- Celebración ----------
   function celebrar(codigo, ciudadIdConq) {
+    const cid = codeCiudad[codigo];
+    const c = porId[cid];
     const svg = cont.querySelector('.mapa-svg');
-    const pt = posMap[codigo];
-    if (svg && pt) setTimeout(() => volarA(svg, pt.x, pt.y, 2.6), 200);
-    const nodo = cont.querySelector(`.estacion[data-codigo="${codigo}"]`);
+    if (svg && c && c.lat != null) { const { x, y } = proyectar(c.lat, c.lon); setTimeout(() => volarA(svg, x, y, 2.6), 200); }
+    const nodo = cont.querySelector(`.nodo[data-id="${cid}"]`);
     if (nodo) nodo.classList.add('conquistando');
     const caja = cont.querySelector('.caja-mapa');
     const grande = !!ciudadIdConq;
-    for (let i = 0; i < (grande ? 42 : 24); i++) {
+    for (let i = 0; i < (grande ? 42 : 22); i++) {
       const conf = document.createElement('span');
       conf.className = 'confeti';
       conf.textContent = ['🎉', '⭐', '🌸', '🎌', '✨', '🏮'][i % 6];
@@ -454,17 +370,13 @@ export async function vistaViaje(cont, avisar) {
       caja.appendChild(conf);
       setTimeout(() => conf.remove(), 3400);
     }
-    // Al conquistar la ciudad, se colorea el fondo de su prefectura con destello.
     if (ciudadIdConq && porId[ciudadIdConq] && porId[ciudadIdConq].pref) {
-      const kanji = porId[ciudadIdConq].pref;
-      cont.querySelectorAll(`.pref[data-nombre="${kanji}"]`).forEach(pr => {
+      cont.querySelectorAll(`.pref[data-nombre="${porId[ciudadIdConq].pref}"]`).forEach(pr => {
         pr.classList.add('pref-conquistada', 'pref-recien');
         pr.addEventListener('animationend', () => pr.classList.remove('pref-recien'), { once: true });
       });
-    }
-    if (ciudadIdConq && porId[ciudadIdConq] && avisar) avisar(`🏯 ¡${porId[ciudadIdConq].nombre} conquistada! Se ilumina su prefectura en el mapa.`);
-    else if (avisar) {
-      const c = porId[seleccion];
+      if (avisar) avisar(`🏯 ¡${porId[ciudadIdConq].nombre} conquistada! Se ilumina su prefectura y ganas un billete de Shinkansen.`);
+    } else if (avisar) {
       const h = c && c.hitos.find(x => x.codigo === codigo);
       if (h) avisar(`🏅 ¡Insignia conseguida: ${h.insignia}!`);
     }

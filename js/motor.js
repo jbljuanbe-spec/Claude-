@@ -2,7 +2,7 @@
 // actividad diaria y estadísticas. Todo persiste en IndexedDB (ver almacen.js).
 import { leer, guardar, pedirPersistencia } from './almacen.js';
 import { nivelDeXp, tiersConseguidos } from './ciudades.js';
-import { ciudadDeCodigo, hitosRequeridos } from './curriculum.js';
+import { CIUDADES, ciudadDeCodigo, hitosRequeridos } from './curriculum.js';
 
 const MIN = 60 * 1000;
 const DIA = 24 * 60 * 60 * 1000;
@@ -178,20 +178,31 @@ function ordenParadas() {
     .sort((a, b) => a.localeCompare(b, 'es', { numeric: true }));
 }
 
-function concederBillete(evento) {
+// Marca un evento como conseguido (idempotente), sin dar billete.
+function marcarEvento(evento) {
   if (estado.juego.eventosBilletes.includes(evento)) return false;
   estado.juego.eventosBilletes.push(evento);
-  estado.juego.billetes++;
   return true;
 }
 
+// Los billetes de Shinkansen se ganan SOLO al conquistar una ciudad entera
+// (todos sus barrios/hitos superados), nunca por una lección suelta: viajas de
+// ciudad en ciudad al completar el paquete de lecciones de la actual.
+function concederBillete(evento) {
+  const nuevo = marcarEvento(evento);
+  if (nuevo) estado.juego.billetes++;
+  return nuevo;
+}
+
 // Leer la teoría NO completa una lección: solo aprobar sus ejercicios
-// prácticos la marca como superada (y eso es permanente).
+// prácticos la marca como superada (y eso es permanente). Da su insignia local
+// (barrio/comida/festival), pero el billete de Shinkansen solo llega al
+// conquistar la ciudad completa.
 export async function superarLeccion(codigo) {
   if (!estado.lecciones[codigo] && codigo !== 'General') {
     throw new Error(`La lección ${codigo} no tiene contenido todavía`);
   }
-  const nueva = concederBillete(`${codigo}:completa`);
+  const nueva = marcarEvento(`${codigo}:completa`);
   if (nueva) estado.juego.fechas[codigo] = Date.now();
 
   // ¿Se conquista la ciudad entera? (todos sus hitos requeridos superados)
@@ -201,8 +212,7 @@ export async function superarLeccion(codigo) {
     const req = hitosRequeridos(ciudad.id);
     const completa = req.length && req.every(c => estaSuperada(c));
     const evento = `ciudad:${ciudad.id}`;
-    if (completa && !estado.juego.eventosBilletes.includes(evento)) {
-      concederBillete(evento); // billete extra por conquistar la ciudad
+    if (completa && concederBillete(evento)) {
       estado.juego.fechas[evento] = Date.now();
       ciudadConquistada = { id: ciudad.id, nombre: ciudad.nombre };
     }
@@ -220,26 +230,57 @@ export function estaSuperada(codigo) {
   return estado.juego.eventosBilletes.includes(`${codigo}:completa`);
 }
 
+// El bloqueo es por CIUDAD, no por lección: dentro de una ciudad desbloqueada
+// todos sus barrios/hitos están disponibles a la vez (todos son "de Tokio"). Se
+// viaja a la siguiente ciudad al conquistar la actual (o gastando un billete).
+function tieneContenido(cod) { return cod === 'General' ? !!estado.lecciones.General : !!estado.lecciones[cod]; }
+
+function ciudadDeCod(cod) { const c = ciudadDeCodigo(cod); return c ? c.id : 'nuevas'; }
+
+function ordenCiudades() {
+  const ids = CIUDADES.filter(c => c.hitos.some(h => !h.bonus && tieneContenido(h.codigo))).map(c => c.id);
+  const cubiertas = new Set(CIUDADES.flatMap(c => c.hitos.map(h => h.codigo)));
+  if (ordenParadas().some(cod => !cubiertas.has(cod))) ids.push('nuevas');
+  return ids;
+}
+
+function ciudadConquistadaCalc(cityId) {
+  if (cityId === 'nuevas') {
+    const cubiertas = new Set(CIUDADES.flatMap(c => c.hitos.map(h => h.codigo)));
+    const codes = ordenParadas().filter(cod => !cubiertas.has(cod));
+    return codes.length > 0 && codes.every(estaSuperada);
+  }
+  const req = hitosRequeridos(cityId).filter(tieneContenido);
+  return req.length > 0 && req.every(estaSuperada);
+}
+
+function ciudadDesbloqueada(cityId, orden) {
+  const idx = orden.indexOf(cityId);
+  if (idx <= 0) return true;                                    // la primera siempre
+  if (estado.juego.desbloqueadas.includes(cityId)) return true; // billete gastado
+  return ciudadConquistadaCalc(orden[idx - 1]);                 // ciudad anterior conquistada
+}
+
 export function paradas() {
   const { porLeccion } = resumen();
-  const orden = ordenParadas();
+  const orden = ordenCiudades();
+  const desbloq = {};
+  orden.forEach(id => { desbloq[id] = ciudadDesbloqueada(id, orden); });
   const lista = [];
-  let activaAsignada = false;
 
-  orden.forEach((cod, i) => {
+  ordenParadas().forEach((cod, i) => {
     const stats = porLeccion[cod] || { total: 0, nuevas: 0, aprendiendo: 0, dominadas: 0 };
-    const completada = estaSuperada(cod);
+    const cid = ciudadDeCod(cod);
     let estadoParada;
-    if (completada) estadoParada = 'COMPLETED';
-    else if (!activaAsignada) { estadoParada = 'ACTIVE'; activaAsignada = true; }
-    else if (estado.juego.desbloqueadas.includes(cod)) estadoParada = 'ACTIVE';
+    if (estaSuperada(cod)) estadoParada = 'COMPLETED';
+    else if (desbloq[cid]) estadoParada = 'ACTIVE';
     else estadoParada = 'LOCKED';
-    lista.push({ codigo: cod, orden: i + 1, estado: estadoParada, stats, hasContent: true });
+    lista.push({ codigo: cod, orden: i + 1, estado: estadoParada, stats, hasContent: true, ciudadId: cid });
   });
 
   // El Monte Fuji (General) es la parada transversal: siempre accesible.
   if (porLeccion.General) {
-    lista.push({ codigo: 'General', orden: 0, estado: estaSuperada('General') ? 'COMPLETED' : 'ACTIVE', stats: porLeccion.General, hasContent: true });
+    lista.push({ codigo: 'General', orden: 0, estado: estaSuperada('General') ? 'COMPLETED' : 'ACTIVE', stats: porLeccion.General, hasContent: true, ciudadId: 'tokio' });
   }
 
   const ahora = Date.now();
@@ -265,12 +306,12 @@ function leccionesConNuevasPermitidas() {
   return permitidas;
 }
 
-export async function gastarBillete(codigo) {
-  if (!estado.lecciones[codigo]) throw new Error('Esa parada aún no tiene contenido');
+// Un billete de Shinkansen desbloquea una CIUDAD entera (viajar antes de tiempo).
+export async function gastarBillete(cityId) {
   if (estado.juego.billetes <= 0) throw new Error('No te quedan billetes de Shinkansen');
-  if (estado.juego.desbloqueadas.includes(codigo)) return { billetes: estado.juego.billetes };
+  if (estado.juego.desbloqueadas.includes(cityId)) return { billetes: estado.juego.billetes };
   estado.juego.billetes--;
-  estado.juego.desbloqueadas.push(codigo);
+  estado.juego.desbloqueadas.push(cityId);
   await guardar('juego', estado.juego);
   return { billetes: estado.juego.billetes };
 }
@@ -307,10 +348,9 @@ export async function responder(cardId, resultado) {
   registrarActividad('repaso');
   const juego = sumarXp(resultado === 'mal' ? XP_FALLO : XP_ACIERTO);
   const insigniasNuevas = actualizarInsignias();
-  // La conquista (plata) también premia con un billete de Shinkansen.
-  for (const i of insigniasNuevas) {
-    if (i.tier === 'plata') concederBillete(`${i.leccion}:plata`);
-  }
+  // Los tiers bronce/plata/oro son solo decorativos (retención de una lección);
+  // el billete de Shinkansen se gana únicamente al conquistar la CIUDAD entera
+  // en superarLeccion(), nunca por una lección suelta.
   await persistir();
   return { estado: p.estado, intervalo_dias: p.intervalo, due_at: p.due_at, ...juego, insigniasNuevas };
 }

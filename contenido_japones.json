@@ -2,7 +2,7 @@
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
     "metodo": "Genki I como columna vertebral, con anadidos de Minna no Nihongo, NHK Easy Japanese y matices de gramatica surgidos en el chat",
-    "leccion_actual": 8,
+    "leccion_actual": 9,
     "lecciones_por_ciudad": 6,
     "orden_ciudades": [
       "Tokio",
@@ -66,6 +66,12 @@
       "ciudad": "Yokohama",
       "barrio": "Muelle de Minato Mirai",
       "emoji": "🎡"
+    },
+    "L9": {
+      "titulo": "かぶき (Kabuki)",
+      "ciudad": "Yokohama",
+      "barrio": "Teatro Noge Kabuki",
+      "emoji": "🎭"
     },
     "General": {
       "titulo": "Matices transversales (varias lecciones)",
@@ -1312,6 +1318,60 @@
       "alt": [
         "がくせいじゃない"
       ]
+    },
+    {
+      "id": "g_clausula_sustantivo",
+      "l": "L9",
+      "type": "grammar",
+      "question": "¿Cómo digo \"el libro que compré ayer\" sin una palabra para \"que\"?",
+      "explanation": "En japonés no hace falta \"que/quien\" — la cláusula entera en forma simple va directamente antes del sustantivo: 昨日買った本 (el libro que compré ayer). Es la misma regla que ya usabas con adjetivos (高い本), solo que ahora con una frase completa."
+    },
+    {
+      "id": "g_kara_origen_razon",
+      "l": "L9",
+      "type": "grammar",
+      "question": "¿から significa \"desde\" o \"porque\"?",
+      "explanation": "Las dos cosas, según contexto: con hora/lugar antes = origen (\"desde\"): 9時から始まります. Con un motivo antes = razón (\"porque\"): 忙しいから、行きません. Misma palabra, significado distinto."
+    },
+    {
+      "id": "l9_shukudai",
+      "l": "L9",
+      "kanji": "宿題",
+      "reading": "しゅくだい",
+      "es": "deberes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l9_hajimaru",
+      "l": "L9",
+      "kanji": "始まる",
+      "reading": "はじまる",
+      "es": "empezar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l9_owaru",
+      "l": "L9",
+      "kanji": "終わる",
+      "reading": "おわる",
+      "es": "terminar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l9_mou",
+      "l": "L9",
+      "kanji": "もう",
+      "reading": "もう",
+      "es": "ya",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l9_mada",
+      "l": "L9",
+      "kanji": "まだ",
+      "reading": "まだ",
+      "es": "todavía/aún",
+      "dir": "es-jp"
     }
   ]
 }

@@ -313,6 +313,18 @@ input { font-family: inherit; }
 .panel-feedback.correcto .feedback-titulo { color: var(--exito); }
 .panel-feedback.incorrecto .feedback-titulo { color: var(--error); }
 
+.boton-enlace {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--tinta-suave);
+  font-size: 0.82rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+.boton-enlace:hover { color: var(--acento); }
+
 .chip-xp {
   margin-left: auto;
   font-size: 0.78rem;
@@ -715,7 +727,7 @@ input { font-family: inherit; }
 .mapa-full { margin-bottom: 18px; }
 .mapa-full .caja-mapa {
   padding: 10px;
-  background: linear-gradient(160deg, #eef2fb 0%, #e7edf8 100%);
+  background: #e6f0fa;
 }
 
 /* Vía principal y estaciones autogeneradas */
@@ -761,28 +773,30 @@ input { font-family: inherit; }
 .nodo-progreso { font-size: 8px; text-anchor: middle; fill: var(--tinta-suave); font-weight: 700; pointer-events: none; }
 .ruta-futura { stroke-dasharray: 2 6; opacity: 0.5; }
 
+/* Tierra: papel cálido sobre mar azul, con borde claro y sombra suave (capa-tierra) */
 .pref {
-  fill: #e2e6f2;
-  stroke: #fbfcfe;
-  stroke-width: 0.6;
+  fill: #f4eee1;
+  stroke: #ffffff;
+  stroke-width: 0.55;
   cursor: pointer;
   transition: fill 0.5s ease;
 }
 
-.pref:hover { fill: #d4d9ec; }
-/* Prefectura con lecciones en marcha: tinte frío suave */
-.pref-progreso { fill: #cfd6f0; }
-.pref-progreso:hover { fill: #c4cdec; }
-/* Prefectura conquistada: fondo dorado cálido */
-.pref-conquistada { fill: #f0dfa4; }
-.pref-conquistada:hover { fill: #ecd894; }
+.pref:hover { fill: #ece3cf; }
+/* Prefectura con lecciones en marcha: crema un poco más tostada */
+.pref-progreso { fill: #ecdcb6; }
+.pref-progreso:hover { fill: #e6d3a6; }
+/* Prefectura conquistada: dorado cálido */
+.pref-conquistada { fill: #f1d488; stroke: #dcb85e; }
+.pref-conquistada:hover { fill: #edcb74; }
 .pref.activa-pref { stroke: var(--acento); stroke-width: 1.1; }
 .pref-recien { animation: prefGana 1.5s ease; }
 @keyframes prefGana {
-  0% { fill: #cfd6f0; }
-  35% { fill: #ffe38f; }
-  100% { fill: #f0dfa4; }
+  0% { fill: #ecdcb6; }
+  35% { fill: #ffe08a; }
+  100% { fill: #f1d488; }
 }
+.via-base { stroke: #b7a98c; }
 .pref-etiqueta {
   position: absolute;
   top: 12px; left: 50%;

@@ -74,7 +74,7 @@
       "emoji": "🎭"
     },
     "General": {
-      "titulo": "Matices transversales (varias lecciones)",
+      "titulo": "Matices y vocabulario transversal",
       "ciudad": null,
       "barrio": "Monte Fuji",
       "emoji": "🗻"
@@ -1372,6 +1372,141 @@
       "reading": "まだ",
       "es": "todavía/aún",
       "dir": "es-jp"
+    },
+    {
+      "id": "g_de_medio",
+      "l": "L3",
+      "type": "grammar",
+      "question": "¿で solo marca el lugar de una acción?",
+      "explanation": "No, también marca medio/instrumento (\"en/con qué\"): 車で行きます (voy en coche), 箸で食べます (como con palillos). Mismo で, otro matiz."
+    },
+    {
+      "id": "l9_tekara",
+      "l": "L9",
+      "kanji": "～てから",
+      "reading": "てから",
+      "es": "después de hacer...",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l9_made",
+      "l": "L9",
+      "kanji": "まで",
+      "reading": "まで",
+      "es": "hasta (tiempo/lugar)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l4_ue",
+      "l": "L4",
+      "kanji": "上",
+      "reading": "うえ",
+      "es": "encima de",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l4_shita",
+      "l": "L4",
+      "kanji": "下",
+      "reading": "した",
+      "es": "debajo de",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l4_naka",
+      "l": "L4",
+      "kanji": "中",
+      "reading": "なか",
+      "es": "dentro de",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l4_mae",
+      "l": "L4",
+      "kanji": "前",
+      "reading": "まえ",
+      "es": "delante de",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l4_ushiro",
+      "l": "L4",
+      "kanji": "後ろ",
+      "reading": "うしろ",
+      "es": "detrás de",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l4_tonari",
+      "l": "L4",
+      "kanji": "隣",
+      "reading": "となり",
+      "es": "al lado de",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l4_chikaku",
+      "l": "L4",
+      "kanji": "近く",
+      "reading": "ちかく",
+      "es": "cerca de",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l5_heya",
+      "l": "L5",
+      "kanji": "部屋",
+      "reading": "へや",
+      "es": "habitación",
+      "dir": "jp-es"
+    },
+    {
+      "id": "vocab_isu",
+      "l": "General",
+      "kanji": "椅子",
+      "reading": "いす",
+      "es": "silla",
+      "dir": "es-jp"
+    },
+    {
+      "id": "vocab_doa",
+      "l": "General",
+      "kanji": "ドア",
+      "reading": "どあ",
+      "es": "puerta",
+      "dir": "jp-es"
+    },
+    {
+      "id": "vocab_kabe",
+      "l": "General",
+      "kanji": "壁",
+      "reading": "かべ",
+      "es": "pared",
+      "dir": "es-jp"
+    },
+    {
+      "id": "vocab_yuka",
+      "l": "General",
+      "kanji": "床",
+      "reading": "ゆか",
+      "es": "suelo/piso",
+      "dir": "jp-es"
+    },
+    {
+      "id": "vocab_mado",
+      "l": "General",
+      "kanji": "窓",
+      "reading": "まど",
+      "es": "ventana",
+      "dir": "es-jp"
+    },
+    {
+      "id": "vocab_beddo",
+      "l": "General",
+      "kanji": "ベッド",
+      "reading": "べっど",
+      "es": "cama",
+      "dir": "jp-es"
     }
   ]
 }

@@ -258,26 +258,44 @@ export async function vistaViaje(cont, avisar) {
     if (!svg) return;
     aplicarVb(svg);
     svg.addEventListener('wheel', e => { e.preventDefault(); const [cx, cy] = puntoSvg(svg, e.clientX, e.clientY); zoomHacia(svg, e.deltaY < 0 ? 1.25 : 0.8, cx, cy); }, { passive: false });
-    const punteros = new Map(); let arrastre = null, seArrastro = false;
-    svg.addEventListener('pointerdown', e => { punteros.set(e.pointerId, [e.clientX, e.clientY]); if (punteros.size === 1) { arrastre = { x: e.clientX, y: e.clientY, vb: [...vb] }; seArrastro = false; svg.setPointerCapture(e.pointerId); } });
+    // Importante: NO se captura el puntero en el pointerdown. Si se hace de
+    // entrada, el navegador retarget-ea el "click" resultante al propio <svg>
+    // en vez de al elemento tocado (.pref, .nodo...), y los taps dejan de
+    // llegar a sus listeners. Solo se captura una vez confirmado el arrastre
+    // real (movimiento > umbral), así un simple tap sigue siendo un click normal.
+    const punteros = new Map(); let arrastre = null, seArrastro = false, capturado = null;
+    svg.addEventListener('pointerdown', e => {
+      punteros.set(e.pointerId, [e.clientX, e.clientY]);
+      if (punteros.size === 1) { arrastre = { x: e.clientX, y: e.clientY, vb: [...vb] }; seArrastro = false; }
+    });
     svg.addEventListener('pointermove', e => {
       if (!punteros.has(e.pointerId)) return;
       const previo = [...punteros.values()];
       punteros.set(e.pointerId, [e.clientX, e.clientY]);
       const r = svg.getBoundingClientRect();
       if (punteros.size === 2) {
+        if (capturado === null) { capturado = e.pointerId; svg.setPointerCapture(capturado); }
         const [a, b] = [...punteros.values()];
         const [pa, pb] = previo.length === 2 ? previo : [a, b];
         const dA = Math.hypot(pa[0] - pb[0], pa[1] - pb[1]) || 1, dB = Math.hypot(a[0] - b[0], a[1] - b[1]) || 1;
         const [cx, cy] = puntoSvg(svg, (a[0] + b[0]) / 2, (a[1] + b[1]) / 2);
         zoomHacia(svg, dB / dA, cx, cy); seArrastro = true;
       } else if (arrastre) {
-        const dx = ((e.clientX - arrastre.x) / r.width) * vb[2], dy = ((e.clientY - arrastre.y) / r.height) * vb[3];
-        if (Math.abs(e.clientX - arrastre.x) + Math.abs(e.clientY - arrastre.y) > 6) seArrastro = true;
-        if (seArrastro) { cancelAnimationFrame(volando); vb[0] = arrastre.vb[0] - dx; vb[1] = arrastre.vb[1] - dy; fijar(); aplicarVb(svg); }
+        if (!seArrastro && Math.abs(e.clientX - arrastre.x) + Math.abs(e.clientY - arrastre.y) > 6) {
+          seArrastro = true;
+          if (capturado === null) { capturado = e.pointerId; svg.setPointerCapture(capturado); }
+        }
+        if (seArrastro) {
+          const dx = ((e.clientX - arrastre.x) / r.width) * vb[2], dy = ((e.clientY - arrastre.y) / r.height) * vb[3];
+          cancelAnimationFrame(volando); vb[0] = arrastre.vb[0] - dx; vb[1] = arrastre.vb[1] - dy; fijar(); aplicarVb(svg);
+        }
       }
     });
-    const soltar = e => { punteros.delete(e.pointerId); if (!punteros.size) arrastre = null; };
+    const soltar = e => {
+      punteros.delete(e.pointerId);
+      if (capturado === e.pointerId) { try { svg.releasePointerCapture(capturado); } catch {} capturado = null; }
+      if (!punteros.size) arrastre = null;
+    };
     svg.addEventListener('pointerup', soltar);
     svg.addEventListener('pointercancel', soltar);
     svg.addEventListener('click', e => { if (seArrastro) { e.stopPropagation(); seArrastro = false; } }, true);

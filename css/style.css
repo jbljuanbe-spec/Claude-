@@ -722,6 +722,19 @@ input { font-family: inherit; }
 .via-base { fill: none; stroke: #c8cbd8; stroke-width: 2.2; stroke-linecap: round; opacity: 0.5; }
 .via-progreso { fill: none; stroke: #c9971c; stroke-width: 3.2; stroke-linecap: round; transition: stroke-dasharray 0.9s ease; }
 .via-progreso-fija { fill: none; stroke: #c9971c; stroke-width: 3.2; stroke-linecap: round; }
+.halo-examen { fill: #dca01f !important; }
+
+/* Examen de ciudad (panel del viaje) */
+.examen-bloque {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--ambar-fondo);
+  border: 1px solid #e8d9a8;
+}
+.examen-bloque b { color: var(--ambar); }
+.examen-bloque p { color: var(--tinta-suave); font-size: 0.9rem; margin: 6px 0 10px; }
+.examen-bloque.aprobado { background: var(--exito-fondo); border-color: #cfe6da; color: var(--exito); font-weight: 600; }
 .mapa-region {
   font-size: 8.5px; fill: var(--tinta-tenue); text-anchor: middle; font-weight: 700;
   letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.65; pointer-events: none;

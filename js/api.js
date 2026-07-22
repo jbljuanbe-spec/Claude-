@@ -74,6 +74,16 @@ export const api = {
     return motor.superarLeccion(codigo);
   },
 
+  aprobarExamen: async (ciudad, pct) => {
+    await asegurar();
+    return motor.aprobarExamen(ciudad, pct);
+  },
+
+  codigosExamen: async (ciudad) => {
+    await asegurar();
+    return motor.codigosExamen(ciudad);
+  },
+
   exportarCopia: async () => {
     await asegurar();
     return motor.exportarCopia();

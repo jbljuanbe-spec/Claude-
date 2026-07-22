@@ -1,7 +1,6 @@
 // Niveles de viajero, tiers de dominio y re-exportación de la geografía del
 // curriculum (ciudades › hitos). La estructura del viaje vive en curriculum.js.
 
-export { ciudadDeLeccion, hitoDeLeccion, ciudadDeCodigo, hitosRequeridos, CIUDADES, CIUDADES_FUTURAS } from './curriculum.js';
 
 // Niveles de viajero: el XP solo sube, nunca baja.
 export const NIVELES = [

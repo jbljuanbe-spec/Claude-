@@ -227,14 +227,26 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
       const btn = cont.querySelector('#btn-sig-item'); btn.focus();
       btn.onclick = () => { sesion.idx++; pintarItem(); };
     }
-    function pie(zona, correcto, extraHtml = '') {
+    function pie(zona, correcto, extraHtml = '', permitirOverride = false) {
+      // Red de seguridad: en respuestas escritas, si el autocorrector fue
+      // demasiado estricto, se puede marcar como válida (autoevaluación).
+      const override = (!correcto && permitirOverride) ? '<button class="boton-enlace" id="btn-override" title="Marcar tu respuesta como correcta">Mi respuesta era válida →</button>' : '';
       zona.insertAdjacentHTML('beforeend', `
         <div class="panel-feedback ${correcto ? 'correcto' : 'incorrecto'}">
-          <div class="feedback-titulo">${correcto ? '<span lang="ja">正解</span> ¡Bien!' : '<span lang="ja">残念</span> No es eso'}${correcto ? '<span class="chip-xp">+6 XP</span>' : ''}</div>
+          <div class="feedback-titulo">${correcto ? '<span lang="ja">正解</span> ¡Bien!' : '<span lang="ja">残念</span> No es eso'}${correcto ? '<span class="chip-xp">+6 XP</span>' : override}</div>
           ${extraHtml}
         </div>
         <div class="fila-botones"><button class="boton boton-primario" id="btn-sig-item">Seguir</button></div>`);
       siguiente(correcto);
+      const ov = cont.querySelector('#btn-override');
+      if (ov) ov.onclick = () => {
+        ov.remove();
+        sesion.aciertos++;
+        api.registrarEjercicio().catch(() => {});
+        const panel = cont.querySelector('.panel-feedback');
+        panel.classList.remove('incorrecto'); panel.classList.add('correcto');
+        panel.querySelector('.feedback-titulo').innerHTML = '<span lang="ja">正解</span> Aceptada <span class="chip-xp">+6 XP</span>';
+      };
     }
     function opcionesParticula(t, correctaVal, fraseFinal, expl) {
       cont.querySelectorAll('.opcion-particula').forEach(b => {
@@ -342,7 +354,7 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
       const input = cont.querySelector('#respuesta'), vistaKana = cont.querySelector('#vista-kana');
       input.addEventListener('input', () => { const v = input.value.trim(); vistaKana.textContent = v && !contieneJapones(v) && input.getAttribute('lang') === 'ja' ? `→ ${romajiAHiragana(v)}` : ''; });
       input.focus();
-      const comprobar = () => { const correcto = comprobarFn(input.value); cont.querySelectorAll('.fila-botones, .campo-respuesta, .vista-kana').forEach(el => el.remove()); pie(cont.querySelector('.tarjeta'), correcto, feedbackFn()); };
+      const comprobar = () => { const correcto = comprobarFn(input.value); cont.querySelectorAll('.fila-botones, .campo-respuesta, .vista-kana').forEach(el => el.remove()); pie(cont.querySelector('.tarjeta'), correcto, feedbackFn(), true); };
       cont.querySelector('#btn-comprobar').onclick = comprobar;
       input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); comprobar(); } });
     }

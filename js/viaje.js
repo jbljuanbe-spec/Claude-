@@ -57,6 +57,14 @@ export async function vistaViaje(cont, avisar) {
       const clase = 'pref' + (e === 'conquistada' ? ' pref-conquistada' : e === 'progreso' ? ' pref-progreso' : '');
       return `<path d="${pr.d}" class="${clase}" data-nombre="${esc(pr.nombre)}" data-rom="${esc(pr.rom || '')}"><title>${esc(pr.nombre)}</title></path>`;
     }).join('');
+    const defs = `<defs>
+      <filter id="sombraTierra" x="-8%" y="-8%" width="116%" height="116%">
+        <feDropShadow dx="0" dy="1.4" stdDeviation="1.6" flood-color="#2b3a67" flood-opacity="0.20"/>
+      </filter>
+      <linearGradient id="mar" x1="0" y1="0" x2="0.4" y2="1">
+        <stop offset="0" stop-color="#eaf3fb"/><stop offset="1" stop-color="#d3e6f5"/>
+      </linearGradient>
+    </defs>`;
 
     const pos = enMapa.map(c => proyectar(c.lat, c.lon));
     const viaBase = bezierDesdePuntos(pos);
@@ -79,7 +87,7 @@ export async function vistaViaje(cont, avisar) {
           <text class="escala nodo-emoji" data-fs="6" x="${x}" y="${y + 2.4}" font-size="6">${c.examenAprobado ? '★' : c.examenDisponible ? '🎫' : ''}</text>`;
       }
       const badge = (!c.futura && c.hitos.length) ? `<text class="escala nodo-progreso" data-fs="6" x="${x}" y="${y - 9}" font-size="6">${c.superados}/${c.cupo}</text>` : '';
-      const te = c.hitos.some(h => h.needsReview) ? `<text class="escala nodo-te" data-fs="7" x="${x + 7}" y="${y - 5}" font-size="7">🍵</text>` : '';
+      const te = c.hitos.some(h => h.needsReview) ? `<text class="escala nodo-te" data-fs="4.5" x="${x + 5.5}" y="${y - 4}" font-size="4.5">🍵</text>` : '';
       return `
         <g class="nodo ${sel}" data-id="${esc(c.id)}" tabindex="0" role="button"
            aria-label="${esc(c.nombre)}: ${c.futura ? 'Próximamente' : c.examenAprobado ? 'Superada' : c.examenDisponible ? 'Examen listo' : c.bloqueada ? 'Bloqueada' : 'En curso'}">
@@ -100,7 +108,9 @@ export async function vistaViaje(cont, avisar) {
     }
 
     return `<svg viewBox="${VISTA}" class="mapa-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa del viaje por Japón">
-      ${prefs}
+      ${defs}
+      <rect x="${base[0] - base[2]}" y="${base[1] - base[3]}" width="${base[2] * 3}" height="${base[3] * 3}" fill="url(#mar)"/>
+      <g class="capa-tierra" filter="url(#sombraTierra)">${prefs}</g>
       <path class="via-base" d="${viaBase}"/>
       ${viaOro ? `<path class="via-progreso-fija" d="${viaOro}"/>` : ''}
       ${nodos}${fujiNodo}

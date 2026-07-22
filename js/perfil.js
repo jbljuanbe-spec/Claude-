@@ -1,7 +1,6 @@
 // 🏆 Perfil y estadísticas: nivel, racha protegida, medallas, tarjetas
 // sanguijuela, actividad y copia de seguridad. Nada de esto baja nunca.
 import { api } from './api.js';
-import { TIERS, CIUDADES } from './ciudades.js';
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -24,38 +23,31 @@ function fechaCorta(ts) {
 
 export async function vistaPerfil(cont, avisar) {
   cont.innerHTML = '<p class="vista-sub">Cargando perfil...</p>';
-  const { resumen, racha, hoy, ultimos14, lecciones, juego, sanguijuelas } = await api.perfil();
+  const { resumen, racha, hoy, ultimos14, ciudades, fuji, juego, sanguijuelas } = await api.perfil();
 
   const totalHoy = hoy.repasos + hoy.ejercicios;
   const maxActividad = Math.max(1, ...ultimos14.map(d => d.n));
   const dias = [...ultimos14].reverse();
   const nivel = juego.nivel;
-  const superadas = new Set(juego.superadas || []);
-  const ciudadesConq = new Set(juego.ciudadesConquistadas || []);
-  const fechas = juego.fechas || {};
 
-  // Galería de insignias locales: una por hito (lección), agrupada por ciudad.
-  const totalHitos = CIUDADES.reduce((n, c) => n + c.hitos.length, 0);
-  const ganadas = CIUDADES.reduce((n, c) => n + c.hitos.filter(h => superadas.has(h.codigo)).length, 0);
+  // Galería de insignias locales: una por barrio (lección), agrupada por ciudad.
+  const grupos = [...ciudades];
+  if (fuji) grupos.push({ nombre: 'Monte Fuji', kanji: fuji.kanji, emoji: fuji.emoji, examenAprobado: false, hitos: [fuji] });
+  const totalHitos = grupos.reduce((n, c) => n + c.hitos.length, 0);
+  const ganadas = grupos.reduce((n, c) => n + c.hitos.filter(h => h.superado).length, 0);
 
-  const galeria = CIUDADES.map(ciudad => {
-    const conq = ciudadesConq.has(ciudad.id);
-    const cartas = ciudad.hitos.map(h => {
-      const tiene = superadas.has(h.codigo);
-      const tiers = TIERS.filter(t => juego.insignias.includes(`${h.codigo}:${t.id}`));
-      return `
-        <div class="insignia-card ${tiene ? 'ganada' : ''}" title="${tiene ? esc(h.logro) : 'Aún por conquistar'}">
-          <div class="insignia-medalla">${tiene ? h.emoji : '🔒'}</div>
-          <div class="insignia-nombre">${esc(h.insignia)}</div>
-          <div class="insignia-sub">${tiene ? (fechas[h.codigo] ? fechaCorta(fechas[h.codigo]) : 'Conquistada') : esc(h.tipo)}</div>
-          ${tiers.length ? `<div class="insignia-tiers">${tiers.map(t => t.icono).join('')}</div>` : ''}
-        </div>`;
-    }).join('');
+  const galeria = grupos.map(ciudad => {
+    const cartas = ciudad.hitos.map(h => `
+      <div class="insignia-card ${h.superado ? 'ganada' : ''}" title="${h.superado ? esc(h.titulo || '') : 'Aún por conquistar'}">
+        <div class="insignia-medalla">${h.superado ? h.emoji : '🔒'}</div>
+        <div class="insignia-nombre">${esc(h.barrio)}</div>
+        <div class="insignia-sub">${h.superado ? (h.fecha ? fechaCorta(h.fecha) : 'Conquistada') : (h.codigo || '')}</div>
+      </div>`).join('');
     return `
       <div class="galeria-ciudad">
         <div class="galeria-ciudad-cab">
-          <span>${conq ? '🏯' : ciudad.emoji} <b>${esc(ciudad.nombre)}</b> <span lang="ja" style="color:var(--tinta-tenue)">${esc(ciudad.kanji)}</span></span>
-          ${conq ? '<span class="chip chip-superada">★ Conquistada</span>' : ''}
+          <span>${ciudad.examenAprobado ? '🏯' : ciudad.emoji} <b>${esc(ciudad.nombre)}</b> <span lang="ja" style="color:var(--tinta-tenue)">${esc(ciudad.kanji)}</span></span>
+          ${ciudad.examenAprobado ? '<span class="chip chip-superada">★ Superada</span>' : ''}
         </div>
         <div class="galeria-insignias">${cartas}</div>
       </div>`;

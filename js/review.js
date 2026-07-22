@@ -2,7 +2,7 @@
 import { api } from './api.js';
 import { hablar } from './tts.js';
 import { comprobarJapones, comprobarEspanol, romajiAHiragana, contieneJapones } from './kana.js';
-import { ciudadDeLeccion, TIERS } from './ciudades.js';
+import { TIERS } from './ciudades.js';
 import { animar } from './lottie.js';
 
 const NOMBRES_TIPO = { vocab: 'Vocabulario', grammar: 'Gramática', conj: 'Conjugación' };
@@ -18,7 +18,7 @@ export async function vistaRepaso(cont, refrescarBadge) {
   const ciudadFiltro = sessionStorage.getItem('kotoba-ciudad');
   sessionStorage.removeItem('kotoba-ciudad');
   const { cola } = await api.cola(20, ciudadFiltro);
-  const nombreCiudad = ciudadFiltro ? ciudadDeLeccion(ciudadFiltro, 0).nombre : null;
+  const nombreCiudad = ciudadFiltro || null;
 
   if (!cola.length) {
     cont.innerHTML = `
@@ -196,11 +196,10 @@ export async function vistaRepaso(cont, refrescarBadge) {
     const insigniasHtml = sesion.insignias.length ? `
       <div class="fin-insignias">
         ${sesion.insignias.map(i => {
-          const ciudad = ciudadDeLeccion(i.leccion, 0);
           const tier = TIERS.find(t => t.id === i.tier);
           return `<div class="insignia-nueva">
             <span class="insignia-icono">${tier.icono}</span>
-            <div><b>${esc(ciudad.nombre)} · ${esc(tier.nombre)}</b><br><small>${esc(i.tier === 'bronce' ? tier.descripcion : ciudad.habilidad)}</small></div>
+            <div><b>${esc(i.leccion)} · ${esc(tier.nombre)}</b><br><small>${esc(tier.descripcion)}</small></div>
           </div>`;
         }).join('')}
       </div>` : '';

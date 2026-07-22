@@ -2,7 +2,7 @@
 // actividad diaria y estadísticas. Todo persiste en IndexedDB (ver almacen.js).
 import { leer, guardar, pedirPersistencia } from './almacen.js';
 import { nivelDeXp, tiersConseguidos } from './ciudades.js';
-import { CIUDADES, ciudadDeCodigo, hitosRequeridos } from './curriculum.js';
+import { CIUDAD_GEO, ORDEN_CIUDADES_DEFAULT, FUJI } from './curriculum.js';
 
 const MIN = 60 * 1000;
 const DIA = 24 * 60 * 60 * 1000;
@@ -185,102 +185,101 @@ function marcarEvento(evento) {
   return true;
 }
 
-// Los billetes de Shinkansen se ganan SOLO al conquistar una ciudad entera
-// (todos sus barrios/hitos superados), nunca por una lección suelta: viajas de
-// ciudad en ciudad al completar el paquete de lecciones de la actual.
+// Billete de Shinkansen: se gana SOLO al aprobar el examen de una ciudad.
 function concederBillete(evento) {
   const nuevo = marcarEvento(evento);
   if (nuevo) estado.juego.billetes++;
   return nuevo;
 }
 
-// Leer la teoría NO completa una lección: solo aprobar sus ejercicios
-// prácticos la marca como superada (y eso es permanente). Da su insignia local
-// (barrio/comida/festival), pero el billete de Shinkansen solo llega al
-// conquistar la ciudad completa.
-export async function superarLeccion(codigo) {
-  if (!estado.lecciones[codigo] && codigo !== 'General') {
-    throw new Error(`La lección ${codigo} no tiene contenido todavía`);
-  }
-  const nueva = marcarEvento(`${codigo}:completa`);
-  if (nueva) estado.juego.fechas[codigo] = Date.now();
-
-  // ¿Se conquista la ciudad entera? (todos sus hitos requeridos superados)
-  let ciudadConquistada = null;
-  const ciudad = ciudadDeCodigo(codigo);
-  if (ciudad) {
-    const req = hitosRequeridos(ciudad.id);
-    const completa = req.length && req.every(c => estaSuperada(c));
-    const evento = `ciudad:${ciudad.id}`;
-    if (completa && concederBillete(evento)) {
-      estado.juego.fechas[evento] = Date.now();
-      ciudadConquistada = { id: ciudad.id, nombre: ciudad.nombre };
-    }
-  }
-
-  await guardar('juego', estado.juego);
-  return { nueva, billetes: estado.juego.billetes, ciudadConquistada };
-}
-
-export function ciudadEstaConquistada(ciudadId) {
-  return estado.juego.eventosBilletes.includes(`ciudad:${ciudadId}`);
-}
-
 export function estaSuperada(codigo) {
   return estado.juego.eventosBilletes.includes(`${codigo}:completa`);
 }
 
-// El bloqueo es por CIUDAD, no por lección: dentro de una ciudad desbloqueada
-// todos sus barrios/hitos están disponibles a la vez (todos son "de Tokio"). Se
-// viaja a la siguiente ciudad al conquistar la actual (o gastando un billete).
-function tieneContenido(cod) { return cod === 'General' ? !!estado.lecciones.General : !!estado.lecciones[cod]; }
+// ---------- Datos de lección leídos del JSON (schema nuevo) ----------
+function numLeccion(codigo) { const m = /^L(\d+)$/.exec(codigo); return m ? parseInt(m[1], 10) : null; }
+function metaLeccion(codigo) { const m = estado.lecciones[codigo]; return (m && typeof m === 'object') ? m : {}; }
 
-function ciudadDeCod(cod) { const c = ciudadDeCodigo(cod); return c ? c.id : 'nuevas'; }
-
-function ordenCiudades() {
-  const ids = CIUDADES.filter(c => c.hitos.some(h => !h.bonus && tieneContenido(h.codigo))).map(c => c.id);
-  const cubiertas = new Set(CIUDADES.flatMap(c => c.hitos.map(h => h.codigo)));
-  if (ordenParadas().some(cod => !cubiertas.has(cod))) ids.push('nuevas');
-  return ids;
+export function tituloLeccion(codigo) {
+  const m = estado.lecciones[codigo];
+  if (!m) return codigo;
+  return (typeof m === 'string') ? m : (m.titulo || codigo);
 }
 
-function ciudadConquistadaCalc(cityId) {
-  if (cityId === 'nuevas') {
-    const cubiertas = new Set(CIUDADES.flatMap(c => c.hitos.map(h => h.codigo)));
-    const codes = ordenParadas().filter(cod => !cubiertas.has(cod));
-    return codes.length > 0 && codes.every(estaSuperada);
-  }
-  const req = hitosRequeridos(cityId).filter(tieneContenido);
-  return req.length > 0 && req.every(estaSuperada);
+function ordenCiudadesLista() { return (estado.meta && estado.meta.orden_ciudades) || ORDEN_CIUDADES_DEFAULT; }
+function lecPorCiudad() { return (estado.meta && estado.meta.lecciones_por_ciudad) || 6; }
+
+// Ciudad de una lección: la del JSON, o por bloques de N en el orden definido.
+function ciudadDeLeccionNombre(codigo) {
+  if (codigo === 'General') return null;
+  const m = metaLeccion(codigo);
+  if (m.ciudad) return m.ciudad;
+  const n = numLeccion(codigo);
+  if (!n) return null;
+  const orden = ordenCiudadesLista();
+  return orden[Math.floor((n - 1) / lecPorCiudad())] || orden[orden.length - 1] || 'Tokio';
+}
+function barrioDe(codigo) {
+  const m = metaLeccion(codigo);
+  if (m.barrio) return m.barrio;
+  const n = numLeccion(codigo);
+  return n ? `Lección ${n}` : codigo;
+}
+function emojiDe(codigo) {
+  const m = metaLeccion(codigo);
+  if (m.emoji) return m.emoji;
+  const cn = ciudadDeLeccionNombre(codigo);
+  return (cn && CIUDAD_GEO[cn] && CIUDAD_GEO[cn].generico) || '📍';
 }
 
-function ciudadDesbloqueada(cityId, orden) {
-  const idx = orden.indexOf(cityId);
-  if (idx <= 0) return true;                                    // la primera siempre
-  if (estado.juego.desbloqueadas.includes(cityId)) return true; // billete gastado
-  return ciudadConquistadaCalc(orden[idx - 1]);                 // ciudad anterior conquistada
+function codigosDeCiudad(nombre) { return ordenParadas().filter(c => ciudadDeLeccionNombre(c) === nombre); }
+
+// Ciudades con contenido, en el orden del viaje.
+function ciudadesConContenido() {
+  const orden = ordenCiudadesLista();
+  const con = new Set(ordenParadas().map(ciudadDeLeccionNombre).filter(Boolean));
+  const lista = orden.filter(n => con.has(n));
+  for (const n of con) if (!lista.includes(n)) lista.push(n);
+  return lista;
+}
+
+// Una ciudad se conquista al superar su paquete completo de lecciones.
+function ciudadConquistadaCalc(nombre) {
+  const codes = codigosDeCiudad(nombre);
+  return codes.length >= lecPorCiudad() && codes.every(estaSuperada);
+}
+export function ciudadEstaConquistada(nombre) { return ciudadConquistadaCalc(nombre); }
+export function examenAprobado(nombre) { return estado.juego.eventosBilletes.includes(`examen:${nombre}`); }
+function examenDisponible(nombre) { return ciudadConquistadaCalc(nombre) && !examenAprobado(nombre); }
+
+// Desbloqueo por ciudad: la primera siempre; el resto necesita el billete de
+// Shinkansen (examen aprobado de la ciudad anterior) o gastar un billete suelto.
+function ciudadDesbloqueada(nombre, ordenadas) {
+  const idx = ordenadas.indexOf(nombre);
+  if (idx <= 0) return true;
+  if (estado.juego.desbloqueadas.includes(nombre)) return true;
+  return examenAprobado(ordenadas[idx - 1]);
 }
 
 export function paradas() {
   const { porLeccion } = resumen();
-  const orden = ordenCiudades();
+  const ordenadas = ciudadesConContenido();
   const desbloq = {};
-  orden.forEach(id => { desbloq[id] = ciudadDesbloqueada(id, orden); });
+  ordenadas.forEach(n => { desbloq[n] = ciudadDesbloqueada(n, ordenadas); });
   const lista = [];
 
   ordenParadas().forEach((cod, i) => {
     const stats = porLeccion[cod] || { total: 0, nuevas: 0, aprendiendo: 0, dominadas: 0 };
-    const cid = ciudadDeCod(cod);
+    const cn = ciudadDeLeccionNombre(cod);
     let estadoParada;
     if (estaSuperada(cod)) estadoParada = 'COMPLETED';
-    else if (desbloq[cid]) estadoParada = 'ACTIVE';
+    else if (desbloq[cn]) estadoParada = 'ACTIVE';
     else estadoParada = 'LOCKED';
-    lista.push({ codigo: cod, orden: i + 1, estado: estadoParada, stats, hasContent: true, ciudadId: cid });
+    lista.push({ codigo: cod, orden: i + 1, estado: estadoParada, stats, hasContent: true, ciudad: cn });
   });
 
-  // El Monte Fuji (General) es la parada transversal: siempre accesible.
   if (porLeccion.General) {
-    lista.push({ codigo: 'General', orden: 0, estado: estaSuperada('General') ? 'COMPLETED' : 'ACTIVE', stats: porLeccion.General, hasContent: true, ciudadId: 'tokio' });
+    lista.push({ codigo: 'General', orden: 0, estado: estaSuperada('General') ? 'COMPLETED' : 'ACTIVE', stats: porLeccion.General, hasContent: true, ciudad: null });
   }
 
   const ahora = Date.now();
@@ -293,27 +292,105 @@ export function paradas() {
     }
     parada.pendientes = pendientes;
     parada.needsReview = pendientes > 0;
-    parada.conquistada = estado.juego.insignias.includes(`${parada.codigo}:plata`);
   }
   return lista;
 }
 
 function leccionesConNuevasPermitidas() {
   const permitidas = new Set(['General']);
-  for (const p of paradas()) {
-    if (p.estado !== 'LOCKED') permitidas.add(p.codigo);
-  }
+  for (const p of paradas()) if (p.estado !== 'LOCKED') permitidas.add(p.codigo);
   return permitidas;
 }
 
-// Un billete de Shinkansen desbloquea una CIUDAD entera (viajar antes de tiempo).
-export async function gastarBillete(cityId) {
+// Aprobar los ejercicios de una lección la marca como superada (su insignia de
+// barrio/comida/festival). El billete de Shinkansen NO se da aquí: llega solo al
+// aprobar el examen de ciudad.
+export async function superarLeccion(codigo) {
+  if (!estado.lecciones[codigo]) throw new Error(`La lección ${codigo} no tiene contenido todavía`);
+  const nueva = marcarEvento(`${codigo}:completa`);
+  if (nueva) estado.juego.fechas[codigo] = Date.now();
+  const ciudad = ciudadDeLeccionNombre(codigo);
+  const ciudadCompleta = ciudad ? examenDisponible(ciudad) : false; // 6/6 superadas, examen pendiente
+  await guardar('juego', estado.juego);
+  return { nueva, insignia: barrioDe(codigo), ciudad, ciudadCompleta };
+}
+
+export function codigosExamen(nombre) { return codigosDeCiudad(nombre); }
+
+// Examen de ciudad: hace falta >=80% para el billete de Shinkansen que abre la
+// siguiente ciudad. Se puede repetir cuantas veces haga falta; suspender no resta.
+export async function aprobarExamen(nombre, pct) {
+  if (pct < 0.8) return { aprobado: false, pct };
+  if (!ciudadConquistadaCalc(nombre)) throw new Error('Aún no has completado todas las lecciones de esta ciudad');
+  const nuevo = concederBillete(`examen:${nombre}`); // +1 billete la primera vez que se aprueba
+  if (nuevo) estado.juego.fechas[`examen:${nombre}`] = Date.now();
+  await guardar('juego', estado.juego);
+  const ordenadas = ciudadesConContenido();
+  const idx = ordenadas.indexOf(nombre);
+  return { aprobado: true, pct, billete: nuevo, billetes: estado.juego.billetes, siguiente: idx >= 0 ? (ordenadas[idx + 1] || null) : null };
+}
+
+// Un billete desbloquea una ciudad concreta antes de tiempo.
+export async function gastarBillete(nombre) {
   if (estado.juego.billetes <= 0) throw new Error('No te quedan billetes de Shinkansen');
-  if (estado.juego.desbloqueadas.includes(cityId)) return { billetes: estado.juego.billetes };
+  if (estado.juego.desbloqueadas.includes(nombre)) return { billetes: estado.juego.billetes };
   estado.juego.billetes--;
-  estado.juego.desbloqueadas.push(cityId);
+  estado.juego.desbloqueadas.push(nombre);
   await guardar('juego', estado.juego);
   return { billetes: estado.juego.billetes };
+}
+
+// Estructura completa del viaje (ciudades › hitos) para las vistas.
+export function estructuraCiudades() {
+  const { porLeccion } = resumen();
+  const ordenadas = ciudadesConContenido();
+  const porCod = Object.fromEntries(paradas().map(p => [p.codigo, p]));
+
+  const construirHito = cod => {
+    const st = porCod[cod] || {};
+    return {
+      codigo: cod, barrio: barrioDe(cod), emoji: emojiDe(cod), titulo: tituloLeccion(cod),
+      estado: st.estado, stats: st.stats || { total: 0, nuevas: 0, aprendiendo: 0, dominadas: 0 },
+      needsReview: !!st.needsReview, pendientes: st.pendientes || 0,
+      superado: estaSuperada(cod), fecha: estado.juego.fechas[cod] || null
+    };
+  };
+
+  const ciudades = ordenadas.map(nombre => {
+    const geo = CIUDAD_GEO[nombre] || {};
+    const codes = codigosDeCiudad(nombre);
+    const hitos = codes.map(construirHito);
+    return {
+      id: nombre, nombre, kanji: geo.kanji || '', emoji: geo.emoji || '📍', generico: geo.generico,
+      pref: geo.pref, region: geo.region || '', jlpt: geo.jlpt || '', lat: geo.lat, lon: geo.lon,
+      dxEtiqueta: geo.dx || 0, dyEtiqueta: geo.dy || 0, hitos,
+      conquistada: ciudadConquistadaCalc(nombre), bloqueada: hitos.length > 0 && hitos.every(h => h.estado === 'LOCKED'),
+      superados: hitos.filter(h => h.superado).length, total: codes.length, cupo: lecPorCiudad(),
+      examenDisponible: examenDisponible(nombre), examenAprobado: examenAprobado(nombre), futura: false
+    };
+  });
+
+  const futuras = ordenCiudadesLista().filter(n => !ordenadas.includes(n)).map(nombre => {
+    const geo = CIUDAD_GEO[nombre] || {};
+    return {
+      id: nombre, nombre, kanji: geo.kanji || '', emoji: geo.emoji || '📍', pref: geo.pref,
+      region: geo.region || '', jlpt: geo.jlpt || '', lat: geo.lat, lon: geo.lon,
+      dxEtiqueta: geo.dx || 0, dyEtiqueta: geo.dy || 0, hitos: [], conquistada: false, bloqueada: true,
+      superados: 0, total: 0, cupo: lecPorCiudad(), examenDisponible: false, examenAprobado: false, futura: true
+    };
+  });
+
+  let fuji = null;
+  if (estado.lecciones.General) {
+    const st = porCod.General || {};
+    const m = metaLeccion('General');
+    fuji = {
+      ...FUJI, id: 'General', codigo: 'General', barrio: m.barrio || FUJI.nombre, emoji: m.emoji || FUJI.emoji,
+      titulo: tituloLeccion('General'), estado: st.estado, stats: st.stats, needsReview: !!st.needsReview,
+      superado: estaSuperada('General'), fecha: estado.juego.fechas.General || null
+    };
+  }
+  return { ciudades, futuras, fuji };
 }
 
 export async function responder(cardId, resultado) {
@@ -486,12 +563,13 @@ function juegoResumen() {
     billetes: estado.juego.billetes,
     fechas: { ...estado.juego.fechas },
     superadas: estado.juego.eventosBilletes.filter(e => e.endsWith(':completa')).map(e => e.replace(':completa', '')),
-    ciudadesConquistadas: estado.juego.eventosBilletes.filter(e => e.startsWith('ciudad:')).map(e => e.replace('ciudad:', ''))
+    ciudadesConquistadas: ciudadesConContenido().filter(ciudadConquistadaCalc),
+    examenesAprobados: estado.juego.eventosBilletes.filter(e => e.startsWith('examen:')).map(e => e.replace('examen:', ''))
   };
 }
 
 export function datosViaje() {
-  return { paradas: paradas(), lecciones: estado.lecciones, juego: juegoResumen() };
+  return { ...estructuraCiudades(), juego: juegoResumen() };
 }
 
 export function datosPerfil() {
@@ -500,12 +578,14 @@ export function datosPerfil() {
     .map(([fecha, a]) => ({ fecha, n: a.repasos + a.ejercicios }))
     .sort((a, b) => b.fecha.localeCompare(a.fecha))
     .slice(0, 14);
+  const { ciudades, fuji } = estructuraCiudades();
   return {
     resumen: resumen(),
     racha: calcularRacha(),
     hoy,
     ultimos14,
-    lecciones: estado.lecciones,
+    ciudades,
+    fuji,
     juego: juegoResumen(),
     sanguijuelas: sanguijuelas()
   };

@@ -1035,6 +1035,283 @@
       "type": "grammar",
       "question": "¿Cuándo se usan las formas simples (食べる/食べない/食べた) en vez de ます/です?",
       "explanation": "Con amigos/familia cercana (registro informal), y SIEMPRE dentro de construcciones como ~と思います o ~と言っていました, aunque la frase completa sea educada."
+    },
+    {
+      "id": "l1_hajimemashite",
+      "l": "L1",
+      "kanji": "はじめまして",
+      "reading": "はじめまして",
+      "es": "mucho gusto (al conocer a alguien)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l4_depaato",
+      "l": "L4",
+      "kanji": "デパート",
+      "reading": "でぱーと",
+      "es": "grandes almacenes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l4_kaimasu",
+      "l": "L4",
+      "kanji": "買います",
+      "reading": "かいます",
+      "es": "comprar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l4_neko",
+      "l": "L4",
+      "kanji": "猫",
+      "reading": "ねこ",
+      "es": "gato",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l4_inu",
+      "l": "L4",
+      "kanji": "犬",
+      "reading": "いぬ",
+      "es": "perro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l4_kouen",
+      "l": "L4",
+      "kanji": "公園",
+      "reading": "こうえん",
+      "es": "parque",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l4_tsukue",
+      "l": "L4",
+      "kanji": "机",
+      "reading": "つくえ",
+      "es": "mesa/escritorio",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l4_eigakan",
+      "l": "L4",
+      "kanji": "映画館",
+      "reading": "えいがかん",
+      "es": "cine (el edificio)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l6_matsu",
+      "l": "L6",
+      "kanji": "待つ",
+      "reading": "まつ",
+      "es": "esperar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l6_yobu",
+      "l": "L6",
+      "kanji": "呼ぶ",
+      "reading": "よぶ",
+      "es": "llamar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l6_isogu",
+      "l": "L6",
+      "kanji": "急ぐ",
+      "reading": "いそぐ",
+      "es": "darse prisa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l6_hanasu",
+      "l": "L6",
+      "kanji": "話す",
+      "reading": "はなす",
+      "es": "hablar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l6_suu",
+      "l": "L6",
+      "kanji": "吸う",
+      "reading": "すう",
+      "es": "fumar/aspirar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l8_ame",
+      "l": "L8",
+      "kanji": "雨",
+      "reading": "あめ",
+      "es": "lluvia",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l8_omoshiroi",
+      "l": "L8",
+      "kanji": "面白い",
+      "reading": "おもしろい",
+      "es": "interesante/divertido",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l8_ryouri",
+      "l": "L8",
+      "kanji": "料理する",
+      "reading": "りょうりする",
+      "es": "cocinar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l8_onakasuku",
+      "l": "L8",
+      "kanji": "お腹が空く",
+      "reading": "おなかがすく",
+      "es": "tener hambre",
+      "dir": "es-jp"
+    },
+    {
+      "id": "vocab_getsuyoubi",
+      "l": "L3",
+      "kanji": "月曜日",
+      "reading": "げつようび",
+      "es": "lunes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "vocab_kayoubi",
+      "l": "L3",
+      "kanji": "火曜日",
+      "reading": "かようび",
+      "es": "martes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "vocab_suiyoubi",
+      "l": "L3",
+      "kanji": "水曜日",
+      "reading": "すいようび",
+      "es": "miércoles",
+      "dir": "es-jp"
+    },
+    {
+      "id": "vocab_mokuyoubi",
+      "l": "L3",
+      "kanji": "木曜日",
+      "reading": "もくようび",
+      "es": "jueves",
+      "dir": "jp-es"
+    },
+    {
+      "id": "vocab_kinyoubi",
+      "l": "L3",
+      "kanji": "金曜日",
+      "reading": "きんようび",
+      "es": "viernes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "vocab_doyoubi",
+      "l": "L3",
+      "kanji": "土曜日",
+      "reading": "どようび",
+      "es": "sábado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "vocab_nichiyoubi",
+      "l": "L3",
+      "kanji": "日曜日",
+      "reading": "にちようび",
+      "es": "domingo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "vocab_nanyoubi",
+      "l": "L3",
+      "kanji": "何曜日",
+      "reading": "なんようび",
+      "es": "¿qué día de la semana?",
+      "dir": "jp-es"
+    },
+    {
+      "id": "c_ta_taberu2",
+      "l": "L8",
+      "type": "conj",
+      "front": "食べる → forma た",
+      "answer": "食べた",
+      "alt": [
+        "たべた"
+      ]
+    },
+    {
+      "id": "c_ta_kaeru2",
+      "l": "L8",
+      "type": "conj",
+      "front": "帰る → forma た",
+      "answer": "帰った",
+      "alt": [
+        "かえった"
+      ]
+    },
+    {
+      "id": "c_ta_hanasu2",
+      "l": "L8",
+      "type": "conj",
+      "front": "話す → forma た",
+      "answer": "話した",
+      "alt": [
+        "はなした"
+      ]
+    },
+    {
+      "id": "c_nakatta_taberu",
+      "l": "L8",
+      "type": "conj",
+      "front": "食べる → forma なかった (pasado negativo simple)",
+      "answer": "食べなかった",
+      "alt": [
+        "たべなかった"
+      ]
+    },
+    {
+      "id": "c_da_gakusei",
+      "l": "L8",
+      "type": "conj",
+      "front": "学生 → forma だ (presente simple)",
+      "answer": "学生だ",
+      "alt": [
+        "がくせいだ"
+      ]
+    },
+    {
+      "id": "c_datta_gakusei",
+      "l": "L8",
+      "type": "conj",
+      "front": "学生 → forma だった (pasado simple)",
+      "answer": "学生だった",
+      "alt": [
+        "がくせいだった"
+      ]
+    },
+    {
+      "id": "c_datta_kirei",
+      "l": "L8",
+      "type": "conj",
+      "front": "きれい → forma だった (pasado simple)",
+      "answer": "きれいだった"
+    },
+    {
+      "id": "c_janai_gakusei",
+      "l": "L8",
+      "type": "conj",
+      "front": "学生 → forma じゃない (presente negativo simple)",
+      "answer": "学生じゃない",
+      "alt": [
+        "がくせいじゃない"
+      ]
     }
   ]
 }

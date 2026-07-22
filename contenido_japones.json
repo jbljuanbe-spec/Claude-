@@ -2,16 +2,77 @@
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
     "metodo": "Genki I como columna vertebral, con anadidos de Minna no Nihongo, NHK Easy Japanese y matices de gramatica surgidos en el chat",
-    "leccion_actual": 6
+    "leccion_actual": 8,
+    "lecciones_por_ciudad": 6,
+    "orden_ciudades": [
+      "Tokio",
+      "Yokohama",
+      "Kioto",
+      "Osaka",
+      "Nara",
+      "Kanazawa",
+      "Hiroshima",
+      "Fukuoka",
+      "Sendai",
+      "Sapporo",
+      "Naha"
+    ]
   },
   "lecciones": {
-    "L1": "あいさつ・自己紹介 (Saludos y autopresentación)",
-    "L2": "かいもの (Compras)",
-    "L3": "デートの約束 (Quedar con alguien)",
-    "L4": "初めてのデート (La primera cita)",
-    "L5": "沖縄旅行 (Viaje a Okinawa)",
-    "L6": "ロバートさんの一日 (Un día en la vida de Robert)",
-    "General": "Matices transversales (varias lecciones)"
+    "L1": {
+      "titulo": "あいさつ・自己紹介 (Saludos y autopresentación)",
+      "ciudad": "Tokio",
+      "barrio": "Estación de Tokio",
+      "emoji": "🚅"
+    },
+    "L2": {
+      "titulo": "かいもの (Compras)",
+      "ciudad": "Tokio",
+      "barrio": "Mercado de Ameyoko",
+      "emoji": "🧺"
+    },
+    "L3": {
+      "titulo": "デートの約束 (Quedar con alguien)",
+      "ciudad": "Tokio",
+      "barrio": "Cruce de Shibuya",
+      "emoji": "🚦"
+    },
+    "L4": {
+      "titulo": "初めてのデート (La primera cita)",
+      "ciudad": "Tokio",
+      "barrio": "Parque de Ueno",
+      "emoji": "🌸"
+    },
+    "L5": {
+      "titulo": "沖縄旅行 (Viaje a Okinawa)",
+      "ciudad": "Tokio",
+      "barrio": "Mercado de Tsukiji",
+      "emoji": "🐟"
+    },
+    "L6": {
+      "titulo": "ロバートさんの一日 (Un día en la vida de Robert)",
+      "ciudad": "Tokio",
+      "barrio": "Templo Senso-ji",
+      "emoji": "⛩️"
+    },
+    "L7": {
+      "titulo": "家族の写真 (Foto de familia)",
+      "ciudad": "Yokohama",
+      "barrio": "Jardín Sankeien",
+      "emoji": "🎍"
+    },
+    "L8": {
+      "titulo": "バーベキュー (Barbacoa)",
+      "ciudad": "Yokohama",
+      "barrio": "Muelle de Minato Mirai",
+      "emoji": "🎡"
+    },
+    "General": {
+      "titulo": "Matices transversales (varias lecciones)",
+      "ciudad": null,
+      "barrio": "Monte Fuji",
+      "emoji": "🗻"
+    }
   },
   "tarjetas": [
     {
@@ -713,6 +774,267 @@
       "type": "grammar",
       "question": "¿Cómo sé qué terminación て le toca a un verbo del Grupo 1?",
       "explanation": "Según la última sílaba del diccionario: う/つ/る→って, ぬ/む/ぶ→んで, く→いて, ぐ→いで, す→して. Excepción: 行く→行って (no 行いて)."
+    },
+    {
+      "id": "g_na_is_noun",
+      "l": "L5",
+      "type": "grammar",
+      "question": "¿Cómo distingo si una palabra es -い o -な?",
+      "explanation": "Si termina en い, probablemente -い (conjuga sola: 高い→高く/高かった). Si NO termina en い, siempre -な (静か, 便利...). Excepciones que engañan: きれい y 嫌い terminan en い pero son -な. Truco: un -な se conjuga IGUAL que un sustantivo+です (学生です=きれいです en estructura)."
+    },
+    {
+      "id": "g_fake_ichidan",
+      "l": "L6",
+      "type": "grammar",
+      "question": "¿Cómo sé si un verbo en る es Grupo 1 o Grupo 2?",
+      "explanation": "Vocal antes de る: あ/う/お → Grupo 1 siempre. い/え → Grupo 2 normalmente, PERO hay excepciones: 帰る, 入る, 走る, 知る, 切る, 要る, 減る terminan en -iru/-eru y son Grupo 1. No hay truco fiable para estas, se memorizan como vocabulario."
+    },
+    {
+      "id": "g_teiru_dos_usos",
+      "l": "L7",
+      "type": "grammar",
+      "question": "¿Por qué 疲れています significa \"estoy cansado\" y no \"me estoy cansando\"?",
+      "explanation": "~ている tiene 2 usos: acción en progreso (今、勉強しています = estoy estudiando ahora) y estado resultante (疲れています = quedé en el estado de haberme cansado = estoy cansado). 疲れる describe un cambio puntual, así que su ~ている da el estado actual, no una acción continuada."
+    },
+    {
+      "id": "l7_kazoku",
+      "l": "L7",
+      "kanji": "家族",
+      "reading": "かぞく",
+      "es": "familia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l7_kekkon",
+      "l": "L7",
+      "kanji": "結婚する",
+      "reading": "けっこんする",
+      "es": "casarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l7_ani",
+      "l": "L7",
+      "kanji": "兄",
+      "reading": "あに",
+      "es": "hermano mayor (mío)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l7_ane",
+      "l": "L7",
+      "kanji": "姉",
+      "reading": "あね",
+      "es": "hermana mayor (mía)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l7_otouto",
+      "l": "L7",
+      "kanji": "弟",
+      "reading": "おとうと",
+      "es": "hermano menor (mío)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l7_imouto",
+      "l": "L7",
+      "kanji": "妹",
+      "reading": "いもうと",
+      "es": "hermana menor (mía)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "g_ni_iku",
+      "l": "L7",
+      "type": "grammar",
+      "question": "¿Cómo digo \"voy a ver una película\" (con el propósito de ir)?",
+      "explanation": "Verbo en raíz ます + に行きます: 映画を見に行きます (voy a ver una película). Reemplaza construcciones poco naturales como \"映画に行く\"."
+    },
+    {
+      "id": "l6_shashin_toru",
+      "l": "L6",
+      "kanji": "写真を撮る",
+      "reading": "しゃしんをとる",
+      "es": "tomar una foto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l7_chichi",
+      "l": "L7",
+      "kanji": "父",
+      "reading": "ちち",
+      "es": "padre (mío)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l7_haha",
+      "l": "L7",
+      "kanji": "母",
+      "reading": "はは",
+      "es": "madre (mía)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l7_ryoushin",
+      "l": "L7",
+      "kanji": "両親",
+      "reading": "りょうしん",
+      "es": "padres (ambos)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l7_sofu",
+      "l": "L7",
+      "kanji": "祖父",
+      "reading": "そふ",
+      "es": "abuelo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l7_sobo",
+      "l": "L7",
+      "kanji": "祖母",
+      "reading": "そぼ",
+      "es": "abuela",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l7_musuko",
+      "l": "L7",
+      "kanji": "息子",
+      "reading": "むすこ",
+      "es": "hijo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l7_musume",
+      "l": "L7",
+      "kanji": "娘",
+      "reading": "むすめ",
+      "es": "hija",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l7_kodomo",
+      "l": "L7",
+      "kanji": "子供",
+      "reading": "こども",
+      "es": "niño/a, hijo/a",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l7_otto",
+      "l": "L7",
+      "kanji": "夫",
+      "reading": "おっと",
+      "es": "esposo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l7_tsuma",
+      "l": "L7",
+      "kanji": "妻",
+      "reading": "つま",
+      "es": "esposa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l7_otousan",
+      "l": "L7",
+      "kanji": "お父さん",
+      "reading": "おとうさん",
+      "es": "padre (de otra persona / trato directo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l7_okaasan",
+      "l": "L7",
+      "kanji": "お母さん",
+      "reading": "おかあさん",
+      "es": "madre (de otra persona / trato directo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "g_teiru_vs_invitacion",
+      "l": "L7",
+      "type": "grammar",
+      "question": "¿Puedo usar 見ていますか para invitar a alguien a ver algo?",
+      "explanation": "No — ~ている pregunta por una acción EN CURSO ahora (\"¿estás viendo...?\"), no sirve para proponer algo futuro. Para invitar usa ~ましょうか o ~ませんか: 映画を見ませんか (¿vemos una película?)."
+    },
+    {
+      "id": "c_nai_nomu",
+      "l": "L8",
+      "type": "conj",
+      "front": "飲む → forma ない (presente negativo simple)",
+      "answer": "飲まない",
+      "alt": [
+        "のまない"
+      ]
+    },
+    {
+      "id": "c_nai_kau",
+      "l": "L8",
+      "type": "conj",
+      "front": "買う → forma ない",
+      "answer": "買わない",
+      "alt": [
+        "かわない"
+      ]
+    },
+    {
+      "id": "c_nai_taberu",
+      "l": "L8",
+      "type": "conj",
+      "front": "食べる → forma ない",
+      "answer": "食べない",
+      "alt": [
+        "たべない"
+      ]
+    },
+    {
+      "id": "c_nai_suru",
+      "l": "L8",
+      "type": "conj",
+      "front": "する → forma ない",
+      "answer": "しない"
+    },
+    {
+      "id": "c_nai_kuru",
+      "l": "L8",
+      "type": "conj",
+      "front": "来る → forma ない",
+      "answer": "来ない",
+      "alt": [
+        "こない"
+      ]
+    },
+    {
+      "id": "c_ta_kau",
+      "l": "L8",
+      "type": "conj",
+      "front": "買う → forma た (pasado simple)",
+      "answer": "買った",
+      "alt": [
+        "かった"
+      ]
+    },
+    {
+      "id": "c_ta_nomu",
+      "l": "L8",
+      "type": "conj",
+      "front": "飲む → forma た",
+      "answer": "飲んだ",
+      "alt": [
+        "のんだ"
+      ]
+    },
+    {
+      "id": "g_formas_simples",
+      "l": "L8",
+      "type": "grammar",
+      "question": "¿Cuándo se usan las formas simples (食べる/食べない/食べた) en vez de ます/です?",
+      "explanation": "Con amigos/familia cercana (registro informal), y SIEMPRE dentro de construcciones como ~と思います o ~と言っていました, aunque la frase completa sea educada."
     }
   ]
 }

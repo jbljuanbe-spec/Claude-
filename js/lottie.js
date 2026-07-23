@@ -18,7 +18,8 @@ function cargarLibreria() {
 const RUTAS = {
   matcha: 'assets/lottie/matcha.json',
   conejos: 'assets/lottie/conejos.json',
-  japon: 'assets/lottie/japon.json'
+  japon: 'assets/lottie/japon.json',
+  shiba: 'assets/lottie/shiba.json'
 };
 
 export async function animar(contenedor, nombre, opciones = {}) {

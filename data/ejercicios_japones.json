@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "nota": "Complementario a contenido_japones.json. Estos 3 tipos necesitan render especial en la app: 'particulas' = elegir/escribir la partícula correcta entre 'opciones'; 'ordenar' = las palabras de 'palabras' se muestran desordenadas (barájalas en el cliente) y el usuario las ordena, comparando contra el propio array (que ya está en el orden correcto); 'produccion_larga' = el usuario escribe una respuesta libre más larga, comparación aproximada contra 'ejemplo_respuesta' (no exacta, es solo referencia), o simplemente mostrar el ejemplo tras que el usuario escriba la suya, sin marcar bien/mal de forma estricta.",
+    "leccion_actual": 10
+  },
+  "particulas": [
+    {"id": "p_l9_01", "leccion": "L9", "frase_con_hueco": "宿題を___していません。", "opciones": ["まだ", "もう", "でも"], "respuesta": "まだ", "traduccion": "Todavía no he hecho los deberes."},
+    {"id": "p_l9_02", "leccion": "L9", "frase_con_hueco": "映画は9時___始まります。", "opciones": ["から", "まで", "に"], "respuesta": "から", "traduccion": "La película empieza desde las 9."},
+    {"id": "p_l9_03", "leccion": "L9", "frase_con_hueco": "忙しい___、行きません。", "opciones": ["から", "の", "と"], "respuesta": "から", "traduccion": "No voy porque estoy ocupado."},
+    {"id": "p_l10_01", "leccion": "L10", "frase_con_hueco": "日本はスペイン___小さいです。", "opciones": ["より", "の方が", "一番"], "respuesta": "より", "traduccion": "Japón es más pequeño que España."},
+    {"id": "p_l10_02", "leccion": "L10", "frase_con_hueco": "果物の中で、りんごが___好きです。", "opciones": ["一番", "より", "か"], "respuesta": "一番", "traduccion": "De las frutas, la manzana es la que más me gusta."},
+    {"id": "p_l10_03", "leccion": "L10", "frase_con_hueco": "赤い___が好きです。", "opciones": ["の", "が", "を"], "respuesta": "の", "traduccion": "Me gusta el rojo."},
+    {"id": "p_l6_01", "leccion": "L6", "frase_con_hueco": "ここで写真を撮っ___いいですか。", "opciones": ["ても", "たら", "から"], "respuesta": "ても", "traduccion": "¿Se puede tomar fotos aquí?"},
+    {"id": "p_l7_01", "leccion": "L7", "frase_con_hueco": "映画を見___行きます。", "opciones": ["に", "を", "で"], "respuesta": "に", "traduccion": "Voy a ver una película."}
+  ],
+  "ordenar": [
+    {"id": "o_l9_01", "leccion": "L9", "palabras": ["昨日", "買った", "本", "は", "面白い", "です"], "traduccion": "El libro que compré ayer es interesante."},
+    {"id": "o_l9_02", "leccion": "L9", "palabras": ["日本語", "を", "勉強している", "学生", "が", "います"], "traduccion": "Hay un estudiante que está estudiando japonés."},
+    {"id": "o_l10_01", "leccion": "L10", "palabras": ["電車", "は", "バス", "より", "便利です"], "traduccion": "El tren es más práctico que el autobús."},
+    {"id": "o_l10_02", "leccion": "L10", "palabras": ["季節", "の", "中で", "秋", "が", "一番好きです"], "traduccion": "De las estaciones, el otoño es la que más me gusta."},
+    {"id": "o_l6_01", "leccion": "L6", "palabras": ["朝ご飯", "を", "食べて", "学校", "へ", "行きます"], "traduccion": "Desayuno y voy a la escuela."},
+    {"id": "o_l8_01", "leccion": "L8", "palabras": ["田中さん", "は", "忙しい", "と", "言っていました"], "traduccion": "Tanaka dijo que estaba ocupado."}
+  ],
+  "produccion_larga": [
+    {"id": "w_l9_01", "leccion": "L9", "prompt": "Describe algo que todavía no has hecho esta semana, usando まだ~ていません.", "ejemplo_respuesta": "今週、まだ運動していません。", "puntos_gramaticales": ["まだ~ていません"]},
+    {"id": "w_l9_02", "leccion": "L9", "prompt": "Describe un libro o película usando una cláusula que califique un sustantivo (ej. 'la película que vi ayer').", "ejemplo_respuesta": "昨日見た映画はとても面白かったです。", "puntos_gramaticales": ["cláusula + sustantivo"]},
+    {"id": "w_l10_01", "leccion": "L10", "prompt": "Compara dos ciudades o comidas que conozcas usando より.", "ejemplo_respuesta": "東京は大阪より大きいです。", "puntos_gramaticales": ["より"]},
+    {"id": "w_l10_02", "leccion": "L10", "prompt": "Di cuál es tu estación del año favorita y por qué, usando 一番 y から.", "ejemplo_respuesta": "季節の中で、秋が一番好きです。涼しいから。", "puntos_gramaticales": ["一番", "から"]},
+    {"id": "w_general_01", "leccion": "General", "prompt": "Cuenta qué hiciste el fin de semana pasado en 4-5 frases, mezclando pasado, alguna partícula de lugar/tiempo, y un adjetivo.", "ejemplo_respuesta": "先週末、友達と映画を見ました。とても面白かったです。", "puntos_gramaticales": ["mezcla libre"]}
+  ]
+}

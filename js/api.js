@@ -41,17 +41,48 @@ export const api = {
   },
 
   ejercicios: async () => {
+    // Fusiona el banco original (data/ejercicios.json) con el archivo curado
+    // nuevo (data/ejercicios_japones.json), normalizando su esquema. Añade el
+    // tipo 'produccion_larga'. Si la red falla, cae a la última copia cacheada.
+    const base = { particulas: [], ordenar: [], traduccion: [], produccion_larga: [] };
+    const v = Date.now();
     try {
-      const res = await fetch(`data/ejercicios.json?v=${Date.now()}`);
-      if (!res.ok) throw new Error(`Error ${res.status}`);
-      const data = await res.json();
-      guardar('ejercicios', data).catch(() => {});
-      return data;
-    } catch (e) {
-      const cacheado = await leer('ejercicios');
-      if (cacheado) return cacheado;
-      throw e;
+      const res = await fetch(`data/ejercicios.json?v=${v}`);
+      if (res.ok) {
+        const d = await res.json();
+        base.particulas.push(...(d.particulas || []));
+        base.ordenar.push(...(d.ordenar || []));
+        base.traduccion.push(...(d.traduccion || []));
+      }
+    } catch { /* seguimos con lo que haya */ }
+    try {
+      const res = await fetch(`data/ejercicios_japones.json?v=${v}`);
+      if (res.ok) {
+        const d = await res.json();
+        (d.particulas || []).forEach(e => base.particulas.push({
+          id: e.id, l: e.leccion,
+          frase: String(e.frase_con_hueco || '').replace(/[_＿]+/g, '＿'),
+          trad: e.traduccion || '', opciones: e.opciones || [],
+          correcta: e.respuesta, explicacion: e.explicacion || ''
+        }));
+        (d.ordenar || []).forEach(e => base.ordenar.push({
+          id: e.id, l: e.leccion, es: e.traduccion || '', tokens: e.palabras || []
+        }));
+        (d.produccion_larga || []).forEach(e => base.produccion_larga.push({
+          id: e.id, l: e.leccion, prompt: e.prompt || '',
+          ejemplo: e.ejemplo_respuesta || '', puntos: e.puntos_gramaticales || []
+        }));
+      }
+    } catch { /* seguimos con lo que haya */ }
+
+    const total = base.particulas.length + base.ordenar.length + base.traduccion.length + base.produccion_larga.length;
+    if (total > 0) {
+      guardar('ejercicios', base).catch(() => {});
+      return base;
     }
+    const cacheado = await leer('ejercicios');
+    if (cacheado) return { produccion_larga: [], ...cacheado };
+    throw new Error('No se pudieron cargar los ejercicios');
   },
 
   registrarEjercicio: async () => {

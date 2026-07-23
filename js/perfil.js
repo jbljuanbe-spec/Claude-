@@ -1,6 +1,7 @@
 // 🏆 Perfil y estadísticas: nivel, racha protegida, medallas, tarjetas
 // sanguijuela, actividad y copia de seguridad. Nada de esto baja nunca.
 import { api } from './api.js';
+import { animar } from './lottie.js';
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -22,13 +23,28 @@ function fechaCorta(ts) {
 }
 
 export async function vistaPerfil(cont, avisar) {
-  cont.innerHTML = '<p class="vista-sub">Cargando perfil...</p>';
+  cont.innerHTML = `
+    <div class="perfil-carga">
+      <div class="perfil-carga-anim" id="carga-shiba"></div>
+      <p class="vista-sub">Cargando tu viaje...</p>
+    </div>`;
+  animar(cont.querySelector('#carga-shiba'), 'shiba');
   const { resumen, racha, hoy, ultimos14, ciudades, fuji, juego, sanguijuelas } = await api.perfil();
 
   const totalHoy = hoy.repasos + hoy.ejercicios;
   const maxActividad = Math.max(1, ...ultimos14.map(d => d.n));
   const dias = [...ultimos14].reverse();
   const nivel = juego.nivel;
+
+  // Anillo de progreso semanal, estilo "impact score": respuestas de los últimos 7 días.
+  const semana = ultimos14.slice(0, 7).reduce((s, d) => s + d.n, 0);
+  const metaSemana = 70;
+  const pct = Math.min(1, semana / metaSemana);
+  const RAD = 95, CX = 110, CY = 110;
+  const CIRC = 2 * Math.PI * RAD;
+  const offset = CIRC * (1 - pct);
+  const ang = (-90 + 360 * pct) * Math.PI / 180;
+  const mkx = CX + RAD * Math.cos(ang), mky = CY + RAD * Math.sin(ang);
 
   // Galería de insignias locales: una por barrio (lección), agrupada por ciudad.
   const grupos = [...ciudades];
@@ -61,9 +77,55 @@ export async function vistaPerfil(cont, avisar) {
     </div>`).join('')
     : '<p class="vista-sub" style="margin:0">Ninguna por ahora. Las tarjetas que falles 5 o más veces aparecerán aquí para que las vigiles de cerca.</p>';
 
+  // Misiones activas: acciones reales a partir del estado, al estilo de la referencia.
+  const pendientes = resumen.pendientesAhora + resumen.nuevas;
+  const ciudadActual = ciudades.find(c => c.hitos.some(h => !h.superado)) || ciudades[ciudades.length - 1];
+  const hitosCiudad = ciudadActual ? ciudadActual.hitos.length : 0;
+  const hitosHechos = ciudadActual ? ciudadActual.hitos.filter(h => h.superado).length : 0;
+  const misiones = `
+    <a class="mision-card" href="#repaso">
+      <div class="mision-emoji">🈺</div>
+      <div class="mision-cuerpo">
+        <b>Repaso diario</b>
+        <span>${pendientes > 0 ? `${pendientes} tarjeta${pendientes === 1 ? '' : 's'} esperándote` : 'Todo al día, ¡bien!'}</span>
+      </div>
+      <span class="mision-cta">${pendientes > 0 ? 'Repasar' : 'Ver'}</span>
+    </a>
+    ${ciudadActual ? `
+    <a class="mision-card" href="#lecciones">
+      <div class="mision-emoji">${ciudadActual.examenAprobado ? '🏯' : ciudadActual.emoji}</div>
+      <div class="mision-cuerpo">
+        <b>Sigue en ${esc(ciudadActual.nombre)}</b>
+        <span>${hitosHechos} de ${hitosCiudad} barrios conquistados</span>
+      </div>
+      <span class="mision-cta">Seguir</span>
+    </a>` : ''}`;
+
   cont.innerHTML = `
-    <h1 class="vista-titulo">🏆 Perfil</h1>
-    <p class="vista-sub">Tu historial de viajero. Nada de lo ganado se pierde nunca.</p>
+    <section class="perfil-hero">
+      <div class="perfil-hero-top">
+        <span class="hero-marca"><span lang="ja">言葉</span> KOTOBA</span>
+        <span class="hero-kicker">Puntuación de viaje</span>
+        <span class="hero-nivel-pill">Nivel: ${esc(nivel.titulo)}</span>
+      </div>
+      <div class="hero-anillo">
+        <svg viewBox="0 0 220 220" class="anillo-svg" aria-hidden="true">
+          <circle class="anillo-pista" cx="${CX}" cy="${CY}" r="${RAD}"></circle>
+          <circle class="anillo-fill" cx="${CX}" cy="${CY}" r="${RAD}"
+                  stroke-dasharray="${CIRC.toFixed(1)}" stroke-dashoffset="${offset.toFixed(1)}"></circle>
+          <circle class="anillo-punta" cx="${mkx.toFixed(1)}" cy="${mky.toFixed(1)}" r="7.5"></circle>
+          <text class="anillo-hoja" x="${mkx.toFixed(1)}" y="${(mky + 3.4).toFixed(1)}" text-anchor="middle">🍃</text>
+        </svg>
+        <div class="hero-centro">
+          <span class="hero-pre">Has estudiado</span>
+          <span class="hero-num">${semana}</span>
+          <span class="hero-post">respuestas esta semana</span>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="seccion-titulo">🎌 Misiones</h2>
+    <div class="misiones-rejilla">${misiones}</div>
 
     <div class="rejilla-stats">
       <div class="stat-caja stat-nivel">

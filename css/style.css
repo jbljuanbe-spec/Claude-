@@ -1322,6 +1322,170 @@ input { font-family: inherit; }
   .fin-stats { gap: 18px; }
 }
 
+/* ---------- Perfil: héroe de gamificación (estilo "impact score") ---------- */
+.perfil-carga {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 60px 0;
+}
+.perfil-carga-anim { width: 160px; height: 160px; }
+
+.perfil-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 26px 22px 34px;
+  margin-bottom: 26px;
+  text-align: center;
+  color: #fff;
+  background:
+    radial-gradient(120% 100% at 50% -10%, #55639f 0%, #3b4788 46%, #2b3468 100%);
+  box-shadow: 0 12px 34px rgba(30, 38, 82, 0.28);
+}
+.perfil-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(../assets/seigaiha.svg);
+  background-size: 90px auto;
+  background-repeat: repeat;
+  opacity: 0.9;
+  pointer-events: none;
+}
+.perfil-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(90% 70% at 50% 44%, rgba(43, 52, 104, 0.55) 0%, transparent 70%);
+  pointer-events: none;
+}
+.perfil-hero > * { position: relative; z-index: 1; }
+
+.perfil-hero-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.hero-marca {
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-size: 0.82rem;
+  opacity: 0.92;
+}
+.hero-marca [lang="ja"] { letter-spacing: 0.05em; }
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.72;
+}
+.hero-nivel-pill {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--acento-oscuro);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 7px 18px;
+  border-radius: 99px;
+  box-shadow: 0 4px 12px rgba(20, 26, 60, 0.25);
+}
+
+.hero-anillo {
+  position: relative;
+  width: 250px;
+  max-width: 78vw;
+  margin: 6px auto 0;
+  aspect-ratio: 1;
+}
+.anillo-svg { width: 100%; height: 100%; display: block; }
+.anillo-pista {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 12;
+}
+.anillo-fill {
+  fill: none;
+  stroke: #9ff0c4;
+  stroke-width: 12;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.anillo-punta { fill: #eafff4; }
+.anillo-hoja { font-size: 9px; }
+
+.hero-centro {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.hero-pre { font-size: 0.82rem; opacity: 0.8; }
+.hero-num {
+  font-size: 3.1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.hero-post { font-size: 0.86rem; opacity: 0.82; max-width: 150px; }
+
+/* ---------- Perfil: misiones ---------- */
+.misiones-rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.mision-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px 18px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.mision-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra);
+  border-color: var(--acento);
+}
+.mision-emoji {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  background: var(--acento-claro);
+}
+.mision-cuerpo { flex: 1; min-width: 0; }
+.mision-cuerpo b { display: block; font-size: 0.98rem; }
+.mision-cuerpo span { color: var(--tinta-suave); font-size: 0.85rem; }
+.mision-cta {
+  flex-shrink: 0;
+  background: var(--acento);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 7px 14px;
+  border-radius: 99px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }

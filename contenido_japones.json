@@ -2,7 +2,7 @@
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
     "metodo": "Genki I como columna vertebral, con anadidos de Minna no Nihongo, NHK Easy Japanese y matices de gramatica surgidos en el chat",
-    "leccion_actual": 9,
+    "leccion_actual": 10,
     "lecciones_por_ciudad": 6,
     "orden_ciudades": [
       "Tokio",
@@ -72,6 +72,12 @@
       "ciudad": "Yokohama",
       "barrio": "Teatro Noge Kabuki",
       "emoji": "🎭"
+    },
+    "L10": {
+      "titulo": "冬休みの予定 (Planes de vacaciones de invierno)",
+      "ciudad": "Yokohama",
+      "barrio": "Estación de Yokohama",
+      "emoji": "🚉"
     },
     "General": {
       "titulo": "Matices y vocabulario transversal",
@@ -1507,6 +1513,99 @@
       "reading": "べっど",
       "es": "cama",
       "dir": "jp-es"
+    },
+    {
+      "id": "g_comparacion_2",
+      "l": "L10",
+      "type": "grammar",
+      "question": "¿Cómo comparo dos cosas en japonés?",
+      "explanation": "AはBよりXです = A es más X que B. Para preguntar: AとBとどちらがXですか. Para responder: Aの方がXです (A es el que más)."
+    },
+    {
+      "id": "g_comparacion_3",
+      "l": "L10",
+      "type": "grammar",
+      "question": "¿Cómo elijo la mejor opción entre 3 o más cosas?",
+      "explanation": "[grupo]の中で、Xが一番Xです (de [grupo], X es el más...). 一番 = \"el número uno/el más\"."
+    },
+    {
+      "id": "g_adj_no_sustituto",
+      "l": "L10",
+      "type": "grammar",
+      "question": "¿Qué significa 赤いのが好きです?",
+      "explanation": "El adjetivo+の sustituye a un sustantivo ya mencionado, como el の posesivo (私の). 赤いの = \"el rojo\" (evitando repetir el sustantivo, ej. 傘)."
+    },
+    {
+      "id": "l10_samui",
+      "l": "L10",
+      "kanji": "寒い",
+      "reading": "さむい",
+      "es": "frío",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l10_atatakai",
+      "l": "L10",
+      "kanji": "暖かい",
+      "reading": "あたたかい",
+      "es": "cálido/templado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l10_suzushii",
+      "l": "L10",
+      "kanji": "涼しい",
+      "reading": "すずしい",
+      "es": "fresco",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l10_fuyu",
+      "l": "L10",
+      "kanji": "冬",
+      "reading": "ふゆ",
+      "es": "invierno",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l10_natsu",
+      "l": "L10",
+      "kanji": "夏",
+      "reading": "なつ",
+      "es": "verano",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l10_haru",
+      "l": "L10",
+      "kanji": "春",
+      "reading": "はる",
+      "es": "primavera",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l10_aki",
+      "l": "L10",
+      "kanji": "秋",
+      "reading": "あき",
+      "es": "otoño",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l10_densha",
+      "l": "L10",
+      "kanji": "電車",
+      "reading": "でんしゃ",
+      "es": "tren",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l10_kudamono",
+      "l": "L10",
+      "kanji": "果物",
+      "reading": "くだもの",
+      "es": "fruta",
+      "dir": "es-jp"
     }
   ]
 }

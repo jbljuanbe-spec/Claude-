@@ -19,7 +19,8 @@ const RUTAS = {
   matcha: 'assets/lottie/matcha.json',
   conejos: 'assets/lottie/conejos.json',
   japon: 'assets/lottie/japon.json',
-  shiba: 'assets/lottie/shiba.json'
+  shiba: 'assets/lottie/shiba.json',
+  shinkansen: 'assets/lottie/shinkansen.json'
 };
 
 export async function animar(contenedor, nombre, opciones = {}) {
@@ -37,4 +38,30 @@ export async function animar(contenedor, nombre, opciones = {}) {
   } catch {
     return null; // sin animación no pasa nada, la app sigue
   }
+}
+
+// Transición a pantalla completa: reproduce una animación una vez y resuelve
+// al terminar. Si no hay animación (reduced-motion o fallo), no bloquea.
+export async function transicion(nombre, opciones = {}) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!RUTAS[nombre]) return;
+  const capa = document.createElement('div');
+  capa.className = 'transicion-lottie';
+  const caja = document.createElement('div');
+  caja.className = 'transicion-lottie-anim';
+  capa.appendChild(caja);
+  document.body.appendChild(capa);
+  requestAnimationFrame(() => capa.classList.add('visible'));
+  await new Promise(resolver => {
+    let hecho = false;
+    const fin = () => { if (!hecho) { hecho = true; resolver(); } };
+    animar(caja, nombre, { loop: false }).then(anim => {
+      if (!anim) return fin();
+      anim.addEventListener('complete', fin);
+    }).catch(fin);
+    setTimeout(fin, opciones.maxMs || 4500); // salvaguarda por si algo falla
+  });
+  capa.classList.remove('visible');
+  await new Promise(r => setTimeout(r, 280));
+  capa.remove();
 }

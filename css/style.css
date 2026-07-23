@@ -1486,6 +1486,25 @@ input { font-family: inherit; }
   border-radius: 99px;
 }
 
+/* ---------- Transición a pantalla completa (Shinkansen) ---------- */
+.transicion-lottie {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #10142c;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+.transicion-lottie.visible { opacity: 1; }
+.transicion-lottie-anim {
+  width: min(100vw, 178vh);
+  aspect-ratio: 16 / 9;
+}
+.transicion-lottie-anim svg { display: block; }
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }

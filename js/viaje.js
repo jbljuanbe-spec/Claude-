@@ -6,7 +6,7 @@
 import { api } from './api.js';
 import { PREFECTURAS, VISTA, proyectar } from './mapa-japon.js';
 import { bezierDesdePuntos } from './mapa-render.js';
-import { animar } from './lottie.js';
+import { animar, transicion } from './lottie.js';
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -320,8 +320,15 @@ export async function vistaViaje(cont, avisar) {
     if (be) be.onclick = () => { sessionStorage.setItem('kotoba-examen', seleccion); location.hash = '#lecciones'; };
     const bt = cont.querySelector('#btn-billete');
     if (bt) bt.onclick = async () => {
-      try { await api.gastarBillete(seleccion); if (avisar) avisar(`🎫 ¡Billete usado! ${porId[seleccion].nombre} queda abierta.`); sessionStorage.setItem('kotoba-sel', seleccion); vistaViaje(cont, avisar); }
-      catch (e) { if (avisar) avisar(e.message); }
+      bt.disabled = true;
+      try {
+        const nombre = porId[seleccion].nombre;
+        await api.gastarBillete(seleccion);
+        sessionStorage.setItem('kotoba-sel', seleccion);
+        await transicion('shinkansen'); // el Shinkansen te lleva a la nueva ciudad
+        if (avisar) avisar(`🎫 ¡Billete usado! ${nombre} queda abierta.`);
+        vistaViaje(cont, avisar);
+      } catch (e) { bt.disabled = false; if (avisar) avisar(e.message); }
     };
     if (hitoResaltado) {
       const fila = cont.querySelector(`.hito-fila[data-hito="${hitoResaltado}"]`);

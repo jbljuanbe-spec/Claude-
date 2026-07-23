@@ -179,6 +179,10 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     ]);
     items.push(...gram.slice(0, Math.max(3, Math.round(objetivo * 0.4))));
 
+    // Producción larga (archivo curado): como mucho una por sesión, no satura.
+    const larga = barajar((ejercicios.produccion_larga || []).filter(e => codigos.includes(e.l)));
+    if (larga.length) items.push({ tipo: 'produccion', e: larga[0] });
+
     if (conError && parts.length) {
       const e = barajar(parts)[0];
       const mal = barajar((e.opciones || []).filter(o => o !== e.correcta && !o.startsWith('∅')))[0];
@@ -314,6 +318,26 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
           <div class="vista-kana" id="vista-kana"></div>
           <div class="fila-botones"><button class="boton boton-primario" id="btn-comprobar">Comprobar</button></div>`);
         prepararEscrito(v => comprobarTraduccion(v, t.respuestas), () => { hablar(t.respuestas[0]); return `<div class="feedback-respuesta" lang="ja">${esc(t.respuestas[0])}</div>`; });
+
+      } else if (item.tipo === 'produccion') {
+        marco(`<div class="tarjeta-chips"><span class="chip chip-tipo-grammar">Producción larga</span></div>
+          <p class="tarjeta-instruccion">Escribe tu propia respuesta en japonés. No hay una única correcta: al comprobar verás un ejemplo de referencia.</p>
+          <p class="tarjeta-prompt">${esc(t.prompt)}</p>
+          ${t.puntos && t.puntos.length ? `<p class="trad-ejercicio">💡 Usa: <span lang="ja">${t.puntos.map(esc).join(' · ')}</span></p>` : ''}
+          <textarea class="campo-respuesta campo-respuesta-largo" id="respuesta" lang="ja" rows="3" placeholder="日本語で書いてみて..."></textarea>
+          <div class="fila-botones"><button class="boton boton-primario" id="btn-comprobar">Comprobar</button></div>`);
+        const ta = cont.querySelector('#respuesta'); ta.focus();
+        const comprobar = () => {
+          const v = ta.value.trim();
+          const correcto = contieneJapones(v) && v.replace(/\s/g, '').length >= 4;
+          cont.querySelectorAll('.fila-botones, .campo-respuesta').forEach(el => el.remove());
+          hablar(t.ejemplo);
+          pie(cont.querySelector('.tarjeta'), correcto,
+            `<div class="feedback-explicacion">Ejemplo de referencia:</div><div class="feedback-respuesta" lang="ja">${esc(t.ejemplo)}</div>`,
+            true);
+        };
+        cont.querySelector('#btn-comprobar').onclick = comprobar;
+        ta.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); comprobar(); } });
 
       } else if (item.tipo === 'kanji') {
         marco(`<div class="tarjeta-chips"><span class="chip chip-tipo-grammar">Lectura</span></div>

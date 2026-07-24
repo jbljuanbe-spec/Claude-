@@ -2,7 +2,7 @@
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
     "metodo": "Genki I como columna vertebral, con anadidos de Minna no Nihongo, NHK Easy Japanese y matices de gramatica surgidos en el chat",
-    "leccion_actual": 11,
+    "leccion_actual": 12,
     "lecciones_por_ciudad": 6,
     "orden_ciudades": [
       "Tokio",
@@ -90,6 +90,12 @@
       "ciudad": "Yokohama",
       "barrio": "Parque Yamashita",
       "emoji": "🌉"
+    },
+    "L12": {
+      "titulo": "あげる・くれる・もらう (Dar y recibir)",
+      "ciudad": "Yokohama",
+      "barrio": "Chinatown de Yokohama",
+      "emoji": "🏮"
     }
   },
   "tarjetas": [
@@ -1720,6 +1726,44 @@
       "type": "grammar",
       "question": "¿ことが lleva あります o います?",
       "explanation": "Siempre あります, nunca います — aunque la experiencia sea sobre algo animado, こと (el hecho/la experiencia) es un concepto abstracto. います se reserva solo para seres vivos reales."
+    },
+    {
+      "id": "g_ageru_kureru",
+      "l": "L12",
+      "type": "grammar",
+      "question": "¿Cuándo uso あげる y cuándo くれる?",
+      "explanation": "あげる = yo doy a otra persona (el receptor NO soy yo). くれる = otra persona me da A MÍ. Mismo significado \"dar\", el verbo cambia según la dirección. Si tú recibes, nunca uses あげる."
+    },
+    {
+      "id": "g_morau",
+      "l": "L12",
+      "type": "grammar",
+      "question": "¿Qué significa もらう y cómo se estructura?",
+      "explanation": "\"Recibir\": [receptor]は[dador]に/から[cosa]をもらいます. 私は田中さんにプレゼントをもらいます = recibo un regalo de Tanaka (mismo evento que 田中さんが私にくれます, visto desde el otro lado)."
+    },
+    {
+      "id": "l12_present",
+      "l": "L12",
+      "kanji": "プレゼント",
+      "reading": "ぷれぜんと",
+      "es": "regalo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l12_kasu",
+      "l": "L12",
+      "kanji": "貸す",
+      "reading": "かす",
+      "es": "prestar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l12_kariru",
+      "l": "L12",
+      "kanji": "借りる",
+      "reading": "かりる",
+      "es": "pedir prestado",
+      "dir": "jp-es"
     }
   ]
 }

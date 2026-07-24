@@ -1,8 +1,8 @@
 {
   "meta": {
     "nota": "Complementario a contenido_japones.json. 'particulas' = elegir/escribir la partícula correcta entre 'opciones'; 'ordenar' = las palabras de 'palabras' se muestran desordenadas (barájalas en el cliente) y el usuario las ordena; 'produccion_larga' = respuesta libre más larga, comparación aproximada contra 'ejemplo_respuesta' (solo referencia, no exacta).",
-    "leccion_actual": 11,
-    "cobertura": "Todas las lecciones L1-L11 tienen los 3 tipos de ejercicio (particulas, ordenar, produccion_larga), varios items por leccion."
+    "leccion_actual": 12,
+    "cobertura": "Todas las lecciones L1-L12 tienen los 3 tipos de ejercicio."
   },
   "particulas": [
     {
@@ -508,6 +508,42 @@
       ],
       "respuesta": "と",
       "traduccion": "Yo y Tanaka vamos (solo nosotros dos)."
+    },
+    {
+      "id": "p_l12_01",
+      "leccion": "L12",
+      "frase_con_hueco": "私は田中さん___プレゼントをあげました。",
+      "opciones": [
+        "に",
+        "を",
+        "と"
+      ],
+      "respuesta": "に",
+      "traduccion": "Le di un regalo a Tanaka."
+    },
+    {
+      "id": "p_l12_02",
+      "leccion": "L12",
+      "frase_con_hueco": "友達は私に本___くれました。",
+      "opciones": [
+        "を",
+        "が",
+        "に"
+      ],
+      "respuesta": "を",
+      "traduccion": "Mi amigo me dio un libro."
+    },
+    {
+      "id": "p_l12_03",
+      "leccion": "L12",
+      "frase_con_hueco": "私は友達___プレゼントをもらいました。",
+      "opciones": [
+        "に",
+        "を",
+        "へ"
+      ],
+      "respuesta": "に",
+      "traduccion": "Recibí un regalo de mi amigo."
     }
   ],
   "ordenar": [
@@ -858,6 +894,39 @@
         "飲みたいです"
       ],
       "traduccion": "Quiero beber agua."
+    },
+    {
+      "id": "o_l12_01",
+      "leccion": "L12",
+      "palabras": [
+        "友達は",
+        "私に",
+        "プレゼントを",
+        "くれました"
+      ],
+      "traduccion": "Mi amigo me dio un regalo."
+    },
+    {
+      "id": "o_l12_02",
+      "leccion": "L12",
+      "palabras": [
+        "私は",
+        "田中さんに",
+        "花を",
+        "あげました"
+      ],
+      "traduccion": "Le di flores a Tanaka."
+    },
+    {
+      "id": "o_l12_03",
+      "leccion": "L12",
+      "palabras": [
+        "私は",
+        "友達に",
+        "本を",
+        "貸してもらいました"
+      ],
+      "traduccion": "Conseguí que mi amigo me prestara un libro."
     }
   ],
   "produccion_larga": [
@@ -1084,6 +1153,24 @@
       "ejemplo_respuesta": "東京に住んでいる友達がいます。",
       "puntos_gramaticales": [
         "cláusula + sustantivo"
+      ]
+    },
+    {
+      "id": "w_l12_01",
+      "leccion": "L12",
+      "prompt": "Cuenta qué le diste a alguien alguna vez, usando あげる.",
+      "ejemplo_respuesta": "私は母に花をあげました。",
+      "puntos_gramaticales": [
+        "あげる"
+      ]
+    },
+    {
+      "id": "w_l12_02",
+      "leccion": "L12",
+      "prompt": "Cuenta qué te dio alguien a ti, usando くれる (¡cuidado con la dirección!).",
+      "ejemplo_respuesta": "友達は私に本をくれました。",
+      "puntos_gramaticales": [
+        "くれる"
       ]
     }
   ]

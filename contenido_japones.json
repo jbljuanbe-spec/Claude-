@@ -2,7 +2,7 @@
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
     "metodo": "Genki I como columna vertebral, con anadidos de Minna no Nihongo, NHK Easy Japanese y matices de gramatica surgidos en el chat",
-    "leccion_actual": 10,
+    "leccion_actual": 11,
     "lecciones_por_ciudad": 6,
     "orden_ciudades": [
       "Tokio",
@@ -84,6 +84,12 @@
       "ciudad": null,
       "barrio": "Monte Fuji",
       "emoji": "🗻"
+    },
+    "L11": {
+      "titulo": "休みのあと (Después de las vacaciones)",
+      "ciudad": "Yokohama",
+      "barrio": "Parque Yamashita",
+      "emoji": "🌉"
     }
   },
   "tarjetas": [
@@ -1605,6 +1611,107 @@
       "kanji": "果物",
       "reading": "くだもの",
       "es": "fruta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "g_node_vs_kara",
+      "l": "L6",
+      "type": "grammar",
+      "question": "¿ので es lo mismo que から?",
+      "explanation": "Significan lo mismo (\"porque\"), pero ので suena más formal/objetivo (\"es un hecho\"), y から más casual/personal (\"yo opino/decido\"). Intercambiables en la mayoría de contextos cotidianos."
+    },
+    {
+      "id": "g_duracion_tiempo",
+      "l": "L4",
+      "type": "grammar",
+      "question": "¿Cómo digo \"durante 2 horas\" sin confundirlo con \"a las 2\"?",
+      "explanation": "Duración usa 〜時間 (2時間 = durante 2 horas) o 〜日間 (durante X días), sin に. Hora puntual usa 〜時に (2時に = a las 2 en punto), con に. Contadores distintos, no se mezclan."
+    },
+    {
+      "id": "g_to_condicional",
+      "l": "L10",
+      "type": "grammar",
+      "question": "¿Qué significa と en 冬になると、寒くなります?",
+      "explanation": "と aquí es condicional: \"cuando/si X, entonces Y\" (consecuencia natural, casi automática). 冬になると、寒くなります = \"Cuando llega el invierno, hace frío\". Distinto del と de \"con\" o \"y\"."
+    },
+    {
+      "id": "g_dochira_vs_dore",
+      "l": "L10",
+      "type": "grammar",
+      "question": "¿どちら sirve para elegir entre 3 o más cosas?",
+      "explanation": "No — どちら es solo para elegir entre DOS. Con 3 o más opciones usa 何/どれ + 一番: 季節の中で、何が一番好きですか (no どちらが)."
+    },
+    {
+      "id": "g_mou_pregunta_mada_neg",
+      "l": "L9",
+      "type": "grammar",
+      "question": "¿もう o まだ para preguntar \"ya hiciste X?\"",
+      "explanation": "もう va en la pregunta (もうしましたか = ¿ya lo hiciste?) y en la respuesta afirmativa (もうしました). まだ solo en la respuesta negativa (まだしていません). まだしましたか sueña raro."
+    },
+    {
+      "id": "g_hanasu_to_wo",
+      "l": "General",
+      "type": "grammar",
+      "question": "話す, ¿con を o と?",
+      "explanation": "を marca QUÉ hablas/dices (日本語を話す = hablar japonés). と marca CON QUIÉN hablas (彼女と話す = hablar con ella, compañía). No son intercambiables."
+    },
+    {
+      "id": "g_kara_no_ni",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Puedo decir 10時からに?",
+      "explanation": "No — から (desde, punto de partida) y に (a las X, momento exacto) marcan la misma hora con matices distintos; nunca van juntas. Una u otra, no las dos."
+    },
+    {
+      "id": "g_tai_conjuga",
+      "l": "L11",
+      "type": "grammar",
+      "question": "¿Cómo conjuga ~たい (querer hacer algo)?",
+      "explanation": "Como un adjetivo -い, porque termina en い: 食べたいです／食べたくないです／食べたかったです／食べたくなかったです. El objeto a veces cambia de を a が (水が飲みたいです)."
+    },
+    {
+      "id": "g_tari_tari",
+      "l": "L11",
+      "type": "grammar",
+      "question": "¿Diferencia entre unir con て y con たり~たりする?",
+      "explanation": "て da una secuencia concreta y cerrada (\"hago A y luego B\"). たり~たりする da una lista abierta/no exhaustiva (\"hago cosas como A y B, entre otras\"). No son intercambiables."
+    },
+    {
+      "id": "g_koto_ga_aru",
+      "l": "L11",
+      "type": "grammar",
+      "question": "¿Qué añade ことがあります a un verbo en pasado?",
+      "explanation": "Enmarca la frase como experiencia de vida (\"he hecho X alguna vez\"), no como un evento puntual. 日本に行ったことがあります ≠ simplemente 行きました (un viaje concreto)."
+    },
+    {
+      "id": "g_ya_vs_to",
+      "l": "L11",
+      "type": "grammar",
+      "question": "¿Diferencia entre と y や como \"y\"?",
+      "explanation": "と = lista cerrada/completa (本と辞書 = exactamente un libro y un diccionario). や = lista abierta, no exhaustiva (本や辞書 = libros, diccionarios, y probablemente algo más)."
+    },
+    {
+      "id": "l11_yasumi",
+      "l": "L11",
+      "kanji": "休み",
+      "reading": "やすみ",
+      "es": "vacaciones/descanso",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l11_ryokou",
+      "l": "L11",
+      "kanji": "旅行",
+      "reading": "りょこう",
+      "es": "viaje",
+      "dir": "jp-es"
+    },
+    {
+      "id": "l11_keiken",
+      "l": "L11",
+      "kanji": "経験",
+      "reading": "けいけん",
+      "es": "experiencia",
       "dir": "es-jp"
     }
   ]

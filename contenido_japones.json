@@ -1,7 +1,7 @@
 {
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
-    "metodo": "Genki I como columna vertebral, con anadidos de Minna no Nihongo, NHK Easy Japanese y matices de gramatica surgidos en el chat",
+    "metodo": "Genki I completo (L1-12) + parche gramatica N5 + vocabulario tematico ampliado + Genki II desde L13, foco en consolidacion",
     "leccion_actual": 12,
     "lecciones_por_ciudad": 6,
     "orden_ciudades": [
@@ -1764,6 +1764,651 @@
       "reading": "かりる",
       "es": "pedir prestado",
       "dir": "jp-es"
+    },
+    {
+      "id": "g_nakereba",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Cómo digo \"tengo que estudiar\"?",
+      "explanation": "Forma nai, quita la い final, añade ければなりません: 勉強しなければなりません. Versión hablada: 勉強しなきゃいけません."
+    },
+    {
+      "id": "g_toki",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Qué hace とき en 食べるとき、手を洗います?",
+      "explanation": "とき = \"cuando\". [frase simple]+とき+[frase principal]: 食べるとき、手を洗います = cuando como, me lavo las manos."
+    },
+    {
+      "id": "g_nagara",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Cómo digo \"hago X mientras hago Y\"?",
+      "explanation": "Raíz de ます + ながら, en la acción secundaria. テレビを見ながら、ご飯を食べます = como (acción principal) mientras veo la tele (secundaria)."
+    },
+    {
+      "id": "g_deshou",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Diferencia entre でしょう y と思います?",
+      "explanation": "でしょう = \"probablemente\" (menos seguro, más una predicción). と思います = \"creo que\" (tu opinión personal). Matiz de grado de certeza."
+    },
+    {
+      "id": "g_masenka",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Diferencia entre ましょうか y ませんか para invitar?",
+      "explanation": "Ambos invitan, ましょうか es más directo (\"¿hacemos X?\"), ませんか es más suave/abierto (\"¿no te apetece X?\"). Casi intercambiables en la práctica."
+    },
+    {
+      "id": "g_wo_kudasai",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿てください y をください son lo mismo?",
+      "explanation": "No — てください pide una ACCIÓN (待ってください = espera). をください pide un OBJETO directamente (コーヒーをください = un café, por favor)."
+    },
+    {
+      "id": "g_hoshii",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿たい y ほしい son lo mismo?",
+      "explanation": "No — たい es para VERBOS (飲みたい = quiero beber). ほしい es para OBJETOS directamente, como un adjetivo -い (水が欲しいです = quiero agua)."
+    },
+    {
+      "id": "g_tsumori",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Diferencia entre たい y つもり?",
+      "explanation": "たい = deseo (quiero hacer X, sin más). つもり = intención/plan concreto (tengo planeado hacer X). つもり suena más decidido/real."
+    },
+    {
+      "id": "g_donna",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Qué significa どんな?",
+      "explanation": "\"¿Qué tipo de...?\" — どんな音楽が好きですか = ¿qué tipo de música te gusta?"
+    },
+    {
+      "id": "g_teiaru_vs_teiru",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿てある y ている son lo mismo?",
+      "explanation": "No — てある implica que ALGUIEN hizo la acción deliberadamente y quedó así (窓が開けてあります = alguien dejó la ventana abierta). ている es más neutro sobre el estado (開いています = está abierta, sin más)."
+    },
+    {
+      "id": "g_adj_kute",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Cómo uno dos adjetivos -い en una frase (\"grande y bonito\")?",
+      "explanation": "-い adjetivos: cambia la い final por くて (広くて、明るいです). -な adjetivos: usa で (きれいで、静かです)."
+    },
+    {
+      "id": "v_atama",
+      "l": "General",
+      "kanji": "頭",
+      "reading": "あたま",
+      "es": "cabeza",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_me",
+      "l": "General",
+      "kanji": "目",
+      "reading": "め",
+      "es": "ojo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_mimi",
+      "l": "General",
+      "kanji": "耳",
+      "reading": "みみ",
+      "es": "oreja",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_kuchi",
+      "l": "General",
+      "kanji": "口",
+      "reading": "くち",
+      "es": "boca",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_te2",
+      "l": "General",
+      "kanji": "手",
+      "reading": "て",
+      "es": "mano",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_ashi",
+      "l": "General",
+      "kanji": "足",
+      "reading": "あし",
+      "es": "pie/pierna",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_kao",
+      "l": "General",
+      "kanji": "顔",
+      "reading": "かお",
+      "es": "cara",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_onaka",
+      "l": "General",
+      "kanji": "お腹",
+      "reading": "おなか",
+      "es": "barriga",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_fuku",
+      "l": "General",
+      "kanji": "服",
+      "reading": "ふく",
+      "es": "ropa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_shatsu",
+      "l": "General",
+      "kanji": "シャツ",
+      "reading": "しゃつ",
+      "es": "camisa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_zubon",
+      "l": "General",
+      "kanji": "ズボン",
+      "reading": "ずぼん",
+      "es": "pantalones",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_kutsu",
+      "l": "General",
+      "kanji": "靴",
+      "reading": "くつ",
+      "es": "zapatos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_boushi",
+      "l": "General",
+      "kanji": "帽子",
+      "reading": "ぼうし",
+      "es": "sombrero/gorra",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_kutsushita",
+      "l": "General",
+      "kanji": "靴下",
+      "reading": "くつした",
+      "es": "calcetines",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_niku",
+      "l": "General",
+      "kanji": "肉",
+      "reading": "にく",
+      "es": "carne",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_yasai",
+      "l": "General",
+      "kanji": "野菜",
+      "reading": "やさい",
+      "es": "verdura",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_sakana",
+      "l": "General",
+      "kanji": "魚",
+      "reading": "さかな",
+      "es": "pescado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_kome",
+      "l": "General",
+      "kanji": "米",
+      "reading": "こめ",
+      "es": "arroz (crudo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_pan",
+      "l": "General",
+      "kanji": "パン",
+      "reading": "ぱん",
+      "es": "pan",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_tamago",
+      "l": "General",
+      "kanji": "卵",
+      "reading": "たまご",
+      "es": "huevo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_gyuunyuu",
+      "l": "General",
+      "kanji": "牛乳",
+      "reading": "ぎゅうにゅう",
+      "es": "leche",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_ocha",
+      "l": "General",
+      "kanji": "お茶",
+      "reading": "おちゃ",
+      "es": "té",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_koohii",
+      "l": "General",
+      "kanji": "コーヒー",
+      "reading": "こーひー",
+      "es": "café",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_akai",
+      "l": "General",
+      "kanji": "赤い",
+      "reading": "あかい",
+      "es": "rojo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_aoi",
+      "l": "General",
+      "kanji": "青い",
+      "reading": "あおい",
+      "es": "azul",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_shiroi",
+      "l": "General",
+      "kanji": "白い",
+      "reading": "しろい",
+      "es": "blanco",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_kuroi",
+      "l": "General",
+      "kanji": "黒い",
+      "reading": "くろい",
+      "es": "negro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_kiiroi",
+      "l": "General",
+      "kanji": "黄色い",
+      "reading": "きいろい",
+      "es": "amarillo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_midori",
+      "l": "General",
+      "kanji": "緑",
+      "reading": "みどり",
+      "es": "verde",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_eki",
+      "l": "General",
+      "kanji": "駅",
+      "reading": "えき",
+      "es": "estación",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_byouin",
+      "l": "General",
+      "kanji": "病院",
+      "reading": "びょういん",
+      "es": "hospital",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_ginkou",
+      "l": "General",
+      "kanji": "銀行",
+      "reading": "ぎんこう",
+      "es": "banco",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_yuubinkyoku",
+      "l": "General",
+      "kanji": "郵便局",
+      "reading": "ゆうびんきょく",
+      "es": "oficina de correos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_suupaa",
+      "l": "General",
+      "kanji": "スーパー",
+      "reading": "すーぱー",
+      "es": "supermercado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_conveni",
+      "l": "General",
+      "kanji": "コンビニ",
+      "reading": "こんびに",
+      "es": "tienda de conveniencia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_yakkyoku",
+      "l": "General",
+      "kanji": "薬局",
+      "reading": "やっきょく",
+      "es": "farmacia",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_hoteru",
+      "l": "General",
+      "kanji": "ホテル",
+      "reading": "ほてる",
+      "es": "hotel",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_jitensha",
+      "l": "General",
+      "kanji": "自転車",
+      "reading": "じてんしゃ",
+      "es": "bicicleta",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_hikouki",
+      "l": "General",
+      "kanji": "飛行機",
+      "reading": "ひこうき",
+      "es": "avión",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_takushii",
+      "l": "General",
+      "kanji": "タクシー",
+      "reading": "たくしー",
+      "es": "taxi",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_fune",
+      "l": "General",
+      "kanji": "船",
+      "reading": "ふね",
+      "es": "barco",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_ookii",
+      "l": "General",
+      "kanji": "大きい",
+      "reading": "おおきい",
+      "es": "grande",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_chiisai",
+      "l": "General",
+      "kanji": "小さい",
+      "reading": "ちいさい",
+      "es": "pequeño",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_nagai",
+      "l": "General",
+      "kanji": "長い",
+      "reading": "ながい",
+      "es": "largo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_mijikai",
+      "l": "General",
+      "kanji": "短い",
+      "reading": "みじかい",
+      "es": "corto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_tsuyoi",
+      "l": "General",
+      "kanji": "強い",
+      "reading": "つよい",
+      "es": "fuerte",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_yowai",
+      "l": "General",
+      "kanji": "弱い",
+      "reading": "よわい",
+      "es": "débil",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_osoi",
+      "l": "General",
+      "kanji": "遅い",
+      "reading": "おそい",
+      "es": "lento/tarde",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_kurai",
+      "l": "General",
+      "kanji": "暗い",
+      "reading": "くらい",
+      "es": "oscuro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_akarui",
+      "l": "General",
+      "kanji": "明るい",
+      "reading": "あかるい",
+      "es": "luminoso/brillante",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_muzukashii",
+      "l": "General",
+      "kanji": "難しい",
+      "reading": "むずかしい",
+      "es": "difícil",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_ureshii",
+      "l": "General",
+      "kanji": "嬉しい",
+      "reading": "うれしい",
+      "es": "contento",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_kanashii",
+      "l": "General",
+      "kanji": "悲しい",
+      "reading": "かなしい",
+      "es": "triste",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_tanoshii",
+      "l": "General",
+      "kanji": "楽しい",
+      "reading": "たのしい",
+      "es": "divertido",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_sabishii",
+      "l": "General",
+      "kanji": "寂しい",
+      "reading": "さびしい",
+      "es": "solitario",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_kowai",
+      "l": "General",
+      "kanji": "怖い",
+      "reading": "こわい",
+      "es": "dar miedo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_nemui",
+      "l": "General",
+      "kanji": "眠い",
+      "reading": "ねむい",
+      "es": "tener sueño",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_tsukuru",
+      "l": "General",
+      "kanji": "作る",
+      "reading": "つくる",
+      "es": "hacer/crear",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_tsukau",
+      "l": "General",
+      "kanji": "使う",
+      "reading": "つかう",
+      "es": "usar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_akeru",
+      "l": "General",
+      "kanji": "開ける",
+      "reading": "あける",
+      "es": "abrir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_shimeru",
+      "l": "General",
+      "kanji": "閉める",
+      "reading": "しめる",
+      "es": "cerrar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_kesu",
+      "l": "General",
+      "kanji": "消す",
+      "reading": "けす",
+      "es": "apagar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_tsukeru",
+      "l": "General",
+      "kanji": "つける",
+      "reading": "つける",
+      "es": "encender",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_suwaru",
+      "l": "General",
+      "kanji": "座る",
+      "reading": "すわる",
+      "es": "sentarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_tatsu",
+      "l": "General",
+      "kanji": "立つ",
+      "reading": "たつ",
+      "es": "ponerse de pie",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_arau",
+      "l": "General",
+      "kanji": "洗う",
+      "reading": "あらう",
+      "es": "lavar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_warau",
+      "l": "General",
+      "kanji": "笑う",
+      "reading": "わらう",
+      "es": "reír",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_migi",
+      "l": "General",
+      "kanji": "右",
+      "reading": "みぎ",
+      "es": "derecha",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_hidari",
+      "l": "General",
+      "kanji": "左",
+      "reading": "ひだり",
+      "es": "izquierda",
+      "dir": "es-jp"
+    },
+    {
+      "id": "v_massugu",
+      "l": "General",
+      "kanji": "まっすぐ",
+      "reading": "まっすぐ",
+      "es": "recto",
+      "dir": "jp-es"
+    },
+    {
+      "id": "v_shingou",
+      "l": "General",
+      "kanji": "信号",
+      "reading": "しんごう",
+      "es": "semáforo",
+      "dir": "es-jp"
     }
   ]
 }

@@ -1713,6 +1713,13 @@
       "reading": "けいけん",
       "es": "experiencia",
       "dir": "es-jp"
+    },
+    {
+      "id": "g_koto_ga_arimasu",
+      "l": "L11",
+      "type": "grammar",
+      "question": "¿ことが lleva あります o います?",
+      "explanation": "Siempre あります, nunca います — aunque la experiencia sea sobre algo animado, こと (el hecho/la experiencia) es un concepto abstracto. います se reserva solo para seres vivos reales."
     }
   ]
 }

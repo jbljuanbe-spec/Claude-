@@ -1,0 +1,1090 @@
+{
+  "meta": {
+    "nota": "Complementario a contenido_japones.json. 'particulas' = elegir/escribir la partícula correcta entre 'opciones'; 'ordenar' = las palabras de 'palabras' se muestran desordenadas (barájalas en el cliente) y el usuario las ordena; 'produccion_larga' = respuesta libre más larga, comparación aproximada contra 'ejemplo_respuesta' (solo referencia, no exacta).",
+    "leccion_actual": 11,
+    "cobertura": "Todas las lecciones L1-L11 tienen los 3 tipos de ejercicio (particulas, ordenar, produccion_larga), varios items por leccion."
+  },
+  "particulas": [
+    {
+      "id": "p_l1_01",
+      "leccion": "L1",
+      "frase_con_hueco": "私___学生です。",
+      "opciones": [
+        "は",
+        "も",
+        "の"
+      ],
+      "respuesta": "は",
+      "traduccion": "Yo soy estudiante."
+    },
+    {
+      "id": "p_l1_02",
+      "leccion": "L1",
+      "frase_con_hueco": "これは私___本です。",
+      "opciones": [
+        "の",
+        "は",
+        "も"
+      ],
+      "respuesta": "の",
+      "traduccion": "Este es mi libro."
+    },
+    {
+      "id": "p_l1_03",
+      "leccion": "L1",
+      "frase_con_hueco": "あなたは学生です___。",
+      "opciones": [
+        "か",
+        "の",
+        "と"
+      ],
+      "respuesta": "か",
+      "traduccion": "¿Eres estudiante?"
+    },
+    {
+      "id": "p_l1_04",
+      "leccion": "L1",
+      "frase_con_hueco": "田中さん___会社員です。",
+      "opciones": [
+        "も",
+        "は",
+        "を"
+      ],
+      "respuesta": "も",
+      "traduccion": "Tanaka también es empleado de empresa."
+    },
+    {
+      "id": "p_l2_01",
+      "leccion": "L2",
+      "frase_con_hueco": "それ___だれのかばんですか。",
+      "opciones": [
+        "は",
+        "も",
+        "を"
+      ],
+      "respuesta": "は",
+      "traduccion": "¿De quién es esa bolsa?"
+    },
+    {
+      "id": "p_l2_02",
+      "leccion": "L2",
+      "frase_con_hueco": "これ___私の本です。",
+      "opciones": [
+        "は",
+        "の",
+        "と"
+      ],
+      "respuesta": "は",
+      "traduccion": "Esto es mi libro."
+    },
+    {
+      "id": "p_l2_03",
+      "leccion": "L2",
+      "frase_con_hueco": "あの時計___だれのですか。",
+      "opciones": [
+        "は",
+        "も",
+        "が"
+      ],
+      "respuesta": "は",
+      "traduccion": "¿De quién es aquel reloj?"
+    },
+    {
+      "id": "p_l2_04",
+      "leccion": "L2",
+      "frase_con_hueco": "このかばんは高いです___。",
+      "opciones": [
+        "よ",
+        "ね",
+        "か"
+      ],
+      "respuesta": "よ",
+      "traduccion": "Este bolso es caro, ¿sabías?"
+    },
+    {
+      "id": "p_l3_01",
+      "leccion": "L3",
+      "frase_con_hueco": "明日、図書館___勉強します。",
+      "opciones": [
+        "で",
+        "に",
+        "を"
+      ],
+      "respuesta": "で",
+      "traduccion": "Mañana estudio en la biblioteca."
+    },
+    {
+      "id": "p_l3_02",
+      "leccion": "L3",
+      "frase_con_hueco": "７時___起きます。",
+      "opciones": [
+        "に",
+        "で",
+        "へ"
+      ],
+      "respuesta": "に",
+      "traduccion": "Me levanto a las 7."
+    },
+    {
+      "id": "p_l3_03",
+      "leccion": "L3",
+      "frase_con_hueco": "毎日ご飯___食べます。",
+      "opciones": [
+        "を",
+        "に",
+        "で"
+      ],
+      "respuesta": "を",
+      "traduccion": "Como todos los días."
+    },
+    {
+      "id": "p_l3_04",
+      "leccion": "L3",
+      "frase_con_hueco": "友達___映画を見ます。",
+      "opciones": [
+        "と",
+        "に",
+        "を"
+      ],
+      "respuesta": "と",
+      "traduccion": "Veo una película con un amigo."
+    },
+    {
+      "id": "p_l3_05",
+      "leccion": "L3",
+      "frase_con_hueco": "明日、学校___行きます。",
+      "opciones": [
+        "へ",
+        "を",
+        "で"
+      ],
+      "respuesta": "へ",
+      "traduccion": "Mañana voy a la escuela."
+    },
+    {
+      "id": "p_l4_01",
+      "leccion": "L4",
+      "frase_con_hueco": "教室に学生___います。",
+      "opciones": [
+        "が",
+        "を",
+        "は"
+      ],
+      "respuesta": "が",
+      "traduccion": "Hay estudiantes en el aula."
+    },
+    {
+      "id": "p_l4_02",
+      "leccion": "L4",
+      "frase_con_hueco": "私はご飯___食べました。",
+      "opciones": [
+        "を",
+        "が",
+        "に"
+      ],
+      "respuesta": "を",
+      "traduccion": "Comí arroz."
+    },
+    {
+      "id": "p_l4_03",
+      "leccion": "L4",
+      "frase_con_hueco": "昨日、デパート___かばんを買いました。",
+      "opciones": [
+        "で",
+        "に",
+        "を"
+      ],
+      "respuesta": "で",
+      "traduccion": "Ayer compré un bolso en los grandes almacenes."
+    },
+    {
+      "id": "p_l4_04",
+      "leccion": "L4",
+      "frase_con_hueco": "かばん___傘を買いました。",
+      "opciones": [
+        "と",
+        "を",
+        "が"
+      ],
+      "respuesta": "と",
+      "traduccion": "Compré un bolso y un paraguas."
+    },
+    {
+      "id": "p_l5_01",
+      "leccion": "L5",
+      "frase_con_hueco": "私は寿司___好きです。",
+      "opciones": [
+        "が",
+        "を",
+        "は"
+      ],
+      "respuesta": "が",
+      "traduccion": "Me gusta el sushi."
+    },
+    {
+      "id": "p_l5_02",
+      "leccion": "L5",
+      "frase_con_hueco": "私は納豆___嫌いです。",
+      "opciones": [
+        "が",
+        "を",
+        "は"
+      ],
+      "respuesta": "が",
+      "traduccion": "No me gusta el natto."
+    },
+    {
+      "id": "p_l5_03",
+      "leccion": "L5",
+      "frase_con_hueco": "沖縄___海はきれいです。",
+      "opciones": [
+        "の",
+        "は",
+        "が"
+      ],
+      "respuesta": "の",
+      "traduccion": "El mar de Okinawa es bonito."
+    },
+    {
+      "id": "p_l6_01",
+      "leccion": "L6",
+      "frase_con_hueco": "ここで写真を撮っ___いいですか。",
+      "opciones": [
+        "ても",
+        "たら",
+        "から"
+      ],
+      "respuesta": "ても",
+      "traduccion": "¿Se puede tomar fotos aquí?"
+    },
+    {
+      "id": "p_l6_02",
+      "leccion": "L6",
+      "frase_con_hueco": "明日、図書館___行きます。",
+      "opciones": [
+        "へ",
+        "で",
+        "を"
+      ],
+      "respuesta": "へ",
+      "traduccion": "Mañana voy a la biblioteca."
+    },
+    {
+      "id": "p_l6_03",
+      "leccion": "L6",
+      "frase_con_hueco": "すみません、ちょっと待っ___ください。",
+      "opciones": [
+        "て",
+        "た",
+        "ない"
+      ],
+      "respuesta": "て",
+      "traduccion": "Espera un momento, por favor."
+    },
+    {
+      "id": "p_l6_04",
+      "leccion": "L6",
+      "frase_con_hueco": "忙しいです___、行きません。",
+      "opciones": [
+        "から",
+        "の",
+        "と"
+      ],
+      "respuesta": "から",
+      "traduccion": "No voy porque estoy ocupado."
+    },
+    {
+      "id": "p_l7_01",
+      "leccion": "L7",
+      "frase_con_hueco": "映画を見___行きます。",
+      "opciones": [
+        "に",
+        "を",
+        "で"
+      ],
+      "respuesta": "に",
+      "traduccion": "Voy a ver una película."
+    },
+    {
+      "id": "p_l7_02",
+      "leccion": "L7",
+      "frase_con_hueco": "母は買い物___行っています。",
+      "opciones": [
+        "に",
+        "で",
+        "を"
+      ],
+      "respuesta": "に",
+      "traduccion": "Mi madre ha ido de compras."
+    },
+    {
+      "id": "p_l7_03",
+      "leccion": "L7",
+      "frase_con_hueco": "家族は4人___います。",
+      "opciones": [
+        "が",
+        "は",
+        "を"
+      ],
+      "respuesta": "が",
+      "traduccion": "Mi familia es de 4 personas."
+    },
+    {
+      "id": "p_l8_01",
+      "leccion": "L8",
+      "frase_con_hueco": "明日は雨___と思います。",
+      "opciones": [
+        "だ",
+        "の",
+        "を"
+      ],
+      "respuesta": "だ",
+      "traduccion": "Creo que mañana lloverá."
+    },
+    {
+      "id": "p_l8_02",
+      "leccion": "L8",
+      "frase_con_hueco": "私は料理する___が好きです。",
+      "opciones": [
+        "の",
+        "を",
+        "に"
+      ],
+      "respuesta": "の",
+      "traduccion": "Me gusta cocinar."
+    },
+    {
+      "id": "p_l8_03",
+      "leccion": "L8",
+      "frase_con_hueco": "何___食べましたか。いいえ、何も食べませんでした。",
+      "opciones": [
+        "か",
+        "も",
+        "を"
+      ],
+      "respuesta": "か",
+      "traduccion": "¿Comiste algo? No, no comí nada."
+    },
+    {
+      "id": "p_l9_01",
+      "leccion": "L9",
+      "frase_con_hueco": "宿題を___していません。",
+      "opciones": [
+        "まだ",
+        "もう",
+        "でも"
+      ],
+      "respuesta": "まだ",
+      "traduccion": "Todavía no he hecho los deberes."
+    },
+    {
+      "id": "p_l9_02",
+      "leccion": "L9",
+      "frase_con_hueco": "映画は9時___始まります。",
+      "opciones": [
+        "から",
+        "まで",
+        "に"
+      ],
+      "respuesta": "から",
+      "traduccion": "La película empieza desde las 9."
+    },
+    {
+      "id": "p_l9_03",
+      "leccion": "L9",
+      "frase_con_hueco": "忙しい___、行きません。",
+      "opciones": [
+        "から",
+        "の",
+        "と"
+      ],
+      "respuesta": "から",
+      "traduccion": "No voy porque estoy ocupado."
+    },
+    {
+      "id": "p_l9_04",
+      "leccion": "L9",
+      "frase_con_hueco": "宿題___まだしていません。",
+      "opciones": [
+        "を",
+        "が",
+        "に"
+      ],
+      "respuesta": "を",
+      "traduccion": "Todavía no he hecho los deberes."
+    },
+    {
+      "id": "p_l10_01",
+      "leccion": "L10",
+      "frase_con_hueco": "日本はスペイン___小さいです。",
+      "opciones": [
+        "より",
+        "の方が",
+        "一番"
+      ],
+      "respuesta": "より",
+      "traduccion": "Japón es más pequeño que España."
+    },
+    {
+      "id": "p_l10_02",
+      "leccion": "L10",
+      "frase_con_hueco": "果物の中で、りんごが___好きです。",
+      "opciones": [
+        "一番",
+        "より",
+        "か"
+      ],
+      "respuesta": "一番",
+      "traduccion": "De las frutas, la manzana es la que más me gusta."
+    },
+    {
+      "id": "p_l10_03",
+      "leccion": "L10",
+      "frase_con_hueco": "赤い___が好きです。",
+      "opciones": [
+        "の",
+        "が",
+        "を"
+      ],
+      "respuesta": "の",
+      "traduccion": "Me gusta el rojo."
+    },
+    {
+      "id": "p_l10_04",
+      "leccion": "L10",
+      "frase_con_hueco": "電車___バスより速いです。",
+      "opciones": [
+        "の方が",
+        "より",
+        "が"
+      ],
+      "respuesta": "の方が",
+      "traduccion": "El tren es más rápido que el autobús."
+    },
+    {
+      "id": "p_l11_01",
+      "leccion": "L11",
+      "frase_con_hueco": "沖縄に行った___があります。",
+      "opciones": [
+        "こと",
+        "の",
+        "とき"
+      ],
+      "respuesta": "こと",
+      "traduccion": "He estado en Okinawa alguna vez."
+    },
+    {
+      "id": "p_l11_02",
+      "leccion": "L11",
+      "frase_con_hueco": "水___飲みたいです。",
+      "opciones": [
+        "が",
+        "を",
+        "に"
+      ],
+      "respuesta": "が",
+      "traduccion": "Quiero beber agua."
+    },
+    {
+      "id": "p_l11_03",
+      "leccion": "L11",
+      "frase_con_hueco": "机の上に本___辞書があります。",
+      "opciones": [
+        "や",
+        "と",
+        "の"
+      ],
+      "respuesta": "や",
+      "traduccion": "Hay libros y diccionarios (y quizá algo más) sobre la mesa."
+    },
+    {
+      "id": "p_l11_04",
+      "leccion": "L11",
+      "frase_con_hueco": "私___田中さんが行きます。",
+      "opciones": [
+        "と",
+        "や",
+        "も"
+      ],
+      "respuesta": "と",
+      "traduccion": "Yo y Tanaka vamos (solo nosotros dos)."
+    }
+  ],
+  "ordenar": [
+    {
+      "id": "o_l1_01",
+      "leccion": "L1",
+      "palabras": [
+        "初めまして",
+        "私は",
+        "アナです",
+        "学生です"
+      ],
+      "traduccion": "Mucho gusto. Soy Ana. Soy estudiante."
+    },
+    {
+      "id": "o_l1_02",
+      "leccion": "L1",
+      "palabras": [
+        "あなたは",
+        "学生",
+        "ですか"
+      ],
+      "traduccion": "¿Eres estudiante?"
+    },
+    {
+      "id": "o_l1_03",
+      "leccion": "L1",
+      "palabras": [
+        "田中さんも",
+        "会社員",
+        "です"
+      ],
+      "traduccion": "Tanaka también es empleado de empresa."
+    },
+    {
+      "id": "o_l2_01",
+      "leccion": "L2",
+      "palabras": [
+        "それは",
+        "だれの",
+        "かばんですか"
+      ],
+      "traduccion": "¿De quién es esa bolsa?"
+    },
+    {
+      "id": "o_l2_02",
+      "leccion": "L2",
+      "palabras": [
+        "あの",
+        "時計は",
+        "いくらですか"
+      ],
+      "traduccion": "¿Cuánto cuesta aquel reloj?"
+    },
+    {
+      "id": "o_l2_03",
+      "leccion": "L2",
+      "palabras": [
+        "これは",
+        "私の",
+        "かさじゃないです"
+      ],
+      "traduccion": "Esto no es mi paraguas."
+    },
+    {
+      "id": "o_l3_01",
+      "leccion": "L3",
+      "palabras": [
+        "毎日",
+        "7時に",
+        "起きます"
+      ],
+      "traduccion": "Todos los días me levanto a las 7."
+    },
+    {
+      "id": "o_l3_02",
+      "leccion": "L3",
+      "palabras": [
+        "友達と",
+        "映画を",
+        "見ます"
+      ],
+      "traduccion": "Veo una película con un amigo."
+    },
+    {
+      "id": "o_l3_03",
+      "leccion": "L3",
+      "palabras": [
+        "図書館で",
+        "勉強します"
+      ],
+      "traduccion": "Estudio en la biblioteca."
+    },
+    {
+      "id": "o_l4_01",
+      "leccion": "L4",
+      "palabras": [
+        "机の上に",
+        "本が",
+        "あります"
+      ],
+      "traduccion": "Hay un libro sobre la mesa."
+    },
+    {
+      "id": "o_l4_02",
+      "leccion": "L4",
+      "palabras": [
+        "昨日",
+        "デパートで",
+        "かばんを",
+        "買いました"
+      ],
+      "traduccion": "Ayer compré un bolso en los grandes almacenes."
+    },
+    {
+      "id": "o_l4_03",
+      "leccion": "L4",
+      "palabras": [
+        "教室に",
+        "学生が",
+        "たくさん",
+        "います"
+      ],
+      "traduccion": "Hay muchos estudiantes en el aula."
+    },
+    {
+      "id": "o_l5_01",
+      "leccion": "L5",
+      "palabras": [
+        "私は",
+        "寿司が",
+        "好きです"
+      ],
+      "traduccion": "Me gusta el sushi."
+    },
+    {
+      "id": "o_l5_02",
+      "leccion": "L5",
+      "palabras": [
+        "沖縄の",
+        "海は",
+        "きれいです"
+      ],
+      "traduccion": "El mar de Okinawa es bonito."
+    },
+    {
+      "id": "o_l5_03",
+      "leccion": "L5",
+      "palabras": [
+        "この料理は",
+        "美味しくないです"
+      ],
+      "traduccion": "Esta comida no es deliciosa."
+    },
+    {
+      "id": "o_l6_01",
+      "leccion": "L6",
+      "palabras": [
+        "朝ご飯",
+        "を",
+        "食べて",
+        "学校",
+        "へ",
+        "行きます"
+      ],
+      "traduccion": "Desayuno y voy a la escuela."
+    },
+    {
+      "id": "o_l6_02",
+      "leccion": "L6",
+      "palabras": [
+        "ここで",
+        "写真を",
+        "撮っても",
+        "いいですか"
+      ],
+      "traduccion": "¿Se puede tomar fotos aquí?"
+    },
+    {
+      "id": "o_l6_03",
+      "leccion": "L6",
+      "palabras": [
+        "ちょっと",
+        "待って",
+        "ください"
+      ],
+      "traduccion": "Espera un momento, por favor."
+    },
+    {
+      "id": "o_l7_01",
+      "leccion": "L7",
+      "palabras": [
+        "父は",
+        "結婚して",
+        "います"
+      ],
+      "traduccion": "Mi padre está casado."
+    },
+    {
+      "id": "o_l7_02",
+      "leccion": "L7",
+      "palabras": [
+        "母は",
+        "買い物に",
+        "行っています"
+      ],
+      "traduccion": "Mi madre ha ido de compras."
+    },
+    {
+      "id": "o_l7_03",
+      "leccion": "L7",
+      "palabras": [
+        "映画を",
+        "見に",
+        "行きます"
+      ],
+      "traduccion": "Voy a ver una película."
+    },
+    {
+      "id": "o_l8_01",
+      "leccion": "L8",
+      "palabras": [
+        "田中さん",
+        "は",
+        "忙しい",
+        "と",
+        "言っていました"
+      ],
+      "traduccion": "Tanaka dijo que estaba ocupado."
+    },
+    {
+      "id": "o_l8_02",
+      "leccion": "L8",
+      "palabras": [
+        "明日は",
+        "雨だと",
+        "思います"
+      ],
+      "traduccion": "Creo que mañana lloverá."
+    },
+    {
+      "id": "o_l8_03",
+      "leccion": "L8",
+      "palabras": [
+        "ここで",
+        "写真を",
+        "撮らないでください"
+      ],
+      "traduccion": "Por favor no tomes fotos aquí."
+    },
+    {
+      "id": "o_l9_01",
+      "leccion": "L9",
+      "palabras": [
+        "昨日",
+        "買った",
+        "本",
+        "は",
+        "面白い",
+        "です"
+      ],
+      "traduccion": "El libro que compré ayer es interesante."
+    },
+    {
+      "id": "o_l9_02",
+      "leccion": "L9",
+      "palabras": [
+        "日本語",
+        "を",
+        "勉強している",
+        "学生",
+        "が",
+        "います"
+      ],
+      "traduccion": "Hay un estudiante que está estudiando japonés."
+    },
+    {
+      "id": "o_l9_03",
+      "leccion": "L9",
+      "palabras": [
+        "宿題を",
+        "まだ",
+        "していません"
+      ],
+      "traduccion": "Todavía no he hecho los deberes."
+    },
+    {
+      "id": "o_l10_01",
+      "leccion": "L10",
+      "palabras": [
+        "電車",
+        "は",
+        "バス",
+        "より",
+        "便利です"
+      ],
+      "traduccion": "El tren es más práctico que el autobús."
+    },
+    {
+      "id": "o_l10_02",
+      "leccion": "L10",
+      "palabras": [
+        "季節",
+        "の",
+        "中で",
+        "秋",
+        "が",
+        "一番好きです"
+      ],
+      "traduccion": "De las estaciones, el otoño es la que más me gusta."
+    },
+    {
+      "id": "o_l10_03",
+      "leccion": "L10",
+      "palabras": [
+        "電車の方が",
+        "バスより",
+        "速いです"
+      ],
+      "traduccion": "El tren es más rápido que el autobús."
+    },
+    {
+      "id": "o_l11_01",
+      "leccion": "L11",
+      "palabras": [
+        "沖縄に",
+        "行った",
+        "ことがあります"
+      ],
+      "traduccion": "He estado en Okinawa alguna vez."
+    },
+    {
+      "id": "o_l11_02",
+      "leccion": "L11",
+      "palabras": [
+        "週末は",
+        "映画を見たり",
+        "買い物をしたり",
+        "します"
+      ],
+      "traduccion": "El finde hago cosas como ver películas, ir de compras."
+    },
+    {
+      "id": "o_l11_03",
+      "leccion": "L11",
+      "palabras": [
+        "水が",
+        "飲みたいです"
+      ],
+      "traduccion": "Quiero beber agua."
+    }
+  ],
+  "produccion_larga": [
+    {
+      "id": "w_l1_01",
+      "leccion": "L1",
+      "prompt": "Preséntate completo en japonés (nombre, nacionalidad, ocupación) usando は, です y よろしくお願いします.",
+      "ejemplo_respuesta": "はじめまして。私はアナです。スペイン人です。学生です。よろしくお願いします。",
+      "puntos_gramaticales": [
+        "は",
+        "です",
+        "よろしくお願いします"
+      ]
+    },
+    {
+      "id": "w_l1_02",
+      "leccion": "L1",
+      "prompt": "Pregunta a alguien si también es estudiante, usando も y か.",
+      "ejemplo_respuesta": "田中さんも学生ですか。",
+      "puntos_gramaticales": [
+        "も",
+        "か"
+      ]
+    },
+    {
+      "id": "w_l2_01",
+      "leccion": "L2",
+      "prompt": "Pregunta el precio de algo y respóndelo usando これ/それ/あれ.",
+      "ejemplo_respuesta": "すみません、これはいくらですか。3000円です。",
+      "puntos_gramaticales": [
+        "これ/それ/あれ",
+        "いくらですか"
+      ]
+    },
+    {
+      "id": "w_l2_02",
+      "leccion": "L2",
+      "prompt": "Describe un objeto tuyo usando の, con ね o よ al final.",
+      "ejemplo_respuesta": "このかばんは私のですよ。",
+      "puntos_gramaticales": [
+        "の",
+        "ね/よ"
+      ]
+    },
+    {
+      "id": "w_l3_01",
+      "leccion": "L3",
+      "prompt": "Describe tu rutina diaria con al menos 2 partículas de acción distintas.",
+      "ejemplo_respuesta": "毎日7時に起きて、学校へ行きます。",
+      "puntos_gramaticales": [
+        "partículas de acción"
+      ]
+    },
+    {
+      "id": "w_l3_02",
+      "leccion": "L3",
+      "prompt": "Di algo que haces \"a veces\" y algo que \"casi no\" haces.",
+      "ejemplo_respuesta": "ときどき映画を見ます。あまり勉強しません。",
+      "puntos_gramaticales": [
+        "adverbios de frecuencia"
+      ]
+    },
+    {
+      "id": "w_l4_01",
+      "leccion": "L4",
+      "prompt": "Describe qué hay en tu habitación y dónde, usando あります/います.",
+      "ejemplo_respuesta": "机の上に本があります。",
+      "puntos_gramaticales": [
+        "あります/います"
+      ]
+    },
+    {
+      "id": "w_l4_02",
+      "leccion": "L4",
+      "prompt": "Cuenta algo que compraste ayer y dónde.",
+      "ejemplo_respuesta": "昨日、デパートで傘を買いました。",
+      "puntos_gramaticales": [
+        "pasado",
+        "で"
+      ]
+    },
+    {
+      "id": "w_l5_01",
+      "leccion": "L5",
+      "prompt": "Di qué comida te gusta y cuál no, usando 好き/嫌い+が.",
+      "ejemplo_respuesta": "私は寿司が好きです。でも、納豆が嫌いです。",
+      "puntos_gramaticales": [
+        "好き/嫌い",
+        "が"
+      ]
+    },
+    {
+      "id": "w_l5_02",
+      "leccion": "L5",
+      "prompt": "Describe un lugar usando un adjetivo -い y uno -な.",
+      "ejemplo_respuesta": "沖縄はきれいです。そして、涼しいです。",
+      "puntos_gramaticales": [
+        "adjetivos -い/-な"
+      ]
+    },
+    {
+      "id": "w_l6_01",
+      "leccion": "L6",
+      "prompt": "Pide permiso para hacer algo, y di otra cosa prohibida en otro contexto.",
+      "ejemplo_respuesta": "ここで写真を撮ってもいいですか。すみません、ここでたばこを吸ってはいけません。",
+      "puntos_gramaticales": [
+        "てもいいです",
+        "てはいけません"
+      ]
+    },
+    {
+      "id": "w_l6_02",
+      "leccion": "L6",
+      "prompt": "Une dos acciones de tu rutina con la forma て.",
+      "ejemplo_respuesta": "朝起きて、朝ご飯を食べます。",
+      "puntos_gramaticales": [
+        "forma て"
+      ]
+    },
+    {
+      "id": "w_l7_01",
+      "leccion": "L7",
+      "prompt": "Describe qué está haciendo ahora mismo un familiar, usando ~ている.",
+      "ejemplo_respuesta": "母は買い物に行っています。",
+      "puntos_gramaticales": [
+        "~ている"
+      ]
+    },
+    {
+      "id": "w_l7_02",
+      "leccion": "L7",
+      "prompt": "Di que vas a hacer algo con un propósito, usando verbo+に行きます.",
+      "ejemplo_respuesta": "すしを食べに行きます。",
+      "puntos_gramaticales": [
+        "verbo+に行く"
+      ]
+    },
+    {
+      "id": "w_l8_01",
+      "leccion": "L8",
+      "prompt": "Da tu opinión sobre el tiempo de mañana usando と思います.",
+      "ejemplo_respuesta": "明日は晴れだと思います。",
+      "puntos_gramaticales": [
+        "と思います"
+      ]
+    },
+    {
+      "id": "w_l8_02",
+      "leccion": "L8",
+      "prompt": "Cuenta algo que alguien te dijo, usando と言っていました.",
+      "ejemplo_respuesta": "友達は忙しいと言っていました。",
+      "puntos_gramaticales": [
+        "と言っていました"
+      ]
+    },
+    {
+      "id": "w_l9_01",
+      "leccion": "L9",
+      "prompt": "Describe algo que todavía no has hecho esta semana, usando まだ~ていません.",
+      "ejemplo_respuesta": "今週、まだ運動していません。",
+      "puntos_gramaticales": [
+        "まだ~ていません"
+      ]
+    },
+    {
+      "id": "w_l9_02",
+      "leccion": "L9",
+      "prompt": "Describe un libro o película usando una cláusula que califique un sustantivo.",
+      "ejemplo_respuesta": "昨日見た映画はとても面白かったです。",
+      "puntos_gramaticales": [
+        "cláusula + sustantivo"
+      ]
+    },
+    {
+      "id": "w_l10_01",
+      "leccion": "L10",
+      "prompt": "Compara dos ciudades o comidas que conozcas usando より.",
+      "ejemplo_respuesta": "東京は大阪より大きいです。",
+      "puntos_gramaticales": [
+        "より"
+      ]
+    },
+    {
+      "id": "w_l10_02",
+      "leccion": "L10",
+      "prompt": "Di cuál es tu estación del año favorita y por qué, usando 一番 y から.",
+      "ejemplo_respuesta": "季節の中で、秋が一番好きです。涼しいから。",
+      "puntos_gramaticales": [
+        "一番",
+        "から"
+      ]
+    },
+    {
+      "id": "w_l11_01",
+      "leccion": "L11",
+      "prompt": "Cuenta una experiencia de vida usando ことがあります.",
+      "ejemplo_respuesta": "日本に行ったことがあります。",
+      "puntos_gramaticales": [
+        "ことがある"
+      ]
+    },
+    {
+      "id": "w_l11_02",
+      "leccion": "L11",
+      "prompt": "Di 2 cosas que quieres hacer usando たい.",
+      "ejemplo_respuesta": "寿司が食べたいです。旅行に行きたいです。",
+      "puntos_gramaticales": [
+        "たい"
+      ]
+    },
+    {
+      "id": "w_general_01",
+      "leccion": "General",
+      "prompt": "Cuenta qué hiciste el fin de semana pasado en 4-5 frases, mezclando pasado, alguna partícula de lugar/tiempo, y un adjetivo.",
+      "ejemplo_respuesta": "先週末、友達と映画を見ました。とても面白かったです。",
+      "puntos_gramaticales": [
+        "mezcla libre"
+      ]
+    },
+    {
+      "id": "w_general_02",
+      "leccion": "General",
+      "prompt": "Describe a alguien usando una cláusula que lo califique (ej. \"el amigo que vive en...\").",
+      "ejemplo_respuesta": "東京に住んでいる友達がいます。",
+      "puntos_gramaticales": [
+        "cláusula + sustantivo"
+      ]
+    }
+  ]
+}

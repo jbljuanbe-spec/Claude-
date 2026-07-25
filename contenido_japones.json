@@ -1,2414 +1,4487 @@
 {
-  "meta": {
-    "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
-    "metodo": "Genki I completo (L1-12) + parche gramatica N5 + vocabulario tematico ampliado + Genki II desde L13, foco en consolidacion",
-    "leccion_actual": 12,
-    "lecciones_por_ciudad": 6,
-    "orden_ciudades": [
-      "Tokio",
-      "Yokohama",
-      "Kioto",
-      "Osaka",
-      "Nara",
-      "Kanazawa",
-      "Hiroshima",
-      "Fukuoka",
-      "Sendai",
-      "Sapporo",
-      "Naha"
-    ]
-  },
-  "lecciones": {
-    "L1": {
-      "titulo": "あいさつ・自己紹介 (Saludos y autopresentación)",
-      "ciudad": "Tokio",
-      "barrio": "Estación de Tokio",
-      "emoji": "🚅"
-    },
-    "L2": {
-      "titulo": "かいもの (Compras)",
-      "ciudad": "Tokio",
-      "barrio": "Mercado de Ameyoko",
-      "emoji": "🧺"
-    },
-    "L3": {
-      "titulo": "デートの約束 (Quedar con alguien)",
-      "ciudad": "Tokio",
-      "barrio": "Cruce de Shibuya",
-      "emoji": "🚦"
-    },
-    "L4": {
-      "titulo": "初めてのデート (La primera cita)",
-      "ciudad": "Tokio",
-      "barrio": "Parque de Ueno",
-      "emoji": "🌸"
-    },
-    "L5": {
-      "titulo": "沖縄旅行 (Viaje a Okinawa)",
-      "ciudad": "Tokio",
-      "barrio": "Mercado de Tsukiji",
-      "emoji": "🐟"
-    },
-    "L6": {
-      "titulo": "ロバートさんの一日 (Un día en la vida de Robert)",
-      "ciudad": "Tokio",
-      "barrio": "Templo Senso-ji",
-      "emoji": "⛩️"
-    },
-    "L7": {
-      "titulo": "家族の写真 (Foto de familia)",
-      "ciudad": "Yokohama",
-      "barrio": "Jardín Sankeien",
-      "emoji": "🎍"
-    },
-    "L8": {
-      "titulo": "バーベキュー (Barbacoa)",
-      "ciudad": "Yokohama",
-      "barrio": "Muelle de Minato Mirai",
-      "emoji": "🎡"
-    },
-    "L9": {
-      "titulo": "かぶき (Kabuki)",
-      "ciudad": "Yokohama",
-      "barrio": "Teatro Noge Kabuki",
-      "emoji": "🎭"
-    },
-    "L10": {
-      "titulo": "冬休みの予定 (Planes de vacaciones de invierno)",
-      "ciudad": "Yokohama",
-      "barrio": "Estación de Yokohama",
-      "emoji": "🚉"
-    },
-    "General": {
-      "titulo": "Matices y vocabulario transversal",
-      "ciudad": null,
-      "barrio": "Monte Fuji",
-      "emoji": "🗻"
-    },
-    "L11": {
-      "titulo": "休みのあと (Después de las vacaciones)",
-      "ciudad": "Yokohama",
-      "barrio": "Parque Yamashita",
-      "emoji": "🌉"
-    },
-    "L12": {
-      "titulo": "あげる・くれる・もらう (Dar y recibir)",
-      "ciudad": "Yokohama",
-      "barrio": "Chinatown de Yokohama",
-      "emoji": "🏮"
-    }
-  },
-  "tarjetas": [
-    {
-      "id": "l1_watashi",
-      "l": "L1",
-      "kanji": "私",
-      "reading": "わたし",
-      "es": "yo",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l1_anata",
-      "l": "L1",
-      "kanji": "あなた",
-      "reading": "あなた",
-      "es": "tú (úsalo poco)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l1_namae",
-      "l": "L1",
-      "kanji": "名前",
-      "reading": "なまえ",
-      "es": "nombre",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l1_gakusei",
-      "l": "L1",
-      "kanji": "学生",
-      "reading": "がくせい",
-      "es": "estudiante",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l1_sensei",
-      "l": "L1",
-      "kanji": "先生",
-      "reading": "せんせい",
-      "es": "profesor/a",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l1_kaishain",
-      "l": "L1",
-      "kanji": "会社員",
-      "reading": "かいしゃいん",
-      "es": "empleado de empresa",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l1_isha",
-      "l": "L1",
-      "kanji": "医者",
-      "reading": "いしゃ",
-      "es": "médico/a",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l1_nihon",
-      "l": "L1",
-      "kanji": "日本",
-      "reading": "にほん",
-      "es": "Japón",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l1_supein",
-      "l": "L1",
-      "kanji": "スペイン",
-      "reading": "すぺいん",
-      "es": "España",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l1_yoroshiku",
-      "l": "L1",
-      "kanji": "よろしくお願いします",
-      "reading": "よろしくおねがいします",
-      "es": "fórmula al presentarse",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l1_kochirakoso",
-      "l": "L1",
-      "kanji": "こちらこそ",
-      "reading": "こちらこそ",
-      "es": "el gusto es mío",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l1_soudesu",
-      "l": "L1",
-      "kanji": "そうです",
-      "reading": "そうです",
-      "es": "así es / correcto",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l2_kasa",
-      "l": "L2",
-      "kanji": "傘",
-      "reading": "かさ",
-      "es": "paraguas",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l2_tokei",
-      "l": "L2",
-      "kanji": "時計",
-      "reading": "とけい",
-      "es": "reloj",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l2_hon",
-      "l": "L2",
-      "kanji": "本",
-      "reading": "ほん",
-      "es": "libro",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l2_jisho",
-      "l": "L2",
-      "kanji": "辞書",
-      "reading": "じしょ",
-      "es": "diccionario",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l2_kaban",
-      "l": "L2",
-      "kanji": "かばん",
-      "reading": "かばん",
-      "es": "bolso/maletín",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l2_dare",
-      "l": "L2",
-      "kanji": "だれ",
-      "reading": "だれ",
-      "es": "quién",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l2_nani",
-      "l": "L2",
-      "kanji": "何",
-      "reading": "なに",
-      "readingAlt": [
-        "なん"
-      ],
-      "es": "qué",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l2_ikura",
-      "l": "L2",
-      "kanji": "いくらですか",
-      "reading": "いくらですか",
-      "es": "¿cuánto cuesta?",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l2_sumimasen",
-      "l": "L2",
-      "kanji": "すみません",
-      "reading": "すみません",
-      "es": "perdona/disculpa",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l2_takai",
-      "l": "L2",
-      "kanji": "高い",
-      "reading": "たかい",
-      "es": "caro / alto",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l2_tenki",
-      "l": "L2",
-      "kanji": "天気",
-      "reading": "てんき",
-      "es": "tiempo (clima)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_tabemasu",
-      "l": "L3",
-      "kanji": "食べます",
-      "reading": "たべます",
-      "es": "comer / comeré",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_nomimasu",
-      "l": "L3",
-      "kanji": "飲みます",
-      "reading": "のみます",
-      "es": "beber",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_mimasu",
-      "l": "L3",
-      "kanji": "見ます",
-      "reading": "みます",
-      "es": "ver",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_kikimasu",
-      "l": "L3",
-      "kanji": "聞きます",
-      "reading": "ききます",
-      "es": "escuchar / preguntar",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_ikimasu",
-      "l": "L3",
-      "kanji": "行きます",
-      "reading": "いきます",
-      "es": "ir",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_kimasu",
-      "l": "L3",
-      "kanji": "来ます",
-      "reading": "きます",
-      "es": "venir",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_kaerimasu",
-      "l": "L3",
-      "kanji": "帰ります",
-      "reading": "かえります",
-      "es": "volver a casa",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_okimasu",
-      "l": "L3",
-      "kanji": "起きます",
-      "reading": "おきます",
-      "es": "levantarse",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_nemasu",
-      "l": "L3",
-      "kanji": "寝ます",
-      "reading": "ねます",
-      "es": "dormir / acostarse",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_benkyou",
-      "l": "L3",
-      "kanji": "勉強します",
-      "reading": "べんきょうします",
-      "es": "estudiar",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_kyou",
-      "l": "L3",
-      "kanji": "今日",
-      "reading": "きょう",
-      "es": "hoy",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_ashita",
-      "l": "L3",
-      "kanji": "明日",
-      "reading": "あした",
-      "es": "mañana",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_kinou",
-      "l": "L3",
-      "kanji": "昨日",
-      "reading": "きのう",
-      "es": "ayer",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_mainichi",
-      "l": "L3",
-      "kanji": "毎日",
-      "reading": "まいにち",
-      "es": "todos los días",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_itsumo",
-      "l": "L3",
-      "kanji": "いつも",
-      "reading": "いつも",
-      "es": "siempre",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_taitei",
-      "l": "L3",
-      "kanji": "たいてい",
-      "reading": "たいてい",
-      "es": "normalmente",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_yoku",
-      "l": "L3",
-      "kanji": "よく",
-      "reading": "よく",
-      "es": "a menudo",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_tokidoki",
-      "l": "L3",
-      "kanji": "ときどき",
-      "reading": "ときどき",
-      "es": "a veces",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l3_amari",
-      "l": "L3",
-      "kanji": "あまり",
-      "reading": "あまり",
-      "es": "casi no (+negativo)",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l3_zenzen",
-      "l": "L3",
-      "kanji": "ぜんぜん",
-      "reading": "ぜんぜん",
-      "es": "para nada (+negativo)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "g_neg4formas",
-      "l": "L2",
-      "type": "grammar",
-      "question": "¿En qué se diferencian じゃないです y じゃありません?",
-      "explanation": "En nada — dos caminos gramaticales distintos para negar です. Existen 4 combinaciones (じゃ/では + ありません/ないです), todas igual de correctas y educadas."
-    },
-    {
-      "id": "g_hawa",
-      "l": "L2",
-      "type": "grammar",
-      "question": "¿Por qué じゃありません no se escribe con わ (でわ)?",
-      "explanation": "じゃ es la contracción hablada de では, se escribe distinto aunque suene parecido. Aparte: la partícula は suena \"wa\" pero SIEMPRE se escribe は, nunca わ."
-    },
-    {
-      "id": "g_kore_kono",
-      "l": "L2",
-      "type": "grammar",
-      "question": "¿Diferencia entre これ y この?",
-      "explanation": "これ/それ/あれ/どれ van SOLOS, reemplazan al sustantivo. この/その/あの/どの SIEMPRE necesitan un sustantivo detrás, nunca van solos."
-    },
-    {
-      "id": "g_dore_doko",
-      "l": "L2",
-      "type": "grammar",
-      "question": "¿Diferencia entre どれ y どこ?",
-      "explanation": "どれ = ¿cuál? (elegir entre varias cosas). どこ = ¿dónde? (ubicación). Suenan parecido, son categorías distintas."
-    },
-    {
-      "id": "g_ne_yo",
-      "l": "L2",
-      "type": "grammar",
-      "question": "¿Cuándo se usa ね y cuándo よ?",
-      "explanation": "ね = buscas acuerdo o reaccionas a algo que te acaban de decir. よ = TÚ informas de algo nuevo que el otro no sabe. No uses よ para reaccionar a información recién recibida."
-    },
-    {
-      "id": "g_de_ni",
-      "l": "L3",
-      "type": "grammar",
-      "question": "¿Diferencia entre で y に con verbos de acción?",
-      "explanation": "に = destino u hora exacta (学校に行きます). で = lugar donde ocurre la acción (学校で勉強します)."
-    },
-    {
-      "id": "g_amari_neg",
-      "l": "L3",
-      "type": "grammar",
-      "question": "¿あまり y ぜんぜん pueden usarse en afirmativo?",
-      "explanation": "No — con el significado de \"casi no\"/\"para nada\" EXIGEN un verbo en negativo detrás, siempre."
-    },
-    {
-      "id": "g_ou_sound",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Cómo se escriben los sonidos largos tipo \"soo\" o \"benkyoo\"?",
-      "explanation": "Los alargamientos que vienen de -au/-ou casi siempre se escriben con う, no con お: そう, べんきょう, ありがとう, おはよう."
-    },
-    {
-      "id": "g_takusan_no",
-      "l": "L4",
-      "type": "grammar",
-      "question": "¿Cuándo たくさん lleva の y cuándo no?",
-      "explanation": "たくさん solo = adverbio (sin partícula, modifica el verbo, se mueve libre). たくさんの+sustantivo = actúa como adjetivo pegado al sustantivo. Mismo significado, cambia el foco."
-    },
-    {
-      "id": "g_ga_wa_exist",
-      "l": "L4",
-      "type": "grammar",
-      "question": "¿Por qué 学生 lleva が y no は en 教室に学生がいます?",
-      "explanation": "が anuncia información nueva: \"esto es lo que hay\". は marca tema ya conocido o contraste. Con あります/います casi siempre が, porque por naturaleza anuncias que algo existe."
-    },
-    {
-      "id": "g_movie_theater",
-      "l": "L4",
-      "type": "grammar",
-      "question": "¿Diferencia entre 映画 y 映画館?",
-      "explanation": "映画 = la película (el contenido). 映画館 = el cine (el edificio, adónde vas). \"映画に行く\" no es natural — mejor 映画館に行く o simplemente 映画を見る."
-    },
-    {
-      "id": "g_to_no_verbs",
-      "l": "L4",
-      "type": "grammar",
-      "question": "¿Puedo usar と para unir dos verbos, como \"fui y comí\"?",
-      "explanation": "No — と solo une SUSTANTIVOS (AとB). Para unir acciones sin forma て (Lección 6), usa dos frases separadas: 映画を見ました。たくさん食べました。"
-    },
-    {
-      "id": "g_reltime_ni",
-      "l": "L3",
-      "type": "grammar",
-      "question": "¿今日/明日/先週 llevan に?",
-      "explanation": "No, nunca — los tiempos relativos (今日/明日/昨日/先週/今週/来週) no llevan に. Solo los días de la semana (月曜日に) y horas exactas (7時に) sí."
-    },
-    {
-      "id": "l5_umi",
-      "l": "L5",
-      "kanji": "海",
-      "reading": "うみ",
-      "es": "mar",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l5_ryouri",
-      "l": "L5",
-      "kanji": "料理",
-      "reading": "りょうり",
-      "es": "comida / cocina",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l5_oishii",
-      "l": "L5",
-      "kanji": "美味しい",
-      "reading": "おいしい",
-      "es": "delicioso",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l5_kirei",
-      "l": "L5",
-      "kanji": "きれい(な)",
-      "reading": "きれい",
-      "es": "bonito / limpio",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l5_shizuka",
-      "l": "L5",
-      "kanji": "静か(な)",
-      "reading": "しずか",
-      "es": "tranquilo",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l5_sushi",
-      "l": "L5",
-      "kanji": "寿司",
-      "reading": "すし",
-      "es": "sushi",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l5_natto",
-      "l": "L5",
-      "kanji": "納豆",
-      "reading": "なっとう",
-      "es": "natto",
-      "dir": "es-jp"
-    },
-    {
-      "id": "g_iadj_past",
-      "l": "L5",
-      "type": "grammar",
-      "question": "¿Cómo se conjuga el pasado de un adjetivo en -い, como 高い?",
-      "explanation": "Quita la い final y añade かった: 高い → 高かったです. NO se combina con でした (eso es solo para な-adjetivos y sustantivos)."
-    },
-    {
-      "id": "g_suki_ga",
-      "l": "L5",
-      "type": "grammar",
-      "question": "¿Con qué partícula va lo que te gusta en 好きです?",
-      "explanation": "Con が, no を: 私は寿司が好きです (me gusta el sushi). 好き/嫌い son adjetivos -な, no verbos como \"gustar cosas\" en español."
-    },
-    {
-      "id": "g_kirei_na",
-      "l": "L5",
-      "type": "grammar",
-      "question": "きれい y 嫌い terminan en い, ¿por qué son -な y no -い?",
-      "explanation": "Porque si les quitas la い no queda una raíz real (きれ/きら no significan nada). Los -い de verdad sí conjugan al quitarla (高い→高く). きれい y 嫌い son las dos trampas clásicas: suenan a -い pero son -な."
-    },
-    {
-      "id": "c_takai_negpas",
-      "l": "L5",
-      "type": "conj",
-      "front": "高い → pasado negativo",
-      "answer": "高くなかったです",
-      "alt": [
-        "高くありませんでした",
-        "たかくなかったです"
-      ]
-    },
-    {
-      "id": "c_takai_afpas",
-      "l": "L5",
-      "type": "conj",
-      "front": "高い → pasado afirmativo",
-      "answer": "高かったです",
-      "alt": [
-        "たかかったです"
-      ]
-    },
-    {
-      "id": "c_isogashii_negpres",
-      "l": "L5",
-      "type": "conj",
-      "front": "忙しい(いそがしい) → presente negativo",
-      "answer": "忙しくないです",
-      "alt": [
-        "忙しくありません",
-        "いそがしくないです"
-      ]
-    },
-    {
-      "id": "c_isogashii_afpas",
-      "l": "L5",
-      "type": "conj",
-      "front": "忙しい(いそがしい) → pasado afirmativo",
-      "answer": "忙しかったです",
-      "alt": [
-        "いそがしかったです"
-      ]
-    },
-    {
-      "id": "c_ii_negpres",
-      "l": "L5",
-      "type": "conj",
-      "front": "いい → presente negativo",
-      "answer": "よくないです",
-      "alt": [
-        "よくありません"
-      ]
-    },
-    {
-      "id": "c_ii_afpas",
-      "l": "L5",
-      "type": "conj",
-      "front": "いい → pasado afirmativo",
-      "answer": "よかったです"
-    },
-    {
-      "id": "c_kirei_negpres",
-      "l": "L5",
-      "type": "conj",
-      "front": "きれい(な) → presente negativo",
-      "answer": "きれいじゃないです",
-      "alt": [
-        "きれいではありません"
-      ]
-    },
-    {
-      "id": "c_shizuka_negpres",
-      "l": "L5",
-      "type": "conj",
-      "front": "静か(な) → presente negativo",
-      "answer": "静かじゃないです",
-      "alt": [
-        "しずかじゃないです",
-        "静かではありません"
-      ]
-    },
-    {
-      "id": "g_adj_no_particle",
-      "l": "L5",
-      "type": "grammar",
-      "question": "¿Por qué a veces un adjetivo va con な o con く y otras veces con nada?",
-      "explanation": "Los adjetivos NUNCA llevan partícula propia. Solo cambian según su trabajo: predicado (これは高いです), modificar sustantivo (高い本 / きれいな部屋 — el な no es partícula), o modificar verbo (早く起きます / きれいに書きます — く/に tampoco son partículas)."
-    },
-    {
-      "id": "g_no_vs_to",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Diferencia entre の y と cuando hablo de otra persona?",
-      "explanation": "の = posesión/pertenencia (AのB = \"B de A\"): 彼女の映画館 = \"el cine DE mi novia\" (como si fuera suyo). と = compañía (\"con\"): 彼女と映画館 = \"al cine CON mi novia\". Fácil de mezclar, revisa siempre cuál de las dos quieres decir."
-    },
-    {
-      "id": "g_no_dropped_wa",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Puedo omitir は antes de です al nombrar algo (ej. 名前はエレナです)?",
-      "explanation": "No — siempre necesitas は (o が) entre el sustantivo-tema y el predicado: 名前はエレナです, no 名前エレナです. Se olvida fácil al escribir rápido; revisa que cada frase tenga su partícula de tema antes del predicado."
-    },
-    {
-      "id": "c_te_nomu",
-      "l": "L6",
-      "type": "conj",
-      "front": "飲む → forma て",
-      "answer": "飲んで",
-      "alt": [
-        "のんで"
-      ]
-    },
-    {
-      "id": "c_te_kau",
-      "l": "L6",
-      "type": "conj",
-      "front": "買う → forma て",
-      "answer": "買って",
-      "alt": [
-        "かって"
-      ]
-    },
-    {
-      "id": "c_te_taberu",
-      "l": "L6",
-      "type": "conj",
-      "front": "食べる → forma て",
-      "answer": "食べて",
-      "alt": [
-        "たべて"
-      ]
-    },
-    {
-      "id": "c_te_iku",
-      "l": "L6",
-      "type": "conj",
-      "front": "行く → forma て (¡ojo, excepción!)",
-      "answer": "行って",
-      "alt": [
-        "いって"
-      ]
-    },
-    {
-      "id": "c_te_hanasu",
-      "l": "L6",
-      "type": "conj",
-      "front": "話す → forma て",
-      "answer": "話して",
-      "alt": [
-        "はなして"
-      ]
-    },
-    {
-      "id": "c_te_matsu",
-      "l": "L6",
-      "type": "conj",
-      "front": "待つ → forma て",
-      "answer": "待って",
-      "alt": [
-        "まって"
-      ]
-    },
-    {
-      "id": "c_te_kaeru",
-      "l": "L6",
-      "type": "conj",
-      "front": "帰る → forma て",
-      "answer": "帰って",
-      "alt": [
-        "かえって"
-      ]
-    },
-    {
-      "id": "c_te_suru",
-      "l": "L6",
-      "type": "conj",
-      "front": "する → forma て",
-      "answer": "して"
-    },
-    {
-      "id": "g_te_groups",
-      "l": "L6",
-      "type": "grammar",
-      "question": "¿Cómo sé qué terminación て le toca a un verbo del Grupo 1?",
-      "explanation": "Según la última sílaba del diccionario: う/つ/る→って, ぬ/む/ぶ→んで, く→いて, ぐ→いで, す→して. Excepción: 行く→行って (no 行いて)."
-    },
-    {
-      "id": "g_na_is_noun",
-      "l": "L5",
-      "type": "grammar",
-      "question": "¿Cómo distingo si una palabra es -い o -な?",
-      "explanation": "Si termina en い, probablemente -い (conjuga sola: 高い→高く/高かった). Si NO termina en い, siempre -な (静か, 便利...). Excepciones que engañan: きれい y 嫌い terminan en い pero son -な. Truco: un -な se conjuga IGUAL que un sustantivo+です (学生です=きれいです en estructura)."
-    },
-    {
-      "id": "g_fake_ichidan",
-      "l": "L6",
-      "type": "grammar",
-      "question": "¿Cómo sé si un verbo en る es Grupo 1 o Grupo 2?",
-      "explanation": "Vocal antes de る: あ/う/お → Grupo 1 siempre. い/え → Grupo 2 normalmente, PERO hay excepciones: 帰る, 入る, 走る, 知る, 切る, 要る, 減る terminan en -iru/-eru y son Grupo 1. No hay truco fiable para estas, se memorizan como vocabulario."
-    },
-    {
-      "id": "g_teiru_dos_usos",
-      "l": "L7",
-      "type": "grammar",
-      "question": "¿Por qué 疲れています significa \"estoy cansado\" y no \"me estoy cansando\"?",
-      "explanation": "~ている tiene 2 usos: acción en progreso (今、勉強しています = estoy estudiando ahora) y estado resultante (疲れています = quedé en el estado de haberme cansado = estoy cansado). 疲れる describe un cambio puntual, así que su ~ている da el estado actual, no una acción continuada."
-    },
-    {
-      "id": "l7_kazoku",
-      "l": "L7",
-      "kanji": "家族",
-      "reading": "かぞく",
-      "es": "familia",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l7_kekkon",
-      "l": "L7",
-      "kanji": "結婚する",
-      "reading": "けっこんする",
-      "es": "casarse",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l7_ani",
-      "l": "L7",
-      "kanji": "兄",
-      "reading": "あに",
-      "es": "hermano mayor (mío)",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l7_ane",
-      "l": "L7",
-      "kanji": "姉",
-      "reading": "あね",
-      "es": "hermana mayor (mía)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l7_otouto",
-      "l": "L7",
-      "kanji": "弟",
-      "reading": "おとうと",
-      "es": "hermano menor (mío)",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l7_imouto",
-      "l": "L7",
-      "kanji": "妹",
-      "reading": "いもうと",
-      "es": "hermana menor (mía)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "g_ni_iku",
-      "l": "L7",
-      "type": "grammar",
-      "question": "¿Cómo digo \"voy a ver una película\" (con el propósito de ir)?",
-      "explanation": "Verbo en raíz ます + に行きます: 映画を見に行きます (voy a ver una película). Reemplaza construcciones poco naturales como \"映画に行く\"."
-    },
-    {
-      "id": "l6_shashin_toru",
-      "l": "L6",
-      "kanji": "写真を撮る",
-      "reading": "しゃしんをとる",
-      "es": "tomar una foto",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l7_chichi",
-      "l": "L7",
-      "kanji": "父",
-      "reading": "ちち",
-      "es": "padre (mío)",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l7_haha",
-      "l": "L7",
-      "kanji": "母",
-      "reading": "はは",
-      "es": "madre (mía)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l7_ryoushin",
-      "l": "L7",
-      "kanji": "両親",
-      "reading": "りょうしん",
-      "es": "padres (ambos)",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l7_sofu",
-      "l": "L7",
-      "kanji": "祖父",
-      "reading": "そふ",
-      "es": "abuelo",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l7_sobo",
-      "l": "L7",
-      "kanji": "祖母",
-      "reading": "そぼ",
-      "es": "abuela",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l7_musuko",
-      "l": "L7",
-      "kanji": "息子",
-      "reading": "むすこ",
-      "es": "hijo",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l7_musume",
-      "l": "L7",
-      "kanji": "娘",
-      "reading": "むすめ",
-      "es": "hija",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l7_kodomo",
-      "l": "L7",
-      "kanji": "子供",
-      "reading": "こども",
-      "es": "niño/a, hijo/a",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l7_otto",
-      "l": "L7",
-      "kanji": "夫",
-      "reading": "おっと",
-      "es": "esposo",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l7_tsuma",
-      "l": "L7",
-      "kanji": "妻",
-      "reading": "つま",
-      "es": "esposa",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l7_otousan",
-      "l": "L7",
-      "kanji": "お父さん",
-      "reading": "おとうさん",
-      "es": "padre (de otra persona / trato directo)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l7_okaasan",
-      "l": "L7",
-      "kanji": "お母さん",
-      "reading": "おかあさん",
-      "es": "madre (de otra persona / trato directo)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "g_teiru_vs_invitacion",
-      "l": "L7",
-      "type": "grammar",
-      "question": "¿Puedo usar 見ていますか para invitar a alguien a ver algo?",
-      "explanation": "No — ~ている pregunta por una acción EN CURSO ahora (\"¿estás viendo...?\"), no sirve para proponer algo futuro. Para invitar usa ~ましょうか o ~ませんか: 映画を見ませんか (¿vemos una película?)."
-    },
-    {
-      "id": "c_nai_nomu",
-      "l": "L8",
-      "type": "conj",
-      "front": "飲む → forma ない (presente negativo simple)",
-      "answer": "飲まない",
-      "alt": [
-        "のまない"
-      ]
-    },
-    {
-      "id": "c_nai_kau",
-      "l": "L8",
-      "type": "conj",
-      "front": "買う → forma ない",
-      "answer": "買わない",
-      "alt": [
-        "かわない"
-      ]
-    },
-    {
-      "id": "c_nai_taberu",
-      "l": "L8",
-      "type": "conj",
-      "front": "食べる → forma ない",
-      "answer": "食べない",
-      "alt": [
-        "たべない"
-      ]
-    },
-    {
-      "id": "c_nai_suru",
-      "l": "L8",
-      "type": "conj",
-      "front": "する → forma ない",
-      "answer": "しない"
-    },
-    {
-      "id": "c_nai_kuru",
-      "l": "L8",
-      "type": "conj",
-      "front": "来る → forma ない",
-      "answer": "来ない",
-      "alt": [
-        "こない"
-      ]
-    },
-    {
-      "id": "c_ta_kau",
-      "l": "L8",
-      "type": "conj",
-      "front": "買う → forma た (pasado simple)",
-      "answer": "買った",
-      "alt": [
-        "かった"
-      ]
-    },
-    {
-      "id": "c_ta_nomu",
-      "l": "L8",
-      "type": "conj",
-      "front": "飲む → forma た",
-      "answer": "飲んだ",
-      "alt": [
-        "のんだ"
-      ]
-    },
-    {
-      "id": "g_formas_simples",
-      "l": "L8",
-      "type": "grammar",
-      "question": "¿Cuándo se usan las formas simples (食べる/食べない/食べた) en vez de ます/です?",
-      "explanation": "Con amigos/familia cercana (registro informal), y SIEMPRE dentro de construcciones como ~と思います o ~と言っていました, aunque la frase completa sea educada."
-    },
-    {
-      "id": "l1_hajimemashite",
-      "l": "L1",
-      "kanji": "はじめまして",
-      "reading": "はじめまして",
-      "es": "mucho gusto (al conocer a alguien)",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l4_depaato",
-      "l": "L4",
-      "kanji": "デパート",
-      "reading": "でぱーと",
-      "es": "grandes almacenes",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l4_kaimasu",
-      "l": "L4",
-      "kanji": "買います",
-      "reading": "かいます",
-      "es": "comprar",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l4_neko",
-      "l": "L4",
-      "kanji": "猫",
-      "reading": "ねこ",
-      "es": "gato",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l4_inu",
-      "l": "L4",
-      "kanji": "犬",
-      "reading": "いぬ",
-      "es": "perro",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l4_kouen",
-      "l": "L4",
-      "kanji": "公園",
-      "reading": "こうえん",
-      "es": "parque",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l4_tsukue",
-      "l": "L4",
-      "kanji": "机",
-      "reading": "つくえ",
-      "es": "mesa/escritorio",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l4_eigakan",
-      "l": "L4",
-      "kanji": "映画館",
-      "reading": "えいがかん",
-      "es": "cine (el edificio)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l6_matsu",
-      "l": "L6",
-      "kanji": "待つ",
-      "reading": "まつ",
-      "es": "esperar",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l6_yobu",
-      "l": "L6",
-      "kanji": "呼ぶ",
-      "reading": "よぶ",
-      "es": "llamar",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l6_isogu",
-      "l": "L6",
-      "kanji": "急ぐ",
-      "reading": "いそぐ",
-      "es": "darse prisa",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l6_hanasu",
-      "l": "L6",
-      "kanji": "話す",
-      "reading": "はなす",
-      "es": "hablar",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l6_suu",
-      "l": "L6",
-      "kanji": "吸う",
-      "reading": "すう",
-      "es": "fumar/aspirar",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l8_ame",
-      "l": "L8",
-      "kanji": "雨",
-      "reading": "あめ",
-      "es": "lluvia",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l8_omoshiroi",
-      "l": "L8",
-      "kanji": "面白い",
-      "reading": "おもしろい",
-      "es": "interesante/divertido",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l8_ryouri",
-      "l": "L8",
-      "kanji": "料理する",
-      "reading": "りょうりする",
-      "es": "cocinar",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l8_onakasuku",
-      "l": "L8",
-      "kanji": "お腹が空く",
-      "reading": "おなかがすく",
-      "es": "tener hambre",
-      "dir": "es-jp"
-    },
-    {
-      "id": "vocab_getsuyoubi",
-      "l": "L3",
-      "kanji": "月曜日",
-      "reading": "げつようび",
-      "es": "lunes",
-      "dir": "es-jp"
-    },
-    {
-      "id": "vocab_kayoubi",
-      "l": "L3",
-      "kanji": "火曜日",
-      "reading": "かようび",
-      "es": "martes",
-      "dir": "jp-es"
-    },
-    {
-      "id": "vocab_suiyoubi",
-      "l": "L3",
-      "kanji": "水曜日",
-      "reading": "すいようび",
-      "es": "miércoles",
-      "dir": "es-jp"
-    },
-    {
-      "id": "vocab_mokuyoubi",
-      "l": "L3",
-      "kanji": "木曜日",
-      "reading": "もくようび",
-      "es": "jueves",
-      "dir": "jp-es"
-    },
-    {
-      "id": "vocab_kinyoubi",
-      "l": "L3",
-      "kanji": "金曜日",
-      "reading": "きんようび",
-      "es": "viernes",
-      "dir": "es-jp"
-    },
-    {
-      "id": "vocab_doyoubi",
-      "l": "L3",
-      "kanji": "土曜日",
-      "reading": "どようび",
-      "es": "sábado",
-      "dir": "jp-es"
-    },
-    {
-      "id": "vocab_nichiyoubi",
-      "l": "L3",
-      "kanji": "日曜日",
-      "reading": "にちようび",
-      "es": "domingo",
-      "dir": "es-jp"
-    },
-    {
-      "id": "vocab_nanyoubi",
-      "l": "L3",
-      "kanji": "何曜日",
-      "reading": "なんようび",
-      "es": "¿qué día de la semana?",
-      "dir": "jp-es"
-    },
-    {
-      "id": "c_ta_taberu2",
-      "l": "L8",
-      "type": "conj",
-      "front": "食べる → forma た",
-      "answer": "食べた",
-      "alt": [
-        "たべた"
-      ]
-    },
-    {
-      "id": "c_ta_kaeru2",
-      "l": "L8",
-      "type": "conj",
-      "front": "帰る → forma た",
-      "answer": "帰った",
-      "alt": [
-        "かえった"
-      ]
-    },
-    {
-      "id": "c_ta_hanasu2",
-      "l": "L8",
-      "type": "conj",
-      "front": "話す → forma た",
-      "answer": "話した",
-      "alt": [
-        "はなした"
-      ]
-    },
-    {
-      "id": "c_nakatta_taberu",
-      "l": "L8",
-      "type": "conj",
-      "front": "食べる → forma なかった (pasado negativo simple)",
-      "answer": "食べなかった",
-      "alt": [
-        "たべなかった"
-      ]
-    },
-    {
-      "id": "c_da_gakusei",
-      "l": "L8",
-      "type": "conj",
-      "front": "学生 → forma だ (presente simple)",
-      "answer": "学生だ",
-      "alt": [
-        "がくせいだ"
-      ]
-    },
-    {
-      "id": "c_datta_gakusei",
-      "l": "L8",
-      "type": "conj",
-      "front": "学生 → forma だった (pasado simple)",
-      "answer": "学生だった",
-      "alt": [
-        "がくせいだった"
-      ]
-    },
-    {
-      "id": "c_datta_kirei",
-      "l": "L8",
-      "type": "conj",
-      "front": "きれい → forma だった (pasado simple)",
-      "answer": "きれいだった"
-    },
-    {
-      "id": "c_janai_gakusei",
-      "l": "L8",
-      "type": "conj",
-      "front": "学生 → forma じゃない (presente negativo simple)",
-      "answer": "学生じゃない",
-      "alt": [
-        "がくせいじゃない"
-      ]
-    },
-    {
-      "id": "g_clausula_sustantivo",
-      "l": "L9",
-      "type": "grammar",
-      "question": "¿Cómo digo \"el libro que compré ayer\" sin una palabra para \"que\"?",
-      "explanation": "En japonés no hace falta \"que/quien\" — la cláusula entera en forma simple va directamente antes del sustantivo: 昨日買った本 (el libro que compré ayer). Es la misma regla que ya usabas con adjetivos (高い本), solo que ahora con una frase completa."
-    },
-    {
-      "id": "g_kara_origen_razon",
-      "l": "L9",
-      "type": "grammar",
-      "question": "¿から significa \"desde\" o \"porque\"?",
-      "explanation": "Las dos cosas, según contexto: con hora/lugar antes = origen (\"desde\"): 9時から始まります. Con un motivo antes = razón (\"porque\"): 忙しいから、行きません. Misma palabra, significado distinto."
-    },
-    {
-      "id": "l9_shukudai",
-      "l": "L9",
-      "kanji": "宿題",
-      "reading": "しゅくだい",
-      "es": "deberes",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l9_hajimaru",
-      "l": "L9",
-      "kanji": "始まる",
-      "reading": "はじまる",
-      "es": "empezar",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l9_owaru",
-      "l": "L9",
-      "kanji": "終わる",
-      "reading": "おわる",
-      "es": "terminar",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l9_mou",
-      "l": "L9",
-      "kanji": "もう",
-      "reading": "もう",
-      "es": "ya",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l9_mada",
-      "l": "L9",
-      "kanji": "まだ",
-      "reading": "まだ",
-      "es": "todavía/aún",
-      "dir": "es-jp"
-    },
-    {
-      "id": "g_de_medio",
-      "l": "L3",
-      "type": "grammar",
-      "question": "¿で solo marca el lugar de una acción?",
-      "explanation": "No, también marca medio/instrumento (\"en/con qué\"): 車で行きます (voy en coche), 箸で食べます (como con palillos). Mismo で, otro matiz."
-    },
-    {
-      "id": "l9_tekara",
-      "l": "L9",
-      "kanji": "～てから",
-      "reading": "てから",
-      "es": "después de hacer...",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l9_made",
-      "l": "L9",
-      "kanji": "まで",
-      "reading": "まで",
-      "es": "hasta (tiempo/lugar)",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l4_ue",
-      "l": "L4",
-      "kanji": "上",
-      "reading": "うえ",
-      "es": "encima de",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l4_shita",
-      "l": "L4",
-      "kanji": "下",
-      "reading": "した",
-      "es": "debajo de",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l4_naka",
-      "l": "L4",
-      "kanji": "中",
-      "reading": "なか",
-      "es": "dentro de",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l4_mae",
-      "l": "L4",
-      "kanji": "前",
-      "reading": "まえ",
-      "es": "delante de",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l4_ushiro",
-      "l": "L4",
-      "kanji": "後ろ",
-      "reading": "うしろ",
-      "es": "detrás de",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l4_tonari",
-      "l": "L4",
-      "kanji": "隣",
-      "reading": "となり",
-      "es": "al lado de",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l4_chikaku",
-      "l": "L4",
-      "kanji": "近く",
-      "reading": "ちかく",
-      "es": "cerca de",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l5_heya",
-      "l": "L5",
-      "kanji": "部屋",
-      "reading": "へや",
-      "es": "habitación",
-      "dir": "jp-es"
-    },
-    {
-      "id": "vocab_isu",
-      "l": "General",
-      "kanji": "椅子",
-      "reading": "いす",
-      "es": "silla",
-      "dir": "es-jp"
-    },
-    {
-      "id": "vocab_doa",
-      "l": "General",
-      "kanji": "ドア",
-      "reading": "どあ",
-      "es": "puerta",
-      "dir": "jp-es"
-    },
-    {
-      "id": "vocab_kabe",
-      "l": "General",
-      "kanji": "壁",
-      "reading": "かべ",
-      "es": "pared",
-      "dir": "es-jp"
-    },
-    {
-      "id": "vocab_yuka",
-      "l": "General",
-      "kanji": "床",
-      "reading": "ゆか",
-      "es": "suelo/piso",
-      "dir": "jp-es"
-    },
-    {
-      "id": "vocab_mado",
-      "l": "General",
-      "kanji": "窓",
-      "reading": "まど",
-      "es": "ventana",
-      "dir": "es-jp"
-    },
-    {
-      "id": "vocab_beddo",
-      "l": "General",
-      "kanji": "ベッド",
-      "reading": "べっど",
-      "es": "cama",
-      "dir": "jp-es"
-    },
-    {
-      "id": "g_comparacion_2",
-      "l": "L10",
-      "type": "grammar",
-      "question": "¿Cómo comparo dos cosas en japonés?",
-      "explanation": "AはBよりXです = A es más X que B. Para preguntar: AとBとどちらがXですか. Para responder: Aの方がXです (A es el que más)."
-    },
-    {
-      "id": "g_comparacion_3",
-      "l": "L10",
-      "type": "grammar",
-      "question": "¿Cómo elijo la mejor opción entre 3 o más cosas?",
-      "explanation": "[grupo]の中で、Xが一番Xです (de [grupo], X es el más...). 一番 = \"el número uno/el más\"."
-    },
-    {
-      "id": "g_adj_no_sustituto",
-      "l": "L10",
-      "type": "grammar",
-      "question": "¿Qué significa 赤いのが好きです?",
-      "explanation": "El adjetivo+の sustituye a un sustantivo ya mencionado, como el の posesivo (私の). 赤いの = \"el rojo\" (evitando repetir el sustantivo, ej. 傘)."
-    },
-    {
-      "id": "l10_samui",
-      "l": "L10",
-      "kanji": "寒い",
-      "reading": "さむい",
-      "es": "frío",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l10_atatakai",
-      "l": "L10",
-      "kanji": "暖かい",
-      "reading": "あたたかい",
-      "es": "cálido/templado",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l10_suzushii",
-      "l": "L10",
-      "kanji": "涼しい",
-      "reading": "すずしい",
-      "es": "fresco",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l10_fuyu",
-      "l": "L10",
-      "kanji": "冬",
-      "reading": "ふゆ",
-      "es": "invierno",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l10_natsu",
-      "l": "L10",
-      "kanji": "夏",
-      "reading": "なつ",
-      "es": "verano",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l10_haru",
-      "l": "L10",
-      "kanji": "春",
-      "reading": "はる",
-      "es": "primavera",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l10_aki",
-      "l": "L10",
-      "kanji": "秋",
-      "reading": "あき",
-      "es": "otoño",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l10_densha",
-      "l": "L10",
-      "kanji": "電車",
-      "reading": "でんしゃ",
-      "es": "tren",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l10_kudamono",
-      "l": "L10",
-      "kanji": "果物",
-      "reading": "くだもの",
-      "es": "fruta",
-      "dir": "es-jp"
-    },
-    {
-      "id": "g_node_vs_kara",
-      "l": "L6",
-      "type": "grammar",
-      "question": "¿ので es lo mismo que から?",
-      "explanation": "Significan lo mismo (\"porque\"), pero ので suena más formal/objetivo (\"es un hecho\"), y から más casual/personal (\"yo opino/decido\"). Intercambiables en la mayoría de contextos cotidianos."
-    },
-    {
-      "id": "g_duracion_tiempo",
-      "l": "L4",
-      "type": "grammar",
-      "question": "¿Cómo digo \"durante 2 horas\" sin confundirlo con \"a las 2\"?",
-      "explanation": "Duración usa 〜時間 (2時間 = durante 2 horas) o 〜日間 (durante X días), sin に. Hora puntual usa 〜時に (2時に = a las 2 en punto), con に. Contadores distintos, no se mezclan."
-    },
-    {
-      "id": "g_to_condicional",
-      "l": "L10",
-      "type": "grammar",
-      "question": "¿Qué significa と en 冬になると、寒くなります?",
-      "explanation": "と aquí es condicional: \"cuando/si X, entonces Y\" (consecuencia natural, casi automática). 冬になると、寒くなります = \"Cuando llega el invierno, hace frío\". Distinto del と de \"con\" o \"y\"."
-    },
-    {
-      "id": "g_dochira_vs_dore",
-      "l": "L10",
-      "type": "grammar",
-      "question": "¿どちら sirve para elegir entre 3 o más cosas?",
-      "explanation": "No — どちら es solo para elegir entre DOS. Con 3 o más opciones usa 何/どれ + 一番: 季節の中で、何が一番好きですか (no どちらが)."
-    },
-    {
-      "id": "g_mou_pregunta_mada_neg",
-      "l": "L9",
-      "type": "grammar",
-      "question": "¿もう o まだ para preguntar \"ya hiciste X?\"",
-      "explanation": "もう va en la pregunta (もうしましたか = ¿ya lo hiciste?) y en la respuesta afirmativa (もうしました). まだ solo en la respuesta negativa (まだしていません). まだしましたか sueña raro."
-    },
-    {
-      "id": "g_hanasu_to_wo",
-      "l": "General",
-      "type": "grammar",
-      "question": "話す, ¿con を o と?",
-      "explanation": "を marca QUÉ hablas/dices (日本語を話す = hablar japonés). と marca CON QUIÉN hablas (彼女と話す = hablar con ella, compañía). No son intercambiables."
-    },
-    {
-      "id": "g_kara_no_ni",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Puedo decir 10時からに?",
-      "explanation": "No — から (desde, punto de partida) y に (a las X, momento exacto) marcan la misma hora con matices distintos; nunca van juntas. Una u otra, no las dos."
-    },
-    {
-      "id": "g_tai_conjuga",
-      "l": "L11",
-      "type": "grammar",
-      "question": "¿Cómo conjuga ~たい (querer hacer algo)?",
-      "explanation": "Como un adjetivo -い, porque termina en い: 食べたいです／食べたくないです／食べたかったです／食べたくなかったです. El objeto a veces cambia de を a が (水が飲みたいです)."
-    },
-    {
-      "id": "g_tari_tari",
-      "l": "L11",
-      "type": "grammar",
-      "question": "¿Diferencia entre unir con て y con たり~たりする?",
-      "explanation": "て da una secuencia concreta y cerrada (\"hago A y luego B\"). たり~たりする da una lista abierta/no exhaustiva (\"hago cosas como A y B, entre otras\"). No son intercambiables."
-    },
-    {
-      "id": "g_koto_ga_aru",
-      "l": "L11",
-      "type": "grammar",
-      "question": "¿Qué añade ことがあります a un verbo en pasado?",
-      "explanation": "Enmarca la frase como experiencia de vida (\"he hecho X alguna vez\"), no como un evento puntual. 日本に行ったことがあります ≠ simplemente 行きました (un viaje concreto)."
-    },
-    {
-      "id": "g_ya_vs_to",
-      "l": "L11",
-      "type": "grammar",
-      "question": "¿Diferencia entre と y や como \"y\"?",
-      "explanation": "と = lista cerrada/completa (本と辞書 = exactamente un libro y un diccionario). や = lista abierta, no exhaustiva (本や辞書 = libros, diccionarios, y probablemente algo más)."
-    },
-    {
-      "id": "l11_yasumi",
-      "l": "L11",
-      "kanji": "休み",
-      "reading": "やすみ",
-      "es": "vacaciones/descanso",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l11_ryokou",
-      "l": "L11",
-      "kanji": "旅行",
-      "reading": "りょこう",
-      "es": "viaje",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l11_keiken",
-      "l": "L11",
-      "kanji": "経験",
-      "reading": "けいけん",
-      "es": "experiencia",
-      "dir": "es-jp"
-    },
-    {
-      "id": "g_koto_ga_arimasu",
-      "l": "L11",
-      "type": "grammar",
-      "question": "¿ことが lleva あります o います?",
-      "explanation": "Siempre あります, nunca います — aunque la experiencia sea sobre algo animado, こと (el hecho/la experiencia) es un concepto abstracto. います se reserva solo para seres vivos reales."
-    },
-    {
-      "id": "g_ageru_kureru",
-      "l": "L12",
-      "type": "grammar",
-      "question": "¿Cuándo uso あげる y cuándo くれる?",
-      "explanation": "あげる = yo doy a otra persona (el receptor NO soy yo). くれる = otra persona me da A MÍ. Mismo significado \"dar\", el verbo cambia según la dirección. Si tú recibes, nunca uses あげる."
-    },
-    {
-      "id": "g_morau",
-      "l": "L12",
-      "type": "grammar",
-      "question": "¿Qué significa もらう y cómo se estructura?",
-      "explanation": "\"Recibir\": [receptor]は[dador]に/から[cosa]をもらいます. 私は田中さんにプレゼントをもらいます = recibo un regalo de Tanaka (mismo evento que 田中さんが私にくれます, visto desde el otro lado)."
-    },
-    {
-      "id": "l12_present",
-      "l": "L12",
-      "kanji": "プレゼント",
-      "reading": "ぷれぜんと",
-      "es": "regalo",
-      "dir": "jp-es"
-    },
-    {
-      "id": "l12_kasu",
-      "l": "L12",
-      "kanji": "貸す",
-      "reading": "かす",
-      "es": "prestar",
-      "dir": "es-jp"
-    },
-    {
-      "id": "l12_kariru",
-      "l": "L12",
-      "kanji": "借りる",
-      "reading": "かりる",
-      "es": "pedir prestado",
-      "dir": "jp-es"
-    },
-    {
-      "id": "g_nakereba",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Cómo digo \"tengo que estudiar\"?",
-      "explanation": "Forma nai, quita la い final, añade ければなりません: 勉強しなければなりません. Versión hablada: 勉強しなきゃいけません."
-    },
-    {
-      "id": "g_toki",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Qué hace とき en 食べるとき、手を洗います?",
-      "explanation": "とき = \"cuando\". [frase simple]+とき+[frase principal]: 食べるとき、手を洗います = cuando como, me lavo las manos."
-    },
-    {
-      "id": "g_nagara",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Cómo digo \"hago X mientras hago Y\"?",
-      "explanation": "Raíz de ます + ながら, en la acción secundaria. テレビを見ながら、ご飯を食べます = como (acción principal) mientras veo la tele (secundaria)."
-    },
-    {
-      "id": "g_deshou",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Diferencia entre でしょう y と思います?",
-      "explanation": "でしょう = \"probablemente\" (menos seguro, más una predicción). と思います = \"creo que\" (tu opinión personal). Matiz de grado de certeza."
-    },
-    {
-      "id": "g_masenka",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Diferencia entre ましょうか y ませんか para invitar?",
-      "explanation": "Ambos invitan, ましょうか es más directo (\"¿hacemos X?\"), ませんか es más suave/abierto (\"¿no te apetece X?\"). Casi intercambiables en la práctica."
-    },
-    {
-      "id": "g_wo_kudasai",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿てください y をください son lo mismo?",
-      "explanation": "No — てください pide una ACCIÓN (待ってください = espera). をください pide un OBJETO directamente (コーヒーをください = un café, por favor)."
-    },
-    {
-      "id": "g_hoshii",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿たい y ほしい son lo mismo?",
-      "explanation": "No — たい es para VERBOS (飲みたい = quiero beber). ほしい es para OBJETOS directamente, como un adjetivo -い (水が欲しいです = quiero agua)."
-    },
-    {
-      "id": "g_tsumori",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Diferencia entre たい y つもり?",
-      "explanation": "たい = deseo (quiero hacer X, sin más). つもり = intención/plan concreto (tengo planeado hacer X). つもり suena más decidido/real."
-    },
-    {
-      "id": "g_donna",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Qué significa どんな?",
-      "explanation": "\"¿Qué tipo de...?\" — どんな音楽が好きですか = ¿qué tipo de música te gusta?"
-    },
-    {
-      "id": "g_teiaru_vs_teiru",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿てある y ている son lo mismo?",
-      "explanation": "No — てある implica que ALGUIEN hizo la acción deliberadamente y quedó así (窓が開けてあります = alguien dejó la ventana abierta). ている es más neutro sobre el estado (開いています = está abierta, sin más)."
-    },
-    {
-      "id": "g_adj_kute",
-      "l": "General",
-      "type": "grammar",
-      "question": "¿Cómo uno dos adjetivos -い en una frase (\"grande y bonito\")?",
-      "explanation": "-い adjetivos: cambia la い final por くて (広くて、明るいです). -な adjetivos: usa で (きれいで、静かです)."
-    },
-    {
-      "id": "v_atama",
-      "l": "General",
-      "kanji": "頭",
-      "reading": "あたま",
-      "es": "cabeza",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_me",
-      "l": "General",
-      "kanji": "目",
-      "reading": "め",
-      "es": "ojo",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_mimi",
-      "l": "General",
-      "kanji": "耳",
-      "reading": "みみ",
-      "es": "oreja",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_kuchi",
-      "l": "General",
-      "kanji": "口",
-      "reading": "くち",
-      "es": "boca",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_te2",
-      "l": "General",
-      "kanji": "手",
-      "reading": "て",
-      "es": "mano",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_ashi",
-      "l": "General",
-      "kanji": "足",
-      "reading": "あし",
-      "es": "pie/pierna",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_kao",
-      "l": "General",
-      "kanji": "顔",
-      "reading": "かお",
-      "es": "cara",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_onaka",
-      "l": "General",
-      "kanji": "お腹",
-      "reading": "おなか",
-      "es": "barriga",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_fuku",
-      "l": "General",
-      "kanji": "服",
-      "reading": "ふく",
-      "es": "ropa",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_shatsu",
-      "l": "General",
-      "kanji": "シャツ",
-      "reading": "しゃつ",
-      "es": "camisa",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_zubon",
-      "l": "General",
-      "kanji": "ズボン",
-      "reading": "ずぼん",
-      "es": "pantalones",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_kutsu",
-      "l": "General",
-      "kanji": "靴",
-      "reading": "くつ",
-      "es": "zapatos",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_boushi",
-      "l": "General",
-      "kanji": "帽子",
-      "reading": "ぼうし",
-      "es": "sombrero/gorra",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_kutsushita",
-      "l": "General",
-      "kanji": "靴下",
-      "reading": "くつした",
-      "es": "calcetines",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_niku",
-      "l": "General",
-      "kanji": "肉",
-      "reading": "にく",
-      "es": "carne",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_yasai",
-      "l": "General",
-      "kanji": "野菜",
-      "reading": "やさい",
-      "es": "verdura",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_sakana",
-      "l": "General",
-      "kanji": "魚",
-      "reading": "さかな",
-      "es": "pescado",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_kome",
-      "l": "General",
-      "kanji": "米",
-      "reading": "こめ",
-      "es": "arroz (crudo)",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_pan",
-      "l": "General",
-      "kanji": "パン",
-      "reading": "ぱん",
-      "es": "pan",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_tamago",
-      "l": "General",
-      "kanji": "卵",
-      "reading": "たまご",
-      "es": "huevo",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_gyuunyuu",
-      "l": "General",
-      "kanji": "牛乳",
-      "reading": "ぎゅうにゅう",
-      "es": "leche",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_ocha",
-      "l": "General",
-      "kanji": "お茶",
-      "reading": "おちゃ",
-      "es": "té",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_koohii",
-      "l": "General",
-      "kanji": "コーヒー",
-      "reading": "こーひー",
-      "es": "café",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_akai",
-      "l": "General",
-      "kanji": "赤い",
-      "reading": "あかい",
-      "es": "rojo",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_aoi",
-      "l": "General",
-      "kanji": "青い",
-      "reading": "あおい",
-      "es": "azul",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_shiroi",
-      "l": "General",
-      "kanji": "白い",
-      "reading": "しろい",
-      "es": "blanco",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_kuroi",
-      "l": "General",
-      "kanji": "黒い",
-      "reading": "くろい",
-      "es": "negro",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_kiiroi",
-      "l": "General",
-      "kanji": "黄色い",
-      "reading": "きいろい",
-      "es": "amarillo",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_midori",
-      "l": "General",
-      "kanji": "緑",
-      "reading": "みどり",
-      "es": "verde",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_eki",
-      "l": "General",
-      "kanji": "駅",
-      "reading": "えき",
-      "es": "estación",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_byouin",
-      "l": "General",
-      "kanji": "病院",
-      "reading": "びょういん",
-      "es": "hospital",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_ginkou",
-      "l": "General",
-      "kanji": "銀行",
-      "reading": "ぎんこう",
-      "es": "banco",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_yuubinkyoku",
-      "l": "General",
-      "kanji": "郵便局",
-      "reading": "ゆうびんきょく",
-      "es": "oficina de correos",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_suupaa",
-      "l": "General",
-      "kanji": "スーパー",
-      "reading": "すーぱー",
-      "es": "supermercado",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_conveni",
-      "l": "General",
-      "kanji": "コンビニ",
-      "reading": "こんびに",
-      "es": "tienda de conveniencia",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_yakkyoku",
-      "l": "General",
-      "kanji": "薬局",
-      "reading": "やっきょく",
-      "es": "farmacia",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_hoteru",
-      "l": "General",
-      "kanji": "ホテル",
-      "reading": "ほてる",
-      "es": "hotel",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_jitensha",
-      "l": "General",
-      "kanji": "自転車",
-      "reading": "じてんしゃ",
-      "es": "bicicleta",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_hikouki",
-      "l": "General",
-      "kanji": "飛行機",
-      "reading": "ひこうき",
-      "es": "avión",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_takushii",
-      "l": "General",
-      "kanji": "タクシー",
-      "reading": "たくしー",
-      "es": "taxi",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_fune",
-      "l": "General",
-      "kanji": "船",
-      "reading": "ふね",
-      "es": "barco",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_ookii",
-      "l": "General",
-      "kanji": "大きい",
-      "reading": "おおきい",
-      "es": "grande",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_chiisai",
-      "l": "General",
-      "kanji": "小さい",
-      "reading": "ちいさい",
-      "es": "pequeño",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_nagai",
-      "l": "General",
-      "kanji": "長い",
-      "reading": "ながい",
-      "es": "largo",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_mijikai",
-      "l": "General",
-      "kanji": "短い",
-      "reading": "みじかい",
-      "es": "corto",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_tsuyoi",
-      "l": "General",
-      "kanji": "強い",
-      "reading": "つよい",
-      "es": "fuerte",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_yowai",
-      "l": "General",
-      "kanji": "弱い",
-      "reading": "よわい",
-      "es": "débil",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_osoi",
-      "l": "General",
-      "kanji": "遅い",
-      "reading": "おそい",
-      "es": "lento/tarde",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_kurai",
-      "l": "General",
-      "kanji": "暗い",
-      "reading": "くらい",
-      "es": "oscuro",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_akarui",
-      "l": "General",
-      "kanji": "明るい",
-      "reading": "あかるい",
-      "es": "luminoso/brillante",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_muzukashii",
-      "l": "General",
-      "kanji": "難しい",
-      "reading": "むずかしい",
-      "es": "difícil",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_ureshii",
-      "l": "General",
-      "kanji": "嬉しい",
-      "reading": "うれしい",
-      "es": "contento",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_kanashii",
-      "l": "General",
-      "kanji": "悲しい",
-      "reading": "かなしい",
-      "es": "triste",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_tanoshii",
-      "l": "General",
-      "kanji": "楽しい",
-      "reading": "たのしい",
-      "es": "divertido",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_sabishii",
-      "l": "General",
-      "kanji": "寂しい",
-      "reading": "さびしい",
-      "es": "solitario",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_kowai",
-      "l": "General",
-      "kanji": "怖い",
-      "reading": "こわい",
-      "es": "dar miedo",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_nemui",
-      "l": "General",
-      "kanji": "眠い",
-      "reading": "ねむい",
-      "es": "tener sueño",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_tsukuru",
-      "l": "General",
-      "kanji": "作る",
-      "reading": "つくる",
-      "es": "hacer/crear",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_tsukau",
-      "l": "General",
-      "kanji": "使う",
-      "reading": "つかう",
-      "es": "usar",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_akeru",
-      "l": "General",
-      "kanji": "開ける",
-      "reading": "あける",
-      "es": "abrir",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_shimeru",
-      "l": "General",
-      "kanji": "閉める",
-      "reading": "しめる",
-      "es": "cerrar",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_kesu",
-      "l": "General",
-      "kanji": "消す",
-      "reading": "けす",
-      "es": "apagar",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_tsukeru",
-      "l": "General",
-      "kanji": "つける",
-      "reading": "つける",
-      "es": "encender",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_suwaru",
-      "l": "General",
-      "kanji": "座る",
-      "reading": "すわる",
-      "es": "sentarse",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_tatsu",
-      "l": "General",
-      "kanji": "立つ",
-      "reading": "たつ",
-      "es": "ponerse de pie",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_arau",
-      "l": "General",
-      "kanji": "洗う",
-      "reading": "あらう",
-      "es": "lavar",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_warau",
-      "l": "General",
-      "kanji": "笑う",
-      "reading": "わらう",
-      "es": "reír",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_migi",
-      "l": "General",
-      "kanji": "右",
-      "reading": "みぎ",
-      "es": "derecha",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_hidari",
-      "l": "General",
-      "kanji": "左",
-      "reading": "ひだり",
-      "es": "izquierda",
-      "dir": "es-jp"
-    },
-    {
-      "id": "v_massugu",
-      "l": "General",
-      "kanji": "まっすぐ",
-      "reading": "まっすぐ",
-      "es": "recto",
-      "dir": "jp-es"
-    },
-    {
-      "id": "v_shingou",
-      "l": "General",
-      "kanji": "信号",
-      "reading": "しんごう",
-      "es": "semáforo",
-      "dir": "es-jp"
-    }
-  ]
+"meta": {
+"objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
+"metodo": "Genki I completo (L1-12) + parche gramatica N5 + vocabulario tematico ampliado + Genki II desde L13, foco en consolidacion",
+"leccion_actual": 12,
+"lecciones_por_ciudad": 6,
+"orden_ciudades": [
+"Tokio",
+"Yokohama",
+"Kioto",
+"Osaka",
+"Nara",
+"Kanazawa",
+"Hiroshima",
+"Fukuoka",
+"Sendai",
+"Sapporo",
+"Naha"
+]
+},
+"lecciones": {
+"L1": {
+"titulo": "あいさつ・自己紹介 (Saludos y autopresentación)",
+"ciudad": "Tokio",
+"barrio": "Estación de Tokio",
+"emoji": "🚅"
+},
+"L2": {
+"titulo": "かいもの (Compras)",
+"ciudad": "Tokio",
+"barrio": "Mercado de Ameyoko",
+"emoji": "🧺"
+},
+"L3": {
+"titulo": "デートの約束 (Quedar con alguien)",
+"ciudad": "Tokio",
+"barrio": "Cruce de Shibuya",
+"emoji": "🚦"
+},
+"L4": {
+"titulo": "初めてのデート (La primera cita)",
+"ciudad": "Tokio",
+"barrio": "Parque de Ueno",
+"emoji": "🌸"
+},
+"L5": {
+"titulo": "沖縄旅行 (Viaje a Okinawa)",
+"ciudad": "Tokio",
+"barrio": "Mercado de Tsukiji",
+"emoji": "🐟"
+},
+"L6": {
+"titulo": "ロバートさんの一日 (Un día en la vida de Robert)",
+"ciudad": "Tokio",
+"barrio": "Templo Senso-ji",
+"emoji": "⛩️"
+},
+"L7": {
+"titulo": "家族の写真 (Foto de familia)",
+"ciudad": "Yokohama",
+"barrio": "Jardín Sankeien",
+"emoji": "🎍"
+},
+"L8": {
+"titulo": "バーベキュー (Barbacoa)",
+"ciudad": "Yokohama",
+"barrio": "Muelle de Minato Mirai",
+"emoji": "🎡"
+},
+"L9": {
+"titulo": "かぶき (Kabuki)",
+"ciudad": "Yokohama",
+"barrio": "Teatro Noge Kabuki",
+"emoji": "🎭"
+},
+"L10": {
+"titulo": "冬休みの予定 (Planes de vacaciones de invierno)",
+"ciudad": "Yokohama",
+"barrio": "Estación de Yokohama",
+"emoji": "🚉"
+},
+"General": {
+"titulo": "Matices y vocabulario transversal",
+"ciudad": null,
+"barrio": "Monte Fuji",
+"emoji": "🗻"
+},
+"L11": {
+"titulo": "休みのあと (Después de las vacaciones)",
+"ciudad": "Yokohama",
+"barrio": "Parque Yamashita",
+"emoji": "🌉"
+},
+"L12": {
+"titulo": "あげる・くれる・もらう (Dar y recibir)",
+"ciudad": "Yokohama",
+"barrio": "Chinatown de Yokohama",
+"emoji": "🏮"
+}
+},
+"tarjetas": [
+{
+"id": "l1_watashi",
+"l": "L1",
+"kanji": "私",
+"reading": "わたし",
+"es": "yo",
+"dir": "es-jp"
+},
+{
+"id": "l1_anata",
+"l": "L1",
+"kanji": "あなた",
+"reading": "あなた",
+"es": "tú (úsalo poco)",
+"dir": "jp-es"
+},
+{
+"id": "l1_namae",
+"l": "L1",
+"kanji": "名前",
+"reading": "なまえ",
+"es": "nombre",
+"dir": "es-jp"
+},
+{
+"id": "l1_gakusei",
+"l": "L1",
+"kanji": "学生",
+"reading": "がくせい",
+"es": "estudiante",
+"dir": "jp-es"
+},
+{
+"id": "l1_sensei",
+"l": "L1",
+"kanji": "先生",
+"reading": "せんせい",
+"es": "profesor/a",
+"dir": "es-jp"
+},
+{
+"id": "l1_kaishain",
+"l": "L1",
+"kanji": "会社員",
+"reading": "かいしゃいん",
+"es": "empleado de empresa",
+"dir": "jp-es"
+},
+{
+"id": "l1_isha",
+"l": "L1",
+"kanji": "医者",
+"reading": "いしゃ",
+"es": "médico/a",
+"dir": "es-jp"
+},
+{
+"id": "l1_nihon",
+"l": "L1",
+"kanji": "日本",
+"reading": "にほん",
+"es": "Japón",
+"dir": "jp-es"
+},
+{
+"id": "l1_supein",
+"l": "L1",
+"kanji": "スペイン",
+"reading": "すぺいん",
+"es": "España",
+"dir": "es-jp"
+},
+{
+"id": "l1_yoroshiku",
+"l": "L1",
+"kanji": "よろしくお願いします",
+"reading": "よろしくおねがいします",
+"es": "fórmula al presentarse",
+"dir": "jp-es"
+},
+{
+"id": "l1_kochirakoso",
+"l": "L1",
+"kanji": "こちらこそ",
+"reading": "こちらこそ",
+"es": "el gusto es mío",
+"dir": "es-jp"
+},
+{
+"id": "l1_soudesu",
+"l": "L1",
+"kanji": "そうです",
+"reading": "そうです",
+"es": "así es / correcto",
+"dir": "jp-es"
+},
+{
+"id": "l2_kasa",
+"l": "L2",
+"kanji": "傘",
+"reading": "かさ",
+"es": "paraguas",
+"dir": "es-jp"
+},
+{
+"id": "l2_tokei",
+"l": "L2",
+"kanji": "時計",
+"reading": "とけい",
+"es": "reloj",
+"dir": "jp-es"
+},
+{
+"id": "l2_hon",
+"l": "L2",
+"kanji": "本",
+"reading": "ほん",
+"es": "libro",
+"dir": "es-jp"
+},
+{
+"id": "l2_jisho",
+"l": "L2",
+"kanji": "辞書",
+"reading": "じしょ",
+"es": "diccionario",
+"dir": "es-jp"
+},
+{
+"id": "l2_kaban",
+"l": "L2",
+"kanji": "かばん",
+"reading": "かばん",
+"es": "bolso/maletín",
+"dir": "jp-es"
+},
+{
+"id": "l2_dare",
+"l": "L2",
+"kanji": "だれ",
+"reading": "だれ",
+"es": "quién",
+"dir": "es-jp"
+},
+{
+"id": "l2_nani",
+"l": "L2",
+"kanji": "何",
+"reading": "なに",
+"readingAlt": [
+"なん"
+],
+"es": "qué",
+"dir": "jp-es"
+},
+{
+"id": "l2_ikura",
+"l": "L2",
+"kanji": "いくらですか",
+"reading": "いくらですか",
+"es": "¿cuánto cuesta?",
+"dir": "es-jp"
+},
+{
+"id": "l2_sumimasen",
+"l": "L2",
+"kanji": "すみません",
+"reading": "すみません",
+"es": "perdona/disculpa",
+"dir": "jp-es"
+},
+{
+"id": "l2_takai",
+"l": "L2",
+"kanji": "高い",
+"reading": "たかい",
+"es": "caro / alto",
+"dir": "es-jp"
+},
+{
+"id": "l2_tenki",
+"l": "L2",
+"kanji": "天気",
+"reading": "てんき",
+"es": "tiempo (clima)",
+"dir": "jp-es"
+},
+{
+"id": "l3_tabemasu",
+"l": "L3",
+"kanji": "食べます",
+"reading": "たべます",
+"es": "comer / comeré",
+"dir": "es-jp"
+},
+{
+"id": "l3_nomimasu",
+"l": "L3",
+"kanji": "飲みます",
+"reading": "のみます",
+"es": "beber",
+"dir": "jp-es"
+},
+{
+"id": "l3_mimasu",
+"l": "L3",
+"kanji": "見ます",
+"reading": "みます",
+"es": "ver",
+"dir": "es-jp"
+},
+{
+"id": "l3_kikimasu",
+"l": "L3",
+"kanji": "聞きます",
+"reading": "ききます",
+"es": "escuchar / preguntar",
+"dir": "jp-es"
+},
+{
+"id": "l3_ikimasu",
+"l": "L3",
+"kanji": "行きます",
+"reading": "いきます",
+"es": "ir",
+"dir": "es-jp"
+},
+{
+"id": "l3_kimasu",
+"l": "L3",
+"kanji": "来ます",
+"reading": "きます",
+"es": "venir",
+"dir": "jp-es"
+},
+{
+"id": "l3_kaerimasu",
+"l": "L3",
+"kanji": "帰ります",
+"reading": "かえります",
+"es": "volver a casa",
+"dir": "es-jp"
+},
+{
+"id": "l3_okimasu",
+"l": "L3",
+"kanji": "起きます",
+"reading": "おきます",
+"es": "levantarse",
+"dir": "jp-es"
+},
+{
+"id": "l3_nemasu",
+"l": "L3",
+"kanji": "寝ます",
+"reading": "ねます",
+"es": "dormir / acostarse",
+"dir": "es-jp"
+},
+{
+"id": "l3_benkyou",
+"l": "L3",
+"kanji": "勉強します",
+"reading": "べんきょうします",
+"es": "estudiar",
+"dir": "jp-es"
+},
+{
+"id": "l3_kyou",
+"l": "L3",
+"kanji": "今日",
+"reading": "きょう",
+"es": "hoy",
+"dir": "es-jp"
+},
+{
+"id": "l3_ashita",
+"l": "L3",
+"kanji": "明日",
+"reading": "あした",
+"es": "mañana",
+"dir": "jp-es"
+},
+{
+"id": "l3_kinou",
+"l": "L3",
+"kanji": "昨日",
+"reading": "きのう",
+"es": "ayer",
+"dir": "es-jp"
+},
+{
+"id": "l3_mainichi",
+"l": "L3",
+"kanji": "毎日",
+"reading": "まいにち",
+"es": "todos los días",
+"dir": "jp-es"
+},
+{
+"id": "l3_itsumo",
+"l": "L3",
+"kanji": "いつも",
+"reading": "いつも",
+"es": "siempre",
+"dir": "es-jp"
+},
+{
+"id": "l3_taitei",
+"l": "L3",
+"kanji": "たいてい",
+"reading": "たいてい",
+"es": "normalmente",
+"dir": "jp-es"
+},
+{
+"id": "l3_yoku",
+"l": "L3",
+"kanji": "よく",
+"reading": "よく",
+"es": "a menudo",
+"dir": "es-jp"
+},
+{
+"id": "l3_tokidoki",
+"l": "L3",
+"kanji": "ときどき",
+"reading": "ときどき",
+"es": "a veces",
+"dir": "jp-es"
+},
+{
+"id": "l3_amari",
+"l": "L3",
+"kanji": "あまり",
+"reading": "あまり",
+"es": "casi no (+negativo)",
+"dir": "es-jp"
+},
+{
+"id": "l3_zenzen",
+"l": "L3",
+"kanji": "ぜんぜん",
+"reading": "ぜんぜん",
+"es": "para nada (+negativo)",
+"dir": "jp-es"
+},
+{
+"id": "g_neg4formas",
+"l": "L2",
+"type": "grammar",
+"question": "¿En qué se diferencian じゃないです y じゃありません?",
+"explanation": "En nada — dos caminos gramaticales distintos para negar です. Existen 4 combinaciones (じゃ/では + ありません/ないです), todas igual de correctas y educadas."
+},
+{
+"id": "g_hawa",
+"l": "L2",
+"type": "grammar",
+"question": "¿Por qué じゃありません no se escribe con わ (でわ)?",
+"explanation": "じゃ es la contracción hablada de では, se escribe distinto aunque suene parecido. Aparte: la partícula は suena \"wa\" pero SIEMPRE se escribe は, nunca わ."
+},
+{
+"id": "g_kore_kono",
+"l": "L2",
+"type": "grammar",
+"question": "¿Diferencia entre これ y この?",
+"explanation": "これ/それ/あれ/どれ van SOLOS, reemplazan al sustantivo. この/その/あの/どの SIEMPRE necesitan un sustantivo detrás, nunca van solos."
+},
+{
+"id": "g_dore_doko",
+"l": "L2",
+"type": "grammar",
+"question": "¿Diferencia entre どれ y どこ?",
+"explanation": "どれ = ¿cuál? (elegir entre varias cosas). どこ = ¿dónde? (ubicación). Suenan parecido, son categorías distintas."
+},
+{
+"id": "g_ne_yo",
+"l": "L2",
+"type": "grammar",
+"question": "¿Cuándo se usa ね y cuándo よ?",
+"explanation": "ね = buscas acuerdo o reaccionas a algo que te acaban de decir. よ = TÚ informas de algo nuevo que el otro no sabe. No uses よ para reaccionar a información recién recibida."
+},
+{
+"id": "g_de_ni",
+"l": "L3",
+"type": "grammar",
+"question": "¿Diferencia entre で y に con verbos de acción?",
+"explanation": "に = destino u hora exacta (学校に行きます). で = lugar donde ocurre la acción (学校で勉強します)."
+},
+{
+"id": "g_amari_neg",
+"l": "L3",
+"type": "grammar",
+"question": "¿あまり y ぜんぜん pueden usarse en afirmativo?",
+"explanation": "No — con el significado de \"casi no\"/\"para nada\" EXIGEN un verbo en negativo detrás, siempre."
+},
+{
+"id": "g_ou_sound",
+"l": "General",
+"type": "grammar",
+"question": "¿Cómo se escriben los sonidos largos tipo \"soo\" o \"benkyoo\"?",
+"explanation": "Los alargamientos que vienen de -au/-ou casi siempre se escriben con う, no con お: そう, べんきょう, ありがとう, おはよう."
+},
+{
+"id": "g_takusan_no",
+"l": "L4",
+"type": "grammar",
+"question": "¿Cuándo たくさん lleva の y cuándo no?",
+"explanation": "たくさん solo = adverbio (sin partícula, modifica el verbo, se mueve libre). たくさんの+sustantivo = actúa como adjetivo pegado al sustantivo. Mismo significado, cambia el foco."
+},
+{
+"id": "g_ga_wa_exist",
+"l": "L4",
+"type": "grammar",
+"question": "¿Por qué 学生 lleva が y no は en 教室に学生がいます?",
+"explanation": "が anuncia información nueva: \"esto es lo que hay\". は marca tema ya conocido o contraste. Con あります/います casi siempre が, porque por naturaleza anuncias que algo existe."
+},
+{
+"id": "g_movie_theater",
+"l": "L4",
+"type": "grammar",
+"question": "¿Diferencia entre 映画 y 映画館?",
+"explanation": "映画 = la película (el contenido). 映画館 = el cine (el edificio, adónde vas). \"映画に行く\" no es natural — mejor 映画館に行く o simplemente 映画を見る."
+},
+{
+"id": "g_to_no_verbs",
+"l": "L4",
+"type": "grammar",
+"question": "¿Puedo usar と para unir dos verbos, como \"fui y comí\"?",
+"explanation": "No — と solo une SUSTANTIVOS (AとB). Para unir acciones sin forma て (Lección 6), usa dos frases separadas: 映画を見ました。たくさん食べました。"
+},
+{
+"id": "g_reltime_ni",
+"l": "L3",
+"type": "grammar",
+"question": "¿今日/明日/先週 llevan に?",
+"explanation": "No, nunca — los tiempos relativos (今日/明日/昨日/先週/今週/来週) no llevan に. Solo los días de la semana (月曜日に) y horas exactas (7時に) sí."
+},
+{
+"id": "l5_umi",
+"l": "L5",
+"kanji": "海",
+"reading": "うみ",
+"es": "mar",
+"dir": "es-jp"
+},
+{
+"id": "l5_ryouri",
+"l": "L5",
+"kanji": "料理",
+"reading": "りょうり",
+"es": "comida / cocina",
+"dir": "jp-es"
+},
+{
+"id": "l5_oishii",
+"l": "L5",
+"kanji": "美味しい",
+"reading": "おいしい",
+"es": "delicioso",
+"dir": "es-jp"
+},
+{
+"id": "l5_kirei",
+"l": "L5",
+"kanji": "きれい(な)",
+"reading": "きれい",
+"es": "bonito / limpio",
+"dir": "jp-es"
+},
+{
+"id": "l5_shizuka",
+"l": "L5",
+"kanji": "静か(な)",
+"reading": "しずか",
+"es": "tranquilo",
+"dir": "es-jp"
+},
+{
+"id": "l5_sushi",
+"l": "L5",
+"kanji": "寿司",
+"reading": "すし",
+"es": "sushi",
+"dir": "jp-es"
+},
+{
+"id": "l5_natto",
+"l": "L5",
+"kanji": "納豆",
+"reading": "なっとう",
+"es": "natto",
+"dir": "es-jp"
+},
+{
+"id": "g_iadj_past",
+"l": "L5",
+"type": "grammar",
+"question": "¿Cómo se conjuga el pasado de un adjetivo en -い, como 高い?",
+"explanation": "Quita la い final y añade かった: 高い → 高かったです. NO se combina con でした (eso es solo para な-adjetivos y sustantivos)."
+},
+{
+"id": "g_suki_ga",
+"l": "L5",
+"type": "grammar",
+"question": "¿Con qué partícula va lo que te gusta en 好きです?",
+"explanation": "Con が, no を: 私は寿司が好きです (me gusta el sushi). 好き/嫌い son adjetivos -な, no verbos como \"gustar cosas\" en español."
+},
+{
+"id": "g_kirei_na",
+"l": "L5",
+"type": "grammar",
+"question": "きれい y 嫌い terminan en い, ¿por qué son -な y no -い?",
+"explanation": "Porque si les quitas la い no queda una raíz real (きれ/きら no significan nada). Los -い de verdad sí conjugan al quitarla (高い→高く). きれい y 嫌い son las dos trampas clásicas: suenan a -い pero son -な."
+},
+{
+"id": "c_takai_negpas",
+"l": "L5",
+"type": "conj",
+"front": "高い → pasado negativo",
+"answer": "高くなかったです",
+"alt": [
+"高くありませんでした",
+"たかくなかったです"
+]
+},
+{
+"id": "c_takai_afpas",
+"l": "L5",
+"type": "conj",
+"front": "高い → pasado afirmativo",
+"answer": "高かったです",
+"alt": [
+"たかかったです"
+]
+},
+{
+"id": "c_isogashii_negpres",
+"l": "L5",
+"type": "conj",
+"front": "忙しい(いそがしい) → presente negativo",
+"answer": "忙しくないです",
+"alt": [
+"忙しくありません",
+"いそがしくないです"
+]
+},
+{
+"id": "c_isogashii_afpas",
+"l": "L5",
+"type": "conj",
+"front": "忙しい(いそがしい) → pasado afirmativo",
+"answer": "忙しかったです",
+"alt": [
+"いそがしかったです"
+]
+},
+{
+"id": "c_ii_negpres",
+"l": "L5",
+"type": "conj",
+"front": "いい → presente negativo",
+"answer": "よくないです",
+"alt": [
+"よくありません"
+]
+},
+{
+"id": "c_ii_afpas",
+"l": "L5",
+"type": "conj",
+"front": "いい → pasado afirmativo",
+"answer": "よかったです"
+},
+{
+"id": "c_kirei_negpres",
+"l": "L5",
+"type": "conj",
+"front": "きれい(な) → presente negativo",
+"answer": "きれいじゃないです",
+"alt": [
+"きれいではありません"
+]
+},
+{
+"id": "c_shizuka_negpres",
+"l": "L5",
+"type": "conj",
+"front": "静か(な) → presente negativo",
+"answer": "静かじゃないです",
+"alt": [
+"しずかじゃないです",
+"静かではありません"
+]
+},
+{
+"id": "g_adj_no_particle",
+"l": "L5",
+"type": "grammar",
+"question": "¿Por qué a veces un adjetivo va con な o con く y otras veces con nada?",
+"explanation": "Los adjetivos NUNCA llevan partícula propia. Solo cambian según su trabajo: predicado (これは高いです), modificar sustantivo (高い本 / きれいな部屋 — el な no es partícula), o modificar verbo (早く起きます / きれいに書きます — く/に tampoco son partículas)."
+},
+{
+"id": "g_no_vs_to",
+"l": "General",
+"type": "grammar",
+"question": "¿Diferencia entre の y と cuando hablo de otra persona?",
+"explanation": "の = posesión/pertenencia (AのB = \"B de A\"): 彼女の映画館 = \"el cine DE mi novia\" (como si fuera suyo). と = compañía (\"con\"): 彼女と映画館 = \"al cine CON mi novia\". Fácil de mezclar, revisa siempre cuál de las dos quieres decir."
+},
+{
+"id": "g_no_dropped_wa",
+"l": "General",
+"type": "grammar",
+"question": "¿Puedo omitir は antes de です al nombrar algo (ej. 名前はエレナです)?",
+"explanation": "No — siempre necesitas は (o が) entre el sustantivo-tema y el predicado: 名前はエレナです, no 名前エレナです. Se olvida fácil al escribir rápido; revisa que cada frase tenga su partícula de tema antes del predicado."
+},
+{
+"id": "c_te_nomu",
+"l": "L6",
+"type": "conj",
+"front": "飲む → forma て",
+"answer": "飲んで",
+"alt": [
+"のんで"
+]
+},
+{
+"id": "c_te_kau",
+"l": "L6",
+"type": "conj",
+"front": "買う → forma て",
+"answer": "買って",
+"alt": [
+"かって"
+]
+},
+{
+"id": "c_te_taberu",
+"l": "L6",
+"type": "conj",
+"front": "食べる → forma て",
+"answer": "食べて",
+"alt": [
+"たべて"
+]
+},
+{
+"id": "c_te_iku",
+"l": "L6",
+"type": "conj",
+"front": "行く → forma て (¡ojo, excepción!)",
+"answer": "行って",
+"alt": [
+"いって"
+]
+},
+{
+"id": "c_te_hanasu",
+"l": "L6",
+"type": "conj",
+"front": "話す → forma て",
+"answer": "話して",
+"alt": [
+"はなして"
+]
+},
+{
+"id": "c_te_matsu",
+"l": "L6",
+"type": "conj",
+"front": "待つ → forma て",
+"answer": "待って",
+"alt": [
+"まって"
+]
+},
+{
+"id": "c_te_kaeru",
+"l": "L6",
+"type": "conj",
+"front": "帰る → forma て",
+"answer": "帰って",
+"alt": [
+"かえって"
+]
+},
+{
+"id": "c_te_suru",
+"l": "L6",
+"type": "conj",
+"front": "する → forma て",
+"answer": "して"
+},
+{
+"id": "g_te_groups",
+"l": "L6",
+"type": "grammar",
+"question": "¿Cómo sé qué terminación て le toca a un verbo del Grupo 1?",
+"explanation": "Según la última sílaba del diccionario: う/つ/る→って, ぬ/む/ぶ→んで, く→いて, ぐ→いで, す→して. Excepción: 行く→行って (no 行いて)."
+},
+{
+"id": "g_na_is_noun",
+"l": "L5",
+"type": "grammar",
+"question": "¿Cómo distingo si una palabra es -い o -な?",
+"explanation": "Si termina en い, probablemente -い (conjuga sola: 高い→高く/高かった). Si NO termina en い, siempre -な (静か, 便利...). Excepciones que engañan: きれい y 嫌い terminan en い pero son -な. Truco: un -な se conjuga IGUAL que un sustantivo+です (学生です=きれいです en estructura)."
+},
+{
+"id": "g_fake_ichidan",
+"l": "L6",
+"type": "grammar",
+"question": "¿Cómo sé si un verbo en る es Grupo 1 o Grupo 2?",
+"explanation": "Vocal antes de る: あ/う/お → Grupo 1 siempre. い/え → Grupo 2 normalmente, PERO hay excepciones: 帰る, 入る, 走る, 知る, 切る, 要る, 減る terminan en -iru/-eru y son Grupo 1. No hay truco fiable para estas, se memorizan como vocabulario."
+},
+{
+"id": "g_teiru_dos_usos",
+"l": "L7",
+"type": "grammar",
+"question": "¿Por qué 疲れています significa \"estoy cansado\" y no \"me estoy cansando\"?",
+"explanation": "~ている tiene 2 usos: acción en progreso (今、勉強しています = estoy estudiando ahora) y estado resultante (疲れています = quedé en el estado de haberme cansado = estoy cansado). 疲れる describe un cambio puntual, así que su ~ている da el estado actual, no una acción continuada."
+},
+{
+"id": "l7_kazoku",
+"l": "L7",
+"kanji": "家族",
+"reading": "かぞく",
+"es": "familia",
+"dir": "es-jp"
+},
+{
+"id": "l7_kekkon",
+"l": "L7",
+"kanji": "結婚する",
+"reading": "けっこんする",
+"es": "casarse",
+"dir": "jp-es"
+},
+{
+"id": "l7_ani",
+"l": "L7",
+"kanji": "兄",
+"reading": "あに",
+"es": "hermano mayor (mío)",
+"dir": "es-jp"
+},
+{
+"id": "l7_ane",
+"l": "L7",
+"kanji": "姉",
+"reading": "あね",
+"es": "hermana mayor (mía)",
+"dir": "jp-es"
+},
+{
+"id": "l7_otouto",
+"l": "L7",
+"kanji": "弟",
+"reading": "おとうと",
+"es": "hermano menor (mío)",
+"dir": "es-jp"
+},
+{
+"id": "l7_imouto",
+"l": "L7",
+"kanji": "妹",
+"reading": "いもうと",
+"es": "hermana menor (mía)",
+"dir": "jp-es"
+},
+{
+"id": "g_ni_iku",
+"l": "L7",
+"type": "grammar",
+"question": "¿Cómo digo \"voy a ver una película\" (con el propósito de ir)?",
+"explanation": "Verbo en raíz ます + に行きます: 映画を見に行きます (voy a ver una película). Reemplaza construcciones poco naturales como \"映画に行く\"."
+},
+{
+"id": "l6_shashin_toru",
+"l": "L6",
+"kanji": "写真を撮る",
+"reading": "しゃしんをとる",
+"es": "tomar una foto",
+"dir": "es-jp"
+},
+{
+"id": "l7_chichi",
+"l": "L7",
+"kanji": "父",
+"reading": "ちち",
+"es": "padre (mío)",
+"dir": "es-jp"
+},
+{
+"id": "l7_haha",
+"l": "L7",
+"kanji": "母",
+"reading": "はは",
+"es": "madre (mía)",
+"dir": "jp-es"
+},
+{
+"id": "l7_ryoushin",
+"l": "L7",
+"kanji": "両親",
+"reading": "りょうしん",
+"es": "padres (ambos)",
+"dir": "es-jp"
+},
+{
+"id": "l7_sofu",
+"l": "L7",
+"kanji": "祖父",
+"reading": "そふ",
+"es": "abuelo",
+"dir": "jp-es"
+},
+{
+"id": "l7_sobo",
+"l": "L7",
+"kanji": "祖母",
+"reading": "そぼ",
+"es": "abuela",
+"dir": "es-jp"
+},
+{
+"id": "l7_musuko",
+"l": "L7",
+"kanji": "息子",
+"reading": "むすこ",
+"es": "hijo",
+"dir": "jp-es"
+},
+{
+"id": "l7_musume",
+"l": "L7",
+"kanji": "娘",
+"reading": "むすめ",
+"es": "hija",
+"dir": "es-jp"
+},
+{
+"id": "l7_kodomo",
+"l": "L7",
+"kanji": "子供",
+"reading": "こども",
+"es": "niño/a, hijo/a",
+"dir": "jp-es"
+},
+{
+"id": "l7_otto",
+"l": "L7",
+"kanji": "夫",
+"reading": "おっと",
+"es": "esposo",
+"dir": "es-jp"
+},
+{
+"id": "l7_tsuma",
+"l": "L7",
+"kanji": "妻",
+"reading": "つま",
+"es": "esposa",
+"dir": "jp-es"
+},
+{
+"id": "l7_otousan",
+"l": "L7",
+"kanji": "お父さん",
+"reading": "おとうさん",
+"es": "padre (de otra persona / trato directo)",
+"dir": "jp-es"
+},
+{
+"id": "l7_okaasan",
+"l": "L7",
+"kanji": "お母さん",
+"reading": "おかあさん",
+"es": "madre (de otra persona / trato directo)",
+"dir": "jp-es"
+},
+{
+"id": "g_teiru_vs_invitacion",
+"l": "L7",
+"type": "grammar",
+"question": "¿Puedo usar 見ていますか para invitar a alguien a ver algo?",
+"explanation": "No — ~ている pregunta por una acción EN CURSO ahora (\"¿estás viendo...?\"), no sirve para proponer algo futuro. Para invitar usa ~ましょうか o ~ませんか: 映画を見ませんか (¿vemos una película?)."
+},
+{
+"id": "c_nai_nomu",
+"l": "L8",
+"type": "conj",
+"front": "飲む → forma ない (presente negativo simple)",
+"answer": "飲まない",
+"alt": [
+"のまない"
+]
+},
+{
+"id": "c_nai_kau",
+"l": "L8",
+"type": "conj",
+"front": "買う → forma ない",
+"answer": "買わない",
+"alt": [
+"かわない"
+]
+},
+{
+"id": "c_nai_taberu",
+"l": "L8",
+"type": "conj",
+"front": "食べる → forma ない",
+"answer": "食べない",
+"alt": [
+"たべない"
+]
+},
+{
+"id": "c_nai_suru",
+"l": "L8",
+"type": "conj",
+"front": "する → forma ない",
+"answer": "しない"
+},
+{
+"id": "c_nai_kuru",
+"l": "L8",
+"type": "conj",
+"front": "来る → forma ない",
+"answer": "来ない",
+"alt": [
+"こない"
+]
+},
+{
+"id": "c_ta_kau",
+"l": "L8",
+"type": "conj",
+"front": "買う → forma た (pasado simple)",
+"answer": "買った",
+"alt": [
+"かった"
+]
+},
+{
+"id": "c_ta_nomu",
+"l": "L8",
+"type": "conj",
+"front": "飲む → forma た",
+"answer": "飲んだ",
+"alt": [
+"のんだ"
+]
+},
+{
+"id": "g_formas_simples",
+"l": "L8",
+"type": "grammar",
+"question": "¿Cuándo se usan las formas simples (食べる/食べない/食べた) en vez de ます/です?",
+"explanation": "Con amigos/familia cercana (registro informal), y SIEMPRE dentro de construcciones como ~と思います o ~と言っていました, aunque la frase completa sea educada."
+},
+{
+"id": "l1_hajimemashite",
+"l": "L1",
+"kanji": "はじめまして",
+"reading": "はじめまして",
+"es": "mucho gusto (al conocer a alguien)",
+"dir": "es-jp"
+},
+{
+"id": "l4_depaato",
+"l": "L4",
+"kanji": "デパート",
+"reading": "でぱーと",
+"es": "grandes almacenes",
+"dir": "jp-es"
+},
+{
+"id": "l4_kaimasu",
+"l": "L4",
+"kanji": "買います",
+"reading": "かいます",
+"es": "comprar",
+"dir": "es-jp"
+},
+{
+"id": "l4_neko",
+"l": "L4",
+"kanji": "猫",
+"reading": "ねこ",
+"es": "gato",
+"dir": "jp-es"
+},
+{
+"id": "l4_inu",
+"l": "L4",
+"kanji": "犬",
+"reading": "いぬ",
+"es": "perro",
+"dir": "es-jp"
+},
+{
+"id": "l4_kouen",
+"l": "L4",
+"kanji": "公園",
+"reading": "こうえん",
+"es": "parque",
+"dir": "jp-es"
+},
+{
+"id": "l4_tsukue",
+"l": "L4",
+"kanji": "机",
+"reading": "つくえ",
+"es": "mesa/escritorio",
+"dir": "es-jp"
+},
+{
+"id": "l4_eigakan",
+"l": "L4",
+"kanji": "映画館",
+"reading": "えいがかん",
+"es": "cine (el edificio)",
+"dir": "jp-es"
+},
+{
+"id": "l6_matsu",
+"l": "L6",
+"kanji": "待つ",
+"reading": "まつ",
+"es": "esperar",
+"dir": "es-jp"
+},
+{
+"id": "l6_yobu",
+"l": "L6",
+"kanji": "呼ぶ",
+"reading": "よぶ",
+"es": "llamar",
+"dir": "jp-es"
+},
+{
+"id": "l6_isogu",
+"l": "L6",
+"kanji": "急ぐ",
+"reading": "いそぐ",
+"es": "darse prisa",
+"dir": "es-jp"
+},
+{
+"id": "l6_hanasu",
+"l": "L6",
+"kanji": "話す",
+"reading": "はなす",
+"es": "hablar",
+"dir": "jp-es"
+},
+{
+"id": "l6_suu",
+"l": "L6",
+"kanji": "吸う",
+"reading": "すう",
+"es": "fumar/aspirar",
+"dir": "es-jp"
+},
+{
+"id": "l8_ame",
+"l": "L8",
+"kanji": "雨",
+"reading": "あめ",
+"es": "lluvia",
+"dir": "jp-es"
+},
+{
+"id": "l8_omoshiroi",
+"l": "L8",
+"kanji": "面白い",
+"reading": "おもしろい",
+"es": "interesante/divertido",
+"dir": "es-jp"
+},
+{
+"id": "l8_ryouri",
+"l": "L8",
+"kanji": "料理する",
+"reading": "りょうりする",
+"es": "cocinar",
+"dir": "jp-es"
+},
+{
+"id": "l8_onakasuku",
+"l": "L8",
+"kanji": "お腹が空く",
+"reading": "おなかがすく",
+"es": "tener hambre",
+"dir": "es-jp"
+},
+{
+"id": "vocab_getsuyoubi",
+"l": "L3",
+"kanji": "月曜日",
+"reading": "げつようび",
+"es": "lunes",
+"dir": "es-jp"
+},
+{
+"id": "vocab_kayoubi",
+"l": "L3",
+"kanji": "火曜日",
+"reading": "かようび",
+"es": "martes",
+"dir": "jp-es"
+},
+{
+"id": "vocab_suiyoubi",
+"l": "L3",
+"kanji": "水曜日",
+"reading": "すいようび",
+"es": "miércoles",
+"dir": "es-jp"
+},
+{
+"id": "vocab_mokuyoubi",
+"l": "L3",
+"kanji": "木曜日",
+"reading": "もくようび",
+"es": "jueves",
+"dir": "jp-es"
+},
+{
+"id": "vocab_kinyoubi",
+"l": "L3",
+"kanji": "金曜日",
+"reading": "きんようび",
+"es": "viernes",
+"dir": "es-jp"
+},
+{
+"id": "vocab_doyoubi",
+"l": "L3",
+"kanji": "土曜日",
+"reading": "どようび",
+"es": "sábado",
+"dir": "jp-es"
+},
+{
+"id": "vocab_nichiyoubi",
+"l": "L3",
+"kanji": "日曜日",
+"reading": "にちようび",
+"es": "domingo",
+"dir": "es-jp"
+},
+{
+"id": "vocab_nanyoubi",
+"l": "L3",
+"kanji": "何曜日",
+"reading": "なんようび",
+"es": "¿qué día de la semana?",
+"dir": "jp-es"
+},
+{
+"id": "c_ta_taberu2",
+"l": "L8",
+"type": "conj",
+"front": "食べる → forma た",
+"answer": "食べた",
+"alt": [
+"たべた"
+]
+},
+{
+"id": "c_ta_kaeru2",
+"l": "L8",
+"type": "conj",
+"front": "帰る → forma た",
+"answer": "帰った",
+"alt": [
+"かえった"
+]
+},
+{
+"id": "c_ta_hanasu2",
+"l": "L8",
+"type": "conj",
+"front": "話す → forma た",
+"answer": "話した",
+"alt": [
+"はなした"
+]
+},
+{
+"id": "c_nakatta_taberu",
+"l": "L8",
+"type": "conj",
+"front": "食べる → forma なかった (pasado negativo simple)",
+"answer": "食べなかった",
+"alt": [
+"たべなかった"
+]
+},
+{
+"id": "c_da_gakusei",
+"l": "L8",
+"type": "conj",
+"front": "学生 → forma だ (presente simple)",
+"answer": "学生だ",
+"alt": [
+"がくせいだ"
+]
+},
+{
+"id": "c_datta_gakusei",
+"l": "L8",
+"type": "conj",
+"front": "学生 → forma だった (pasado simple)",
+"answer": "学生だった",
+"alt": [
+"がくせいだった"
+]
+},
+{
+"id": "c_datta_kirei",
+"l": "L8",
+"type": "conj",
+"front": "きれい → forma だった (pasado simple)",
+"answer": "きれいだった"
+},
+{
+"id": "c_janai_gakusei",
+"l": "L8",
+"type": "conj",
+"front": "学生 → forma じゃない (presente negativo simple)",
+"answer": "学生じゃない",
+"alt": [
+"がくせいじゃない"
+]
+},
+{
+"id": "g_clausula_sustantivo",
+"l": "L9",
+"type": "grammar",
+"question": "¿Cómo digo \"el libro que compré ayer\" sin una palabra para \"que\"?",
+"explanation": "En japonés no hace falta \"que/quien\" — la cláusula entera en forma simple va directamente antes del sustantivo: 昨日買った本 (el libro que compré ayer). Es la misma regla que ya usabas con adjetivos (高い本), solo que ahora con una frase completa."
+},
+{
+"id": "g_kara_origen_razon",
+"l": "L9",
+"type": "grammar",
+"question": "¿から significa \"desde\" o \"porque\"?",
+"explanation": "Las dos cosas, según contexto: con hora/lugar antes = origen (\"desde\"): 9時から始まります. Con un motivo antes = razón (\"porque\"): 忙しいから、行きません. Misma palabra, significado distinto."
+},
+{
+"id": "l9_shukudai",
+"l": "L9",
+"kanji": "宿題",
+"reading": "しゅくだい",
+"es": "deberes",
+"dir": "es-jp"
+},
+{
+"id": "l9_hajimaru",
+"l": "L9",
+"kanji": "始まる",
+"reading": "はじまる",
+"es": "empezar",
+"dir": "jp-es"
+},
+{
+"id": "l9_owaru",
+"l": "L9",
+"kanji": "終わる",
+"reading": "おわる",
+"es": "terminar",
+"dir": "es-jp"
+},
+{
+"id": "l9_mou",
+"l": "L9",
+"kanji": "もう",
+"reading": "もう",
+"es": "ya",
+"dir": "jp-es"
+},
+{
+"id": "l9_mada",
+"l": "L9",
+"kanji": "まだ",
+"reading": "まだ",
+"es": "todavía/aún",
+"dir": "es-jp"
+},
+{
+"id": "g_de_medio",
+"l": "L3",
+"type": "grammar",
+"question": "¿で solo marca el lugar de una acción?",
+"explanation": "No, también marca medio/instrumento (\"en/con qué\"): 車で行きます (voy en coche), 箸で食べます (como con palillos). Mismo で, otro matiz."
+},
+{
+"id": "l9_tekara",
+"l": "L9",
+"kanji": "～てから",
+"reading": "てから",
+"es": "después de hacer...",
+"dir": "jp-es"
+},
+{
+"id": "l9_made",
+"l": "L9",
+"kanji": "まで",
+"reading": "まで",
+"es": "hasta (tiempo/lugar)",
+"dir": "es-jp"
+},
+{
+"id": "l4_ue",
+"l": "L4",
+"kanji": "上",
+"reading": "うえ",
+"es": "encima de",
+"dir": "es-jp"
+},
+{
+"id": "l4_shita",
+"l": "L4",
+"kanji": "下",
+"reading": "した",
+"es": "debajo de",
+"dir": "jp-es"
+},
+{
+"id": "l4_naka",
+"l": "L4",
+"kanji": "中",
+"reading": "なか",
+"es": "dentro de",
+"dir": "es-jp"
+},
+{
+"id": "l4_mae",
+"l": "L4",
+"kanji": "前",
+"reading": "まえ",
+"es": "delante de",
+"dir": "jp-es"
+},
+{
+"id": "l4_ushiro",
+"l": "L4",
+"kanji": "後ろ",
+"reading": "うしろ",
+"es": "detrás de",
+"dir": "es-jp"
+},
+{
+"id": "l4_tonari",
+"l": "L4",
+"kanji": "隣",
+"reading": "となり",
+"es": "al lado de",
+"dir": "jp-es"
+},
+{
+"id": "l4_chikaku",
+"l": "L4",
+"kanji": "近く",
+"reading": "ちかく",
+"es": "cerca de",
+"dir": "es-jp"
+},
+{
+"id": "l5_heya",
+"l": "L5",
+"kanji": "部屋",
+"reading": "へや",
+"es": "habitación",
+"dir": "jp-es"
+},
+{
+"id": "vocab_isu",
+"l": "General",
+"kanji": "椅子",
+"reading": "いす",
+"es": "silla",
+"dir": "es-jp"
+},
+{
+"id": "vocab_doa",
+"l": "General",
+"kanji": "ドア",
+"reading": "どあ",
+"es": "puerta",
+"dir": "jp-es"
+},
+{
+"id": "vocab_kabe",
+"l": "General",
+"kanji": "壁",
+"reading": "かべ",
+"es": "pared",
+"dir": "es-jp"
+},
+{
+"id": "vocab_yuka",
+"l": "General",
+"kanji": "床",
+"reading": "ゆか",
+"es": "suelo/piso",
+"dir": "jp-es"
+},
+{
+"id": "vocab_mado",
+"l": "General",
+"kanji": "窓",
+"reading": "まど",
+"es": "ventana",
+"dir": "es-jp"
+},
+{
+"id": "vocab_beddo",
+"l": "General",
+"kanji": "ベッド",
+"reading": "べっど",
+"es": "cama",
+"dir": "jp-es"
+},
+{
+"id": "g_comparacion_2",
+"l": "L10",
+"type": "grammar",
+"question": "¿Cómo comparo dos cosas en japonés?",
+"explanation": "AはBよりXです = A es más X que B. Para preguntar: AとBとどちらがXですか. Para responder: Aの方がXです (A es el que más)."
+},
+{
+"id": "g_comparacion_3",
+"l": "L10",
+"type": "grammar",
+"question": "¿Cómo elijo la mejor opción entre 3 o más cosas?",
+"explanation": "[grupo]の中で、Xが一番Xです (de [grupo], X es el más...). 一番 = \"el número uno/el más\"."
+},
+{
+"id": "g_adj_no_sustituto",
+"l": "L10",
+"type": "grammar",
+"question": "¿Qué significa 赤いのが好きです?",
+"explanation": "El adjetivo+の sustituye a un sustantivo ya mencionado, como el の posesivo (私の). 赤いの = \"el rojo\" (evitando repetir el sustantivo, ej. 傘)."
+},
+{
+"id": "l10_samui",
+"l": "L10",
+"kanji": "寒い",
+"reading": "さむい",
+"es": "frío",
+"dir": "es-jp"
+},
+{
+"id": "l10_atatakai",
+"l": "L10",
+"kanji": "暖かい",
+"reading": "あたたかい",
+"es": "cálido/templado",
+"dir": "jp-es"
+},
+{
+"id": "l10_suzushii",
+"l": "L10",
+"kanji": "涼しい",
+"reading": "すずしい",
+"es": "fresco",
+"dir": "es-jp"
+},
+{
+"id": "l10_fuyu",
+"l": "L10",
+"kanji": "冬",
+"reading": "ふゆ",
+"es": "invierno",
+"dir": "jp-es"
+},
+{
+"id": "l10_natsu",
+"l": "L10",
+"kanji": "夏",
+"reading": "なつ",
+"es": "verano",
+"dir": "es-jp"
+},
+{
+"id": "l10_haru",
+"l": "L10",
+"kanji": "春",
+"reading": "はる",
+"es": "primavera",
+"dir": "jp-es"
+},
+{
+"id": "l10_aki",
+"l": "L10",
+"kanji": "秋",
+"reading": "あき",
+"es": "otoño",
+"dir": "es-jp"
+},
+{
+"id": "l10_densha",
+"l": "L10",
+"kanji": "電車",
+"reading": "でんしゃ",
+"es": "tren",
+"dir": "jp-es"
+},
+{
+"id": "l10_kudamono",
+"l": "L10",
+"kanji": "果物",
+"reading": "くだもの",
+"es": "fruta",
+"dir": "es-jp"
+},
+{
+"id": "g_node_vs_kara",
+"l": "L6",
+"type": "grammar",
+"question": "¿ので es lo mismo que から?",
+"explanation": "Significan lo mismo (\"porque\"), pero ので suena más formal/objetivo (\"es un hecho\"), y から más casual/personal (\"yo opino/decido\"). Intercambiables en la mayoría de contextos cotidianos."
+},
+{
+"id": "g_duracion_tiempo",
+"l": "L4",
+"type": "grammar",
+"question": "¿Cómo digo \"durante 2 horas\" sin confundirlo con \"a las 2\"?",
+"explanation": "Duración usa 〜時間 (2時間 = durante 2 horas) o 〜日間 (durante X días), sin に. Hora puntual usa 〜時に (2時に = a las 2 en punto), con に. Contadores distintos, no se mezclan."
+},
+{
+"id": "g_to_condicional",
+"l": "L10",
+"type": "grammar",
+"question": "¿Qué significa と en 冬になると、寒くなります?",
+"explanation": "と aquí es condicional: \"cuando/si X, entonces Y\" (consecuencia natural, casi automática). 冬になると、寒くなります = \"Cuando llega el invierno, hace frío\". Distinto del と de \"con\" o \"y\"."
+},
+{
+"id": "g_dochira_vs_dore",
+"l": "L10",
+"type": "grammar",
+"question": "¿どちら sirve para elegir entre 3 o más cosas?",
+"explanation": "No — どちら es solo para elegir entre DOS. Con 3 o más opciones usa 何/どれ + 一番: 季節の中で、何が一番好きですか (no どちらが)."
+},
+{
+"id": "g_mou_pregunta_mada_neg",
+"l": "L9",
+"type": "grammar",
+"question": "¿もう o まだ para preguntar \"ya hiciste X?\"",
+"explanation": "もう va en la pregunta (もうしましたか = ¿ya lo hiciste?) y en la respuesta afirmativa (もうしました). まだ solo en la respuesta negativa (まだしていません). まだしましたか sueña raro."
+},
+{
+"id": "g_hanasu_to_wo",
+"l": "General",
+"type": "grammar",
+"question": "話す, ¿con を o と?",
+"explanation": "を marca QUÉ hablas/dices (日本語を話す = hablar japonés). と marca CON QUIÉN hablas (彼女と話す = hablar con ella, compañía). No son intercambiables."
+},
+{
+"id": "g_kara_no_ni",
+"l": "General",
+"type": "grammar",
+"question": "¿Puedo decir 10時からに?",
+"explanation": "No — から (desde, punto de partida) y に (a las X, momento exacto) marcan la misma hora con matices distintos; nunca van juntas. Una u otra, no las dos."
+},
+{
+"id": "g_tai_conjuga",
+"l": "L11",
+"type": "grammar",
+"question": "¿Cómo conjuga ~たい (querer hacer algo)?",
+"explanation": "Como un adjetivo -い, porque termina en い: 食べたいです／食べたくないです／食べたかったです／食べたくなかったです. El objeto a veces cambia de を a が (水が飲みたいです)."
+},
+{
+"id": "g_tari_tari",
+"l": "L11",
+"type": "grammar",
+"question": "¿Diferencia entre unir con て y con たり~たりする?",
+"explanation": "て da una secuencia concreta y cerrada (\"hago A y luego B\"). たり~たりする da una lista abierta/no exhaustiva (\"hago cosas como A y B, entre otras\"). No son intercambiables."
+},
+{
+"id": "g_koto_ga_aru",
+"l": "L11",
+"type": "grammar",
+"question": "¿Qué añade ことがあります a un verbo en pasado?",
+"explanation": "Enmarca la frase como experiencia de vida (\"he hecho X alguna vez\"), no como un evento puntual. 日本に行ったことがあります ≠ simplemente 行きました (un viaje concreto)."
+},
+{
+"id": "g_ya_vs_to",
+"l": "L11",
+"type": "grammar",
+"question": "¿Diferencia entre と y や como \"y\"?",
+"explanation": "と = lista cerrada/completa (本と辞書 = exactamente un libro y un diccionario). や = lista abierta, no exhaustiva (本や辞書 = libros, diccionarios, y probablemente algo más)."
+},
+{
+"id": "l11_yasumi",
+"l": "L11",
+"kanji": "休み",
+"reading": "やすみ",
+"es": "vacaciones/descanso",
+"dir": "es-jp"
+},
+{
+"id": "l11_ryokou",
+"l": "L11",
+"kanji": "旅行",
+"reading": "りょこう",
+"es": "viaje",
+"dir": "jp-es"
+},
+{
+"id": "l11_keiken",
+"l": "L11",
+"kanji": "経験",
+"reading": "けいけん",
+"es": "experiencia",
+"dir": "es-jp"
+},
+{
+"id": "g_koto_ga_arimasu",
+"l": "L11",
+"type": "grammar",
+"question": "¿ことが lleva あります o います?",
+"explanation": "Siempre あります, nunca います — aunque la experiencia sea sobre algo animado, こと (el hecho/la experiencia) es un concepto abstracto. います se reserva solo para seres vivos reales."
+},
+{
+"id": "g_ageru_kureru",
+"l": "L12",
+"type": "grammar",
+"question": "¿Cuándo uso あげる y cuándo くれる?",
+"explanation": "あげる = yo doy a otra persona (el receptor NO soy yo). くれる = otra persona me da A MÍ. Mismo significado \"dar\", el verbo cambia según la dirección. Si tú recibes, nunca uses あげる."
+},
+{
+"id": "g_morau",
+"l": "L12",
+"type": "grammar",
+"question": "¿Qué significa もらう y cómo se estructura?",
+"explanation": "\"Recibir\": [receptor]は[dador]に/から[cosa]をもらいます. 私は田中さんにプレゼントをもらいます = recibo un regalo de Tanaka (mismo evento que 田中さんが私にくれます, visto desde el otro lado)."
+},
+{
+"id": "l12_present",
+"l": "L12",
+"kanji": "プレゼント",
+"reading": "ぷれぜんと",
+"es": "regalo",
+"dir": "jp-es"
+},
+{
+"id": "l12_kasu",
+"l": "L12",
+"kanji": "貸す",
+"reading": "かす",
+"es": "prestar",
+"dir": "es-jp"
+},
+{
+"id": "l12_kariru",
+"l": "L12",
+"kanji": "借りる",
+"reading": "かりる",
+"es": "pedir prestado",
+"dir": "jp-es"
+},
+{
+"id": "g_nakereba",
+"l": "General",
+"type": "grammar",
+"question": "¿Cómo digo \"tengo que estudiar\"?",
+"explanation": "Forma nai, quita la い final, añade ければなりません: 勉強しなければなりません. Versión hablada: 勉強しなきゃいけません."
+},
+{
+"id": "g_toki",
+"l": "General",
+"type": "grammar",
+"question": "¿Qué hace とき en 食べるとき、手を洗います?",
+"explanation": "とき = \"cuando\". [frase simple]+とき+[frase principal]: 食べるとき、手を洗います = cuando como, me lavo las manos."
+},
+{
+"id": "g_nagara",
+"l": "General",
+"type": "grammar",
+"question": "¿Cómo digo \"hago X mientras hago Y\"?",
+"explanation": "Raíz de ます + ながら, en la acción secundaria. テレビを見ながら、ご飯を食べます = como (acción principal) mientras veo la tele (secundaria)."
+},
+{
+"id": "g_deshou",
+"l": "General",
+"type": "grammar",
+"question": "¿Diferencia entre でしょう y と思います?",
+"explanation": "でしょう = \"probablemente\" (menos seguro, más una predicción). と思います = \"creo que\" (tu opinión personal). Matiz de grado de certeza."
+},
+{
+"id": "g_masenka",
+"l": "General",
+"type": "grammar",
+"question": "¿Diferencia entre ましょうか y ませんか para invitar?",
+"explanation": "Ambos invitan, ましょうか es más directo (\"¿hacemos X?\"), ませんか es más suave/abierto (\"¿no te apetece X?\"). Casi intercambiables en la práctica."
+},
+{
+"id": "g_wo_kudasai",
+"l": "General",
+"type": "grammar",
+"question": "¿てください y をください son lo mismo?",
+"explanation": "No — てください pide una ACCIÓN (待ってください = espera). をください pide un OBJETO directamente (コーヒーをください = un café, por favor)."
+},
+{
+"id": "g_hoshii",
+"l": "General",
+"type": "grammar",
+"question": "¿たい y ほしい son lo mismo?",
+"explanation": "No — たい es para VERBOS (飲みたい = quiero beber). ほしい es para OBJETOS directamente, como un adjetivo -い (水が欲しいです = quiero agua)."
+},
+{
+"id": "g_tsumori",
+"l": "General",
+"type": "grammar",
+"question": "¿Diferencia entre たい y つもり?",
+"explanation": "たい = deseo (quiero hacer X, sin más). つもり = intención/plan concreto (tengo planeado hacer X). つもり suena más decidido/real."
+},
+{
+"id": "g_donna",
+"l": "General",
+"type": "grammar",
+"question": "¿Qué significa どんな?",
+"explanation": "\"¿Qué tipo de...?\" — どんな音楽が好きですか = ¿qué tipo de música te gusta?"
+},
+{
+"id": "g_teiaru_vs_teiru",
+"l": "General",
+"type": "grammar",
+"question": "¿てある y ている son lo mismo?",
+"explanation": "No — てある implica que ALGUIEN hizo la acción deliberadamente y quedó así (窓が開けてあります = alguien dejó la ventana abierta). ている es más neutro sobre el estado (開いています = está abierta, sin más)."
+},
+{
+"id": "g_adj_kute",
+"l": "General",
+"type": "grammar",
+"question": "¿Cómo uno dos adjetivos -い en una frase (\"grande y bonito\")?",
+"explanation": "-い adjetivos: cambia la い final por くて (広くて、明るいです). -な adjetivos: usa で (きれいで、静かです)."
+},
+{
+"id": "v_atama",
+"l": "General",
+"kanji": "頭",
+"reading": "あたま",
+"es": "cabeza",
+"dir": "es-jp"
+},
+{
+"id": "v_me",
+"l": "General",
+"kanji": "目",
+"reading": "め",
+"es": "ojo",
+"dir": "jp-es"
+},
+{
+"id": "v_mimi",
+"l": "General",
+"kanji": "耳",
+"reading": "みみ",
+"es": "oreja",
+"dir": "es-jp"
+},
+{
+"id": "v_kuchi",
+"l": "General",
+"kanji": "口",
+"reading": "くち",
+"es": "boca",
+"dir": "jp-es"
+},
+{
+"id": "v_te2",
+"l": "General",
+"kanji": "手",
+"reading": "て",
+"es": "mano",
+"dir": "es-jp"
+},
+{
+"id": "v_ashi",
+"l": "General",
+"kanji": "足",
+"reading": "あし",
+"es": "pie/pierna",
+"dir": "jp-es"
+},
+{
+"id": "v_kao",
+"l": "General",
+"kanji": "顔",
+"reading": "かお",
+"es": "cara",
+"dir": "es-jp"
+},
+{
+"id": "v_onaka",
+"l": "General",
+"kanji": "お腹",
+"reading": "おなか",
+"es": "barriga",
+"dir": "jp-es"
+},
+{
+"id": "v_fuku",
+"l": "General",
+"kanji": "服",
+"reading": "ふく",
+"es": "ropa",
+"dir": "es-jp"
+},
+{
+"id": "v_shatsu",
+"l": "General",
+"kanji": "シャツ",
+"reading": "しゃつ",
+"es": "camisa",
+"dir": "jp-es"
+},
+{
+"id": "v_zubon",
+"l": "General",
+"kanji": "ズボン",
+"reading": "ずぼん",
+"es": "pantalones",
+"dir": "es-jp"
+},
+{
+"id": "v_kutsu",
+"l": "General",
+"kanji": "靴",
+"reading": "くつ",
+"es": "zapatos",
+"dir": "jp-es"
+},
+{
+"id": "v_boushi",
+"l": "General",
+"kanji": "帽子",
+"reading": "ぼうし",
+"es": "sombrero/gorra",
+"dir": "es-jp"
+},
+{
+"id": "v_kutsushita",
+"l": "General",
+"kanji": "靴下",
+"reading": "くつした",
+"es": "calcetines",
+"dir": "jp-es"
+},
+{
+"id": "v_niku",
+"l": "General",
+"kanji": "肉",
+"reading": "にく",
+"es": "carne",
+"dir": "es-jp"
+},
+{
+"id": "v_yasai",
+"l": "General",
+"kanji": "野菜",
+"reading": "やさい",
+"es": "verdura",
+"dir": "jp-es"
+},
+{
+"id": "v_sakana",
+"l": "General",
+"kanji": "魚",
+"reading": "さかな",
+"es": "pescado",
+"dir": "es-jp"
+},
+{
+"id": "v_kome",
+"l": "General",
+"kanji": "米",
+"reading": "こめ",
+"es": "arroz (crudo)",
+"dir": "jp-es"
+},
+{
+"id": "v_pan",
+"l": "General",
+"kanji": "パン",
+"reading": "ぱん",
+"es": "pan",
+"dir": "es-jp"
+},
+{
+"id": "v_tamago",
+"l": "General",
+"kanji": "卵",
+"reading": "たまご",
+"es": "huevo",
+"dir": "jp-es"
+},
+{
+"id": "v_gyuunyuu",
+"l": "General",
+"kanji": "牛乳",
+"reading": "ぎゅうにゅう",
+"es": "leche",
+"dir": "es-jp"
+},
+{
+"id": "v_ocha",
+"l": "General",
+"kanji": "お茶",
+"reading": "おちゃ",
+"es": "té",
+"dir": "jp-es"
+},
+{
+"id": "v_koohii",
+"l": "General",
+"kanji": "コーヒー",
+"reading": "こーひー",
+"es": "café",
+"dir": "es-jp"
+},
+{
+"id": "v_akai",
+"l": "General",
+"kanji": "赤い",
+"reading": "あかい",
+"es": "rojo",
+"dir": "jp-es"
+},
+{
+"id": "v_aoi",
+"l": "General",
+"kanji": "青い",
+"reading": "あおい",
+"es": "azul",
+"dir": "es-jp"
+},
+{
+"id": "v_shiroi",
+"l": "General",
+"kanji": "白い",
+"reading": "しろい",
+"es": "blanco",
+"dir": "jp-es"
+},
+{
+"id": "v_kuroi",
+"l": "General",
+"kanji": "黒い",
+"reading": "くろい",
+"es": "negro",
+"dir": "es-jp"
+},
+{
+"id": "v_kiiroi",
+"l": "General",
+"kanji": "黄色い",
+"reading": "きいろい",
+"es": "amarillo",
+"dir": "jp-es"
+},
+{
+"id": "v_midori",
+"l": "General",
+"kanji": "緑",
+"reading": "みどり",
+"es": "verde",
+"dir": "es-jp"
+},
+{
+"id": "v_eki",
+"l": "General",
+"kanji": "駅",
+"reading": "えき",
+"es": "estación",
+"dir": "jp-es"
+},
+{
+"id": "v_byouin",
+"l": "General",
+"kanji": "病院",
+"reading": "びょういん",
+"es": "hospital",
+"dir": "es-jp"
+},
+{
+"id": "v_ginkou",
+"l": "General",
+"kanji": "銀行",
+"reading": "ぎんこう",
+"es": "banco",
+"dir": "jp-es"
+},
+{
+"id": "v_yuubinkyoku",
+"l": "General",
+"kanji": "郵便局",
+"reading": "ゆうびんきょく",
+"es": "oficina de correos",
+"dir": "es-jp"
+},
+{
+"id": "v_suupaa",
+"l": "General",
+"kanji": "スーパー",
+"reading": "すーぱー",
+"es": "supermercado",
+"dir": "jp-es"
+},
+{
+"id": "v_conveni",
+"l": "General",
+"kanji": "コンビニ",
+"reading": "こんびに",
+"es": "tienda de conveniencia",
+"dir": "es-jp"
+},
+{
+"id": "v_yakkyoku",
+"l": "General",
+"kanji": "薬局",
+"reading": "やっきょく",
+"es": "farmacia",
+"dir": "jp-es"
+},
+{
+"id": "v_hoteru",
+"l": "General",
+"kanji": "ホテル",
+"reading": "ほてる",
+"es": "hotel",
+"dir": "es-jp"
+},
+{
+"id": "v_jitensha",
+"l": "General",
+"kanji": "自転車",
+"reading": "じてんしゃ",
+"es": "bicicleta",
+"dir": "jp-es"
+},
+{
+"id": "v_hikouki",
+"l": "General",
+"kanji": "飛行機",
+"reading": "ひこうき",
+"es": "avión",
+"dir": "es-jp"
+},
+{
+"id": "v_takushii",
+"l": "General",
+"kanji": "タクシー",
+"reading": "たくしー",
+"es": "taxi",
+"dir": "jp-es"
+},
+{
+"id": "v_fune",
+"l": "General",
+"kanji": "船",
+"reading": "ふね",
+"es": "barco",
+"dir": "es-jp"
+},
+{
+"id": "v_ookii",
+"l": "General",
+"kanji": "大きい",
+"reading": "おおきい",
+"es": "grande",
+"dir": "jp-es"
+},
+{
+"id": "v_chiisai",
+"l": "General",
+"kanji": "小さい",
+"reading": "ちいさい",
+"es": "pequeño",
+"dir": "es-jp"
+},
+{
+"id": "v_nagai",
+"l": "General",
+"kanji": "長い",
+"reading": "ながい",
+"es": "largo",
+"dir": "jp-es"
+},
+{
+"id": "v_mijikai",
+"l": "General",
+"kanji": "短い",
+"reading": "みじかい",
+"es": "corto",
+"dir": "es-jp"
+},
+{
+"id": "v_tsuyoi",
+"l": "General",
+"kanji": "強い",
+"reading": "つよい",
+"es": "fuerte",
+"dir": "jp-es"
+},
+{
+"id": "v_yowai",
+"l": "General",
+"kanji": "弱い",
+"reading": "よわい",
+"es": "débil",
+"dir": "es-jp"
+},
+{
+"id": "v_osoi",
+"l": "General",
+"kanji": "遅い",
+"reading": "おそい",
+"es": "lento/tarde",
+"dir": "jp-es"
+},
+{
+"id": "v_kurai",
+"l": "General",
+"kanji": "暗い",
+"reading": "くらい",
+"es": "oscuro",
+"dir": "es-jp"
+},
+{
+"id": "v_akarui",
+"l": "General",
+"kanji": "明るい",
+"reading": "あかるい",
+"es": "luminoso/brillante",
+"dir": "jp-es"
+},
+{
+"id": "v_muzukashii",
+"l": "General",
+"kanji": "難しい",
+"reading": "むずかしい",
+"es": "difícil",
+"dir": "es-jp"
+},
+{
+"id": "v_ureshii",
+"l": "General",
+"kanji": "嬉しい",
+"reading": "うれしい",
+"es": "contento",
+"dir": "jp-es"
+},
+{
+"id": "v_kanashii",
+"l": "General",
+"kanji": "悲しい",
+"reading": "かなしい",
+"es": "triste",
+"dir": "es-jp"
+},
+{
+"id": "v_tanoshii",
+"l": "General",
+"kanji": "楽しい",
+"reading": "たのしい",
+"es": "divertido",
+"dir": "jp-es"
+},
+{
+"id": "v_sabishii",
+"l": "General",
+"kanji": "寂しい",
+"reading": "さびしい",
+"es": "solitario",
+"dir": "es-jp"
+},
+{
+"id": "v_kowai",
+"l": "General",
+"kanji": "怖い",
+"reading": "こわい",
+"es": "dar miedo",
+"dir": "jp-es"
+},
+{
+"id": "v_nemui",
+"l": "General",
+"kanji": "眠い",
+"reading": "ねむい",
+"es": "tener sueño",
+"dir": "es-jp"
+},
+{
+"id": "v_tsukuru",
+"l": "General",
+"kanji": "作る",
+"reading": "つくる",
+"es": "hacer/crear",
+"dir": "jp-es"
+},
+{
+"id": "v_tsukau",
+"l": "General",
+"kanji": "使う",
+"reading": "つかう",
+"es": "usar",
+"dir": "es-jp"
+},
+{
+"id": "v_akeru",
+"l": "General",
+"kanji": "開ける",
+"reading": "あける",
+"es": "abrir",
+"dir": "jp-es"
+},
+{
+"id": "v_shimeru",
+"l": "General",
+"kanji": "閉める",
+"reading": "しめる",
+"es": "cerrar",
+"dir": "es-jp"
+},
+{
+"id": "v_kesu",
+"l": "General",
+"kanji": "消す",
+"reading": "けす",
+"es": "apagar",
+"dir": "jp-es"
+},
+{
+"id": "v_tsukeru",
+"l": "General",
+"kanji": "つける",
+"reading": "つける",
+"es": "encender",
+"dir": "es-jp"
+},
+{
+"id": "v_suwaru",
+"l": "General",
+"kanji": "座る",
+"reading": "すわる",
+"es": "sentarse",
+"dir": "jp-es"
+},
+{
+"id": "v_tatsu",
+"l": "General",
+"kanji": "立つ",
+"reading": "たつ",
+"es": "ponerse de pie",
+"dir": "es-jp"
+},
+{
+"id": "v_arau",
+"l": "General",
+"kanji": "洗う",
+"reading": "あらう",
+"es": "lavar",
+"dir": "jp-es"
+},
+{
+"id": "v_warau",
+"l": "General",
+"kanji": "笑う",
+"reading": "わらう",
+"es": "reír",
+"dir": "es-jp"
+},
+{
+"id": "v_migi",
+"l": "General",
+"kanji": "右",
+"reading": "みぎ",
+"es": "derecha",
+"dir": "jp-es"
+},
+{
+"id": "v_hidari",
+"l": "General",
+"kanji": "左",
+"reading": "ひだり",
+"es": "izquierda",
+"dir": "es-jp"
+},
+{
+"id": "v_massugu",
+"l": "General",
+"kanji": "まっすぐ",
+"reading": "まっすぐ",
+"es": "recto",
+"dir": "jp-es"
+},
+{
+"id": "v_shingou",
+"l": "General",
+"kanji": "信号",
+"reading": "しんごう",
+"es": "semáforo",
+"dir": "es-jp"
+},
+{
+"id": "gk1_001",
+"l": "L1",
+"kanji": "アジア研究",
+"reading": "アジアけんきゅう",
+"es": "estudios asiáticos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_002",
+"l": "L1",
+"kanji": "あのう",
+"reading": "あのう",
+"es": "esto…",
+"dir": "es-jp"
+},
+{
+"id": "gk1_003",
+"l": "L1",
+"kanji": "アメリカ",
+"reading": "アメリカ",
+"es": "EE. UU.",
+"dir": "es-jp"
+},
+{
+"id": "gk1_004",
+"l": "L1",
+"kanji": "イギリス",
+"reading": "イギリス",
+"es": "Reino Unido",
+"dir": "es-jp"
+},
+{
+"id": "gk1_006",
+"l": "L1",
+"kanji": "一時",
+"reading": "いちじ",
+"es": "la una",
+"dir": "es-jp"
+},
+{
+"id": "gk1_007",
+"l": "L1",
+"kanji": "一年生",
+"reading": "いちねんせい",
+"es": "estudiante de primer año",
+"dir": "es-jp"
+},
+{
+"id": "gk1_008",
+"l": "L1",
+"kanji": "一分",
+"reading": "いっぷん",
+"es": "un minuto",
+"dir": "es-jp"
+},
+{
+"id": "gk1_009",
+"l": "L1",
+"kanji": "今",
+"reading": "いま",
+"es": "ahora",
+"dir": "es-jp"
+},
+{
+"id": "gk1_011",
+"l": "L1",
+"kanji": "インド",
+"reading": "インド",
+"es": "India",
+"dir": "es-jp"
+},
+{
+"id": "gk1_012",
+"l": "L1",
+"kanji": "エジプト",
+"reading": "エジプト",
+"es": "Egipto",
+"dir": "es-jp"
+},
+{
+"id": "gk1_013",
+"l": "L1",
+"kanji": "オーストラリア",
+"reading": "オーストラリア",
+"es": "Australia",
+"dir": "es-jp"
+},
+{
+"id": "gk1_017",
+"l": "L1",
+"kanji": "お兄さん",
+"reading": "おにいさん",
+"es": "hermano mayor",
+"dir": "es-jp"
+},
+{
+"id": "gk1_018",
+"l": "L1",
+"kanji": "お姉さん",
+"reading": "おねえさん",
+"es": "hermana mayor",
+"dir": "es-jp"
+},
+{
+"id": "gk1_021",
+"l": "L1",
+"kanji": "カナダ",
+"reading": "カナダ",
+"es": "Canadá",
+"dir": "es-jp"
+},
+{
+"id": "gk1_022",
+"l": "L1",
+"kanji": "韓国",
+"reading": "かんこく",
+"es": "Corea",
+"dir": "es-jp"
+},
+{
+"id": "gk1_023",
+"l": "L1",
+"kanji": "看護師",
+"reading": "かんごし",
+"es": "enfermero/a",
+"dir": "es-jp"
+},
+{
+"id": "gk1_024",
+"l": "L1",
+"kanji": "九分",
+"reading": "きゅうふん",
+"es": "nueve minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_025",
+"l": "L1",
+"kanji": "九時",
+"reading": "くじ",
+"es": "las nueve",
+"dir": "es-jp"
+},
+{
+"id": "gk1_026",
+"l": "L1",
+"kanji": "経済",
+"reading": "けいざい",
+"es": "economía",
+"dir": "es-jp"
+},
+{
+"id": "gk1_027",
+"l": "L1",
+"kanji": "～語",
+"reading": "～ご",
+"es": "idioma de…",
+"dir": "es-jp"
+},
+{
+"id": "gk1_028",
+"l": "L1",
+"kanji": "高校",
+"reading": "こうこう",
+"es": "instituto (bachillerato)",
+"dir": "es-jp"
+},
+{
+"id": "gk1_029",
+"l": "L1",
+"kanji": "高校生",
+"reading": "こうこうせい",
+"es": "estudiante de instituto",
+"dir": "es-jp"
+},
+{
+"id": "gk1_030",
+"l": "L1",
+"kanji": "国際関係",
+"reading": "こくさいかんけい",
+"es": "relaciones internacionales",
+"dir": "es-jp"
+},
+{
+"id": "gk1_031",
+"l": "L1",
+"kanji": "午後",
+"reading": "ごご",
+"es": "de la tarde (p. m.)",
+"dir": "es-jp"
+},
+{
+"id": "gk1_032",
+"l": "L1",
+"kanji": "五時",
+"reading": "ごじ",
+"es": "las cinco",
+"dir": "es-jp"
+},
+{
+"id": "gk1_033",
+"l": "L1",
+"kanji": "午前",
+"reading": "ごぜん",
+"es": "de la mañana (a. m.)",
+"dir": "es-jp"
+},
+{
+"id": "gk1_034",
+"l": "L1",
+"kanji": "五分",
+"reading": "ごふん",
+"es": "cinco minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_035",
+"l": "L1",
+"kanji": "コンピューター",
+"reading": "コンピューター",
+"es": "ordenador",
+"dir": "es-jp"
+},
+{
+"id": "gk1_036",
+"l": "L1",
+"kanji": "～歳",
+"reading": "～さい",
+"es": "… años",
+"dir": "es-jp"
+},
+{
+"id": "gk1_037",
+"l": "L1",
+"kanji": "～さん",
+"reading": "～さん",
+"es": "Sr./Sra. …",
+"dir": "es-jp"
+},
+{
+"id": "gk1_038",
+"l": "L1",
+"kanji": "三時",
+"reading": "さんじ",
+"es": "las tres",
+"dir": "es-jp"
+},
+{
+"id": "gk1_039",
+"l": "L1",
+"kanji": "三十分",
+"reading": "さんじっぷん",
+"es": "treinta minutos",
+"dir": "es-jp",
+"readingAlt": [
+"さんじゅっぷん"
+]
+},
+{
+"id": "gk1_040",
+"l": "L1",
+"kanji": "三分",
+"reading": "さんぷん",
+"es": "tres minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_041",
+"l": "L1",
+"kanji": "～時",
+"reading": "～じ",
+"es": "… en punto",
+"dir": "es-jp"
+},
+{
+"id": "gk1_042",
+"l": "L1",
+"kanji": "七時",
+"reading": "しちじ",
+"es": "las siete",
+"dir": "es-jp"
+},
+{
+"id": "gk1_043",
+"l": "L1",
+"kanji": "十分",
+"reading": "じっぷん",
+"es": "diez minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_044",
+"l": "L1",
+"kanji": "十一時",
+"reading": "じゅういちじ",
+"es": "las once",
+"dir": "es-jp"
+},
+{
+"id": "gk1_045",
+"l": "L1",
+"kanji": "十一分",
+"reading": "じゅういっぷん",
+"es": "once minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_046",
+"l": "L1",
+"kanji": "十九分",
+"reading": "じゅうきゅうふん",
+"es": "diecinueve minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_047",
+"l": "L1",
+"kanji": "十五分",
+"reading": "じゅうごふん",
+"es": "quince minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_048",
+"l": "L1",
+"kanji": "十三分",
+"reading": "じゅうさんぷん",
+"es": "trece minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_049",
+"l": "L1",
+"kanji": "十時",
+"reading": "じゅうじ",
+"es": "las diez",
+"dir": "es-jp"
+},
+{
+"id": "gk1_050",
+"l": "L1",
+"kanji": "十七分",
+"reading": "じゅうななふん",
+"es": "diecisiete minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_051",
+"l": "L1",
+"kanji": "十二時",
+"reading": "じゅうにじ",
+"es": "las doce",
+"dir": "es-jp"
+},
+{
+"id": "gk1_052",
+"l": "L1",
+"kanji": "十二分",
+"reading": "じゅうにふん",
+"es": "doce minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_053",
+"l": "L1",
+"kanji": "十八分",
+"reading": "じゅうはちふん",
+"es": "dieciocho minutos",
+"dir": "es-jp",
+"readingAlt": [
+"じゅうはっぷん"
+]
+},
+{
+"id": "gk1_054",
+"l": "L1",
+"kanji": "十四分",
+"reading": "じゅうよんぷん",
+"es": "catorce minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_055",
+"l": "L1",
+"kanji": "十六分",
+"reading": "じゅうろっぷん",
+"es": "dieciséis minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_056",
+"l": "L1",
+"kanji": "十分",
+"reading": "じゅっぷん",
+"es": "diez minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_057",
+"l": "L1",
+"kanji": "主婦",
+"reading": "しゅふ",
+"es": "ama de casa",
+"dir": "es-jp"
+},
+{
+"id": "gk1_058",
+"l": "L1",
+"kanji": "～人",
+"reading": "～じん",
+"es": "persona de… (gentilicio)",
+"dir": "es-jp"
+},
+{
+"id": "gk1_059",
+"l": "L1",
+"kanji": "政治",
+"reading": "せいじ",
+"es": "política",
+"dir": "es-jp"
+},
+{
+"id": "gk1_060",
+"l": "L1",
+"kanji": "生物学",
+"reading": "せいぶつがく",
+"es": "biología",
+"dir": "es-jp"
+},
+{
+"id": "gk1_061",
+"l": "L1",
+"kanji": "専攻",
+"reading": "せんこう",
+"es": "especialidad (carrera)",
+"dir": "es-jp"
+},
+{
+"id": "gk1_064",
+"l": "L1",
+"kanji": "そうですか",
+"reading": "そうですか",
+"es": "¿ah, sí?; ¿es así?",
+"dir": "es-jp"
+},
+{
+"id": "gk1_065",
+"l": "L1",
+"kanji": "大学",
+"reading": "だいがく",
+"es": "universidad",
+"dir": "es-jp"
+},
+{
+"id": "gk1_066",
+"l": "L1",
+"kanji": "大学院生",
+"reading": "だいがくいんせい",
+"es": "estudiante de posgrado",
+"dir": "es-jp"
+},
+{
+"id": "gk1_067",
+"l": "L1",
+"kanji": "大学生",
+"reading": "だいがくせい",
+"es": "estudiante universitario",
+"dir": "es-jp"
+},
+{
+"id": "gk1_068",
+"l": "L1",
+"kanji": "中国",
+"reading": "ちゅうごく",
+"es": "China",
+"dir": "es-jp"
+},
+{
+"id": "gk1_069",
+"l": "L1",
+"kanji": "電話",
+"reading": "でんわ",
+"es": "teléfono",
+"dir": "es-jp"
+},
+{
+"id": "gk1_070",
+"l": "L1",
+"kanji": "友だち",
+"reading": "ともだち",
+"es": "amigo",
+"dir": "es-jp"
+},
+{
+"id": "gk1_071",
+"l": "L1",
+"kanji": "七分",
+"reading": "ななふん",
+"es": "siete minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_074",
+"l": "L1",
+"kanji": "何",
+"reading": "なん",
+"es": "qué",
+"dir": "es-jp",
+"readingAlt": [
+"なに"
+]
+},
+{
+"id": "gk1_075",
+"l": "L1",
+"kanji": "二時",
+"reading": "にじ",
+"es": "las dos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_076",
+"l": "L1",
+"kanji": "二十分",
+"reading": "にじっぷん",
+"es": "veinte minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_077",
+"l": "L1",
+"kanji": "二時半",
+"reading": "にじはん",
+"es": "las dos y media",
+"dir": "es-jp"
+},
+{
+"id": "gk1_078",
+"l": "L1",
+"kanji": "二十分",
+"reading": "にじゅっぷん",
+"es": "veinte minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_079",
+"l": "L1",
+"kanji": "二分",
+"reading": "にふん",
+"es": "dos minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_081",
+"l": "L1",
+"kanji": "日本語",
+"reading": "にほんご",
+"es": "japonés (idioma)",
+"dir": "es-jp"
+},
+{
+"id": "gk1_082",
+"l": "L1",
+"kanji": "日本人",
+"reading": "にほんじん",
+"es": "japonés (persona)",
+"dir": "es-jp"
+},
+{
+"id": "gk1_083",
+"l": "L1",
+"kanji": "～年生",
+"reading": "～ねんせい",
+"es": "estudiante de … año",
+"dir": "es-jp"
+},
+{
+"id": "gk1_084",
+"l": "L1",
+"kanji": "はい",
+"reading": "はい",
+"es": "sí",
+"dir": "es-jp"
+},
+{
+"id": "gk1_085",
+"l": "L1",
+"kanji": "八時",
+"reading": "はちじ",
+"es": "las ocho",
+"dir": "es-jp"
+},
+{
+"id": "gk1_086",
+"l": "L1",
+"kanji": "八分",
+"reading": "はちふん",
+"es": "ocho minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_087",
+"l": "L1",
+"kanji": "八分",
+"reading": "はっぷん",
+"es": "ocho minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_088",
+"l": "L1",
+"kanji": "半",
+"reading": "はん",
+"es": "y media",
+"dir": "es-jp"
+},
+{
+"id": "gk1_089",
+"l": "L1",
+"kanji": "～番",
+"reading": "～ばん",
+"es": "número …",
+"dir": "es-jp"
+},
+{
+"id": "gk1_090",
+"l": "L1",
+"kanji": "番号",
+"reading": "ばんごう",
+"es": "número",
+"dir": "es-jp"
+},
+{
+"id": "gk1_091",
+"l": "L1",
+"kanji": "ビジネス",
+"reading": "ビジネス",
+"es": "negocios",
+"dir": "es-jp"
+},
+{
+"id": "gk1_092",
+"l": "L1",
+"kanji": "フィリピン",
+"reading": "フィリピン",
+"es": "Filipinas",
+"dir": "es-jp"
+},
+{
+"id": "gk1_093",
+"l": "L1",
+"kanji": "文学",
+"reading": "ぶんがく",
+"es": "literatura",
+"dir": "es-jp"
+},
+{
+"id": "gk1_094",
+"l": "L1",
+"kanji": "弁護士",
+"reading": "べんごし",
+"es": "abogado",
+"dir": "es-jp"
+},
+{
+"id": "gk1_095",
+"l": "L1",
+"kanji": "四時",
+"reading": "よじ",
+"es": "las cuatro",
+"dir": "es-jp"
+},
+{
+"id": "gk1_096",
+"l": "L1",
+"kanji": "四分",
+"reading": "よんぷん",
+"es": "cuatro minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk1_097",
+"l": "L1",
+"kanji": "留学生",
+"reading": "りゅうがくせい",
+"es": "estudiante extranjero",
+"dir": "es-jp"
+},
+{
+"id": "gk1_098",
+"l": "L1",
+"kanji": "歴史",
+"reading": "れきし",
+"es": "historia",
+"dir": "es-jp"
+},
+{
+"id": "gk1_099",
+"l": "L1",
+"kanji": "六時",
+"reading": "ろくじ",
+"es": "las seis",
+"dir": "es-jp"
+},
+{
+"id": "gk1_100",
+"l": "L1",
+"kanji": "六分",
+"reading": "ろっぷん",
+"es": "seis minutos",
+"dir": "es-jp"
+},
+{
+"id": "gk2_001",
+"l": "L2",
+"kanji": "あそこ",
+"reading": "あそこ",
+"es": "allí (lejos)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_002",
+"l": "L2",
+"kanji": "あの",
+"reading": "あの",
+"es": "aquel/aquella … (allá)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_003",
+"l": "L2",
+"kanji": "あれ",
+"reading": "あれ",
+"es": "aquel (de allá)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_004",
+"l": "L2",
+"kanji": "いくら",
+"reading": "いくら",
+"es": "cuánto (precio)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_005",
+"l": "L2",
+"kanji": "いす",
+"reading": "いす",
+"es": "silla",
+"dir": "es-jp"
+},
+{
+"id": "gk2_006",
+"l": "L2",
+"kanji": "いらっしゃいませ",
+"reading": "いらっしゃいませ",
+"es": "Bienvenido (a la tienda)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_007",
+"l": "L2",
+"kanji": "英語",
+"reading": "えいご",
+"es": "inglés (idioma)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_008",
+"l": "L2",
+"kanji": "～円",
+"reading": "～えん",
+"es": "… yenes",
+"dir": "es-jp"
+},
+{
+"id": "gk2_009",
+"l": "L2",
+"kanji": "おいしい",
+"reading": "おいしい",
+"es": "delicioso",
+"dir": "es-jp"
+},
+{
+"id": "gk2_010",
+"l": "L2",
+"kanji": "おねがいします（～を）",
+"reading": "おねがいします（～を）",
+"es": "…, por favor",
+"dir": "es-jp"
+},
+{
+"id": "gk2_011",
+"l": "L2",
+"kanji": "カーテン",
+"reading": "カーテン",
+"es": "cortina",
+"dir": "es-jp"
+},
+{
+"id": "gk2_015",
+"l": "L2",
+"kanji": "ください（～を）",
+"reading": "ください（～を）",
+"es": "Déme…, por favor",
+"dir": "es-jp"
+},
+{
+"id": "gk2_017",
+"l": "L2",
+"kanji": "消しゴム",
+"reading": "けしゴム",
+"es": "goma de borrar",
+"dir": "es-jp"
+},
+{
+"id": "gk2_018",
+"l": "L2",
+"kanji": "黒板",
+"reading": "こくばん",
+"es": "pizarra",
+"dir": "es-jp"
+},
+{
+"id": "gk2_019",
+"l": "L2",
+"kanji": "ここ",
+"reading": "ここ",
+"es": "aquí",
+"dir": "es-jp"
+},
+{
+"id": "gk2_020",
+"l": "L2",
+"kanji": "この",
+"reading": "この",
+"es": "este/esta …",
+"dir": "es-jp"
+},
+{
+"id": "gk2_021",
+"l": "L2",
+"kanji": "これ",
+"reading": "これ",
+"es": "este (de aquí)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_022",
+"l": "L2",
+"kanji": "コンビニ",
+"reading": "コンビニ",
+"es": "tienda 24 h (konbini)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_023",
+"l": "L2",
+"kanji": "財布",
+"reading": "さいふ",
+"es": "cartera; monedero",
+"dir": "es-jp"
+},
+{
+"id": "gk2_025",
+"l": "L2",
+"kanji": "ジーンズ",
+"reading": "ジーンズ",
+"es": "vaqueros (jeans)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_028",
+"l": "L2",
+"kanji": "じゃあ",
+"reading": "じゃあ",
+"es": "entonces…; en ese caso…",
+"dir": "es-jp"
+},
+{
+"id": "gk2_029",
+"l": "L2",
+"kanji": "新聞",
+"reading": "しんぶん",
+"es": "periódico",
+"dir": "es-jp"
+},
+{
+"id": "gk2_030",
+"l": "L2",
+"kanji": "スマホ",
+"reading": "スマホ",
+"es": "smartphone; móvil",
+"dir": "es-jp"
+},
+{
+"id": "gk2_031",
+"l": "L2",
+"kanji": "そこ",
+"reading": "そこ",
+"es": "ahí",
+"dir": "es-jp"
+},
+{
+"id": "gk2_032",
+"l": "L2",
+"kanji": "その",
+"reading": "その",
+"es": "ese/esa …",
+"dir": "es-jp"
+},
+{
+"id": "gk2_033",
+"l": "L2",
+"kanji": "それ",
+"reading": "それ",
+"es": "ese (de ahí)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_037",
+"l": "L2",
+"kanji": "Ｔシャツ",
+"reading": "ティーシャツ",
+"es": "camiseta",
+"dir": "es-jp"
+},
+{
+"id": "gk2_038",
+"l": "L2",
+"kanji": "電気",
+"reading": "でんき",
+"es": "electricidad; luz",
+"dir": "es-jp"
+},
+{
+"id": "gk2_039",
+"l": "L2",
+"kanji": "ドア",
+"reading": "ドア",
+"es": "puerta",
+"dir": "es-jp"
+},
+{
+"id": "gk2_040",
+"l": "L2",
+"kanji": "トイレ",
+"reading": "トイレ",
+"es": "baño; aseo",
+"dir": "es-jp"
+},
+{
+"id": "gk2_041",
+"l": "L2",
+"kanji": "どうぞ",
+"reading": "どうぞ",
+"es": "Adelante.; Aquí tiene.",
+"dir": "es-jp"
+},
+{
+"id": "gk2_042",
+"l": "L2",
+"kanji": "どうも",
+"reading": "どうも",
+"es": "Gracias.",
+"dir": "es-jp"
+},
+{
+"id": "gk2_044",
+"l": "L2",
+"kanji": "どこ",
+"reading": "どこ",
+"es": "dónde",
+"dir": "es-jp"
+},
+{
+"id": "gk2_045",
+"l": "L2",
+"kanji": "図書館",
+"reading": "としょかん",
+"es": "biblioteca",
+"dir": "es-jp"
+},
+{
+"id": "gk2_046",
+"l": "L2",
+"kanji": "どの",
+"reading": "どの",
+"es": "cuál … (de…)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_047",
+"l": "L2",
+"kanji": "どれ",
+"reading": "どれ",
+"es": "cuál (uno)",
+"dir": "es-jp"
+},
+{
+"id": "gk2_048",
+"l": "L2",
+"kanji": "とんかつ",
+"reading": "とんかつ",
+"es": "chuleta de cerdo empanada",
+"dir": "es-jp"
+},
+{
+"id": "gk2_050",
+"l": "L2",
+"kanji": "ノート",
+"reading": "ノート",
+"es": "cuaderno",
+"dir": "es-jp"
+},
+{
+"id": "gk2_051",
+"l": "L2",
+"kanji": "ペン",
+"reading": "ペン",
+"es": "bolígrafo",
+"dir": "es-jp"
+},
+{
+"id": "gk2_055",
+"l": "L2",
+"kanji": "メニュー",
+"reading": "メニュー",
+"es": "menú",
+"dir": "es-jp"
+},
+{
+"id": "gk3_001",
+"l": "L3",
+"kanji": "アイスクリーム",
+"reading": "アイスクリーム",
+"es": "helado",
+"dir": "es-jp"
+},
+{
+"id": "gk3_002",
+"l": "L3",
+"kanji": "朝",
+"reading": "あさ",
+"es": "mañana (parte del día)",
+"dir": "es-jp"
+},
+{
+"id": "gk3_003",
+"l": "L3",
+"kanji": "朝ご飯",
+"reading": "あさごはん",
+"es": "desayuno",
+"dir": "es-jp"
+},
+{
+"id": "gk3_005",
+"l": "L3",
+"kanji": "あまり ＋ negative",
+"reading": "あまり ＋ negative",
+"es": "no mucho",
+"dir": "es-jp"
+},
+{
+"id": "gk3_006",
+"l": "L3",
+"kanji": "いい",
+"reading": "いい",
+"es": "bueno",
+"dir": "es-jp"
+},
+{
+"id": "gk3_007",
+"l": "L3",
+"kanji": "家",
+"reading": "いえ",
+"es": "casa; hogar",
+"dir": "es-jp"
+},
+{
+"id": "gk3_008",
+"l": "L3",
+"kanji": "行く",
+"reading": "いく",
+"es": "ir",
+"dir": "es-jp"
+},
+{
+"id": "gk3_009",
+"l": "L3",
+"kanji": "いつ",
+"reading": "いつ",
+"es": "cuándo",
+"dir": "es-jp"
+},
+{
+"id": "gk3_010",
+"l": "L3",
+"kanji": "うち",
+"reading": "うち",
+"es": "casa; mi casa",
+"dir": "es-jp"
+},
+{
+"id": "gk3_011",
+"l": "L3",
+"kanji": "映画",
+"reading": "えいが",
+"es": "película",
+"dir": "es-jp"
+},
+{
+"id": "gk3_012",
+"l": "L3",
+"kanji": "ええ",
+"reading": "ええ",
+"es": "sí",
+"dir": "es-jp"
+},
+{
+"id": "gk3_013",
+"l": "L3",
+"kanji": "起きる",
+"reading": "おきる",
+"es": "levantarse",
+"dir": "es-jp"
+},
+{
+"id": "gk3_014",
+"l": "L3",
+"kanji": "お酒",
+"reading": "おさけ",
+"es": "sake; bebida alcohólica",
+"dir": "es-jp"
+},
+{
+"id": "gk3_016",
+"l": "L3",
+"kanji": "音楽",
+"reading": "おんがく",
+"es": "música",
+"dir": "es-jp"
+},
+{
+"id": "gk3_017",
+"l": "L3",
+"kanji": "帰る",
+"reading": "かえる",
+"es": "volver; regresar",
+"dir": "es-jp"
+},
+{
+"id": "gk3_018",
+"l": "L3",
+"kanji": "学校",
+"reading": "がっこう",
+"es": "escuela",
+"dir": "es-jp"
+},
+{
+"id": "gk3_019",
+"l": "L3",
+"kanji": "カフェ",
+"reading": "カフェ",
+"es": "cafetería",
+"dir": "es-jp"
+},
+{
+"id": "gk3_020",
+"l": "L3",
+"kanji": "聞く",
+"reading": "きく",
+"es": "escuchar; oír",
+"dir": "es-jp"
+},
+{
+"id": "gk3_022",
+"l": "L3",
+"kanji": "来る",
+"reading": "くる",
+"es": "venir",
+"dir": "es-jp"
+},
+{
+"id": "gk3_023",
+"l": "L3",
+"kanji": "コーヒー",
+"reading": "コーヒー",
+"es": "café",
+"dir": "es-jp"
+},
+{
+"id": "gk3_024",
+"l": "L3",
+"kanji": "～ごろ",
+"reading": "～ごろ",
+"es": "hacia las…; sobre las…",
+"dir": "es-jp"
+},
+{
+"id": "gk3_025",
+"l": "L3",
+"kanji": "今晩",
+"reading": "こんばん",
+"es": "esta noche",
+"dir": "es-jp"
+},
+{
+"id": "gk3_026",
+"l": "L3",
+"kanji": "酒",
+"reading": "さけ",
+"es": "sake; alcohol",
+"dir": "es-jp"
+},
+{
+"id": "gk3_027",
+"l": "L3",
+"kanji": "雑誌",
+"reading": "ざっし",
+"es": "revista",
+"dir": "es-jp"
+},
+{
+"id": "gk3_028",
+"l": "L3",
+"kanji": "週末",
+"reading": "しゅうまつ",
+"es": "fin de semana",
+"dir": "es-jp"
+},
+{
+"id": "gk3_029",
+"l": "L3",
+"kanji": "スポーツ",
+"reading": "スポーツ",
+"es": "deporte",
+"dir": "es-jp"
+},
+{
+"id": "gk3_030",
+"l": "L3",
+"kanji": "する",
+"reading": "する",
+"es": "hacer",
+"dir": "es-jp"
+},
+{
+"id": "gk3_031",
+"l": "L3",
+"kanji": "全然",
+"reading": "ぜんぜん ＋ negative",
+"es": "nada en absoluto",
+"dir": "es-jp"
+},
+{
+"id": "gk3_032",
+"l": "L3",
+"kanji": "そうですね",
+"reading": "そうですね",
+"es": "así es; a ver…",
+"dir": "es-jp"
+},
+{
+"id": "gk3_034",
+"l": "L3",
+"kanji": "食べる",
+"reading": "たべる",
+"es": "comer",
+"dir": "es-jp"
+},
+{
+"id": "gk3_035",
+"l": "L3",
+"kanji": "茶",
+"reading": "ちゃ",
+"es": "té verde",
+"dir": "es-jp"
+},
+{
+"id": "gk3_036",
+"l": "L3",
+"kanji": "ちょっと",
+"reading": "ちょっと",
+"es": "un poco",
+"dir": "es-jp"
+},
+{
+"id": "gk3_037",
+"l": "L3",
+"kanji": "デート",
+"reading": "デート",
+"es": "cita (romántica)",
+"dir": "es-jp"
+},
+{
+"id": "gk3_038",
+"l": "L3",
+"kanji": "テニス",
+"reading": "テニス",
+"es": "tenis",
+"dir": "es-jp"
+},
+{
+"id": "gk3_039",
+"l": "L3",
+"kanji": "でも",
+"reading": "でも",
+"es": "pero",
+"dir": "es-jp"
+},
+{
+"id": "gk3_040",
+"l": "L3",
+"kanji": "テレビ",
+"reading": "テレビ",
+"es": "televisión",
+"dir": "es-jp"
+},
+{
+"id": "gk3_041",
+"l": "L3",
+"kanji": "どうですか",
+"reading": "どうですか",
+"es": "¿Qué tal …?; ¿Cómo es …?",
+"dir": "es-jp"
+},
+{
+"id": "gk3_042",
+"l": "L3",
+"kanji": "時々",
+"reading": "ときどき",
+"es": "a veces",
+"dir": "es-jp"
+},
+{
+"id": "gk3_045",
+"l": "L3",
+"kanji": "寝る",
+"reading": "ねる",
+"es": "dormir; acostarse",
+"dir": "es-jp"
+},
+{
+"id": "gk3_046",
+"l": "L3",
+"kanji": "飲む",
+"reading": "のむ",
+"es": "beber",
+"dir": "es-jp"
+},
+{
+"id": "gk3_048",
+"l": "L3",
+"kanji": "早い",
+"reading": "はやい",
+"es": "temprano",
+"dir": "es-jp"
+},
+{
+"id": "gk3_049",
+"l": "L3",
+"kanji": "晩ご飯",
+"reading": "ばんごはん",
+"es": "cena",
+"dir": "es-jp"
+},
+{
+"id": "gk3_050",
+"l": "L3",
+"kanji": "ハンバーガー",
+"reading": "ハンバーガー",
+"es": "hamburguesa",
+"dir": "es-jp"
+},
+{
+"id": "gk3_051",
+"l": "L3",
+"kanji": "昼ご飯",
+"reading": "ひるごはん",
+"es": "almuerzo; comida",
+"dir": "es-jp"
+},
+{
+"id": "gk3_052",
+"l": "L3",
+"kanji": "勉強する",
+"reading": "べんきょうする",
+"es": "estudiar",
+"dir": "es-jp"
+},
+{
+"id": "gk3_054",
+"l": "L3",
+"kanji": "毎晩",
+"reading": "まいばん",
+"es": "cada noche",
+"dir": "es-jp"
+},
+{
+"id": "gk3_055",
+"l": "L3",
+"kanji": "水",
+"reading": "みず",
+"es": "agua",
+"dir": "es-jp"
+},
+{
+"id": "gk3_056",
+"l": "L3",
+"kanji": "見る",
+"reading": "みる",
+"es": "ver; mirar",
+"dir": "es-jp"
+},
+{
+"id": "gk3_058",
+"l": "L3",
+"kanji": "読む",
+"reading": "よむ",
+"es": "leer",
+"dir": "es-jp"
+},
+{
+"id": "gk4_001",
+"l": "L4",
+"kanji": "間",
+"reading": "あいだ",
+"es": "entre",
+"dir": "es-jp"
+},
+{
+"id": "gk4_002",
+"l": "L4",
+"kanji": "会う",
+"reading": "あう",
+"es": "encontrarse; ver (a alguien)",
+"dir": "es-jp"
+},
+{
+"id": "gk4_003",
+"l": "L4",
+"kanji": "あさって",
+"reading": "あさって",
+"es": "pasado mañana",
+"dir": "es-jp"
+},
+{
+"id": "gk4_005",
+"l": "L4",
+"kanji": "ある",
+"reading": "ある",
+"es": "haber (cosas)",
+"dir": "es-jp"
+},
+{
+"id": "gk4_006",
+"l": "L4",
+"kanji": "アルバイト",
+"reading": "アルバイト",
+"es": "trabajo a tiempo parcial",
+"dir": "es-jp"
+},
+{
+"id": "gk4_007",
+"l": "L4",
+"kanji": "一月",
+"reading": "いちがつ",
+"es": "enero",
+"dir": "es-jp"
+},
+{
+"id": "gk4_008",
+"l": "L4",
+"kanji": "一時間",
+"reading": "いちじかん",
+"es": "una hora",
+"dir": "es-jp"
+},
+{
+"id": "gk4_009",
+"l": "L4",
+"kanji": "五日",
+"reading": "いつか",
+"es": "el día 5 (del mes)",
+"dir": "es-jp"
+},
+{
+"id": "gk4_011",
+"l": "L4",
+"kanji": "いる",
+"reading": "いる",
+"es": "estar (persona en un sitio)",
+"dir": "es-jp"
+},
+{
+"id": "gk4_014",
+"l": "L4",
+"kanji": "お寺",
+"reading": "おてら",
+"es": "templo",
+"dir": "es-jp"
+},
+{
+"id": "gk4_015",
+"l": "L4",
+"kanji": "おととい",
+"reading": "おととい",
+"es": "anteayer",
+"dir": "es-jp"
+},
+{
+"id": "gk4_016",
+"l": "L4",
+"kanji": "おととし",
+"reading": "おととし",
+"es": "el año antepasado",
+"dir": "es-jp"
+},
+{
+"id": "gk4_017",
+"l": "L4",
+"kanji": "買い物",
+"reading": "かいもの",
+"es": "compras",
+"dir": "es-jp"
+},
+{
+"id": "gk4_018",
+"l": "L4",
+"kanji": "買う",
+"reading": "かう",
+"es": "comprar",
+"dir": "es-jp"
+},
+{
+"id": "gk4_019",
+"l": "L4",
+"kanji": "書く",
+"reading": "かく",
+"es": "escribir",
+"dir": "es-jp"
+},
+{
+"id": "gk4_022",
+"l": "L4",
+"kanji": "去年",
+"reading": "きょねん",
+"es": "el año pasado",
+"dir": "es-jp"
+},
+{
+"id": "gk4_024",
+"l": "L4",
+"kanji": "九月",
+"reading": "くがつ",
+"es": "septiembre",
+"dir": "es-jp"
+},
+{
+"id": "gk4_025",
+"l": "L4",
+"kanji": "～ぐらい",
+"reading": "～ぐらい",
+"es": "aproximadamente (medida)",
+"dir": "es-jp"
+},
+{
+"id": "gk4_026",
+"l": "L4",
+"kanji": "クラス",
+"reading": "クラス",
+"es": "clase",
+"dir": "es-jp"
+},
+{
+"id": "gk4_027",
+"l": "L4",
+"kanji": "ゲーム",
+"reading": "ゲーム",
+"es": "juego; videojuego",
+"dir": "es-jp"
+},
+{
+"id": "gk4_030",
+"l": "L4",
+"kanji": "五月",
+"reading": "ごがつ",
+"es": "mayo",
+"dir": "es-jp"
+},
+{
+"id": "gk4_031",
+"l": "L4",
+"kanji": "九日",
+"reading": "ここのか",
+"es": "el día 9",
+"dir": "es-jp"
+},
+{
+"id": "gk4_032",
+"l": "L4",
+"kanji": "今年",
+"reading": "ことし",
+"es": "este año",
+"dir": "es-jp"
+},
+{
+"id": "gk4_034",
+"l": "L4",
+"kanji": "ご飯",
+"reading": "ごはん",
+"es": "arroz; comida",
+"dir": "es-jp"
+},
+{
+"id": "gk4_035",
+"l": "L4",
+"kanji": "ごめんなさい",
+"reading": "ごめんなさい",
+"es": "Lo siento.",
+"dir": "es-jp"
+},
+{
+"id": "gk4_036",
+"l": "L4",
+"kanji": "今月",
+"reading": "こんげつ",
+"es": "este mes",
+"dir": "es-jp"
+},
+{
+"id": "gk4_037",
+"l": "L4",
+"kanji": "今週",
+"reading": "こんしゅう",
+"es": "esta semana",
+"dir": "es-jp"
+},
+{
+"id": "gk4_038",
+"l": "L4",
+"kanji": "再来月",
+"reading": "さらいげつ",
+"es": "dentro de dos meses",
+"dir": "es-jp"
+},
+{
+"id": "gk4_039",
+"l": "L4",
+"kanji": "再来週",
+"reading": "さらいしゅう",
+"es": "dentro de dos semanas",
+"dir": "es-jp"
+},
+{
+"id": "gk4_040",
+"l": "L4",
+"kanji": "再来年",
+"reading": "さらいねん",
+"es": "dentro de dos años",
+"dir": "es-jp"
+},
+{
+"id": "gk4_041",
+"l": "L4",
+"kanji": "三月",
+"reading": "さんがつ",
+"es": "marzo",
+"dir": "es-jp"
+},
+{
+"id": "gk4_042",
+"l": "L4",
+"kanji": "四月",
+"reading": "しがつ",
+"es": "abril",
+"dir": "es-jp"
+},
+{
+"id": "gk4_043",
+"l": "L4",
+"kanji": "～時間",
+"reading": "～じかん",
+"es": "… horas",
+"dir": "es-jp"
+},
+{
+"id": "gk4_045",
+"l": "L4",
+"kanji": "七月",
+"reading": "しちがつ",
+"es": "julio",
+"dir": "es-jp"
+},
+{
+"id": "gk4_046",
+"l": "L4",
+"kanji": "写真",
+"reading": "しゃしん",
+"es": "foto; fotografía",
+"dir": "es-jp"
+},
+{
+"id": "gk4_047",
+"l": "L4",
+"kanji": "十一月",
+"reading": "じゅういちがつ",
+"es": "noviembre",
+"dir": "es-jp"
+},
+{
+"id": "gk4_048",
+"l": "L4",
+"kanji": "十一日",
+"reading": "じゅういちにち",
+"es": "el día 11",
+"dir": "es-jp"
+},
+{
+"id": "gk4_049",
+"l": "L4",
+"kanji": "十月",
+"reading": "じゅうがつ",
+"es": "octubre",
+"dir": "es-jp"
+},
+{
+"id": "gk4_050",
+"l": "L4",
+"kanji": "十二月",
+"reading": "じゅうにがつ",
+"es": "diciembre",
+"dir": "es-jp"
+},
+{
+"id": "gk4_051",
+"l": "L4",
+"kanji": "十四日",
+"reading": "じゅうよっか",
+"es": "el día 14",
+"dir": "es-jp"
+},
+{
+"id": "gk4_053",
+"l": "L4",
+"kanji": "スーパー",
+"reading": "スーパー",
+"es": "supermercado",
+"dir": "es-jp"
+},
+{
+"id": "gk4_054",
+"l": "L4",
+"kanji": "先月",
+"reading": "せんげつ",
+"es": "el mes pasado",
+"dir": "es-jp"
+},
+{
+"id": "gk4_055",
+"l": "L4",
+"kanji": "先週",
+"reading": "せんしゅう",
+"es": "la semana pasada",
+"dir": "es-jp"
+},
+{
+"id": "gk4_056",
+"l": "L4",
+"kanji": "それから",
+"reading": "それから",
+"es": "y luego; después",
+"dir": "es-jp"
+},
+{
+"id": "gk4_057",
+"l": "L4",
+"kanji": "だから",
+"reading": "だから",
+"es": "así que; por eso",
+"dir": "es-jp"
+},
+{
+"id": "gk4_058",
+"l": "L4",
+"kanji": "たくさん",
+"reading": "たくさん",
+"es": "muchos; mucho",
+"dir": "es-jp"
+},
+{
+"id": "gk4_060",
+"l": "L4",
+"kanji": "一日",
+"reading": "ついたち",
+"es": "el día 1",
+"dir": "es-jp"
+},
+{
+"id": "gk4_061",
+"l": "L4",
+"kanji": "寺",
+"reading": "てら",
+"es": "templo",
+"dir": "es-jp"
+},
+{
+"id": "gk4_062",
+"l": "L4",
+"kanji": "～と",
+"reading": "～と",
+"es": "junto con (persona); y",
+"dir": "es-jp"
+},
+{
+"id": "gk4_063",
+"l": "L4",
+"kanji": "どうして",
+"reading": "どうして",
+"es": "por qué",
+"dir": "es-jp"
+},
+{
+"id": "gk4_064",
+"l": "L4",
+"kanji": "十日",
+"reading": "とおか",
+"es": "el día 10",
+"dir": "es-jp"
+},
+{
+"id": "gk4_065",
+"l": "L4",
+"kanji": "時",
+"reading": "とき",
+"es": "cuando…; en el momento de…",
+"dir": "es-jp"
+},
+{
+"id": "gk4_067",
+"l": "L4",
+"kanji": "撮る",
+"reading": "とる",
+"es": "tomar (una foto)",
+"dir": "es-jp"
+},
+{
+"id": "gk4_069",
+"l": "L4",
+"kanji": "七日",
+"reading": "なのか",
+"es": "el día 7",
+"dir": "es-jp"
+},
+{
+"id": "gk4_070",
+"l": "L4",
+"kanji": "二か月前",
+"reading": "にかげつまえ",
+"es": "hace dos meses",
+"dir": "es-jp"
+},
+{
+"id": "gk4_071",
+"l": "L4",
+"kanji": "二月",
+"reading": "にがつ",
+"es": "febrero",
+"dir": "es-jp"
+},
+{
+"id": "gk4_072",
+"l": "L4",
+"kanji": "二週間前",
+"reading": "にしゅうかんまえ",
+"es": "hace dos semanas",
+"dir": "es-jp"
+},
+{
+"id": "gk4_073",
+"l": "L4",
+"kanji": "二十四日",
+"reading": "にじゅうよっか",
+"es": "el día 24",
+"dir": "es-jp"
+},
+{
+"id": "gk4_075",
+"l": "L4",
+"kanji": "バス停",
+"reading": "バスてい",
+"es": "parada de autobús",
+"dir": "es-jp"
+},
+{
+"id": "gk4_076",
+"l": "L4",
+"kanji": "八月",
+"reading": "はちがつ",
+"es": "agosto",
+"dir": "es-jp"
+},
+{
+"id": "gk4_077",
+"l": "L4",
+"kanji": "二十日",
+"reading": "はつか",
+"es": "el día 20",
+"dir": "es-jp"
+},
+{
+"id": "gk4_078",
+"l": "L4",
+"kanji": "花",
+"reading": "はな",
+"es": "flor",
+"dir": "es-jp"
+},
+{
+"id": "gk4_079",
+"l": "L4",
+"kanji": "パン",
+"reading": "パン",
+"es": "pan",
+"dir": "es-jp"
+},
+{
+"id": "gk4_081",
+"l": "L4",
+"kanji": "人",
+"reading": "ひと",
+"es": "persona",
+"dir": "es-jp"
+},
+{
+"id": "gk4_082",
+"l": "L4",
+"kanji": "一人で",
+"reading": "ひとりで",
+"es": "solo; a solas",
+"dir": "es-jp"
+},
+{
+"id": "gk4_084",
+"l": "L4",
+"kanji": "二日",
+"reading": "ふつか",
+"es": "el día 2",
+"dir": "es-jp"
+},
+{
+"id": "gk4_085",
+"l": "L4",
+"kanji": "ホテル",
+"reading": "ホテル",
+"es": "hotel",
+"dir": "es-jp"
+},
+{
+"id": "gk4_086",
+"l": "L4",
+"kanji": "本屋",
+"reading": "ほんや",
+"es": "librería",
+"dir": "es-jp"
+},
+{
+"id": "gk4_088",
+"l": "L4",
+"kanji": "町",
+"reading": "まち",
+"es": "pueblo; ciudad",
+"dir": "es-jp"
+},
+{
+"id": "gk4_091",
+"l": "L4",
+"kanji": "三日",
+"reading": "みっか",
+"es": "el día 3",
+"dir": "es-jp"
+},
+{
+"id": "gk4_092",
+"l": "L4",
+"kanji": "六日",
+"reading": "むいか",
+"es": "el día 6",
+"dir": "es-jp"
+},
+{
+"id": "gk4_094",
+"l": "L4",
+"kanji": "もしもし",
+"reading": "もしもし",
+"es": "¿Hola? (al teléfono)",
+"dir": "es-jp"
+},
+{
+"id": "gk4_095",
+"l": "L4",
+"kanji": "八日",
+"reading": "ようか",
+"es": "el día 8",
+"dir": "es-jp"
+},
+{
+"id": "gk4_096",
+"l": "L4",
+"kanji": "四日",
+"reading": "よっか",
+"es": "el día 4",
+"dir": "es-jp"
+},
+{
+"id": "gk4_097",
+"l": "L4",
+"kanji": "来月",
+"reading": "らいげつ",
+"es": "el mes que viene",
+"dir": "es-jp"
+},
+{
+"id": "gk4_098",
+"l": "L4",
+"kanji": "来週",
+"reading": "らいしゅう",
+"es": "la semana que viene",
+"dir": "es-jp"
+},
+{
+"id": "gk4_099",
+"l": "L4",
+"kanji": "来年",
+"reading": "らいねん",
+"es": "el año que viene",
+"dir": "es-jp"
+},
+{
+"id": "gk4_100",
+"l": "L4",
+"kanji": "レストラン",
+"reading": "レストラン",
+"es": "restaurante",
+"dir": "es-jp"
+},
+{
+"id": "gk4_101",
+"l": "L4",
+"kanji": "レポート",
+"reading": "レポート",
+"es": "trabajo (académico); informe",
+"dir": "es-jp"
+},
+{
+"id": "gk4_102",
+"l": "L4",
+"kanji": "六月",
+"reading": "ろくがつ",
+"es": "junio",
+"dir": "es-jp"
+},
+{
+"id": "gk4_103",
+"l": "L4",
+"kanji": "わかる",
+"reading": "わかる",
+"es": "entender",
+"dir": "es-jp"
+}
+]
 }

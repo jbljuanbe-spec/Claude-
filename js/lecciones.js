@@ -5,6 +5,7 @@
 import { api } from './api.js';
 import { hablar } from './tts.js';
 import { comprobarJapones, comprobarEspanol, comprobarTraduccion, romajiAHiragana, contieneJapones } from './kana.js';
+import { hayReconocimiento, escuchar } from './voz.js';
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -183,6 +184,14 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     const larga = barajar((ejercicios.produccion_larga || []).filter(e => codigos.includes(e.l)));
     if (larga.length) items.push({ tipo: 'produccion', e: larga[0] });
 
+    // Escribir una frase entera en japonés (es -> ja, corregida).
+    const frases = barajar((ejercicios.escritura || []).filter(e => codigos.includes(e.l)));
+    items.push(...frases.slice(0, Math.max(1, Math.round(objetivo * 0.15))).map(e => ({ tipo: 'escritura', e })));
+
+    // Hablar: decirla en voz alta; el navegador transcribe para corregir.
+    const habla = barajar((ejercicios.voz || []).filter(e => codigos.includes(e.l)));
+    if (habla.length) items.push({ tipo: 'voz', e: habla[0] });
+
     if (conError && parts.length) {
       const e = barajar(parts)[0];
       const mal = barajar((e.opciones || []).filter(o => o !== e.correcta && !o.startsWith('∅')))[0];
@@ -197,7 +206,12 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     items.push(...barajar(conj).slice(0, Math.round(objetivo * 0.2)).map(t => ({ tipo: 'conjescrita', e: t })));
     const restantes = Math.max(2, objetivo - items.length);
     items.push(...barajar(vocab).slice(0, restantes).map(t => ({ tipo: 'vocabescrito', e: t })));
-    return barajar(items).slice(0, objetivo);
+    // Reserva plaza para las cartas curadas de hablar/escribir/producción: son
+    // el objetivo del ejercicio y no deben caer al recortar a 'objetivo'.
+    const esCurada = x => x.tipo === 'voz' || x.tipo === 'escritura' || x.tipo === 'produccion';
+    const curadas = barajar(items.filter(esCurada)).slice(0, Math.max(2, Math.round(objetivo * 0.4)));
+    const resto = barajar(items.filter(x => !esCurada(x)));
+    return barajar([...curadas, ...resto].slice(0, objetivo));
   }
 
   function iniciarExamen(ciudadId) {
@@ -338,6 +352,44 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
         };
         cont.querySelector('#btn-comprobar').onclick = comprobar;
         ta.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); comprobar(); } });
+
+      } else if (item.tipo === 'escritura') {
+        marco(`<div class="tarjeta-chips"><span class="chip chip-tipo-grammar">Escribe la frase</span></div>
+          <p class="tarjeta-instruccion">Escribe la frase entera en japonés (vale kana, kanji o romaji)</p>
+          <p class="tarjeta-prompt">${esc(t.es)}</p>
+          ${t.pista ? `<p class="trad-ejercicio">💡 <span lang="ja">${esc(t.pista)}</span></p>` : ''}
+          <input class="campo-respuesta" id="respuesta" autocomplete="off" lang="ja" placeholder="日本語で..." />
+          <div class="vista-kana" id="vista-kana"></div>
+          <div class="fila-botones"><button class="boton boton-primario" id="btn-comprobar">Comprobar</button></div>`);
+        prepararEscrito(v => comprobarTraduccion(v, t.respuestas), () => { hablar(t.respuestas[0]); return `<div class="feedback-respuesta" lang="ja">${esc(t.respuestas[0])}</div>`; });
+
+      } else if (item.tipo === 'voz') {
+        const soporta = hayReconocimiento();
+        marco(`<div class="tarjeta-chips"><span class="chip chip-tipo-conj">🎤 Habla</span></div>
+          <p class="tarjeta-instruccion">${soporta ? 'Dilo en voz alta en japonés: el navegador escribirá lo que oiga para que lo corrijas. También puedes teclearlo.' : 'Tu navegador no admite dictado por voz: escríbelo con el teclado.'}</p>
+          <p class="tarjeta-prompt">${esc(t.es)}</p>
+          <div class="frase-objetivo-fila"><span class="frase-objetivo" lang="ja">${esc(t.objetivo)}</span><button class="boton-audio" id="btn-oir" title="Oír">&#128266;</button></div>
+          ${soporta ? '<button class="boton boton-secundario boton-mic" id="btn-mic" type="button">🎤 Hablar</button>' : ''}
+          <input class="campo-respuesta" id="respuesta" autocomplete="off" lang="ja" placeholder="Lo que digas aparecerá aquí..." />
+          <div class="vista-kana" id="vista-kana" aria-live="polite"></div>
+          <div class="fila-botones"><button class="boton boton-primario" id="btn-comprobar">Comprobar</button></div>`);
+        const input = cont.querySelector('#respuesta');
+        cont.querySelector('#btn-oir').onclick = () => hablar(t.objetivo);
+        if (soporta) {
+          const btn = cont.querySelector('#btn-mic'), vk = cont.querySelector('#vista-kana');
+          let mando = null;
+          btn.onclick = () => {
+            if (mando) { mando.parar(); return; }
+            btn.classList.add('escuchando'); btn.textContent = '● Escuchando… (toca para parar)'; vk.textContent = '';
+            mando = escuchar({
+              onParcial: p => { vk.textContent = '… ' + p; },
+              onFinal: p => { input.value = p; },
+              onError: () => { vk.textContent = 'No se pudo escuchar. Prueba otra vez o teclea.'; },
+              onFin: () => { btn.classList.remove('escuchando'); btn.textContent = '🎤 Hablar'; mando = null; }
+            });
+          };
+        }
+        prepararEscrito(v => comprobarJapones(v, t.respuestas), () => { hablar(t.objetivo); return `<div class="feedback-respuesta" lang="ja">${esc(t.objetivo)}</div><div class="feedback-lectura">${esc(t.es)}</div>`; });
 
       } else if (item.tipo === 'kanji') {
         marco(`<div class="tarjeta-chips"><span class="chip chip-tipo-grammar">Lectura</span></div>

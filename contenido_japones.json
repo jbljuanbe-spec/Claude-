@@ -8437,6 +8437,530 @@
 "reading": "わるい",
 "es": "malo",
 "dir": "es-jp"
+},
+{
+"id": "gg_l1_desu",
+"l": "L1",
+"type": "grammar",
+"question": "X es Y (afirmación cortés)",
+"explanation": "X は Y です。 は se lee 'wa' y marca el tema. Para preguntar, añade か al final: X は Y ですか。"
+},
+{
+"id": "gg_l1_no",
+"l": "L1",
+"type": "grammar",
+"question": "La partícula の",
+"explanation": "Une nombres como el 'de' de pertenencia/relación (的 en chino): 日本語の学生 = estudiante de japonés."
+},
+{
+"id": "gg_l1_nan",
+"l": "L1",
+"type": "grammar",
+"question": "Preguntar 'qué es X'",
+"explanation": "X は なんですか。 なん/何 = qué."
+},
+{
+"id": "gg_l2_kore",
+"l": "L2",
+"type": "grammar",
+"question": "これ/それ/あれ vs この/その/あの",
+"explanation": "これ/それ/あれ van solos ('esto/eso/aquello'). この/その/あの acompañan a un nombre (この本 = este libro). こ cerca de ti, そ cerca del oyente, あ lejos de ambos."
+},
+{
+"id": "gg_l2_dore",
+"l": "L2",
+"type": "grammar",
+"question": "Preguntar '¿cuál?'",
+"explanation": "どれ/どの/どこ, normalmente con が (no は): どれが あなたの ペンですか。"
+},
+{
+"id": "gg_l2_mo",
+"l": "L2",
+"type": "grammar",
+"question": "La partícula も",
+"explanation": "Sustituye a は para decir 'también': X は Z です。 Y も Z です (Y también es Z)."
+},
+{
+"id": "gg_l2_neg",
+"l": "L2",
+"type": "grammar",
+"question": "Negar un nombre (X no es Y)",
+"explanation": "X は Y じゃないです。 De menos a más formal: じゃないです < じゃありません < ではありません."
+},
+{
+"id": "gg_l2_neyo",
+"l": "L2",
+"type": "grammar",
+"question": "Finales ね y よ",
+"explanation": "ね busca confirmación ('¿verdad?'). よ aporta o asegura información ('te aseguro que…')."
+},
+{
+"id": "gg_l3_verbos",
+"l": "L3",
+"type": "grammar",
+"question": "Tipos de verbo y presente cortés (～ます)",
+"explanation": "る-verbos: quita る + ます (食べる→食べます). う-verbos: la う final pasa a い + ます (飲む→飲みます). Irregulares: する→します, くる→きます."
+},
+{
+"id": "gg_l3_presente",
+"l": "L3",
+"type": "grammar",
+"question": "¿Qué expresa el presente ～ます?",
+"explanation": "Acciones habituales o futuras (aún no ocurridas)."
+},
+{
+"id": "gg_l3_particulas",
+"l": "L3",
+"type": "grammar",
+"question": "Partículas を で に へ",
+"explanation": "を objeto directo; で lugar donde ocurre la acción; に destino y tiempo puntual; へ destino (alterna con に). Tiempo aproximado: ごろ en vez de に."
+},
+{
+"id": "gg_l3_masenka",
+"l": "L3",
+"type": "grammar",
+"question": "Invitar (～ませんか)",
+"explanation": "Verbo en ～ませんか = '¿no…?': 一緒に食べませんか。"
+},
+{
+"id": "gg_l3_freq",
+"l": "L3",
+"type": "grammar",
+"question": "Adverbios de frecuencia",
+"explanation": "時々 (a veces) con afirmativo. あまり / 全然 (poco / nada) exigen verbo NEGATIVO (～ません): あまり勉強しません。"
+},
+{
+"id": "gc_l3_nomu",
+"l": "L3",
+"type": "conj",
+"front": "飲む → presente cortés",
+"answer": "飲みます",
+"alt": [
+"のみます"
+]
+},
+{
+"id": "gc_l3_nomu_neg",
+"l": "L3",
+"type": "conj",
+"front": "飲む → presente negativo cortés",
+"answer": "飲みません",
+"alt": [
+"のみません"
+]
+},
+{
+"id": "gc_l3_taberu",
+"l": "L3",
+"type": "conj",
+"front": "食べる → presente cortés",
+"answer": "食べます",
+"alt": [
+"たべます"
+]
+},
+{
+"id": "gg_l4_aru",
+"l": "L4",
+"type": "grammar",
+"question": "ある vs いる (existir)",
+"explanation": "ある para cosas/plantas, いる para seres vivos: (lugar)に (cosa)が あります / (persona)が います. Ojo con la partícula が."
+},
+{
+"id": "gg_l4_pasado",
+"l": "L4",
+"type": "grammar",
+"question": "Pasado de です y de ～ます",
+"explanation": "です→でした (neg. じゃなかったです). ～ます→ました (neg. ませんでした). Pista: si lleva た, es pasado."
+},
+{
+"id": "gg_l4_localizacion",
+"l": "L4",
+"type": "grammar",
+"question": "Decir dónde está algo",
+"explanation": "X は Y の (posición) です: 上/下/前/後ろ/中/となり/近く. 'Entre': X は Y と Z の間です。"
+},
+{
+"id": "gc_l4_iku_past",
+"l": "L4",
+"type": "conj",
+"front": "行く → pasado cortés",
+"answer": "行きました",
+"alt": [
+"いきました"
+]
+},
+{
+"id": "gc_l4_desu_past_neg",
+"l": "L4",
+"type": "conj",
+"front": "です → pasado negativo",
+"answer": "じゃなかったです",
+"alt": [
+"ではありませんでした"
+]
+},
+{
+"id": "gg_l5_adj",
+"l": "L5",
+"type": "grammar",
+"question": "い-adjetivos vs な-adjetivos",
+"explanation": "Ante un nombre: 怖い先生 (い directo), 元気な先生 (な lleva な). Los い-adj conjugan solos; los な-adj se comportan como です."
+},
+{
+"id": "gg_l5_iadjconj",
+"l": "L5",
+"type": "grammar",
+"question": "Conjugar い-adjetivos",
+"explanation": "寒い → neg. 寒くない, pasado 寒かった, pas.neg. 寒くなかった (+です). Excepción: いい se vuelve よい antes de conjugar (よかった)."
+},
+{
+"id": "gg_l5_suki",
+"l": "L5",
+"type": "grammar",
+"question": "Gustar / no gustar",
+"explanation": "X は Y が 好き/嫌い です。 Mucho: 大好き/大嫌い. Como adjetivo: 好きな本 (mi libro favorito)."
+},
+{
+"id": "gg_l5_mashou",
+"l": "L5",
+"type": "grammar",
+"question": "ましょう / ましょうか",
+"explanation": "ましょう = 'hagamos…'. ましょうか = '¿lo hacemos? / ¿te ayudo?'."
+},
+{
+"id": "gc_l5_samui_past",
+"l": "L5",
+"type": "conj",
+"front": "寒い → pasado",
+"answer": "寒かったです",
+"alt": [
+"さむかったです"
+]
+},
+{
+"id": "gc_l5_samui_neg",
+"l": "L5",
+"type": "conj",
+"front": "寒い → negativo",
+"answer": "寒くないです",
+"alt": [
+"寒くありません",
+"さむくないです"
+]
+},
+{
+"id": "gg_l6_te",
+"l": "L6",
+"type": "grammar",
+"question": "Formar la て-forma",
+"explanation": "る→て (食べて). う-verbos: う/つ/る→って, む/ぶ/ぬ→んで, く→いて (¡行く→行って!), ぐ→いで, す→して. Irregulares: する→して, くる→きて."
+},
+{
+"id": "gg_l6_kudasai",
+"l": "L6",
+"type": "grammar",
+"question": "Petición cortés",
+"explanation": "て-forma + ください: 読んでください (por favor, lee)."
+},
+{
+"id": "gg_l6_temoii",
+"l": "L6",
+"type": "grammar",
+"question": "Permiso y prohibición",
+"explanation": "て + もいいです = 'puedes…'. てはいけません = 'no debes…' (prohibición fuerte, は se lee 'wa')."
+},
+{
+"id": "gg_l6_kara",
+"l": "L6",
+"type": "grammar",
+"question": "から al final",
+"explanation": "Da la razón: (situación)。(explicación)から。 明日テストがありますから。"
+},
+{
+"id": "gc_l6_kaku_te",
+"l": "L6",
+"type": "conj",
+"front": "書く → て-forma",
+"answer": "書いて",
+"alt": [
+"かいて"
+]
+},
+{
+"id": "gc_l6_yomu_te",
+"l": "L6",
+"type": "conj",
+"front": "読む → て-forma",
+"answer": "読んで",
+"alt": [
+"よんで"
+]
+},
+{
+"id": "gc_l6_iku_te",
+"l": "L6",
+"type": "conj",
+"front": "行く → て-forma",
+"answer": "行って",
+"alt": [
+"いって"
+]
+},
+{
+"id": "gg_l7_teiru",
+"l": "L7",
+"type": "grammar",
+"question": "El uso de ～ている",
+"explanation": "Acción en curso (勉強しています = está estudiando), ocupación/hábito, o estado actual (結婚しています = está casado). Con 行く/来る = 'ha ido / ha venido'."
+},
+{
+"id": "gg_l7_teadj",
+"l": "L7",
+"type": "grammar",
+"question": "て-forma de adjetivos y nombres (enlazar)",
+"explanation": "い-adj: 優しい→優しくて (いい→よくて). な-adj y nombres + で: 元気で, 日本人で. 安くて、おいしいです = barato y rico."
+},
+{
+"id": "gg_l7_purpose",
+"l": "L7",
+"type": "grammar",
+"question": "Ir a un sitio a hacer algo",
+"explanation": "(destino)に/へ (raíz de verbo)に 行く/来る/帰る: デパートにかばんを買いに行きました。"
+},
+{
+"id": "gc_l7_yasashii_te",
+"l": "L7",
+"type": "conj",
+"front": "優しい → て-forma (enlace)",
+"answer": "優しくて",
+"alt": [
+"やさしくて"
+]
+},
+{
+"id": "gg_l8_short",
+"l": "L8",
+"type": "grammar",
+"question": "Formas cortas (presente)",
+"explanation": "Quitas la cortesía: 読みます→読む, 可愛いです→可愛い, 元気です→元気だ. Negativo: 読まない, 元気じゃない, 学生じゃない."
+},
+{
+"id": "gg_l8_omou",
+"l": "L8",
+"type": "grammar",
+"question": "Citar y opinar",
+"explanation": "forma corta + と思います (creo que…) / と言っていました (dijo que…): 明日試験があると思います。"
+},
+{
+"id": "gg_l8_naidekudasai",
+"l": "L8",
+"type": "grammar",
+"question": "'Por favor, no…'",
+"explanation": "forma corta negativa + でください: 写真を撮らないでください。"
+},
+{
+"id": "gg_l8_nogasuki",
+"l": "L8",
+"type": "grammar",
+"question": "'Me gusta hacer X' (のが)",
+"explanation": "(verbo corto) のが 好き/嫌い/上手/下手 です。 の convierte el verbo en nombre: 日本語を勉強するのが好きです。"
+},
+{
+"id": "gc_l8_yomu_short_neg",
+"l": "L8",
+"type": "conj",
+"front": "読む → forma corta negativa",
+"answer": "読まない",
+"alt": [
+"よまない"
+]
+},
+{
+"id": "gc_l8_kau_short_neg",
+"l": "L8",
+"type": "conj",
+"front": "買う → forma corta negativa",
+"answer": "買わない",
+"alt": [
+"かわない"
+]
+},
+{
+"id": "gg_l9_shortpast",
+"l": "L9",
+"type": "grammar",
+"question": "Forma corta en pasado",
+"explanation": "verbo 読む→読んだ; い-adj 可愛かった; な-adj/nombre + だった. Negativo pasado: 読まなかった, 可愛くなかった, 学生じゃなかった."
+},
+{
+"id": "gg_l9_modnoun",
+"l": "L9",
+"type": "grammar",
+"question": "Verbos que describen nombres",
+"explanation": "Una frase verbal antes del nombre lo modifica: 本を読んでいる学生 = el estudiante que está leyendo un libro."
+},
+{
+"id": "gg_l9_mou_mada",
+"l": "L9",
+"type": "grammar",
+"question": "もう / まだ (perfecto)",
+"explanation": "もう + pasado = 'ya' (hecho y sigue así). まだ + ～ていません = 'todavía no': まだ宿題をしていません。"
+},
+{
+"id": "gg_l9_kara2",
+"l": "L9",
+"type": "grammar",
+"question": "から = 'por lo tanto'",
+"explanation": "(explicación)から、(situación): puesto delante significa 'por eso': 明日試験があるから、今晩勉強します。"
+},
+{
+"id": "gc_l9_yomu_ta",
+"l": "L9",
+"type": "conj",
+"front": "読む → forma corta pasado",
+"answer": "読んだ",
+"alt": [
+"よんだ"
+]
+},
+{
+"id": "gc_l9_iku_ta",
+"l": "L9",
+"type": "conj",
+"front": "行く → forma corta pasado",
+"answer": "行った",
+"alt": [
+"いった"
+]
+},
+{
+"id": "gg_l10_tsumori",
+"l": "L10",
+"type": "grammar",
+"question": "'Tener intención de' (つもり)",
+"explanation": "(verbo forma corta) + つもりです: テニスをするつもりです。 Negativo: 来ないつもりです。"
+},
+{
+"id": "gg_l10_naru",
+"l": "L10",
+"type": "grammar",
+"question": "なる = volverse (cambio)",
+"explanation": "い-adj: 可愛くなる. な-adj/nombre + になる: 元気になる, 好きになりました (me ha empezado a gustar)."
+},
+{
+"id": "gg_l10_de_medio",
+"l": "L10",
+"type": "grammar",
+"question": "で de medio/instrumento",
+"explanation": "で + nombre = 'con / mediante': はしで食べます, バスで行きました, 日本語で話しましょう."
+},
+{
+"id": "gg_l10_ichiban",
+"l": "L10",
+"type": "grammar",
+"question": "Superlativo entre 3 o más",
+"explanation": "(grupo)の中で A が 一番 (adj): 季節の中で秋が一番好きです。 Entre dos: A と B と どちらのほうが…?"
+},
+{
+"id": "gc_l10_kirei_naru",
+"l": "L10",
+"type": "conj",
+"front": "きれい → 'volverse' (なる)",
+"answer": "きれいになる",
+"alt": [
+"きれいになります"
+]
+},
+{
+"id": "gg_l11_tai",
+"l": "L11",
+"type": "grammar",
+"question": "'Querer hacer' (たい)",
+"explanation": "raíz de verbo + たい: 行きたいです. Conjuga como い-adj. En 3ª persona no se afirma: usa と言っていました o たがっている."
+},
+{
+"id": "gg_l11_tari",
+"l": "L11",
+"type": "grammar",
+"question": "～たり～たりする",
+"explanation": "Lista NO exhaustiva ni ordenada de acciones: 買い物をしたり、晩ご飯を食べたりします。 Se forma con el pasado corto + り."
+},
+{
+"id": "gg_l11_kotogaaru",
+"l": "L11",
+"type": "grammar",
+"question": "'Haber hecho alguna vez' (ことがある)",
+"explanation": "(verbo corto pasado) + ことがある: 富士山に登ったことがあります = he subido al Fuji alguna vez."
+},
+{
+"id": "gg_l11_ya",
+"l": "L11",
+"type": "grammar",
+"question": "A や B",
+"explanation": "Enumera nombres como ejemplos ('A y B, entre otros'): 京都や奈良に行きました。"
+},
+{
+"id": "gc_l11_iku_tai",
+"l": "L11",
+"type": "conj",
+"front": "行く → 'quiero ir' (たい)",
+"answer": "行きたいです",
+"alt": [
+"いきたいです"
+]
+},
+{
+"id": "gg_l12_ndesu",
+"l": "L12",
+"type": "grammar",
+"question": "んです (tono explicativo)",
+"explanation": "forma corta + んです: aporta contexto/explicación. Tras nombre o な-adj añade な: 静かなんです, 学生なんです. んですか pide una aclaración."
+},
+{
+"id": "gg_l12_sugiru",
+"l": "L12",
+"type": "grammar",
+"question": "すぎる = demasiado",
+"explanation": "raíz de verbo + すぎる (食べすぎる, conjuga como る-verbo). い/な-adj pierden い/な: 高すぎます, 静かすぎます."
+},
+{
+"id": "gg_l12_hougaii",
+"l": "L12",
+"type": "grammar",
+"question": "Consejo (ほうがいいです)",
+"explanation": "Afirmativo con PASADO (食べたほうがいいです). Negativo con PRESENTE (休まないほうがいいです)."
+},
+{
+"id": "gg_l12_nakereba",
+"l": "L12",
+"type": "grammar",
+"question": "'Tener que' (なければいけません)",
+"explanation": "forma corta negativa sin い + ければいけません: 食べない→食べなければいけません. Coloquial: 食べなきゃいけません."
+},
+{
+"id": "gg_l12_deshou",
+"l": "L12",
+"type": "grammar",
+"question": "でしょう",
+"explanation": "'probablemente': 明日は雨が降るでしょう。 でしょうか pide opinión; en tono casual でしょう? = '¿verdad?'. Forma corta: だろう."
+},
+{
+"id": "gg_l12_node",
+"l": "L12",
+"type": "grammar",
+"question": "ので (causa)",
+"explanation": "Como から, da una explicación (algo más suave/formal). Tras nombre o な-adj añade な: 今日は日曜日なので、銀行は休みです。"
+},
+{
+"id": "gc_l12_taberu_nakereba",
+"l": "L12",
+"type": "conj",
+"front": "食べる → obligación (なければいけません)",
+"answer": "食べなければいけません",
+"alt": [
+"たべなければいけません"
+]
 }
 ]
 }

@@ -16,8 +16,15 @@ export const NIVELES = [
   { nivel: 10, titulo: 'Maestro', kanji: '名人' }
 ];
 
+// Umbrales de XP por nivel. Escala dura y de recorrido largo: llegar a Maestro
+// (nivel 10) exige dominar de verdad y con retención todo el N5, no solo pasar
+// las lecciones una vez. El XP nunca baja; al endurecer la curva, el nivel
+// mostrado se recalcula hacia abajo sin perder nada de lo ganado.
+const XP_NIVEL = [0, 500, 2000, 5000, 10000, 17000, 26000, 38000, 52000, 70000];
+
 export function xpParaNivel(n) {
-  return 60 * n * (n - 1); // nivel 2: 120 XP, nivel 3: 360, nivel 4: 720...
+  if (n < 1) return 0;
+  return XP_NIVEL[n - 1] ?? XP_NIVEL[XP_NIVEL.length - 1];
 }
 
 export function nivelDeXp(xp) {

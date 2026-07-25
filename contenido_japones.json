@@ -4482,6 +4482,1625 @@
 "reading": "わかる",
 "es": "entender",
 "dir": "es-jp"
+},
+{
+"id": "gk5_001",
+"l": "L5",
+"kanji": "新しい",
+"reading": "あたらしい",
+"es": "nuevo",
+"dir": "es-jp"
+},
+{
+"id": "gk5_002",
+"l": "L5",
+"kanji": "熱い",
+"reading": "あつい",
+"es": "caliente (cosa)",
+"dir": "es-jp"
+},
+{
+"id": "gk5_003",
+"l": "L5",
+"kanji": "暑い",
+"reading": "あつい",
+"es": "caluroso (clima)",
+"dir": "es-jp"
+},
+{
+"id": "gk5_004",
+"l": "L5",
+"kanji": "忙しい",
+"reading": "いそがしい",
+"es": "ocupado",
+"dir": "es-jp"
+},
+{
+"id": "gk5_005",
+"l": "L5",
+"kanji": "一緒に",
+"reading": "いっしょに",
+"es": "juntos",
+"dir": "es-jp"
+},
+{
+"id": "gk5_007",
+"l": "L5",
+"kanji": "Ｌサイズ",
+"reading": "エルサイズ",
+"es": "talla L",
+"dir": "es-jp"
+},
+{
+"id": "gk5_009",
+"l": "L5",
+"kanji": "お土産",
+"reading": "おみやげ",
+"es": "recuerdo (souvenir)",
+"dir": "es-jp"
+},
+{
+"id": "gk5_011",
+"l": "L5",
+"kanji": "泳ぐ",
+"reading": "およぐ",
+"es": "nadar",
+"dir": "es-jp"
+},
+{
+"id": "gk5_012",
+"l": "L5",
+"kanji": "かっこいい",
+"reading": "かっこいい",
+"es": "atractivo; con estilo",
+"dir": "es-jp"
+},
+{
+"id": "gk5_014",
+"l": "L5",
+"kanji": "嫌い",
+"reading": "きらい（な）",
+"es": "que no gusta; odiar",
+"dir": "es-jp"
+},
+{
+"id": "gk5_015",
+"l": "L5",
+"kanji": "きれい（な）",
+"reading": "きれい（な）",
+"es": "bonito; limpio",
+"dir": "es-jp"
+},
+{
+"id": "gk5_017",
+"l": "L5",
+"kanji": "元気",
+"reading": "げんき（な）",
+"es": "sano; con energía",
+"dir": "es-jp"
+},
+{
+"id": "gk5_019",
+"l": "L5",
+"kanji": "サーフィン",
+"reading": "サーフィン",
+"es": "surf",
+"dir": "es-jp"
+},
+{
+"id": "gk5_021",
+"l": "L5",
+"kanji": "静か",
+"reading": "しずか（な）",
+"es": "tranquilo; silencioso",
+"dir": "es-jp"
+},
+{
+"id": "gk5_023",
+"l": "L5",
+"kanji": "好き",
+"reading": "すき（な）",
+"es": "que gusta; gustar",
+"dir": "es-jp"
+},
+{
+"id": "gk5_024",
+"l": "L5",
+"kanji": "すごく",
+"reading": "すごく",
+"es": "muchísimo",
+"dir": "es-jp"
+},
+{
+"id": "gk5_025",
+"l": "L5",
+"kanji": "大嫌い",
+"reading": "だいきらい（な）",
+"es": "que se odia mucho",
+"dir": "es-jp"
+},
+{
+"id": "gk5_026",
+"l": "L5",
+"kanji": "大丈夫",
+"reading": "だいじょうぶ",
+"es": "tranquilo; no pasa nada",
+"dir": "es-jp"
+},
+{
+"id": "gk5_027",
+"l": "L5",
+"kanji": "大好き",
+"reading": "だいすき（な）",
+"es": "que encanta",
+"dir": "es-jp"
+},
+{
+"id": "gk5_029",
+"l": "L5",
+"kanji": "食べ物",
+"reading": "たべもの",
+"es": "comida",
+"dir": "es-jp"
+},
+{
+"id": "gk5_030",
+"l": "L5",
+"kanji": "誕生日",
+"reading": "たんじょうび",
+"es": "cumpleaños",
+"dir": "es-jp"
+},
+{
+"id": "gk5_032",
+"l": "L5",
+"kanji": "つまらない",
+"reading": "つまらない",
+"es": "aburrido",
+"dir": "es-jp"
+},
+{
+"id": "gk5_033",
+"l": "L5",
+"kanji": "出かける",
+"reading": "でかける",
+"es": "salir",
+"dir": "es-jp"
+},
+{
+"id": "gk5_034",
+"l": "L5",
+"kanji": "テスト",
+"reading": "テスト",
+"es": "examen",
+"dir": "es-jp"
+},
+{
+"id": "gk5_036",
+"l": "L5",
+"kanji": "とても",
+"reading": "とても",
+"es": "muy",
+"dir": "es-jp"
+},
+{
+"id": "gk5_037",
+"l": "L5",
+"kanji": "どんな",
+"reading": "どんな",
+"es": "qué tipo de…",
+"dir": "es-jp"
+},
+{
+"id": "gk5_038",
+"l": "L5",
+"kanji": "にぎやか（な）",
+"reading": "にぎやか（な）",
+"es": "animado; bullicioso",
+"dir": "es-jp"
+},
+{
+"id": "gk5_039",
+"l": "L5",
+"kanji": "飲み物",
+"reading": "のみもの",
+"es": "bebida",
+"dir": "es-jp"
+},
+{
+"id": "gk5_040",
+"l": "L5",
+"kanji": "乗る",
+"reading": "のる",
+"es": "subirse a; montar",
+"dir": "es-jp"
+},
+{
+"id": "gk5_041",
+"l": "L5",
+"kanji": "バス",
+"reading": "バス",
+"es": "autobús",
+"dir": "es-jp"
+},
+{
+"id": "gk5_042",
+"l": "L5",
+"kanji": "暇",
+"reading": "ひま（な）",
+"es": "libre (sin ocupaciones)",
+"dir": "es-jp"
+},
+{
+"id": "gk5_043",
+"l": "L5",
+"kanji": "古い",
+"reading": "ふるい",
+"es": "viejo (cosa)",
+"dir": "es-jp"
+},
+{
+"id": "gk5_045",
+"l": "L5",
+"kanji": "僕",
+"reading": "ぼく",
+"es": "yo (lo usan hombres)",
+"dir": "es-jp"
+},
+{
+"id": "gk5_046",
+"l": "L5",
+"kanji": "～枚",
+"reading": "～まい",
+"es": "… (contador de objetos planos)",
+"dir": "es-jp"
+},
+{
+"id": "gk5_047",
+"l": "L5",
+"kanji": "土産",
+"reading": "みやげ",
+"es": "recuerdo (souvenir)",
+"dir": "es-jp"
+},
+{
+"id": "gk5_049",
+"l": "L5",
+"kanji": "やさしい",
+"reading": "やさしい",
+"es": "fácil; amable",
+"dir": "es-jp"
+},
+{
+"id": "gk5_050",
+"l": "L5",
+"kanji": "安い",
+"reading": "やすい",
+"es": "barato",
+"dir": "es-jp"
+},
+{
+"id": "gk5_052",
+"l": "L5",
+"kanji": "やる",
+"reading": "やる",
+"es": "hacer",
+"dir": "es-jp"
+},
+{
+"id": "gk6_002",
+"l": "L6",
+"kanji": "遊ぶ",
+"reading": "あそぶ",
+"es": "jugar; pasarlo bien",
+"dir": "es-jp"
+},
+{
+"id": "gk6_003",
+"l": "L6",
+"kanji": "後で",
+"reading": "あとで",
+"es": "luego; más tarde",
+"dir": "es-jp"
+},
+{
+"id": "gk6_005",
+"l": "L6",
+"kanji": "エアコン",
+"reading": "エアコン",
+"es": "aire acondicionado",
+"dir": "es-jp"
+},
+{
+"id": "gk6_006",
+"l": "L6",
+"kanji": "お金",
+"reading": "おかね",
+"es": "dinero",
+"dir": "es-jp"
+},
+{
+"id": "gk6_007",
+"l": "L6",
+"kanji": "教える",
+"reading": "おしえる",
+"es": "enseñar",
+"dir": "es-jp"
+},
+{
+"id": "gk6_008",
+"l": "L6",
+"kanji": "降りる",
+"reading": "おりる",
+"es": "bajarse (de un vehículo)",
+"dir": "es-jp"
+},
+{
+"id": "gk6_009",
+"l": "L6",
+"kanji": "返す",
+"reading": "かえす",
+"es": "devolver (una cosa)",
+"dir": "es-jp"
+},
+{
+"id": "gk6_010",
+"l": "L6",
+"kanji": "角",
+"reading": "かど",
+"es": "esquina",
+"dir": "es-jp"
+},
+{
+"id": "gk6_011",
+"l": "L6",
+"kanji": "金",
+"reading": "かね",
+"es": "dinero",
+"dir": "es-jp"
+},
+{
+"id": "gk6_013",
+"l": "L6",
+"kanji": "漢字",
+"reading": "かんじ",
+"es": "kanji",
+"dir": "es-jp"
+},
+{
+"id": "gk6_014",
+"l": "L6",
+"kanji": "北",
+"reading": "きた",
+"es": "norte",
+"dir": "es-jp"
+},
+{
+"id": "gk6_015",
+"l": "L6",
+"kanji": "教科書",
+"reading": "きょうかしょ",
+"es": "libro de texto",
+"dir": "es-jp"
+},
+{
+"id": "gk6_016",
+"l": "L6",
+"kanji": "国",
+"reading": "くに",
+"es": "país; lugar de origen",
+"dir": "es-jp"
+},
+{
+"id": "gk6_018",
+"l": "L6",
+"kanji": "結構です",
+"reading": "けっこうです",
+"es": "está bien; no hace falta",
+"dir": "es-jp"
+},
+{
+"id": "gk6_019",
+"l": "L6",
+"kanji": "死ぬ",
+"reading": "しぬ",
+"es": "morir",
+"dir": "es-jp"
+},
+{
+"id": "gk6_021",
+"l": "L6",
+"kanji": "シャワー",
+"reading": "シャワー",
+"es": "ducha",
+"dir": "es-jp"
+},
+{
+"id": "gk6_022",
+"l": "L6",
+"kanji": "シャワーを浴びる",
+"reading": "シャワーをあびる",
+"es": "ducharse",
+"dir": "es-jp"
+},
+{
+"id": "gk6_024",
+"l": "L6",
+"kanji": "すぐ",
+"reading": "すぐ",
+"es": "enseguida",
+"dir": "es-jp"
+},
+{
+"id": "gk6_026",
+"l": "L6",
+"kanji": "大変",
+"reading": "たいへん（な）",
+"es": "duro; difícil (situación)",
+"dir": "es-jp"
+},
+{
+"id": "gk6_028",
+"l": "L6",
+"kanji": "たばこを吸う",
+"reading": "たばこをすう",
+"es": "fumar",
+"dir": "es-jp"
+},
+{
+"id": "gk6_030",
+"l": "L6",
+"kanji": "次",
+"reading": "つぎ",
+"es": "siguiente",
+"dir": "es-jp"
+},
+{
+"id": "gk6_032",
+"l": "L6",
+"kanji": "連れてくる",
+"reading": "つれてくる",
+"es": "traer (a alguien)",
+"dir": "es-jp"
+},
+{
+"id": "gk6_033",
+"l": "L6",
+"kanji": "手伝う",
+"reading": "てつだう",
+"es": "ayudar",
+"dir": "es-jp"
+},
+{
+"id": "gk6_035",
+"l": "L6",
+"kanji": "電話する",
+"reading": "でんわする",
+"es": "llamar por teléfono",
+"dir": "es-jp"
+},
+{
+"id": "gk6_036",
+"l": "L6",
+"kanji": "西",
+"reading": "にし",
+"es": "oeste",
+"dir": "es-jp"
+},
+{
+"id": "gk6_037",
+"l": "L6",
+"kanji": "荷物",
+"reading": "にもつ",
+"es": "equipaje",
+"dir": "es-jp"
+},
+{
+"id": "gk6_038",
+"l": "L6",
+"kanji": "入る",
+"reading": "はいる",
+"es": "entrar",
+"dir": "es-jp"
+},
+{
+"id": "gk6_039",
+"l": "L6",
+"kanji": "パソコン",
+"reading": "パソコン",
+"es": "ordenador (PC)",
+"dir": "es-jp"
+},
+{
+"id": "gk6_040",
+"l": "L6",
+"kanji": "東",
+"reading": "ひがし",
+"es": "este",
+"dir": "es-jp"
+},
+{
+"id": "gk6_041",
+"l": "L6",
+"kanji": "左側",
+"reading": "ひだりがわ",
+"es": "lado izquierdo",
+"dir": "es-jp"
+},
+{
+"id": "gk6_042",
+"l": "L6",
+"kanji": "一つ目",
+"reading": "ひとつめ",
+"es": "el primero",
+"dir": "es-jp"
+},
+{
+"id": "gk6_043",
+"l": "L6",
+"kanji": "二つ目",
+"reading": "ふたつめ",
+"es": "el segundo",
+"dir": "es-jp"
+},
+{
+"id": "gk6_044",
+"l": "L6",
+"kanji": "ページ",
+"reading": "ページ",
+"es": "página",
+"dir": "es-jp"
+},
+{
+"id": "gk6_045",
+"l": "L6",
+"kanji": "本当ですか",
+"reading": "ほんとうですか",
+"es": "¿de verdad?",
+"dir": "es-jp"
+},
+{
+"id": "gk6_046",
+"l": "L6",
+"kanji": "曲がる",
+"reading": "まがる",
+"es": "girar (a la derecha/izquierda)",
+"dir": "es-jp"
+},
+{
+"id": "gk6_048",
+"l": "L6",
+"kanji": "右側",
+"reading": "みぎがわ",
+"es": "lado derecho",
+"dir": "es-jp"
+},
+{
+"id": "gk6_049",
+"l": "L6",
+"kanji": "三つ目",
+"reading": "みっつめ",
+"es": "el tercero",
+"dir": "es-jp"
+},
+{
+"id": "gk6_050",
+"l": "L6",
+"kanji": "南",
+"reading": "みなみ",
+"es": "sur",
+"dir": "es-jp"
+},
+{
+"id": "gk6_051",
+"l": "L6",
+"kanji": "持つ",
+"reading": "もつ",
+"es": "llevar; sostener",
+"dir": "es-jp"
+},
+{
+"id": "gk6_052",
+"l": "L6",
+"kanji": "持ってくる",
+"reading": "もってくる",
+"es": "traer (una cosa)",
+"dir": "es-jp"
+},
+{
+"id": "gk6_053",
+"l": "L6",
+"kanji": "休む",
+"reading": "やすむ",
+"es": "faltar; descansar",
+"dir": "es-jp"
+},
+{
+"id": "gk6_054",
+"l": "L6",
+"kanji": "ゆっくり",
+"reading": "ゆっくり",
+"es": "despacio; con calma",
+"dir": "es-jp"
+},
+{
+"id": "gk6_055",
+"l": "L6",
+"kanji": "夜",
+"reading": "よる",
+"es": "noche",
+"dir": "es-jp"
+},
+{
+"id": "gk6_056",
+"l": "L6",
+"kanji": "忘れる",
+"reading": "わすれる",
+"es": "olvidar; dejarse",
+"dir": "es-jp"
+},
+{
+"id": "gk6_057",
+"l": "L6",
+"kanji": "渡る",
+"reading": "わたる",
+"es": "cruzar",
+"dir": "es-jp"
+},
+{
+"id": "gk7_003",
+"l": "L7",
+"kanji": "頭がいい",
+"reading": "あたまがいい",
+"es": "listo; inteligente",
+"dir": "es-jp"
+},
+{
+"id": "gk7_006",
+"l": "L7",
+"kanji": "歌",
+"reading": "うた",
+"es": "canción",
+"dir": "es-jp"
+},
+{
+"id": "gk7_007",
+"l": "L7",
+"kanji": "歌う",
+"reading": "うたう",
+"es": "cantar",
+"dir": "es-jp"
+},
+{
+"id": "gk7_008",
+"l": "L7",
+"kanji": "おじいさん",
+"reading": "おじいさん",
+"es": "abuelo; anciano",
+"dir": "es-jp"
+},
+{
+"id": "gk7_009",
+"l": "L7",
+"kanji": "お尻",
+"reading": "おしり",
+"es": "trasero",
+"dir": "es-jp"
+},
+{
+"id": "gk7_010",
+"l": "L7",
+"kanji": "男の人",
+"reading": "おとこのひと",
+"es": "hombre",
+"dir": "es-jp"
+},
+{
+"id": "gk7_011",
+"l": "L7",
+"kanji": "おなか",
+"reading": "おなか",
+"es": "barriga; estómago",
+"dir": "es-jp"
+},
+{
+"id": "gk7_012",
+"l": "L7",
+"kanji": "おばあさん",
+"reading": "おばあさん",
+"es": "abuela; anciana",
+"dir": "es-jp"
+},
+{
+"id": "gk7_013",
+"l": "L7",
+"kanji": "女の人",
+"reading": "おんなのひと",
+"es": "mujer",
+"dir": "es-jp"
+},
+{
+"id": "gk7_014",
+"l": "L7",
+"kanji": "～が",
+"reading": "～が",
+"es": "…, pero",
+"dir": "es-jp"
+},
+{
+"id": "gk7_015",
+"l": "L7",
+"kanji": "会社",
+"reading": "かいしゃ",
+"es": "empresa",
+"dir": "es-jp"
+},
+{
+"id": "gk7_017",
+"l": "L7",
+"kanji": "かける（眼鏡を）",
+"reading": "かける（めがねを）",
+"es": "ponerse (las gafas)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_019",
+"l": "L7",
+"kanji": "肩",
+"reading": "かた",
+"es": "hombro",
+"dir": "es-jp"
+},
+{
+"id": "gk7_020",
+"l": "L7",
+"kanji": "かぶる",
+"reading": "かぶる",
+"es": "ponerse (un gorro)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_021",
+"l": "L7",
+"kanji": "髪",
+"reading": "かみ",
+"es": "pelo; cabello",
+"dir": "es-jp"
+},
+{
+"id": "gk7_022",
+"l": "L7",
+"kanji": "かわいい",
+"reading": "かわいい",
+"es": "mono; lindo",
+"dir": "es-jp"
+},
+{
+"id": "gk7_023",
+"l": "L7",
+"kanji": "兄弟",
+"reading": "きょうだい",
+"es": "hermanos",
+"dir": "es-jp"
+},
+{
+"id": "gk7_024",
+"l": "L7",
+"kanji": "着る",
+"reading": "きる",
+"es": "ponerse (ropa de arriba)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_026",
+"l": "L7",
+"kanji": "首",
+"reading": "くび",
+"es": "cuello",
+"dir": "es-jp"
+},
+{
+"id": "gk7_027",
+"l": "L7",
+"kanji": "車",
+"reading": "くるま",
+"es": "coche",
+"dir": "es-jp"
+},
+{
+"id": "gk7_029",
+"l": "L7",
+"kanji": "サークル",
+"reading": "サークル",
+"es": "club (actividad)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_030",
+"l": "L7",
+"kanji": "知っています",
+"reading": "しっています",
+"es": "lo sé",
+"dir": "es-jp"
+},
+{
+"id": "gk7_031",
+"l": "L7",
+"kanji": "食堂",
+"reading": "しょくどう",
+"es": "comedor",
+"dir": "es-jp"
+},
+{
+"id": "gk7_032",
+"l": "L7",
+"kanji": "尻",
+"reading": "しり",
+"es": "trasero",
+"dir": "es-jp"
+},
+{
+"id": "gk7_033",
+"l": "L7",
+"kanji": "知りません",
+"reading": "しりません",
+"es": "no lo sé",
+"dir": "es-jp"
+},
+{
+"id": "gk7_034",
+"l": "L7",
+"kanji": "知る",
+"reading": "しる",
+"es": "llegar a conocer",
+"dir": "es-jp"
+},
+{
+"id": "gk7_035",
+"l": "L7",
+"kanji": "親切",
+"reading": "しんせつ（な）",
+"es": "amable",
+"dir": "es-jp"
+},
+{
+"id": "gk7_036",
+"l": "L7",
+"kanji": "住む",
+"reading": "すむ",
+"es": "vivir (residir)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_037",
+"l": "L7",
+"kanji": "背が高い",
+"reading": "せがたかい",
+"es": "alto (de estatura)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_038",
+"l": "L7",
+"kanji": "背が低い",
+"reading": "せがひくい",
+"es": "bajo (de estatura)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_039",
+"l": "L7",
+"kanji": "背中",
+"reading": "せなか",
+"es": "espalda",
+"dir": "es-jp"
+},
+{
+"id": "gk7_042",
+"l": "L7",
+"kanji": "デパート",
+"reading": "デパート",
+"es": "grandes almacenes",
+"dir": "es-jp"
+},
+{
+"id": "gk7_044",
+"l": "L7",
+"kanji": "何も",
+"reading": "なにも ＋ negative",
+"es": "nada (con negación)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_045",
+"l": "L7",
+"kanji": "～人",
+"reading": "～にん",
+"es": "… (contador de personas)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_046",
+"l": "L7",
+"kanji": "歯",
+"reading": "は",
+"es": "diente",
+"dir": "es-jp"
+},
+{
+"id": "gk7_047",
+"l": "L7",
+"kanji": "はく",
+"reading": "はく",
+"es": "ponerse (ropa de cintura para abajo)",
+"dir": "es-jp"
+},
+{
+"id": "gk7_048",
+"l": "L7",
+"kanji": "働く",
+"reading": "はたらく",
+"es": "trabajar",
+"dir": "es-jp"
+},
+{
+"id": "gk7_049",
+"l": "L7",
+"kanji": "鼻",
+"reading": "はな",
+"es": "nariz",
+"dir": "es-jp"
+},
+{
+"id": "gk7_051",
+"l": "L7",
+"kanji": "速い",
+"reading": "はやい",
+"es": "rápido",
+"dir": "es-jp"
+},
+{
+"id": "gk7_052",
+"l": "L7",
+"kanji": "一人",
+"reading": "ひとり",
+"es": "una persona",
+"dir": "es-jp"
+},
+{
+"id": "gk7_053",
+"l": "L7",
+"kanji": "二人",
+"reading": "ふたり",
+"es": "dos personas",
+"dir": "es-jp"
+},
+{
+"id": "gk7_054",
+"l": "L7",
+"kanji": "太っています",
+"reading": "ふとっています",
+"es": "estar gordito",
+"dir": "es-jp"
+},
+{
+"id": "gk7_055",
+"l": "L7",
+"kanji": "太る",
+"reading": "ふとる",
+"es": "engordar",
+"dir": "es-jp"
+},
+{
+"id": "gk7_056",
+"l": "L7",
+"kanji": "別に",
+"reading": "べつに ＋ negative",
+"es": "nada en especial",
+"dir": "es-jp"
+},
+{
+"id": "gk7_057",
+"l": "L7",
+"kanji": "便利",
+"reading": "べんり（な）",
+"es": "práctico; cómodo",
+"dir": "es-jp"
+},
+{
+"id": "gk7_058",
+"l": "L7",
+"kanji": "眉毛",
+"reading": "まゆげ",
+"es": "ceja",
+"dir": "es-jp"
+},
+{
+"id": "gk7_061",
+"l": "L7",
+"kanji": "胸",
+"reading": "むね",
+"es": "pecho",
+"dir": "es-jp"
+},
+{
+"id": "gk7_063",
+"l": "L7",
+"kanji": "眼鏡",
+"reading": "めがね",
+"es": "gafas",
+"dir": "es-jp"
+},
+{
+"id": "gk7_064",
+"l": "L7",
+"kanji": "もちろん",
+"reading": "もちろん",
+"es": "por supuesto",
+"dir": "es-jp"
+},
+{
+"id": "gk7_065",
+"l": "L7",
+"kanji": "やせています",
+"reading": "やせています",
+"es": "estar delgado",
+"dir": "es-jp"
+},
+{
+"id": "gk7_066",
+"l": "L7",
+"kanji": "やせる",
+"reading": "やせる",
+"es": "adelgazar",
+"dir": "es-jp"
+},
+{
+"id": "gk7_067",
+"l": "L7",
+"kanji": "指",
+"reading": "ゆび",
+"es": "dedo",
+"dir": "es-jp"
+},
+{
+"id": "gk7_068",
+"l": "L7",
+"kanji": "よかったら",
+"reading": "よかったら",
+"es": "si quieres",
+"dir": "es-jp"
+},
+{
+"id": "gk8_001",
+"l": "L8",
+"kanji": "アボカド",
+"reading": "アボカド",
+"es": "aguacate",
+"dir": "es-jp"
+},
+{
+"id": "gk8_004",
+"l": "L8",
+"kanji": "アレルギー",
+"reading": "アレルギー",
+"es": "alergia",
+"dir": "es-jp"
+},
+{
+"id": "gk8_005",
+"l": "L8",
+"kanji": "言う",
+"reading": "いう",
+"es": "decir",
+"dir": "es-jp"
+},
+{
+"id": "gk8_006",
+"l": "L8",
+"kanji": "いちご",
+"reading": "いちご",
+"es": "fresa",
+"dir": "es-jp"
+},
+{
+"id": "gk8_009",
+"l": "L8",
+"kanji": "ううん",
+"reading": "ううん",
+"es": "no (informal)",
+"dir": "es-jp"
+},
+{
+"id": "gk8_010",
+"l": "L8",
+"kanji": "うん",
+"reading": "うん",
+"es": "sí (informal)",
+"dir": "es-jp"
+},
+{
+"id": "gk8_011",
+"l": "L8",
+"kanji": "運転する",
+"reading": "うんてんする",
+"es": "conducir",
+"dir": "es-jp"
+},
+{
+"id": "gk8_012",
+"l": "L8",
+"kanji": "遅く",
+"reading": "おそく",
+"es": "tarde (hacer algo tarde)",
+"dir": "es-jp"
+},
+{
+"id": "gk8_013",
+"l": "L8",
+"kanji": "遅くなる",
+"reading": "おそくなる",
+"es": "retrasarse; hacerse tarde",
+"dir": "es-jp"
+},
+{
+"id": "gk8_014",
+"l": "L8",
+"kanji": "お風呂",
+"reading": "おふろ",
+"es": "baño (bañera)",
+"dir": "es-jp"
+},
+{
+"id": "gk8_015",
+"l": "L8",
+"kanji": "お風呂に入る",
+"reading": "おふろにはいる",
+"es": "bañarse",
+"dir": "es-jp"
+},
+{
+"id": "gk8_016",
+"l": "L8",
+"kanji": "思う",
+"reading": "おもう",
+"es": "pensar; creer",
+"dir": "es-jp"
+},
+{
+"id": "gk8_017",
+"l": "L8",
+"kanji": "カメラ",
+"reading": "カメラ",
+"es": "cámara",
+"dir": "es-jp"
+},
+{
+"id": "gk8_018",
+"l": "L8",
+"kanji": "カラオケ",
+"reading": "カラオケ",
+"es": "karaoke",
+"dir": "es-jp"
+},
+{
+"id": "gk8_019",
+"l": "L8",
+"kanji": "乾杯",
+"reading": "かんぱい",
+"es": "¡Salud! (brindis)",
+"dir": "es-jp"
+},
+{
+"id": "gk8_020",
+"l": "L8",
+"kanji": "気温",
+"reading": "きおん",
+"es": "temperatura (ambiente)",
+"dir": "es-jp"
+},
+{
+"id": "gk8_021",
+"l": "L8",
+"kanji": "キャベツ",
+"reading": "キャベツ",
+"es": "col; repollo",
+"dir": "es-jp"
+},
+{
+"id": "gk8_022",
+"l": "L8",
+"kanji": "牛肉",
+"reading": "ぎゅうにく",
+"es": "carne de vaca",
+"dir": "es-jp"
+},
+{
+"id": "gk8_023",
+"l": "L8",
+"kanji": "きゅうり",
+"reading": "きゅうり",
+"es": "pepino",
+"dir": "es-jp"
+},
+{
+"id": "gk8_024",
+"l": "L8",
+"kanji": "切る",
+"reading": "きる",
+"es": "cortar",
+"dir": "es-jp"
+},
+{
+"id": "gk8_025",
+"l": "L8",
+"kanji": "曇り",
+"reading": "くもり",
+"es": "nublado",
+"dir": "es-jp"
+},
+{
+"id": "gk8_026",
+"l": "L8",
+"kanji": "今朝",
+"reading": "けさ",
+"es": "esta mañana",
+"dir": "es-jp"
+},
+{
+"id": "gk8_027",
+"l": "L8",
+"kanji": "残念（ですね）",
+"reading": "ざんねん（ですね）",
+"es": "qué pena; qué lástima",
+"dir": "es-jp"
+},
+{
+"id": "gk8_028",
+"l": "L8",
+"kanji": "仕事",
+"reading": "しごと",
+"es": "trabajo; empleo",
+"dir": "es-jp"
+},
+{
+"id": "gk8_029",
+"l": "L8",
+"kanji": "じゃがいも",
+"reading": "じゃがいも",
+"es": "patata",
+"dir": "es-jp"
+},
+{
+"id": "gk8_030",
+"l": "L8",
+"kanji": "上手",
+"reading": "じょうず（な）",
+"es": "hábil; que se le da bien",
+"dir": "es-jp"
+},
+{
+"id": "gk8_031",
+"l": "L8",
+"kanji": "すいか",
+"reading": "すいか",
+"es": "sandía",
+"dir": "es-jp"
+},
+{
+"id": "gk8_032",
+"l": "L8",
+"kanji": "捨てる",
+"reading": "すてる",
+"es": "tirar (a la basura)",
+"dir": "es-jp"
+},
+{
+"id": "gk8_033",
+"l": "L8",
+"kanji": "スペイン",
+"reading": "スペイン",
+"es": "España",
+"dir": "es-jp"
+},
+{
+"id": "gk8_034",
+"l": "L8",
+"kanji": "洗濯する",
+"reading": "せんたくする",
+"es": "lavar la ropa",
+"dir": "es-jp"
+},
+{
+"id": "gk8_035",
+"l": "L8",
+"kanji": "掃除する",
+"reading": "そうじする",
+"es": "limpiar",
+"dir": "es-jp"
+},
+{
+"id": "gk8_036",
+"l": "L8",
+"kanji": "たまねぎ",
+"reading": "たまねぎ",
+"es": "cebolla",
+"dir": "es-jp"
+},
+{
+"id": "gk8_038",
+"l": "L8",
+"kanji": "天気予報",
+"reading": "てんきよほう",
+"es": "previsión del tiempo",
+"dir": "es-jp"
+},
+{
+"id": "gk8_039",
+"l": "L8",
+"kanji": "～度",
+"reading": "～ど",
+"es": "… grados",
+"dir": "es-jp"
+},
+{
+"id": "gk8_040",
+"l": "L8",
+"kanji": "どう",
+"reading": "どう",
+"es": "cómo",
+"dir": "es-jp"
+},
+{
+"id": "gk8_041",
+"l": "L8",
+"kanji": "所",
+"reading": "ところ",
+"es": "lugar",
+"dir": "es-jp"
+},
+{
+"id": "gk8_042",
+"l": "L8",
+"kanji": "トマト",
+"reading": "トマト",
+"es": "tomate",
+"dir": "es-jp"
+},
+{
+"id": "gk8_043",
+"l": "L8",
+"kanji": "鶏肉",
+"reading": "とりにく",
+"es": "carne de pollo",
+"dir": "es-jp"
+},
+{
+"id": "gk8_044",
+"l": "L8",
+"kanji": "なす",
+"reading": "なす",
+"es": "berenjena",
+"dir": "es-jp"
+},
+{
+"id": "gk8_046",
+"l": "L8",
+"kanji": "何か",
+"reading": "なにか",
+"es": "algo",
+"dir": "es-jp"
+},
+{
+"id": "gk8_047",
+"l": "L8",
+"kanji": "～について",
+"reading": "～について",
+"es": "sobre…; acerca de…",
+"dir": "es-jp"
+},
+{
+"id": "gk8_048",
+"l": "L8",
+"kanji": "にんじん",
+"reading": "にんじん",
+"es": "zanahoria",
+"dir": "es-jp"
+},
+{
+"id": "gk8_049",
+"l": "L8",
+"kanji": "パーティー",
+"reading": "パーティー",
+"es": "fiesta",
+"dir": "es-jp"
+},
+{
+"id": "gk8_050",
+"l": "L8",
+"kanji": "バーベキュー",
+"reading": "バーベキュー",
+"es": "barbacoa",
+"dir": "es-jp"
+},
+{
+"id": "gk8_051",
+"l": "L8",
+"kanji": "はし",
+"reading": "はし",
+"es": "palillos",
+"dir": "es-jp"
+},
+{
+"id": "gk8_052",
+"l": "L8",
+"kanji": "始める",
+"reading": "はじめる",
+"es": "empezar",
+"dir": "es-jp"
+},
+{
+"id": "gk8_053",
+"l": "L8",
+"kanji": "ハラルフード",
+"reading": "ハラルフード",
+"es": "comida halal",
+"dir": "es-jp"
+},
+{
+"id": "gk8_054",
+"l": "L8",
+"kanji": "晴れ",
+"reading": "はれ",
+"es": "soleado; despejado",
+"dir": "es-jp"
+},
+{
+"id": "gk8_055",
+"l": "L8",
+"kanji": "ピーナッツ",
+"reading": "ピーナッツ",
+"es": "cacahuete",
+"dir": "es-jp"
+},
+{
+"id": "gk8_056",
+"l": "L8",
+"kanji": "袋",
+"reading": "ふくろ",
+"es": "bolsa; saco",
+"dir": "es-jp"
+},
+{
+"id": "gk8_057",
+"l": "L8",
+"kanji": "豚肉",
+"reading": "ぶたにく",
+"es": "carne de cerdo",
+"dir": "es-jp"
+},
+{
+"id": "gk8_058",
+"l": "L8",
+"kanji": "ぶどう",
+"reading": "ぶどう",
+"es": "uva",
+"dir": "es-jp"
+},
+{
+"id": "gk8_060",
+"l": "L8",
+"kanji": "降る（雨/雪が）",
+"reading": "ふる（あめ",
+"es": "caer (lluvia/nieve)",
+"dir": "es-jp",
+"readingAlt": [
+"ゆきが）"
+]
+},
+{
+"id": "gk8_061",
+"l": "L8",
+"kanji": "風呂",
+"reading": "ふろ",
+"es": "baño (bañera)",
+"dir": "es-jp"
+},
+{
+"id": "gk8_062",
+"l": "L8",
+"kanji": "風呂に入る",
+"reading": "ふろにはいる",
+"es": "bañarse",
+"dir": "es-jp"
+},
+{
+"id": "gk8_063",
+"l": "L8",
+"kanji": "下手",
+"reading": "へた（な）",
+"es": "torpe; que se le da mal",
+"dir": "es-jp"
+},
+{
+"id": "gk8_064",
+"l": "L8",
+"kanji": "ホームステイ",
+"reading": "ホームステイ",
+"es": "estancia con familia local",
+"dir": "es-jp"
+},
+{
+"id": "gk8_065",
+"l": "L8",
+"kanji": "毎週",
+"reading": "まいしゅう",
+"es": "cada semana",
+"dir": "es-jp"
+},
+{
+"id": "gk8_066",
+"l": "L8",
+"kanji": "まだ ＋ negative",
+"reading": "まだ ＋ negative",
+"es": "todavía no",
+"dir": "es-jp"
+},
+{
+"id": "gk8_067",
+"l": "L8",
+"kanji": "みかん",
+"reading": "みかん",
+"es": "mandarina",
+"dir": "es-jp"
+},
+{
+"id": "gk8_068",
+"l": "L8",
+"kanji": "みんなで",
+"reading": "みんなで",
+"es": "todos juntos",
+"dir": "es-jp"
+},
+{
+"id": "gk8_069",
+"l": "L8",
+"kanji": "持っていく",
+"reading": "もっていく",
+"es": "llevar (una cosa)",
+"dir": "es-jp"
+},
+{
+"id": "gk8_070",
+"l": "L8",
+"kanji": "もも",
+"reading": "もも",
+"es": "melocotón",
+"dir": "es-jp"
+},
+{
+"id": "gk8_071",
+"l": "L8",
+"kanji": "有名",
+"reading": "ゆうめい（な）",
+"es": "famoso",
+"dir": "es-jp"
+},
+{
+"id": "gk8_072",
+"l": "L8",
+"kanji": "雪",
+"reading": "ゆき",
+"es": "nieve",
+"dir": "es-jp"
+},
+{
+"id": "gk8_074",
+"l": "L8",
+"kanji": "りんご",
+"reading": "りんご",
+"es": "manzana",
+"dir": "es-jp"
 }
 ]
 }

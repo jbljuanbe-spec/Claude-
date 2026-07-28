@@ -8961,6 +8961,266 @@
 "alt": [
 "たべなければいけません"
 ]
+},
+{
+"id": "g_dakara_vs_kara",
+"l": "General",
+"type": "grammar",
+"question": "¿だから es lo mismo que から?",
+"explanation": "No — から se pega al final de la razón dentro de la misma frase (忙しいから、行きません). だから empieza una frase NUEVA retomando lo dicho (忙しいです。だからいきません = por eso). Versión educada: ですから."
+},
+{
+"id": "g_node_na_vs_da",
+"l": "General",
+"type": "grammar",
+"question": "¿学生だから y 学生なので, por qué cambia だ a な?",
+"explanation": "Con sustantivos/adjetivos -な, から se pega tras だ (学生だから), pero ので SUSTITUYE だ por な (学生なので). \"学生だので\" no existe."
+},
+{
+"id": "g_sonotame",
+"l": "General",
+"type": "grammar",
+"question": "¿Cuál es el equivalente formal de だから (a juego con ので)?",
+"explanation": "そのため (\"por esa razón\") — registro formal, pareja de ので. だから es más directo/casual, pareja natural de から. No existe \"だので\"."
+},
+{
+"id": "g_youninaru",
+"l": "General",
+"type": "grammar",
+"question": "¿Diferencia entre ~ようになる y 始める para \"empezar a hacer algo\"?",
+"explanation": "~ようになる = cambio de hábito/capacidad con el tiempo (野菜を食べるようになりました = ahora como verduras, antes no). 始める = inicio literal de una acción concreta ahora mismo (食べ始めました = empecé a comer, en este momento)."
+},
+{
+"id": "l_youninaru_vocab",
+"l": "General",
+"kanji": "～ようになる",
+"reading": "ようになる",
+"es": "llegar a hacer algo (cambio de hábito)",
+"dir": "jp-es"
+},
+{
+"id": "v2_kaigi",
+"l": "General",
+"kanji": "会議",
+"reading": "かいぎ",
+"es": "reunión",
+"dir": "es-jp"
+},
+{
+"id": "v2_computer",
+"l": "General",
+"kanji": "コンピューター",
+"reading": "こんぴゅーたー",
+"es": "ordenador",
+"dir": "es-jp"
+},
+{
+"id": "v2_shorui",
+"l": "General",
+"kanji": "書類",
+"reading": "しょるい",
+"es": "documentos",
+"dir": "jp-es"
+},
+{
+"id": "v2_sora",
+"l": "General",
+"kanji": "空",
+"reading": "そら",
+"es": "cielo",
+"dir": "es-jp"
+},
+{
+"id": "v2_taiyou",
+"l": "General",
+"kanji": "太陽",
+"reading": "たいよう",
+"es": "sol",
+"dir": "jp-es"
+},
+{
+"id": "v2_tsuki",
+"l": "General",
+"kanji": "月",
+"reading": "つき",
+"es": "luna",
+"dir": "es-jp"
+},
+{
+"id": "v2_hoshi",
+"l": "General",
+"kanji": "星",
+"reading": "ほし",
+"es": "estrella",
+"dir": "jp-es"
+},
+{
+"id": "v2_kaze",
+"l": "General",
+"kanji": "風",
+"reading": "かぜ",
+"es": "viento",
+"dir": "es-jp"
+},
+{
+"id": "v2_kumo",
+"l": "General",
+"kanji": "雲",
+"reading": "くも",
+"es": "nube",
+"dir": "es-jp"
+},
+{
+"id": "v2_ki",
+"l": "General",
+"kanji": "木",
+"reading": "き",
+"es": "árbol",
+"dir": "jp-es"
+},
+{
+"id": "v2_kyoushitsu",
+"l": "General",
+"kanji": "教室",
+"reading": "きょうしつ",
+"es": "aula",
+"dir": "jp-es"
+},
+{
+"id": "v2_tesuto",
+"l": "General",
+"kanji": "テスト",
+"reading": "てすと",
+"es": "examen/test",
+"dir": "jp-es"
+},
+{
+"id": "v2_kotae",
+"l": "General",
+"kanji": "答え",
+"reading": "こたえ",
+"es": "respuesta",
+"dir": "es-jp"
+},
+{
+"id": "v2_netsu",
+"l": "General",
+"kanji": "熱",
+"reading": "ねつ",
+"es": "fiebre",
+"dir": "es-jp"
+},
+{
+"id": "v2_omoidasu",
+"l": "General",
+"kanji": "思い出す",
+"reading": "おもいだす",
+"es": "recordar",
+"dir": "es-jp"
+},
+{
+"id": "v2_kangaeru",
+"l": "General",
+"kanji": "考える",
+"reading": "かんがえる",
+"es": "pensar/considerar",
+"dir": "jp-es"
+},
+{
+"id": "v2_tsutaeru",
+"l": "General",
+"kanji": "伝える",
+"reading": "つたえる",
+"es": "comunicar/transmitir",
+"dir": "jp-es"
+},
+{
+"id": "v2_yotei",
+"l": "General",
+"kanji": "予定",
+"reading": "よてい",
+"es": "planes/agenda",
+"dir": "es-jp"
+},
+{
+"id": "v2_yakusoku",
+"l": "General",
+"kanji": "約束",
+"reading": "やくそく",
+"es": "promesa/quedada",
+"dir": "jp-es"
+},
+{
+"id": "v2_mise",
+"l": "General",
+"kanji": "店",
+"reading": "みせ",
+"es": "tienda",
+"dir": "es-jp"
+},
+{
+"id": "v2_shashinki",
+"l": "General",
+"kanji": "カメラ",
+"reading": "かめら",
+"es": "cámara",
+"dir": "jp-es"
+},
+{
+"id": "v2_keitai",
+"l": "General",
+"kanji": "携帯電話",
+"reading": "けいたいでんわ",
+"es": "teléfono móvil",
+"dir": "es-jp"
+},
+{
+"id": "v2_hima",
+"l": "General",
+"kanji": "暇(な)",
+"reading": "ひま",
+"es": "libre/desocupado",
+"dir": "jp-es"
+},
+{
+"id": "v2_taihen",
+"l": "General",
+"kanji": "大変(な)",
+"reading": "たいへん",
+"es": "difícil/duro (situación)",
+"dir": "es-jp"
+},
+{
+"id": "v2_daijoubu",
+"l": "General",
+"kanji": "大丈夫(な)",
+"reading": "だいじょうぶ",
+"es": "estar bien/vale",
+"dir": "jp-es"
+},
+{
+"id": "v2_fuben",
+"l": "General",
+"kanji": "不便(な)",
+"reading": "ふべん",
+"es": "incómodo/poco práctico",
+"dir": "es-jp"
+},
+{
+"id": "v2_benri2",
+"l": "General",
+"kanji": "便利(な)",
+"reading": "べんり",
+"es": "práctico/conveniente",
+"dir": "jp-es"
+},
+{
+"id": "v2_kantan",
+"l": "General",
+"kanji": "簡単(な)",
+"reading": "かんたん",
+"es": "fácil/sencillo",
+"dir": "es-jp"
 }
 ]
 }

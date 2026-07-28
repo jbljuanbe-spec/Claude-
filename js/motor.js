@@ -595,6 +595,32 @@ export function metaApp() {
   return { meta: estado.meta, lecciones: estado.lecciones };
 }
 
+// ---------- Gimnasio de vocabulario ----------
+// 30 palabras NUEVAS (nunca estudiadas) cada día, estables durante el día y
+// renovadas al día siguiente. Entrenarlas las mete en el SRS (responder), así
+// que dejan de ser 'nueva' y mañana entran palabras frescas.
+export async function vocabularioDelDia(objetivo = 30) {
+  const hoy = hoyLocal();
+  const g = estado.juego.gimnasio;
+  let ids;
+  if (g && g.fecha === hoy && Array.isArray(g.ids)) {
+    ids = g.ids.filter(id => estado.cards[id]);
+  } else {
+    const nuevas = Object.entries(estado.cards)
+      .filter(([id, c]) => c.tipo === 'vocab' && (estado.progreso[id]?.estado || 'nueva') === 'nueva')
+      .map(([id]) => id);
+    barajar(nuevas);
+    ids = nuevas.slice(0, objetivo);
+    estado.juego.gimnasio = { fecha: hoy, ids };
+    await guardar('juego', estado.juego);
+  }
+  const restantesNuevas = Object.entries(estado.cards)
+    .filter(([id, c]) => c.tipo === 'vocab' && (estado.progreso[id]?.estado || 'nueva') === 'nueva').length;
+  const cartas = ids.map(id => ({ id, ...estado.cards[id] }));
+  return { fecha: hoy, objetivo, cartas, restantesNuevas };
+}
+
+
 // ---------- Copia de seguridad ----------
 export function exportarCopia() {
   return {

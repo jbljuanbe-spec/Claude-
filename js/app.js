@@ -5,6 +5,7 @@ import { vistaRepaso } from './review.js';
 import { vistaLecciones } from './lecciones.js';
 import { vistaViaje } from './viaje.js';
 import { vistaPerfil } from './perfil.js';
+import { vistaVocabulario } from './vocabulario.js';
 
 const vista = document.getElementById('vista');
 const badge = document.getElementById('badge-pendientes');
@@ -30,6 +31,7 @@ async function refrescarBadge() {
 const RUTAS = {
   viaje: () => vistaViaje(vista, avisar),
   lecciones: () => vistaLecciones(vista, avisar, refrescarBadge),
+  vocabulario: () => vistaVocabulario(vista, avisar, refrescarBadge),
   repaso: () => vistaRepaso(vista, refrescarBadge),
   perfil: () => vistaPerfil(vista, avisar)
 };

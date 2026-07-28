@@ -1541,6 +1541,70 @@ input { font-family: inherit; }
 }
 .transicion-lottie-anim svg { display: block; }
 
+/* ---------- Vocabulario: gimnasio ---------- */
+.gym-progreso {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: var(--tinta-suave);
+  font-size: 0.9rem;
+}
+.gym-progreso-barra {
+  flex: 1;
+  height: 8px;
+  background: var(--borde);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.gym-progreso-barra > div {
+  height: 100%;
+  background: var(--acento);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+.gym-series {
+  display: grid;
+  gap: 12px;
+}
+.gym-serie {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px 18px;
+}
+.gym-serie.hecha { background: var(--exito-fondo); border-color: transparent; }
+.gym-serie-num {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--acento-claro);
+  color: var(--acento);
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.gym-serie.hecha .gym-serie-num { background: transparent; }
+.gym-serie-cuerpo { flex: 1; min-width: 0; }
+.gym-serie-cuerpo b { display: block; font-size: 1rem; }
+.gym-serie-cuerpo span { color: var(--tinta-suave); font-size: 0.86rem; }
+
+.gym-lectura {
+  font-family: var(--fuente-jp);
+  color: var(--acento);
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+.gym-significado { font-size: 1.15rem; color: var(--tinta); }
+.gym-significado.grande { font-size: 1.7rem; font-weight: 600; margin: 10px 0 20px; }
+.gym-revelado { margin-top: 4px; }
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }

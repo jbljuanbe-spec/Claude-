@@ -108,6 +108,11 @@ export const api = {
     return motor.datosPerfil();
   },
 
+  vocabularioDia: async (objetivo) => {
+    await asegurar();
+    return motor.vocabularioDelDia(objetivo);
+  },
+
   superarLeccion: async (codigo) => {
     await asegurar();
     return motor.superarLeccion(codigo);

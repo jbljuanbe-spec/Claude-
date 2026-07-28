@@ -1541,6 +1541,17 @@ input { font-family: inherit; }
 }
 .transicion-lottie-anim svg { display: block; }
 
+/* Comprensión de lectura (estilo examen) */
+.texto-lectura {
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 6px 0 18px;
+  line-height: 2;
+  font-size: 1.05rem;
+}
+
 /* ---------- Vocabulario: gimnasio ---------- */
 .gym-progreso {
   display: flex;

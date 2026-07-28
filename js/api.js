@@ -44,7 +44,7 @@ export const api = {
     // Fusiona el banco original (data/ejercicios.json) con el archivo curado
     // nuevo (data/ejercicios_japones.json), normalizando su esquema. Añade el
     // tipo 'produccion_larga'. Si la red falla, cae a la última copia cacheada.
-    const base = { particulas: [], ordenar: [], traduccion: [], produccion_larga: [], escritura: [], voz: [] };
+    const base = { particulas: [], ordenar: [], traduccion: [], produccion_larga: [], escritura: [], voz: [], kanji_lectura: [], bunpo_choice: [], lectura_parrafo: [] };
     const v = Date.now();
     try {
       const res = await fetch(`data/ejercicios.json?v=${v}`);
@@ -82,6 +82,15 @@ export const api = {
         }));
       }
     } catch { /* seguimos con lo que haya */ }
+    try {
+      const res = await fetch(`data/ejercicios_examen_japones.json?v=${v}`);
+      if (res.ok) {
+        const d = await res.json();
+        base.kanji_lectura.push(...(d.kanji_lectura || []));
+        base.bunpo_choice.push(...(d.bunpo_choice || []));
+        base.lectura_parrafo.push(...(d.lectura_parrafo || []));
+      }
+    } catch { /* seguimos con lo que haya */ }
 
     const total = Object.values(base).reduce((n, a) => n + a.length, 0);
     if (total > 0) {
@@ -89,7 +98,7 @@ export const api = {
       return base;
     }
     const cacheado = await leer('ejercicios');
-    if (cacheado) return { produccion_larga: [], escritura: [], voz: [], ...cacheado };
+    if (cacheado) return { produccion_larga: [], escritura: [], voz: [], kanji_lectura: [], bunpo_choice: [], lectura_parrafo: [], ...cacheado };
     throw new Error('No se pudieron cargar los ejercicios');
   },
 

@@ -206,12 +206,27 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     items.push(...barajar(conj).slice(0, Math.round(objetivo * 0.2)).map(t => ({ tipo: 'conjescrita', e: t })));
     const restantes = Math.max(2, objetivo - items.length);
     items.push(...barajar(vocab).slice(0, restantes).map(t => ({ tipo: 'vocabescrito', e: t })));
-    // Reserva plaza para las cartas curadas de hablar/escribir/producción: son
-    // el objetivo del ejercicio y no deben caer al recortar a 'objetivo'.
+
+    // Ejercicios estilo examen JLPT (globales, no por lección): lectura de kanji,
+    // hueco gramatical y comprensión de párrafo. Pocos en práctica normal; más en
+    // el examen de ciudad (formato oficial N5).
+    const mapKanji = x => ({ tipo: 'kanji', e: { kanji: x.kanji, reading: x.respuesta, es: x.significado || '' }, opciones: x.opciones });
+    const mapBunpo = x => ({ tipo: 'particula', e: { frase: x.frase_con_hueco, opciones: x.opciones, correcta: x.respuesta, trad: '', explicacion: '' } });
+    const extra = [];
+    const nK = conError ? 3 : 1, nB = conError ? 3 : 1;
+    extra.push(...barajar([...(ejercicios.kanji_lectura || [])]).slice(0, nK).map(mapKanji));
+    extra.push(...barajar([...(ejercicios.bunpo_choice || [])]).slice(0, nB).map(mapBunpo));
+    if (conError) {
+      const par = barajar([...(ejercicios.lectura_parrafo || [])])[0];
+      if (par) extra.push(...par.preguntas.map(q => ({ tipo: 'lectura', e: { texto: par.texto, pregunta: q.pregunta, opciones: q.opciones, respuesta: q.respuesta } })));
+    }
+
+    // Reserva plaza para las cartas curadas (hablar/escribir/producción) y para
+    // los ejercicios de examen: son el objetivo y no deben caer al recortar.
     const esCurada = x => x.tipo === 'voz' || x.tipo === 'escritura' || x.tipo === 'produccion';
     const curadas = barajar(items.filter(esCurada)).slice(0, Math.max(2, Math.round(objetivo * 0.4)));
     const resto = barajar(items.filter(x => !esCurada(x)));
-    return barajar([...curadas, ...resto].slice(0, objetivo));
+    return barajar([...extra, ...curadas, ...resto].slice(0, objetivo));
   }
 
   function iniciarExamen(ciudadId) {
@@ -332,6 +347,18 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
           <div class="vista-kana" id="vista-kana"></div>
           <div class="fila-botones"><button class="boton boton-primario" id="btn-comprobar">Comprobar</button></div>`);
         prepararEscrito(v => comprobarTraduccion(v, t.respuestas), () => { hablar(t.respuestas[0]); return `<div class="feedback-respuesta" lang="ja">${esc(t.respuestas[0])}</div>`; });
+
+      } else if (item.tipo === 'lectura') {
+        marco(`<div class="tarjeta-chips"><span class="chip chip-tipo-grammar">Comprensión</span></div>
+          <p class="tarjeta-instruccion">Lee el texto y responde</p>
+          <div class="texto-lectura" lang="ja">${esc(t.texto)}</div>
+          <p class="frase-ejercicio" lang="ja" style="font-size:1.15rem">${esc(t.pregunta)}</p>
+          <div class="opciones-particulas">${barajar([...t.opciones]).map(o => `<button class="opcion-particula" data-op="${esc(o)}" lang="ja">${esc(o)}</button>`).join('')}</div>`);
+        cont.querySelectorAll('.opcion-particula').forEach(b => b.onclick = () => {
+          const correcto = b.dataset.op === t.respuesta;
+          cont.querySelectorAll('.opcion-particula').forEach(x => { x.disabled = true; if (x.dataset.op === t.respuesta) x.classList.add('elegida-bien'); else if (x === b && !correcto) x.classList.add('elegida-mal'); });
+          pie(cont.querySelector('.tarjeta'), correcto, `<div class="feedback-respuesta" lang="ja">${esc(t.respuesta)}</div>`);
+        });
 
       } else if (item.tipo === 'produccion') {
         marco(`<div class="tarjeta-chips"><span class="chip chip-tipo-grammar">Producción larga</span></div>

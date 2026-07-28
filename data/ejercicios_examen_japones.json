@@ -1,0 +1,561 @@
+{
+  "meta": {
+    "nota": "Extension de ejercicios_japones.json con 3 tipos nuevos, formato mas cercano al examen JLPT real. kanji_lectura = eleccion multiple de lectura de un kanji/palabra aislada, sin contexto (estilo Moji-Goi). lectura_parrafo = texto corto + varias preguntas de comprension multiple choice. bunpo_choice = frase con hueco + 4 opciones gramaticales (formato oficial N5, no solo particulas sueltas).",
+    "leccion_actual": 12
+  },
+  "kanji_lectura": [
+    {
+      "id": "k_01",
+      "kanji": "今日",
+      "opciones": [
+        "きょう",
+        "こんにち",
+        "きんじつ",
+        "こんじつ"
+      ],
+      "respuesta": "きょう",
+      "significado": "hoy"
+    },
+    {
+      "id": "k_02",
+      "kanji": "学生",
+      "opciones": [
+        "がくせい",
+        "がくしょう",
+        "かくせい",
+        "がくせん"
+      ],
+      "respuesta": "がくせい",
+      "significado": "estudiante"
+    },
+    {
+      "id": "k_03",
+      "kanji": "先生",
+      "opciones": [
+        "せんせい",
+        "せんしょう",
+        "さきせい",
+        "せいせん"
+      ],
+      "respuesta": "せんせい",
+      "significado": "profesor/a"
+    },
+    {
+      "id": "k_04",
+      "kanji": "医者",
+      "opciones": [
+        "いしゃ",
+        "いじゃ",
+        "いしや",
+        "おいしゃ"
+      ],
+      "respuesta": "いしゃ",
+      "significado": "médico/a"
+    },
+    {
+      "id": "k_05",
+      "kanji": "辞書",
+      "opciones": [
+        "じしょ",
+        "じしょう",
+        "じいしょ",
+        "しじょ"
+      ],
+      "respuesta": "じしょ",
+      "significado": "diccionario"
+    },
+    {
+      "id": "k_06",
+      "kanji": "時計",
+      "opciones": [
+        "とけい",
+        "じけい",
+        "ときい",
+        "とっけい"
+      ],
+      "respuesta": "とけい",
+      "significado": "reloj"
+    },
+    {
+      "id": "k_07",
+      "kanji": "食べる",
+      "opciones": [
+        "たべる",
+        "くべる",
+        "しょくべる",
+        "たへる"
+      ],
+      "respuesta": "たべる",
+      "significado": "comer"
+    },
+    {
+      "id": "k_08",
+      "kanji": "飲む",
+      "opciones": [
+        "のむ",
+        "いんむ",
+        "のぶ",
+        "のうむ"
+      ],
+      "respuesta": "のむ",
+      "significado": "beber"
+    },
+    {
+      "id": "k_09",
+      "kanji": "帰る",
+      "opciones": [
+        "かえる",
+        "きえる",
+        "かいる",
+        "かける"
+      ],
+      "respuesta": "かえる",
+      "significado": "volver a casa"
+    },
+    {
+      "id": "k_10",
+      "kanji": "勉強",
+      "opciones": [
+        "べんきょう",
+        "べんきょ",
+        "めんきょう",
+        "べんぎょう"
+      ],
+      "respuesta": "べんきょう",
+      "significado": "estudiar"
+    },
+    {
+      "id": "k_11",
+      "kanji": "家族",
+      "opciones": [
+        "かぞく",
+        "かそく",
+        "けぞく",
+        "かぞうく"
+      ],
+      "respuesta": "かぞく",
+      "significado": "familia"
+    },
+    {
+      "id": "k_12",
+      "kanji": "結婚",
+      "opciones": [
+        "けっこん",
+        "けつこん",
+        "げっこん",
+        "けっこう"
+      ],
+      "respuesta": "けっこん",
+      "significado": "matrimonio/casarse"
+    },
+    {
+      "id": "k_13",
+      "kanji": "天気",
+      "opciones": [
+        "てんき",
+        "てんぎ",
+        "てんけ",
+        "でんき"
+      ],
+      "respuesta": "てんき",
+      "significado": "tiempo (clima)"
+    },
+    {
+      "id": "k_14",
+      "kanji": "料理",
+      "opciones": [
+        "りょうり",
+        "りょり",
+        "りょうい",
+        "りゅうり"
+      ],
+      "respuesta": "りょうり",
+      "significado": "cocina/comida"
+    },
+    {
+      "id": "k_15",
+      "kanji": "写真",
+      "opciones": [
+        "しゃしん",
+        "しゃじん",
+        "しゃうしん",
+        "じゃしん"
+      ],
+      "respuesta": "しゃしん",
+      "significado": "foto"
+    },
+    {
+      "id": "k_16",
+      "kanji": "宿題",
+      "opciones": [
+        "しゅくだい",
+        "しゅくたい",
+        "じゅくだい",
+        "しくだい"
+      ],
+      "respuesta": "しゅくだい",
+      "significado": "deberes"
+    },
+    {
+      "id": "k_17",
+      "kanji": "経験",
+      "opciones": [
+        "けいけん",
+        "けいげん",
+        "げいけん",
+        "けいけい"
+      ],
+      "respuesta": "けいけん",
+      "significado": "experiencia"
+    },
+    {
+      "id": "k_18",
+      "kanji": "旅行",
+      "opciones": [
+        "りょこう",
+        "りょこ",
+        "りゅこう",
+        "りょうこう"
+      ],
+      "respuesta": "りょこう",
+      "significado": "viaje"
+    },
+    {
+      "id": "k_19",
+      "kanji": "病院",
+      "opciones": [
+        "びょういん",
+        "びょうい",
+        "ひょういん",
+        "びょいん"
+      ],
+      "respuesta": "びょういん",
+      "significado": "hospital"
+    },
+    {
+      "id": "k_20",
+      "kanji": "銀行",
+      "opciones": [
+        "ぎんこう",
+        "ぎんこ",
+        "きんこう",
+        "ぎんごう"
+      ],
+      "respuesta": "ぎんこう",
+      "significado": "banco"
+    }
+  ],
+  "lectura_parrafo": [
+    {
+      "id": "para_01",
+      "texto": "私は毎日7時に起きます。朝ご飯を食べて、会社へ行きます。仕事は9時から始まります。私は会社員です。仕事はあまり難しくないですが、時々忙しいです。今日はあまり忙しくないので、早く帰ることができます。",
+      "preguntas": [
+        {
+          "pregunta": "何時に起きますか。",
+          "opciones": [
+            "6時",
+            "7時",
+            "8時",
+            "9時"
+          ],
+          "respuesta": "7時"
+        },
+        {
+          "pregunta": "仕事は何時から始まりますか。",
+          "opciones": [
+            "7時",
+            "8時",
+            "9時",
+            "10時"
+          ],
+          "respuesta": "9時"
+        },
+        {
+          "pregunta": "今日はどうですか。",
+          "opciones": [
+            "とても忙しい",
+            "あまり忙しくない",
+            "休みです",
+            "病気です"
+          ],
+          "respuesta": "あまり忙しくない"
+        }
+      ]
+    },
+    {
+      "id": "para_02",
+      "texto": "先週、家族と沖縄に旅行に行きました。海はとてもきれいでした。魚料理を食べたり、泳いだりしました。天気もよかったです。でも、旅行は短かったので、また行きたいです。",
+      "preguntas": [
+        {
+          "pregunta": "どこに旅行に行きましたか。",
+          "opciones": [
+            "東京",
+            "沖縄",
+            "京都",
+            "大阪"
+          ],
+          "respuesta": "沖縄"
+        },
+        {
+          "pregunta": "海はどうでしたか。",
+          "opciones": [
+            "汚かった",
+            "きれいだった",
+            "寒かった",
+            "小さかった"
+          ],
+          "respuesta": "きれいだった"
+        },
+        {
+          "pregunta": "旅行はどうでしたか。",
+          "opciones": [
+            "長かった",
+            "短かった",
+            "高かった",
+            "悪かった"
+          ],
+          "respuesta": "短かった"
+        }
+      ]
+    },
+    {
+      "id": "para_03",
+      "texto": "田中さんは私の友達です。田中さんは会社員で、毎日忙しいです。でも、週末はいつも映画を見たり、料理をしたりします。田中さんは日本語の先生になりたいと言っていました。私も日本語を勉強するのが好きなので、田中さんとよく話します。",
+      "preguntas": [
+        {
+          "pregunta": "田中さんの仕事は何ですか。",
+          "opciones": [
+            "先生",
+            "会社員",
+            "医者",
+            "学生"
+          ],
+          "respuesta": "会社員"
+        },
+        {
+          "pregunta": "田中さんは週末何をしますか。",
+          "opciones": [
+            "仕事をする",
+            "映画を見たり料理をしたりする",
+            "旅行に行く",
+            "何もしない"
+          ],
+          "respuesta": "映画を見たり料理をしたりする"
+        },
+        {
+          "pregunta": "田中さんは将来何になりたいですか。",
+          "opciones": [
+            "医者",
+            "会社員",
+            "日本語の先生",
+            "料理人"
+          ],
+          "respuesta": "日本語の先生"
+        }
+      ]
+    },
+    {
+      "id": "para_04",
+      "texto": "私は猫が好きです。でも、犬はあまり好きじゃないです。今、猫を二匹飼っています。一匹は白くて、もう一匹は黒いです。毎日、猫と遊んでから、仕事に行きます。猫がいるので、毎日楽しいです。",
+      "preguntas": [
+        {
+          "pregunta": "猫は何匹いますか。",
+          "opciones": [
+            "一匹",
+            "二匹",
+            "三匹",
+            "四匹"
+          ],
+          "respuesta": "二匹"
+        },
+        {
+          "pregunta": "猫の色は何ですか。",
+          "opciones": [
+            "白と黒",
+            "赤と青",
+            "茶色",
+            "全部白"
+          ],
+          "respuesta": "白と黒"
+        },
+        {
+          "pregunta": "仕事に行く前に何をしますか。",
+          "opciones": [
+            "朝ご飯を食べる",
+            "猫と遊ぶ",
+            "勉強する",
+            "本を読む"
+          ],
+          "respuesta": "猫と遊ぶ"
+        }
+      ]
+    }
+  ],
+  "bunpo_choice": [
+    {
+      "id": "b_01",
+      "frase_con_hueco": "すみません、これ＿いくらですか。",
+      "opciones": [
+        "は",
+        "が",
+        "を",
+        "も"
+      ],
+      "respuesta": "は"
+    },
+    {
+      "id": "b_02",
+      "frase_con_hueco": "私は毎日日本語＿勉強します。",
+      "opciones": [
+        "は",
+        "が",
+        "を",
+        "に"
+      ],
+      "respuesta": "を"
+    },
+    {
+      "id": "b_03",
+      "frase_con_hueco": "図書館＿本を読みます。",
+      "opciones": [
+        "に",
+        "へ",
+        "で",
+        "と"
+      ],
+      "respuesta": "で"
+    },
+    {
+      "id": "b_04",
+      "frase_con_hueco": "7時＿起きます。",
+      "opciones": [
+        "を",
+        "で",
+        "に",
+        "へ"
+      ],
+      "respuesta": "に"
+    },
+    {
+      "id": "b_05",
+      "frase_con_hueco": "友達＿映画を見ます。",
+      "opciones": [
+        "を",
+        "に",
+        "で",
+        "と"
+      ],
+      "respuesta": "と"
+    },
+    {
+      "id": "b_06",
+      "frase_con_hueco": "机の上に本が＿。",
+      "opciones": [
+        "います",
+        "あります",
+        "いました",
+        "します"
+      ],
+      "respuesta": "あります"
+    },
+    {
+      "id": "b_07",
+      "frase_con_hueco": "この料理は＿ないです。",
+      "opciones": [
+        "美味し",
+        "美味しく",
+        "美味しい",
+        "美味しかっ"
+      ],
+      "respuesta": "美味しく"
+    },
+    {
+      "id": "b_08",
+      "frase_con_hueco": "昨日、映画を＿。",
+      "opciones": [
+        "見ます",
+        "見ました",
+        "見ません",
+        "見ない"
+      ],
+      "respuesta": "見ました"
+    },
+    {
+      "id": "b_09",
+      "frase_con_hueco": "ここで写真を撮っ＿いいですか。",
+      "opciones": [
+        "たら",
+        "ても",
+        "から",
+        "ながら"
+      ],
+      "respuesta": "ても"
+    },
+    {
+      "id": "b_10",
+      "frase_con_hueco": "今、勉強し＿。",
+      "opciones": [
+        "ます",
+        "ています",
+        "ました",
+        "たいです"
+      ],
+      "respuesta": "ています"
+    },
+    {
+      "id": "b_11",
+      "frase_con_hueco": "明日は雨＿と思います。",
+      "opciones": [
+        "です",
+        "だ",
+        "な",
+        "の"
+      ],
+      "respuesta": "だ"
+    },
+    {
+      "id": "b_12",
+      "frase_con_hueco": "日本語を勉強している＿がたくさんいます。",
+      "opciones": [
+        "学生は",
+        "学生が",
+        "学生を",
+        "学生の"
+      ],
+      "respuesta": "学生が"
+    },
+    {
+      "id": "b_13",
+      "frase_con_hueco": "日本はスペイン＿小さいです。",
+      "opciones": [
+        "より",
+        "の方が",
+        "一番",
+        "ほど"
+      ],
+      "respuesta": "より"
+    },
+    {
+      "id": "b_14",
+      "frase_con_hueco": "沖縄に行った＿があります。",
+      "opciones": [
+        "の",
+        "こと",
+        "とき",
+        "もの"
+      ],
+      "respuesta": "こと"
+    },
+    {
+      "id": "b_15",
+      "frase_con_hueco": "友達は私にプレゼントを＿。",
+      "opciones": [
+        "あげました",
+        "もらいました",
+        "くれました",
+        "かりました"
+      ],
+      "respuesta": "くれました"
+    }
+  ]
+}

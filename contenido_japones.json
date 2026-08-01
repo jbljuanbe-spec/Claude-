@@ -2,7 +2,7 @@
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
     "metodo": "Genki I completo (L1-12) + parche gramatica N5 + vocabulario tematico ampliado + Genki II desde L13, foco en consolidacion",
-    "leccion_actual": 13,
+    "leccion_actual": 14,
     "lecciones_por_ciudad": 6,
     "orden_ciudades": [
       "Tokio",
@@ -102,6 +102,12 @@
       "ciudad": "Kioto",
       "barrio": "Distrito financiero de Kioto",
       "emoji": "🏦"
+    },
+    "L14": {
+      "titulo": "かもしれません",
+      "ciudad": "Kioto",
+      "barrio": "Fushimi Inari",
+      "emoji": "⛩️"
     }
   },
   "tarjetas": [
@@ -3043,6 +3049,144 @@
       "type": "grammar",
       "question": "¿てくださいませんか es más o menos educado que てください?",
       "explanation": "Más educado — petición muy formal. 教えてくださいませんか = ¿podría explicarme...? Fuente: Marugoto A2."
+    },
+    {
+      "id": "g_yasui_nikui",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿Cómo digo que algo es \"fácil/difícil de hacer\"?",
+      "explanation": "Raíz de ます + やすい (fácil) / にくい (difícil). 使いやすいです = es fácil de usar. 使いにくいです = es difícil de usar. Fuente: Marugoto A2-2."
+    },
+    {
+      "id": "g_dame",
+      "l": "General",
+      "type": "grammar",
+      "question": "¿だめです es lo mismo que てはいけません?",
+      "explanation": "Mismo significado (prohibido), だめです es más casual/hablado: 飲んじゃだめです = no se puede beber (informal) = 飲んではいけません (más formal). Fuente: Marugoto A2-2."
+    },
+    {
+      "id": "g_rareru_potencial_pasiva",
+      "l": "L13",
+      "type": "grammar",
+      "question": "¿られる es potencial o pasiva?",
+      "explanation": "Depende del grupo. Grupo 2 (食べられる): AMBAS cosas, misma forma, se distingue por contexto. Grupo 1: son formas distintas (読む→読める=potencial / 読まれる=pasiva). する: できる(potencial) / される(pasiva)."
+    },
+    {
+      "id": "g_dekiru_sujeto",
+      "l": "L13",
+      "type": "grammar",
+      "question": "¿できるよ significa \"yo puedo\" o \"tú puedes\"?",
+      "explanation": "Ambiguo sin contexto (japonés omite sujetos). Para animar a alguien (\"tú puedes\"): 君ならできるよ. Para ofrecerte tú (\"yo sí puedo\"): 私にできるよ. Para ofrecer ayuda: 手伝おうか？"
+    },
+    {
+      "id": "g_volitiva",
+      "l": "L13",
+      "type": "grammar",
+      "question": "¿Cómo se forma la forma volitiva (equivalente casual de ましょう)?",
+      "explanation": "Grupo 1: u final→お+う (行く→行こう, 話す→話そう). Grupo 2: quita る, añade よう (食べる→食べよう). Irregulares: する→しよう, 来る→来よう. Con か = pregunta casual (行こうか = ¿vamos?)."
+    },
+    {
+      "id": "c_vol_tetsudau",
+      "l": "L13",
+      "type": "conj",
+      "front": "手伝う → forma volitiva",
+      "answer": "手伝おう",
+      "alt": [
+        "てつだおう"
+      ]
+    },
+    {
+      "id": "c_vol_iku",
+      "l": "L13",
+      "type": "conj",
+      "front": "行く → forma volitiva",
+      "answer": "行こう",
+      "alt": [
+        "いこう"
+      ]
+    },
+    {
+      "id": "c_vol_taberu",
+      "l": "L13",
+      "type": "conj",
+      "front": "食べる → forma volitiva",
+      "answer": "食べよう",
+      "alt": [
+        "たべよう"
+      ]
+    },
+    {
+      "id": "g_tai_vs_volitiva",
+      "l": "L13",
+      "type": "grammar",
+      "question": "¿En qué se diferencian たい y la forma volitiva (行こう)?",
+      "explanation": "たい = deseo/ganas (\"tengo ganas de...\"), habla de un sentimiento, mayormente para uno mismo. Volitiva = decisión de actuar o invitación (\"voy a.../vamos a...\"), hermana casual de ましょう. 手伝いたいですか (¿tienes ganas de ayudar?) ≠ 手伝おうか (¿te ayudo?)."
+    },
+    {
+      "id": "g_ranuki",
+      "l": "L13",
+      "type": "grammar",
+      "question": "¿来れる es incorrecto? Lo oigo mucho.",
+      "explanation": "Es 'ら抜き言葉' (quitar la ら) — muy común en japonés hablado real, casi todo el mundo lo usa. La forma \"oficial\"/formal es 来られる(こられる). Para exámenes usa 来られる; para hablar natural, 来れる es totalmente válido."
+    },
+    {
+      "id": "g_kanou_negacion",
+      "l": "L13",
+      "type": "grammar",
+      "question": "¿Cómo se niega un verbo potencial (書ける, 話せる)?",
+      "explanation": "Como un verbo normal, con ない — NUNCA con じゃない (eso es para sustantivos/-な). 書ける→書けない, 話せる→話せない. Un verbo potencial ya es un verbo (tipo ru-verbo), no una excepción."
+    },
+    {
+      "id": "l12_purezento_fix",
+      "l": "L12",
+      "kanji": "プレゼント",
+      "reading": "ぷれぜんと",
+      "es": "regalo (ojo: con ゼ, no セ)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "g_morau_vs_kureru_perspectiva",
+      "l": "L12",
+      "type": "grammar",
+      "question": "¿もらう se usa después de くれる? ¿Son sustitutos?",
+      "explanation": "No van en secuencia — son el MISMO hecho contado desde 2 perspectivas. くれる: el tema es el que da (田中さんは私にくれました). もらう: el tema es el que recibe (私は田中さんにもらいました). Eliges una según de quién hable tu frase, no las dos juntas."
+    },
+    {
+      "id": "g_kamoshirenai",
+      "l": "L14",
+      "type": "grammar",
+      "question": "¿Diferencia entre でしょう y かもしれません?",
+      "explanation": "でしょう = bastante seguro/probable. かもしれません = posibilidad más débil (\"no lo sé seguro, pero podría ser\"). Ambos van directos tras sustantivo/-な sin だ. Forma corta: かもしれない."
+    },
+    {
+      "id": "l14_tenkiyohou",
+      "l": "L14",
+      "kanji": "天気予報",
+      "reading": "てんきよほう",
+      "es": "pronóstico del tiempo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l14_kanousei",
+      "l": "L14",
+      "kanji": "可能性",
+      "reading": "かのうせい",
+      "es": "posibilidad",
+      "dir": "jp-es"
+    },
+    {
+      "id": "g_garu",
+      "l": "L14",
+      "type": "grammar",
+      "question": "¿Cómo digo que OTRA persona (no yo) quiere algo?",
+      "explanation": "たい/ほしい son casi solo para ti mismo. Para otra persona: がる (conjuga como u-verbo, normal en ~がっている). たがっている / ほしがっている. 田中さんは新しい車をほしがっています = Tanaka quiere un coche (observación desde fuera)."
+    },
+    {
+      "id": "g_kazu_mo_shika",
+      "l": "L14",
+      "type": "grammar",
+      "question": "¿Qué diferencia hay entre número+も y número+しか?",
+      "explanation": "número+も (sin negativo) = \"nada menos que X\" (sorprende, mucho): 20人も来ました. número+しか+negativo = \"solo X, nada más\" (decepciona, poco): 一冊しかありません."
     }
   ]
 }

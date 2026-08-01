@@ -198,20 +198,55 @@ function pickKana(respuestas, ja) {
   return (respuestas || []).find(soloKana) || '';
 }
 
+// Reconstruye una lectura aproximada usando el vocabulario ya conocido de la
+// app (kanji -> reading de las tarjetas), para las frases que no traen kana
+// propia (p. ej. los ejercicios de "ordenar"). No es un diccionario completo,
+// así que el kanji que no reconozca se deja tal cual en vez de fallar.
+function construirIndiceVocab(tarjetas) {
+  const mapa = new Map();
+  for (const t of tarjetas) {
+    if (t.tipo !== 'vocab' || !t.kanji || !t.reading) continue;
+    if (!/[一-龯]/.test(t.kanji)) continue;      // solo entradas con kanji real
+    if (!mapa.has(t.kanji)) mapa.set(t.kanji, t.reading);
+  }
+  return mapa;
+}
+function lecturaToken(token, vocabMap) {
+  if (!/[一-龯]/.test(token)) return token;       // ya es kana, no hace falta nada
+  let out = '', i = 0;
+  while (i < token.length) {
+    let hallado = false;
+    for (let largo = Math.min(6, token.length - i); largo >= 1; largo--) {
+      const trozo = token.slice(i, i + largo);
+      if (vocabMap.has(trozo)) { out += vocabMap.get(trozo); i += largo; hallado = true; break; }
+    }
+    if (!hallado) { out += token[i]; i++; }
+  }
+  return out;
+}
+function lecturaAproximada(tokens, vocabMap) {
+  const partes = tokens.map(t => lecturaToken(t, vocabMap));
+  const texto = partes.join('');
+  return /[一-龯]/.test(texto) ? '' : texto;      // si quedó kanji sin resolver, no la mostramos como definitiva
+}
+
 export async function vistaShadowing(cont) {
   cont.innerHTML = '<p class="vista-sub">Preparando frases...</p>';
-  const ej = await api.ejercicios();
+  const [ej, bib] = await Promise.all([api.ejercicios(), api.biblioteca()]);
+  const vocabMap = construirIndiceVocab(bib.tarjetas);
   const frases = [];
   const vistas = new Set();
-  const add = (ja, kana, es) => {
+  const add = (ja, kana, es, tokens) => {
     ja = (ja || '').trim();
     if (!ja || vistas.has(ja)) return;
     vistas.add(ja);
-    frases.push({ ja, kana: kana || (soloKana(ja) ? ja : ''), es: es || '' });
+    let k = kana || (soloKana(ja) ? ja : '');
+    if (!k) k = lecturaAproximada(tokens || [ja], vocabMap);
+    frases.push({ ja, kana: k, es: es || '' });
   };
   (ej.voz || []).forEach(v => add(v.objetivo, pickKana(v.respuestas, v.objetivo), v.es));
   (ej.escritura || []).forEach(e => add((e.respuestas || [])[0], pickKana(e.respuestas), e.es));
-  (ej.ordenar || []).forEach(o => add((o.tokens || o.palabras || []).join(''), '', o.es));
+  (ej.ordenar || []).forEach(o => { const toks = o.tokens || o.palabras || []; add(toks.join(''), (o.kana || []).join(''), o.es, toks); });
   (ej.traduccion || []).forEach(t => add((t.respuestas || [])[0], pickKana(t.respuestas), t.es));
 
   if (!frases.length) {

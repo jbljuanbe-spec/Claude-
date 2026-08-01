@@ -14,12 +14,12 @@
     {"id": "p_l7_01", "leccion": "L7", "frase_con_hueco": "映画を見___行きます。", "opciones": ["に", "を", "で"], "respuesta": "に", "traduccion": "Voy a ver una película."}
   ],
   "ordenar": [
-    {"id": "o_l9_01", "leccion": "L9", "palabras": ["昨日", "買った", "本", "は", "面白い", "です"], "traduccion": "El libro que compré ayer es interesante."},
-    {"id": "o_l9_02", "leccion": "L9", "palabras": ["日本語", "を", "勉強している", "学生", "が", "います"], "traduccion": "Hay un estudiante que está estudiando japonés."},
-    {"id": "o_l10_01", "leccion": "L10", "palabras": ["電車", "は", "バス", "より", "便利です"], "traduccion": "El tren es más práctico que el autobús."},
-    {"id": "o_l10_02", "leccion": "L10", "palabras": ["季節", "の", "中で", "秋", "が", "一番好きです"], "traduccion": "De las estaciones, el otoño es la que más me gusta."},
-    {"id": "o_l6_01", "leccion": "L6", "palabras": ["朝ご飯", "を", "食べて", "学校", "へ", "行きます"], "traduccion": "Desayuno y voy a la escuela."},
-    {"id": "o_l8_01", "leccion": "L8", "palabras": ["田中さん", "は", "忙しい", "と", "言っていました"], "traduccion": "Tanaka dijo que estaba ocupado."}
+    {"id": "o_l9_01", "leccion": "L9", "palabras": ["昨日", "買った", "本", "は", "面白い", "です"], "kana": ["きのう", "かった", "ほん", "は", "おもしろい", "です"], "traduccion": "El libro que compré ayer es interesante."},
+    {"id": "o_l9_02", "leccion": "L9", "palabras": ["日本語", "を", "勉強している", "学生", "が", "います"], "kana": ["にほんご", "を", "べんきょうしている", "がくせい", "が", "います"], "traduccion": "Hay un estudiante que está estudiando japonés."},
+    {"id": "o_l10_01", "leccion": "L10", "palabras": ["電車", "は", "バス", "より", "便利です"], "kana": ["でんしゃ", "は", "バス", "より", "べんりです"], "traduccion": "El tren es más práctico que el autobús."},
+    {"id": "o_l10_02", "leccion": "L10", "palabras": ["季節", "の", "中で", "秋", "が", "一番好きです"], "kana": ["きせつ", "の", "なかで", "あき", "が", "いちばんすきです"], "traduccion": "De las estaciones, el otoño es la que más me gusta."},
+    {"id": "o_l6_01", "leccion": "L6", "palabras": ["朝ご飯", "を", "食べて", "学校", "へ", "行きます"], "kana": ["あさごはん", "を", "たべて", "がっこう", "へ", "いきます"], "traduccion": "Desayuno y voy a la escuela."},
+    {"id": "o_l8_01", "leccion": "L8", "palabras": ["田中さん", "は", "忙しい", "と", "言っていました"], "kana": ["たなかさん", "は", "いそがしい", "と", "いっていました"], "traduccion": "Tanaka dijo que estaba ocupado."}
   ],
   "produccion_larga": [
     {"id": "w_l9_01", "leccion": "L9", "prompt": "Describe algo que todavía no has hecho esta semana, usando まだ~ていません.", "ejemplo_respuesta": "今週、まだ運動していません。", "puntos_gramaticales": ["まだ~ていません"]},

@@ -66,7 +66,7 @@ export const api = {
           correcta: e.respuesta, explicacion: e.explicacion || ''
         }));
         (d.ordenar || []).forEach(e => base.ordenar.push({
-          id: e.id, l: e.leccion, es: e.traduccion || '', tokens: e.palabras || []
+          id: e.id, l: e.leccion, es: e.traduccion || '', tokens: e.palabras || [], kana: e.kana || []
         }));
         (d.produccion_larga || []).forEach(e => base.produccion_larga.push({
           id: e.id, l: e.leccion, prompt: e.prompt || '',

@@ -56,3 +56,10 @@ function enrutar() {
 window.addEventListener('hashchange', enrutar);
 enrutar();
 refrescarBadge();
+
+// PWA: instalable y disponible sin conexión una vez visitada.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js').catch(() => {});
+  });
+}

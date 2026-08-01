@@ -6,6 +6,7 @@ import { vistaLecciones } from './lecciones.js';
 import { vistaViaje } from './viaje.js';
 import { vistaPerfil } from './perfil.js';
 import { vistaVocabulario } from './vocabulario.js';
+import { vistaShadowing } from './shadowing.js';
 
 const vista = document.getElementById('vista');
 const badge = document.getElementById('badge-pendientes');
@@ -32,6 +33,7 @@ const RUTAS = {
   viaje: () => vistaViaje(vista, avisar),
   lecciones: () => vistaLecciones(vista, avisar, refrescarBadge),
   vocabulario: () => vistaVocabulario(vista, avisar, refrescarBadge),
+  shadowing: () => vistaShadowing(vista, avisar),
   repaso: () => vistaRepaso(vista, refrescarBadge),
   perfil: () => vistaPerfil(vista, avisar)
 };

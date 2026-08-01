@@ -50,12 +50,13 @@ input { font-family: inherit; }
 .cabecera-inner {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 20px;
-  height: 64px;
+  padding: 10px 20px;
+  min-height: 64px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 10px 16px;
 }
 
 .marca {
@@ -64,6 +65,8 @@ input { font-family: inherit; }
   gap: 10px;
   text-decoration: none;
   color: var(--tinta);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .marca-kanji {
@@ -71,16 +74,19 @@ input { font-family: inherit; }
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--acento);
+  white-space: nowrap;
 }
 
 .marca-nombre {
   font-weight: 600;
   font-size: 1.05rem;
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .navegacion {
   display: flex;
+  flex-wrap: wrap;
   gap: 4px;
 }
 
@@ -89,8 +95,9 @@ input { font-family: inherit; }
   color: var(--tinta-suave);
   font-weight: 500;
   font-size: 0.95rem;
-  padding: 7px 14px;
+  padding: 7px 12px;
   border-radius: 99px;
+  white-space: nowrap;
   transition: background 0.18s, color 0.18s;
   display: flex;
   align-items: center;
@@ -1615,6 +1622,80 @@ input { font-family: inherit; }
 .gym-significado { font-size: 1.15rem; color: var(--tinta); }
 .gym-significado.grande { font-size: 1.7rem; font-weight: 600; margin: 10px 0 20px; }
 .gym-revelado { margin-top: 4px; }
+
+/* ---------- Shadowing ---------- */
+.sh-caja {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 28px 26px 22px;
+  text-align: center;
+}
+.sh-cab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--tinta-suave);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+.sh-estado { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+.sh-punto { width: 9px; height: 9px; border-radius: 99px; display: inline-block; }
+.sh-punto.oye { background: var(--acento); animation: sh-latido 1s ease-in-out infinite; }
+.sh-punto.bucle { background: var(--exito); animation: sh-latido 0.7s ease-in-out infinite; }
+.sh-punto.turno { background: var(--ambar); }
+@keyframes sh-latido { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } }
+
+.sh-frase {
+  font-family: var(--fuente-jp);
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+}
+.sh-lectura { color: var(--acento); font-size: 1.15rem; margin-top: 10px; }
+.sh-es { color: var(--tinta-suave); margin-top: 12px; font-size: 1rem; }
+
+.sh-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 26px 0 18px;
+}
+.sh-btn { width: 46px; height: 46px; font-size: 1.15rem; }
+.sh-btn.grande { width: 64px; height: 64px; font-size: 1.6rem; background: var(--acento); color: #fff; border-color: transparent; }
+.sh-btn.grande:hover { background: var(--acento-oscuro); }
+.sh-bucle.activo { background: var(--exito); color: #fff; border-color: transparent; }
+
+.sh-opciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid var(--borde);
+}
+.sh-veloc, .sh-lecttipo { display: inline-flex; gap: 4px; background: var(--fondo); border-radius: 99px; padding: 3px; }
+.sh-vel {
+  border: none;
+  background: transparent;
+  color: var(--tinta-suave);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  border-radius: 99px;
+  transition: background 0.15s, color 0.15s;
+}
+.sh-vel.activo { background: var(--superficie); color: var(--acento); box-shadow: var(--sombra); }
+.sh-check { display: inline-flex; align-items: center; gap: 6px; color: var(--tinta-suave); font-size: 0.9rem; }
+.sh-ayuda { color: var(--tinta-tenue); font-size: 0.8rem; margin-top: 16px; }
+.sh-ayuda b { color: var(--tinta-suave); }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }

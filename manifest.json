@@ -1,0 +1,17 @@
+{
+  "name": "Kotoba 言葉 — Japonés",
+  "short_name": "Kotoba",
+  "description": "Estudia japonés (Genki, N5) con lecciones, repaso espaciado, vocabulario, shadowing y un mapa de Japón que va desbloqueándose.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f5f5f3",
+  "theme_color": "#414f96",
+  "lang": "es",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

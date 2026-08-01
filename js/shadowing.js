@@ -25,15 +25,25 @@ if ('speechSynthesis' in window) { elegirVoz(); speechSynthesis.onvoiceschanged 
 
 export function haySpeech() { return 'speechSynthesis' in window; }
 
+// iOS/iPadOS Safari tiene un fallo conocido: si speak() llega justo detrás de
+// cancel(), el motor de voz se come las primeras sílabas. En el resto de
+// navegadores (PC, Android) esto no pasa, así que el parche solo actúa aquí.
+function esIOS() {
+  const ua = navigator.userAgent || '';
+  return /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
 // Devuelve un reproductor con la misma interfaz reproducir/parar, elija el
 // backend que elija. Para migrar a audio nativo basta con dar `frase.audio`.
 export function crearReproductor() {
   const audio = new Audio();
   let backend = null; // 'tts' | 'audio'
+  let token = 0; // invalida una reproducción en espera si llega otra antes de sonar
   return {
     // frase: { ja, audio? }  opts: { rate, onFin }
     reproducir(frase, { rate = 1, onFin } = {}) {
       this.parar();
+      const miToken = ++token;
       if (frase.audio) {
         backend = 'audio';
         audio.src = frase.audio;
@@ -43,15 +53,25 @@ export function crearReproductor() {
         audio.play().catch(() => onFin && onFin());
       } else if ('speechSynthesis' in window) {
         backend = 'tts';
-        const u = new SpeechSynthesisUtterance(frase.ja || '');
-        u.lang = 'ja-JP';
-        u.rate = rate;
-        if (vozJa) u.voice = vozJa;
-        u.onend = () => onFin && onFin();
-        speechSynthesis.speak(u);
+        const hablar = () => {
+          if (miToken !== token) return; // se paró o llegó otra frase mientras esperaba
+          elegirVoz(); // en iOS a veces la lista de voces se puebla tarde
+          // Espacio inicial solo en iOS: le da al motor un respiro para
+          // "arrancar" antes de la primera sílaba real, sin afectar a nada
+          // más (ni al texto mostrado, ni a la comparación de respuestas).
+          const texto = esIOS() ? ' ' + (frase.ja || '') : (frase.ja || '');
+          const u = new SpeechSynthesisUtterance(texto);
+          u.lang = 'ja-JP';
+          u.rate = rate;
+          if (vozJa) u.voice = vozJa;
+          u.onend = () => onFin && onFin();
+          speechSynthesis.speak(u);
+        };
+        if (esIOS()) setTimeout(hablar, 150); else hablar();
       } else if (onFin) { onFin(); }
     },
     parar() {
+      token++;
       if ('speechSynthesis' in window) speechSynthesis.cancel();
       try { audio.pause(); } catch { /* nada */ }
     }

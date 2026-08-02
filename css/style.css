@@ -1559,6 +1559,30 @@ input { font-family: inherit; }
   font-size: 1.05rem;
 }
 
+/* Resalta en naranja el punto gramatical de la lección dentro de un texto. */
+.resaltado-gramatica {
+  background: var(--ambar-fondo);
+  color: var(--ambar);
+  border-radius: 5px;
+  padding: 1px 5px;
+  font-weight: 600;
+}
+
+/* Texto con frases pulsables para identificar cuál tiene el error. */
+.texto-candidatos { line-height: 2.4; }
+.palabra-candidata {
+  display: inline-block;
+  cursor: pointer;
+  border-bottom: 2px dashed var(--borde);
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.palabra-candidata:hover { background: var(--acento-claro); border-color: var(--acento); }
+.palabra-candidata.candidata-bien { background: var(--exito-fondo); border-color: var(--exito); color: var(--exito); }
+.palabra-candidata.candidata-mal { background: var(--error-fondo); border-color: var(--error); color: var(--error); }
+.palabra-candidata.candidata-desactivada { cursor: default; pointer-events: none; }
+
 /* ---------- Vocabulario: gimnasio ---------- */
 .gym-progreso {
   display: flex;

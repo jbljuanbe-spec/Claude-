@@ -44,7 +44,7 @@ export const api = {
     // Fusiona el banco original (data/ejercicios.json) con el archivo curado
     // nuevo (data/ejercicios_japones.json), normalizando su esquema. Añade el
     // tipo 'produccion_larga'. Si la red falla, cae a la última copia cacheada.
-    const base = { particulas: [], ordenar: [], traduccion: [], produccion_larga: [], escritura: [], voz: [], kanji_lectura: [], bunpo_choice: [], lectura_parrafo: [] };
+    const base = { particulas: [], ordenar: [], traduccion: [], produccion_larga: [], escritura: [], voz: [], kanji_lectura: [], bunpo_choice: [], lectura_parrafo: [], texto_error: [], texto_gramatica: [] };
     const v = Date.now();
     try {
       const res = await fetch(`data/ejercicios.json?v=${v}`);
@@ -89,6 +89,8 @@ export const api = {
         base.kanji_lectura.push(...(d.kanji_lectura || []));
         base.bunpo_choice.push(...(d.bunpo_choice || []));
         base.lectura_parrafo.push(...(d.lectura_parrafo || []));
+        base.texto_error.push(...(d.texto_error || []));
+        base.texto_gramatica.push(...(d.texto_gramatica || []));
       }
     } catch { /* seguimos con lo que haya */ }
 
@@ -98,7 +100,7 @@ export const api = {
       return base;
     }
     const cacheado = await leer('ejercicios');
-    if (cacheado) return { produccion_larga: [], escritura: [], voz: [], kanji_lectura: [], bunpo_choice: [], lectura_parrafo: [], ...cacheado };
+    if (cacheado) return { produccion_larga: [], escritura: [], voz: [], kanji_lectura: [], bunpo_choice: [], lectura_parrafo: [], texto_error: [], texto_gramatica: [], ...cacheado };
     throw new Error('No se pudieron cargar los ejercicios');
   },
 

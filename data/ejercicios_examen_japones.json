@@ -1,6 +1,6 @@
 {
   "meta": {
-    "nota": "Extension de ejercicios_japones.json con 3 tipos nuevos, formato mas cercano al examen JLPT real. kanji_lectura = eleccion multiple de lectura de un kanji/palabra aislada, sin contexto (estilo Moji-Goi). lectura_parrafo = texto corto + varias preguntas de comprension multiple choice. bunpo_choice = frase con hueco + 4 opciones gramaticales (formato oficial N5, no solo particulas sueltas).",
+    "nota": "Extension de ejercicios_japones.json con 3 tipos nuevos, formato mas cercano al examen JLPT real. kanji_lectura = eleccion multiple de lectura de un kanji/palabra aislada, sin contexto (estilo Moji-Goi). lectura_parrafo = texto corto + varias preguntas de comprension multiple choice. bunpo_choice = frase con hueco + 4 opciones gramaticales (formato oficial N5, no solo particulas sueltas). texto_error = texto con varias frases candidatas donde una tiene un error gramatical (identificar cual). texto_gramatica = texto segmentado con la parte del punto gramatical de la leccion resaltada en naranja y un hueco a rellenar. lectura_parrafo/texto_error/texto_gramatica llevan campo l (leccion) cuando estan ligados a una leccion concreta; sin l, son pool general.",
     "leccion_actual": 12
   },
   "kanji_lectura": [
@@ -389,6 +389,228 @@
           "respuesta": "猫と遊ぶ"
         }
       ]
+    },
+    {
+      "id": "para_l1",
+      "l": "L1",
+      "texto": "はじめまして。私はロバートです。アメリカ人です。学生です。東京に住んでいます。よろしくお願いします。",
+      "preguntas": [
+        {
+          "pregunta": "ロバートさんはどこの国の人ですか。",
+          "opciones": [
+            "アメリカ人",
+            "日本人",
+            "中国人",
+            "イギリス人"
+          ],
+          "respuesta": "アメリカ人"
+        },
+        {
+          "pregunta": "ロバートさんの仕事は何ですか。",
+          "opciones": [
+            "先生",
+            "学生",
+            "医者",
+            "会社員"
+          ],
+          "respuesta": "学生"
+        },
+        {
+          "pregunta": "ロバートさんはどこに住んでいますか。",
+          "opciones": [
+            "大阪",
+            "京都",
+            "東京",
+            "沖縄"
+          ],
+          "respuesta": "東京"
+        }
+      ]
+    },
+    {
+      "id": "para_l2",
+      "l": "L2",
+      "texto": "アメ横で買い物をします。店員さんが「いらっしゃいませ」と言います。私は「これはいくらですか」と聞きます。店員さんは「それは千円です」と答えます。ちょっと高いですから、買いません。",
+      "preguntas": [
+        {
+          "pregunta": "私はどこで買い物をしますか。",
+          "opciones": [
+            "アメ横",
+            "渋谷",
+            "上野公園",
+            "築地"
+          ],
+          "respuesta": "アメ横"
+        },
+        {
+          "pregunta": "それはいくらですか。",
+          "opciones": [
+            "五百円",
+            "千円",
+            "二千円",
+            "三千円"
+          ],
+          "respuesta": "千円"
+        },
+        {
+          "pregunta": "私はそれを買いますか。",
+          "opciones": [
+            "買います",
+            "買いません",
+            "もう買いました",
+            "わかりません"
+          ],
+          "respuesta": "買いません"
+        }
+      ]
+    },
+    {
+      "id": "para_l3",
+      "l": "L3",
+      "texto": "土曜日、渋谷でデートをします。渋谷の交差点で会います。それから、レストランで晩ご飯を食べます。映画もあまり好きじゃないので、映画は見ません。カラオケに行きたいです。",
+      "preguntas": [
+        {
+          "pregunta": "いつデートをしますか。",
+          "opciones": [
+            "金曜日",
+            "土曜日",
+            "日曜日",
+            "月曜日"
+          ],
+          "respuesta": "土曜日"
+        },
+        {
+          "pregunta": "どこで会いますか。",
+          "opciones": [
+            "駅",
+            "渋谷の交差点",
+            "レストラン",
+            "カラオケ"
+          ],
+          "respuesta": "渋谷の交差点"
+        },
+        {
+          "pregunta": "映画を見ますか。",
+          "opciones": [
+            "見ます",
+            "見ません",
+            "もう見ました",
+            "わかりません"
+          ],
+          "respuesta": "見ません"
+        }
+      ]
+    },
+    {
+      "id": "para_l4",
+      "l": "L4",
+      "texto": "上野公園に桜の木がたくさんあります。公園に人もたくさんいます。ベンチに猫が一匹います。私たちは二時間、公園を散歩しました。それから、動物園にパンダを見に行きました。",
+      "preguntas": [
+        {
+          "pregunta": "公園に何がたくさんありますか。",
+          "opciones": [
+            "桜の木",
+            "犬",
+            "自転車",
+            "車"
+          ],
+          "respuesta": "桜の木"
+        },
+        {
+          "pregunta": "ベンチに何がいますか。",
+          "opciones": [
+            "犬",
+            "鳥",
+            "猫",
+            "うさぎ"
+          ],
+          "respuesta": "猫"
+        },
+        {
+          "pregunta": "どのくらい散歩しましたか。",
+          "opciones": [
+            "一時間",
+            "二時間",
+            "三時間",
+            "四時間"
+          ],
+          "respuesta": "二時間"
+        }
+      ]
+    },
+    {
+      "id": "para_l5",
+      "l": "L5",
+      "texto": "先週、沖縄に旅行に行きました。海がとてもきれいでした。天気も良かったですが、少し暑かったです。私は魚料理が好きなので、市場でたくさん食べました。とても楽しい旅行でした。",
+      "preguntas": [
+        {
+          "pregunta": "海はどうでしたか。",
+          "opciones": [
+            "汚かった",
+            "きれいでした",
+            "寒かった",
+            "狭かった"
+          ],
+          "respuesta": "きれいでした"
+        },
+        {
+          "pregunta": "天気はどうでしたか。",
+          "opciones": [
+            "悪かった",
+            "良かった",
+            "雨でした",
+            "寒かった"
+          ],
+          "respuesta": "良かった"
+        },
+        {
+          "pregunta": "何が好きですか。",
+          "opciones": [
+            "肉料理",
+            "魚料理",
+            "野菜料理",
+            "甘い物"
+          ],
+          "respuesta": "魚料理"
+        }
+      ]
+    },
+    {
+      "id": "para_l6",
+      "l": "L6",
+      "texto": "ロバートさんは毎朝六時に起きて、シャワーを浴びます。それから、朝ご飯を食べて、仕事に行きます。夜は疲れているので、早く寝ます。週末は浅草に行って、お寺を見ます。",
+      "preguntas": [
+        {
+          "pregunta": "ロバートさんは何時に起きますか。",
+          "opciones": [
+            "五時",
+            "六時",
+            "七時",
+            "八時"
+          ],
+          "respuesta": "六時"
+        },
+        {
+          "pregunta": "起きてから何をしますか。",
+          "opciones": [
+            "朝ご飯を食べる",
+            "シャワーを浴びる",
+            "仕事に行く",
+            "寝る"
+          ],
+          "respuesta": "シャワーを浴びる"
+        },
+        {
+          "pregunta": "なぜ早く寝ますか。",
+          "opciones": [
+            "眠くないから",
+            "疲れているので",
+            "忙しいから",
+            "仕事があるので"
+          ],
+          "respuesta": "疲れているので"
+        }
+      ]
     }
   ],
   "bunpo_choice": [
@@ -556,6 +778,304 @@
         "かりました"
       ],
       "respuesta": "くれました"
+    }
+  ],
+  "texto_error": [
+    {
+      "id": "err_l1",
+      "l": "L1",
+      "candidatos": [
+        "田中さんは日本人です。",
+        "田中さんが学生じゃないです。",
+        "田中さんは先生です。",
+        "趣味は本を読むことです。"
+      ],
+      "incorrectaIdx": 1,
+      "correcta": "田中さんは学生じゃないです。",
+      "explicacion": "田中さんはすでに話題になっている人なので、は で受けます。が は新しい情報を紹介するときに使います。"
+    },
+    {
+      "id": "err_l2",
+      "l": "L2",
+      "candidatos": [
+        "これは私の傘です。",
+        "それはあなたの傘が じゃないです。",
+        "あれは山田さんの傘です。",
+        "傘はあそこにあります。"
+      ],
+      "incorrectaIdx": 1,
+      "correcta": "それはあなたの傘じゃないです。",
+      "explicacion": "じゃないです va justo detrás del sustantivo, sin partícula が en medio: [sustantivo] + じゃないです。"
+    },
+    {
+      "id": "err_l3",
+      "l": "L3",
+      "candidatos": [
+        "土曜日に渋谷で会いましょう。",
+        "レストランに晩ご飯を食べます。",
+        "映画はあまり好きじゃないです。",
+        "カラオケに行きたいです。"
+      ],
+      "incorrectaIdx": 1,
+      "correcta": "レストランで晩ご飯を食べます。",
+      "explicacion": "で marca el lugar donde ocurre una acción (comer); に se usa para el destino de un movimiento, no para el lugar donde pasa la acción."
+    },
+    {
+      "id": "err_l4",
+      "l": "L4",
+      "candidatos": [
+        "公園に木がたくさんあります。",
+        "ベンチに猫が一匹あります。",
+        "動物園にパンダがいます。",
+        "私たちは二時間散歩しました。"
+      ],
+      "incorrectaIdx": 1,
+      "correcta": "ベンチに猫が一匹います。",
+      "explicacion": "猫は生き物だから、存在を言うときは いる を使う。ある は物や植物のような、生き物じゃないものに使う。"
+    },
+    {
+      "id": "err_l5",
+      "l": "L5",
+      "candidatos": [
+        "海はきれいでした。",
+        "天気は良かったです。",
+        "少し暑いでした。",
+        "旅行は楽しかったです。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "少し暑かったです。",
+      "explicacion": "Los adjetivos en -い forman el pasado cambiando い por かった: 暑い → 暑かった. No se añade でした detrás de la forma en -い。"
+    },
+    {
+      "id": "err_l6",
+      "l": "L6",
+      "candidatos": [
+        "六時に起きて、シャワーを浴びます。",
+        "朝ご飯を食べて、仕事に行きます。",
+        "疲れているですので、早く寝ます。",
+        "週末は浅草に行って、お寺を見ます。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "疲れているので、早く寝ます。",
+      "explicacion": "ので se pega directamente detrás de la forma de diccionario/ている, sin です en medio: 疲れているので (no 疲れているですので)。"
+    }
+  ],
+  "texto_gramatica": [
+    {
+      "id": "gram_l1",
+      "l": "L1",
+      "partes": [
+        {
+          "t": "私は"
+        },
+        {
+          "t": "サラです",
+          "marca": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "イギリス人"
+        },
+        {
+          "t": "です",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "よろしくお願いします。"
+        }
+      ],
+      "huecoIdx": 4,
+      "opciones": [
+        "です",
+        "でした",
+        "じゃないです",
+        "ます"
+      ],
+      "respuesta": "です",
+      "explicacion": "です es la forma educada del presente afirmativo: se usa para presentar quién eres o qué eres."
+    },
+    {
+      "id": "gram_l2",
+      "l": "L2",
+      "partes": [
+        {
+          "t": "すみません、"
+        },
+        {
+          "t": "これは",
+          "marca": true
+        },
+        {
+          "t": "何ですか。"
+        },
+        {
+          "t": "＿",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "辞書です。"
+        }
+      ],
+      "huecoIdx": 3,
+      "opciones": [
+        "それは",
+        "これは",
+        "あれは",
+        "どれは"
+      ],
+      "respuesta": "それは",
+      "explicacion": "それ señala algo que está cerca de la persona que escucha (aquí, el diccionario que tiene la otra persona), a diferencia de これ (cerca de quien habla) y あれ (lejos de los dos)."
+    },
+    {
+      "id": "gram_l3",
+      "l": "L3",
+      "partes": [
+        {
+          "t": "渋谷の交差点"
+        },
+        {
+          "t": "で",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "友達に会います。"
+        },
+        {
+          "t": "それから、カフェ"
+        },
+        {
+          "t": "で",
+          "marca": true
+        },
+        {
+          "t": "話します。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "で",
+        "に",
+        "を",
+        "へ"
+      ],
+      "respuesta": "で",
+      "explicacion": "で señala el lugar donde pasa la acción (encontrarse, hablar); に marca el destino de un movimiento, no el lugar de la acción."
+    },
+    {
+      "id": "gram_l4",
+      "l": "L4",
+      "partes": [
+        {
+          "t": "木の下に猫が"
+        },
+        {
+          "t": "います",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "その隣に自転車が"
+        },
+        {
+          "t": "あります",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "います",
+        "あります",
+        "します",
+        "いました"
+      ],
+      "respuesta": "います",
+      "explicacion": "いる se usa para seres vivos (personas, animales); ある se usa para objetos y plantas."
+    },
+    {
+      "id": "gram_l5",
+      "l": "L5",
+      "partes": [
+        {
+          "t": "沖縄は"
+        },
+        {
+          "t": "きれい",
+          "marca": true
+        },
+        {
+          "t": "でした。"
+        },
+        {
+          "t": "天気は"
+        },
+        {
+          "t": "良かった",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "です。"
+        }
+      ],
+      "huecoIdx": 4,
+      "opciones": [
+        "良かった",
+        "良い",
+        "良くない",
+        "良かったでした"
+      ],
+      "respuesta": "良かった",
+      "explicacion": "良い (いい) es irregular: su pasado es 良かった, no いかった."
+    },
+    {
+      "id": "gram_l6",
+      "l": "L6",
+      "partes": [
+        {
+          "t": "朝、六時に"
+        },
+        {
+          "t": "起きて",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "、"
+        },
+        {
+          "t": "シャワーを浴びて",
+          "marca": true
+        },
+        {
+          "t": "、"
+        },
+        {
+          "t": "仕事に行きます。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "起きて",
+        "起きます",
+        "起きた",
+        "起きない"
+      ],
+      "respuesta": "起きて",
+      "explicacion": "La forma て conecta varias acciones seguidas en una misma frase, como una lista de pasos."
     }
   ]
 }

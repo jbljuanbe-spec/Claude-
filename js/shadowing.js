@@ -268,6 +268,9 @@ export async function vistaShadowing(cont) {
   (ej.escritura || []).forEach(e => add((e.respuestas || [])[0], pickKana(e.respuestas), e.es));
   (ej.ordenar || []).forEach(o => { const toks = o.tokens || o.palabras || []; add(toks.join(''), (o.kana || []).join(''), o.es, toks); });
   (ej.traduccion || []).forEach(t => add((t.respuestas || [])[0], pickKana(t.respuestas), t.es));
+  (ej.lectura_parrafo || []).forEach(p => (p.texto || '').split('。').map(s => s.trim()).filter(Boolean).forEach(s => add(s + '。', '', '')));
+  (ej.texto_error || []).forEach(e => (e.candidatos || []).forEach((c, i) => add(i === e.incorrectaIdx ? (e.correcta || c) : c, '', '')));
+  (ej.texto_gramatica || []).forEach(g => add((g.partes || []).map((p, i) => i === g.huecoIdx ? (g.respuesta || '') : p.t).join(''), '', ''));
 
   if (!frases.length) {
     cont.innerHTML = `

@@ -207,19 +207,31 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     const restantes = Math.max(2, objetivo - items.length);
     items.push(...barajar(vocab).slice(0, restantes).map(t => ({ tipo: 'vocabescrito', e: t })));
 
-    // Ejercicios estilo examen JLPT (globales, no por lección): lectura de kanji,
-    // hueco gramatical y comprensión de párrafo. Pocos en práctica normal; más en
-    // el examen de ciudad (formato oficial N5).
+    // Ejercicios estilo examen JLPT: lectura de kanji y hueco gramatical siguen
+    // siendo globales (no por lección). Comprensión de párrafo, error-en-texto y
+    // hueco-con-gramática-resaltada sí van por lección: se busca primero
+    // contenido propio de la lección; si aún no existe, se cae al pool general
+    // (o a cualquier otro, como red de seguridad mientras se amplía lección a
+    // lección). Pocos en práctica normal; más en el examen de ciudad.
     const mapKanji = x => ({ tipo: 'kanji', e: { kanji: x.kanji, reading: x.respuesta, es: x.significado || '' }, opciones: x.opciones });
     const mapBunpo = x => ({ tipo: 'particula', e: { frase: x.frase_con_hueco, opciones: x.opciones, correcta: x.respuesta, trad: '', explicacion: '' } });
+    const porLeccion = pool => {
+      const propio = pool.filter(x => codigos.includes(x.l));
+      if (propio.length) return propio;
+      const general = pool.filter(x => !x.l);
+      if (general.length) return general;
+      return pool;
+    };
     const extra = [];
-    const nK = conError ? 3 : 1, nB = conError ? 3 : 1;
+    const nK = conError ? 3 : 1, nB = conError ? 3 : 1, nLect = conError ? 2 : 1, nErr = conError ? 2 : 1, nGram = conError ? 2 : 1;
     extra.push(...barajar([...(ejercicios.kanji_lectura || [])]).slice(0, nK).map(mapKanji));
     extra.push(...barajar([...(ejercicios.bunpo_choice || [])]).slice(0, nB).map(mapBunpo));
-    if (conError) {
-      const par = barajar([...(ejercicios.lectura_parrafo || [])])[0];
-      if (par) extra.push(...par.preguntas.map(q => ({ tipo: 'lectura', e: { texto: par.texto, pregunta: q.pregunta, opciones: q.opciones, respuesta: q.respuesta } })));
+    for (const par of barajar(porLeccion(ejercicios.lectura_parrafo || [])).slice(0, nLect)) {
+      const preguntas = conError ? par.preguntas : barajar([...par.preguntas]).slice(0, 1);
+      extra.push(...preguntas.map(q => ({ tipo: 'lectura', e: { texto: par.texto, pregunta: q.pregunta, opciones: q.opciones, respuesta: q.respuesta } })));
     }
+    extra.push(...barajar(porLeccion(ejercicios.texto_error || [])).slice(0, nErr).map(x => ({ tipo: 'error_texto', e: x })));
+    extra.push(...barajar(porLeccion(ejercicios.texto_gramatica || [])).slice(0, nGram).map(x => ({ tipo: 'textogram', e: x })));
 
     // Reserva plaza para las cartas curadas (hablar/escribir/producción) y para
     // los ejercicios de examen: son el objetivo y no deben caer al recortar.
@@ -358,6 +370,37 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
           const correcto = b.dataset.op === t.respuesta;
           cont.querySelectorAll('.opcion-particula').forEach(x => { x.disabled = true; if (x.dataset.op === t.respuesta) x.classList.add('elegida-bien'); else if (x === b && !correcto) x.classList.add('elegida-mal'); });
           pie(cont.querySelector('.tarjeta'), correcto, `<div class="feedback-respuesta" lang="ja">${esc(t.respuesta)}</div>`);
+        });
+
+      } else if (item.tipo === 'error_texto') {
+        marco(`<div class="tarjeta-chips"><span class="chip chip-tipo-grammar">Encuentra el error</span></div>
+          <p class="tarjeta-instruccion">Una de estas frases tiene un error gramatical. Tócala.</p>
+          <div class="texto-lectura texto-candidatos" lang="ja">${t.candidatos.map((c, i) => `<span class="palabra-candidata" data-i="${i}">${esc(c)}</span>`).join(' ')}</div>`);
+        cont.querySelectorAll('.palabra-candidata').forEach(b => b.onclick = () => {
+          const correcto = parseInt(b.dataset.i) === t.incorrectaIdx;
+          cont.querySelectorAll('.palabra-candidata').forEach(x => {
+            x.classList.add('candidata-desactivada');
+            if (parseInt(x.dataset.i) === t.incorrectaIdx) x.classList.add('candidata-bien');
+            else if (x === b && !correcto) x.classList.add('candidata-mal');
+          });
+          pie(cont.querySelector('.tarjeta'), correcto, `<div class="feedback-respuesta" lang="ja">${esc(t.correcta)}</div>${t.explicacion ? `<div class="feedback-explicacion">${esc(t.explicacion)}</div>` : ''}`);
+        });
+
+      } else if (item.tipo === 'textogram') {
+        const piezasHtml = t.partes.map((p, i) => i === t.huecoIdx
+          ? '<span class="hueco">＿</span>'
+          : `<span class="${p.marca ? 'resaltado-gramatica' : ''}">${esc(p.t)}</span>`
+        ).join('');
+        marco(`<div class="tarjeta-chips"><span class="chip chip-tipo-grammar">Completa y fíjate en lo resaltado</span></div>
+          <p class="tarjeta-instruccion">Lo resaltado en naranja es el punto gramatical de esta lección. Elige qué falta.</p>
+          <p class="frase-ejercicio" lang="ja">${piezasHtml}</p>
+          <div class="opciones-particulas">${barajar(t.opciones).map(o => `<button class="opcion-particula" data-op="${esc(o)}" lang="ja">${esc(o)}</button>`).join('')}</div>`);
+        cont.querySelectorAll('.opcion-particula').forEach(b => b.onclick = () => {
+          const correcto = b.dataset.op === t.respuesta;
+          cont.querySelectorAll('.opcion-particula').forEach(x => { x.disabled = true; if (x.dataset.op === t.respuesta) x.classList.add('elegida-bien'); else if (x === b && !correcto) x.classList.add('elegida-mal'); });
+          const fraseFinal = t.partes.map((p, i) => i === t.huecoIdx ? t.respuesta : p.t).join('');
+          hablar(fraseFinal);
+          pie(cont.querySelector('.tarjeta'), correcto, `<div class="feedback-respuesta" lang="ja">${esc(fraseFinal)}</div>${t.explicacion ? `<div class="feedback-explicacion">${esc(t.explicacion)}</div>` : ''}`);
         });
 
       } else if (item.tipo === 'produccion') {

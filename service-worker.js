@@ -8,12 +8,15 @@
 // "cascarón" de la app (HTML/CSS/JS) no quedaría disponible offline hasta
 // la segunda visita. Para que funcione desde el primer "Instalar", se
 // precachea aquí. Sube CACHE al publicar cambios en estos archivos.
-const CACHE = 'kotoba-v3';
+const CACHE = 'kotoba-v4';
 const CASCARON = [
   './',
   'index.html',
   'manifest.json',
   'css/style.css',
+  // Índice del audio pre-generado. Los .mp3 en sí NO se precachean (son ~20 MB):
+  // se van guardando solos según se escuchan, con el runtime caching de abajo.
+  'data/audio/manifest.json',
   'js/almacen.js',
   'js/api.js',
   'js/app.js',

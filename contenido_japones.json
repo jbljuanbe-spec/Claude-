@@ -1,8 +1,8 @@
 {
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
-    "metodo": "Genki I completo (L1-12) + parche gramatica N5 + vocabulario tematico ampliado + Genki II desde L13, foco en consolidacion",
-    "leccion_actual": 20,
+    "metodo": "Genki I completo (L1-12) + Genki II L13-23 (contenido propio, no copiado) + parche gramatica N5 + vocabulario tematico ampliado",
+    "leccion_actual": 23,
     "lecciones_por_ciudad": 6,
     "orden_ciudades": [
       "Tokio",
@@ -144,6 +144,24 @@
       "ciudad": "Osaka",
       "barrio": "Castillo de Osaka",
       "emoji": "🌸"
+    },
+    "L21": {
+      "titulo": "命令形、～らしい (Imperativo, se dice que...)",
+      "ciudad": "Osaka",
+      "barrio": "Shinsekai y la torre Tsutenkaku",
+      "emoji": "🗼"
+    },
+    "L22": {
+      "titulo": "～ところ、～と (Justo en ese momento, resultado natural)",
+      "ciudad": "Osaka",
+      "barrio": "Shinsaibashi",
+      "emoji": "🛍️"
+    },
+    "L23": {
+      "titulo": "～なら、～たばかり (Repaso e integración)",
+      "ciudad": "Osaka",
+      "barrio": "Mercado Kuromon",
+      "emoji": "🍤"
     }
   },
   "tarjetas": [
@@ -3888,6 +3906,239 @@
       "answer": "いただく",
       "alt": [
         "いただきます"
+      ]
+    },
+    {
+      "id": "g_l21_meireikei",
+      "l": "L21",
+      "type": "grammar",
+      "question": "¿Cómo se forma el imperativo brusco (命令形)?",
+      "explanation": "Grupo ru: cambia る por ろ (食べる→食べろ). Grupo u: cambia la u final a え (行く→行け, 話す→話せ). する→しろ, 来る→来い. Es una orden directa y ruda — se oye en el ejército, el deporte, peleas o al citar lo que dijo alguien enfadado, casi nunca se usa hacia otra persona en la vida normal."
+    },
+    {
+      "id": "g_l21_na_prohibicion",
+      "l": "L21",
+      "type": "grammar",
+      "question": "¿Qué es forma diccionario + な?",
+      "explanation": "Prohibición directa y brusca: '¡no hagas X!'. 行くな! = ¡no vayas! 触るな! = ¡no toques! Tan fuerte como el imperativo 命令形, se suele ver en carteles (立ち入るな = prohibido entrar) o discurso muy informal/enfadado."
+    },
+    {
+      "id": "g_l21_rashii",
+      "l": "L21",
+      "type": "grammar",
+      "question": "¿En qué se diferencia ～らしいです de ～そうです y ～かもしれません?",
+      "explanation": "～らしい = 'según dicen, por lo que he oído/leído' (información de fuera, no observación directa tuya): 田中さんは忙しいらしいです = parece que Tanaka está ocupado (me lo han contado). そうです(様態) es por lo que TÚ ves; かもしれません es una posibilidad más débil e incierta."
+    },
+    {
+      "id": "l21_kenka",
+      "l": "L21",
+      "kanji": "喧嘩",
+      "reading": "けんか",
+      "es": "pelea, discusión",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l21_okoru",
+      "l": "L21",
+      "kanji": "怒る",
+      "reading": "おこる",
+      "es": "enfadarse",
+      "dir": "es-jp",
+      "readingAlt": [
+        "おこります"
+      ]
+    },
+    {
+      "id": "l21_sakebu",
+      "l": "L21",
+      "kanji": "叫ぶ",
+      "reading": "さけぶ",
+      "es": "gritar",
+      "dir": "es-jp",
+      "readingAlt": [
+        "さけびます"
+      ]
+    },
+    {
+      "id": "l21_urusai",
+      "l": "L21",
+      "kanji": "うるさい",
+      "reading": "うるさい",
+      "es": "ruidoso, molesto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l21_tsuutenkaku",
+      "l": "L21",
+      "kanji": "通天閣",
+      "reading": "つうてんかく",
+      "es": "torre Tsutenkaku",
+      "dir": "es-jp"
+    },
+    {
+      "id": "c_l21_meirei_taberu",
+      "l": "L21",
+      "type": "conj",
+      "front": "食べる → imperativo brusco (命令形)",
+      "answer": "食べろ",
+      "alt": [
+        "たべろ"
+      ]
+    },
+    {
+      "id": "c_l21_meirei_iku",
+      "l": "L21",
+      "type": "conj",
+      "front": "行く → imperativo brusco (命令形)",
+      "answer": "行け",
+      "alt": [
+        "いけ"
+      ]
+    },
+    {
+      "id": "g_l22_tokoro",
+      "l": "L22",
+      "type": "grammar",
+      "question": "¿Cómo cambia el significado de ～ところです según el tiempo del verbo?",
+      "explanation": "Diccionario+ところ = a punto de hacerlo: 今から食べるところです (voy a comer ahora mismo, aún no empiezo). ～ている+ところ = justo haciéndolo: 今食べているところです (estoy comiendo ahora mismo). Pasado+ところ = acabo de hacerlo: 今食べたところです (acabo de comer)."
+    },
+    {
+      "id": "g_l22_to",
+      "l": "L22",
+      "type": "grammar",
+      "question": "¿Qué expresa el condicional ～と (distinto de たら/ば/なら)?",
+      "explanation": "Resultado NATURAL o automático, algo que siempre pasa así: forma corta presente + と. 春になると、花が咲きます = cuando llega la primavera, florecen las flores (siempre). No se usa para invitaciones ni órdenes (ese と no puede ir con ～てください/～ましょう)."
+    },
+    {
+      "id": "l22_shoutengai",
+      "l": "L22",
+      "kanji": "商店街",
+      "reading": "しょうてんがい",
+      "es": "calle comercial",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l22_ninki",
+      "l": "L22",
+      "kanji": "人気",
+      "reading": "にんき",
+      "es": "popularidad",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l22_ryuukou",
+      "l": "L22",
+      "kanji": "流行",
+      "reading": "りゅうこう",
+      "es": "moda, tendencia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l22_saku",
+      "l": "L22",
+      "kanji": "咲く",
+      "reading": "さく",
+      "es": "florecer",
+      "dir": "es-jp",
+      "readingAlt": [
+        "さきます"
+      ]
+    },
+    {
+      "id": "l22_kaimonobukuro",
+      "l": "L22",
+      "kanji": "買い物袋",
+      "reading": "かいものぶくろ",
+      "es": "bolsa de la compra",
+      "dir": "es-jp"
+    },
+    {
+      "id": "c_l22_tokoro_taberu",
+      "l": "L22",
+      "type": "conj",
+      "front": "食べる (justo ahora, en curso) → ～ているところ",
+      "answer": "食べているところ",
+      "alt": [
+        "たべているところ"
+      ]
+    },
+    {
+      "id": "c_l22_to_naru",
+      "l": "L22",
+      "type": "conj",
+      "front": "なる → forma condicional と (resultado natural)",
+      "answer": "なると",
+      "alt": []
+    },
+    {
+      "id": "g_l23_nara",
+      "l": "L23",
+      "type": "grammar",
+      "question": "¿Cuándo uso ～なら en vez de たら/ば?",
+      "explanation": "～なら responde a algo YA mencionado o que ya sabes ('ya que hablamos de eso...'), no una hipótesis nueva: 京都に行くなら、金閣寺がおすすめです = si vas a ir a Kioto (ya que sale el tema), recomiendo el Kinkaku-ji. たら/ば describen una condición futura general, なら reacciona a la conversación."
+    },
+    {
+      "id": "g_l23_bakari",
+      "l": "L23",
+      "type": "grammar",
+      "question": "¿Qué añade ～たばかりです a un verbo en pasado?",
+      "explanation": "Énfasis en que algo pasó HACE MUY POCO: verbo en pasado + ばかり. 日本に来たばかりです = acabo de llegar a Japón (recientemente, la sensación de 'novedad' sigue presente). Muy parecido a ～たところです, pero ばかり pone más énfasis en lo reciente que en la secuencia de acciones."
+    },
+    {
+      "id": "g_l23_repaso",
+      "l": "L23",
+      "type": "grammar",
+      "question": "Repaso: ¿qué gramática nueva hemos visto en Genki II (L13-L23)?",
+      "explanation": "可能形 (poder hacer), そうです/てみる/意向形, かもしれません/がる, あげる・くれる・もらう (+てあげる/くれる/もらう), ～ておく/ば/たら, 受身形/のに, 使役形, 敬語 (尊敬語/謙譲語), はずです, 命令形/な/らしい, ～ところ/と, ～なら/たばかり. Todo un curso completo de N4."
+    },
+    {
+      "id": "l23_kuromon",
+      "l": "L23",
+      "kanji": "黒門市場",
+      "reading": "くろもんいちば",
+      "es": "mercado Kuromon",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l23_shinsen",
+      "l": "L23",
+      "kanji": "新鮮",
+      "reading": "しんせん",
+      "es": "fresco (comida)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l23_ichiba",
+      "l": "L23",
+      "kanji": "市場",
+      "reading": "いちば",
+      "es": "mercado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l23_meibutsu",
+      "l": "L23",
+      "kanji": "名物",
+      "reading": "めいぶつ",
+      "es": "especialidad local",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l23_yatai",
+      "l": "L23",
+      "kanji": "屋台",
+      "reading": "やたい",
+      "es": "puesto callejero de comida",
+      "dir": "es-jp"
+    },
+    {
+      "id": "c_l23_bakari_kuru",
+      "l": "L23",
+      "type": "conj",
+      "front": "来る (acabo de) → ～たばかり",
+      "answer": "来たばかり",
+      "alt": [
+        "きたばかり"
       ]
     }
   ]

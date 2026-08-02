@@ -225,6 +225,48 @@
       "respuesta": "∅ (nada)",
       "traduccion": "Mañana iré.",
       "explicacion": "明日 es un tiempo relativo: sin partícula, igual que 今日/昨日."
+    },
+    {
+      "id": "p_l21_01",
+      "leccion": "L21",
+      "frase_con_hueco": "田中さんは忙しい___です。",
+      "opciones": [
+        "らしい",
+        "そう",
+        "はず",
+        "かもしれない"
+      ],
+      "respuesta": "らしい",
+      "traduccion": "Parece que Tanaka está ocupado (según he oído).",
+      "explicacion": "らしい se usa para información de fuera (lo que has oído/leído), distinta de そう (lo que ves) o はず (lo que deduces con lógica)."
+    },
+    {
+      "id": "p_l22_01",
+      "leccion": "L22",
+      "frase_con_hueco": "春___なると、花が咲きます。",
+      "opciones": [
+        "に",
+        "が",
+        "を",
+        "で"
+      ],
+      "respuesta": "に",
+      "traduccion": "Cuando llega la primavera, florecen las flores.",
+      "explicacion": "に marca en qué se convierte algo con なる: 春になる = llegar la primavera."
+    },
+    {
+      "id": "p_l23_01",
+      "leccion": "L23",
+      "frase_con_hueco": "日本___来たばかりです。",
+      "opciones": [
+        "に",
+        "で",
+        "を",
+        "の"
+      ],
+      "respuesta": "に",
+      "traduccion": "Acabo de llegar a Japón.",
+      "explicacion": "に marca el destino con 来る, igual que siempre."
     }
   ],
   "ordenar": [
@@ -493,6 +535,59 @@
         "はずです"
       ],
       "traduccion": "Tanaka debería haber llegado ya."
+    },
+    {
+      "id": "o_l21_01",
+      "leccion": "L21",
+      "palabras": [
+        "ここ",
+        "で",
+        "騒ぐな"
+      ],
+      "kana": [
+        "ここ",
+        "で",
+        "さわぐな"
+      ],
+      "traduccion": "¡No armes escándalo aquí!"
+    },
+    {
+      "id": "o_l22_01",
+      "leccion": "L22",
+      "palabras": [
+        "今",
+        "から",
+        "出かける",
+        "ところです"
+      ],
+      "kana": [
+        "いま",
+        "から",
+        "でかける",
+        "ところです"
+      ],
+      "traduccion": "Estoy a punto de salir ahora mismo."
+    },
+    {
+      "id": "o_l23_01",
+      "leccion": "L23",
+      "palabras": [
+        "大阪",
+        "に",
+        "行くなら",
+        "たこ焼き",
+        "を",
+        "食べてください"
+      ],
+      "kana": [
+        "おおさか",
+        "に",
+        "いくなら",
+        "たこやき",
+        "を",
+        "たべてください"
+      ],
+      "traduccion": "Si vas a ir a Osaka, come takoyaki."
     }
   ],
   "produccion_larga": [
@@ -559,6 +654,15 @@
       "puntos_gramaticales": [
         "受身形",
         "迷惑受身"
+      ]
+    },
+    {
+      "id": "w_l23_01",
+      "leccion": "L23",
+      "prompt": "Cierre de Genki II: escribe 4-5 frases sobre un viaje a Kansai (Kioto/Osaka), mezclando al menos dos puntos de gramática de L13-L23 (por ejemplo あげる/くれる/もらう, ～たら, 敬語, ～らしい, ～ばかり).",
+      "ejemplo_respuesta": "先週、大阪に行ったばかりです。友達が美味しいたこ焼き屋を教えてくれました。とても美味しかったです。また京都に行くなら、金閣寺に行きたいです。",
+      "puntos_gramaticales": [
+        "repaso Genki II L13-23"
       ]
     }
   ],
@@ -892,6 +996,33 @@
         "遅刻するはずがありません",
         "ちこくするはずがありません"
       ]
+    },
+    {
+      "id": "e_l21_01",
+      "leccion": "L21",
+      "es": "¡No toques eso!",
+      "respuestas": [
+        "それに触るな",
+        "それにさわるな"
+      ]
+    },
+    {
+      "id": "e_l22_01",
+      "leccion": "L22",
+      "es": "Estoy comiendo ahora mismo.",
+      "respuestas": [
+        "今食べているところです",
+        "いまたべているところです"
+      ]
+    },
+    {
+      "id": "e_l23_01",
+      "leccion": "L23",
+      "es": "Acabo de llegar a Japón.",
+      "respuestas": [
+        "日本に来たばかりです",
+        "にほんにきたばかりです"
+      ]
     }
   ],
   "voz": [
@@ -1095,6 +1226,36 @@
       "respuestas": [
         "明日参ります",
         "あしたまいります"
+      ]
+    },
+    {
+      "id": "v_l21_01",
+      "leccion": "L21",
+      "objetivo": "田中さんは忙しいらしいです",
+      "es": "Parece que Tanaka está ocupado.",
+      "respuestas": [
+        "田中さんは忙しいらしいです",
+        "たなかさんはいそがしいらしいです"
+      ]
+    },
+    {
+      "id": "v_l22_01",
+      "leccion": "L22",
+      "objetivo": "春になると、花が咲きます",
+      "es": "Cuando llega la primavera, florecen las flores.",
+      "respuestas": [
+        "春になると、花が咲きます",
+        "はるになると、はながさきます"
+      ]
+    },
+    {
+      "id": "v_l23_01",
+      "leccion": "L23",
+      "objetivo": "京都に行くなら、金閣寺がおすすめです",
+      "es": "Si vas a ir a Kioto, recomiendo el Kinkaku-ji.",
+      "respuestas": [
+        "京都に行くなら、金閣寺がおすすめです",
+        "きょうとにいくなら、きんかくじがおすすめです"
       ]
     }
   ]

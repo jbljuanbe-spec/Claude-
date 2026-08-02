@@ -2,7 +2,7 @@
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
     "metodo": "Genki I completo (L1-12) + parche gramatica N5 + vocabulario tematico ampliado + Genki II desde L13, foco en consolidacion",
-    "leccion_actual": 16,
+    "leccion_actual": 20,
     "lecciones_por_ciudad": 6,
     "orden_ciudades": [
       "Tokio",
@@ -120,6 +120,30 @@
       "ciudad": "Kioto",
       "barrio": "Gion",
       "emoji": "👘"
+    },
+    "L17": {
+      "titulo": "受身形、～のに (Voz pasiva, contraste)",
+      "ciudad": "Kioto",
+      "barrio": "Pabellón Dorado (Kinkaku-ji)",
+      "emoji": "🌟"
+    },
+    "L18": {
+      "titulo": "使役形、～たら (Causativo, condicional)",
+      "ciudad": "Kioto",
+      "barrio": "Castillo Nijo",
+      "emoji": "🏯"
+    },
+    "L19": {
+      "titulo": "尊敬語 (Keigo respetuoso)",
+      "ciudad": "Osaka",
+      "barrio": "Dotonbori",
+      "emoji": "🐙"
+    },
+    "L20": {
+      "titulo": "謙譲語、～はずだ (Keigo humilde, expectativa)",
+      "ciudad": "Osaka",
+      "barrio": "Castillo de Osaka",
+      "emoji": "🌸"
     }
   },
   "tarjetas": [
@@ -3495,6 +3519,375 @@
       "answer": "食べれば",
       "alt": [
         "たべれば"
+      ]
+    },
+    {
+      "id": "g_l17_ukemi",
+      "l": "L17",
+      "type": "grammar",
+      "question": "¿Cómo se forma la voz pasiva (受身形)?",
+      "explanation": "Grupo u: cambia la u final a あ + れる (書く→書かれる, 話す→話される). Grupo ru: quita る + られる (見る→見られる, igual forma que el potencial, se distingue por contexto). する→される, 来る→来られる."
+    },
+    {
+      "id": "g_l17_ukemi_uso",
+      "l": "L17",
+      "type": "grammar",
+      "question": "¿Cuándo uso la pasiva en japonés?",
+      "explanation": "Cuando el sujeto RECIBE la acción: 私は先生に褒められました = fui elogiado por el profesor (先生に = por quién). También la 'pasiva de fastidio' (迷惑受身), muy japonesa: 雨に降られました = me fastidió que lloviera (aunque llover no es algo que 'se le haga' a nadie, se usa la pasiva para expresar la molestia)."
+    },
+    {
+      "id": "g_l17_noni",
+      "l": "L17",
+      "type": "grammar",
+      "question": "¿Qué expresa ～のに?",
+      "explanation": "'Aunque..., a pesar de que...' (con matiz de sorpresa o queja, a diferencia de けど/でも): forma corta + のに. 勉強したのに、テストができませんでした = aunque estudié, no me salió bien el examen."
+    },
+    {
+      "id": "l17_homeru",
+      "l": "L17",
+      "kanji": "褒める",
+      "reading": "ほめる",
+      "es": "elogiar",
+      "dir": "es-jp",
+      "readingAlt": [
+        "ほめます"
+      ]
+    },
+    {
+      "id": "l17_shikaru",
+      "l": "L17",
+      "kanji": "叱る",
+      "reading": "しかる",
+      "es": "regañar",
+      "dir": "es-jp",
+      "readingAlt": [
+        "しかります"
+      ]
+    },
+    {
+      "id": "l17_meiwaku",
+      "l": "L17",
+      "kanji": "迷惑",
+      "reading": "めいわく",
+      "es": "molestia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l17_dorobou",
+      "l": "L17",
+      "kanji": "泥棒",
+      "reading": "どろぼう",
+      "es": "ladrón",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l17_nusumu",
+      "l": "L17",
+      "kanji": "盗む",
+      "reading": "ぬすむ",
+      "es": "robar",
+      "dir": "es-jp",
+      "readingAlt": [
+        "ぬすみます"
+      ]
+    },
+    {
+      "id": "l17_shoutai",
+      "l": "L17",
+      "kanji": "招待",
+      "reading": "しょうたい",
+      "es": "invitación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l17_kinkaku",
+      "l": "L17",
+      "kanji": "金閣寺",
+      "reading": "きんかくじ",
+      "es": "Pabellón Dorado (templo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "c_l17_ukemi_home",
+      "l": "L17",
+      "type": "conj",
+      "front": "褒める → voz pasiva",
+      "answer": "褒められる",
+      "alt": [
+        "ほめられる"
+      ]
+    },
+    {
+      "id": "c_l17_ukemi_nusumu",
+      "l": "L17",
+      "type": "conj",
+      "front": "盗む → voz pasiva",
+      "answer": "盗まれる",
+      "alt": [
+        "ぬすまれる"
+      ]
+    },
+    {
+      "id": "g_l18_shiekei",
+      "l": "L18",
+      "type": "grammar",
+      "question": "¿Cómo se forma el causativo (使役形, 'hacer/dejar que alguien haga')?",
+      "explanation": "Grupo ru: quita る + させる (食べる→食べさせる). Grupo u: cambia u a あ + せる (書く→書かせる; los verbos en う usan わ: 買う→買わせる). する→させる, 来る→来させる."
+    },
+    {
+      "id": "g_l18_shiekei_uso",
+      "l": "L18",
+      "type": "grammar",
+      "question": "¿'Hacer que' o 'dejar que'? El causativo vale para los dos",
+      "explanation": "El contexto decide: 母は子供に野菜を食べさせました puede ser 'la madre hizo que el niño comiera verdura' (obligación) o 'le dejó comer verdura' (permiso), según la situación. させてください = 'déjeme hacer X' (petición formal muy útil): 質問させてください = déjeme preguntar."
+    },
+    {
+      "id": "g_l18_tara",
+      "l": "L18",
+      "type": "grammar",
+      "question": "¿En qué se diferencia ～たら de ～ば?",
+      "explanation": "～たら (verbo en pasado + ら) es más natural para hablar de una situación concreta y lo que pasa después: 家に着いたら、電話します = cuando llegue a casa, llamo. ～ば suena más a regla general/condición. En la práctica, たら es la más usada en conversación."
+    },
+    {
+      "id": "l18_meirei",
+      "l": "L18",
+      "kanji": "命令",
+      "reading": "めいれい",
+      "es": "orden, mandato",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l18_kyoka",
+      "l": "L18",
+      "kanji": "許可",
+      "reading": "きょか",
+      "es": "permiso",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l18_shitagau",
+      "l": "L18",
+      "kanji": "従う",
+      "reading": "したがう",
+      "es": "obedecer",
+      "dir": "es-jp",
+      "readingAlt": [
+        "したがいます"
+      ]
+    },
+    {
+      "id": "l18_sodateru",
+      "l": "L18",
+      "kanji": "育てる",
+      "reading": "そだてる",
+      "es": "criar",
+      "dir": "es-jp",
+      "readingAlt": [
+        "そだてます"
+      ]
+    },
+    {
+      "id": "l18_junbi",
+      "l": "L18",
+      "kanji": "準備",
+      "reading": "じゅんび",
+      "es": "preparación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l18_shiro",
+      "l": "L18",
+      "kanji": "城",
+      "reading": "しろ",
+      "es": "castillo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "c_l18_shiekei_taberu",
+      "l": "L18",
+      "type": "conj",
+      "front": "食べる → forma causativa",
+      "answer": "食べさせる",
+      "alt": [
+        "たべさせる"
+      ]
+    },
+    {
+      "id": "c_l18_shiekei_kaku",
+      "l": "L18",
+      "type": "conj",
+      "front": "書く → forma causativa",
+      "answer": "書かせる",
+      "alt": [
+        "かかせる"
+      ]
+    },
+    {
+      "id": "c_l18_tara_tsuku",
+      "l": "L18",
+      "type": "conj",
+      "front": "着く → forma たら",
+      "answer": "着いたら",
+      "alt": [
+        "ついたら"
+      ]
+    },
+    {
+      "id": "g_l19_sonkeigo",
+      "l": "L19",
+      "type": "grammar",
+      "question": "¿Qué es el 尊敬語 (keigo respetuoso)?",
+      "explanation": "Se usa para elevar las acciones de OTRA persona (cliente, jefe, mayor) — nunca para las tuyas propias. Tiene verbos especiales irregulares, distintos del verbo normal."
+    },
+    {
+      "id": "g_l19_sonkeigo_verbos",
+      "l": "L19",
+      "type": "grammar",
+      "question": "Verbos especiales de 尊敬語 más comunes",
+      "explanation": "いらっしゃる (来る/行く/いる), おっしゃる (言う), 召し上がる (食べる/飲む), なさる (する), ご覧になる (見る). Ejemplo: 何を召し上がりますか = ¿qué va a tomar (usted)?"
+    },
+    {
+      "id": "g_l19_sonkeigo_simple",
+      "l": "L19",
+      "type": "grammar",
+      "question": "¿Hay una forma sencilla de sonar respetuoso sin memorizar verbos especiales?",
+      "explanation": "Sí: usar la forma pasiva (られる) como respeto ligero. 帰られますか = ¿se marcha usted? Menos formal que いらっしゃる pero mucho más fácil de recordar."
+    },
+    {
+      "id": "l19_okyakusama",
+      "l": "L19",
+      "kanji": "お客様",
+      "reading": "おきゃくさま",
+      "es": "cliente (honorífico)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l19_joushi",
+      "l": "L19",
+      "kanji": "上司",
+      "reading": "じょうし",
+      "es": "jefe, superior",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l19_sonkei",
+      "l": "L19",
+      "kanji": "尊敬",
+      "reading": "そんけい",
+      "es": "respeto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l19_reigi",
+      "l": "L19",
+      "kanji": "礼儀",
+      "reading": "れいぎ",
+      "es": "etiqueta, modales",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l19_kaigi",
+      "l": "L19",
+      "kanji": "会議",
+      "reading": "かいぎ",
+      "es": "reunión",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l19_takoyaki",
+      "l": "L19",
+      "kanji": "たこ焼き",
+      "reading": "たこやき",
+      "es": "takoyaki (bolitas de pulpo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "c_l19_irassharu",
+      "l": "L19",
+      "type": "conj",
+      "front": "行く/来る/いる → forma respetuosa (尊敬語)",
+      "answer": "いらっしゃる",
+      "alt": [
+        "いらっしゃいます"
+      ]
+    },
+    {
+      "id": "g_l20_kenjougo",
+      "l": "L20",
+      "type": "grammar",
+      "question": "¿Qué es el 謙譲語 (keigo humilde)?",
+      "explanation": "Al contrario que el 尊敬語, se usa para rebajar TUS PROPIAS acciones (o las de tu grupo) frente a alguien de más estatus, elevándolo a él indirectamente."
+    },
+    {
+      "id": "g_l20_kenjougo_verbos",
+      "l": "L20",
+      "type": "grammar",
+      "question": "Verbos especiales de 謙譲語 más comunes",
+      "explanation": "参る (行く/来る), 申す (言う), いただく (食べる/飲む/もらう), 拝見する (見る), いたす (する). Ejemplo: 明日参ります = mañana iré (humilde, hablando de uno mismo a un superior)."
+    },
+    {
+      "id": "g_l20_hazu",
+      "l": "L20",
+      "type": "grammar",
+      "question": "¿Qué significa ～はずです?",
+      "explanation": "'Se supone que..., debería ser...' — expectativa basada en lógica o información previa, más fuerte que かもしれません: 田中さんはもう着いたはずです = Tanaka debería haber llegado ya (lo sé porque salió pronto). Negativo: ～はずがない = 'es imposible que...'."
+    },
+    {
+      "id": "l20_mensetsu",
+      "l": "L20",
+      "kanji": "面接",
+      "reading": "めんせつ",
+      "es": "entrevista (trabajo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l20_rirekisho",
+      "l": "L20",
+      "kanji": "履歴書",
+      "reading": "りれきしょ",
+      "es": "currículum",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l20_kakunin",
+      "l": "L20",
+      "kanji": "確認",
+      "reading": "かくにん",
+      "es": "confirmación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l20_shusseki",
+      "l": "L20",
+      "kanji": "出席",
+      "reading": "しゅっせき",
+      "es": "asistencia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l20_kesseki",
+      "l": "L20",
+      "kanji": "欠席",
+      "reading": "けっせき",
+      "es": "ausencia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l20_osakajou",
+      "l": "L20",
+      "kanji": "大阪城",
+      "reading": "おおさかじょう",
+      "es": "Castillo de Osaka",
+      "dir": "es-jp"
+    },
+    {
+      "id": "c_l20_itadaku",
+      "l": "L20",
+      "type": "conj",
+      "front": "食べる/もらう → forma humilde (謙譲語)",
+      "answer": "いただく",
+      "alt": [
+        "いただきます"
       ]
     }
   ]

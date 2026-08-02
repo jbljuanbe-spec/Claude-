@@ -611,6 +611,228 @@
           "respuesta": "疲れているので"
         }
       ]
+    },
+    {
+      "id": "para_l7",
+      "l": "L7",
+      "texto": "三渓園で家族の写真を撮りに行きました。父は疲れていましたが、母は元気でした。妹は着物を着ていました。みんな笑っていて、とてもいい写真が撮れました。",
+      "preguntas": [
+        {
+          "pregunta": "どこへ写真を撮りに行きましたか。",
+          "opciones": [
+            "上野公園",
+            "三渓園",
+            "浅草寺",
+            "動物園"
+          ],
+          "respuesta": "三渓園"
+        },
+        {
+          "pregunta": "妹は何を着ていましたか。",
+          "opciones": [
+            "着物",
+            "制服",
+            "浴衣",
+            "ドレス"
+          ],
+          "respuesta": "着物"
+        },
+        {
+          "pregunta": "父はどうでしたか。",
+          "opciones": [
+            "元気だった",
+            "疲れていた",
+            "怒っていた",
+            "寝ていた"
+          ],
+          "respuesta": "疲れていた"
+        }
+      ]
+    },
+    {
+      "id": "para_l8",
+      "l": "L8",
+      "texto": "今度の週末、友達とバーベキューをする。みなとみらいの公園でやる予定だ。肉と野菜を買って、みんなで料理する。友達は「楽しみだね」と言った。天気がよければいいなと思う。",
+      "preguntas": [
+        {
+          "pregunta": "何をする予定ですか。",
+          "opciones": [
+            "花見",
+            "バーベキュー",
+            "釣り",
+            "花火"
+          ],
+          "respuesta": "バーベキュー"
+        },
+        {
+          "pregunta": "どこでやりますか。",
+          "opciones": [
+            "自宅の庭",
+            "みなとみらいの公園",
+            "海の近く",
+            "山の中"
+          ],
+          "respuesta": "みなとみらいの公園"
+        },
+        {
+          "pregunta": "何を買いますか。",
+          "opciones": [
+            "お菓子だけ",
+            "肉と野菜",
+            "飲み物だけ",
+            "果物"
+          ],
+          "respuesta": "肉と野菜"
+        }
+      ]
+    },
+    {
+      "id": "para_l9",
+      "l": "L9",
+      "texto": "昨日買ったチケットで、歌舞伎を見に行きました。野毛の劇場は駅から近かったです。もう始まっていたので、少し急ぎました。まだ歌舞伎を見たことがなかったので、とても楽しみでした。",
+      "preguntas": [
+        {
+          "pregunta": "何を見に行きましたか。",
+          "opciones": [
+            "能",
+            "歌舞伎",
+            "相撲",
+            "映画"
+          ],
+          "respuesta": "歌舞伎"
+        },
+        {
+          "pregunta": "劇場は駅からどうでしたか。",
+          "opciones": [
+            "遠かった",
+            "近かった",
+            "わからなかった",
+            "歩けなかった"
+          ],
+          "respuesta": "近かった"
+        },
+        {
+          "pregunta": "歌舞伎を見たことがありましたか。",
+          "opciones": [
+            "何度もあった",
+            "一度あった",
+            "なかった",
+            "忘れた"
+          ],
+          "respuesta": "なかった"
+        }
+      ]
+    },
+    {
+      "id": "para_l10",
+      "l": "L10",
+      "texto": "冬休みに沖縄と北海道、どちらに行くか迷っています。北海道より沖縄のほうが暖かいです。でも、雪を見るなら北海道が一番いいと思います。冬になると、雪がたくさん降るからです。",
+      "preguntas": [
+        {
+          "pregunta": "何を迷っていますか。",
+          "opciones": [
+            "旅行の日程",
+            "沖縄と北海道どちらに行くか",
+            "誰と行くか",
+            "お金のこと"
+          ],
+          "respuesta": "沖縄と北海道どちらに行くか"
+        },
+        {
+          "pregunta": "沖縄と北海道、どちらが暖かいですか。",
+          "opciones": [
+            "北海道",
+            "沖縄",
+            "同じ",
+            "わからない"
+          ],
+          "respuesta": "沖縄"
+        },
+        {
+          "pregunta": "雪を見るならどこがいいですか。",
+          "opciones": [
+            "沖縄",
+            "東京",
+            "北海道",
+            "大阪"
+          ],
+          "respuesta": "北海道"
+        }
+      ]
+    },
+    {
+      "id": "para_l11",
+      "l": "L11",
+      "texto": "休みに山下公園を散歩したり、映画を見たりしました。前から沖縄に行ってみたいと思っていましたが、今年も行けませんでした。でも、去年沖縄に行ったことがあるので、また今度行きたいです。",
+      "preguntas": [
+        {
+          "pregunta": "休みに何をしましたか。",
+          "opciones": [
+            "仕事をした",
+            "公園を散歩したり映画を見たりした",
+            "ずっと寝ていた",
+            "旅行に行った"
+          ],
+          "respuesta": "公園を散歩したり映画を見たりした"
+        },
+        {
+          "pregunta": "今年沖縄に行きましたか。",
+          "opciones": [
+            "行った",
+            "行けなかった",
+            "毎年行く",
+            "わからない"
+          ],
+          "respuesta": "行けなかった"
+        },
+        {
+          "pregunta": "沖縄に行ったことがありますか。",
+          "opciones": [
+            "一度もない",
+            "去年行ったことがある",
+            "毎月行く",
+            "忘れた"
+          ],
+          "respuesta": "去年行ったことがある"
+        }
+      ]
+    },
+    {
+      "id": "para_l12",
+      "l": "L12",
+      "texto": "友達の誕生日に、私は花をあげました。友達は私にお菓子をくれました。私は先生から本をもらいました。中華街でみんなでプレゼントを交換して、楽しい一日でした。",
+      "preguntas": [
+        {
+          "pregunta": "私は友達に何をあげましたか。",
+          "opciones": [
+            "お菓子",
+            "花",
+            "本",
+            "お金"
+          ],
+          "respuesta": "花"
+        },
+        {
+          "pregunta": "友達は私に何をくれましたか。",
+          "opciones": [
+            "花",
+            "お菓子",
+            "本",
+            "写真"
+          ],
+          "respuesta": "お菓子"
+        },
+        {
+          "pregunta": "私は誰から本をもらいましたか。",
+          "opciones": [
+            "友達",
+            "先生",
+            "家族",
+            "店員"
+          ],
+          "respuesta": "先生"
+        }
+      ]
     }
   ],
   "bunpo_choice": [
@@ -858,6 +1080,84 @@
       "incorrectaIdx": 2,
       "correcta": "疲れているので、早く寝ます。",
       "explicacion": "ので se pega directamente detrás de la forma de diccionario/ている, sin です en medio: 疲れているので (no 疲れているですので)。"
+    },
+    {
+      "id": "err_l7",
+      "l": "L7",
+      "candidatos": [
+        "写真を撮りに行きました。",
+        "父は疲れています。",
+        "妹は着物が着ています。",
+        "みんな笑っていました。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "妹は着物を着ていました。",
+      "explicacion": "着る (ponerse/llevar puesto) es un verbo transitivo: el objeto directo va con を, no con が。"
+    },
+    {
+      "id": "err_l8",
+      "l": "L8",
+      "candidatos": [
+        "友達とバーベキューをする。",
+        "公園でやる予定だ。",
+        "肉と野菜を買いまする。",
+        "天気がよければいいなと思う。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "肉と野菜を買う。",
+      "explicacion": "En estilo llano (普通形) el verbo va en su forma de diccionario, sin ます mezclado: 買う, no 買いまする。"
+    },
+    {
+      "id": "err_l9",
+      "l": "L9",
+      "candidatos": [
+        "昨日買ったチケットを持っていきました。",
+        "劇場は駅から近かったです。",
+        "もう始まっていたのでした。",
+        "まだ歌舞伎を見たことがなかったです。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "もう始まっていたので、急ぎました。",
+      "explicacion": "ので se pega directamente detrás de la forma ている en pasado, sin です en medio: 始まっていたので, no 始まっていたのでした。"
+    },
+    {
+      "id": "err_l10",
+      "l": "L10",
+      "candidatos": [
+        "北海道より沖縄のほうが暖かいです。",
+        "雪を見るなら北海道が一番いいです。",
+        "冬になると雪がたくさん降ります。",
+        "どちらの方が好きですかを迷っています。"
+      ],
+      "incorrectaIdx": 3,
+      "correcta": "どちらのほうが好きか迷っています。",
+      "explicacion": "Detrás de 迷っています va una pregunta indirecta con か, no con を: どちらのほうが好きか + 迷っています。"
+    },
+    {
+      "id": "err_l11",
+      "l": "L11",
+      "candidatos": [
+        "公園を散歩したり映画を見たりしました。",
+        "沖縄に行ってみたいと思っています。",
+        "去年沖縄に行くことがあります。",
+        "また今度行きたいです。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "去年沖縄に行ったことがあります。",
+      "explicacion": "~たことがあります (experiencia pasada) usa el verbo en forma た, no en forma de diccionario: 行った ことがあります, no 行く ことがあります。"
+    },
+    {
+      "id": "err_l12",
+      "l": "L12",
+      "candidatos": [
+        "私は友達に花をあげました。",
+        "友達は私にお菓子をくれました。",
+        "私は先生に本をくれました。",
+        "みんなでプレゼントを交換しました。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "私は先生に本をもらいました。",
+      "explicacion": "くれる se usa cuando otra persona me da algo a mí; aquí soy yo quien recibe del profesor, así que el verbo correcto es もらう。"
     }
   ],
   "texto_gramatica": [
@@ -915,7 +1215,7 @@
           "t": "何ですか。"
         },
         {
-          "t": "＿",
+          "t": "それは",
           "marca": true,
           "hueco": true
         },
@@ -1076,6 +1376,222 @@
       ],
       "respuesta": "起きて",
       "explicacion": "La forma て conecta varias acciones seguidas en una misma frase, como una lista de pasos."
+    },
+    {
+      "id": "gram_l7",
+      "l": "L7",
+      "partes": [
+        {
+          "t": "公園に写真を撮り"
+        },
+        {
+          "t": "に行きます",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "母は元気で、父はもう"
+        },
+        {
+          "t": "疲れています",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "に行きます",
+        "ます",
+        "たいです",
+        "ました"
+      ],
+      "respuesta": "に行きます",
+      "explicacion": "[verbo ます-stem] + に行きます expresa el propósito de ir a algún sitio: ir (a hacer algo)."
+    },
+    {
+      "id": "gram_l8",
+      "l": "L8",
+      "partes": [
+        {
+          "t": "週末は友達とバーベキューを"
+        },
+        {
+          "t": "する",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "肉はもう"
+        },
+        {
+          "t": "買った",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "する",
+        "します",
+        "した",
+        "してる"
+      ],
+      "respuesta": "する",
+      "explicacion": "El estilo llano usa la forma de diccionario (する) en vez de la forma educada (します) para hablar de forma casual."
+    },
+    {
+      "id": "gram_l9",
+      "l": "L9",
+      "partes": [
+        {
+          "t": "これは"
+        },
+        {
+          "t": "昨日買った",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "チケットです。"
+        },
+        {
+          "t": "あの人が"
+        },
+        {
+          "t": "見ている",
+          "marca": true
+        },
+        {
+          "t": "のは歌舞伎です。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "昨日買った",
+        "昨日買います",
+        "昨日買う予定",
+        "買いました昨日"
+      ],
+      "respuesta": "昨日買った",
+      "explicacion": "Para decir 'el billete que compré ayer', el verbo en pasado simple va directamente delante del sustantivo, sin ninguna palabra para 'que'."
+    },
+    {
+      "id": "gram_l10",
+      "l": "L10",
+      "partes": [
+        {
+          "t": "沖縄は北海道"
+        },
+        {
+          "t": "より",
+          "marca": true
+        },
+        {
+          "t": "暖かいです。"
+        },
+        {
+          "t": "北海道の"
+        },
+        {
+          "t": "ほうが",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "寒いです。"
+        }
+      ],
+      "huecoIdx": 4,
+      "opciones": [
+        "ほうが",
+        "のが",
+        "ほど",
+        "だけ"
+      ],
+      "respuesta": "ほうが",
+      "explicacion": "[A]の ほうが [B]より + adjetivo compara dos cosas: 'A es más ~ que B'."
+    },
+    {
+      "id": "gram_l11",
+      "l": "L11",
+      "partes": [
+        {
+          "t": "休みの日は公園を散歩したり、本を読ん"
+        },
+        {
+          "t": "だりします",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "沖縄にも行って"
+        },
+        {
+          "t": "みたいです",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "だりします",
+        "だりでした",
+        "たりします",
+        "でした"
+      ],
+      "respuesta": "だりします",
+      "explicacion": "〜たり〜たりする lista varias acciones como ejemplo. 読む termina en む, así que su forma es 読んだり (だり, no たり)."
+    },
+    {
+      "id": "gram_l12",
+      "l": "L12",
+      "partes": [
+        {
+          "t": "友達は私に誕生日プレゼントを"
+        },
+        {
+          "t": "くれました",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "私も友達にプレゼントを"
+        },
+        {
+          "t": "あげました",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "くれました",
+        "あげました",
+        "もらいました",
+        "かりました"
+      ],
+      "respuesta": "くれました",
+      "explicacion": "くれる es cuando otra persona me da algo a mí (o a mi grupo): 友達は私にくれました = 'mi amigo me dio (a mí)'."
     }
   ]
 }

@@ -169,6 +169,62 @@
       "respuesta": "が",
       "traduccion": "El profesor me lo explicó.",
       "explicacion": "先生 es quien hace el favor (sujeto de くれました), así que lleva が."
+    },
+    {
+      "id": "p_l17_01",
+      "leccion": "L17",
+      "frase_con_hueco": "私は先生___褒められました。",
+      "opciones": [
+        "に",
+        "が",
+        "を",
+        "で"
+      ],
+      "respuesta": "に",
+      "traduccion": "Fui elogiado por el profesor.",
+      "explicacion": "に marca quién realiza la acción en una frase pasiva."
+    },
+    {
+      "id": "p_l18_01",
+      "leccion": "L18",
+      "frase_con_hueco": "母は子供___野菜を食べさせました。",
+      "opciones": [
+        "に",
+        "を",
+        "が",
+        "の"
+      ],
+      "respuesta": "に",
+      "traduccion": "La madre hizo que el niño comiera verdura.",
+      "explicacion": "に marca a quién se le hace hacer algo en una frase causativa."
+    },
+    {
+      "id": "p_l19_01",
+      "leccion": "L19",
+      "frase_con_hueco": "お客様は何___召し上がりますか。",
+      "opciones": [
+        "を",
+        "が",
+        "に",
+        "で"
+      ],
+      "respuesta": "を",
+      "traduccion": "¿Qué va a tomar (usted)?",
+      "explicacion": "召し上がる es la forma respetuosa de 食べる/飲む; el objeto sigue llevando を."
+    },
+    {
+      "id": "p_l20_01",
+      "leccion": "L20",
+      "frase_con_hueco": "明日___参ります。",
+      "opciones": [
+        "∅ (nada)",
+        "は",
+        "が",
+        "を"
+      ],
+      "respuesta": "∅ (nada)",
+      "traduccion": "Mañana iré.",
+      "explicacion": "明日 es un tiempo relativo: sin partícula, igual que 今日/昨日."
     }
   ],
   "ordenar": [
@@ -367,6 +423,76 @@
         "かいます"
       ],
       "traduccion": "Si es barato, compraré mucho."
+    },
+    {
+      "id": "o_l17_01",
+      "leccion": "L17",
+      "palabras": [
+        "雨",
+        "に",
+        "降られて",
+        "困りました"
+      ],
+      "kana": [
+        "あめ",
+        "に",
+        "ふられて",
+        "こまりました"
+      ],
+      "traduccion": "Me fastidió que lloviera (me causó problemas)."
+    },
+    {
+      "id": "o_l18_01",
+      "leccion": "L18",
+      "palabras": [
+        "家",
+        "に",
+        "着いたら",
+        "電話します"
+      ],
+      "kana": [
+        "いえ",
+        "に",
+        "ついたら",
+        "でんわします"
+      ],
+      "traduccion": "Cuando llegue a casa, llamo."
+    },
+    {
+      "id": "o_l19_01",
+      "leccion": "L19",
+      "palabras": [
+        "社長",
+        "は",
+        "もう",
+        "いらっしゃいました"
+      ],
+      "kana": [
+        "しゃちょう",
+        "は",
+        "もう",
+        "いらっしゃいました"
+      ],
+      "traduccion": "El director ya ha llegado (respetuoso)."
+    },
+    {
+      "id": "o_l20_01",
+      "leccion": "L20",
+      "palabras": [
+        "田中さん",
+        "は",
+        "もう",
+        "着いた",
+        "はずです"
+      ],
+      "kana": [
+        "たなかさん",
+        "は",
+        "もう",
+        "ついた",
+        "はずです"
+      ],
+      "traduccion": "Tanaka debería haber llegado ya."
     }
   ],
   "produccion_larga": [
@@ -423,6 +549,16 @@
       "ejemplo_respuesta": "先週、友達が私に本をくれました。とても嬉しかったです。",
       "puntos_gramaticales": [
         "あげる/くれる/もらう"
+      ]
+    },
+    {
+      "id": "w_l17_01",
+      "leccion": "L17",
+      "prompt": "Cuenta algo molesto que te pasó usando la pasiva de fastidio (雨に降られました, style).",
+      "ejemplo_respuesta": "先週、電車の中で足を踏まれました。とても痛かったです。",
+      "puntos_gramaticales": [
+        "受身形",
+        "迷惑受身"
       ]
     }
   ],
@@ -720,6 +856,42 @@
         "時間があれば、手伝ってくれますか",
         "じかんがあれば、てつだってくれますか"
       ]
+    },
+    {
+      "id": "e_l17_01",
+      "leccion": "L17",
+      "es": "Aunque estudié, no me salió bien el examen.",
+      "respuestas": [
+        "勉強したのに、テストができませんでした",
+        "べんきょうしたのに、テストができませんでした"
+      ]
+    },
+    {
+      "id": "e_l18_01",
+      "leccion": "L18",
+      "es": "Déjeme preguntar.",
+      "respuestas": [
+        "質問させてください",
+        "しつもんさせてください"
+      ]
+    },
+    {
+      "id": "e_l19_01",
+      "leccion": "L19",
+      "es": "¿Se marcha usted?",
+      "respuestas": [
+        "帰られますか",
+        "かえられますか"
+      ]
+    },
+    {
+      "id": "e_l20_01",
+      "leccion": "L20",
+      "es": "Es imposible que llegue tarde.",
+      "respuestas": [
+        "遅刻するはずがありません",
+        "ちこくするはずがありません"
+      ]
     }
   ],
   "voz": [
@@ -883,6 +1055,46 @@
       "respuestas": [
         "先生が説明してくれました",
         "せんせいがせつめいしてくれました"
+      ]
+    },
+    {
+      "id": "v_l17_01",
+      "leccion": "L17",
+      "objetivo": "財布を盗まれました",
+      "es": "Me robaron la cartera.",
+      "respuestas": [
+        "財布を盗まれました",
+        "さいふをぬすまれました"
+      ]
+    },
+    {
+      "id": "v_l18_01",
+      "leccion": "L18",
+      "objetivo": "子供に野菜を食べさせます",
+      "es": "Hago que el niño coma verdura.",
+      "respuestas": [
+        "子供に野菜を食べさせます",
+        "こどもにやさいをたべさせます"
+      ]
+    },
+    {
+      "id": "v_l19_01",
+      "leccion": "L19",
+      "objetivo": "何を召し上がりますか",
+      "es": "¿Qué va a tomar?",
+      "respuestas": [
+        "何を召し上がりますか",
+        "なにをめしあがりますか"
+      ]
+    },
+    {
+      "id": "v_l20_01",
+      "leccion": "L20",
+      "objetivo": "明日参ります",
+      "es": "Mañana iré (humilde).",
+      "respuestas": [
+        "明日参ります",
+        "あしたまいります"
       ]
     }
   ]

@@ -11,11 +11,13 @@ function esc(s) {
 function codepoint(k) { return k.codePointAt(0).toString(16).padStart(5, '0'); }
 
 let cacheKanji = null;
+let cacheMeta = null;
 async function cargarKanji() {
   if (cacheKanji) return cacheKanji;
   const res = await fetch(`data/kanji.json?v=${Date.now()}`);
   const d = await res.json();
   cacheKanji = d.kanji || [];
+  cacheMeta = d.meta || {};
   return cacheKanji;
 }
 
@@ -54,19 +56,34 @@ export async function vistaKanji(cont) {
   let filtroNivel = 'todos';
   let filtroTemario = false;
 
+  // Cobertura real frente al número oficial de kanji de cada nivel JLPT,
+  // para poder ver de un vistazo si falta alguno por añadir.
+  function cobertura(nivel) {
+    const objetivo = (cacheMeta?.objetivo || {})[nivel];
+    const hay = kanjis.filter(k => k.nivel === nivel).length;
+    return objetivo ? { hay, objetivo, completo: hay >= objetivo } : null;
+  }
+  function etiquetaNivel(nivel) {
+    const c = cobertura(nivel);
+    if (!c) return nivel;
+    return `${nivel} ${c.hay}/${c.objetivo}${c.completo ? ' ✓' : ''}`;
+  }
+
   function pintarLista() {
     const filtrados = kanjis.filter(k =>
       (filtroNivel === 'todos' || k.nivel === filtroNivel) &&
       (!filtroTemario || enTemario.has(k.kanji))
     );
+    const extras = kanjis.filter(k => k.nivel === 'Extra').length;
     cont.innerHTML = `
       <h1 class="vista-titulo">🈴 Kanji</h1>
-      <p class="vista-sub">Lecturas, significado, ejemplos, mnemotecnia y práctica del orden de los trazos. ${kanjis.length} kanji disponibles; se irán ampliando hasta cubrir todo N5-N4.</p>
+      <p class="vista-sub">Lecturas, significado, ejemplos, mnemotecnia y práctica del orden de los trazos. ${kanjis.length} kanji en total: N5 ${cobertura('N5')?.hay ?? 0}/${cobertura('N5')?.objetivo ?? '?'}, N4 ${cobertura('N4')?.hay ?? 0}/${cobertura('N4')?.objetivo ?? '?'}${extras ? `, más ${extras} extra que salen en tus lecciones` : ''}.</p>
       <div class="kanji-filtros">
         <div class="kanji-filtro-grupo">
           <button class="kanji-chip ${filtroNivel === 'todos' ? 'activo' : ''}" data-nivel="todos">Todos</button>
-          <button class="kanji-chip ${filtroNivel === 'N5' ? 'activo' : ''}" data-nivel="N5">N5</button>
-          <button class="kanji-chip ${filtroNivel === 'N4' ? 'activo' : ''}" data-nivel="N4">N4</button>
+          <button class="kanji-chip ${filtroNivel === 'N5' ? 'activo' : ''}" data-nivel="N5">${etiquetaNivel('N5')}</button>
+          <button class="kanji-chip ${filtroNivel === 'N4' ? 'activo' : ''}" data-nivel="N4">${etiquetaNivel('N4')}</button>
+          ${extras ? `<button class="kanji-chip ${filtroNivel === 'Extra' ? 'activo' : ''}" data-nivel="Extra">Extra</button>` : ''}
         </div>
         <label class="kanji-filtro-check">
           <input type="checkbox" id="chk-temario" ${filtroTemario ? 'checked' : ''}> Solo los que ya aparecen en mis lecciones

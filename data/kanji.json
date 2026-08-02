@@ -1,7 +1,12 @@
 {
   "meta": {
     "nota": "Kanji originales (lecturas y significado son datos de dominio público del propio idioma, no texto de ningún libro). Los mnemónicos son composiciones originales basadas en la descomposición visual de cada kanji, técnica mnemotécnica estándar. El trazo (stroke order) se sirve desde data/kanjivg/<codepoint-hex-5>.svg, un subconjunto vendorizado del dataset abierto KanjiVG (CC BY-SA 3.0, http://kanjivg.tagaini.net) — atribución obligatoria si se redistribuye.",
-    "fuente_trazo": "KanjiVG (CC BY-SA 3.0) — http://kanjivg.tagaini.net"
+    "fuente_trazo": "KanjiVG (CC BY-SA 3.0) — http://kanjivg.tagaini.net",
+    "objetivo": {
+      "N5": 80,
+      "N4": 167
+    },
+    "nota_cobertura": "objetivo = numero de kanji de cada nivel JLPT (dato publico del examen). La pestana compara lo que hay en este fichero contra ese objetivo para mostrar la cobertura real."
   },
   "kanji": [
     {
@@ -88,7 +93,7 @@
       ],
       "kun": [],
       "significado": "día de la semana",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "月曜日",
@@ -141,7 +146,7 @@
         "かう"
       ],
       "significado": "comprar",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "買います",
@@ -217,7 +222,7 @@
         "あう"
       ],
       "significado": "reunión, encontrarse",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "会社",
@@ -267,7 +272,7 @@
         "のむ"
       ],
       "significado": "beber",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "飲みます",
@@ -288,7 +293,7 @@
         "つたわる"
       ],
       "significado": "transmitir, comunicar",
-      "nivel": "N5",
+      "nivel": "Extra",
       "ejemplos": [
         {
           "palabra": "伝統",
@@ -431,7 +436,7 @@
         "もの"
       ],
       "significado": "cosa, objeto",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "果物",
@@ -456,7 +461,7 @@
         "て"
       ],
       "significado": "mano",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "手",
@@ -507,7 +512,7 @@
         "やしろ"
       ],
       "significado": "empresa, santuario",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "会社",
@@ -558,7 +563,7 @@
         "かえる"
       ],
       "significado": "volver, regresar",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "帰ります",
@@ -580,7 +585,7 @@
         "あける"
       ],
       "significado": "claro, brillante",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "明日",
@@ -605,7 +610,7 @@
         "いそがしい"
       ],
       "significado": "ocupado",
-      "nivel": "N5",
+      "nivel": "Extra",
       "ejemplos": [
         {
           "palabra": "忙しい",
@@ -625,7 +630,7 @@
         "まつ"
       ],
       "significado": "esperar",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "待つ",
@@ -724,7 +729,7 @@
         "たより"
       ],
       "significado": "conveniencia, correo",
-      "nivel": "N5",
+      "nivel": "Extra",
       "ejemplos": [
         {
           "palabra": "郵便局",
@@ -747,7 +752,7 @@
       ],
       "kun": [],
       "significado": "previo, de antemano",
-      "nivel": "N5",
+      "nivel": "Extra",
       "ejemplos": [
         {
           "palabra": "予定",
@@ -767,7 +772,7 @@
         "いのち"
       ],
       "significado": "vida, orden",
-      "nivel": "N5",
+      "nivel": "Extra",
       "ejemplos": [
         {
           "palabra": "命令",
@@ -785,7 +790,7 @@
       ],
       "kun": [],
       "significado": "orden, mandato",
-      "nivel": "N5",
+      "nivel": "Extra",
       "ejemplos": [
         {
           "palabra": "命令",
@@ -876,7 +881,7 @@
         "もの"
       ],
       "significado": "persona (que hace algo)",
-      "nivel": "N5",
+      "nivel": "N4",
       "ejemplos": [
         {
           "palabra": "医者",
@@ -966,6 +971,1440 @@
         }
       ],
       "mnemonico": "何 es una persona cargando algo al hombro, preguntando '¿qué es esto?'."
+    },
+    {
+      "id": "kj_041",
+      "kanji": "一",
+      "on": [
+        "イチ",
+        "イツ"
+      ],
+      "kun": [
+        "ひと"
+      ],
+      "significado": "uno",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "一つ",
+          "lectura": "ひとつ",
+          "es": "uno (contador)"
+        },
+        {
+          "palabra": "一月",
+          "lectura": "いちがつ",
+          "es": "enero"
+        }
+      ],
+      "mnemonico": "Un solo trazo horizontal: el número uno en su forma más simple."
+    },
+    {
+      "id": "kj_042",
+      "kanji": "二",
+      "on": [
+        "ニ"
+      ],
+      "kun": [
+        "ふた"
+      ],
+      "significado": "dos",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "二つ",
+          "lectura": "ふたつ",
+          "es": "dos (contador)"
+        },
+        {
+          "palabra": "二人",
+          "lectura": "ふたり",
+          "es": "dos personas"
+        }
+      ],
+      "mnemonico": "Dos trazos horizontales, uno encima del otro: el número dos."
+    },
+    {
+      "id": "kj_043",
+      "kanji": "三",
+      "on": [
+        "サン"
+      ],
+      "kun": [
+        "み"
+      ],
+      "significado": "tres",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "三つ",
+          "lectura": "みっつ",
+          "es": "tres (contador)"
+        },
+        {
+          "palabra": "三月",
+          "lectura": "さんがつ",
+          "es": "marzo"
+        }
+      ],
+      "mnemonico": "Tres trazos horizontales apilados: el número tres."
+    },
+    {
+      "id": "kj_044",
+      "kanji": "四",
+      "on": [
+        "シ"
+      ],
+      "kun": [
+        "よん",
+        "よっ"
+      ],
+      "significado": "cuatro",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "四つ",
+          "lectura": "よっつ",
+          "es": "cuatro (contador)"
+        },
+        {
+          "palabra": "四月",
+          "lectura": "しがつ",
+          "es": "abril"
+        }
+      ],
+      "mnemonico": "Una caja con dos piernas dentro: hay que 'encerrar' el cuatro porque cuatro rayas ya no se leerían bien."
+    },
+    {
+      "id": "kj_045",
+      "kanji": "五",
+      "on": [
+        "ゴ"
+      ],
+      "kun": [
+        "いつ"
+      ],
+      "significado": "cinco",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "五つ",
+          "lectura": "いつつ",
+          "es": "cinco (contador)"
+        },
+        {
+          "palabra": "五月",
+          "lectura": "ごがつ",
+          "es": "mayo"
+        }
+      ],
+      "mnemonico": "Una figura en zigzag entre dos rayas: la mano de cinco dedos cruzada."
+    },
+    {
+      "id": "kj_046",
+      "kanji": "六",
+      "on": [
+        "ロク"
+      ],
+      "kun": [
+        "むっ"
+      ],
+      "significado": "seis",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "六つ",
+          "lectura": "むっつ",
+          "es": "seis (contador)"
+        },
+        {
+          "palabra": "六月",
+          "lectura": "ろくがつ",
+          "es": "junio"
+        }
+      ],
+      "mnemonico": "Una tapa con dos patitas debajo: como una mesa de seis."
+    },
+    {
+      "id": "kj_047",
+      "kanji": "七",
+      "on": [
+        "シチ"
+      ],
+      "kun": [
+        "なな"
+      ],
+      "significado": "siete",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "七つ",
+          "lectura": "ななつ",
+          "es": "siete (contador)"
+        },
+        {
+          "palabra": "七月",
+          "lectura": "しちがつ",
+          "es": "julio"
+        }
+      ],
+      "mnemonico": "Parece un siete al revés con una raya cruzándolo."
+    },
+    {
+      "id": "kj_048",
+      "kanji": "八",
+      "on": [
+        "ハチ"
+      ],
+      "kun": [
+        "やっ"
+      ],
+      "significado": "ocho",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "八つ",
+          "lectura": "やっつ",
+          "es": "ocho (contador)"
+        },
+        {
+          "palabra": "八月",
+          "lectura": "はちがつ",
+          "es": "agosto"
+        }
+      ],
+      "mnemonico": "Dos trazos que se abren hacia abajo, como el ocho partiéndose en dos cuatros."
+    },
+    {
+      "id": "kj_049",
+      "kanji": "九",
+      "on": [
+        "キュウ",
+        "ク"
+      ],
+      "kun": [
+        "ここの"
+      ],
+      "significado": "nueve",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "九つ",
+          "lectura": "ここのつ",
+          "es": "nueve (contador)"
+        },
+        {
+          "palabra": "九月",
+          "lectura": "くがつ",
+          "es": "septiembre"
+        }
+      ],
+      "mnemonico": "Un gancho con una pierna larga: el nueve casi cerrando la decena."
+    },
+    {
+      "id": "kj_050",
+      "kanji": "十",
+      "on": [
+        "ジュウ"
+      ],
+      "kun": [
+        "とお"
+      ],
+      "significado": "diez",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "十",
+          "lectura": "じゅう",
+          "es": "diez"
+        },
+        {
+          "palabra": "十月",
+          "lectura": "じゅうがつ",
+          "es": "octubre"
+        }
+      ],
+      "mnemonico": "Una cruz perfecta: los diez dedos de las dos manos cruzadas."
+    },
+    {
+      "id": "kj_051",
+      "kanji": "百",
+      "on": [
+        "ヒャク"
+      ],
+      "kun": [],
+      "significado": "cien",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "百",
+          "lectura": "ひゃく",
+          "es": "cien"
+        },
+        {
+          "palabra": "三百",
+          "lectura": "さんびゃく",
+          "es": "trescientos"
+        }
+      ],
+      "mnemonico": "Un 一 (uno) encima de 白 (blanco): un uno con muchos ceros detrás, cien."
+    },
+    {
+      "id": "kj_052",
+      "kanji": "千",
+      "on": [
+        "セン"
+      ],
+      "kun": [
+        "ち"
+      ],
+      "significado": "mil",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "千",
+          "lectura": "せん",
+          "es": "mil"
+        },
+        {
+          "palabra": "千円",
+          "lectura": "せんえん",
+          "es": "mil yenes"
+        }
+      ],
+      "mnemonico": "Como 十 (diez) con una raya extra arriba: mucho más que diez, mil."
+    },
+    {
+      "id": "kj_053",
+      "kanji": "万",
+      "on": [
+        "マン",
+        "バン"
+      ],
+      "kun": [],
+      "significado": "diez mil",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "一万円",
+          "lectura": "いちまんえん",
+          "es": "diez mil yenes"
+        },
+        {
+          "palabra": "万が一",
+          "lectura": "まんがいち",
+          "es": "por si acaso"
+        }
+      ],
+      "mnemonico": "Un trazo que se dispara hacia los lados: una cantidad enorme, diez mil."
+    },
+    {
+      "id": "kj_054",
+      "kanji": "円",
+      "on": [
+        "エン"
+      ],
+      "kun": [
+        "まる"
+      ],
+      "significado": "yen, círculo",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "円",
+          "lectura": "えん",
+          "es": "yen"
+        },
+        {
+          "palabra": "百円",
+          "lectura": "ひゃくえん",
+          "es": "cien yenes"
+        }
+      ],
+      "mnemonico": "Una caja con algo dentro: la moneda redonda japonesa, el yen."
+    },
+    {
+      "id": "kj_055",
+      "kanji": "人",
+      "on": [
+        "ジン",
+        "ニン"
+      ],
+      "kun": [
+        "ひと"
+      ],
+      "significado": "persona",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "人",
+          "lectura": "ひと",
+          "es": "persona"
+        },
+        {
+          "palabra": "日本人",
+          "lectura": "にほんじん",
+          "es": "japonés/a"
+        }
+      ],
+      "mnemonico": "Dos piernas caminando: una persona vista de perfil."
+    },
+    {
+      "id": "kj_056",
+      "kanji": "女",
+      "on": [
+        "ジョ"
+      ],
+      "kun": [
+        "おんな"
+      ],
+      "significado": "mujer",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "女の人",
+          "lectura": "おんなのひと",
+          "es": "mujer"
+        },
+        {
+          "palabra": "彼女",
+          "lectura": "かのじょ",
+          "es": "ella, novia"
+        }
+      ],
+      "mnemonico": "Una figura sentada con los brazos cruzados: la mujer."
+    },
+    {
+      "id": "kj_057",
+      "kanji": "男",
+      "on": [
+        "ダン",
+        "ナン"
+      ],
+      "kun": [
+        "おとこ"
+      ],
+      "significado": "hombre",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "男の人",
+          "lectura": "おとこのひと",
+          "es": "hombre"
+        },
+        {
+          "palabra": "男性",
+          "lectura": "だんせい",
+          "es": "varón"
+        }
+      ],
+      "mnemonico": "田 (campo de arroz) sobre 力 (fuerza): el que trabajaba con fuerza en el campo."
+    },
+    {
+      "id": "kj_058",
+      "kanji": "国",
+      "on": [
+        "コク"
+      ],
+      "kun": [
+        "くに"
+      ],
+      "significado": "país",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "国",
+          "lectura": "くに",
+          "es": "país"
+        },
+        {
+          "palabra": "中国",
+          "lectura": "ちゅうごく",
+          "es": "China"
+        }
+      ],
+      "mnemonico": "Un recinto cerrado con un tesoro (玉) dentro: un territorio con fronteras, un país."
+    },
+    {
+      "id": "kj_059",
+      "kanji": "年",
+      "on": [
+        "ネン"
+      ],
+      "kun": [
+        "とし"
+      ],
+      "significado": "año",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "今年",
+          "lectura": "ことし",
+          "es": "este año"
+        },
+        {
+          "palabra": "去年",
+          "lectura": "きょねん",
+          "es": "el año pasado"
+        }
+      ],
+      "mnemonico": "Una espiga inclinada: cada cosecha marca un año."
+    },
+    {
+      "id": "kj_060",
+      "kanji": "中",
+      "on": [
+        "チュウ"
+      ],
+      "kun": [
+        "なか"
+      ],
+      "significado": "dentro, medio",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "中",
+          "lectura": "なか",
+          "es": "dentro"
+        },
+        {
+          "palabra": "中国",
+          "lectura": "ちゅうごく",
+          "es": "China"
+        }
+      ],
+      "mnemonico": "Una caja atravesada justo por el centro: en medio, dentro."
+    },
+    {
+      "id": "kj_061",
+      "kanji": "長",
+      "on": [
+        "チョウ"
+      ],
+      "kun": [
+        "なが"
+      ],
+      "significado": "largo, jefe",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "長い",
+          "lectura": "ながい",
+          "es": "largo"
+        },
+        {
+          "palabra": "社長",
+          "lectura": "しゃちょう",
+          "es": "presidente de empresa"
+        }
+      ],
+      "mnemonico": "Un anciano con el pelo largo apoyado en un bastón: largo y también 'el mayor'."
+    },
+    {
+      "id": "kj_062",
+      "kanji": "出",
+      "on": [
+        "シュツ"
+      ],
+      "kun": [
+        "で",
+        "だ"
+      ],
+      "significado": "salir, sacar",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "出る",
+          "lectura": "でる",
+          "es": "salir"
+        },
+        {
+          "palabra": "出口",
+          "lectura": "でぐち",
+          "es": "salida"
+        }
+      ],
+      "mnemonico": "Dos montañas apiladas: algo que brota hacia fuera y sale."
+    },
+    {
+      "id": "kj_063",
+      "kanji": "見",
+      "on": [
+        "ケン"
+      ],
+      "kun": [
+        "み"
+      ],
+      "significado": "ver",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "見る",
+          "lectura": "みる",
+          "es": "ver"
+        },
+        {
+          "palabra": "見せる",
+          "lectura": "みせる",
+          "es": "mostrar"
+        }
+      ],
+      "mnemonico": "Un ojo (目) con piernas: el ojo que se mueve para ver."
+    },
+    {
+      "id": "kj_064",
+      "kanji": "月",
+      "on": [
+        "ゲツ",
+        "ガツ"
+      ],
+      "kun": [
+        "つき"
+      ],
+      "significado": "luna, mes",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "月",
+          "lectura": "つき",
+          "es": "luna"
+        },
+        {
+          "palabra": "月曜日",
+          "lectura": "げつようび",
+          "es": "lunes"
+        }
+      ],
+      "mnemonico": "Una luna creciente con dos rayas dentro: la luna, y los meses que marca."
+    },
+    {
+      "id": "kj_065",
+      "kanji": "分",
+      "on": [
+        "ブン",
+        "フン"
+      ],
+      "kun": [
+        "わ"
+      ],
+      "significado": "minuto, dividir, entender",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "分かる",
+          "lectura": "わかる",
+          "es": "entender"
+        },
+        {
+          "palabra": "五分",
+          "lectura": "ごふん",
+          "es": "cinco minutos"
+        }
+      ],
+      "mnemonico": "Un cuchillo (刀) partiendo algo en dos (八): dividir, y de ahí 'minuto' y 'entender'."
+    },
+    {
+      "id": "kj_066",
+      "kanji": "後",
+      "on": [
+        "ゴ",
+        "コウ"
+      ],
+      "kun": [
+        "あと",
+        "うし"
+      ],
+      "significado": "después, detrás",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "後で",
+          "lectura": "あとで",
+          "es": "después"
+        },
+        {
+          "palabra": "午後",
+          "lectura": "ごご",
+          "es": "por la tarde"
+        }
+      ],
+      "mnemonico": "Un caminito con hilos enredados: el que se queda atrás, después."
+    },
+    {
+      "id": "kj_067",
+      "kanji": "間",
+      "on": [
+        "カン"
+      ],
+      "kun": [
+        "あいだ"
+      ],
+      "significado": "intervalo, entre",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "時間",
+          "lectura": "じかん",
+          "es": "tiempo (duración)"
+        },
+        {
+          "palabra": "人間",
+          "lectura": "にんげん",
+          "es": "ser humano"
+        }
+      ],
+      "mnemonico": "El sol (日) visto por la rendija de un portón (門): el hueco entre dos cosas."
+    },
+    {
+      "id": "kj_068",
+      "kanji": "上",
+      "on": [
+        "ジョウ"
+      ],
+      "kun": [
+        "うえ",
+        "あ"
+      ],
+      "significado": "arriba, subir",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "上",
+          "lectura": "うえ",
+          "es": "encima"
+        },
+        {
+          "palabra": "上手",
+          "lectura": "じょうず",
+          "es": "hábil"
+        }
+      ],
+      "mnemonico": "Una raya con algo que sobresale por encima: arriba."
+    },
+    {
+      "id": "kj_069",
+      "kanji": "下",
+      "on": [
+        "カ",
+        "ゲ"
+      ],
+      "kun": [
+        "した",
+        "さ"
+      ],
+      "significado": "abajo, bajar",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "下",
+          "lectura": "した",
+          "es": "debajo"
+        },
+        {
+          "palabra": "下手",
+          "lectura": "へた",
+          "es": "torpe"
+        }
+      ],
+      "mnemonico": "Una raya con algo colgando por debajo: abajo."
+    },
+    {
+      "id": "kj_070",
+      "kanji": "小",
+      "on": [
+        "ショウ"
+      ],
+      "kun": [
+        "ちい"
+      ],
+      "significado": "pequeño",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "小さい",
+          "lectura": "ちいさい",
+          "es": "pequeño"
+        },
+        {
+          "palabra": "小学校",
+          "lectura": "しょうがっこう",
+          "es": "escuela primaria"
+        }
+      ],
+      "mnemonico": "Tres trazos diminutos alrededor de un eje: algo pequeño."
+    },
+    {
+      "id": "kj_071",
+      "kanji": "東",
+      "on": [
+        "トウ"
+      ],
+      "kun": [
+        "ひがし"
+      ],
+      "significado": "este",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "東",
+          "lectura": "ひがし",
+          "es": "este"
+        },
+        {
+          "palabra": "東京",
+          "lectura": "とうきょう",
+          "es": "Tokio"
+        }
+      ],
+      "mnemonico": "El sol (日) saliendo por detrás de un árbol (木): por donde amanece, el este."
+    },
+    {
+      "id": "kj_072",
+      "kanji": "西",
+      "on": [
+        "セイ",
+        "サイ"
+      ],
+      "kun": [
+        "にし"
+      ],
+      "significado": "oeste",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "西",
+          "lectura": "にし",
+          "es": "oeste"
+        },
+        {
+          "palabra": "関西",
+          "lectura": "かんさい",
+          "es": "región de Kansai"
+        }
+      ],
+      "mnemonico": "Un pájaro entrando en su nido al atardecer: cuando el sol cae por el oeste."
+    },
+    {
+      "id": "kj_073",
+      "kanji": "北",
+      "on": [
+        "ホク"
+      ],
+      "kun": [
+        "きた"
+      ],
+      "significado": "norte",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "北",
+          "lectura": "きた",
+          "es": "norte"
+        },
+        {
+          "palabra": "北海道",
+          "lectura": "ほっかいどう",
+          "es": "Hokkaido"
+        }
+      ],
+      "mnemonico": "Dos personas de espaldas: en el norte se da la espalda al frío."
+    },
+    {
+      "id": "kj_074",
+      "kanji": "南",
+      "on": [
+        "ナン"
+      ],
+      "kun": [
+        "みなみ"
+      ],
+      "significado": "sur",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "南",
+          "lectura": "みなみ",
+          "es": "sur"
+        },
+        {
+          "palabra": "南口",
+          "lectura": "みなみぐち",
+          "es": "salida sur"
+        }
+      ],
+      "mnemonico": "Una planta protegida bajo un cobertizo: crece hacia el lado cálido, el sur."
+    },
+    {
+      "id": "kj_075",
+      "kanji": "山",
+      "on": [
+        "サン"
+      ],
+      "kun": [
+        "やま"
+      ],
+      "significado": "montaña",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "山",
+          "lectura": "やま",
+          "es": "montaña"
+        },
+        {
+          "palabra": "富士山",
+          "lectura": "ふじさん",
+          "es": "monte Fuji"
+        }
+      ],
+      "mnemonico": "Tres picos que se elevan: una cordillera vista de frente."
+    },
+    {
+      "id": "kj_076",
+      "kanji": "川",
+      "on": [
+        "セン"
+      ],
+      "kun": [
+        "かわ"
+      ],
+      "significado": "río",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "川",
+          "lectura": "かわ",
+          "es": "río"
+        },
+        {
+          "palabra": "小川",
+          "lectura": "おがわ",
+          "es": "arroyo"
+        }
+      ],
+      "mnemonico": "Tres líneas que fluyen hacia abajo: la corriente de un río."
+    },
+    {
+      "id": "kj_077",
+      "kanji": "水",
+      "on": [
+        "スイ"
+      ],
+      "kun": [
+        "みず"
+      ],
+      "significado": "agua",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "水",
+          "lectura": "みず",
+          "es": "agua"
+        },
+        {
+          "palabra": "水曜日",
+          "lectura": "すいようび",
+          "es": "miércoles"
+        }
+      ],
+      "mnemonico": "Un chorro central con salpicaduras a los lados: agua corriendo."
+    },
+    {
+      "id": "kj_078",
+      "kanji": "火",
+      "on": [
+        "カ"
+      ],
+      "kun": [
+        "ひ"
+      ],
+      "significado": "fuego",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "火",
+          "lectura": "ひ",
+          "es": "fuego"
+        },
+        {
+          "palabra": "火曜日",
+          "lectura": "かようび",
+          "es": "martes"
+        }
+      ],
+      "mnemonico": "Una llama con chispas saltando a los lados."
+    },
+    {
+      "id": "kj_079",
+      "kanji": "木",
+      "on": [
+        "モク",
+        "ボク"
+      ],
+      "kun": [
+        "き"
+      ],
+      "significado": "árbol, madera",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "木",
+          "lectura": "き",
+          "es": "árbol"
+        },
+        {
+          "palabra": "木曜日",
+          "lectura": "もくようび",
+          "es": "jueves"
+        }
+      ],
+      "mnemonico": "Un tronco con ramas arriba y raíces abajo: un árbol."
+    },
+    {
+      "id": "kj_080",
+      "kanji": "土",
+      "on": [
+        "ド",
+        "ト"
+      ],
+      "kun": [
+        "つち"
+      ],
+      "significado": "tierra, suelo",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "土",
+          "lectura": "つち",
+          "es": "tierra"
+        },
+        {
+          "palabra": "土曜日",
+          "lectura": "どようび",
+          "es": "sábado"
+        }
+      ],
+      "mnemonico": "Un brote saliendo del suelo: la tierra."
+    },
+    {
+      "id": "kj_081",
+      "kanji": "白",
+      "on": [
+        "ハク"
+      ],
+      "kun": [
+        "しろ"
+      ],
+      "significado": "blanco",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "白い",
+          "lectura": "しろい",
+          "es": "blanco"
+        },
+        {
+          "palabra": "白紙",
+          "lectura": "はくし",
+          "es": "papel en blanco"
+        }
+      ],
+      "mnemonico": "Un rayo de luz sobre el sol (日): la luz que lo deja todo blanco."
+    },
+    {
+      "id": "kj_082",
+      "kanji": "右",
+      "on": [
+        "ウ",
+        "ユウ"
+      ],
+      "kun": [
+        "みぎ"
+      ],
+      "significado": "derecha",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "右",
+          "lectura": "みぎ",
+          "es": "derecha"
+        },
+        {
+          "palabra": "右手",
+          "lectura": "みぎて",
+          "es": "mano derecha"
+        }
+      ],
+      "mnemonico": "Una mano sobre una boca: la mano con la que comes, la derecha."
+    },
+    {
+      "id": "kj_083",
+      "kanji": "左",
+      "on": [
+        "サ"
+      ],
+      "kun": [
+        "ひだり"
+      ],
+      "significado": "izquierda",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "左",
+          "lectura": "ひだり",
+          "es": "izquierda"
+        },
+        {
+          "palabra": "左手",
+          "lectura": "ひだりて",
+          "es": "mano izquierda"
+        }
+      ],
+      "mnemonico": "Una mano sobre una herramienta: la mano que sujeta, la izquierda."
+    },
+    {
+      "id": "kj_084",
+      "kanji": "今",
+      "on": [
+        "コン"
+      ],
+      "kun": [
+        "いま"
+      ],
+      "significado": "ahora",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "今",
+          "lectura": "いま",
+          "es": "ahora"
+        },
+        {
+          "palabra": "今日",
+          "lectura": "きょう",
+          "es": "hoy"
+        }
+      ],
+      "mnemonico": "Un tejado que cubre justo este instante: ahora."
+    },
+    {
+      "id": "kj_085",
+      "kanji": "入",
+      "on": [
+        "ニュウ"
+      ],
+      "kun": [
+        "はい",
+        "い"
+      ],
+      "significado": "entrar, meter",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "入る",
+          "lectura": "はいる",
+          "es": "entrar"
+        },
+        {
+          "palabra": "入口",
+          "lectura": "いりぐち",
+          "es": "entrada"
+        }
+      ],
+      "mnemonico": "Como 人 pero con el trazo cruzado: alguien agachándose para entrar por una puerta."
+    },
+    {
+      "id": "kj_086",
+      "kanji": "外",
+      "on": [
+        "ガイ"
+      ],
+      "kun": [
+        "そと"
+      ],
+      "significado": "fuera",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "外",
+          "lectura": "そと",
+          "es": "fuera"
+        },
+        {
+          "palabra": "外国",
+          "lectura": "がいこく",
+          "es": "extranjero (país)"
+        }
+      ],
+      "mnemonico": "El atardecer (夕) junto a una adivinación: lo que queda fuera de casa al anochecer."
+    },
+    {
+      "id": "kj_087",
+      "kanji": "半",
+      "on": [
+        "ハン"
+      ],
+      "kun": [
+        "なか"
+      ],
+      "significado": "mitad",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "半分",
+          "lectura": "はんぶん",
+          "es": "la mitad"
+        },
+        {
+          "palabra": "半年",
+          "lectura": "はんとし",
+          "es": "medio año"
+        }
+      ],
+      "mnemonico": "Una vaca partida por la mitad con dos trazos: la mitad exacta."
+    },
+    {
+      "id": "kj_088",
+      "kanji": "午",
+      "on": [
+        "ゴ"
+      ],
+      "kun": [],
+      "significado": "mediodía",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "午前",
+          "lectura": "ごぜん",
+          "es": "por la mañana"
+        },
+        {
+          "palabra": "午後",
+          "lectura": "ごご",
+          "es": "por la tarde"
+        }
+      ],
+      "mnemonico": "Como 牛 (vaca) sin el trazo de arriba: la hora en que el sol está justo en lo alto."
+    },
+    {
+      "id": "kj_089",
+      "kanji": "毎",
+      "on": [
+        "マイ"
+      ],
+      "kun": [],
+      "significado": "cada",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "毎日",
+          "lectura": "まいにち",
+          "es": "todos los días"
+        },
+        {
+          "palabra": "毎年",
+          "lectura": "まいとし",
+          "es": "todos los años"
+        }
+      ],
+      "mnemonico": "Como 母 (madre) con un sombrero: la madre que hace lo mismo cada día."
+    },
+    {
+      "id": "kj_090",
+      "kanji": "校",
+      "on": [
+        "コウ"
+      ],
+      "kun": [],
+      "significado": "escuela",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "学校",
+          "lectura": "がっこう",
+          "es": "escuela"
+        },
+        {
+          "palabra": "高校",
+          "lectura": "こうこう",
+          "es": "instituto"
+        }
+      ],
+      "mnemonico": "Un árbol (木) donde se cruzan (交) los caminos de la gente: la escuela del pueblo."
+    },
+    {
+      "id": "kj_091",
+      "kanji": "語",
+      "on": [
+        "ゴ"
+      ],
+      "kun": [
+        "かた"
+      ],
+      "significado": "idioma, contar",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "日本語",
+          "lectura": "にほんご",
+          "es": "japonés (idioma)"
+        },
+        {
+          "palabra": "英語",
+          "lectura": "えいご",
+          "es": "inglés"
+        }
+      ],
+      "mnemonico": "言 (palabra) junto a cinco bocas: muchas palabras juntas forman un idioma."
+    },
+    {
+      "id": "kj_092",
+      "kanji": "聞",
+      "on": [
+        "ブン"
+      ],
+      "kun": [
+        "き"
+      ],
+      "significado": "oír, preguntar",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "聞く",
+          "lectura": "きく",
+          "es": "oír, preguntar"
+        },
+        {
+          "palabra": "新聞",
+          "lectura": "しんぶん",
+          "es": "periódico"
+        }
+      ],
+      "mnemonico": "Una oreja (耳) asomada por un portón (門): escuchar lo que pasa fuera."
+    },
+    {
+      "id": "kj_093",
+      "kanji": "読",
+      "on": [
+        "ドク"
+      ],
+      "kun": [
+        "よ"
+      ],
+      "significado": "leer",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "読む",
+          "lectura": "よむ",
+          "es": "leer"
+        },
+        {
+          "palabra": "読書",
+          "lectura": "どくしょ",
+          "es": "lectura"
+        }
+      ],
+      "mnemonico": "言 (palabra) junto a 'vender': recorrer las palabras con la voz, leer."
+    },
+    {
+      "id": "kj_094",
+      "kanji": "車",
+      "on": [
+        "シャ"
+      ],
+      "kun": [
+        "くるま"
+      ],
+      "significado": "coche, vehículo",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "車",
+          "lectura": "くるま",
+          "es": "coche"
+        },
+        {
+          "palabra": "電車",
+          "lectura": "でんしゃ",
+          "es": "tren"
+        }
+      ],
+      "mnemonico": "Un carro visto desde arriba: el eje y las dos ruedas."
+    },
+    {
+      "id": "kj_095",
+      "kanji": "友",
+      "on": [
+        "ユウ"
+      ],
+      "kun": [
+        "とも"
+      ],
+      "significado": "amigo",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "友達",
+          "lectura": "ともだち",
+          "es": "amigo/a"
+        },
+        {
+          "palabra": "親友",
+          "lectura": "しんゆう",
+          "es": "mejor amigo"
+        }
+      ],
+      "mnemonico": "Dos manos que se cruzan para ayudarse: los amigos."
+    },
+    {
+      "id": "kj_096",
+      "kanji": "休",
+      "on": [
+        "キュウ"
+      ],
+      "kun": [
+        "やす"
+      ],
+      "significado": "descansar",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "休む",
+          "lectura": "やすむ",
+          "es": "descansar"
+        },
+        {
+          "palabra": "休み",
+          "lectura": "やすみ",
+          "es": "descanso, vacaciones"
+        }
+      ],
+      "mnemonico": "Una persona (亻) apoyada en un árbol (木): descansar a la sombra."
+    },
+    {
+      "id": "kj_097",
+      "kanji": "雨",
+      "on": [
+        "ウ"
+      ],
+      "kun": [
+        "あめ"
+      ],
+      "significado": "lluvia",
+      "nivel": "N5",
+      "ejemplos": [
+        {
+          "palabra": "雨",
+          "lectura": "あめ",
+          "es": "lluvia"
+        },
+        {
+          "palabra": "大雨",
+          "lectura": "おおあめ",
+          "es": "lluvia fuerte"
+        }
+      ],
+      "mnemonico": "Una nube con gotas cayendo dentro de un marco: la lluvia."
     }
   ]
 }

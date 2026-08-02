@@ -4,71 +4,886 @@
     "leccion_actual": 10
   },
   "particulas": [
-    {"id": "p_l9_01", "leccion": "L9", "frase_con_hueco": "宿題を___していません。", "opciones": ["まだ", "もう", "でも"], "respuesta": "まだ", "traduccion": "Todavía no he hecho los deberes."},
-    {"id": "p_l9_02", "leccion": "L9", "frase_con_hueco": "映画は9時___始まります。", "opciones": ["から", "まで", "に"], "respuesta": "から", "traduccion": "La película empieza desde las 9."},
-    {"id": "p_l9_03", "leccion": "L9", "frase_con_hueco": "忙しい___、行きません。", "opciones": ["から", "の", "と"], "respuesta": "から", "traduccion": "No voy porque estoy ocupado."},
-    {"id": "p_l10_01", "leccion": "L10", "frase_con_hueco": "日本はスペイン___小さいです。", "opciones": ["より", "の方が", "一番"], "respuesta": "より", "traduccion": "Japón es más pequeño que España."},
-    {"id": "p_l10_02", "leccion": "L10", "frase_con_hueco": "果物の中で、りんごが___好きです。", "opciones": ["一番", "より", "か"], "respuesta": "一番", "traduccion": "De las frutas, la manzana es la que más me gusta."},
-    {"id": "p_l10_03", "leccion": "L10", "frase_con_hueco": "赤い___が好きです。", "opciones": ["の", "が", "を"], "respuesta": "の", "traduccion": "Me gusta el rojo."},
-    {"id": "p_l6_01", "leccion": "L6", "frase_con_hueco": "ここで写真を撮っ___いいですか。", "opciones": ["ても", "たら", "から"], "respuesta": "ても", "traduccion": "¿Se puede tomar fotos aquí?"},
-    {"id": "p_l7_01", "leccion": "L7", "frase_con_hueco": "映画を見___行きます。", "opciones": ["に", "を", "で"], "respuesta": "に", "traduccion": "Voy a ver una película."}
+    {
+      "id": "p_l9_01",
+      "leccion": "L9",
+      "frase_con_hueco": "宿題を___していません。",
+      "opciones": [
+        "まだ",
+        "もう",
+        "でも"
+      ],
+      "respuesta": "まだ",
+      "traduccion": "Todavía no he hecho los deberes."
+    },
+    {
+      "id": "p_l9_02",
+      "leccion": "L9",
+      "frase_con_hueco": "映画は9時___始まります。",
+      "opciones": [
+        "から",
+        "まで",
+        "に"
+      ],
+      "respuesta": "から",
+      "traduccion": "La película empieza desde las 9."
+    },
+    {
+      "id": "p_l9_03",
+      "leccion": "L9",
+      "frase_con_hueco": "忙しい___、行きません。",
+      "opciones": [
+        "から",
+        "の",
+        "と"
+      ],
+      "respuesta": "から",
+      "traduccion": "No voy porque estoy ocupado."
+    },
+    {
+      "id": "p_l10_01",
+      "leccion": "L10",
+      "frase_con_hueco": "日本はスペイン___小さいです。",
+      "opciones": [
+        "より",
+        "の方が",
+        "一番"
+      ],
+      "respuesta": "より",
+      "traduccion": "Japón es más pequeño que España."
+    },
+    {
+      "id": "p_l10_02",
+      "leccion": "L10",
+      "frase_con_hueco": "果物の中で、りんごが___好きです。",
+      "opciones": [
+        "一番",
+        "より",
+        "か"
+      ],
+      "respuesta": "一番",
+      "traduccion": "De las frutas, la manzana es la que más me gusta."
+    },
+    {
+      "id": "p_l10_03",
+      "leccion": "L10",
+      "frase_con_hueco": "赤い___が好きです。",
+      "opciones": [
+        "の",
+        "が",
+        "を"
+      ],
+      "respuesta": "の",
+      "traduccion": "Me gusta el rojo."
+    },
+    {
+      "id": "p_l6_01",
+      "leccion": "L6",
+      "frase_con_hueco": "ここで写真を撮っ___いいですか。",
+      "opciones": [
+        "ても",
+        "たら",
+        "から"
+      ],
+      "respuesta": "ても",
+      "traduccion": "¿Se puede tomar fotos aquí?"
+    },
+    {
+      "id": "p_l7_01",
+      "leccion": "L7",
+      "frase_con_hueco": "映画を見___行きます。",
+      "opciones": [
+        "に",
+        "を",
+        "で"
+      ],
+      "respuesta": "に",
+      "traduccion": "Voy a ver una película."
+    },
+    {
+      "id": "p_l13_01",
+      "leccion": "L13",
+      "frase_con_hueco": "銀行___口座を作りました。",
+      "opciones": [
+        "で",
+        "に",
+        "を",
+        "へ"
+      ],
+      "respuesta": "で",
+      "traduccion": "Abrí una cuenta en el banco.",
+      "explicacion": "で marca el lugar donde ocurre la acción de abrir la cuenta."
+    },
+    {
+      "id": "p_l13_02",
+      "leccion": "L13",
+      "frase_con_hueco": "漢字___書けますか。",
+      "opciones": [
+        "が",
+        "を",
+        "に",
+        "で"
+      ],
+      "respuesta": "が",
+      "traduccion": "¿Puedes escribir kanji?",
+      "explicacion": "Con verbos en forma potencial, el objeto casi siempre lleva が, no を."
+    },
+    {
+      "id": "p_l14_01",
+      "leccion": "L14",
+      "frase_con_hueco": "台風___来るかもしれません。",
+      "opciones": [
+        "が",
+        "を",
+        "に",
+        "の"
+      ],
+      "respuesta": "が",
+      "traduccion": "Quizás venga un tifón.",
+      "explicacion": "台風 es el sujeto de 来る, así que lleva が."
+    },
+    {
+      "id": "p_l15_01",
+      "leccion": "L15",
+      "frase_con_hueco": "友達___誕生日プレゼントをあげました。",
+      "opciones": [
+        "に",
+        "を",
+        "が",
+        "で"
+      ],
+      "respuesta": "に",
+      "traduccion": "Le di un regalo de cumpleaños a mi amigo.",
+      "explicacion": "に marca a quién se da algo."
+    },
+    {
+      "id": "p_l16_01",
+      "leccion": "L16",
+      "frase_con_hueco": "先生___説明してくれました。",
+      "opciones": [
+        "が",
+        "は",
+        "を",
+        "に"
+      ],
+      "respuesta": "が",
+      "traduccion": "El profesor me lo explicó.",
+      "explicacion": "先生 es quien hace el favor (sujeto de くれました), así que lleva が."
+    }
   ],
   "ordenar": [
-    {"id": "o_l9_01", "leccion": "L9", "palabras": ["昨日", "買った", "本", "は", "面白い", "です"], "kana": ["きのう", "かった", "ほん", "は", "おもしろい", "です"], "traduccion": "El libro que compré ayer es interesante."},
-    {"id": "o_l9_02", "leccion": "L9", "palabras": ["日本語", "を", "勉強している", "学生", "が", "います"], "kana": ["にほんご", "を", "べんきょうしている", "がくせい", "が", "います"], "traduccion": "Hay un estudiante que está estudiando japonés."},
-    {"id": "o_l10_01", "leccion": "L10", "palabras": ["電車", "は", "バス", "より", "便利です"], "kana": ["でんしゃ", "は", "バス", "より", "べんりです"], "traduccion": "El tren es más práctico que el autobús."},
-    {"id": "o_l10_02", "leccion": "L10", "palabras": ["季節", "の", "中で", "秋", "が", "一番好きです"], "kana": ["きせつ", "の", "なかで", "あき", "が", "いちばんすきです"], "traduccion": "De las estaciones, el otoño es la que más me gusta."},
-    {"id": "o_l6_01", "leccion": "L6", "palabras": ["朝ご飯", "を", "食べて", "学校", "へ", "行きます"], "kana": ["あさごはん", "を", "たべて", "がっこう", "へ", "いきます"], "traduccion": "Desayuno y voy a la escuela."},
-    {"id": "o_l8_01", "leccion": "L8", "palabras": ["田中さん", "は", "忙しい", "と", "言っていました"], "kana": ["たなかさん", "は", "いそがしい", "と", "いっていました"], "traduccion": "Tanaka dijo que estaba ocupado."}
+    {
+      "id": "o_l9_01",
+      "leccion": "L9",
+      "palabras": [
+        "昨日",
+        "買った",
+        "本",
+        "は",
+        "面白い",
+        "です"
+      ],
+      "kana": [
+        "きのう",
+        "かった",
+        "ほん",
+        "は",
+        "おもしろい",
+        "です"
+      ],
+      "traduccion": "El libro que compré ayer es interesante."
+    },
+    {
+      "id": "o_l9_02",
+      "leccion": "L9",
+      "palabras": [
+        "日本語",
+        "を",
+        "勉強している",
+        "学生",
+        "が",
+        "います"
+      ],
+      "kana": [
+        "にほんご",
+        "を",
+        "べんきょうしている",
+        "がくせい",
+        "が",
+        "います"
+      ],
+      "traduccion": "Hay un estudiante que está estudiando japonés."
+    },
+    {
+      "id": "o_l10_01",
+      "leccion": "L10",
+      "palabras": [
+        "電車",
+        "は",
+        "バス",
+        "より",
+        "便利です"
+      ],
+      "kana": [
+        "でんしゃ",
+        "は",
+        "バス",
+        "より",
+        "べんりです"
+      ],
+      "traduccion": "El tren es más práctico que el autobús."
+    },
+    {
+      "id": "o_l10_02",
+      "leccion": "L10",
+      "palabras": [
+        "季節",
+        "の",
+        "中で",
+        "秋",
+        "が",
+        "一番好きです"
+      ],
+      "kana": [
+        "きせつ",
+        "の",
+        "なかで",
+        "あき",
+        "が",
+        "いちばんすきです"
+      ],
+      "traduccion": "De las estaciones, el otoño es la que más me gusta."
+    },
+    {
+      "id": "o_l6_01",
+      "leccion": "L6",
+      "palabras": [
+        "朝ご飯",
+        "を",
+        "食べて",
+        "学校",
+        "へ",
+        "行きます"
+      ],
+      "kana": [
+        "あさごはん",
+        "を",
+        "たべて",
+        "がっこう",
+        "へ",
+        "いきます"
+      ],
+      "traduccion": "Desayuno y voy a la escuela."
+    },
+    {
+      "id": "o_l8_01",
+      "leccion": "L8",
+      "palabras": [
+        "田中さん",
+        "は",
+        "忙しい",
+        "と",
+        "言っていました"
+      ],
+      "kana": [
+        "たなかさん",
+        "は",
+        "いそがしい",
+        "と",
+        "いっていました"
+      ],
+      "traduccion": "Tanaka dijo que estaba ocupado."
+    },
+    {
+      "id": "o_l13_01",
+      "leccion": "L13",
+      "palabras": [
+        "とても",
+        "速く",
+        "泳げます",
+        "か"
+      ],
+      "kana": [
+        "とても",
+        "はやく",
+        "およげます",
+        "か"
+      ],
+      "traduccion": "¿Puedes nadar muy rápido?"
+    },
+    {
+      "id": "o_l14_01",
+      "leccion": "L14",
+      "palabras": [
+        "旅行",
+        "が",
+        "中止",
+        "に",
+        "なるかもしれません"
+      ],
+      "kana": [
+        "りょこう",
+        "が",
+        "ちゅうし",
+        "に",
+        "なるかもしれません"
+      ],
+      "traduccion": "El viaje podría cancelarse."
+    },
+    {
+      "id": "o_l15_01",
+      "leccion": "L15",
+      "palabras": [
+        "友達",
+        "が",
+        "私",
+        "に",
+        "本",
+        "を",
+        "貸してくれました"
+      ],
+      "kana": [
+        "ともだち",
+        "が",
+        "わたし",
+        "に",
+        "ほん",
+        "を",
+        "かしてくれました"
+      ],
+      "traduccion": "Mi amigo me prestó un libro."
+    },
+    {
+      "id": "o_l16_01",
+      "leccion": "L16",
+      "palabras": [
+        "安ければ",
+        "たくさん",
+        "買います"
+      ],
+      "kana": [
+        "やすければ",
+        "たくさん",
+        "かいます"
+      ],
+      "traduccion": "Si es barato, compraré mucho."
+    }
   ],
   "produccion_larga": [
-    {"id": "w_l9_01", "leccion": "L9", "prompt": "Describe algo que todavía no has hecho esta semana, usando まだ~ていません.", "ejemplo_respuesta": "今週、まだ運動していません。", "puntos_gramaticales": ["まだ~ていません"]},
-    {"id": "w_l9_02", "leccion": "L9", "prompt": "Describe un libro o película usando una cláusula que califique un sustantivo (ej. 'la película que vi ayer').", "ejemplo_respuesta": "昨日見た映画はとても面白かったです。", "puntos_gramaticales": ["cláusula + sustantivo"]},
-    {"id": "w_l10_01", "leccion": "L10", "prompt": "Compara dos ciudades o comidas que conozcas usando より.", "ejemplo_respuesta": "東京は大阪より大きいです。", "puntos_gramaticales": ["より"]},
-    {"id": "w_l10_02", "leccion": "L10", "prompt": "Di cuál es tu estación del año favorita y por qué, usando 一番 y から.", "ejemplo_respuesta": "季節の中で、秋が一番好きです。涼しいから。", "puntos_gramaticales": ["一番", "から"]},
-    {"id": "w_general_01", "leccion": "General", "prompt": "Cuenta qué hiciste el fin de semana pasado en 4-5 frases, mezclando pasado, alguna partícula de lugar/tiempo, y un adjetivo.", "ejemplo_respuesta": "先週末、友達と映画を見ました。とても面白かったです。", "puntos_gramaticales": ["mezcla libre"]}
+    {
+      "id": "w_l9_01",
+      "leccion": "L9",
+      "prompt": "Describe algo que todavía no has hecho esta semana, usando まだ~ていません.",
+      "ejemplo_respuesta": "今週、まだ運動していません。",
+      "puntos_gramaticales": [
+        "まだ~ていません"
+      ]
+    },
+    {
+      "id": "w_l9_02",
+      "leccion": "L9",
+      "prompt": "Describe un libro o película usando una cláusula que califique un sustantivo (ej. 'la película que vi ayer').",
+      "ejemplo_respuesta": "昨日見た映画はとても面白かったです。",
+      "puntos_gramaticales": [
+        "cláusula + sustantivo"
+      ]
+    },
+    {
+      "id": "w_l10_01",
+      "leccion": "L10",
+      "prompt": "Compara dos ciudades o comidas que conozcas usando より.",
+      "ejemplo_respuesta": "東京は大阪より大きいです。",
+      "puntos_gramaticales": [
+        "より"
+      ]
+    },
+    {
+      "id": "w_l10_02",
+      "leccion": "L10",
+      "prompt": "Di cuál es tu estación del año favorita y por qué, usando 一番 y から.",
+      "ejemplo_respuesta": "季節の中で、秋が一番好きです。涼しいから。",
+      "puntos_gramaticales": [
+        "一番",
+        "から"
+      ]
+    },
+    {
+      "id": "w_general_01",
+      "leccion": "General",
+      "prompt": "Cuenta qué hiciste el fin de semana pasado en 4-5 frases, mezclando pasado, alguna partícula de lugar/tiempo, y un adjetivo.",
+      "ejemplo_respuesta": "先週末、友達と映画を見ました。とても面白かったです。",
+      "puntos_gramaticales": [
+        "mezcla libre"
+      ]
+    },
+    {
+      "id": "w_l15_01",
+      "leccion": "L15",
+      "prompt": "Cuenta algo que le diste, te dieron o recibiste últimamente, usando あげる/くれる/もらう.",
+      "ejemplo_respuesta": "先週、友達が私に本をくれました。とても嬉しかったです。",
+      "puntos_gramaticales": [
+        "あげる/くれる/もらう"
+      ]
+    }
   ],
   "escritura": [
-    {"id": "e_l1_01", "leccion": "L1", "es": "Soy estudiante.", "respuestas": ["私は学生です", "わたしはがくせいです", "学生です"]},
-    {"id": "e_l1_02", "leccion": "L1", "es": "Soy de España.", "respuestas": ["私はスペイン人です", "わたしはスペインじんです", "スペイン人です"]},
-    {"id": "e_l2_01", "leccion": "L2", "es": "¿Cuánto cuesta esto?", "respuestas": ["これはいくらですか", "これいくらですか"]},
-    {"id": "e_l2_02", "leccion": "L2", "es": "Esa (cerca de ti) es mi bolsa.", "respuestas": ["それは私のかばんです", "それはわたしのかばんです"]},
-    {"id": "e_l3_01", "leccion": "L3", "es": "Bebo café.", "respuestas": ["コーヒーを飲みます", "コーヒーをのみます"]},
-    {"id": "e_l3_02", "leccion": "L3", "es": "Voy a la escuela.", "respuestas": ["学校に行きます", "がっこうにいきます", "学校へ行きます"]},
-    {"id": "e_l3_03", "leccion": "L3", "es": "¿No comemos juntos?", "respuestas": ["一緒に食べませんか", "いっしょにたべませんか"]},
-    {"id": "e_l4_01", "leccion": "L4", "es": "Hay un gato allí.", "respuestas": ["あそこに猫がいます", "あそこにねこがいます"]},
-    {"id": "e_l4_02", "leccion": "L4", "es": "Fui a Kioto.", "respuestas": ["京都に行きました", "きょうとにいきました"]},
-    {"id": "e_l5_01", "leccion": "L5", "es": "Esta habitación es un poco calurosa.", "respuestas": ["この部屋はちょっと暑いです", "このへやはちょっとあついです"]},
-    {"id": "e_l5_02", "leccion": "L5", "es": "Me gusta el sushi.", "respuestas": ["私はすしが好きです", "すしが好きです", "すしがすきです"]},
-    {"id": "e_l5_03", "leccion": "L5", "es": "Estudiemos juntos.", "respuestas": ["一緒に勉強しましょう", "いっしょにべんきょうしましょう"]},
-    {"id": "e_l6_01", "leccion": "L6", "es": "Por favor, lee el libro.", "respuestas": ["本を読んでください", "ほんをよんでください"]},
-    {"id": "e_l6_02", "leccion": "L6", "es": "¿Puedo sacar una foto?", "respuestas": ["写真を撮ってもいいですか", "しゃしんをとってもいいですか"]},
-    {"id": "e_l7_01", "leccion": "L7", "es": "Ahora estoy estudiando japonés.", "respuestas": ["今、日本語を勉強しています", "いま、にほんごをべんきょうしています", "日本語を勉強しています"]},
-    {"id": "e_l7_02", "leccion": "L7", "es": "El profesor Yamashita está casado.", "respuestas": ["山下先生は結婚しています", "やましたせんせいはけっこんしています"]},
-    {"id": "e_l8_01", "leccion": "L8", "es": "Creo que mañana hay examen.", "respuestas": ["明日試験があると思います", "あしたしけんがあるとおもいます"]},
-    {"id": "e_l8_02", "leccion": "L8", "es": "Me gusta estudiar japonés.", "respuestas": ["日本語を勉強するのが好きです", "にほんごをべんきょうするのがすきです"]},
-    {"id": "e_l9_01", "leccion": "L9", "es": "Todavía no he hecho los deberes.", "respuestas": ["まだ宿題をしていません", "まだしゅくだいをしていません"]},
-    {"id": "e_l9_02", "leccion": "L9", "es": "La estudiante que lee un libro allí es Michiko.", "respuestas": ["あそこで本を読んでいる学生はみちこさんです", "あそこでほんをよんでいるがくせいはみちこさんです"]},
-    {"id": "e_l10_01", "leccion": "L10", "es": "China es más grande que Japón.", "respuestas": ["中国のほうが日本より大きいです", "ちゅうごくのほうがにほんよりおおきいです"]},
-    {"id": "e_l10_02", "leccion": "L10", "es": "El otoño es lo que más me gusta.", "respuestas": ["秋が一番好きです", "あきがいちばんすきです"]},
-    {"id": "e_l11_01", "leccion": "L11", "es": "Quiero ir a Japón.", "respuestas": ["日本に行きたいです", "にほんにいきたいです"]},
-    {"id": "e_l11_02", "leccion": "L11", "es": "He subido al monte Fuji.", "respuestas": ["富士山に登ったことがあります", "ふじさんにのぼったことがあります"]},
-    {"id": "e_l12_01", "leccion": "L12", "es": "Mañana probablemente lloverá.", "respuestas": ["明日は雨が降るでしょう", "あしたはあめがふるでしょう"]},
-    {"id": "e_l12_02", "leccion": "L12", "es": "Es mejor que comas más verdura.", "respuestas": ["もっと野菜を食べたほうがいいです", "もっとやさいをたべたほうがいいです"]},
-    {"id": "e_l12_03", "leccion": "L12", "es": "Tengo que estudiar.", "respuestas": ["勉強しなければいけません", "べんきょうしなければいけません", "勉強しなきゃいけません"]}
+    {
+      "id": "e_l1_01",
+      "leccion": "L1",
+      "es": "Soy estudiante.",
+      "respuestas": [
+        "私は学生です",
+        "わたしはがくせいです",
+        "学生です"
+      ]
+    },
+    {
+      "id": "e_l1_02",
+      "leccion": "L1",
+      "es": "Soy de España.",
+      "respuestas": [
+        "私はスペイン人です",
+        "わたしはスペインじんです",
+        "スペイン人です"
+      ]
+    },
+    {
+      "id": "e_l2_01",
+      "leccion": "L2",
+      "es": "¿Cuánto cuesta esto?",
+      "respuestas": [
+        "これはいくらですか",
+        "これいくらですか"
+      ]
+    },
+    {
+      "id": "e_l2_02",
+      "leccion": "L2",
+      "es": "Esa (cerca de ti) es mi bolsa.",
+      "respuestas": [
+        "それは私のかばんです",
+        "それはわたしのかばんです"
+      ]
+    },
+    {
+      "id": "e_l3_01",
+      "leccion": "L3",
+      "es": "Bebo café.",
+      "respuestas": [
+        "コーヒーを飲みます",
+        "コーヒーをのみます"
+      ]
+    },
+    {
+      "id": "e_l3_02",
+      "leccion": "L3",
+      "es": "Voy a la escuela.",
+      "respuestas": [
+        "学校に行きます",
+        "がっこうにいきます",
+        "学校へ行きます"
+      ]
+    },
+    {
+      "id": "e_l3_03",
+      "leccion": "L3",
+      "es": "¿No comemos juntos?",
+      "respuestas": [
+        "一緒に食べませんか",
+        "いっしょにたべませんか"
+      ]
+    },
+    {
+      "id": "e_l4_01",
+      "leccion": "L4",
+      "es": "Hay un gato allí.",
+      "respuestas": [
+        "あそこに猫がいます",
+        "あそこにねこがいます"
+      ]
+    },
+    {
+      "id": "e_l4_02",
+      "leccion": "L4",
+      "es": "Fui a Kioto.",
+      "respuestas": [
+        "京都に行きました",
+        "きょうとにいきました"
+      ]
+    },
+    {
+      "id": "e_l5_01",
+      "leccion": "L5",
+      "es": "Esta habitación es un poco calurosa.",
+      "respuestas": [
+        "この部屋はちょっと暑いです",
+        "このへやはちょっとあついです"
+      ]
+    },
+    {
+      "id": "e_l5_02",
+      "leccion": "L5",
+      "es": "Me gusta el sushi.",
+      "respuestas": [
+        "私はすしが好きです",
+        "すしが好きです",
+        "すしがすきです"
+      ]
+    },
+    {
+      "id": "e_l5_03",
+      "leccion": "L5",
+      "es": "Estudiemos juntos.",
+      "respuestas": [
+        "一緒に勉強しましょう",
+        "いっしょにべんきょうしましょう"
+      ]
+    },
+    {
+      "id": "e_l6_01",
+      "leccion": "L6",
+      "es": "Por favor, lee el libro.",
+      "respuestas": [
+        "本を読んでください",
+        "ほんをよんでください"
+      ]
+    },
+    {
+      "id": "e_l6_02",
+      "leccion": "L6",
+      "es": "¿Puedo sacar una foto?",
+      "respuestas": [
+        "写真を撮ってもいいですか",
+        "しゃしんをとってもいいですか"
+      ]
+    },
+    {
+      "id": "e_l7_01",
+      "leccion": "L7",
+      "es": "Ahora estoy estudiando japonés.",
+      "respuestas": [
+        "今、日本語を勉強しています",
+        "いま、にほんごをべんきょうしています",
+        "日本語を勉強しています"
+      ]
+    },
+    {
+      "id": "e_l7_02",
+      "leccion": "L7",
+      "es": "El profesor Yamashita está casado.",
+      "respuestas": [
+        "山下先生は結婚しています",
+        "やましたせんせいはけっこんしています"
+      ]
+    },
+    {
+      "id": "e_l8_01",
+      "leccion": "L8",
+      "es": "Creo que mañana hay examen.",
+      "respuestas": [
+        "明日試験があると思います",
+        "あしたしけんがあるとおもいます"
+      ]
+    },
+    {
+      "id": "e_l8_02",
+      "leccion": "L8",
+      "es": "Me gusta estudiar japonés.",
+      "respuestas": [
+        "日本語を勉強するのが好きです",
+        "にほんごをべんきょうするのがすきです"
+      ]
+    },
+    {
+      "id": "e_l9_01",
+      "leccion": "L9",
+      "es": "Todavía no he hecho los deberes.",
+      "respuestas": [
+        "まだ宿題をしていません",
+        "まだしゅくだいをしていません"
+      ]
+    },
+    {
+      "id": "e_l9_02",
+      "leccion": "L9",
+      "es": "La estudiante que lee un libro allí es Michiko.",
+      "respuestas": [
+        "あそこで本を読んでいる学生はみちこさんです",
+        "あそこでほんをよんでいるがくせいはみちこさんです"
+      ]
+    },
+    {
+      "id": "e_l10_01",
+      "leccion": "L10",
+      "es": "China es más grande que Japón.",
+      "respuestas": [
+        "中国のほうが日本より大きいです",
+        "ちゅうごくのほうがにほんよりおおきいです"
+      ]
+    },
+    {
+      "id": "e_l10_02",
+      "leccion": "L10",
+      "es": "El otoño es lo que más me gusta.",
+      "respuestas": [
+        "秋が一番好きです",
+        "あきがいちばんすきです"
+      ]
+    },
+    {
+      "id": "e_l11_01",
+      "leccion": "L11",
+      "es": "Quiero ir a Japón.",
+      "respuestas": [
+        "日本に行きたいです",
+        "にほんにいきたいです"
+      ]
+    },
+    {
+      "id": "e_l11_02",
+      "leccion": "L11",
+      "es": "He subido al monte Fuji.",
+      "respuestas": [
+        "富士山に登ったことがあります",
+        "ふじさんにのぼったことがあります"
+      ]
+    },
+    {
+      "id": "e_l12_01",
+      "leccion": "L12",
+      "es": "Mañana probablemente lloverá.",
+      "respuestas": [
+        "明日は雨が降るでしょう",
+        "あしたはあめがふるでしょう"
+      ]
+    },
+    {
+      "id": "e_l12_02",
+      "leccion": "L12",
+      "es": "Es mejor que comas más verdura.",
+      "respuestas": [
+        "もっと野菜を食べたほうがいいです",
+        "もっとやさいをたべたほうがいいです"
+      ]
+    },
+    {
+      "id": "e_l12_03",
+      "leccion": "L12",
+      "es": "Tengo que estudiar.",
+      "respuestas": [
+        "勉強しなければいけません",
+        "べんきょうしなければいけません",
+        "勉強しなきゃいけません"
+      ]
+    },
+    {
+      "id": "e_l13_01",
+      "leccion": "L13",
+      "es": "¿Puedes comer natto?",
+      "respuestas": [
+        "納豆が食べられますか",
+        "なっとうがたべられますか"
+      ]
+    },
+    {
+      "id": "e_l13_02",
+      "leccion": "L13",
+      "es": "Voy a probar a leer este libro.",
+      "respuestas": [
+        "この本を読んでみます",
+        "このほんをよんでみます"
+      ]
+    },
+    {
+      "id": "e_l14_01",
+      "leccion": "L14",
+      "es": "Podría llover mañana.",
+      "respuestas": [
+        "明日雨が降るかもしれません",
+        "あしたあめがふるかもしれません"
+      ]
+    },
+    {
+      "id": "e_l15_01",
+      "leccion": "L15",
+      "es": "Le di un regalo a mi madre.",
+      "respuestas": [
+        "母にプレゼントをあげました",
+        "ははにプレゼントをあげました"
+      ]
+    },
+    {
+      "id": "e_l16_01",
+      "leccion": "L16",
+      "es": "Si tienes tiempo, ¿me ayudas?",
+      "respuestas": [
+        "時間があれば、手伝ってくれますか",
+        "じかんがあれば、てつだってくれますか"
+      ]
+    }
   ],
   "voz": [
-    {"id": "v_l1_01", "leccion": "L1", "objetivo": "私は学生です", "es": "Soy estudiante.", "respuestas": ["私は学生です", "わたしはがくせいです", "学生です"]},
-    {"id": "v_l2_01", "leccion": "L2", "objetivo": "これはいくらですか", "es": "¿Cuánto cuesta esto?", "respuestas": ["これはいくらですか", "これいくらですか"]},
-    {"id": "v_l3_01", "leccion": "L3", "objetivo": "コーヒーを飲みます", "es": "Bebo café.", "respuestas": ["コーヒーを飲みます", "コーヒーをのみます"]},
-    {"id": "v_l4_01", "leccion": "L4", "objetivo": "京都に行きました", "es": "Fui a Kioto.", "respuestas": ["京都に行きました", "きょうとにいきました"]},
-    {"id": "v_l5_01", "leccion": "L5", "objetivo": "すしが好きです", "es": "Me gusta el sushi.", "respuestas": ["すしが好きです", "すしがすきです", "私はすしが好きです"]},
-    {"id": "v_l6_01", "leccion": "L6", "objetivo": "写真を撮ってもいいですか", "es": "¿Puedo sacar una foto?", "respuestas": ["写真を撮ってもいいですか", "しゃしんをとってもいいですか"]},
-    {"id": "v_l7_01", "leccion": "L7", "objetivo": "日本語を勉強しています", "es": "Estoy estudiando japonés.", "respuestas": ["日本語を勉強しています", "にほんごをべんきょうしています"]},
-    {"id": "v_l8_01", "leccion": "L8", "objetivo": "日本語を勉強するのが好きです", "es": "Me gusta estudiar japonés.", "respuestas": ["日本語を勉強するのが好きです", "にほんごをべんきょうするのがすきです"]},
-    {"id": "v_l9_01", "leccion": "L9", "objetivo": "まだ宿題をしていません", "es": "Todavía no he hecho los deberes.", "respuestas": ["まだ宿題をしていません", "まだしゅくだいをしていません"]},
-    {"id": "v_l10_01", "leccion": "L10", "objetivo": "秋が一番好きです", "es": "El otoño es lo que más me gusta.", "respuestas": ["秋が一番好きです", "あきがいちばんすきです"]},
-    {"id": "v_l11_01", "leccion": "L11", "objetivo": "日本に行きたいです", "es": "Quiero ir a Japón.", "respuestas": ["日本に行きたいです", "にほんにいきたいです"]},
-    {"id": "v_l12_01", "leccion": "L12", "objetivo": "明日は雨が降るでしょう", "es": "Mañana probablemente lloverá.", "respuestas": ["明日は雨が降るでしょう", "あしたはあめがふるでしょう"]}
+    {
+      "id": "v_l1_01",
+      "leccion": "L1",
+      "objetivo": "私は学生です",
+      "es": "Soy estudiante.",
+      "respuestas": [
+        "私は学生です",
+        "わたしはがくせいです",
+        "学生です"
+      ]
+    },
+    {
+      "id": "v_l2_01",
+      "leccion": "L2",
+      "objetivo": "これはいくらですか",
+      "es": "¿Cuánto cuesta esto?",
+      "respuestas": [
+        "これはいくらですか",
+        "これいくらですか"
+      ]
+    },
+    {
+      "id": "v_l3_01",
+      "leccion": "L3",
+      "objetivo": "コーヒーを飲みます",
+      "es": "Bebo café.",
+      "respuestas": [
+        "コーヒーを飲みます",
+        "コーヒーをのみます"
+      ]
+    },
+    {
+      "id": "v_l4_01",
+      "leccion": "L4",
+      "objetivo": "京都に行きました",
+      "es": "Fui a Kioto.",
+      "respuestas": [
+        "京都に行きました",
+        "きょうとにいきました"
+      ]
+    },
+    {
+      "id": "v_l5_01",
+      "leccion": "L5",
+      "objetivo": "すしが好きです",
+      "es": "Me gusta el sushi.",
+      "respuestas": [
+        "すしが好きです",
+        "すしがすきです",
+        "私はすしが好きです"
+      ]
+    },
+    {
+      "id": "v_l6_01",
+      "leccion": "L6",
+      "objetivo": "写真を撮ってもいいですか",
+      "es": "¿Puedo sacar una foto?",
+      "respuestas": [
+        "写真を撮ってもいいですか",
+        "しゃしんをとってもいいですか"
+      ]
+    },
+    {
+      "id": "v_l7_01",
+      "leccion": "L7",
+      "objetivo": "日本語を勉強しています",
+      "es": "Estoy estudiando japonés.",
+      "respuestas": [
+        "日本語を勉強しています",
+        "にほんごをべんきょうしています"
+      ]
+    },
+    {
+      "id": "v_l8_01",
+      "leccion": "L8",
+      "objetivo": "日本語を勉強するのが好きです",
+      "es": "Me gusta estudiar japonés.",
+      "respuestas": [
+        "日本語を勉強するのが好きです",
+        "にほんごをべんきょうするのがすきです"
+      ]
+    },
+    {
+      "id": "v_l9_01",
+      "leccion": "L9",
+      "objetivo": "まだ宿題をしていません",
+      "es": "Todavía no he hecho los deberes.",
+      "respuestas": [
+        "まだ宿題をしていません",
+        "まだしゅくだいをしていません"
+      ]
+    },
+    {
+      "id": "v_l10_01",
+      "leccion": "L10",
+      "objetivo": "秋が一番好きです",
+      "es": "El otoño es lo que más me gusta.",
+      "respuestas": [
+        "秋が一番好きです",
+        "あきがいちばんすきです"
+      ]
+    },
+    {
+      "id": "v_l11_01",
+      "leccion": "L11",
+      "objetivo": "日本に行きたいです",
+      "es": "Quiero ir a Japón.",
+      "respuestas": [
+        "日本に行きたいです",
+        "にほんにいきたいです"
+      ]
+    },
+    {
+      "id": "v_l12_01",
+      "leccion": "L12",
+      "objetivo": "明日は雨が降るでしょう",
+      "es": "Mañana probablemente lloverá.",
+      "respuestas": [
+        "明日は雨が降るでしょう",
+        "あしたはあめがふるでしょう"
+      ]
+    },
+    {
+      "id": "v_l13_01",
+      "leccion": "L13",
+      "objetivo": "漢字が書けます",
+      "es": "Puedo escribir kanji.",
+      "respuestas": [
+        "漢字が書けます",
+        "かんじがかけます"
+      ]
+    },
+    {
+      "id": "v_l14_01",
+      "leccion": "L14",
+      "objetivo": "何でも食べます",
+      "es": "Como de todo.",
+      "respuestas": [
+        "何でも食べます",
+        "なんでもたべます"
+      ]
+    },
+    {
+      "id": "v_l15_01",
+      "leccion": "L15",
+      "objetivo": "友達にプレゼントをもらいました",
+      "es": "Recibí un regalo de mi amigo.",
+      "respuestas": [
+        "友達にプレゼントをもらいました",
+        "ともだちにプレゼントをもらいました"
+      ]
+    },
+    {
+      "id": "v_l16_01",
+      "leccion": "L16",
+      "objetivo": "先生が説明してくれました",
+      "es": "El profesor me lo explicó.",
+      "respuestas": [
+        "先生が説明してくれました",
+        "せんせいがせつめいしてくれました"
+      ]
+    }
   ]
 }

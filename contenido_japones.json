@@ -2,7 +2,7 @@
   "meta": {
     "objetivo": "~150 sesiones -> conversacion basica, ~300 -> detallada, ~600 -> dominio completo",
     "metodo": "Genki I completo (L1-12) + parche gramatica N5 + vocabulario tematico ampliado + Genki II desde L13, foco en consolidacion",
-    "leccion_actual": 14,
+    "leccion_actual": 16,
     "lecciones_por_ciudad": 6,
     "orden_ciudades": [
       "Tokio",
@@ -108,6 +108,18 @@
       "ciudad": "Kioto",
       "barrio": "Fushimi Inari",
       "emoji": "⛩️"
+    },
+    "L15": {
+      "titulo": "あげる・くれる・もらう (Dar y recibir)",
+      "ciudad": "Kioto",
+      "barrio": "Bosque de bambú de Arashiyama",
+      "emoji": "🎋"
+    },
+    "L16": {
+      "titulo": "～てあげる・くれる・もらう、～ば (Favores y condicionales)",
+      "ciudad": "Kioto",
+      "barrio": "Gion",
+      "emoji": "👘"
     }
   },
   "tarjetas": [
@@ -3187,6 +3199,303 @@
       "type": "grammar",
       "question": "¿Qué diferencia hay entre número+も y número+しか?",
       "explanation": "número+も (sin negativo) = \"nada menos que X\" (sorprende, mucho): 20人も来ました. número+しか+negativo = \"solo X, nada más\" (decepciona, poco): 一冊しかありません."
+    },
+    {
+      "id": "l14_yotei",
+      "l": "L14",
+      "kanji": "予定",
+      "reading": "よてい",
+      "es": "plan; previsión",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l14_ryokougaisha",
+      "l": "L14",
+      "kanji": "旅行会社",
+      "reading": "りょこうがいしゃ",
+      "es": "agencia de viajes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l14_taifuu",
+      "l": "L14",
+      "kanji": "台風",
+      "reading": "たいふう",
+      "es": "tifón",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l14_chuushi",
+      "l": "L14",
+      "kanji": "中止",
+      "reading": "ちゅうし",
+      "es": "cancelación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l14_shinpai",
+      "l": "L14",
+      "kanji": "心配",
+      "reading": "しんぱい",
+      "es": "preocupación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l14_kiken",
+      "l": "L14",
+      "kanji": "危険",
+      "reading": "きけん",
+      "es": "peligroso",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l14_anzen",
+      "l": "L14",
+      "kanji": "安全",
+      "reading": "あんぜん",
+      "es": "seguro (sin peligro)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "g_l14_giwa_demo",
+      "l": "L14",
+      "type": "grammar",
+      "question": "¿Qué significa palabra-interrogativa + でも (誰でも, 何でも, どこでも)?",
+      "explanation": "Añade 'cualquiera/lo que sea': 誰でもできます = cualquiera puede hacerlo. 何でも食べます = como de todo. どこでもいいです = donde sea está bien."
+    },
+    {
+      "id": "c_l14_isogashigaru",
+      "l": "L14",
+      "type": "conj",
+      "front": "忙しい → 'parece que está ocupado/a' (がる, sobre otra persona)",
+      "answer": "忙しがっています",
+      "alt": [
+        "いそがしがっています"
+      ]
+    },
+    {
+      "id": "g_l15_ageru",
+      "l": "L15",
+      "type": "grammar",
+      "question": "あげる・くれる・もらう: ¿cómo elijo cuál usar?",
+      "explanation": "あげる = YO doy a otra persona (o alguien da a un tercero). くれる = ALGUIEN me da A MÍ (o a mi grupo). もらう = YO recibo de alguien. La dirección del regalo decide el verbo, no quién habla."
+    },
+    {
+      "id": "g_l15_kureru_ejemplo",
+      "l": "L15",
+      "type": "grammar",
+      "question": "Ejemplo de los tres verbos con la misma acción",
+      "explanation": "私は友達にプレゼントをあげました (yo di un regalo a mi amigo). 友達は私にプレゼントをくれました (mi amigo me dio un regalo A MÍ). 私は友達にプレゼントをもらいました (yo recibí un regalo de mi amigo). Fíjate en la partícula に (a quién / de quién)."
+    },
+    {
+      "id": "g_l15_teoku",
+      "l": "L15",
+      "type": "grammar",
+      "question": "¿Qué añade ～ておく a un verbo?",
+      "explanation": "'Hacer algo de antemano, dejarlo preparado': て-forma + おく. 飲み物を買っておきます = compro bebidas (de antemano, para luego). Coloquial: ～とく (買っとく)."
+    },
+    {
+      "id": "l15_purezento",
+      "l": "L15",
+      "kanji": "プレゼント",
+      "reading": "プレゼント",
+      "es": "regalo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l15_tanjoubi",
+      "l": "L15",
+      "kanji": "誕生日",
+      "reading": "たんじょうび",
+      "es": "cumpleaños",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l15_okuru",
+      "l": "L15",
+      "kanji": "送る",
+      "reading": "おくる",
+      "es": "enviar; regalar",
+      "dir": "es-jp",
+      "readingAlt": [
+        "おくります"
+      ]
+    },
+    {
+      "id": "l15_kasu",
+      "l": "L15",
+      "kanji": "貸す",
+      "reading": "かす",
+      "es": "prestar (yo a otro)",
+      "dir": "es-jp",
+      "readingAlt": [
+        "かします"
+      ]
+    },
+    {
+      "id": "l15_kariru2",
+      "l": "L15",
+      "kanji": "借りる",
+      "reading": "かりる",
+      "es": "pedir prestado",
+      "dir": "es-jp",
+      "readingAlt": [
+        "かります"
+      ]
+    },
+    {
+      "id": "l15_tetsudau2",
+      "l": "L15",
+      "kanji": "手伝う",
+      "reading": "てつだう",
+      "es": "ayudar (con una tarea)",
+      "dir": "es-jp",
+      "readingAlt": [
+        "てつだいます"
+      ]
+    },
+    {
+      "id": "l15_takusan2",
+      "l": "L15",
+      "kanji": "たくさん",
+      "reading": "たくさん",
+      "es": "mucho, muchos (repaso)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l15_okaeshi",
+      "l": "L15",
+      "kanji": "お返し",
+      "reading": "おかえし",
+      "es": "regalo de vuelta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "c_l15_kau_oku",
+      "l": "L15",
+      "type": "conj",
+      "front": "買う → 'comprarlo de antemano' (ておく)",
+      "answer": "買っておきます",
+      "alt": [
+        "かっておきます"
+      ]
+    },
+    {
+      "id": "c_l15_shiraberu_oku",
+      "l": "L15",
+      "type": "conj",
+      "front": "調べる → 'investigarlo de antemano' (ておく)",
+      "answer": "調べておきます",
+      "alt": [
+        "しらべておきます"
+      ]
+    },
+    {
+      "id": "g_l16_teageru",
+      "l": "L16",
+      "type": "grammar",
+      "question": "¿Qué es ～てあげる/くれる/もらう (con verbos, no solo cosas)?",
+      "explanation": "Igual que あげる/くれる/もらう pero con una ACCIÓN en vez de un objeto: て-forma + あげる/くれる/もらう. 友達に本を読んであげました = le leí un libro a mi amigo (como favor). 友達が手伝ってくれました = mi amigo me ayudó (para mí)."
+    },
+    {
+      "id": "g_l16_kureru_matiz",
+      "l": "L16",
+      "type": "grammar",
+      "question": "¿Por qué ～てくれる suena más agradecido que solo describir la acción?",
+      "explanation": "～てくれる deja claro que la acción beneficia AL HABLANTE (o a su grupo), aportando gratitud implícita: 田中さんが手伝ってくれました suena a 'menos mal que Tanaka me ayudó', mientras que 田中さんが手伝いました es neutro."
+    },
+    {
+      "id": "g_l16_ba",
+      "l": "L16",
+      "type": "grammar",
+      "question": "¿Cómo se forma el condicional ～ば?",
+      "explanation": "い-adj: 高い→高ければ. な-adj/nombre: 元気なら(ば). Verbos u: cambia la u final a e + ば (飲む→飲めば). Verbos ru: quita る + れば (食べれば). する→すれば, くる→くれば. Expresa una condición general: お金があれば、旅行します = si tuviera dinero, viajaría."
+    },
+    {
+      "id": "l16_kanpai",
+      "l": "L16",
+      "kanji": "乾杯",
+      "reading": "かんぱい",
+      "es": "¡Salud! (brindis, repaso)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l16_geisha",
+      "l": "L16",
+      "kanji": "芸者",
+      "reading": "げいしゃ",
+      "es": "geisha",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l16_kimono",
+      "l": "L16",
+      "kanji": "着物",
+      "reading": "きもの",
+      "es": "kimono",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l16_dentou",
+      "l": "L16",
+      "kanji": "伝統",
+      "reading": "でんとう",
+      "es": "tradición",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l16_bunka",
+      "l": "L16",
+      "kanji": "文化",
+      "reading": "ぶんか",
+      "es": "cultura",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l16_setsumei",
+      "l": "L16",
+      "kanji": "説明",
+      "reading": "せつめい",
+      "es": "explicación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "l16_annai",
+      "l": "L16",
+      "kanji": "案内",
+      "reading": "あんない",
+      "es": "guía; orientación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "c_l16_ba_takai",
+      "l": "L16",
+      "type": "conj",
+      "front": "高い → forma condicional (ば)",
+      "answer": "高ければ",
+      "alt": [
+        "たかければ"
+      ]
+    },
+    {
+      "id": "c_l16_ba_nomu",
+      "l": "L16",
+      "type": "conj",
+      "front": "飲む → forma condicional (ば)",
+      "answer": "飲めば",
+      "alt": [
+        "のめば"
+      ]
+    },
+    {
+      "id": "c_l16_ba_taberu",
+      "l": "L16",
+      "type": "conj",
+      "front": "食べる → forma condicional (ば)",
+      "answer": "食べれば",
+      "alt": [
+        "たべれば"
+      ]
     }
   ]
 }

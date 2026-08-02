@@ -833,6 +833,228 @@
           "respuesta": "先生"
         }
       ]
+    },
+    {
+      "id": "para_l13",
+      "l": "L13",
+      "texto": "銀行でお金を換えてみようと思います。この道は難しそうですが、漢字が少し読めるようになりました。窓口の人に聞いてみます。日本語で説明できるかどうか、ちょっと不安です。",
+      "preguntas": [
+        {
+          "pregunta": "何をしようと思っていますか。",
+          "opciones": [
+            "お金を借りる",
+            "お金を換える",
+            "口座を作る",
+            "お金を送る"
+          ],
+          "respuesta": "お金を換える"
+        },
+        {
+          "pregunta": "何ができるようになりましたか。",
+          "opciones": [
+            "漢字を書くこと",
+            "漢字を少し読むこと",
+            "英語を話すこと",
+            "計算すること"
+          ],
+          "respuesta": "漢字を少し読むこと"
+        },
+        {
+          "pregunta": "誰に聞いてみますか。",
+          "opciones": [
+            "友達",
+            "先生",
+            "窓口の人",
+            "家族"
+          ],
+          "respuesta": "窓口の人"
+        }
+      ]
+    },
+    {
+      "id": "para_l14",
+      "l": "L14",
+      "texto": "伏見稲荷は人気があるので、週末は混んでいるかもしれません。妹は鳥居をたくさん見て、写真を撮りたがっていました。千本以上も鳥居があるので、全部は見られませんでした。時間が少ししかなかったからです。",
+      "preguntas": [
+        {
+          "pregunta": "週末はどうかもしれませんか。",
+          "opciones": [
+            "空いている",
+            "混んでいる",
+            "閉まっている",
+            "静かだ"
+          ],
+          "respuesta": "混んでいる"
+        },
+        {
+          "pregunta": "妹は何をしたがっていましたか。",
+          "opciones": [
+            "帰りたがっていた",
+            "写真を撮りたがっていた",
+            "寝たがっていた",
+            "食べたがっていた"
+          ],
+          "respuesta": "写真を撮りたがっていた"
+        },
+        {
+          "pregunta": "なぜ全部見られませんでしたか。",
+          "opciones": [
+            "疲れたから",
+            "時間が少ししかなかったから",
+            "雨が降ったから",
+            "道に迷ったから"
+          ],
+          "respuesta": "時間が少ししかなかったから"
+        }
+      ]
+    },
+    {
+      "id": "para_l15",
+      "l": "L15",
+      "texto": "嵐山の竹林を歩く前に、お弁当を買っておきました。友達も飲み物を用意しておいてくれました。竹林はとても静かで、写真をたくさん撮りました。帰る前に、お土産も買っておこうと思います。",
+      "preguntas": [
+        {
+          "pregunta": "竹林を歩く前に何をしておきましたか。",
+          "opciones": [
+            "お弁当を買っておいた",
+            "切符を買っておいた",
+            "地図を見ておいた",
+            "予約しておいた"
+          ],
+          "respuesta": "お弁当を買っておいた"
+        },
+        {
+          "pregunta": "友達は何を用意しておいてくれましたか。",
+          "opciones": [
+            "お弁当",
+            "飲み物",
+            "カメラ",
+            "地図"
+          ],
+          "respuesta": "飲み物"
+        },
+        {
+          "pregunta": "帰る前に何をするつもりですか。",
+          "opciones": [
+            "写真を撮る",
+            "お土産を買っておく",
+            "ご飯を食べる",
+            "電話をかける"
+          ],
+          "respuesta": "お土産を買っておく"
+        }
+      ]
+    },
+    {
+      "id": "para_l16",
+      "l": "L16",
+      "texto": "祇園で着物を着たいと言ったら、友達が着付けを手伝ってくれました。写真も撮ってあげました。天気がよければ、舞妓さんに会えるかもしれません。時間があれば、もっとゆっくり歩きたいです。",
+      "preguntas": [
+        {
+          "pregunta": "友達は何をしてくれましたか。",
+          "opciones": [
+            "着付けを手伝ってくれた",
+            "お金を貸してくれた",
+            "道を教えてくれた",
+            "写真を撮ってくれた"
+          ],
+          "respuesta": "着付けを手伝ってくれた"
+        },
+        {
+          "pregunta": "私は友達に何をしてあげましたか。",
+          "opciones": [
+            "着物を貸してあげた",
+            "写真を撮ってあげた",
+            "道を教えてあげた",
+            "お土産を買ってあげた"
+          ],
+          "respuesta": "写真を撮ってあげた"
+        },
+        {
+          "pregunta": "天気がよければ何ができるかもしれませんか。",
+          "opciones": [
+            "舞妓さんに会える",
+            "雨がやむ",
+            "早く帰れる",
+            "写真がきれいに撮れる"
+          ],
+          "respuesta": "舞妓さんに会える"
+        }
+      ]
+    },
+    {
+      "id": "para_l17",
+      "l": "L17",
+      "texto": "金閣寺は多くの観光客に見られています。天気がいいのに、金閣が金色に光っていて、とてもきれいでした。写真を撮っているとき、後ろの人に押されて、少し驚きました。混んでいたのに、いい写真が撮れました。",
+      "preguntas": [
+        {
+          "pregunta": "金閣寺は誰に見られていますか。",
+          "opciones": [
+            "地元の人だけ",
+            "多くの観光客",
+            "学生だけ",
+            "誰も見ていない"
+          ],
+          "respuesta": "多くの観光客"
+        },
+        {
+          "pregunta": "後ろの人に何をされましたか。",
+          "opciones": [
+            "話しかけられた",
+            "押された",
+            "写真を撮られた",
+            "呼ばれた"
+          ],
+          "respuesta": "押された"
+        },
+        {
+          "pregunta": "混んでいたのに、どうでしたか。",
+          "opciones": [
+            "写真が撮れなかった",
+            "いい写真が撮れた",
+            "すぐ帰った",
+            "何も見えなかった"
+          ],
+          "respuesta": "いい写真が撮れた"
+        }
+      ]
+    },
+    {
+      "id": "para_l18",
+      "l": "L18",
+      "texto": "二条城に着いたら、まず庭を見ました。ガイドさんが「写真を撮らせてください」と言ったので、少し待ちました。子供に説明させたら、とても上手に話しました。楽しかったら、また来たいです。",
+      "preguntas": [
+        {
+          "pregunta": "二条城に着いたら、まず何をしましたか。",
+          "opciones": [
+            "庭を見た",
+            "写真を撮った",
+            "食事をした",
+            "休んだ"
+          ],
+          "respuesta": "庭を見た"
+        },
+        {
+          "pregunta": "ガイドさんは何をお願いしましたか。",
+          "opciones": [
+            "静かにしてください",
+            "写真を撮らせてください",
+            "座ってください",
+            "質問してください"
+          ],
+          "respuesta": "写真を撮らせてください"
+        },
+        {
+          "pregunta": "子供に説明させたら、どうでしたか。",
+          "opciones": [
+            "下手だった",
+            "上手に話した",
+            "黙っていた",
+            "泣いた"
+          ],
+          "respuesta": "上手に話した"
+        }
+      ]
     }
   ],
   "bunpo_choice": [
@@ -1158,6 +1380,84 @@
       "incorrectaIdx": 2,
       "correcta": "私は先生に本をもらいました。",
       "explicacion": "くれる se usa cuando otra persona me da algo a mí; aquí soy yo quien recibe del profesor, así que el verbo correcto es もらう。"
+    },
+    {
+      "id": "err_l13",
+      "l": "L13",
+      "candidatos": [
+        "お金を換えてみようと思います。",
+        "この道は難しそうです。",
+        "漢字が少し読めるようになりました。",
+        "日本語で説明するができるかどうか不安です。"
+      ],
+      "incorrectaIdx": 3,
+      "correcta": "日本語で説明できるかどうか不安です。",
+      "explicacion": "La forma potencial se conjuga directamente sobre el verbo (説明できる), no se añade こと antes de できる。"
+    },
+    {
+      "id": "err_l14",
+      "l": "L14",
+      "candidatos": [
+        "週末は混んでいるかもしれません。",
+        "妹は写真を撮りたがっていました。",
+        "千本以上も鳥居があります。",
+        "時間が少ししかありました。"
+      ],
+      "incorrectaIdx": 3,
+      "correcta": "時間が少ししかありませんでした。",
+      "explicacion": "しか siempre va con un verbo en forma negativa: 少ししかありません(でした), nunca con la forma afirmativa。"
+    },
+    {
+      "id": "err_l15",
+      "l": "L15",
+      "candidatos": [
+        "竹林を歩く前にお弁当を買っておきました。",
+        "友達が飲み物を用意しておいてくれました。",
+        "写真をたくさん撮りました。",
+        "お土産を買っておこうにします。"
+      ],
+      "incorrectaIdx": 3,
+      "correcta": "お土産を買っておこうと思います。",
+      "explicacion": "La forma volitiva + と思います expresa una intención: 買おうと思います, no 買おうにします。"
+    },
+    {
+      "id": "err_l16",
+      "l": "L16",
+      "candidatos": [
+        "友達が着付けを手伝ってくれました。",
+        "写真を撮ってあげました。",
+        "天気がよければ舞妓さんに会えるかもしれません。",
+        "時間があるば、もっと歩きたいです。"
+      ],
+      "incorrectaIdx": 3,
+      "correcta": "時間があれば、もっと歩きたいです。",
+      "explicacion": "La forma condicional ば de ある es あれば, no あるば: los verbos en -u cambian la última vocal a e antes de añadir ば。"
+    },
+    {
+      "id": "err_l17",
+      "l": "L17",
+      "candidatos": [
+        "金閣寺は多くの観光客に見られています。",
+        "天気がいいのに、とてもきれいでした。",
+        "後ろの人が押されました。",
+        "混んでいたのに、いい写真が撮れました。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "後ろの人に押されました。",
+      "explicacion": "En la voz pasiva, quien realiza la acción se marca con に, no con が: 後ろの人に押されました ('me empujó la persona de detrás')。"
+    },
+    {
+      "id": "err_l18",
+      "l": "L18",
+      "candidatos": [
+        "二条城に着いたら、庭を見ました。",
+        "写真を撮らせてくださいと言いました。",
+        "子供が説明させました。",
+        "楽しかったら、また来たいです。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "子供に説明させました。",
+      "explicacion": "En la forma causativa, a quien se hace hacer algo se marca con に, no con が: 子供に説明させました ('hice que el niño explicara')。"
     }
   ],
   "texto_gramatica": [
@@ -1592,6 +1892,222 @@
       ],
       "respuesta": "くれました",
       "explicacion": "くれる es cuando otra persona me da algo a mí (o a mi grupo): 友達は私にくれました = 'mi amigo me dio (a mí)'."
+    },
+    {
+      "id": "gram_l13",
+      "l": "L13",
+      "partes": [
+        {
+          "t": "漢字が少し"
+        },
+        {
+          "t": "読めます",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "でも、まだ速く"
+        },
+        {
+          "t": "話せません",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "読めます",
+        "読みます",
+        "読んでみます",
+        "読むそうです"
+      ],
+      "respuesta": "読めます",
+      "explicacion": "La forma potencial (読む → 読める) expresa 'poder hacer algo'."
+    },
+    {
+      "id": "gram_l14",
+      "l": "L14",
+      "partes": [
+        {
+          "t": "明日は雨が降る"
+        },
+        {
+          "t": "かもしれません",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "傘を持っていったほうがいい"
+        },
+        {
+          "t": "かもしれません",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "かもしれません",
+        "でしょう",
+        "はずです",
+        "そうです"
+      ],
+      "respuesta": "かもしれません",
+      "explicacion": "かもしれません expresa una posibilidad no muy segura: 'puede que...'."
+    },
+    {
+      "id": "gram_l15",
+      "l": "L15",
+      "partes": [
+        {
+          "t": "出かける前に、水を"
+        },
+        {
+          "t": "買っておきます",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "部屋も"
+        },
+        {
+          "t": "片付けておきました",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "買っておきます",
+        "買います",
+        "買ってみます",
+        "買うところです"
+      ],
+      "respuesta": "買っておきます",
+      "explicacion": "〜ておく expresa hacer algo de antemano, como preparación para más tarde."
+    },
+    {
+      "id": "gram_l16",
+      "l": "L16",
+      "partes": [
+        {
+          "t": "友達が着付けを"
+        },
+        {
+          "t": "手伝ってくれました",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "お礼に、お土産を"
+        },
+        {
+          "t": "買ってあげました",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "手伝ってくれました",
+        "手伝ってあげました",
+        "手伝ってもらいました",
+        "手伝いました"
+      ],
+      "respuesta": "手伝ってくれました",
+      "explicacion": "〜てくれる es cuando otra persona hace algo por mí: 友達が手伝ってくれました = 'mi amigo me ayudó (a mí)'."
+    },
+    {
+      "id": "gram_l17",
+      "l": "L17",
+      "partes": [
+        {
+          "t": "電車の中で誰かに足を"
+        },
+        {
+          "t": "踏まれました",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "天気がいい"
+        },
+        {
+          "t": "のに",
+          "marca": true
+        },
+        {
+          "t": "、傘を持っていきました。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "踏まれました",
+        "踏みました",
+        "踏んでいました",
+        "踏むそうです"
+      ],
+      "respuesta": "踏まれました",
+      "explicacion": "El 'pasivo de perjuicio' (迷惑受身) expresa que algo desagradable me pasó por la acción de otra persona."
+    },
+    {
+      "id": "gram_l18",
+      "l": "L18",
+      "partes": [
+        {
+          "t": "先生は学生に本を"
+        },
+        {
+          "t": "読ませました",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "読み終わっ"
+        },
+        {
+          "t": "たら",
+          "marca": true
+        },
+        {
+          "t": "、感想を書きます。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "読ませました",
+        "読みました",
+        "読まれました",
+        "読んでいました"
+      ],
+      "respuesta": "読ませました",
+      "explicacion": "La forma causativa (読む → 読ませる) expresa 'hacer/dejar que alguien haga algo'."
     }
   ]
 }

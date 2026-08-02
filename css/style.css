@@ -1805,6 +1805,8 @@ input { font-family: inherit; }
 .sh-check { display: inline-flex; align-items: center; gap: 6px; color: var(--tinta-suave); font-size: 0.9rem; }
 .sh-ayuda { color: var(--tinta-tenue); font-size: 0.8rem; margin-top: 16px; }
 .sh-ayuda b { color: var(--tinta-suave); }
+.sh-credito { color: var(--tinta-tenue); font-size: 0.8rem; margin-top: 22px; text-align: center; }
+.sh-credito b { color: var(--tinta-suave); }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }

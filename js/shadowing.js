@@ -9,6 +9,7 @@
 // - vistaShadowing(): la pestaña, que reúne frases de los ejercicios existentes.
 import { api } from './api.js';
 import { kanaARomaji, contieneJapones } from './kana.js';
+import { rutaAudio, audioPreparado, creditoAudio } from './tts.js';
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -252,7 +253,9 @@ function lecturaAproximada(tokens, vocabMap) {
 
 export async function vistaShadowing(cont) {
   cont.innerHTML = '<p class="vista-sub">Preparando frases...</p>';
-  const [ej, bib] = await Promise.all([api.ejercicios(), api.biblioteca()]);
+  // Esperamos al manifiesto de audio para poder darle a cada frase su .mp3 de
+  // VOICEVOX; si no lo hay, el reproductor cae solo a la voz del navegador.
+  const [ej, bib] = await Promise.all([api.ejercicios(), api.biblioteca(), audioPreparado()]);
   const vocabMap = construirIndiceVocab(bib.tarjetas);
   const frases = [];
   const vistas = new Set();
@@ -262,7 +265,7 @@ export async function vistaShadowing(cont) {
     vistas.add(ja);
     let k = kana || (soloKana(ja) ? ja : '');
     if (!k) k = lecturaAproximada(tokens || [ja], vocabMap);
-    frases.push({ ja, kana: k, es: es || '' });
+    frases.push({ ja, kana: k, es: es || '', audio: rutaAudio(ja) || undefined });
   };
   (ej.voz || []).forEach(v => add(v.objetivo, pickKana(v.respuestas, v.objetivo), v.es));
   (ej.escritura || []).forEach(e => add((e.respuestas || [])[0], pickKana(e.respuestas), e.es));
@@ -280,9 +283,12 @@ export async function vistaShadowing(cont) {
   }
   for (let i = frases.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [frases[i], frases[j]] = [frases[j], frases[i]]; }
 
+  const conAudio = frases.filter(f => f.audio).length;
+  const credito = creditoAudio();
   cont.innerHTML = `
     <h1 class="vista-titulo">🗣️ Shadowing</h1>
     <p class="vista-sub">Escucha y repite en voz alta imitando el ritmo y la entonación. Suena la frase, se para y te toca repetir; o ponla en bucle. ${frases.length} frases.</p>
-    <div id="sh-host"></div>`;
+    <div id="sh-host"></div>
+    ${credito && conAudio ? `<p class="sh-credito">🎙️ Voz japonesa de <b>${esc(credito)}</b>${conAudio < frases.length ? ` en ${conAudio} de ${frases.length} frases; el resto usa la voz del navegador` : ''}.</p>` : ''}`;
   crearShadowing(cont.querySelector('#sh-host'), frases);
 }

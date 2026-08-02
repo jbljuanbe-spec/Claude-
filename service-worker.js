@@ -8,7 +8,7 @@
 // "cascarón" de la app (HTML/CSS/JS) no quedaría disponible offline hasta
 // la segunda visita. Para que funcione desde el primer "Instalar", se
 // precachea aquí. Sube CACHE al publicar cambios en estos archivos.
-const CACHE = 'kotoba-v2';
+const CACHE = 'kotoba-v3';
 const CASCARON = [
   './',
   'index.html',
@@ -20,6 +20,7 @@ const CASCARON = [
   'js/ciudades.js',
   'js/curriculum.js',
   'js/kana.js',
+  'js/kanji.js',
   'js/lecciones.js',
   'js/lottie.js',
   'js/mapa-japon.js',

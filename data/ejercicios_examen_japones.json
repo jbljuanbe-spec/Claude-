@@ -1055,6 +1055,191 @@
           "respuesta": "上手に話した"
         }
       ]
+    },
+    {
+      "id": "para_l19",
+      "l": "L19",
+      "texto": "道頓堀で先生に会いました。先生は「もう昼ご飯を召し上がりましたか」とおっしゃいました。先生はいつも元気でいらっしゃいます。私は「まだ食べていません」と答えました。それから、一緒にたこ焼きを食べに行きました。",
+      "preguntas": [
+        {
+          "pregunta": "先生は何とおっしゃいましたか。",
+          "opciones": [
+            "「元気ですか」",
+            "「もう昼ご飯を召し上がりましたか」",
+            "「どこに行きますか」",
+            "「疲れましたか」"
+          ],
+          "respuesta": "「もう昼ご飯を召し上がりましたか」"
+        },
+        {
+          "pregunta": "私は昼ご飯を食べましたか。",
+          "opciones": [
+            "もう食べた",
+            "まだ食べていない",
+            "食べたくない",
+            "忘れた"
+          ],
+          "respuesta": "まだ食べていない"
+        },
+        {
+          "pregunta": "先生と一緒に何を食べに行きましたか。",
+          "opciones": [
+            "お好み焼き",
+            "たこ焼き",
+            "うどん",
+            "寿司"
+          ],
+          "respuesta": "たこ焼き"
+        }
+      ]
+    },
+    {
+      "id": "para_l20",
+      "l": "L20",
+      "texto": "大阪城の前で、ガイドさんに「私は田中と申します」と挨拶しました。これから城の中を案内していただくはずです。ガイドさんはもうすぐ参るはずですと言いました。楽しみにしています。",
+      "preguntas": [
+        {
+          "pregunta": "私は自分の名前をどう言いましたか。",
+          "opciones": [
+            "「田中です」",
+            "「田中と申します」",
+            "「田中と言います」",
+            "「田中と呼びます」"
+          ],
+          "respuesta": "「田中と申します」"
+        },
+        {
+          "pregunta": "これから何をしてもらうはずですか。",
+          "opciones": [
+            "写真を撮ってもらう",
+            "城の中を案内してもらう",
+            "切符を買ってもらう",
+            "食事をおごってもらう"
+          ],
+          "respuesta": "城の中を案内してもらう"
+        },
+        {
+          "pregunta": "ガイドさんはいつ来るはずですか。",
+          "opciones": [
+            "明日",
+            "もうすぐ",
+            "来週",
+            "わからない"
+          ],
+          "respuesta": "もうすぐ"
+        }
+      ]
+    },
+    {
+      "id": "para_l21",
+      "l": "L21",
+      "texto": "新世界の看板に「走るな」と書いてありました。子供が走っていたので、お母さんが「危ないから、止まれ！」と大きい声で言いました。通天閣は夜景がきれいらしいです。今度、夜に行ってみたいです。",
+      "preguntas": [
+        {
+          "pregunta": "看板に何と書いてありましたか。",
+          "opciones": [
+            "「走れ」",
+            "「走るな」",
+            "「静かに」",
+            "「入るな」"
+          ],
+          "respuesta": "「走るな」"
+        },
+        {
+          "pregunta": "お母さんは何と言いましたか。",
+          "opciones": [
+            "「止まれ」",
+            "「座れ」",
+            "「来い」",
+            "「待て」"
+          ],
+          "respuesta": "「止まれ」"
+        },
+        {
+          "pregunta": "通天閣は何がきれいらしいですか。",
+          "opciones": [
+            "昼の景色",
+            "夜景",
+            "建物の中",
+            "エレベーター"
+          ],
+          "respuesta": "夜景"
+        }
+      ]
+    },
+    {
+      "id": "para_l22",
+      "l": "L22",
+      "texto": "心斎橋で買い物をしているところに、雨が降ってきました。ちょうど店を出るところだったので、傘を買いました。このボタンを押すと、音楽が流れます。買い物が終わったところで、友達から電話がありました。",
+      "preguntas": [
+        {
+          "pregunta": "雨が降ってきたとき、何をしていましたか。",
+          "opciones": [
+            "食事をしていた",
+            "買い物をしていた",
+            "歩いていた",
+            "寝ていた"
+          ],
+          "respuesta": "買い物をしていた"
+        },
+        {
+          "pregunta": "何を買いましたか。",
+          "opciones": [
+            "靴",
+            "傘",
+            "服",
+            "本"
+          ],
+          "respuesta": "傘"
+        },
+        {
+          "pregunta": "友達から電話があったのはいつですか。",
+          "opciones": [
+            "買い物を始める前",
+            "買い物をしているとき",
+            "買い物が終わったところ",
+            "家に帰ってから"
+          ],
+          "respuesta": "買い物が終わったところ"
+        }
+      ]
+    },
+    {
+      "id": "para_l23",
+      "l": "L23",
+      "texto": "黒門市場に行くなら、朝早くがいいですよ。さっき着いたばかりですが、もう魚のいいにおいがします。新鮮な魚が食べたいなら、この店がおすすめです。今日は市場に来たばかりなので、まだ何も食べていません。",
+      "preguntas": [
+        {
+          "pregunta": "黒門市場に行くなら、いつがいいですか。",
+          "opciones": [
+            "夜遅く",
+            "朝早く",
+            "昼過ぎ",
+            "わからない"
+          ],
+          "respuesta": "朝早く"
+        },
+        {
+          "pregunta": "新鮮な魚が食べたいなら、どの店がいいですか。",
+          "opciones": [
+            "どの店でもいい",
+            "この店",
+            "有名な店だけ",
+            "高い店"
+          ],
+          "respuesta": "この店"
+        },
+        {
+          "pregunta": "市場に着いたのはいつですか。",
+          "opciones": [
+            "昨日",
+            "さっき",
+            "来週",
+            "一時間前"
+          ],
+          "respuesta": "さっき"
+        }
+      ]
     }
   ],
   "bunpo_choice": [
@@ -1458,6 +1643,71 @@
       "incorrectaIdx": 2,
       "correcta": "子供に説明させました。",
       "explicacion": "En la forma causativa, a quien se hace hacer algo se marca con に, no con が: 子供に説明させました ('hice que el niño explicara')。"
+    },
+    {
+      "id": "err_l19",
+      "l": "L19",
+      "candidatos": [
+        "先生はもう昼ご飯を召し上がりましたか。",
+        "先生はいつも元気でいらっしゃいます。",
+        "先生は「食べていません」と申し上げました。",
+        "一緒にたこ焼きを食べに行きました。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "先生は「食べていません」とおっしゃいました。",
+      "explicacion": "申し上げる es keigo humilde (謙譲語), para las propias acciones. Para las acciones del profesor se usa el keigo respetuoso (尊敬語): おっしゃる。"
+    },
+    {
+      "id": "err_l20",
+      "l": "L20",
+      "candidatos": [
+        "私は田中と申します。",
+        "城の中を案内していただくはずです。",
+        "ガイドさんはもうすぐ参るはずです。",
+        "楽しみにいらっしゃっています。"
+      ],
+      "incorrectaIdx": 3,
+      "correcta": "楽しみにしています。",
+      "explicacion": "いらっしゃる es keigo respetuoso para hablar de otra persona; para hablar de uno mismo no se usa keigo respetuoso。"
+    },
+    {
+      "id": "err_l21",
+      "l": "L21",
+      "candidatos": [
+        "看板に「走るな」と書いてありました。",
+        "お母さんが「止まれ！」と言いました。",
+        "通天閣は夜景がきれいらしいです。",
+        "今度、夜に行ってみたいと思いらしいです。"
+      ],
+      "incorrectaIdx": 3,
+      "correcta": "今度、夜に行ってみたいと思います。",
+      "explicacion": "らしい se pega a un sustantivo, adjetivo o verbo para decir 'según dicen, parece que'; no se combina con 思う para la propia intención。"
+    },
+    {
+      "id": "err_l22",
+      "l": "L22",
+      "candidatos": [
+        "買い物をしているところに雨が降ってきました。",
+        "店を出るところでした。",
+        "ボタンを押したら、音楽が流れました。",
+        "買い物が終わったところで電話がありました。"
+      ],
+      "incorrectaIdx": 2,
+      "correcta": "このボタンを押すと、音楽が流れます。",
+      "explicacion": "と expresa un resultado natural y automático ('siempre que pasa A, pasa B'), no たら, para una regla o mecanismo fijo。"
+    },
+    {
+      "id": "err_l23",
+      "l": "L23",
+      "candidatos": [
+        "黒門市場に行くなら、朝早くがいいですよ。",
+        "さっき着いたばかりです。",
+        "新鮮な魚が食べたいなら、この店がおすすめです。",
+        "市場に来たばかりだったので、たくさん食べました。"
+      ],
+      "incorrectaIdx": 3,
+      "correcta": "市場に来たばかりなので、まだ何も食べていません。",
+      "explicacion": "〜たばかり significa que algo acaba de pasar hace muy poco; si acabas de llegar, lo lógico es que todavía no hayas comido, no que ya hayas comido mucho。"
     }
   ],
   "texto_gramatica": [
@@ -2108,6 +2358,186 @@
       ],
       "respuesta": "読ませました",
       "explicacion": "La forma causativa (読む → 読ませる) expresa 'hacer/dejar que alguien haga algo'."
+    },
+    {
+      "id": "gram_l19",
+      "l": "L19",
+      "partes": [
+        {
+          "t": "先生はもう昼ご飯を"
+        },
+        {
+          "t": "召し上がりました",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "か。"
+        },
+        {
+          "t": "はい、もう"
+        },
+        {
+          "t": "食べました",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "召し上がりました",
+        "食べました",
+        "いただきました",
+        "召し上がらせました"
+      ],
+      "respuesta": "召し上がりました",
+      "explicacion": "召し上がる es la forma respetuosa (尊敬語) de 食べる: se usa para hablar de que OTRA persona come, nunca de uno mismo."
+    },
+    {
+      "id": "gram_l20",
+      "l": "L20",
+      "partes": [
+        {
+          "t": "すみません、私は田中と"
+        },
+        {
+          "t": "申します",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "資料はもう"
+        },
+        {
+          "t": "いただきました",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "申します",
+        "おっしゃいます",
+        "言われます",
+        "申し上げられます"
+      ],
+      "respuesta": "申します",
+      "explicacion": "申す es la forma humilde (謙譲語) de 言う: se usa para hablar de las propias acciones, rebajándose ante la otra persona."
+    },
+    {
+      "id": "gram_l21",
+      "l": "L21",
+      "partes": [
+        {
+          "t": "先生が「早く"
+        },
+        {
+          "t": "来い",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "」と言いました。"
+        },
+        {
+          "t": "通天閣は人気がある"
+        },
+        {
+          "t": "らしいです",
+          "marca": true
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "来い",
+        "来ます",
+        "来て",
+        "来るな"
+      ],
+      "respuesta": "来い",
+      "explicacion": "La forma imperativa (命令形) de 来る es 来い: una orden directa y brusca, típica de citas o carteles."
+    },
+    {
+      "id": "gram_l22",
+      "l": "L22",
+      "partes": [
+        {
+          "t": "今、ちょうど宿題を"
+        },
+        {
+          "t": "しているところです",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "。"
+        },
+        {
+          "t": "春になる"
+        },
+        {
+          "t": "と",
+          "marca": true
+        },
+        {
+          "t": "、桜が咲きます。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "しているところです",
+        "したところです",
+        "するところです",
+        "しますところです"
+      ],
+      "respuesta": "しているところです",
+      "explicacion": "〜ているところです indica que la acción está en pleno desarrollo ahora mismo."
+    },
+    {
+      "id": "gram_l23",
+      "l": "L23",
+      "partes": [
+        {
+          "t": "大阪に行く"
+        },
+        {
+          "t": "なら",
+          "marca": true,
+          "hueco": true
+        },
+        {
+          "t": "、黒門市場がおすすめです。"
+        },
+        {
+          "t": "さっき昼ご飯を"
+        },
+        {
+          "t": "食べたばかり",
+          "marca": true
+        },
+        {
+          "t": "です。"
+        }
+      ],
+      "huecoIdx": 1,
+      "opciones": [
+        "なら",
+        "たら",
+        "ば",
+        "と"
+      ],
+      "respuesta": "なら",
+      "explicacion": "なら se usa para dar un consejo o recomendación sobre un tema que la otra persona ha mencionado."
     }
   ]
 }

@@ -1658,6 +1658,30 @@ input { font-family: inherit; }
 .kanji-ejemplo-lectura { color: var(--tinta-suave); font-size: 0.9rem; }
 .kanji-ejemplo-es { color: var(--tinta-tenue); font-size: 0.9rem; margin-left: auto; }
 
+.kanji-frases { display: flex; flex-direction: column; gap: 12px; }
+.kanji-frase {
+  position: relative;
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 14px 52px 14px 16px;
+}
+.kanji-frase-ja { font-family: var(--fuente-jp); font-size: 1.25rem; line-height: 1.7; }
+.kanji-frase-kana { font-family: var(--fuente-jp); color: var(--tinta-suave); font-size: 0.9rem; margin-top: 2px; }
+.kanji-frase-es { color: var(--tinta-tenue); font-size: 0.9rem; margin-top: 4px; }
+.kanji-frase-audio { position: absolute; top: 12px; right: 12px; }
+/* El kanji que se está estudiando, destacado dentro de la frase. */
+.kanji-marcado { color: var(--acento); font-weight: 700; }
+
+.kanji-quiz-grande {
+  font-family: var(--fuente-kanji);
+  font-size: 3.6rem;
+  line-height: 1.2;
+  text-align: center;
+  margin: 12px 0 20px;
+}
+.opcion-particula.opcion-texto { font-family: var(--fuente-ui); font-size: 1rem; }
+
 .kanji-trazo { text-align: center; }
 .kanji-trazo-lienzo {
   display: inline-block;

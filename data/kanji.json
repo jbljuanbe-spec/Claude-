@@ -1,6 +1,6 @@
 {
   "meta": {
-    "nota": "Kanji originales (lecturas y significado son datos de dominio público del propio idioma, no texto de ningún libro). Los mnemónicos son composiciones originales basadas en la descomposición visual de cada kanji, técnica mnemotécnica estándar. El trazo (stroke order) se sirve desde data/kanjivg/<codepoint-hex-5>.svg, un subconjunto vendorizado del dataset abierto KanjiVG (CC BY-SA 3.0, http://kanjivg.tagaini.net) — atribución obligatoria si se redistribuye.",
+    "nota": "Kanji originales (lecturas y significado son datos de dominio público del propio idioma, no texto de ningún libro). Los mnemónicos son composiciones originales basadas en la descomposición visual de cada kanji, técnica mnemotécnica estándar. El trazo (stroke order) se sirve desde data/kanjivg/<codepoint-hex-5>.svg, un subconjunto vendorizado del dataset abierto KanjiVG (CC BY-SA 3.0, http://kanjivg.tagaini.net) — atribución obligatoria si se redistribuye. Cada kanji lleva ademas una frase de ejemplo original (frases) de nivel N5/N4 que lo usa en contexto.",
     "fuente_trazo": "KanjiVG (CC BY-SA 3.0) — http://kanjivg.tagaini.net",
     "objetivo": {
       "N5": 80,
@@ -35,7 +35,14 @@
           "es": "hoy"
         }
       ],
-      "mnemonico": "Un rectángulo con una raya en medio: el sol visto como una ventana cuadrada con una línea de luz cruzándola."
+      "mnemonico": "Un rectángulo con una raya en medio: el sol visto como una ventana cuadrada con una línea de luz cruzándola.",
+      "frases": [
+        {
+          "ja": "今日は日曜日です。",
+          "kana": "きょうはにちようびです。",
+          "es": "Hoy es domingo."
+        }
+      ]
     },
     {
       "id": "kj_002",
@@ -56,7 +63,14 @@
           "es": "comer / comeré"
         }
       ],
-      "mnemonico": "食 junta a una persona con una olla de comida debajo: alguien a punto de comer."
+      "mnemonico": "食 junta a una persona con una olla de comida debajo: alguien a punto de comer.",
+      "frases": [
+        {
+          "ja": "毎朝パンを食べます。",
+          "kana": "まいあさパンをたべます。",
+          "es": "Como pan todas las mañanas."
+        }
+      ]
     },
     {
       "id": "kj_003",
@@ -83,7 +97,14 @@
           "es": "banco"
         }
       ],
-      "mnemonico": "行 parece un cruce de caminos visto desde arriba: es el kanji de 'ir' y 'hacer'."
+      "mnemonico": "行 parece un cruce de caminos visto desde arriba: es el kanji de 'ir' y 'hacer'.",
+      "frases": [
+        {
+          "ja": "来月、日本へ旅行に行きます。",
+          "kana": "らいげつ、にほんへりょこうにいきます。",
+          "es": "El mes que viene voy de viaje a Japón."
+        }
+      ]
     },
     {
       "id": "kj_004",
@@ -106,7 +127,14 @@
           "es": "martes"
         }
       ],
-      "mnemonico": "日 (sol) junto a un pájaro con las alas arriba: los días que 'vuelan' uno tras otro, la semana."
+      "mnemonico": "日 (sol) junto a un pájaro con las alas arriba: los días que 'vuelan' uno tras otro, la semana.",
+      "frases": [
+        {
+          "ja": "月曜日から仕事が始まります。",
+          "kana": "げつようびからしごとがはじまります。",
+          "es": "El trabajo empieza el lunes."
+        }
+      ]
     },
     {
       "id": "kj_005",
@@ -134,7 +162,14 @@
           "es": "profesor/a"
         }
       ],
-      "mnemonico": "生 dibuja una planta brotando de la tierra: nacer, vivir, crecer."
+      "mnemonico": "生 dibuja una planta brotando de la tierra: nacer, vivir, crecer.",
+      "frases": [
+        {
+          "ja": "私は日本語の学生です。",
+          "kana": "わたしはにほんごのがくせいです。",
+          "es": "Soy estudiante de japonés."
+        }
+      ]
     },
     {
       "id": "kj_006",
@@ -159,7 +194,14 @@
           "es": "bolsa de la compra"
         }
       ],
-      "mnemonico": "買 tiene una concha (dinero antiguo) bajo una red: 'atrapar' algo con dinero es comprar."
+      "mnemonico": "買 tiene una concha (dinero antiguo) bajo una red: 'atrapar' algo con dinero es comprar.",
+      "frases": [
+        {
+          "ja": "スーパーで野菜を買いました。",
+          "kana": "スーパーでやさいをかいました。",
+          "es": "Compré verduras en el supermercado."
+        }
+      ]
     },
     {
       "id": "kj_007",
@@ -185,7 +227,14 @@
           "es": "teléfono"
         }
       ],
-      "mnemonico": "話 junta 言 (palabra) con 舌 (lengua): usar la lengua para las palabras es hablar."
+      "mnemonico": "話 junta 言 (palabra) con 舌 (lengua): usar la lengua para las palabras es hablar.",
+      "frases": [
+        {
+          "ja": "友達と電話で話しました。",
+          "kana": "ともだちとでんわではなしました。",
+          "es": "Hablé con mi amigo por teléfono."
+        }
+      ]
     },
     {
       "id": "kj_008",
@@ -210,7 +259,14 @@
           "es": "escuela"
         }
       ],
-      "mnemonico": "学 muestra un tejado sobre un niño (子) rodeado de ideas: aprender bajo techo."
+      "mnemonico": "学 muestra un tejado sobre un niño (子) rodeado de ideas: aprender bajo techo.",
+      "frases": [
+        {
+          "ja": "弟は学校で英語を学んでいます。",
+          "kana": "おとうとはがっこうでえいごをまなんでいます。",
+          "es": "Mi hermano pequeño estudia inglés en la escuela."
+        }
+      ]
     },
     {
       "id": "kj_009",
@@ -235,7 +291,14 @@
           "es": "reunión"
         }
       ],
-      "mnemonico": "会 es como una tapa que encaja perfecta sobre una base: dos partes que se encuentran, reunión."
+      "mnemonico": "会 es como una tapa que encaja perfecta sobre una base: dos partes que se encuentran, reunión.",
+      "frases": [
+        {
+          "ja": "会社の会議は三時からです。",
+          "kana": "かいしゃのかいぎはさんじからです。",
+          "es": "La reunión de la empresa es a partir de las tres."
+        }
+      ]
     },
     {
       "id": "kj_010",
@@ -260,7 +323,14 @@
           "es": "documentos"
         }
       ],
-      "mnemonico": "書 tiene una mano con un pincel sobre el sol/día (日): escribir cada día."
+      "mnemonico": "書 tiene una mano con un pincel sobre el sol/día (日): escribir cada día.",
+      "frases": [
+        {
+          "ja": "辞書を見ながら手紙を書きます。",
+          "kana": "じしょをみながらてがみをかきます。",
+          "es": "Escribo la carta mirando el diccionario."
+        }
+      ]
     },
     {
       "id": "kj_011",
@@ -280,7 +350,14 @@
           "es": "beber"
         }
       ],
-      "mnemonico": "飲 junta 食 (comer) con 欠 (boca abierta): abrir la boca para beber."
+      "mnemonico": "飲 junta 食 (comer) con 欠 (boca abierta): abrir la boca para beber.",
+      "frases": [
+        {
+          "ja": "毎朝コーヒーを飲みます。",
+          "kana": "まいあさコーヒーをのみます。",
+          "es": "Bebo café todas las mañanas."
+        }
+      ]
     },
     {
       "id": "kj_012",
@@ -306,7 +383,14 @@
           "es": "ayudar"
         }
       ],
-      "mnemonico": "伝 es una persona (亻) junto al radical de 'decir': alguien que transmite un mensaje."
+      "mnemonico": "伝 es una persona (亻) junto al radical de 'decir': alguien que transmite un mensaje.",
+      "frases": [
+        {
+          "ja": "友達に伝えてください。",
+          "kana": "ともだちにつたえてください。",
+          "es": "Díselo a mi amigo, por favor."
+        }
+      ]
     },
     {
       "id": "kj_013",
@@ -326,7 +410,14 @@
           "es": "caro / alto"
         }
       ],
-      "mnemonico": "高 dibuja una torre alta de varios pisos: algo elevado, alto."
+      "mnemonico": "高 dibuja una torre alta de varios pisos: algo elevado, alto.",
+      "frases": [
+        {
+          "ja": "この店のコーヒーは高いです。",
+          "kana": "このみせのコーヒーはたかいです。",
+          "es": "El café de esta tienda es caro."
+        }
+      ]
     },
     {
       "id": "kj_014",
@@ -350,7 +441,14 @@
           "es": "enfermedad"
         }
       ],
-      "mnemonico": "気 es vapor saliendo de un grano de arroz: energía invisible en el aire."
+      "mnemonico": "気 es vapor saliendo de un grano de arroz: energía invisible en el aire.",
+      "frases": [
+        {
+          "ja": "今日は天気がいいですね。",
+          "kana": "きょうはてんきがいいですね。",
+          "es": "Hoy hace buen tiempo, ¿verdad?"
+        }
+      ]
     },
     {
       "id": "kj_015",
@@ -371,7 +469,14 @@
           "es": "venir"
         }
       ],
-      "mnemonico": "来 parece una planta con espigas a los lados: lo que 'viene' con la cosecha."
+      "mnemonico": "来 parece una planta con espigas a los lados: lo que 'viene' con la cosecha.",
+      "frases": [
+        {
+          "ja": "友達が家に来ました。",
+          "kana": "ともだちがいえにきました。",
+          "es": "Mi amigo vino a casa."
+        }
+      ]
     },
     {
       "id": "kj_016",
@@ -397,7 +502,14 @@
           "es": "niño/a, hijo/a"
         }
       ],
-      "mnemonico": "子 dibuja un bebé envuelto, con la cabeza grande y los brazos abiertos: un niño."
+      "mnemonico": "子 dibuja un bebé envuelto, con la cabeza grande y los brazos abiertos: un niño.",
+      "frases": [
+        {
+          "ja": "公園で子供が遊んでいます。",
+          "kana": "こうえんでこどもがあそんでいます。",
+          "es": "Hay niños jugando en el parque."
+        }
+      ]
     },
     {
       "id": "kj_017",
@@ -423,7 +535,14 @@
           "es": "efectivo"
         }
       ],
-      "mnemonico": "金 muestra pepitas bajo un tejado sobre la tierra: el oro enterrado."
+      "mnemonico": "金 muestra pepitas bajo un tejado sobre la tierra: el oro enterrado.",
+      "frases": [
+        {
+          "ja": "お金がちょっと足りません。",
+          "kana": "おかねがちょっとたりません。",
+          "es": "Me falta un poco de dinero."
+        }
+      ]
     },
     {
       "id": "kj_018",
@@ -449,7 +568,14 @@
           "es": "kimono"
         }
       ],
-      "mnemonico": "物 junta 牛 (vaca/buey) con una bandera cortada: los animales de granja como 'cosas' de valor."
+      "mnemonico": "物 junta 牛 (vaca/buey) con una bandera cortada: los animales de granja como 'cosas' de valor.",
+      "frases": [
+        {
+          "ja": "市場で果物を買います。",
+          "kana": "いちばでくだものをかいます。",
+          "es": "Compro fruta en el mercado."
+        }
+      ]
     },
     {
       "id": "kj_019",
@@ -474,7 +600,14 @@
           "es": "ayudar"
         }
       ],
-      "mnemonico": "手 dibuja una mano abierta con los dedos extendidos hacia arriba."
+      "mnemonico": "手 dibuja una mano abierta con los dedos extendidos hacia arriba.",
+      "frases": [
+        {
+          "ja": "手をよく洗ってください。",
+          "kana": "てをよくあらってください。",
+          "es": "Lávate bien las manos."
+        }
+      ]
     },
     {
       "id": "kj_020",
@@ -500,7 +633,14 @@
           "es": "Castillo de Osaka"
         }
       ],
-      "mnemonico": "大 es una persona con los brazos y las piernas bien abiertos: 'grande'."
+      "mnemonico": "大 es una persona con los brazos y las piernas bien abiertos: 'grande'.",
+      "frases": [
+        {
+          "ja": "この部屋はとても大きいです。",
+          "kana": "このへやはとてもおおきいです。",
+          "es": "Esta habitación es muy grande."
+        }
+      ]
     },
     {
       "id": "kj_021",
@@ -525,7 +665,14 @@
           "es": "empleado de empresa"
         }
       ],
-      "mnemonico": "社 junta 示 (altar) con 土 (tierra): el terreno sagrado de un santuario, o de una empresa."
+      "mnemonico": "社 junta 示 (altar) con 土 (tierra): el terreno sagrado de un santuario, o de una empresa.",
+      "frases": [
+        {
+          "ja": "兄は大きい会社で働いています。",
+          "kana": "あにはおおきいかいしゃではたらいています。",
+          "es": "Mi hermano mayor trabaja en una empresa grande."
+        }
+      ]
     },
     {
       "id": "kj_022",
@@ -551,7 +698,14 @@
           "es": "torre Tsutenkaku"
         }
       ],
-      "mnemonico": "天 es 大 (persona grande) con una raya encima de la cabeza: lo que está por encima de todo, el cielo."
+      "mnemonico": "天 es 大 (persona grande) con una raya encima de la cabeza: lo que está por encima de todo, el cielo.",
+      "frases": [
+        {
+          "ja": "明日の天気を調べます。",
+          "kana": "あしたのてんきをしらべます。",
+          "es": "Voy a mirar el tiempo de mañana."
+        }
+      ]
     },
     {
       "id": "kj_023",
@@ -571,7 +725,14 @@
           "es": "volver a casa"
         }
       ],
-      "mnemonico": "帰 combina un camino con una escoba: volver a casa a barrer, volver al hogar."
+      "mnemonico": "帰 combina un camino con una escoba: volver a casa a barrer, volver al hogar.",
+      "frases": [
+        {
+          "ja": "六時に家に帰ります。",
+          "kana": "ろくじにいえにかえります。",
+          "es": "Vuelvo a casa a las seis."
+        }
+      ]
     },
     {
       "id": "kj_024",
@@ -598,7 +759,14 @@
           "es": "explicación"
         }
       ],
-      "mnemonico": "明 junta 日 (sol) y 月 (luna): con el sol y la luna juntos, todo se ve claro y brillante."
+      "mnemonico": "明 junta 日 (sol) y 月 (luna): con el sol y la luna juntos, todo se ve claro y brillante.",
+      "frases": [
+        {
+          "ja": "明日、友達に会います。",
+          "kana": "あした、ともだちにあいます。",
+          "es": "Mañana quedo con un amigo."
+        }
+      ]
     },
     {
       "id": "kj_025",
@@ -618,7 +786,14 @@
           "es": "ocupado"
         }
       ],
-      "mnemonico": "忙 es 心 (corazón) más el radical de 'perderse': cuando el corazón anda perdido de tareas, estás ocupado."
+      "mnemonico": "忙 es 心 (corazón) más el radical de 'perderse': cuando el corazón anda perdido de tareas, estás ocupado.",
+      "frases": [
+        {
+          "ja": "今週はとても忙しいです。",
+          "kana": "こんしゅうはとてもいそがしいです。",
+          "es": "Esta semana estoy muy ocupado."
+        }
+      ]
     },
     {
       "id": "kj_026",
@@ -643,7 +818,14 @@
           "es": "invitación"
         }
       ],
-      "mnemonico": "待 combina 彳 (caminar) con 寺 (templo): caminar hacia el templo y esperar allí."
+      "mnemonico": "待 combina 彳 (caminar) con 寺 (templo): caminar hacia el templo y esperar allí.",
+      "frases": [
+        {
+          "ja": "駅で三十分待ちました。",
+          "kana": "えきでさんじゅっぷんまちました。",
+          "es": "Esperé treinta minutos en la estación."
+        }
+      ]
     },
     {
       "id": "kj_027",
@@ -668,7 +850,14 @@
           "es": "abuelo"
         }
       ],
-      "mnemonico": "父 dibuja una mano sosteniendo una herramienta: el padre que trabaja y provee."
+      "mnemonico": "父 dibuja una mano sosteniendo una herramienta: el padre que trabaja y provee.",
+      "frases": [
+        {
+          "ja": "父は会社員です。",
+          "kana": "ちちはかいしゃいんです。",
+          "es": "Mi padre es oficinista."
+        }
+      ]
     },
     {
       "id": "kj_028",
@@ -693,7 +882,14 @@
           "es": "abuela"
         }
       ],
-      "mnemonico": "母 dibuja una figura con dos puntos marcando el pecho: la madre que alimenta."
+      "mnemonico": "母 dibuja una figura con dos puntos marcando el pecho: la madre que alimenta.",
+      "frases": [
+        {
+          "ja": "母の料理はおいしいです。",
+          "kana": "ははのりょうりはおいしいです。",
+          "es": "La comida de mi madre está buenísima."
+        }
+      ]
     },
     {
       "id": "kj_029",
@@ -716,7 +912,14 @@
           "es": "teléfono"
         }
       ],
-      "mnemonico": "電 es 雨 (lluvia) con un rayo cayendo debajo: electricidad."
+      "mnemonico": "電 es 雨 (lluvia) con un rayo cayendo debajo: electricidad.",
+      "frases": [
+        {
+          "ja": "毎日電車で会社に行きます。",
+          "kana": "まいにちでんしゃでかいしゃにいきます。",
+          "es": "Voy a la empresa en tren todos los días."
+        }
+      ]
     },
     {
       "id": "kj_030",
@@ -742,7 +945,14 @@
           "es": "incómodo/poco práctico"
         }
       ],
-      "mnemonico": "便 junta 亻 (persona) con 'cambiar': una persona que hace las cosas más cómodas, conveniente."
+      "mnemonico": "便 junta 亻 (persona) con 'cambiar': una persona que hace las cosas más cómodas, conveniente.",
+      "frases": [
+        {
+          "ja": "この町は交通が便利です。",
+          "kana": "このまちはこうつうがべんりです。",
+          "es": "El transporte de este pueblo es cómodo."
+        }
+      ]
     },
     {
       "id": "kj_031",
@@ -760,7 +970,14 @@
           "es": "planes/agenda"
         }
       ],
-      "mnemonico": "予 dibuja una lanzadera de telar: algo preparado de antemano, antes de tejer."
+      "mnemonico": "予 dibuja una lanzadera de telar: algo preparado de antemano, antes de tejer.",
+      "frases": [
+        {
+          "ja": "週末の予定はありますか。",
+          "kana": "しゅうまつのよていはありますか。",
+          "es": "¿Tienes planes para el fin de semana?"
+        }
+      ]
     },
     {
       "id": "kj_032",
@@ -780,7 +997,14 @@
           "es": "orden, mandato"
         }
       ],
-      "mnemonico": "命 junta una boca dando una orden desde arriba con una persona arrodillada: recibir una orden de vida o muerte."
+      "mnemonico": "命 junta una boca dando una orden desde arriba con una persona arrodillada: recibir una orden de vida o muerte.",
+      "frases": [
+        {
+          "ja": "命はとても大切です。",
+          "kana": "いのちはとてもたいせつです。",
+          "es": "La vida es muy importante."
+        }
+      ]
     },
     {
       "id": "kj_033",
@@ -798,7 +1022,14 @@
           "es": "orden, mandato"
         }
       ],
-      "mnemonico": "令 dibuja un tejado sobre una persona arrodillada recibiendo una orden."
+      "mnemonico": "令 dibuja un tejado sobre una persona arrodillada recibiendo una orden.",
+      "frases": [
+        {
+          "ja": "彼は命令に従いました。",
+          "kana": "かれはめいれいにしたがいました。",
+          "es": "Él obedeció la orden."
+        }
+      ]
     },
     {
       "id": "kj_034",
@@ -824,7 +1055,14 @@
           "es": "especialidad local"
         }
       ],
-      "mnemonico": "名 junta 夕 (anochecer) con 口 (boca): de noche había que decir tu nombre en voz alta para identificarte."
+      "mnemonico": "名 junta 夕 (anochecer) con 口 (boca): de noche había que decir tu nombre en voz alta para identificarte.",
+      "frases": [
+        {
+          "ja": "ここに名前を書いてください。",
+          "kana": "ここになまえをかいてください。",
+          "es": "Escribe tu nombre aquí, por favor."
+        }
+      ]
     },
     {
       "id": "kj_035",
@@ -849,7 +1087,14 @@
           "es": "nombre"
         }
       ],
-      "mnemonico": "前 tiene un barco con una cuchilla en la proa, cortando el agua hacia delante."
+      "mnemonico": "前 tiene un barco con una cuchilla en la proa, cortando el agua hacia delante.",
+      "frases": [
+        {
+          "ja": "駅の前で待っています。",
+          "kana": "えきのまえでまっています。",
+          "es": "Te espero delante de la estación."
+        }
+      ]
     },
     {
       "id": "kj_036",
@@ -869,7 +1114,14 @@
           "es": "profesor/a"
         }
       ],
-      "mnemonico": "先 dibuja una persona caminando por delante de otra: el que va primero, antes."
+      "mnemonico": "先 dibuja una persona caminando por delante de otra: el que va primero, antes.",
+      "frases": [
+        {
+          "ja": "先生に質問しました。",
+          "kana": "せんせいにしつもんしました。",
+          "es": "Le hice una pregunta al profesor."
+        }
+      ]
     },
     {
       "id": "kj_037",
@@ -894,7 +1146,14 @@
           "es": "geisha"
         }
       ],
-      "mnemonico": "者 muestra a un anciano hablando: 'la persona' de la que se habla."
+      "mnemonico": "者 muestra a un anciano hablando: 'la persona' de la que se habla.",
+      "frases": [
+        {
+          "ja": "医者に相談しました。",
+          "kana": "いしゃにそうだんしました。",
+          "es": "Consulté con el médico."
+        }
+      ]
     },
     {
       "id": "kj_038",
@@ -919,7 +1178,14 @@
           "es": "Japón"
         }
       ],
-      "mnemonico": "本 es 木 (árbol) con una raya extra en la base marcando la raíz: el origen, el libro."
+      "mnemonico": "本 es 木 (árbol) con una raya extra en la base marcando la raíz: el origen, el libro.",
+      "frases": [
+        {
+          "ja": "日本の本を読んでいます。",
+          "kana": "にほんのほんをよんでいます。",
+          "es": "Estoy leyendo un libro japonés."
+        }
+      ]
     },
     {
       "id": "kj_039",
@@ -944,7 +1210,14 @@
           "es": "tiempo (duración)"
         }
       ],
-      "mnemonico": "時 junta 日 (sol) con 寺 (templo, antes 'medida'): el sol marcando el paso del tiempo."
+      "mnemonico": "時 junta 日 (sol) con 寺 (templo, antes 'medida'): el sol marcando el paso del tiempo.",
+      "frases": [
+        {
+          "ja": "今、何時ですか。",
+          "kana": "いま、なんじですか。",
+          "es": "¿Qué hora es ahora?"
+        }
+      ]
     },
     {
       "id": "kj_040",
@@ -970,7 +1243,14 @@
           "es": "¿qué día de la semana?"
         }
       ],
-      "mnemonico": "何 es una persona cargando algo al hombro, preguntando '¿qué es esto?'."
+      "mnemonico": "何 es una persona cargando algo al hombro, preguntando '¿qué es esto?'.",
+      "frases": [
+        {
+          "ja": "週末は何をしますか。",
+          "kana": "しゅうまつはなにをしますか。",
+          "es": "¿Qué haces el fin de semana?"
+        }
+      ]
     },
     {
       "id": "kj_041",
@@ -996,7 +1276,14 @@
           "es": "enero"
         }
       ],
-      "mnemonico": "Un solo trazo horizontal: el número uno en su forma más simple."
+      "mnemonico": "Un solo trazo horizontal: el número uno en su forma más simple.",
+      "frases": [
+        {
+          "ja": "りんごを一つください。",
+          "kana": "りんごをひとつください。",
+          "es": "Una manzana, por favor."
+        }
+      ]
     },
     {
       "id": "kj_042",
@@ -1021,7 +1308,14 @@
           "es": "dos personas"
         }
       ],
-      "mnemonico": "Dos trazos horizontales, uno encima del otro: el número dos."
+      "mnemonico": "Dos trazos horizontales, uno encima del otro: el número dos.",
+      "frases": [
+        {
+          "ja": "二人で映画を見ました。",
+          "kana": "ふたりでえいがをみました。",
+          "es": "Vimos una película entre los dos."
+        }
+      ]
     },
     {
       "id": "kj_043",
@@ -1046,7 +1340,14 @@
           "es": "marzo"
         }
       ],
-      "mnemonico": "Tres trazos horizontales apilados: el número tres."
+      "mnemonico": "Tres trazos horizontales apilados: el número tres.",
+      "frases": [
+        {
+          "ja": "三時に会いましょう。",
+          "kana": "さんじにあいましょう。",
+          "es": "Quedamos a las tres."
+        }
+      ]
     },
     {
       "id": "kj_044",
@@ -1072,7 +1373,14 @@
           "es": "abril"
         }
       ],
-      "mnemonico": "Una caja con dos piernas dentro: hay que 'encerrar' el cuatro porque cuatro rayas ya no se leerían bien."
+      "mnemonico": "Una caja con dos piernas dentro: hay que 'encerrar' el cuatro porque cuatro rayas ya no se leerían bien.",
+      "frases": [
+        {
+          "ja": "四月に日本へ行きます。",
+          "kana": "しがつににほんへいきます。",
+          "es": "Voy a Japón en abril."
+        }
+      ]
     },
     {
       "id": "kj_045",
@@ -1097,7 +1405,14 @@
           "es": "mayo"
         }
       ],
-      "mnemonico": "Una figura en zigzag entre dos rayas: la mano de cinco dedos cruzada."
+      "mnemonico": "Una figura en zigzag entre dos rayas: la mano de cinco dedos cruzada.",
+      "frases": [
+        {
+          "ja": "五分待ってください。",
+          "kana": "ごふんまってください。",
+          "es": "Espera cinco minutos, por favor."
+        }
+      ]
     },
     {
       "id": "kj_046",
@@ -1122,7 +1437,14 @@
           "es": "junio"
         }
       ],
-      "mnemonico": "Una tapa con dos patitas debajo: como una mesa de seis."
+      "mnemonico": "Una tapa con dos patitas debajo: como una mesa de seis.",
+      "frases": [
+        {
+          "ja": "毎朝六時に起きます。",
+          "kana": "まいあさろくじにおきます。",
+          "es": "Me levanto a las seis todas las mañanas."
+        }
+      ]
     },
     {
       "id": "kj_047",
@@ -1147,7 +1469,14 @@
           "es": "julio"
         }
       ],
-      "mnemonico": "Parece un siete al revés con una raya cruzándolo."
+      "mnemonico": "Parece un siete al revés con una raya cruzándolo.",
+      "frases": [
+        {
+          "ja": "七月は暑いです。",
+          "kana": "しちがつはあついです。",
+          "es": "En julio hace calor."
+        }
+      ]
     },
     {
       "id": "kj_048",
@@ -1172,7 +1501,14 @@
           "es": "agosto"
         }
       ],
-      "mnemonico": "Dos trazos que se abren hacia abajo, como el ocho partiéndose en dos cuatros."
+      "mnemonico": "Dos trazos que se abren hacia abajo, como el ocho partiéndose en dos cuatros.",
+      "frases": [
+        {
+          "ja": "八時に家を出ます。",
+          "kana": "はちじにいえをでます。",
+          "es": "Salgo de casa a las ocho."
+        }
+      ]
     },
     {
       "id": "kj_049",
@@ -1198,7 +1534,14 @@
           "es": "septiembre"
         }
       ],
-      "mnemonico": "Un gancho con una pierna larga: el nueve casi cerrando la decena."
+      "mnemonico": "Un gancho con una pierna larga: el nueve casi cerrando la decena.",
+      "frases": [
+        {
+          "ja": "店は九時に開きます。",
+          "kana": "みせはくじにひらきます。",
+          "es": "La tienda abre a las nueve."
+        }
+      ]
     },
     {
       "id": "kj_050",
@@ -1223,7 +1566,14 @@
           "es": "octubre"
         }
       ],
-      "mnemonico": "Una cruz perfecta: los diez dedos de las dos manos cruzadas."
+      "mnemonico": "Una cruz perfecta: los diez dedos de las dos manos cruzadas.",
+      "frases": [
+        {
+          "ja": "十分ぐらい歩きました。",
+          "kana": "じゅっぷんぐらいあるきました。",
+          "es": "Caminamos unos diez minutos."
+        }
+      ]
     },
     {
       "id": "kj_051",
@@ -1246,7 +1596,14 @@
           "es": "trescientos"
         }
       ],
-      "mnemonico": "Un 一 (uno) encima de 白 (blanco): un uno con muchos ceros detrás, cien."
+      "mnemonico": "Un 一 (uno) encima de 白 (blanco): un uno con muchos ceros detrás, cien.",
+      "frases": [
+        {
+          "ja": "これは百円です。",
+          "kana": "これはひゃくえんです。",
+          "es": "Esto cuesta cien yenes."
+        }
+      ]
     },
     {
       "id": "kj_052",
@@ -1271,7 +1628,14 @@
           "es": "mil yenes"
         }
       ],
-      "mnemonico": "Como 十 (diez) con una raya extra arriba: mucho más que diez, mil."
+      "mnemonico": "Como 十 (diez) con una raya extra arriba: mucho más que diez, mil.",
+      "frases": [
+        {
+          "ja": "この本は千円でした。",
+          "kana": "このほんはせんえんでした。",
+          "es": "Este libro costó mil yenes."
+        }
+      ]
     },
     {
       "id": "kj_053",
@@ -1295,7 +1659,14 @@
           "es": "por si acaso"
         }
       ],
-      "mnemonico": "Un trazo que se dispara hacia los lados: una cantidad enorme, diez mil."
+      "mnemonico": "Un trazo que se dispara hacia los lados: una cantidad enorme, diez mil.",
+      "frases": [
+        {
+          "ja": "一万円を持っています。",
+          "kana": "いちまんえんをもっています。",
+          "es": "Llevo diez mil yenes."
+        }
+      ]
     },
     {
       "id": "kj_054",
@@ -1320,7 +1691,14 @@
           "es": "cien yenes"
         }
       ],
-      "mnemonico": "Una caja con algo dentro: la moneda redonda japonesa, el yen."
+      "mnemonico": "Una caja con algo dentro: la moneda redonda japonesa, el yen.",
+      "frases": [
+        {
+          "ja": "全部で三百円です。",
+          "kana": "ぜんぶでさんびゃくえんです。",
+          "es": "Son trescientos yenes en total."
+        }
+      ]
     },
     {
       "id": "kj_055",
@@ -1346,7 +1724,14 @@
           "es": "japonés/a"
         }
       ],
-      "mnemonico": "Dos piernas caminando: una persona vista de perfil."
+      "mnemonico": "Dos piernas caminando: una persona vista de perfil.",
+      "frases": [
+        {
+          "ja": "あの人は私の友達です。",
+          "kana": "あのひとはわたしのともだちです。",
+          "es": "Esa persona es mi amiga."
+        }
+      ]
     },
     {
       "id": "kj_056",
@@ -1371,7 +1756,14 @@
           "es": "ella, novia"
         }
       ],
-      "mnemonico": "Una figura sentada con los brazos cruzados: la mujer."
+      "mnemonico": "Una figura sentada con los brazos cruzados: la mujer.",
+      "frases": [
+        {
+          "ja": "女の人が本を読んでいます。",
+          "kana": "おんなのひとがほんをよんでいます。",
+          "es": "Una mujer está leyendo un libro."
+        }
+      ]
     },
     {
       "id": "kj_057",
@@ -1397,7 +1789,14 @@
           "es": "varón"
         }
       ],
-      "mnemonico": "田 (campo de arroz) sobre 力 (fuerza): el que trabajaba con fuerza en el campo."
+      "mnemonico": "田 (campo de arroz) sobre 力 (fuerza): el que trabajaba con fuerza en el campo.",
+      "frases": [
+        {
+          "ja": "男の人が二人います。",
+          "kana": "おとこのひとがふたりいます。",
+          "es": "Hay dos hombres."
+        }
+      ]
     },
     {
       "id": "kj_058",
@@ -1422,7 +1821,14 @@
           "es": "China"
         }
       ],
-      "mnemonico": "Un recinto cerrado con un tesoro (玉) dentro: un territorio con fronteras, un país."
+      "mnemonico": "Un recinto cerrado con un tesoro (玉) dentro: un territorio con fronteras, un país.",
+      "frases": [
+        {
+          "ja": "お国はどちらですか。",
+          "kana": "おくにはどちらですか。",
+          "es": "¿De qué país es usted?"
+        }
+      ]
     },
     {
       "id": "kj_059",
@@ -1447,7 +1853,14 @@
           "es": "el año pasado"
         }
       ],
-      "mnemonico": "Una espiga inclinada: cada cosecha marca un año."
+      "mnemonico": "Una espiga inclinada: cada cosecha marca un año.",
+      "frases": [
+        {
+          "ja": "今年は日本語を勉強します。",
+          "kana": "ことしはにほんごをべんきょうします。",
+          "es": "Este año voy a estudiar japonés."
+        }
+      ]
     },
     {
       "id": "kj_060",
@@ -1472,7 +1885,14 @@
           "es": "China"
         }
       ],
-      "mnemonico": "Una caja atravesada justo por el centro: en medio, dentro."
+      "mnemonico": "Una caja atravesada justo por el centro: en medio, dentro.",
+      "frases": [
+        {
+          "ja": "かばんの中に財布があります。",
+          "kana": "かばんのなかにさいふがあります。",
+          "es": "Dentro del bolso hay una cartera."
+        }
+      ]
     },
     {
       "id": "kj_061",
@@ -1497,7 +1917,14 @@
           "es": "presidente de empresa"
         }
       ],
-      "mnemonico": "Un anciano con el pelo largo apoyado en un bastón: largo y también 'el mayor'."
+      "mnemonico": "Un anciano con el pelo largo apoyado en un bastón: largo y también 'el mayor'.",
+      "frases": [
+        {
+          "ja": "この川はとても長いです。",
+          "kana": "このかわはとてもながいです。",
+          "es": "Este río es muy largo."
+        }
+      ]
     },
     {
       "id": "kj_062",
@@ -1523,7 +1950,14 @@
           "es": "salida"
         }
       ],
-      "mnemonico": "Dos montañas apiladas: algo que brota hacia fuera y sale."
+      "mnemonico": "Dos montañas apiladas: algo que brota hacia fuera y sale.",
+      "frases": [
+        {
+          "ja": "七時に家を出ました。",
+          "kana": "しちじにいえをでました。",
+          "es": "Salí de casa a las siete."
+        }
+      ]
     },
     {
       "id": "kj_063",
@@ -1548,7 +1982,14 @@
           "es": "mostrar"
         }
       ],
-      "mnemonico": "Un ojo (目) con piernas: el ojo que se mueve para ver."
+      "mnemonico": "Un ojo (目) con piernas: el ojo que se mueve para ver.",
+      "frases": [
+        {
+          "ja": "昨日、映画を見ました。",
+          "kana": "きのう、えいがをみました。",
+          "es": "Ayer vi una película."
+        }
+      ]
     },
     {
       "id": "kj_064",
@@ -1574,7 +2015,14 @@
           "es": "lunes"
         }
       ],
-      "mnemonico": "Una luna creciente con dos rayas dentro: la luna, y los meses que marca."
+      "mnemonico": "Una luna creciente con dos rayas dentro: la luna, y los meses que marca.",
+      "frases": [
+        {
+          "ja": "来月、大阪に行きます。",
+          "kana": "らいげつ、おおさかにいきます。",
+          "es": "El mes que viene voy a Osaka."
+        }
+      ]
     },
     {
       "id": "kj_065",
@@ -1600,7 +2048,14 @@
           "es": "cinco minutos"
         }
       ],
-      "mnemonico": "Un cuchillo (刀) partiendo algo en dos (八): dividir, y de ahí 'minuto' y 'entender'."
+      "mnemonico": "Un cuchillo (刀) partiendo algo en dos (八): dividir, y de ahí 'minuto' y 'entender'.",
+      "frases": [
+        {
+          "ja": "この漢字が分かりません。",
+          "kana": "このかんじがわかりません。",
+          "es": "No entiendo este kanji."
+        }
+      ]
     },
     {
       "id": "kj_066",
@@ -1627,7 +2082,14 @@
           "es": "por la tarde"
         }
       ],
-      "mnemonico": "Un caminito con hilos enredados: el que se queda atrás, después."
+      "mnemonico": "Un caminito con hilos enredados: el que se queda atrás, después.",
+      "frases": [
+        {
+          "ja": "午後から雨が降ります。",
+          "kana": "ごごからあめがふります。",
+          "es": "Va a llover a partir de la tarde."
+        }
+      ]
     },
     {
       "id": "kj_067",
@@ -1652,7 +2114,14 @@
           "es": "ser humano"
         }
       ],
-      "mnemonico": "El sol (日) visto por la rendija de un portón (門): el hueco entre dos cosas."
+      "mnemonico": "El sol (日) visto por la rendija de un portón (門): el hueco entre dos cosas.",
+      "frases": [
+        {
+          "ja": "時間がありませんでした。",
+          "kana": "じかんがありませんでした。",
+          "es": "No tuve tiempo."
+        }
+      ]
     },
     {
       "id": "kj_068",
@@ -1678,7 +2147,14 @@
           "es": "hábil"
         }
       ],
-      "mnemonico": "Una raya con algo que sobresale por encima: arriba."
+      "mnemonico": "Una raya con algo que sobresale por encima: arriba.",
+      "frases": [
+        {
+          "ja": "机の上に本があります。",
+          "kana": "つくえのうえにほんがあります。",
+          "es": "Encima de la mesa hay un libro."
+        }
+      ]
     },
     {
       "id": "kj_069",
@@ -1705,7 +2181,14 @@
           "es": "torpe"
         }
       ],
-      "mnemonico": "Una raya con algo colgando por debajo: abajo."
+      "mnemonico": "Una raya con algo colgando por debajo: abajo.",
+      "frases": [
+        {
+          "ja": "いすの下に猫がいます。",
+          "kana": "いすのしたにねこがいます。",
+          "es": "Debajo de la silla hay un gato."
+        }
+      ]
     },
     {
       "id": "kj_070",
@@ -1730,7 +2213,14 @@
           "es": "escuela primaria"
         }
       ],
-      "mnemonico": "Tres trazos diminutos alrededor de un eje: algo pequeño."
+      "mnemonico": "Tres trazos diminutos alrededor de un eje: algo pequeño.",
+      "frases": [
+        {
+          "ja": "小さい犬を飼っています。",
+          "kana": "ちいさいいぬをかっています。",
+          "es": "Tengo un perro pequeño."
+        }
+      ]
     },
     {
       "id": "kj_071",
@@ -1755,7 +2245,14 @@
           "es": "Tokio"
         }
       ],
-      "mnemonico": "El sol (日) saliendo por detrás de un árbol (木): por donde amanece, el este."
+      "mnemonico": "El sol (日) saliendo por detrás de un árbol (木): por donde amanece, el este.",
+      "frases": [
+        {
+          "ja": "東京に住んでいます。",
+          "kana": "とうきょうにすんでいます。",
+          "es": "Vivo en Tokio."
+        }
+      ]
     },
     {
       "id": "kj_072",
@@ -1781,7 +2278,14 @@
           "es": "región de Kansai"
         }
       ],
-      "mnemonico": "Un pájaro entrando en su nido al atardecer: cuando el sol cae por el oeste."
+      "mnemonico": "Un pájaro entrando en su nido al atardecer: cuando el sol cae por el oeste.",
+      "frases": [
+        {
+          "ja": "西の空が赤いです。",
+          "kana": "にしのそらがあかいです。",
+          "es": "El cielo del oeste está rojo."
+        }
+      ]
     },
     {
       "id": "kj_073",
@@ -1806,7 +2310,14 @@
           "es": "Hokkaido"
         }
       ],
-      "mnemonico": "Dos personas de espaldas: en el norte se da la espalda al frío."
+      "mnemonico": "Dos personas de espaldas: en el norte se da la espalda al frío.",
+      "frases": [
+        {
+          "ja": "北海道は冬が寒いです。",
+          "kana": "ほっかいどうはふゆがさむいです。",
+          "es": "En Hokkaido el invierno es frío."
+        }
+      ]
     },
     {
       "id": "kj_074",
@@ -1831,7 +2342,14 @@
           "es": "salida sur"
         }
       ],
-      "mnemonico": "Una planta protegida bajo un cobertizo: crece hacia el lado cálido, el sur."
+      "mnemonico": "Una planta protegida bajo un cobertizo: crece hacia el lado cálido, el sur.",
+      "frases": [
+        {
+          "ja": "駅の南口で会いましょう。",
+          "kana": "えきのみなみぐちであいましょう。",
+          "es": "Quedamos en la salida sur de la estación."
+        }
+      ]
     },
     {
       "id": "kj_075",
@@ -1856,7 +2374,14 @@
           "es": "monte Fuji"
         }
       ],
-      "mnemonico": "Tres picos que se elevan: una cordillera vista de frente."
+      "mnemonico": "Tres picos que se elevan: una cordillera vista de frente.",
+      "frases": [
+        {
+          "ja": "夏に富士山に登りました。",
+          "kana": "なつにふじさんにのぼりました。",
+          "es": "En verano subí al monte Fuji."
+        }
+      ]
     },
     {
       "id": "kj_076",
@@ -1881,7 +2406,14 @@
           "es": "arroyo"
         }
       ],
-      "mnemonico": "Tres líneas que fluyen hacia abajo: la corriente de un río."
+      "mnemonico": "Tres líneas que fluyen hacia abajo: la corriente de un río.",
+      "frases": [
+        {
+          "ja": "この川で泳いではいけません。",
+          "kana": "このかわでおよいではいけません。",
+          "es": "No se puede nadar en este río."
+        }
+      ]
     },
     {
       "id": "kj_077",
@@ -1906,7 +2438,14 @@
           "es": "miércoles"
         }
       ],
-      "mnemonico": "Un chorro central con salpicaduras a los lados: agua corriendo."
+      "mnemonico": "Un chorro central con salpicaduras a los lados: agua corriendo.",
+      "frases": [
+        {
+          "ja": "水を一杯ください。",
+          "kana": "みずをいっぱいください。",
+          "es": "Un vaso de agua, por favor."
+        }
+      ]
     },
     {
       "id": "kj_078",
@@ -1931,7 +2470,14 @@
           "es": "martes"
         }
       ],
-      "mnemonico": "Una llama con chispas saltando a los lados."
+      "mnemonico": "Una llama con chispas saltando a los lados.",
+      "frases": [
+        {
+          "ja": "火曜日に会議があります。",
+          "kana": "かようびにかいぎがあります。",
+          "es": "El martes hay una reunión."
+        }
+      ]
     },
     {
       "id": "kj_079",
@@ -1957,7 +2503,14 @@
           "es": "jueves"
         }
       ],
-      "mnemonico": "Un tronco con ramas arriba y raíces abajo: un árbol."
+      "mnemonico": "Un tronco con ramas arriba y raíces abajo: un árbol.",
+      "frases": [
+        {
+          "ja": "庭に大きい木があります。",
+          "kana": "にわにおおきいきがあります。",
+          "es": "En el jardín hay un árbol grande."
+        }
+      ]
     },
     {
       "id": "kj_080",
@@ -1983,7 +2536,14 @@
           "es": "sábado"
         }
       ],
-      "mnemonico": "Un brote saliendo del suelo: la tierra."
+      "mnemonico": "Un brote saliendo del suelo: la tierra.",
+      "frases": [
+        {
+          "ja": "土曜日は休みです。",
+          "kana": "どようびはやすみです。",
+          "es": "El sábado es día libre."
+        }
+      ]
     },
     {
       "id": "kj_081",
@@ -2008,7 +2568,14 @@
           "es": "papel en blanco"
         }
       ],
-      "mnemonico": "Un rayo de luz sobre el sol (日): la luz que lo deja todo blanco."
+      "mnemonico": "Un rayo de luz sobre el sol (日): la luz que lo deja todo blanco.",
+      "frases": [
+        {
+          "ja": "白いシャツを買いました。",
+          "kana": "しろいシャツをかいました。",
+          "es": "Compré una camisa blanca."
+        }
+      ]
     },
     {
       "id": "kj_082",
@@ -2034,7 +2601,14 @@
           "es": "mano derecha"
         }
       ],
-      "mnemonico": "Una mano sobre una boca: la mano con la que comes, la derecha."
+      "mnemonico": "Una mano sobre una boca: la mano con la que comes, la derecha.",
+      "frases": [
+        {
+          "ja": "次の角を右に曲がってください。",
+          "kana": "つぎのかどをみぎにまがってください。",
+          "es": "Gire a la derecha en la próxima esquina."
+        }
+      ]
     },
     {
       "id": "kj_083",
@@ -2059,7 +2633,14 @@
           "es": "mano izquierda"
         }
       ],
-      "mnemonico": "Una mano sobre una herramienta: la mano que sujeta, la izquierda."
+      "mnemonico": "Una mano sobre una herramienta: la mano que sujeta, la izquierda.",
+      "frases": [
+        {
+          "ja": "左の手が痛いです。",
+          "kana": "ひだりのてがいたいです。",
+          "es": "Me duele la mano izquierda."
+        }
+      ]
     },
     {
       "id": "kj_084",
@@ -2084,7 +2665,14 @@
           "es": "hoy"
         }
       ],
-      "mnemonico": "Un tejado que cubre justo este instante: ahora."
+      "mnemonico": "Un tejado que cubre justo este instante: ahora.",
+      "frases": [
+        {
+          "ja": "今、宿題をしています。",
+          "kana": "いま、しゅくだいをしています。",
+          "es": "Ahora estoy haciendo los deberes."
+        }
+      ]
     },
     {
       "id": "kj_085",
@@ -2110,7 +2698,14 @@
           "es": "entrada"
         }
       ],
-      "mnemonico": "Como 人 pero con el trazo cruzado: alguien agachándose para entrar por una puerta."
+      "mnemonico": "Como 人 pero con el trazo cruzado: alguien agachándose para entrar por una puerta.",
+      "frases": [
+        {
+          "ja": "どうぞ、中に入ってください。",
+          "kana": "どうぞ、なかにはいってください。",
+          "es": "Pase dentro, por favor."
+        }
+      ]
     },
     {
       "id": "kj_086",
@@ -2135,7 +2730,14 @@
           "es": "extranjero (país)"
         }
       ],
-      "mnemonico": "El atardecer (夕) junto a una adivinación: lo que queda fuera de casa al anochecer."
+      "mnemonico": "El atardecer (夕) junto a una adivinación: lo que queda fuera de casa al anochecer.",
+      "frases": [
+        {
+          "ja": "外は寒いですから、上着を着ます。",
+          "kana": "そとはさむいですから、うわぎをきます。",
+          "es": "Como fuera hace frío, me pongo la chaqueta."
+        }
+      ]
     },
     {
       "id": "kj_087",
@@ -2160,7 +2762,14 @@
           "es": "medio año"
         }
       ],
-      "mnemonico": "Una vaca partida por la mitad con dos trazos: la mitad exacta."
+      "mnemonico": "Una vaca partida por la mitad con dos trazos: la mitad exacta.",
+      "frases": [
+        {
+          "ja": "八時半に始まります。",
+          "kana": "はちじはんにはじまります。",
+          "es": "Empieza a las ocho y media."
+        }
+      ]
     },
     {
       "id": "kj_088",
@@ -2183,7 +2792,14 @@
           "es": "por la tarde"
         }
       ],
-      "mnemonico": "Como 牛 (vaca) sin el trazo de arriba: la hora en que el sol está justo en lo alto."
+      "mnemonico": "Como 牛 (vaca) sin el trazo de arriba: la hora en que el sol está justo en lo alto.",
+      "frases": [
+        {
+          "ja": "午前中は忙しいです。",
+          "kana": "ごぜんちゅうはいそがしいです。",
+          "es": "Por la mañana estoy ocupado."
+        }
+      ]
     },
     {
       "id": "kj_089",
@@ -2206,7 +2822,14 @@
           "es": "todos los años"
         }
       ],
-      "mnemonico": "Como 母 (madre) con un sombrero: la madre que hace lo mismo cada día."
+      "mnemonico": "Como 母 (madre) con un sombrero: la madre que hace lo mismo cada día.",
+      "frases": [
+        {
+          "ja": "毎日日本語を勉強します。",
+          "kana": "まいにちにほんごをべんきょうします。",
+          "es": "Estudio japonés todos los días."
+        }
+      ]
     },
     {
       "id": "kj_090",
@@ -2229,7 +2852,14 @@
           "es": "instituto"
         }
       ],
-      "mnemonico": "Un árbol (木) donde se cruzan (交) los caminos de la gente: la escuela del pueblo."
+      "mnemonico": "Un árbol (木) donde se cruzan (交) los caminos de la gente: la escuela del pueblo.",
+      "frases": [
+        {
+          "ja": "学校まで歩いて行きます。",
+          "kana": "がっこうまであるいていきます。",
+          "es": "Voy andando hasta la escuela."
+        }
+      ]
     },
     {
       "id": "kj_091",
@@ -2254,7 +2884,14 @@
           "es": "inglés"
         }
       ],
-      "mnemonico": "言 (palabra) junto a cinco bocas: muchas palabras juntas forman un idioma."
+      "mnemonico": "言 (palabra) junto a cinco bocas: muchas palabras juntas forman un idioma.",
+      "frases": [
+        {
+          "ja": "日本語で話しましょう。",
+          "kana": "にほんごではなしましょう。",
+          "es": "Hablemos en japonés."
+        }
+      ]
     },
     {
       "id": "kj_092",
@@ -2279,7 +2916,14 @@
           "es": "periódico"
         }
       ],
-      "mnemonico": "Una oreja (耳) asomada por un portón (門): escuchar lo que pasa fuera."
+      "mnemonico": "Una oreja (耳) asomada por un portón (門): escuchar lo que pasa fuera.",
+      "frases": [
+        {
+          "ja": "先生に道を聞きました。",
+          "kana": "せんせいにみちをききました。",
+          "es": "Le pregunté el camino al profesor."
+        }
+      ]
     },
     {
       "id": "kj_093",
@@ -2304,7 +2948,14 @@
           "es": "lectura"
         }
       ],
-      "mnemonico": "言 (palabra) junto a 'vender': recorrer las palabras con la voz, leer."
+      "mnemonico": "言 (palabra) junto a 'vender': recorrer las palabras con la voz, leer.",
+      "frases": [
+        {
+          "ja": "毎晩、本を読みます。",
+          "kana": "まいばん、ほんをよみます。",
+          "es": "Leo un libro todas las noches."
+        }
+      ]
     },
     {
       "id": "kj_094",
@@ -2329,7 +2980,14 @@
           "es": "tren"
         }
       ],
-      "mnemonico": "Un carro visto desde arriba: el eje y las dos ruedas."
+      "mnemonico": "Un carro visto desde arriba: el eje y las dos ruedas.",
+      "frases": [
+        {
+          "ja": "車で駅まで行きます。",
+          "kana": "くるまでえきまでいきます。",
+          "es": "Voy en coche hasta la estación."
+        }
+      ]
     },
     {
       "id": "kj_095",
@@ -2354,7 +3012,14 @@
           "es": "mejor amigo"
         }
       ],
-      "mnemonico": "Dos manos que se cruzan para ayudarse: los amigos."
+      "mnemonico": "Dos manos que se cruzan para ayudarse: los amigos.",
+      "frases": [
+        {
+          "ja": "友達と一緒に昼ご飯を食べました。",
+          "kana": "ともだちといっしょにひるごはんをたべました。",
+          "es": "Comí con mi amigo."
+        }
+      ]
     },
     {
       "id": "kj_096",
@@ -2379,7 +3044,14 @@
           "es": "descanso, vacaciones"
         }
       ],
-      "mnemonico": "Una persona (亻) apoyada en un árbol (木): descansar a la sombra."
+      "mnemonico": "Una persona (亻) apoyada en un árbol (木): descansar a la sombra.",
+      "frases": [
+        {
+          "ja": "日曜日はゆっくり休みます。",
+          "kana": "にちようびはゆっくりやすみます。",
+          "es": "El domingo descanso tranquilamente."
+        }
+      ]
     },
     {
       "id": "kj_097",
@@ -2404,7 +3076,14 @@
           "es": "lluvia fuerte"
         }
       ],
-      "mnemonico": "Una nube con gotas cayendo dentro de un marco: la lluvia."
+      "mnemonico": "Una nube con gotas cayendo dentro de un marco: la lluvia.",
+      "frases": [
+        {
+          "ja": "朝から雨が降っています。",
+          "kana": "あさからあめがふっています。",
+          "es": "Está lloviendo desde la mañana."
+        }
+      ]
     },
     {
       "id": "kj_098",
@@ -2429,7 +3108,14 @@
           "es": "al mismo tiempo"
         }
       ],
-      "mnemonico": "Una tapa que cubre a todos por igual: lo mismo para todos."
+      "mnemonico": "Una tapa que cubre a todos por igual: lo mismo para todos.",
+      "frases": [
+        {
+          "ja": "私も同じ意見です。",
+          "kana": "わたしもおなじいけんです。",
+          "es": "Yo también opino lo mismo."
+        }
+      ]
     },
     {
       "id": "kj_099",
@@ -2454,7 +3140,14 @@
           "es": "importante"
         }
       ],
-      "mnemonico": "Una mano sujetando un pincel de escriba: registrar los asuntos."
+      "mnemonico": "Una mano sujetando un pincel de escriba: registrar los asuntos.",
+      "frases": [
+        {
+          "ja": "仕事が終わってから食事します。",
+          "kana": "しごとがおわってからしょくじします。",
+          "es": "Como después de terminar el trabajo."
+        }
+      ]
     },
     {
       "id": "kj_100",
@@ -2480,7 +3173,14 @@
           "es": "bicicleta"
         }
       ],
-      "mnemonico": "Un dibujo de la nariz: en Japón uno se señala la nariz para decir 'yo'."
+      "mnemonico": "Un dibujo de la nariz: en Japón uno se señala la nariz para decir 'yo'.",
+      "frases": [
+        {
+          "ja": "自分でやってみます。",
+          "kana": "じぶんでやってみます。",
+          "es": "Lo intentaré yo mismo."
+        }
+      ]
     },
     {
       "id": "kj_101",
@@ -2503,7 +3203,14 @@
           "es": "salida, partida"
         }
       ],
-      "mnemonico": "Dos pies bajo un arco tensado: algo que sale disparado."
+      "mnemonico": "Dos pies bajo un arco tensado: algo que sale disparado.",
+      "frases": [
+        {
+          "ja": "電車は九時に出発します。",
+          "kana": "でんしゃはくじにしゅっぱつします。",
+          "es": "El tren sale a las nueve."
+        }
+      ]
     },
     {
       "id": "kj_102",
@@ -2527,7 +3234,14 @@
           "es": "subterráneo"
         }
       ],
-      "mnemonico": "土 (tierra) junto a una serpiente que repta: el suelo que se extiende."
+      "mnemonico": "土 (tierra) junto a una serpiente que repta: el suelo que se extiende.",
+      "frases": [
+        {
+          "ja": "地図を見ながら歩きました。",
+          "kana": "ちずをみながらあるきました。",
+          "es": "Caminé mirando el mapa."
+        }
+      ]
     },
     {
       "id": "kj_103",
@@ -2550,7 +3264,14 @@
           "es": "graduación"
         }
       ],
-      "mnemonico": "Un bastidor de trabajo lleno de herramientas: el oficio."
+      "mnemonico": "Un bastidor de trabajo lleno de herramientas: el oficio.",
+      "frases": [
+        {
+          "ja": "授業は八時半に始まります。",
+          "kana": "じゅぎょうははちじはんにはじまります。",
+          "es": "La clase empieza a las ocho y media."
+        }
+      ]
     },
     {
       "id": "kj_104",
@@ -2575,7 +3296,14 @@
           "es": "forma de usar"
         }
       ],
-      "mnemonico": "Un arado que apunta a un lado: la dirección hacia donde vas."
+      "mnemonico": "Un arado que apunta a un lado: la dirección hacia donde vas.",
+      "frases": [
+        {
+          "ja": "この使い方を教えてください。",
+          "kana": "このつかいかたをおしえてください。",
+          "es": "Enséñame cómo se usa esto."
+        }
+      ]
     },
     {
       "id": "kj_105",
@@ -2600,7 +3328,14 @@
           "es": "periódico"
         }
       ],
-      "mnemonico": "Un hacha cortando madera recién talada: algo nuevo y fresco."
+      "mnemonico": "Un hacha cortando madera recién talada: algo nuevo y fresco.",
+      "frases": [
+        {
+          "ja": "新しい靴を買いました。",
+          "kana": "あたらしいくつをかいました。",
+          "es": "Compré zapatos nuevos."
+        }
+      ]
     },
     {
       "id": "kj_106",
@@ -2625,7 +3360,14 @@
           "es": "recinto"
         }
       ],
-      "mnemonico": "土 (tierra) con el sol saliendo: un terreno abierto, un lugar."
+      "mnemonico": "土 (tierra) con el sol saliendo: un terreno abierto, un lugar.",
+      "frases": [
+        {
+          "ja": "待ち合わせの場所はどこですか。",
+          "kana": "まちあわせのばしょはどこですか。",
+          "es": "¿Dónde es el punto de encuentro?"
+        }
+      ]
     },
     {
       "id": "kj_107",
@@ -2648,7 +3390,14 @@
           "es": "dependiente"
         }
       ],
-      "mnemonico": "Una boca sobre una concha de dinero: el que cobra por su puesto, un miembro."
+      "mnemonico": "Una boca sobre una concha de dinero: el que cobra por su puesto, un miembro.",
+      "frases": [
+        {
+          "ja": "父は会社員です。",
+          "kana": "ちちはかいしゃいんです。",
+          "es": "Mi padre es oficinista."
+        }
+      ]
     },
     {
       "id": "kj_108",
@@ -2673,7 +3422,14 @@
           "es": "nacional (estatal)"
         }
       ],
-      "mnemonico": "Una persona de pie firme sobre el suelo."
+      "mnemonico": "Una persona de pie firme sobre el suelo.",
+      "frases": [
+        {
+          "ja": "みんな立ってください。",
+          "kana": "みんなたってください。",
+          "es": "Poneos de pie, por favor."
+        }
+      ]
     },
     {
       "id": "kj_109",
@@ -2699,7 +3455,14 @@
           "es": "apertura de tienda"
         }
       ],
-      "mnemonico": "Dos manos quitando la tranca de un portón (門): abrir."
+      "mnemonico": "Dos manos quitando la tranca de un portón (門): abrir.",
+      "frases": [
+        {
+          "ja": "窓を開けてもいいですか。",
+          "kana": "まどをあけてもいいですか。",
+          "es": "¿Puedo abrir la ventana?"
+        }
+      ]
     },
     {
       "id": "kj_110",
@@ -2725,7 +3488,14 @@
           "es": "esfuerzo"
         }
       ],
-      "mnemonico": "Un brazo flexionado marcando músculo: la fuerza."
+      "mnemonico": "Un brazo flexionado marcando músculo: la fuerza.",
+      "frases": [
+        {
+          "ja": "彼は力が強いです。",
+          "kana": "かれはちからがつよいです。",
+          "es": "Él tiene mucha fuerza."
+        }
+      ]
     },
     {
       "id": "kj_111",
@@ -2750,7 +3520,14 @@
           "es": "pregunta"
         }
       ],
-      "mnemonico": "Una boca (口) en la puerta (門): llamar preguntando."
+      "mnemonico": "Una boca (口) en la puerta (門): llamar preguntando.",
+      "frases": [
+        {
+          "ja": "この問題は難しいです。",
+          "kana": "このもんだいはむずかしいです。",
+          "es": "Este problema es difícil."
+        }
+      ]
     },
     {
       "id": "kj_112",
@@ -2775,7 +3552,14 @@
           "es": "en lugar de"
         }
       ],
-      "mnemonico": "Una persona junto a una estaca clavada: el que releva a otro en su puesto."
+      "mnemonico": "Una persona junto a una estaca clavada: el que releva a otro en su puesto.",
+      "frases": [
+        {
+          "ja": "私の代わりに行ってください。",
+          "kana": "わたしのかわりにいってください。",
+          "es": "Ve en mi lugar, por favor."
+        }
+      ]
     },
     {
       "id": "kj_113",
@@ -2800,7 +3584,14 @@
           "es": "ejercicio"
         }
       ],
-      "mnemonico": "重 (pesado) más 力 (fuerza): hace falta fuerza para mover algo pesado."
+      "mnemonico": "重 (pesado) más 力 (fuerza): hace falta fuerza para mover algo pesado.",
+      "frases": [
+        {
+          "ja": "この時計は動いていません。",
+          "kana": "このとけいはうごいていません。",
+          "es": "Este reloj no funciona."
+        }
+      ]
     },
     {
       "id": "kj_114",
@@ -2823,7 +3614,14 @@
           "es": "Kioto"
         }
       ],
-      "mnemonico": "Una torre alta sobre una colina: la gran ciudad, la capital."
+      "mnemonico": "Una torre alta sobre una colina: la gran ciudad, la capital.",
+      "frases": [
+        {
+          "ja": "来年、東京に行きます。",
+          "kana": "らいねん、とうきょうにいきます。",
+          "es": "El año que viene voy a Tokio."
+        }
+      ]
     },
     {
       "id": "kj_115",
@@ -2848,7 +3646,14 @@
           "es": "objetivo"
         }
       ],
-      "mnemonico": "Un ojo puesto de pie, con la pupila dentro."
+      "mnemonico": "Un ojo puesto de pie, con la pupila dentro.",
+      "frases": [
+        {
+          "ja": "目が疲れました。",
+          "kana": "めがつかれました。",
+          "es": "Se me han cansado los ojos."
+        }
+      ]
     },
     {
       "id": "kj_116",
@@ -2874,7 +3679,14 @@
           "es": "tráfico"
         }
       ],
-      "mnemonico": "Un camino (辶) que atraviesa de lado a lado: pasar."
+      "mnemonico": "Un camino (辶) que atraviesa de lado a lado: pasar.",
+      "frases": [
+        {
+          "ja": "この道は車がよく通ります。",
+          "kana": "このみちはくるまがよくとおります。",
+          "es": "Por esta calle pasan muchos coches."
+        }
+      ]
     },
     {
       "id": "kj_117",
@@ -2900,7 +3712,14 @@
           "es": "dialecto"
         }
       ],
-      "mnemonico": "Ondas de sonido saliendo de una boca: las palabras."
+      "mnemonico": "Ondas de sonido saliendo de una boca: las palabras.",
+      "frases": [
+        {
+          "ja": "先生が何か言いました。",
+          "kana": "せんせいがなにかいいました。",
+          "es": "El profesor dijo algo."
+        }
+      ]
     },
     {
       "id": "kj_118",
@@ -2923,7 +3742,14 @@
           "es": "imposible"
         }
       ],
-      "mnemonico": "Una joya (王) con las vetas del terreno: el orden interno de las cosas, la razón."
+      "mnemonico": "Una joya (王) con las vetas del terreno: el orden interno de las cosas, la razón.",
+      "frases": [
+        {
+          "ja": "母の料理はおいしいです。",
+          "kana": "ははのりょうりはおいしいです。",
+          "es": "La comida de mi madre está buenísima."
+        }
+      ]
     },
     {
       "id": "kj_119",
@@ -2948,7 +3774,14 @@
           "es": "educación física"
         }
       ],
-      "mnemonico": "Una persona (亻) y su raíz (本): el cuerpo es la base de uno."
+      "mnemonico": "Una persona (亻) y su raíz (本): el cuerpo es la base de uno.",
+      "frases": [
+        {
+          "ja": "毎日運動して体を動かします。",
+          "kana": "まいにちうんどうしてからだをうごかします。",
+          "es": "Hago ejercicio a diario para mover el cuerpo."
+        }
+      ]
     },
     {
       "id": "kj_120",
@@ -2973,7 +3806,14 @@
           "es": "Tanaka (apellido)"
         }
       ],
-      "mnemonico": "Una parcela cuadrada dividida en cuatro: un arrozal visto desde arriba."
+      "mnemonico": "Una parcela cuadrada dividida en cuatro: un arrozal visto desde arriba.",
+      "frases": [
+        {
+          "ja": "田中さんは私の友達です。",
+          "kana": "たなかさんはわたしのともだちです。",
+          "es": "Tanaka es mi amigo."
+        }
+      ]
     },
     {
       "id": "kj_121",
@@ -2999,7 +3839,14 @@
           "es": "principalmente"
         }
       ],
-      "mnemonico": "Una llama sobre un candelabro: la luz principal de la casa, el dueño."
+      "mnemonico": "Una llama sobre un candelabro: la luz principal de la casa, el dueño.",
+      "frases": [
+        {
+          "ja": "主に日本語で話します。",
+          "kana": "おもににほんごではなします。",
+          "es": "Hablo principalmente en japonés."
+        }
+      ]
     },
     {
       "id": "kj_122",
@@ -3022,7 +3869,14 @@
           "es": "deberes"
         }
       ],
-      "mnemonico": "Una cabeza (頁) puesta al principio: el encabezado, el tema."
+      "mnemonico": "Una cabeza (頁) puesta al principio: el encabezado, el tema.",
+      "frases": [
+        {
+          "ja": "宿題をもう終わりました。",
+          "kana": "しゅくだいをもうおわりました。",
+          "es": "Ya he terminado los deberes."
+        }
+      ]
     },
     {
       "id": "kj_123",
@@ -3045,7 +3899,14 @@
           "es": "atención, cuidado"
         }
       ],
-      "mnemonico": "Un sonido (音) sobre un corazón (心): lo que el corazón quiere decir."
+      "mnemonico": "Un sonido (音) sobre un corazón (心): lo que el corazón quiere decir.",
+      "frases": [
+        {
+          "ja": "この言葉の意味が分かりません。",
+          "kana": "このことばのいみがわかりません。",
+          "es": "No entiendo el significado de esta palabra."
+        }
+      ]
     },
     {
       "id": "kj_124",
@@ -3069,7 +3930,14 @@
           "es": "inquietud"
         }
       ],
-      "mnemonico": "Un brote que choca contra el techo y no crece: la negación."
+      "mnemonico": "Un brote que choca contra el techo y no crece: la negación.",
+      "frases": [
+        {
+          "ja": "駅から遠くて不便です。",
+          "kana": "えきからとおくてふべんです。",
+          "es": "Está lejos de la estación y es incómodo."
+        }
+      ]
     },
     {
       "id": "kj_125",
@@ -3095,7 +3963,14 @@
           "es": "redacción"
         }
       ],
-      "mnemonico": "Una persona (亻) dando forma a algo con cortes: fabricar."
+      "mnemonico": "Una persona (亻) dando forma a algo con cortes: fabricar.",
+      "frases": [
+        {
+          "ja": "今晩、カレーを作ります。",
+          "kana": "こんばん、カレーをつくります。",
+          "es": "Esta noche voy a hacer curry."
+        }
+      ]
     },
     {
       "id": "kj_126",
@@ -3120,7 +3995,14 @@
           "es": "uso, aprovechar"
         }
       ],
-      "mnemonico": "Una valla de tablas útil para todo: algo que se usa."
+      "mnemonico": "Una valla de tablas útil para todo: algo que se usa.",
+      "frases": [
+        {
+          "ja": "今日は用事があります。",
+          "kana": "きょうはようじがあります。",
+          "es": "Hoy tengo cosas que hacer."
+        }
+      ]
     },
     {
       "id": "kj_127",
@@ -3145,7 +4027,14 @@
           "es": "una vez"
         }
       ],
-      "mnemonico": "Una mano midiendo bajo un cobertizo: contar veces y grados."
+      "mnemonico": "Una mano midiendo bajo un cobertizo: contar veces y grados.",
+      "frases": [
+        {
+          "ja": "もう一度言ってください。",
+          "kana": "もういちどいってください。",
+          "es": "Dilo otra vez, por favor."
+        }
+      ]
     },
     {
       "id": "kj_128",
@@ -3170,7 +4059,14 @@
           "es": "estudiar"
         }
       ],
-      "mnemonico": "Un arco (弓) tensado con un insecto tenaz: resistencia, fuerza."
+      "mnemonico": "Un arco (弓) tensado con un insecto tenaz: resistencia, fuerza.",
+      "frases": [
+        {
+          "ja": "毎日日本語を勉強しています。",
+          "kana": "まいにちにほんごをべんきょうしています。",
+          "es": "Estudio japonés todos los días."
+        }
+      ]
     },
     {
       "id": "kj_129",
@@ -3193,7 +4089,14 @@
           "es": "público (estatal)"
         }
       ],
-      "mnemonico": "Algo repartido (八) entre todos: lo público."
+      "mnemonico": "Algo repartido (八) entre todos: lo público.",
+      "frases": [
+        {
+          "ja": "公園を散歩しました。",
+          "kana": "こうえんをさんぽしました。",
+          "es": "Paseé por el parque."
+        }
+      ]
     },
     {
       "id": "kj_130",
@@ -3218,7 +4121,14 @@
           "es": "sentimiento"
         }
       ],
-      "mnemonico": "Una mano (扌) sujetando en el templo (寺): sostener algo."
+      "mnemonico": "Una mano (扌) sujetando en el templo (寺): sostener algo.",
+      "frases": [
+        {
+          "ja": "かばんを持ちましょうか。",
+          "kana": "かばんをもちましょうか。",
+          "es": "¿Te llevo el bolso?"
+        }
+      ]
     },
     {
       "id": "kj_131",
@@ -3243,7 +4153,14 @@
           "es": "campo, ámbito"
         }
       ],
-      "mnemonico": "Un arrozal (里) extendido a lo lejos: el campo abierto."
+      "mnemonico": "Un arrozal (里) extendido a lo lejos: el campo abierto.",
+      "frases": [
+        {
+          "ja": "野菜をたくさん食べます。",
+          "kana": "やさいをたくさんたべます。",
+          "es": "Como muchas verduras."
+        }
+      ]
     },
     {
       "id": "kj_132",
@@ -3266,7 +4183,14 @@
           "es": "menos de"
         }
       ],
-      "mnemonico": "Una persona apartando algo con un límite: 'desde aquí en adelante'."
+      "mnemonico": "Una persona apartando algo con un límite: 'desde aquí en adelante'.",
+      "frases": [
+        {
+          "ja": "二十歳以上の人が来ました。",
+          "kana": "はたちいじょうのひとがきました。",
+          "es": "Vinieron personas de veinte años o más."
+        }
+      ]
     },
     {
       "id": "kj_133",
@@ -3291,7 +4215,14 @@
           "es": "recuerdo"
         }
       ],
-      "mnemonico": "Un campo (田) sobre un corazón (心): darle vueltas a algo en la cabeza y el corazón."
+      "mnemonico": "Un campo (田) sobre un corazón (心): darle vueltas a algo en la cabeza y el corazón.",
+      "frases": [
+        {
+          "ja": "明日は雨だと思います。",
+          "kana": "あしたはあめだとおもいます。",
+          "es": "Creo que mañana lloverá."
+        }
+      ]
     },
     {
       "id": "kj_134",
@@ -3318,7 +4249,14 @@
           "es": "familia"
         }
       ],
-      "mnemonico": "Un cerdo bajo un tejado: en las casas antiguas se guardaba el ganado dentro."
+      "mnemonico": "Un cerdo bajo un tejado: en las casas antiguas se guardaba el ganado dentro.",
+      "frases": [
+        {
+          "ja": "家族と一緒に住んでいます。",
+          "kana": "かぞくといっしょにすんでいます。",
+          "es": "Vivo con mi familia."
+        }
+      ]
     },
     {
       "id": "kj_135",
@@ -3344,7 +4282,14 @@
           "es": "cuidado, ayuda"
         }
       ],
-      "mnemonico": "Tres brotes unidos por una raya: las generaciones que se suceden."
+      "mnemonico": "Tres brotes unidos por una raya: las generaciones que se suceden.",
+      "frases": [
+        {
+          "ja": "世界には色々な国があります。",
+          "kana": "せかいにはいろいろなくにがあります。",
+          "es": "En el mundo hay muchos países."
+        }
+      ]
     },
     {
       "id": "kj_136",
@@ -3369,7 +4314,14 @@
           "es": "probablemente"
         }
       ],
-      "mnemonico": "Dos lunas (夕) apiladas: noche tras noche se acumulan muchas."
+      "mnemonico": "Dos lunas (夕) apiladas: noche tras noche se acumulan muchas.",
+      "frases": [
+        {
+          "ja": "この町は人が多いです。",
+          "kana": "このまちはひとがおおいです。",
+          "es": "En este pueblo hay mucha gente."
+        }
+      ]
     },
     {
       "id": "kj_137",
@@ -3395,7 +4347,14 @@
           "es": "respuesta correcta"
         }
       ],
-      "mnemonico": "Un pie parándose justo en la raya: quedarse exactamente en lo correcto."
+      "mnemonico": "Un pie parándose justo en la raya: quedarse exactamente en lo correcto.",
+      "frases": [
+        {
+          "ja": "正しい答えを選んでください。",
+          "kana": "ただしいこたえをえらんでください。",
+          "es": "Elige la respuesta correcta."
+        }
+      ]
     },
     {
       "id": "kj_138",
@@ -3420,7 +4379,14 @@
           "es": "tranquilidad"
         }
       ],
-      "mnemonico": "Una mujer (女) bajo un tejado: en casa se está tranquilo, y tranquilo sale barato."
+      "mnemonico": "Una mujer (女) bajo un tejado: en casa se está tranquilo, y tranquilo sale barato.",
+      "frases": [
+        {
+          "ja": "この店は安いです。",
+          "kana": "このみせはやすいです。",
+          "es": "Esta tienda es barata."
+        }
+      ]
     },
     {
       "id": "kj_139",
@@ -3443,7 +4409,14 @@
           "es": "posgrado"
         }
       ],
-      "mnemonico": "Un muro rodeando un edificio grande: una institución cerrada."
+      "mnemonico": "Un muro rodeando un edificio grande: una institución cerrada.",
+      "frases": [
+        {
+          "ja": "病院で薬をもらいました。",
+          "kana": "びょういんでくすりをもらいました。",
+          "es": "Me dieron medicinas en el hospital."
+        }
+      ]
     },
     {
       "id": "kj_140",
@@ -3468,7 +4441,14 @@
           "es": "tranquilidad"
         }
       ],
-      "mnemonico": "Un corazón latiendo con tres gotas alrededor."
+      "mnemonico": "Un corazón latiendo con tres gotas alrededor.",
+      "frases": [
+        {
+          "ja": "無事に着いて安心しました。",
+          "kana": "ぶじについてあんしんしました。",
+          "es": "Me quedé tranquilo al llegar bien."
+        }
+      ]
     },
     {
       "id": "kj_141",
@@ -3491,7 +4471,14 @@
           "es": "sector"
         }
       ],
-      "mnemonico": "Un campo (田) dividido por lindes: las fronteras que forman el mundo."
+      "mnemonico": "Un campo (田) dividido por lindes: las fronteras que forman el mundo.",
+      "frases": [
+        {
+          "ja": "世界中を旅行したいです。",
+          "kana": "せかいじゅうをりょこうしたいです。",
+          "es": "Quiero viajar por todo el mundo."
+        }
+      ]
     },
     {
       "id": "kj_142",
@@ -3516,7 +4503,14 @@
           "es": "aula"
         }
       ],
-      "mnemonico": "Una mano con una vara junto a un niño que aprende: enseñar."
+      "mnemonico": "Una mano con una vara junto a un niño que aprende: enseñar.",
+      "frases": [
+        {
+          "ja": "先生が漢字を教えてくれました。",
+          "kana": "せんせいがかんじをおしえてくれました。",
+          "es": "El profesor me enseñó kanji."
+        }
+      ]
     },
     {
       "id": "kj_143",
@@ -3540,7 +4534,14 @@
           "es": "redacción"
         }
       ],
-      "mnemonico": "Un dibujo de trazos cruzados: los caracteres escritos."
+      "mnemonico": "Un dibujo de trazos cruzados: los caracteres escritos.",
+      "frases": [
+        {
+          "ja": "日本の文化に興味があります。",
+          "kana": "にほんのぶんかにきょうみがあります。",
+          "es": "Me interesa la cultura japonesa."
+        }
+      ]
     },
     {
       "id": "kj_144",
@@ -3566,7 +4567,14 @@
           "es": "originalmente"
         }
       ],
-      "mnemonico": "Dos piernas bajo una cabeza: la base, el origen de una persona."
+      "mnemonico": "Dos piernas bajo una cabeza: la base, el origen de una persona.",
+      "frases": [
+        {
+          "ja": "お元気ですか。",
+          "kana": "おげんきですか。",
+          "es": "¿Cómo está usted?"
+        }
+      ]
     },
     {
       "id": "kj_145",
@@ -3592,7 +4600,14 @@
           "es": "importante"
         }
       ],
-      "mnemonico": "Un fardo cargado sobre un eje: algo pesado."
+      "mnemonico": "Un fardo cargado sobre un eje: algo pesado.",
+      "frases": [
+        {
+          "ja": "このかばんは重いです。",
+          "kana": "このかばんはおもいです。",
+          "es": "Este bolso pesa."
+        }
+      ]
     },
     {
       "id": "kj_146",
@@ -3617,7 +4632,14 @@
           "es": "últimamente"
         }
       ],
-      "mnemonico": "Un camino (辶) con un hacha (斤) a mano: lo que tienes al alcance, cerca."
+      "mnemonico": "Un camino (辶) con un hacha (斤) a mano: lo que tienes al alcance, cerca.",
+      "frases": [
+        {
+          "ja": "駅は家から近いです。",
+          "kana": "えきはいえからちかいです。",
+          "es": "La estación está cerca de casa."
+        }
+      ]
     },
     {
       "id": "kj_147",
@@ -3642,7 +4664,14 @@
           "es": "referencia"
         }
       ],
-      "mnemonico": "Un anciano encorvado dándole vueltas a algo: reflexionar."
+      "mnemonico": "Un anciano encorvado dándole vueltas a algo: reflexionar.",
+      "frases": [
+        {
+          "ja": "よく考えてから決めます。",
+          "kana": "よくかんがえてからきめます。",
+          "es": "Lo decidiré después de pensarlo bien."
+        }
+      ]
     },
     {
       "id": "kj_148",
@@ -3666,7 +4695,14 @@
           "es": "plan"
         }
       ],
-      "mnemonico": "Un pincel delimitando un campo: dibujar dentro de un marco."
+      "mnemonico": "Un pincel delimitando un campo: dibujar dentro de un marco.",
+      "frases": [
+        {
+          "ja": "週末に映画を見ました。",
+          "kana": "しゅうまつにえいがをみました。",
+          "es": "Vi una película el fin de semana."
+        }
+      ]
     },
     {
       "id": "kj_149",
@@ -3691,7 +4727,14 @@
           "es": "extranjero (ultramar)"
         }
       ],
-      "mnemonico": "Agua (氵) siempre presente como una madre (毎/母): el mar inmenso."
+      "mnemonico": "Agua (氵) siempre presente como una madre (毎/母): el mar inmenso.",
+      "frases": [
+        {
+          "ja": "夏に海で泳ぎました。",
+          "kana": "なつにうみでおよぎました。",
+          "es": "En verano nadé en el mar."
+        }
+      ]
     },
     {
       "id": "kj_150",
@@ -3716,7 +4759,14 @@
           "es": "quiosco"
         }
       ],
-      "mnemonico": "Un vendedor (儿) con un cartel encima anunciando: vender."
+      "mnemonico": "Un vendedor (儿) con un cartel encima anunciando: vender.",
+      "frases": [
+        {
+          "ja": "あの店でパンを売っています。",
+          "kana": "あのみせでパンをうっています。",
+          "es": "En esa tienda venden pan."
+        }
+      ]
     },
     {
       "id": "kj_151",
@@ -3741,7 +4791,14 @@
           "es": "conocimiento"
         }
       ],
-      "mnemonico": "Una flecha (矢) y una boca (口): decir algo tan directo como una flecha, porque lo sabes."
+      "mnemonico": "Una flecha (矢) y una boca (口): decir algo tan directo como una flecha, porque lo sabes.",
+      "frases": [
+        {
+          "ja": "彼の電話番号を知っていますか。",
+          "kana": "かれのでんわばんごうをしっていますか。",
+          "es": "¿Sabes su número de teléfono?"
+        }
+      ]
     },
     {
       "id": "kj_152",
@@ -3766,7 +4823,14 @@
           "es": "Hokkaido"
         }
       ],
-      "mnemonico": "Una cabeza (首) avanzando por un sendero (辶): el camino."
+      "mnemonico": "Una cabeza (首) avanzando por un sendero (辶): el camino.",
+      "frases": [
+        {
+          "ja": "この道をまっすぐ行ってください。",
+          "kana": "このみちをまっすぐいってください。",
+          "es": "Siga recto por este camino."
+        }
+      ]
     },
     {
       "id": "kj_153",
@@ -3791,7 +4855,14 @@
           "es": "reunión, quedada"
         }
       ],
-      "mnemonico": "Pájaros posados juntos en un árbol (木): reunirse."
+      "mnemonico": "Pájaros posados juntos en un árbol (木): reunirse.",
+      "frases": [
+        {
+          "ja": "切手を集めています。",
+          "kana": "きってをあつめています。",
+          "es": "Colecciono sellos."
+        }
+      ]
     },
     {
       "id": "kj_154",
@@ -3816,7 +4887,14 @@
           "es": "especial"
         }
       ],
-      "mnemonico": "Un cuchillo (刂) partiendo un hueso: separar en partes."
+      "mnemonico": "Un cuchillo (刂) partiendo un hueso: separar en partes.",
+      "frases": [
+        {
+          "ja": "会計は別々にしてください。",
+          "kana": "かいけいはべつべつにしてください。",
+          "es": "Cobre por separado, por favor."
+        }
+      ]
     },
     {
       "id": "kj_155",
@@ -3841,7 +4919,14 @@
           "es": "embajada"
         }
       ],
-      "mnemonico": "Una persona (亻) a la que se le encarga una tarea: usar a alguien para algo."
+      "mnemonico": "Una persona (亻) a la que se le encarga una tarea: usar a alguien para algo.",
+      "frases": [
+        {
+          "ja": "この辞書を使ってもいいですか。",
+          "kana": "このじしょをつかってもいいですか。",
+          "es": "¿Puedo usar este diccionario?"
+        }
+      ]
     },
     {
       "id": "kj_156",
@@ -3866,7 +4951,14 @@
           "es": "mercancía"
         }
       ],
-      "mnemonico": "Tres cajas apiladas: los artículos en el almacén."
+      "mnemonico": "Tres cajas apiladas: los artículos en el almacén.",
+      "frases": [
+        {
+          "ja": "この商品は人気があります。",
+          "kana": "このしょうひんはにんきがあります。",
+          "es": "Este producto es popular."
+        }
+      ]
     },
     {
       "id": "kj_157",
@@ -3891,7 +4983,14 @@
           "es": "plan"
         }
       ],
-      "mnemonico": "Palabras (言) y diez (十): contar con palabras, medir."
+      "mnemonico": "Palabras (言) y diez (十): contar con palabras, medir.",
+      "frases": [
+        {
+          "ja": "旅行の計画を立てました。",
+          "kana": "りょこうのけいかくをたてました。",
+          "es": "Hice el plan del viaje."
+        }
+      ]
     },
     {
       "id": "kj_158",
@@ -3916,7 +5015,14 @@
           "es": "desesperado"
         }
       ],
-      "mnemonico": "Unos huesos junto a una persona arrodillada: la muerte."
+      "mnemonico": "Unos huesos junto a una persona arrodillada: la muerte.",
+      "frases": [
+        {
+          "ja": "祖父は去年死にました。",
+          "kana": "そふはきょねんしにました。",
+          "es": "Mi abuelo murió el año pasado."
+        }
+      ]
     },
     {
       "id": "kj_159",
@@ -3939,7 +5045,14 @@
           "es": "especialmente"
         }
       ],
-      "mnemonico": "Un buey (牛) apartado en el templo (寺): el ejemplar especial, el elegido."
+      "mnemonico": "Un buey (牛) apartado en el templo (寺): el ejemplar especial, el elegido.",
+      "frases": [
+        {
+          "ja": "特に問題はありません。",
+          "kana": "とくにもんだいはありません。",
+          "es": "No hay ningún problema en particular."
+        }
+      ]
     },
     {
       "id": "kj_160",
@@ -3964,7 +5077,14 @@
           "es": "privado (no estatal)"
         }
       ],
-      "mnemonico": "Una espiga de arroz (禾) guardada para uno mismo: lo privado, yo."
+      "mnemonico": "Una espiga de arroz (禾) guardada para uno mismo: lo privado, yo.",
+      "frases": [
+        {
+          "ja": "私はスペイン人です。",
+          "kana": "わたしはスペインじんです。",
+          "es": "Soy español."
+        }
+      ]
     },
     {
       "id": "kj_161",
@@ -3989,7 +5109,14 @@
           "es": "comienzo"
         }
       ],
-      "mnemonico": "Una mujer (女) dando a luz: el comienzo de todo."
+      "mnemonico": "Una mujer (女) dando a luz: el comienzo de todo.",
+      "frases": [
+        {
+          "ja": "映画はもう始まりました。",
+          "kana": "えいがはもうはじまりました。",
+          "es": "La película ya ha empezado."
+        }
+      ]
     },
     {
       "id": "kj_162",
@@ -4014,7 +5141,14 @@
           "es": "desayuno"
         }
       ],
-      "mnemonico": "El sol (日) asomando entre la hierba con la luna aún visible: el amanecer."
+      "mnemonico": "El sol (日) asomando entre la hierba con la luna aún visible: el amanecer.",
+      "frases": [
+        {
+          "ja": "朝ご飯を食べてから出かけます。",
+          "kana": "あさごはんをたべてからでかけます。",
+          "es": "Salgo después de desayunar."
+        }
+      ]
     },
     {
       "id": "kj_163",
@@ -4039,7 +5173,14 @@
           "es": "conducir"
         }
       ],
-      "mnemonico": "Un carro militar avanzando por el camino (辶): transportar, y la suerte que te lleva."
+      "mnemonico": "Un carro militar avanzando por el camino (辶): transportar, y la suerte que te lleva.",
+      "frases": [
+        {
+          "ja": "父は車を運転します。",
+          "kana": "ちちはくるまをうんてんします。",
+          "es": "Mi padre conduce el coche."
+        }
+      ]
     },
     {
       "id": "kj_164",
@@ -4064,7 +5205,14 @@
           "es": "último tren"
         }
       ],
-      "mnemonico": "Un hilo (糸) atado con un nudo final en invierno: el final."
+      "mnemonico": "Un hilo (糸) atado con un nudo final en invierno: el final.",
+      "frases": [
+        {
+          "ja": "仕事は五時に終わります。",
+          "kana": "しごとはごじにおわります。",
+          "es": "El trabajo termina a las cinco."
+        }
+      ]
     },
     {
       "id": "kj_165",
@@ -4088,7 +5236,14 @@
           "es": "una máquina"
         }
       ],
-      "mnemonico": "Una boca bajo una plataforma: una base sobre la que apoyar cosas."
+      "mnemonico": "Una boca bajo una plataforma: una base sobre la que apoyar cosas.",
+      "frases": [
+        {
+          "ja": "台所で料理をしています。",
+          "kana": "だいどころでりょうりをしています。",
+          "es": "Estoy cocinando en la cocina."
+        }
+      ]
     },
     {
       "id": "kj_166",
@@ -4113,7 +5268,14 @@
           "es": "anuncio"
         }
       ],
-      "mnemonico": "Un tejado que se extiende muy abierto: un espacio amplio."
+      "mnemonico": "Un tejado que se extiende muy abierto: un espacio amplio.",
+      "frases": [
+        {
+          "ja": "この部屋はとても広いです。",
+          "kana": "このへやはとてもひろいです。",
+          "es": "Esta habitación es muy amplia."
+        }
+      ]
     },
     {
       "id": "kj_167",
@@ -4138,7 +5300,14 @@
           "es": "dirección postal"
         }
       ],
-      "mnemonico": "Una persona (亻) fija como el dueño (主) de un sitio: residir."
+      "mnemonico": "Una persona (亻) fija como el dueño (主) de un sitio: residir.",
+      "frases": [
+        {
+          "ja": "私は大阪に住んでいます。",
+          "kana": "わたしはおおさかにすんでいます。",
+          "es": "Vivo en Osaka."
+        }
+      ]
     },
     {
       "id": "kj_168",
@@ -4164,7 +5333,14 @@
           "es": "gratis"
         }
       ],
-      "mnemonico": "Un bosque quemado del que no queda nada."
+      "mnemonico": "Un bosque quemado del que no queda nada.",
+      "frases": [
+        {
+          "ja": "入場は無料です。",
+          "kana": "にゅうじょうはむりょうです。",
+          "es": "La entrada es gratuita."
+        }
+      ]
     },
     {
       "id": "kj_169",
@@ -4189,7 +5365,14 @@
           "es": "justo en el centro"
         }
       ],
-      "mnemonico": "Una herramienta de medir exacta: lo verdadero, lo justo."
+      "mnemonico": "Una herramienta de medir exacta: lo verdadero, lo justo.",
+      "frases": [
+        {
+          "ja": "旅行の写真を見せます。",
+          "kana": "りょこうのしゃしんをみせます。",
+          "es": "Te enseño las fotos del viaje."
+        }
+      ]
     },
     {
       "id": "kj_170",
@@ -4214,7 +5397,14 @@
           "es": "de pago"
         }
       ],
-      "mnemonico": "Una mano sosteniendo carne: tener algo."
+      "mnemonico": "Una mano sosteniendo carne: tener algo.",
+      "frases": [
+        {
+          "ja": "この寺はとても有名です。",
+          "kana": "このてらはとてもゆうめいです。",
+          "es": "Este templo es muy famoso."
+        }
+      ]
     },
     {
       "id": "kj_171",
@@ -4239,7 +5429,14 @@
           "es": "salida"
         }
       ],
-      "mnemonico": "Un cuadrado abierto: una boca."
+      "mnemonico": "Un cuadrado abierto: una boca.",
+      "frases": [
+        {
+          "ja": "出口はあちらです。",
+          "kana": "でぐちはあちらです。",
+          "es": "La salida está por allí."
+        }
+      ]
     },
     {
       "id": "kj_172",
@@ -4265,7 +5462,14 @@
           "es": "escaso"
         }
       ],
-      "mnemonico": "小 (pequeño) con un trazo que le quita más: aún menos, poco."
+      "mnemonico": "小 (pequeño) con un trazo que le quita más: aún menos, poco.",
+      "frases": [
+        {
+          "ja": "少し休みましょう。",
+          "kana": "すこしやすみましょう。",
+          "es": "Descansemos un poco."
+        }
+      ]
     },
     {
       "id": "kj_173",
@@ -4290,7 +5494,14 @@
           "es": "barrio popular"
         }
       ],
-      "mnemonico": "Un campo (田) junto a un camino clavado: donde se junta la gente, el pueblo."
+      "mnemonico": "Un campo (田) junto a un camino clavado: donde se junta la gente, el pueblo.",
+      "frases": [
+        {
+          "ja": "この町は静かです。",
+          "kana": "このまちはしずかです。",
+          "es": "Este pueblo es tranquilo."
+        }
+      ]
     },
     {
       "id": "kj_174",
@@ -4313,7 +5524,14 @@
           "es": "gratis"
         }
       ],
-      "mnemonico": "Arroz (米) medido con un cazo: la ración que pagas."
+      "mnemonico": "Arroz (米) medido con un cazo: la ración que pagas.",
+      "frases": [
+        {
+          "ja": "送料は無料です。",
+          "kana": "そうりょうはむりょうです。",
+          "es": "Los gastos de envío son gratuitos."
+        }
+      ]
     },
     {
       "id": "kj_175",
@@ -4336,7 +5554,14 @@
           "es": "obras"
         }
       ],
-      "mnemonico": "Una herramienta de carpintero, como una escuadra: el trabajo manual."
+      "mnemonico": "Una herramienta de carpintero, como una escuadra: el trabajo manual.",
+      "frases": [
+        {
+          "ja": "駅前で工事をしています。",
+          "kana": "えきまえでこうじをしています。",
+          "es": "Están haciendo obras delante de la estación."
+        }
+      ]
     },
     {
       "id": "kj_176",
@@ -4361,7 +5586,14 @@
           "es": "construir"
         }
       ],
-      "mnemonico": "Un pincel trazando los planos y un camino: levantar un edificio."
+      "mnemonico": "Un pincel trazando los planos y un camino: levantar un edificio.",
+      "frases": [
+        {
+          "ja": "あの建物は新しいです。",
+          "kana": "あのたてものはあたらしいです。",
+          "es": "Ese edificio es nuevo."
+        }
+      ]
     },
     {
       "id": "kj_177",
@@ -4387,7 +5619,14 @@
           "es": "aeropuerto"
         }
       ],
-      "mnemonico": "Un agujero (穴) con nada dentro: el vacío, y el cielo abierto."
+      "mnemonico": "Un agujero (穴) con nada dentro: el vacío, y el cielo abierto.",
+      "frases": [
+        {
+          "ja": "今日は空がきれいです。",
+          "kana": "きょうはそらがきれいです。",
+          "es": "Hoy el cielo está precioso."
+        }
+      ]
     },
     {
       "id": "kj_178",
@@ -4412,7 +5651,14 @@
           "es": "tren rápido"
         }
       ],
-      "mnemonico": "Una mano intentando alcanzar un corazón acelerado: la prisa."
+      "mnemonico": "Una mano intentando alcanzar un corazón acelerado: la prisa.",
+      "frases": [
+        {
+          "ja": "時間がないので急ぎましょう。",
+          "kana": "じかんがないのでいそぎましょう。",
+          "es": "No hay tiempo, démonos prisa."
+        }
+      ]
     },
     {
       "id": "kj_179",
@@ -4437,7 +5683,14 @@
           "es": "cancelación"
         }
       ],
-      "mnemonico": "Una huella de pie clavada en el suelo: pararse."
+      "mnemonico": "Una huella de pie clavada en el suelo: pararse.",
+      "frases": [
+        {
+          "ja": "バスが駅の前に止まりました。",
+          "kana": "バスがえきのまえにとまりました。",
+          "es": "El autobús paró delante de la estación."
+        }
+      ]
     },
     {
       "id": "kj_180",
@@ -4462,7 +5715,14 @@
           "es": "emisión"
         }
       ],
-      "mnemonico": "Dos manos ofreciendo algo por el camino (辶): enviar."
+      "mnemonico": "Dos manos ofreciendo algo por el camino (辶): enviar.",
+      "frases": [
+        {
+          "ja": "友達にメールを送りました。",
+          "kana": "ともだちにメールをおくりました。",
+          "es": "Le mandé un correo a mi amigo."
+        }
+      ]
     },
     {
       "id": "kj_181",
@@ -4487,7 +5747,14 @@
           "es": "importante"
         }
       ],
-      "mnemonico": "Un cuchillo (刀) haciendo un corte de siete (七): cortar."
+      "mnemonico": "Un cuchillo (刀) haciendo un corte de siete (七): cortar.",
+      "frases": [
+        {
+          "ja": "この紙を半分に切ってください。",
+          "kana": "このかみをはんぶんにきってください。",
+          "es": "Corta este papel por la mitad."
+        }
+      ]
     },
     {
       "id": "kj_182",
@@ -4512,7 +5779,14 @@
           "es": "bicicleta"
         }
       ],
-      "mnemonico": "Una rueda de carro (車) dando vueltas: girar."
+      "mnemonico": "Una rueda de carro (車) dando vueltas: girar.",
+      "frases": [
+        {
+          "ja": "自転車で学校に行きます。",
+          "kana": "じてんしゃでがっこうにいきます。",
+          "es": "Voy a la escuela en bicicleta."
+        }
+      ]
     },
     {
       "id": "kj_183",
@@ -4535,7 +5809,14 @@
           "es": "formación"
         }
       ],
-      "mnemonico": "Una piedra que se lima hasta dejarla plana: pulir un tema investigando."
+      "mnemonico": "Una piedra que se lima hasta dejarla plana: pulir un tema investigando.",
+      "frases": [
+        {
+          "ja": "大学で日本語を研究しています。",
+          "kana": "だいがくでにほんごをけんきゅうしています。",
+          "es": "Investigo japonés en la universidad."
+        }
+      ]
     },
     {
       "id": "kj_184",
@@ -4561,7 +5842,14 @@
           "es": "ser suficiente"
         }
       ],
-      "mnemonico": "Una rodilla y un pie: la pierna, y de ahí 'llegar, bastar'."
+      "mnemonico": "Una rodilla y un pie: la pierna, y de ahí 'llegar, bastar'.",
+      "frases": [
+        {
+          "ja": "たくさん歩いて足が痛いです。",
+          "kana": "たくさんあるいてあしがいたいです。",
+          "es": "Me duelen los pies de tanto andar."
+        }
+      ]
     },
     {
       "id": "kj_185",
@@ -4584,7 +5872,14 @@
           "es": "definitivo"
         }
       ],
-      "mnemonico": "Meterse en un agujero (穴) hasta el fondo: llegar al final de algo."
+      "mnemonico": "Meterse en un agujero (穴) hasta el fondo: llegar al final de algo.",
+      "frases": [
+        {
+          "ja": "兄は研究者です。",
+          "kana": "あにはけんきゅうしゃです。",
+          "es": "Mi hermano mayor es investigador."
+        }
+      ]
     },
     {
       "id": "kj_186",
@@ -4610,7 +5905,14 @@
           "es": "música"
         }
       ],
-      "mnemonico": "Un tambor con adornos sobre un soporte: la música y la alegría."
+      "mnemonico": "Un tambor con adornos sobre un soporte: la música y la alegría.",
+      "frases": [
+        {
+          "ja": "昨日のパーティーは楽しかったです。",
+          "kana": "きのうのパーティーはたのしかったです。",
+          "es": "La fiesta de ayer fue divertida."
+        }
+      ]
     },
     {
       "id": "kj_187",
@@ -4635,7 +5937,14 @@
           "es": "ocurrir"
         }
       ],
-      "mnemonico": "Un cuerpo (己) que se pone en marcha (走): levantarse."
+      "mnemonico": "Un cuerpo (己) que se pone en marcha (走): levantarse.",
+      "frases": [
+        {
+          "ja": "毎朝六時に起きます。",
+          "kana": "まいあさろくじにおきます。",
+          "es": "Me levanto a las seis todas las mañanas."
+        }
+      ]
     },
     {
       "id": "kj_188",
@@ -4661,7 +5970,14 @@
           "es": "llegada"
         }
       ],
-      "mnemonico": "Una oveja con lana sobre un ojo: ponerse el abrigo, y de ahí 'llegar (a destino)'."
+      "mnemonico": "Una oveja con lana sobre un ojo: ponerse el abrigo, y de ahí 'llegar (a destino)'.",
+      "frases": [
+        {
+          "ja": "駅に着いたら電話します。",
+          "kana": "えきについたらでんわします。",
+          "es": "Te llamo cuando llegue a la estación."
+        }
+      ]
     },
     {
       "id": "kj_189",
@@ -4686,7 +6002,14 @@
           "es": "cafetería"
         }
       ],
-      "mnemonico": "Un cobertizo donde se adivina/comercia: la tienda."
+      "mnemonico": "Un cobertizo donde se adivina/comercia: la tienda.",
+      "frases": [
+        {
+          "ja": "あの店はおいしいです。",
+          "kana": "あのみせはおいしいです。",
+          "es": "Esa tienda está buena."
+        }
+      ]
     },
     {
       "id": "kj_190",
@@ -4711,7 +6034,14 @@
           "es": "hospital"
         }
       ],
-      "mnemonico": "Una persona en cama bajo el techo de la enfermería."
+      "mnemonico": "Una persona en cama bajo el techo de la enfermería.",
+      "frases": [
+        {
+          "ja": "病気なので学校を休みます。",
+          "kana": "びょうきなのでがっこうをやすみます。",
+          "es": "Falto a clase porque estoy enfermo."
+        }
+      ]
     },
     {
       "id": "kj_191",
@@ -4734,7 +6064,14 @@
           "es": "calidad"
         }
       ],
-      "mnemonico": "Dos hachas sobre una concha de dinero: tasar el valor real de algo."
+      "mnemonico": "Dos hachas sobre una concha de dinero: tasar el valor real de algo.",
+      "frases": [
+        {
+          "ja": "先生に質問してもいいですか。",
+          "kana": "せんせいにしつもんしてもいいですか。",
+          "es": "¿Puedo hacerle una pregunta al profesor?"
+        }
+      ]
     },
     {
       "id": "kj_192",
@@ -4760,7 +6097,14 @@
           "es": "partido"
         }
       ],
-      "mnemonico": "Palabras (言) puestas a prueba con una plantilla: examinar."
+      "mnemonico": "Palabras (言) puestas a prueba con una plantilla: examinar.",
+      "frases": [
+        {
+          "ja": "来週、試験があります。",
+          "kana": "らいしゅう、しけんがあります。",
+          "es": "La semana que viene hay un examen."
+        }
+      ]
     },
     {
       "id": "kj_193",
@@ -4783,7 +6127,14 @@
           "es": "etnia"
         }
       ],
-      "mnemonico": "Una bandera con flechas debajo: el clan que se agrupa bajo un estandarte."
+      "mnemonico": "Una bandera con flechas debajo: el clan que se agrupa bajo un estandarte.",
+      "frases": [
+        {
+          "ja": "家族の写真を見せてください。",
+          "kana": "かぞくのしゃしんをみせてください。",
+          "es": "Enséñame la foto de tu familia."
+        }
+      ]
     },
     {
       "id": "kj_194",
@@ -4806,7 +6157,14 @@
           "es": "color plata"
         }
       ],
-      "mnemonico": "Metal (金) que se queda ahí quieto brillando: la plata."
+      "mnemonico": "Metal (金) que se queda ahí quieto brillando: la plata.",
+      "frases": [
+        {
+          "ja": "銀行でお金を換えました。",
+          "kana": "ぎんこうでおかねをかえました。",
+          "es": "Cambié dinero en el banco."
+        }
+      ]
     },
     {
       "id": "kj_195",
@@ -4831,7 +6189,14 @@
           "es": "primera hora"
         }
       ],
-      "mnemonico": "El sol (日) justo encima de una cabeza al alba: temprano."
+      "mnemonico": "El sol (日) justo encima de una cabeza al alba: temprano.",
+      "frases": [
+        {
+          "ja": "今日は早く起きました。",
+          "kana": "きょうははやくおきました。",
+          "es": "Hoy me levanté temprano."
+        }
+      ]
     },
     {
       "id": "kj_196",
@@ -4856,7 +6221,14 @@
           "es": "reflejarse"
         }
       ],
-      "mnemonico": "El sol (日) proyectando la silueta del centro: reflejar una imagen."
+      "mnemonico": "El sol (日) proyectando la silueta del centro: reflejar una imagen.",
+      "frases": [
+        {
+          "ja": "映画館で映画を見ました。",
+          "kana": "えいがかんでえいがをみました。",
+          "es": "Vi una película en el cine."
+        }
+      ]
     },
     {
       "id": "kj_197",
@@ -4882,7 +6254,14 @@
           "es": "amable"
         }
       ],
-      "mnemonico": "Alguien vigilando de pie junto a un árbol para ver a los suyos: los padres."
+      "mnemonico": "Alguien vigilando de pie junto a un árbol para ver a los suyos: los padres.",
+      "frases": [
+        {
+          "ja": "店員さんはとても親切でした。",
+          "kana": "てんいんさんはとてもしんせつでした。",
+          "es": "El dependiente fue muy amable."
+        }
+      ]
     },
     {
       "id": "kj_198",
@@ -4905,7 +6284,14 @@
           "es": "experiencia"
         }
       ],
-      "mnemonico": "Un caballo (馬) puesto a prueba antes de comprarlo."
+      "mnemonico": "Un caballo (馬) puesto a prueba antes de comprarlo.",
+      "frases": [
+        {
+          "ja": "いい経験になりました。",
+          "kana": "いいけいけんになりました。",
+          "es": "Fue una buena experiencia."
+        }
+      ]
     },
     {
       "id": "kj_199",
@@ -4928,7 +6314,14 @@
           "es": "Reino Unido"
         }
       ],
-      "mnemonico": "Una flor (艹) destacada en medio del campo: lo sobresaliente."
+      "mnemonico": "Una flor (艹) destacada en medio del campo: lo sobresaliente.",
+      "frases": [
+        {
+          "ja": "英語が少し話せます。",
+          "kana": "えいごがすこしはなせます。",
+          "es": "Puedo hablar un poco de inglés."
+        }
+      ]
     },
     {
       "id": "kj_200",
@@ -4951,7 +6344,14 @@
           "es": "medicina (ciencia)"
         }
       ],
-      "mnemonico": "Una flecha guardada en una caja: sacar la flecha del herido, curar."
+      "mnemonico": "Una flecha guardada en una caja: sacar la flecha del herido, curar.",
+      "frases": [
+        {
+          "ja": "姉は医者になりたいです。",
+          "kana": "あねはいしゃになりたいです。",
+          "es": "Mi hermana mayor quiere ser médica."
+        }
+      ]
     },
     {
       "id": "kj_201",
@@ -4976,7 +6376,14 @@
           "es": "manera de hacer"
         }
       ],
-      "mnemonico": "Una persona (亻) al servicio de un superior (士): trabajar."
+      "mnemonico": "Una persona (亻) al servicio de un superior (士): trabajar.",
+      "frases": [
+        {
+          "ja": "仕事はもう終わりました。",
+          "kana": "しごとはもうおわりました。",
+          "es": "Ya he terminado el trabajo."
+        }
+      ]
     },
     {
       "id": "kj_202",
@@ -5002,7 +6409,14 @@
           "es": "el pasado"
         }
       ],
-      "mnemonico": "Una tapa que se levanta y se va de la tierra: marcharse."
+      "mnemonico": "Una tapa que se levanta y se va de la tierra: marcharse.",
+      "frases": [
+        {
+          "ja": "去年、日本へ行きました。",
+          "kana": "きょねん、にほんへいきました。",
+          "es": "El año pasado fui a Japón."
+        }
+      ]
     },
     {
       "id": "kj_203",
@@ -5027,7 +6441,14 @@
           "es": "significado"
         }
       ],
-      "mnemonico": "Una boca (口) probando algo aún sin madurar (未): el sabor."
+      "mnemonico": "Una boca (口) probando algo aún sin madurar (未): el sabor.",
+      "frases": [
+        {
+          "ja": "このスープは味がうすいです。",
+          "kana": "このスープはあじがうすいです。",
+          "es": "Esta sopa está sosa."
+        }
+      ]
     },
     {
       "id": "kj_204",
@@ -5052,7 +6473,14 @@
           "es": "copiar, fotografiar"
         }
       ],
-      "mnemonico": "Algo que se pasa de un sitio a otro bajo una tapa: copiar la imagen."
+      "mnemonico": "Algo que se pasa de un sitio a otro bajo una tapa: copiar la imagen.",
+      "frases": [
+        {
+          "ja": "ここで写真を撮ってもいいですか。",
+          "kana": "ここでしゃしんをとってもいいですか。",
+          "es": "¿Puedo hacer fotos aquí?"
+        }
+      ]
     },
     {
       "id": "kj_205",
@@ -5075,7 +6503,14 @@
           "es": "carácter, letra"
         }
       ],
-      "mnemonico": "Un niño (子) bajo un tejado aprendiendo a escribir: las letras."
+      "mnemonico": "Un niño (子) bajo un tejado aprendiendo a escribir: las letras.",
+      "frases": [
+        {
+          "ja": "漢字を書く練習をしています。",
+          "kana": "かんじをかくれんしゅうをしています。",
+          "es": "Estoy practicando la escritura de kanji."
+        }
+      ]
     },
     {
       "id": "kj_206",
@@ -5100,7 +6535,14 @@
           "es": "respuesta"
         }
       ],
-      "mnemonico": "Bambú (竹) que encaja justo (合): dar la respuesta que encaja."
+      "mnemonico": "Bambú (竹) que encaja justo (合): dar la respuesta que encaja.",
+      "frases": [
+        {
+          "ja": "質問に答えてください。",
+          "kana": "しつもんにこたえてください。",
+          "es": "Responde a la pregunta, por favor."
+        }
+      ]
     },
     {
       "id": "kj_207",
@@ -5125,7 +6567,14 @@
           "es": "esta noche"
         }
       ],
-      "mnemonico": "Una persona bajo un tejado con la luna asomando: la noche."
+      "mnemonico": "Una persona bajo un tejado con la luna asomando: la noche.",
+      "frases": [
+        {
+          "ja": "昨日の夜、よく寝ました。",
+          "kana": "きのうのよる、よくねました。",
+          "es": "Anoche dormí bien."
+        }
+      ]
     },
     {
       "id": "kj_208",
@@ -5150,7 +6599,14 @@
           "es": "música"
         }
       ],
-      "mnemonico": "Una boca de la que sale una onda marcada: el sonido."
+      "mnemonico": "Una boca de la que sale una onda marcada: el sonido.",
+      "frases": [
+        {
+          "ja": "外から大きい音が聞こえます。",
+          "kana": "そとからおおきいおとがきこえます。",
+          "es": "Se oye un ruido fuerte desde fuera."
+        }
+      ]
     },
     {
       "id": "kj_209",
@@ -5175,7 +6631,14 @@
           "es": "pedido"
         }
       ],
-      "mnemonico": "Agua (氵) vertida justo en el centro (主): concentrar, prestar atención."
+      "mnemonico": "Agua (氵) vertida justo en el centro (主): concentrar, prestar atención.",
+      "frases": [
+        {
+          "ja": "店員さんに注文しました。",
+          "kana": "てんいんさんにちゅうもんしました。",
+          "es": "Le hice el pedido al camarero."
+        }
+      ]
     },
     {
       "id": "kj_210",
@@ -5200,7 +6663,14 @@
           "es": "de segunda mano"
         }
       ],
-      "mnemonico": "Diez (十) generaciones de bocas (口) contándolo: algo muy antiguo."
+      "mnemonico": "Diez (十) generaciones de bocas (口) contándolo: algo muy antiguo.",
+      "frases": [
+        {
+          "ja": "これは古い写真です。",
+          "kana": "これはふるいしゃしんです。",
+          "es": "Esta es una foto antigua."
+        }
+      ]
     },
     {
       "id": "kj_211",
@@ -5225,7 +6695,14 @@
           "es": "cantante"
         }
       ],
-      "mnemonico": "Dos bocas abiertas junto a alguien que bosteza de emoción: cantar."
+      "mnemonico": "Dos bocas abiertas junto a alguien que bosteza de emoción: cantar.",
+      "frases": [
+        {
+          "ja": "カラオケで歌を歌いました。",
+          "kana": "カラオケでうたをうたいました。",
+          "es": "Canté una canción en el karaoke."
+        }
+      ]
     },
     {
       "id": "kj_212",
@@ -5250,7 +6727,14 @@
           "es": "lo peor"
         }
       ],
-      "mnemonico": "Un corazón (心) torcido bajo una esquina: la maldad."
+      "mnemonico": "Un corazón (心) torcido bajo una esquina: la maldad.",
+      "frases": [
+        {
+          "ja": "今日は天気が悪いです。",
+          "kana": "きょうはてんきがわるいです。",
+          "es": "Hoy hace mal tiempo."
+        }
+      ]
     },
     {
       "id": "kj_213",
@@ -5274,7 +6758,14 @@
           "es": "biblioteca"
         }
       ],
-      "mnemonico": "Un plano encerrado en un marco: el mapa."
+      "mnemonico": "Un plano encerrado en un marco: el mapa.",
+      "frases": [
+        {
+          "ja": "図書館で本を借りました。",
+          "kana": "としょかんでほんをかりました。",
+          "es": "Tomé prestado un libro de la biblioteca."
+        }
+      ]
     },
     {
       "id": "kj_214",
@@ -5297,7 +6788,14 @@
           "es": "fin de semana"
         }
       ],
-      "mnemonico": "Un ciclo que da la vuelta por el camino (辶): los siete días que se repiten."
+      "mnemonico": "Un ciclo que da la vuelta por el camino (辶): los siete días que se repiten.",
+      "frases": [
+        {
+          "ja": "来週の金曜日に会いましょう。",
+          "kana": "らいしゅうのきんようびにあいましょう。",
+          "es": "Quedamos el viernes que viene."
+        }
+      ]
     },
     {
       "id": "kj_215",
@@ -5322,7 +6820,14 @@
           "es": "laboratorio"
         }
       ],
-      "mnemonico": "Un tejado donde uno llega y se detiene: la habitación."
+      "mnemonico": "Un tejado donde uno llega y se detiene: la habitación.",
+      "frases": [
+        {
+          "ja": "教室に学生がいます。",
+          "kana": "きょうしつにがくせいがいます。",
+          "es": "Hay estudiantes en el aula."
+        }
+      ]
     },
     {
       "id": "kj_216",
@@ -5347,7 +6852,14 @@
           "es": "paseo"
         }
       ],
-      "mnemonico": "Dos pies (止) uno detrás del otro: caminar."
+      "mnemonico": "Dos pies (止) uno detrás del otro: caminar.",
+      "frases": [
+        {
+          "ja": "駅まで歩いて十分です。",
+          "kana": "えきまであるいてじゅっぷんです。",
+          "es": "Hasta la estación son diez minutos andando."
+        }
+      ]
     },
     {
       "id": "kj_217",
@@ -5372,7 +6884,14 @@
           "es": "baño"
         }
       ],
-      "mnemonico": "Una vela hinchada con un insecto arrastrado dentro: el viento."
+      "mnemonico": "Una vela hinchada con un insecto arrastrado dentro: el viento.",
+      "frases": [
+        {
+          "ja": "今日は風が強いです。",
+          "kana": "きょうはかぜがつよいです。",
+          "es": "Hoy hace mucho viento."
+        }
+      ]
     },
     {
       "id": "kj_218",
@@ -5397,7 +6916,14 @@
           "es": "carta"
         }
       ],
-      "mnemonico": "Hilos (糸) prensados hasta quedar planos: el papel."
+      "mnemonico": "Hilos (糸) prensados hasta quedar planos: el papel.",
+      "frases": [
+        {
+          "ja": "友達に手紙を書きました。",
+          "kana": "ともだちにてがみをかきました。",
+          "es": "Le escribí una carta a mi amigo."
+        }
+      ]
     },
     {
       "id": "kj_219",
@@ -5422,7 +6948,14 @@
           "es": "pizarra"
         }
       ],
-      "mnemonico": "Una chimenea llena de hollín sobre el fuego: negro."
+      "mnemonico": "Una chimenea llena de hollín sobre el fuego: negro.",
+      "frases": [
+        {
+          "ja": "黒いかばんを買いました。",
+          "kana": "くろいかばんをかいました。",
+          "es": "Compré un bolso negro."
+        }
+      ]
     },
     {
       "id": "kj_220",
@@ -5447,7 +6980,14 @@
           "es": "contemplar los cerezos"
         }
       ],
-      "mnemonico": "Hierba (艹) que cambia (化) de forma: la flor que se abre."
+      "mnemonico": "Hierba (艹) que cambia (化) de forma: la flor que se abre.",
+      "frases": [
+        {
+          "ja": "春に花見をします。",
+          "kana": "はるにはなみをします。",
+          "es": "En primavera vamos a ver los cerezos."
+        }
+      ]
     },
     {
       "id": "kj_221",
@@ -5472,7 +7012,14 @@
           "es": "vacaciones de primavera"
         }
       ],
-      "mnemonico": "El sol (日) empujando los brotes hacia arriba: la primavera."
+      "mnemonico": "El sol (日) empujando los brotes hacia arriba: la primavera.",
+      "frases": [
+        {
+          "ja": "春はとても暖かいです。",
+          "kana": "はるはとてもあたたかいです。",
+          "es": "En primavera hace mucho calorcito."
+        }
+      ]
     },
     {
       "id": "kj_222",
@@ -5497,7 +7044,14 @@
           "es": "vacaciones de verano"
         }
       ],
-      "mnemonico": "Una figura andando lento y pesado por el calor: el verano."
+      "mnemonico": "Una figura andando lento y pesado por el calor: el verano.",
+      "frases": [
+        {
+          "ja": "夏休みに海へ行きます。",
+          "kana": "なつやすみにうみへいきます。",
+          "es": "En las vacaciones de verano voy al mar."
+        }
+      ]
     },
     {
       "id": "kj_223",
@@ -5522,7 +7076,14 @@
           "es": "equinoccio de otoño"
         }
       ],
-      "mnemonico": "Espigas (禾) y fuego (火): el color del trigo maduro, el otoño."
+      "mnemonico": "Espigas (禾) y fuego (火): el color del trigo maduro, el otoño.",
+      "frases": [
+        {
+          "ja": "秋は涼しくて気持ちがいいです。",
+          "kana": "あきはすずしくてきもちがいいです。",
+          "es": "En otoño hace fresco y da gusto."
+        }
+      ]
     },
     {
       "id": "kj_224",
@@ -5547,7 +7108,14 @@
           "es": "vacaciones de invierno"
         }
       ],
-      "mnemonico": "Unos pasos lentos con dos carámbanos de hielo debajo: el invierno."
+      "mnemonico": "Unos pasos lentos con dos carámbanos de hielo debajo: el invierno.",
+      "frases": [
+        {
+          "ja": "冬は雪がたくさん降ります。",
+          "kana": "ふゆはゆきがたくさんふります。",
+          "es": "En invierno nieva mucho."
+        }
+      ]
     },
     {
       "id": "kj_225",
@@ -5572,7 +7140,14 @@
           "es": "bebé"
         }
       ],
-      "mnemonico": "Una hoguera ardiendo bajo la tierra: el rojo del fuego."
+      "mnemonico": "Una hoguera ardiendo bajo la tierra: el rojo del fuego.",
+      "frases": [
+        {
+          "ja": "赤いりんごを食べました。",
+          "kana": "あかいりんごをたべました。",
+          "es": "Me comí una manzana roja."
+        }
+      ]
     },
     {
       "id": "kj_226",
@@ -5597,7 +7172,14 @@
           "es": "cielo azul"
         }
       ],
-      "mnemonico": "Un brote verde sobre la luna: el azul-verde de la naturaleza."
+      "mnemonico": "Un brote verde sobre la luna: el azul-verde de la naturaleza.",
+      "frases": [
+        {
+          "ja": "空が青くてきれいです。",
+          "kana": "そらがあおくてきれいです。",
+          "es": "El cielo está azul y precioso."
+        }
+      ]
     },
     {
       "id": "kj_227",
@@ -5623,7 +7205,14 @@
           "es": "marrón"
         }
       ],
-      "mnemonico": "Una persona inclinada sobre otra: el color que sube a la cara."
+      "mnemonico": "Una persona inclinada sobre otra: el color que sube a la cara.",
+      "frases": [
+        {
+          "ja": "好きな色は何ですか。",
+          "kana": "すきないろはなんですか。",
+          "es": "¿Cuál es tu color favorito?"
+        }
+      ]
     },
     {
       "id": "kj_228",
@@ -5646,7 +7235,14 @@
           "es": "biblioteca"
         }
       ],
-      "mnemonico": "Comida (食) servida en un edificio oficial: el pabellón, el gran local."
+      "mnemonico": "Comida (食) servida en un edificio oficial: el pabellón, el gran local.",
+      "frases": [
+        {
+          "ja": "図書館は静かです。",
+          "kana": "としょかんはしずかです。",
+          "es": "La biblioteca es silenciosa."
+        }
+      ]
     },
     {
       "id": "kj_229",
@@ -5671,7 +7267,14 @@
           "es": "librería"
         }
       ],
-      "mnemonico": "Un tejado bajo el que uno llega y se queda: la casa o el local."
+      "mnemonico": "Un tejado bajo el que uno llega y se queda: la casa o el local.",
+      "frases": [
+        {
+          "ja": "本屋で雑誌を買いました。",
+          "kana": "ほんやでざっしをかいました。",
+          "es": "Compré una revista en la librería."
+        }
+      ]
     },
     {
       "id": "kj_230",
@@ -5696,7 +7299,14 @@
           "es": "carrera"
         }
       ],
-      "mnemonico": "Una persona con las piernas en movimiento: correr."
+      "mnemonico": "Una persona con las piernas en movimiento: correr.",
+      "frases": [
+        {
+          "ja": "毎朝公園を走っています。",
+          "kana": "まいあさこうえんをはしっています。",
+          "es": "Corro por el parque todas las mañanas."
+        }
+      ]
     },
     {
       "id": "kj_231",
@@ -5721,7 +7331,14 @@
           "es": "práctica"
         }
       ],
-      "mnemonico": "Unas alas (羽) sobre el sol: el pájaro que repite el vuelo hasta aprender."
+      "mnemonico": "Unas alas (羽) sobre el sol: el pájaro que repite el vuelo hasta aprender.",
+      "frases": [
+        {
+          "ja": "ピアノを習っています。",
+          "kana": "ピアノをならっています。",
+          "es": "Estoy aprendiendo piano."
+        }
+      ]
     },
     {
       "id": "kj_232",
@@ -5744,7 +7361,14 @@
           "es": "frente a la estación"
         }
       ],
-      "mnemonico": "Un caballo (馬) en la posta de relevo: la estación."
+      "mnemonico": "Un caballo (馬) en la posta de relevo: la estación.",
+      "frases": [
+        {
+          "ja": "駅の前で待っています。",
+          "kana": "えきのまえでまっています。",
+          "es": "Te espero delante de la estación."
+        }
+      ]
     },
     {
       "id": "kj_233",
@@ -5767,7 +7391,14 @@
           "es": "océano Pacífico"
         }
       ],
-      "mnemonico": "Agua (氵) y una oveja (羊): el mar inmenso que traía lo de Occidente."
+      "mnemonico": "Agua (氵) y una oveja (羊): el mar inmenso que traía lo de Occidente.",
+      "frases": [
+        {
+          "ja": "新しい洋服を買いました。",
+          "kana": "あたらしいようふくをかいました。",
+          "es": "Compré ropa nueva."
+        }
+      ]
     },
     {
       "id": "kj_234",
@@ -5792,7 +7423,14 @@
           "es": "viaje"
         }
       ],
-      "mnemonico": "Un grupo bajo una bandera avanzando: viajar juntos."
+      "mnemonico": "Un grupo bajo una bandera avanzando: viajar juntos.",
+      "frases": [
+        {
+          "ja": "来月、旅行に行きます。",
+          "kana": "らいげつ、りょこうにいきます。",
+          "es": "El mes que viene me voy de viaje."
+        }
+      ]
     },
     {
       "id": "kj_235",
@@ -5815,7 +7453,14 @@
           "es": "ropa occidental"
         }
       ],
-      "mnemonico": "Algo que se ajusta al cuerpo con la mano: la ropa."
+      "mnemonico": "Algo que se ajusta al cuerpo con la mano: la ropa.",
+      "frases": [
+        {
+          "ja": "その服はよく似合いますね。",
+          "kana": "そのふくはよくにあいますね。",
+          "es": "Esa ropa te queda muy bien."
+        }
+      ]
     },
     {
       "id": "kj_236",
@@ -5840,7 +7485,14 @@
           "es": "cena"
         }
       ],
-      "mnemonico": "Media luna asomando: el momento en que cae el día."
+      "mnemonico": "Media luna asomando: el momento en que cae el día.",
+      "frases": [
+        {
+          "ja": "夕方から雨が降りました。",
+          "kana": "ゆうがたからあめがふりました。",
+          "es": "Llovió a partir del atardecer."
+        }
+      ]
     },
     {
       "id": "kj_237",
@@ -5865,7 +7517,14 @@
           "es": "deuda"
         }
       ],
-      "mnemonico": "Una persona (亻) pidiendo algo por un tiempo pasado: tomar prestado."
+      "mnemonico": "Una persona (亻) pidiendo algo por un tiempo pasado: tomar prestado.",
+      "frases": [
+        {
+          "ja": "友達に本を借りました。",
+          "kana": "ともだちにほんをかりました。",
+          "es": "Le pedí prestado un libro a mi amigo."
+        }
+      ]
     },
     {
       "id": "kj_238",
@@ -5890,7 +7549,14 @@
           "es": "préstamo"
         }
       ],
-      "mnemonico": "Dinero (貝) que se entrega en sustitución (代): prestar."
+      "mnemonico": "Dinero (貝) que se entrega en sustitución (代): prestar.",
+      "frases": [
+        {
+          "ja": "ペンを貸してください。",
+          "kana": "ペンをかしてください。",
+          "es": "Déjame un bolígrafo, por favor."
+        }
+      ]
     },
     {
       "id": "kj_239",
@@ -5913,7 +7579,14 @@
           "es": "carne de vaca"
         }
       ],
-      "mnemonico": "Un trozo de carne con las vetas marcadas dentro."
+      "mnemonico": "Un trozo de carne con las vetas marcadas dentro.",
+      "frases": [
+        {
+          "ja": "肉より魚が好きです。",
+          "kana": "にくよりさかながすきです。",
+          "es": "Me gusta más el pescado que la carne."
+        }
+      ]
     },
     {
       "id": "kj_240",
@@ -5936,7 +7609,14 @@
           "es": "auditorio"
         }
       ],
-      "mnemonico": "Un salón amplio sobre tierra firme: la sala grande."
+      "mnemonico": "Un salón amplio sobre tierra firme: la sala grande.",
+      "frases": [
+        {
+          "ja": "食堂で昼ご飯を食べます。",
+          "kana": "しょくどうでひるごはんをたべます。",
+          "es": "Como en el comedor."
+        }
+      ]
     },
     {
       "id": "kj_241",
@@ -5961,7 +7641,14 @@
           "es": "yakitori"
         }
       ],
-      "mnemonico": "Un pájaro con su ojo, el pico y las patas apoyadas."
+      "mnemonico": "Un pájaro con su ojo, el pico y las patas apoyadas.",
+      "frases": [
+        {
+          "ja": "庭に鳥がいます。",
+          "kana": "にわにとりがいます。",
+          "es": "Hay un pájaro en el jardín."
+        }
+      ]
     },
     {
       "id": "kj_242",
@@ -5986,7 +7673,14 @@
           "es": "desayuno"
         }
       ],
-      "mnemonico": "Comida (食) que se devuelve al plato una y otra vez: el arroz de cada día."
+      "mnemonico": "Comida (食) que se devuelve al plato una y otra vez: el arroz de cada día.",
+      "frases": [
+        {
+          "ja": "もうご飯を食べましたか。",
+          "kana": "もうごはんをたべましたか。",
+          "es": "¿Ya has comido?"
+        }
+      ]
     },
     {
       "id": "kj_243",
@@ -6009,7 +7703,14 @@
           "es": "aplicado"
         }
       ],
-      "mnemonico": "Hacer fuerza (力) para librarse de la ignorancia: esforzarse."
+      "mnemonico": "Hacer fuerza (力) para librarse de la ignorancia: esforzarse.",
+      "frases": [
+        {
+          "ja": "図書館で勉強します。",
+          "kana": "としょかんでべんきょうします。",
+          "es": "Estudio en la biblioteca."
+        }
+      ]
     },
     {
       "id": "kj_244",
@@ -6034,7 +7735,14 @@
           "es": "comida (almuerzo)"
         }
       ],
-      "mnemonico": "El sol (日) bajo una medida: el punto medio del día."
+      "mnemonico": "El sol (日) bajo una medida: el punto medio del día.",
+      "frases": [
+        {
+          "ja": "昼ご飯は何を食べますか。",
+          "kana": "ひるごはんはなにをたべますか。",
+          "es": "¿Qué comes al mediodía?"
+        }
+      ]
     },
     {
       "id": "kj_245",
@@ -6058,7 +7766,14 @@
           "es": "cafetería"
         }
       ],
-      "mnemonico": "Una planta (艹) bajo un tejado con un árbol: el arbusto del té."
+      "mnemonico": "Una planta (艹) bajo un tejado con un árbol: el arbusto del té.",
+      "frases": [
+        {
+          "ja": "お茶を飲みませんか。",
+          "kana": "おちゃをのみませんか。",
+          "es": "¿Tomamos un té?"
+        }
+      ]
     },
     {
       "id": "kj_246",
@@ -6083,7 +7798,14 @@
           "es": "leche"
         }
       ],
-      "mnemonico": "Una cabeza con dos cuernos y el morro: la vaca."
+      "mnemonico": "Una cabeza con dos cuernos y el morro: la vaca.",
+      "frases": [
+        {
+          "ja": "牛乳を毎朝飲みます。",
+          "kana": "ぎゅうにゅうをまいあさのみます。",
+          "es": "Bebo leche todas las mañanas."
+        }
+      ]
     },
     {
       "id": "kj_247",
@@ -6108,7 +7830,14 @@
           "es": "pez de colores"
         }
       ],
-      "mnemonico": "Un pez con la cabeza arriba, las escamas y la cola de puntos abajo."
+      "mnemonico": "Un pez con la cabeza arriba, las escamas y la cola de puntos abajo.",
+      "frases": [
+        {
+          "ja": "市場で新しい魚を買いました。",
+          "kana": "いちばであたらしいさかなをかいました。",
+          "es": "Compré pescado fresco en el mercado."
+        }
+      ]
     },
     {
       "id": "kj_248",
@@ -6133,7 +7862,14 @@
           "es": "hermano mayor (de otro)"
         }
       ],
-      "mnemonico": "Una boca sobre unas piernas: el hermano mayor que da las órdenes."
+      "mnemonico": "Una boca sobre unas piernas: el hermano mayor que da las órdenes.",
+      "frases": [
+        {
+          "ja": "兄は東京で働いています。",
+          "kana": "あにはとうきょうではたらいています。",
+          "es": "Mi hermano mayor trabaja en Tokio."
+        }
+      ]
     },
     {
       "id": "kj_249",
@@ -6159,7 +7895,14 @@
           "es": "hermanos"
         }
       ],
-      "mnemonico": "Una cuerda enrollada de arriba abajo por orden: el que va después, el menor."
+      "mnemonico": "Una cuerda enrollada de arriba abajo por orden: el que va después, el menor.",
+      "frases": [
+        {
+          "ja": "弟は高校生です。",
+          "kana": "おとうとはこうこうせいです。",
+          "es": "Mi hermano pequeño es estudiante de bachillerato."
+        }
+      ]
     },
     {
       "id": "kj_250",
@@ -6184,7 +7927,14 @@
           "es": "hermana mayor (de otra)"
         }
       ],
-      "mnemonico": "Una mujer (女) en el mercado llevando la casa: la hermana mayor."
+      "mnemonico": "Una mujer (女) en el mercado llevando la casa: la hermana mayor.",
+      "frases": [
+        {
+          "ja": "姉は料理が上手です。",
+          "kana": "あねはりょうりがじょうずです。",
+          "es": "Mi hermana mayor cocina muy bien."
+        }
+      ]
     },
     {
       "id": "kj_251",
@@ -6209,7 +7959,14 @@
           "es": "hermanas"
         }
       ],
-      "mnemonico": "Una mujer (女) aún sin madurar (未): la hermana pequeña."
+      "mnemonico": "Una mujer (女) aún sin madurar (未): la hermana pequeña.",
+      "frases": [
+        {
+          "ja": "妹はまだ小さいです。",
+          "kana": "いもうとはまだちいさいです。",
+          "es": "Mi hermana pequeña todavía es pequeña."
+        }
+      ]
     },
     {
       "id": "kj_252",
@@ -6234,7 +7991,14 @@
           "es": "cachorro"
         }
       ],
-      "mnemonico": "大 (grande) con una marca extra: la orejita del perro asomando."
+      "mnemonico": "大 (grande) con una marca extra: la orejita del perro asomando.",
+      "frases": [
+        {
+          "ja": "公園で犬と散歩します。",
+          "kana": "こうえんでいぬとさんぽします。",
+          "es": "Paseo con el perro por el parque."
+        }
+      ]
     },
     {
       "id": "kj_253",
@@ -6257,7 +8021,14 @@
           "es": "medicina china"
         }
       ],
-      "mnemonico": "Agua (氵) del gran río de la dinastía Han: de ahí vienen los kanji."
+      "mnemonico": "Agua (氵) del gran río de la dinastía Han: de ahí vienen los kanji.",
+      "frases": [
+        {
+          "ja": "漢字を覚えるのは大変です。",
+          "kana": "かんじをおぼえるのはたいへんです。",
+          "es": "Memorizar kanji es duro."
+        }
+      ]
     }
   ]
 }

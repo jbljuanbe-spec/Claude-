@@ -58,6 +58,9 @@ def main(salida='data/audio/manifest.json'):
         add(kun[0] if kun else (on[0] if on else k['kanji']))
         for e in k.get('ejemplos', []):
             add(e.get('lectura'), e.get('palabra'))
+        # Frases de ejemplo de la pestaña de Kanji (llevan botón de audio).
+        for f in k.get('frases', []):
+            add(f.get('ja'))
 
     # --- bancos de ejercicios ---
     ej_base = cargar('data/ejercicios.json') or {}

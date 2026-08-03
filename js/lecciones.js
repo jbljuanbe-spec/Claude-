@@ -21,8 +21,11 @@ const TIENE_KANJI = /[一-龯]/;
 
 export async function vistaLecciones(cont, avisar, refrescarBadge) {
   cont.innerHTML = '<p class="vista-sub">Cargando lecciones...</p>';
-  const [{ ciudades, futuras, fuji }, biblioteca, ejercicios] = await Promise.all([
-    api.viaje(), api.biblioteca(), api.ejercicios()
+  const [{ ciudades, futuras, fuji }, biblioteca, ejercicios, teoria] = await Promise.all([
+    api.viaje(), api.biblioteca(), api.ejercicios(),
+    // La teoría es opcional: si falta el archivo, la lección sigue funcionando
+    // igual que antes, solo que sin el botón de gramática.
+    fetch(`data/teoria.json?v=${Date.now()}`).then(r => (r.ok ? r.json() : { lecciones: {} })).catch(() => ({ lecciones: {} }))
   ]);
 
   // Mapa código -> hito con su ciudad.
@@ -126,6 +129,99 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     };
   }
 
+  // ---------- Gramática explicada (data/teoria.json) ----------
+  // Cada lección tiene sus puntos gramaticales para estudiarlos de uno en uno,
+  // con explicación, estructura, tabla, ejemplos con audio y errores típicos.
+  function puntosDe(codigo) { return (teoria.lecciones || {})[codigo] || []; }
+
+  function pintarGramatica(codigo) {
+    const h = hitoDe[codigo];
+    const puntos = puntosDe(codigo);
+    cont.innerHTML = `
+      <button class="boton boton-secundario" id="btn-volver" style="margin-bottom:16px">← Volver a la lección</button>
+      <h1 class="vista-titulo">📚 Gramática · ${esc(h.barrio)}</h1>
+      <p class="vista-sub">${esc(h.codigo)} · ${esc(h.titulo)}. ${puntos.length} punto${puntos.length === 1 ? '' : 's'} para estudiar de uno en uno.</p>
+      <div class="gram-indice">
+        ${puntos.map((pt, i) => `
+          <button class="gram-tarjeta" data-i="${i}">
+            <span class="gram-num">${i + 1}</span>
+            <span class="gram-tarjeta-texto">
+              <b lang="ja">${esc(pt.titulo)}</b>
+              <small>${esc(pt.resumen || '')}</small>
+            </span>
+            <span class="gram-flecha">→</span>
+          </button>`).join('')}
+      </div>`;
+    cont.querySelector('#btn-volver').onclick = () => pintarTeoria(codigo);
+    cont.querySelectorAll('.gram-tarjeta').forEach(b =>
+      b.onclick = () => pintarPunto(codigo, parseInt(b.dataset.i)));
+  }
+
+  function pintarPunto(codigo, i) {
+    const puntos = puntosDe(codigo);
+    const pt = puntos[i];
+    if (!pt) return pintarGramatica(codigo);
+    cont.innerHTML = `
+      <button class="boton boton-secundario" id="btn-indice" style="margin-bottom:16px">← Todos los puntos</button>
+      <div class="gram-punto">
+        <div class="gram-punto-cab">
+          <span class="gram-num grande">${i + 1}<small>/${puntos.length}</small></span>
+          <div>
+            <h1 class="gram-punto-titulo" lang="ja">${esc(pt.titulo)}</h1>
+            ${pt.resumen ? `<p class="gram-punto-resumen">${esc(pt.resumen)}</p>` : ''}
+          </div>
+        </div>
+
+        ${(pt.estructura || []).length ? `
+          <div class="gram-estructura">
+            ${pt.estructura.map(e => `<div class="gram-estructura-linea" lang="ja">${esc(e)}</div>`).join('')}
+          </div>` : ''}
+
+        ${(pt.explicacion || []).map(par => `<p class="gram-parrafo">${esc(par)}</p>`).join('')}
+
+        ${pt.tabla ? `
+          <div class="gram-tabla-caja">
+            <table class="gram-tabla">
+              <thead><tr>${pt.tabla.cabecera.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead>
+              <tbody>${pt.tabla.filas.map(f => `<tr>${f.map(c => `<td lang="ja">${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody>
+            </table>
+          </div>` : ''}
+
+        ${(pt.ejemplos || []).length ? `
+          <h2 class="seccion-titulo">Ejemplos</h2>
+          <div class="gram-ejemplos">
+            ${pt.ejemplos.map(e => `
+              <div class="gram-ejemplo">
+                <div class="gram-ejemplo-ja" lang="ja">${esc(e.ja)}</div>
+                <div class="gram-ejemplo-kana" lang="ja">${esc(e.kana)}</div>
+                <div class="gram-ejemplo-es">${esc(e.es)}</div>
+                <button class="boton-audio gram-ejemplo-audio" data-audio="${esc(e.ja)}" title="Oír">&#128266;</button>
+              </div>`).join('')}
+          </div>` : ''}
+
+        ${(pt.avisos || []).length ? `
+          <h2 class="seccion-titulo">Ojo con esto</h2>
+          ${pt.avisos.map(a => `<div class="gram-aviso">⚠️ ${esc(a)}</div>`).join('')}` : ''}
+
+        <div class="gram-nav">
+          <button class="boton boton-secundario" id="btn-ant" ${i === 0 ? 'disabled' : ''}>← Anterior</button>
+          <span class="gram-nav-pos">${i + 1} de ${puntos.length}</span>
+          ${i < puntos.length - 1
+            ? '<button class="boton boton-primario" id="btn-sig">Siguiente →</button>'
+            : '<button class="boton boton-primario" id="btn-a-ejercicios">⚡ A los ejercicios</button>'}
+        </div>
+      </div>`;
+    cont.querySelector('#btn-indice').onclick = () => pintarGramatica(codigo);
+    cont.querySelectorAll('[data-audio]').forEach(b => b.onclick = () => hablar(b.dataset.audio));
+    const ant = cont.querySelector('#btn-ant');
+    if (ant && i > 0) ant.onclick = () => pintarPunto(codigo, i - 1);
+    const sig = cont.querySelector('#btn-sig');
+    if (sig) sig.onclick = () => pintarPunto(codigo, i + 1);
+    const aE = cont.querySelector('#btn-a-ejercicios');
+    if (aE) aE.onclick = () => pintarPractica([codigo]);
+    window.scrollTo(0, 0);
+  }
+
   // ---------- Teoría ----------
   function pintarTeoria(codigo) {
     const h = hitoDe[codigo];
@@ -137,7 +233,10 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
       <button class="boton boton-secundario" id="btn-volver" style="margin-bottom:16px">← Todas las lecciones</button>
       <h1 class="vista-titulo">${h.emoji} ${esc(h.barrio)}</h1>
       <p class="vista-sub">${esc(h.codigo)} · ${esc(h.titulo)} · ${esc(h.ciudad.nombre)}. Cuando la tengas fresca, supera sus ejercicios.</p>
-      ${h.estado === 'LOCKED' ? '' : `<button class="boton boton-primario" id="btn-a-practica" style="margin-bottom:20px">⚡ Hacer los ejercicios</button>`}
+      <div class="fila-botones" style="margin-bottom:20px">
+        ${puntosDe(codigo).length ? `<button class="boton boton-primario" id="btn-gramatica">📚 Estudiar la gramática <small>(${puntosDe(codigo).length})</small></button>` : ''}
+        ${h.estado === 'LOCKED' ? '' : `<button class="boton ${puntosDe(codigo).length ? 'boton-secundario' : 'boton-primario'}" id="btn-a-practica">⚡ Hacer los ejercicios</button>`}
+      </div>
       ${vocab.length ? `
         <h2 class="seccion-titulo">Vocabulario <small>${vocab.length}</small></h2>
         <div class="rejilla-vocab">
@@ -161,6 +260,8 @@ export async function vistaLecciones(cont, avisar, refrescarBadge) {
     cont.querySelector('#btn-volver').onclick = pintarLista;
     const aP = cont.querySelector('#btn-a-practica');
     if (aP) aP.onclick = () => pintarPractica([codigo]);
+    const bG = cont.querySelector('#btn-gramatica');
+    if (bG) bG.onclick = () => pintarGramatica(codigo);
     cont.querySelectorAll('[data-audio]').forEach(b => b.onclick = () => hablar(b.dataset.audio));
     cont.querySelectorAll('.respuesta.tapada').forEach(r => r.onclick = () => r.classList.remove('tapada'));
   }

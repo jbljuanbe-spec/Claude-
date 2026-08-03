@@ -1,0 +1,1144 @@
+{
+  "meta": {
+    "nota": "Teoria gramatical estructurada por leccion, escrita desde cero para esta app. Cubre los mismos puntos del temario que sigue el curso (Genki I/II), pero todas las explicaciones, ejemplos y avisos son originales: no se reproduce texto de ningun libro.",
+    "formato": "lecciones[codigo] = lista de puntos; cada punto tiene titulo, resumen, explicacion[], estructura[], tabla?, ejemplos[], avisos[]"
+  },
+  "lecciones": {
+    "L1": [
+      {
+        "titulo": "XはYです — decir qué o quién es algo",
+        "resumen": "La frase básica del japonés: «X es Y».",
+        "explicacion": [
+          "El japonés no tiene un verbo «ser» como el español. Para decir «X es Y» se pone el tema, la partícula は, y luego lo que se afirma de él, cerrando con です.",
+          "は marca el TEMA de la frase: «en cuanto a X…». Aunque se escribe con el carácter は, cuando funciona como partícula se pronuncia «wa», no «ha».",
+          "です es la marca de cortesía. Es lo que hace que la frase suene educada; sin ella el registro sería informal (eso llega en la lección 8)."
+        ],
+        "estructura": [
+          "[X] は [Y] です"
+        ],
+        "ejemplos": [
+          {
+            "ja": "私は学生です。",
+            "kana": "わたしはがくせいです。",
+            "es": "Soy estudiante."
+          },
+          {
+            "ja": "田中さんは先生です。",
+            "kana": "たなかさんはせんせいです。",
+            "es": "Tanaka es profesor."
+          },
+          {
+            "ja": "私はスペイン人です。",
+            "kana": "わたしはスペインじんです。",
+            "es": "Soy español."
+          }
+        ],
+        "avisos": [
+          "は como partícula se pronuncia «wa». Es el error de pronunciación más común al empezar.",
+          "です no es un verbo «ser» que puedas usar en cualquier sitio: es la cópula que cierra la frase."
+        ]
+      },
+      {
+        "titulo": "Preguntar con か",
+        "resumen": "Se añade か al final: no hace falta cambiar el orden ni entonar distinto.",
+        "explicacion": [
+          "Para convertir una afirmación en pregunta basta con añadir か al final. El orden de las palabras no cambia, a diferencia del español.",
+          "Por eso en japonés no suele hacer falta el signo de interrogación: か ya avisa de que es pregunta. Aun así, en textos informales verás «？».",
+          "Para preguntar «qué», «quién», «dónde», etc., se coloca la palabra interrogativa en el mismo hueco que ocuparía la respuesta."
+        ],
+        "estructura": [
+          "[frase] か"
+        ],
+        "ejemplos": [
+          {
+            "ja": "田中さんは学生ですか。",
+            "kana": "たなかさんはがくせいですか。",
+            "es": "¿Tanaka es estudiante?"
+          },
+          {
+            "ja": "お名前は何ですか。",
+            "kana": "おなまえはなんですか。",
+            "es": "¿Cómo se llama usted?"
+          },
+          {
+            "ja": "あの人はだれですか。",
+            "kana": "あのひとはだれですか。",
+            "es": "¿Quién es esa persona?"
+          }
+        ],
+        "avisos": [
+          "No hace falta invertir el orden como en español: 学生ですか, nunca «ですか学生»."
+        ]
+      },
+      {
+        "titulo": "AのB — unir dos sustantivos",
+        "resumen": "の enlaza sustantivos: posesión, pertenencia, tipo u origen.",
+        "explicacion": [
+          "の une dos sustantivos y el orden es el inverso al español: primero el que modifica y después el modificado. 私の本 es «mi libro» (literalmente «de mí, libro»).",
+          "No sirve solo para posesión: también expresa pertenencia a un grupo, origen o tipo. 日本語の先生 es «profesor de japonés» y 大学の学生 es «estudiante universitario».",
+          "Se pueden encadenar varios: 私の大学の先生, «el profesor de mi universidad»."
+        ],
+        "estructura": [
+          "[A] の [B]  →  B relacionado con A"
+        ],
+        "ejemplos": [
+          {
+            "ja": "私の名前はサラです。",
+            "kana": "わたしのなまえはサラです。",
+            "es": "Mi nombre es Sara."
+          },
+          {
+            "ja": "日本語の先生です。",
+            "kana": "にほんごのせんせいです。",
+            "es": "Es profesor de japonés."
+          },
+          {
+            "ja": "これは友達の車です。",
+            "kana": "これはともだちのくるまです。",
+            "es": "Este es el coche de mi amigo."
+          }
+        ],
+        "avisos": [
+          "El orden es al revés que en español: «el libro de Tanaka» = 田中さんの本, no «本の田中さん»."
+        ]
+      },
+      {
+        "titulo": "Negar: じゃないです",
+        "resumen": "Para decir «no es Y», です se sustituye por じゃないです.",
+        "explicacion": [
+          "La negación de です es じゃないです (o la variante más formal じゃありません).",
+          "Se coloca justo detrás del sustantivo, sin ninguna partícula en medio: 学生じゃないです, no «学生がじゃないです».",
+          "En contextos escritos o muy formales aparece ではありません. La forma じゃ es simplemente la contracción hablada de では."
+        ],
+        "estructura": [
+          "[X] は [Y] じゃないです"
+        ],
+        "ejemplos": [
+          {
+            "ja": "私は学生じゃないです。",
+            "kana": "わたしはがくせいじゃないです。",
+            "es": "No soy estudiante."
+          },
+          {
+            "ja": "田中さんは医者じゃありません。",
+            "kana": "たなかさんはいしゃじゃありません。",
+            "es": "Tanaka no es médico."
+          },
+          {
+            "ja": "これは私のかばんじゃないです。",
+            "kana": "これはわたしのかばんじゃないです。",
+            "es": "Este no es mi bolso."
+          }
+        ],
+        "avisos": [
+          "Aunque se escribe では, se pronuncia «de wa», no «de ha».",
+          "じゃないです y じゃありません significan lo mismo; la segunda suena algo más formal."
+        ]
+      }
+    ],
+    "L2": [
+      {
+        "titulo": "これ・それ・あれ・どれ — señalar cosas",
+        "resumen": "Tres distancias, no dos: cerca de mí, cerca de ti, lejos de los dos.",
+        "explicacion": [
+          "El japonés distingue tres zonas en vez de las dos del español. これ es lo que está cerca de quien habla; それ, lo que está cerca de quien escucha; あれ, lo que está lejos de ambos.",
+          "どれ es la palabra interrogativa correspondiente: «¿cuál (de varios)?».",
+          "Esta serie (こ／そ／あ／ど) se repite en muchas otras palabras, así que reconocer el patrón ahorra memorizar cada una por separado."
+        ],
+        "estructura": [
+          "これ = esto (junto a mí) · それ = eso (junto a ti) · あれ = aquello (lejos) · どれ = cuál"
+        ],
+        "ejemplos": [
+          {
+            "ja": "これは私の傘です。",
+            "kana": "これはわたしのかさです。",
+            "es": "Este es mi paraguas."
+          },
+          {
+            "ja": "それは何ですか。",
+            "kana": "それはなんですか。",
+            "es": "¿Qué es eso (que tienes)?"
+          },
+          {
+            "ja": "あれは駅です。",
+            "kana": "あれはえきです。",
+            "es": "Aquello es la estación."
+          }
+        ],
+        "avisos": [
+          "La distancia es respecto a los interlocutores, no respecto a un punto fijo: lo que para ti es これ, para la otra persona es それ."
+        ]
+      },
+      {
+        "titulo": "この・その・あの・どの — «este/ese/aquel» + sustantivo",
+        "resumen": "Igual que これ pero acompañando a un sustantivo, no solo.",
+        "explicacion": [
+          "これ・それ・あれ funcionan solos, como pronombres: sustituyen al sustantivo. この・その・あの necesitan un sustantivo detrás.",
+          "Es la diferencia entre «esto es caro» (これは高いです) y «este libro es caro» (この本は高いです).",
+          "どの es «cuál de estos» y también va seguido de sustantivo: どの本, «qué libro»."
+        ],
+        "estructura": [
+          "これ / それ / あれ + は …  (solos)",
+          "この / その / あの + [sustantivo]"
+        ],
+        "ejemplos": [
+          {
+            "ja": "この本は高いです。",
+            "kana": "このほんはたかいです。",
+            "es": "Este libro es caro."
+          },
+          {
+            "ja": "その靴はいくらですか。",
+            "kana": "そのくつはいくらですか。",
+            "es": "¿Cuánto cuestan esos zapatos?"
+          },
+          {
+            "ja": "あの人は先生です。",
+            "kana": "あのひとはせんせいです。",
+            "es": "Aquella persona es profesora."
+          }
+        ],
+        "avisos": [
+          "Nunca «これ本»: si hay sustantivo detrás, toca この."
+        ]
+      },
+      {
+        "titulo": "ここ・そこ・あそこ・どこ — lugares",
+        "resumen": "La misma serie こ／そ／あ／ど aplicada al espacio.",
+        "explicacion": [
+          "ここ es «aquí», そこ «ahí», あそこ «allí» y どこ «dónde». Funcionan como sustantivos de lugar, así que llevan sus partículas con normalidad.",
+          "Para preguntar por el sitio de algo se usa どこ con です: トイレはどこですか。",
+          "Ojo: どこ pregunta por un lugar y どれ por un objeto entre varios. Son cosas distintas."
+        ],
+        "estructura": [
+          "ここ = aquí · そこ = ahí · あそこ = allí · どこ = dónde"
+        ],
+        "ejemplos": [
+          {
+            "ja": "トイレはどこですか。",
+            "kana": "トイレはどこですか。",
+            "es": "¿Dónde está el baño?"
+          },
+          {
+            "ja": "ここは私の部屋です。",
+            "kana": "ここはわたしのへやです。",
+            "es": "Aquí está mi habitación."
+          },
+          {
+            "ja": "駅はあそこです。",
+            "kana": "えきはあそこです。",
+            "es": "La estación está allí."
+          }
+        ],
+        "avisos": [
+          "どこ = lugar, どれ = objeto. No los mezcles."
+        ]
+      },
+      {
+        "titulo": "も — «también»",
+        "resumen": "も sustituye a は o が, no se añade a ellas.",
+        "explicacion": [
+          "も significa «también» y ocupa el sitio de la partícula は (o が). No se dice «私はも», sino 私も.",
+          "En frases negativas se traduce como «tampoco»: 私も学生じゃないです, «yo tampoco soy estudiante».",
+          "Sirve para no repetir toda la frase cuando compartes la misma información que la otra persona."
+        ],
+        "estructura": [
+          "[sustantivo] も  (reemplaza a は/が)"
+        ],
+        "ejemplos": [
+          {
+            "ja": "私も学生です。",
+            "kana": "わたしもがくせいです。",
+            "es": "Yo también soy estudiante."
+          },
+          {
+            "ja": "これも私のです。",
+            "kana": "これもわたしのです。",
+            "es": "Esto también es mío."
+          },
+          {
+            "ja": "田中さんも来ます。",
+            "kana": "たなかさんもきます。",
+            "es": "Tanaka también viene."
+          }
+        ],
+        "avisos": [
+          "Nunca «私はも» ni «私もは»: も ocupa el lugar de は."
+        ]
+      },
+      {
+        "titulo": "ね y よ — matizar lo que dices",
+        "resumen": "ね busca acuerdo; よ aporta información nueva.",
+        "explicacion": [
+          "ね al final de la frase busca confirmación o complicidad: «¿verdad?», «¿no?». Suaviza mucho la conversación.",
+          "よ, en cambio, señala que estás dando una información que tu interlocutor no tenía. Equivale a un «te aviso» o «que sepas que».",
+          "Usar よ cuando la otra persona ya sabe algo suena impertinente; usar ね para algo que solo sabes tú suena raro. Elegir bien es parte de sonar natural."
+        ],
+        "estructura": [
+          "[frase] ね  →  «¿verdad?»",
+          "[frase] よ  →  «te lo digo yo»"
+        ],
+        "ejemplos": [
+          {
+            "ja": "今日はいい天気ですね。",
+            "kana": "きょうはいいてんきですね。",
+            "es": "Hoy hace buen tiempo, ¿verdad?"
+          },
+          {
+            "ja": "その店は高いですよ。",
+            "kana": "そのみせはたかいですよ。",
+            "es": "Esa tienda es cara, que lo sepas."
+          },
+          {
+            "ja": "これ、おいしいですね。",
+            "kana": "これ、おいしいですね。",
+            "es": "Esto está bueno, ¿eh?"
+          }
+        ],
+        "avisos": [
+          "No abuses de よ: en exceso suena a que corriges constantemente a la otra persona."
+        ]
+      }
+    ],
+    "L3": [
+      {
+        "titulo": "Los tres grupos de verbos",
+        "resumen": "Todo verbo japonés cae en uno de tres grupos, y el grupo decide cómo se conjuga.",
+        "explicacion": [
+          "Los verbos se dividen en Grupo 1 (godan, o «verbos -u»), Grupo 2 (ichidan, o «verbos -ru») y los dos irregulares, する y 来る.",
+          "El Grupo 2 termina siempre en いる o える y conjuga de forma sencilla: se quita る y se añade la terminación. 食べる → 食べます.",
+          "El Grupo 1 abarca el resto: se cambia la última sílaba -u por la fila -i y se añade ます. 飲む → 飲みます, 話す → 話します.",
+          "El problema son los verbos acabados en る que pertenecen al Grupo 1 (帰る, 入る, 走る...). No hay regla infalible: se aprenden con el uso."
+        ],
+        "estructura": [
+          "Grupo 2: quitar る + ます        食べる → 食べます",
+          "Grupo 1: -u → -i + ます          飲む → 飲みます",
+          "Irregulares: する → します · 来る → 来ます"
+        ],
+        "tabla": {
+          "cabecera": [
+            "Grupo",
+            "Diccionario",
+            "Forma ます"
+          ],
+          "filas": [
+            [
+              "2",
+              "食べる",
+              "食べます"
+            ],
+            [
+              "2",
+              "見る",
+              "見ます"
+            ],
+            [
+              "1",
+              "飲む",
+              "飲みます"
+            ],
+            [
+              "1",
+              "話す",
+              "話します"
+            ],
+            [
+              "1",
+              "帰る",
+              "帰ります"
+            ],
+            [
+              "irr.",
+              "する",
+              "します"
+            ],
+            [
+              "irr.",
+              "来る",
+              "来ます"
+            ]
+          ]
+        },
+        "ejemplos": [
+          {
+            "ja": "毎日日本語を勉強します。",
+            "kana": "まいにちにほんごをべんきょうします。",
+            "es": "Estudio japonés todos los días."
+          },
+          {
+            "ja": "朝ご飯を食べます。",
+            "kana": "あさごはんをたべます。",
+            "es": "Desayuno."
+          },
+          {
+            "ja": "友達が来ます。",
+            "kana": "ともだちがきます。",
+            "es": "Viene un amigo."
+          }
+        ],
+        "avisos": [
+          "帰る, 入る, 走る, 知る y 切る acaban en る pero son de Grupo 1. Conviene memorizarlos aparte."
+        ]
+      },
+      {
+        "titulo": "Presente y futuro, afirmativo y negativo",
+        "resumen": "La forma ます cubre presente y futuro; la negación es ません.",
+        "explicacion": [
+          "El japonés no distingue presente de futuro: 行きます sirve tanto para «voy» como para «iré». El contexto o una palabra de tiempo lo aclaran.",
+          "La negación cambia ます por ません: 行きません, «no voy / no iré».",
+          "Esta forma se llama «forma cortés» y es la que se usa por defecto con desconocidos, en el trabajo o en clase."
+        ],
+        "estructura": [
+          "afirmativo: …ます    negativo: …ません"
+        ],
+        "ejemplos": [
+          {
+            "ja": "明日、映画を見ます。",
+            "kana": "あした、えいがをみます。",
+            "es": "Mañana veré una película."
+          },
+          {
+            "ja": "お酒は飲みません。",
+            "kana": "おさけはのみません。",
+            "es": "No bebo alcohol."
+          },
+          {
+            "ja": "今日は行きません。",
+            "kana": "きょうはいきません。",
+            "es": "Hoy no voy."
+          }
+        ],
+        "avisos": [
+          "No existe un tiempo futuro aparte: no busques una terminación especial para «iré»."
+        ]
+      },
+      {
+        "titulo": "を, で, に, へ — las partículas del verbo",
+        "resumen": "Cada partícula marca un papel distinto dentro de la acción.",
+        "explicacion": [
+          "を marca el objeto directo: lo que recibe la acción. パンを食べます.",
+          "で marca el lugar donde ocurre la acción, y también el medio o instrumento: 図書館で勉強します (estudio EN la biblioteca), 電車で行きます (voy EN tren).",
+          "に marca el destino, la hora concreta y el punto de llegada: 七時に起きます, 学校に行きます.",
+          "へ también marca dirección y es casi intercambiable con に para destinos; へ insiste algo más en el rumbo. Como partícula se pronuncia «e»."
+        ],
+        "estructura": [
+          "を = objeto directo · で = lugar de la acción / medio",
+          "に = destino, hora concreta · へ = dirección"
+        ],
+        "ejemplos": [
+          {
+            "ja": "図書館で本を読みます。",
+            "kana": "としょかんでほんをよみます。",
+            "es": "Leo un libro en la biblioteca."
+          },
+          {
+            "ja": "七時に起きます。",
+            "kana": "しちじにおきます。",
+            "es": "Me levanto a las siete."
+          },
+          {
+            "ja": "バスで学校へ行きます。",
+            "kana": "バスでがっこうへいきます。",
+            "es": "Voy a la escuela en autobús."
+          }
+        ],
+        "avisos": [
+          "El fallo clásico es usar に para el lugar de la acción: es «レストランで食べます», no «レストランに食べます». に es a dónde vas, で es dónde pasa la cosa.",
+          "へ como partícula se pronuncia «e»."
+        ]
+      },
+      {
+        "titulo": "Cuándo lleva に una expresión de tiempo",
+        "resumen": "Las horas concretas llevan に; las palabras relativas como «hoy» o «mañana», no.",
+        "explicacion": [
+          "Si la referencia temporal es un punto concreto y numerable (una hora, un día del mes, un día de la semana), lleva に: 三時に, 月曜日に, 五月に.",
+          "Si es relativa al momento en que hablas (今日, 明日, 昨日, 今週, 毎日), NO lleva に.",
+          "Algunas admiten las dos opciones, como 朝 o 週末, pero con las dos listas de arriba se acierta casi siempre."
+        ],
+        "estructura": [
+          "con に: 七時に, 月曜日に, 五月に, 二〇二五年に",
+          "sin に: 今日, 明日, 昨日, 毎日, 今週, 来年"
+        ],
+        "ejemplos": [
+          {
+            "ja": "月曜日に会議があります。",
+            "kana": "げつようびにかいぎがあります。",
+            "es": "El lunes hay una reunión."
+          },
+          {
+            "ja": "明日、友達に会います。",
+            "kana": "あした、ともだちにあいます。",
+            "es": "Mañana quedo con un amigo."
+          },
+          {
+            "ja": "毎日日本語を勉強します。",
+            "kana": "まいにちにほんごをべんきょうします。",
+            "es": "Estudio japonés todos los días."
+          }
+        ],
+        "avisos": [
+          "«明日に» es un error muy típico: 明日 nunca lleva に."
+        ]
+      },
+      {
+        "titulo": "Orden de la frase y adverbios de frecuencia",
+        "resumen": "El verbo va al final; lo demás es bastante flexible.",
+        "explicacion": [
+          "La regla firme es que el verbo cierra la frase. El resto de elementos (tema, tiempo, lugar, objeto) puede moverse porque las partículas ya dicen qué papel tiene cada uno.",
+          "El orden más neutro es: tema — tiempo — lugar — objeto — verbo.",
+          "Los adverbios de frecuencia (よく, たいてい, ときどき, あまり, ぜんぜん) van delante del verbo.",
+          "あまり y ぜんぜん obligan a que el verbo vaya en negativo: あまり食べません, ぜんぜん分かりません."
+        ],
+        "estructura": [
+          "[tema は] [tiempo] [lugar で] [objeto を] [verbo]"
+        ],
+        "ejemplos": [
+          {
+            "ja": "私は毎日図書館で日本語を勉強します。",
+            "kana": "わたしはまいにちとしょかんでにほんごをべんきょうします。",
+            "es": "Yo estudio japonés en la biblioteca todos los días."
+          },
+          {
+            "ja": "あまりテレビを見ません。",
+            "kana": "あまりテレビをみません。",
+            "es": "No veo mucho la tele."
+          },
+          {
+            "ja": "ぜんぜん分かりません。",
+            "kana": "ぜんぜんわかりません。",
+            "es": "No entiendo nada."
+          }
+        ],
+        "avisos": [
+          "あまり y ぜんぜん no se usan en afirmativo: «ぜんぜん分かります» es incorrecto."
+        ]
+      },
+      {
+        "titulo": "～ませんか — invitar",
+        "resumen": "La forma negativa en pregunta es la manera educada de proponer algo.",
+        "explicacion": [
+          "Para invitar se usa la forma negativa más か: 一緒に行きませんか, «¿no vamos juntos?». Suena más cortés que preguntarlo en afirmativo, igual que en español «¿no te apetece…?».",
+          "Es una propuesta abierta, que deja espacio a decir que no sin incomodar.",
+          "Se diferencia de ましょう (lección 5), que ya da por hecho que ambos queréis y solo propone ponerse a ello."
+        ],
+        "estructura": [
+          "[verbo]ませんか  →  «¿no…?», «¿te apetece…?»"
+        ],
+        "ejemplos": [
+          {
+            "ja": "一緒に昼ご飯を食べませんか。",
+            "kana": "いっしょにひるごはんをたべませんか。",
+            "es": "¿Comemos juntos?"
+          },
+          {
+            "ja": "週末、映画を見ませんか。",
+            "kana": "しゅうまつ、えいがをみませんか。",
+            "es": "¿Vemos una película el fin de semana?"
+          },
+          {
+            "ja": "お茶を飲みませんか。",
+            "kana": "おちゃをのみませんか。",
+            "es": "¿Tomamos un té?"
+          }
+        ]
+      }
+    ],
+    "L4": [
+      {
+        "titulo": "あります y います — decir que algo existe",
+        "resumen": "Dos verbos distintos para «hay», según si es un ser vivo o no.",
+        "explicacion": [
+          "いる se usa con seres vivos que se mueven por sí mismos: personas y animales. ある, con objetos, plantas, edificios y cosas abstractas como una reunión o un examen.",
+          "Lo que existe se marca con が, porque es información nueva que se introduce en la conversación.",
+          "El lugar se marca con に: 机の上に本があります."
+        ],
+        "estructura": [
+          "[lugar] に [cosa] が あります   (objetos)",
+          "[lugar] に [ser vivo] が います  (personas, animales)"
+        ],
+        "ejemplos": [
+          {
+            "ja": "机の上に本があります。",
+            "kana": "つくえのうえにほんがあります。",
+            "es": "Encima de la mesa hay un libro."
+          },
+          {
+            "ja": "教室に学生がいます。",
+            "kana": "きょうしつにがくせいがいます。",
+            "es": "En el aula hay estudiantes."
+          },
+          {
+            "ja": "明日、会議があります。",
+            "kana": "あした、かいぎがあります。",
+            "es": "Mañana hay una reunión."
+          }
+        ],
+        "avisos": [
+          "Los animales llevan いる: 猫がいます, no «猫があります».",
+          "Aquí es が, no は: introduces algo nuevo, no hablas de un tema ya conocido."
+        ]
+      },
+      {
+        "titulo": "Palabras de posición",
+        "resumen": "上, 下, 中… son sustantivos y se conectan con の.",
+        "explicacion": [
+          "En japonés las posiciones no son preposiciones sino sustantivos, así que se enlazan con の: 机の上 es literalmente «de la mesa, la parte de arriba».",
+          "La estructura completa es [referencia] の [posición] に.",
+          "Las más frecuentes son 上 (encima), 下 (debajo), 中 (dentro), 前 (delante), 後ろ (detrás), 右 (derecha), 左 (izquierda), 隣 (al lado) y 間 (entre)."
+        ],
+        "estructura": [
+          "[referencia] の [posición] に [cosa] が あります/います"
+        ],
+        "ejemplos": [
+          {
+            "ja": "かばんの中に財布があります。",
+            "kana": "かばんのなかにさいふがあります。",
+            "es": "Dentro del bolso hay una cartera."
+          },
+          {
+            "ja": "いすの下に猫がいます。",
+            "kana": "いすのしたにねこがいます。",
+            "es": "Debajo de la silla hay un gato."
+          },
+          {
+            "ja": "駅の前で待っています。",
+            "kana": "えきのまえでまっています。",
+            "es": "Te espero delante de la estación."
+          }
+        ],
+        "avisos": [
+          "No olvides el の: es «机の上», no «机上» en lengua hablada."
+        ]
+      },
+      {
+        "titulo": "Pasado de です",
+        "resumen": "でした para afirmativo y じゃなかったです para negativo.",
+        "explicacion": [
+          "El pasado afirmativo de です es でした: 学生でした, «era estudiante».",
+          "El negativo pasado es じゃなかったです (o la variante formal じゃありませんでした).",
+          "Esto vale para sustantivos y para adjetivos な; los adjetivos い tienen su propio pasado, que se ve en la lección 5."
+        ],
+        "estructura": [
+          "presente: です / じゃないです",
+          "pasado:   でした / じゃなかったです"
+        ],
+        "ejemplos": [
+          {
+            "ja": "昨日は休みでした。",
+            "kana": "きのうはやすみでした。",
+            "es": "Ayer fue día libre."
+          },
+          {
+            "ja": "学生じゃなかったです。",
+            "kana": "がくせいじゃなかったです。",
+            "es": "No era estudiante."
+          },
+          {
+            "ja": "あの店は有名でした。",
+            "kana": "あのみせはゆうめいでした。",
+            "es": "Aquella tienda era famosa."
+          }
+        ],
+        "avisos": [
+          "Nunca uses でした con un adjetivo い: «高いでした» es incorrecto (lección 5)."
+        ]
+      },
+      {
+        "titulo": "Pasado de los verbos",
+        "resumen": "ました y ませんでした.",
+        "explicacion": [
+          "El pasado de la forma cortés cambia ます por ました: 食べました, «comí».",
+          "El negativo pasado es ませんでした: 食べませんでした, «no comí».",
+          "Sirve tanto para el pretérito perfecto («he comido») como para el indefinido («comí»): el japonés no los distingue."
+        ],
+        "estructura": [
+          "afirmativo: …ました    negativo: …ませんでした"
+        ],
+        "ejemplos": [
+          {
+            "ja": "昨日、映画を見ました。",
+            "kana": "きのう、えいがをみました。",
+            "es": "Ayer vi una película."
+          },
+          {
+            "ja": "朝ご飯を食べませんでした。",
+            "kana": "あさごはんをたべませんでした。",
+            "es": "No desayuné."
+          },
+          {
+            "ja": "先週、京都へ行きました。",
+            "kana": "せんしゅう、きょうとへいきました。",
+            "es": "La semana pasada fui a Kioto."
+          }
+        ]
+      },
+      {
+        "titulo": "と — «con» y «y»",
+        "resumen": "Une sustantivos y marca el acompañante, pero nunca une verbos.",
+        "explicacion": [
+          "と une sustantivos de forma exhaustiva: 犬と猫 es «un perro y un gato», y se entiende que son esos dos y no más.",
+          "También marca a la persona con la que haces algo: 友達と映画を見ました.",
+          "Lo que と NO puede hacer es unir verbos ni frases. Para «fui y comí» se usa la forma て (lección 6): 行って、食べました."
+        ],
+        "estructura": [
+          "[sust] と [sust]  →  «A y B»",
+          "[persona] と [verbo]  →  «con esa persona»"
+        ],
+        "ejemplos": [
+          {
+            "ja": "犬と猫がいます。",
+            "kana": "いぬとねこがいます。",
+            "es": "Hay un perro y un gato."
+          },
+          {
+            "ja": "友達と昼ご飯を食べました。",
+            "kana": "ともだちとひるごはんをたべました。",
+            "es": "Comí con un amigo."
+          },
+          {
+            "ja": "パンと牛乳を買いました。",
+            "kana": "パンとぎゅうにゅうをかいました。",
+            "es": "Compré pan y leche."
+          }
+        ],
+        "avisos": [
+          "と no une verbos: «行くと食べました» no significa «fui y comí»."
+        ]
+      },
+      {
+        "titulo": "Duración frente a hora concreta",
+        "resumen": "二時 es «las dos»; 二時間 es «dos horas».",
+        "explicacion": [
+          "Para una hora concreta se usa 〜時 y lleva に: 二時に, «a las dos».",
+          "Para una duración se añade 間: 二時間, «(durante) dos horas». Las duraciones NO llevan に.",
+          "Lo mismo pasa con otras unidades: 一週間 (una semana), 三か月 (tres meses), 二年間 (dos años)."
+        ],
+        "estructura": [
+          "hora concreta: 二時に  →  «a las dos»",
+          "duración:      二時間   →  «dos horas» (sin に)"
+        ],
+        "ejemplos": [
+          {
+            "ja": "二時に会いましょう。",
+            "kana": "にじにあいましょう。",
+            "es": "Quedamos a las dos."
+          },
+          {
+            "ja": "二時間ぐらい勉強しました。",
+            "kana": "にじかんぐらいべんきょうしました。",
+            "es": "Estudié unas dos horas."
+          },
+          {
+            "ja": "一週間、日本にいました。",
+            "kana": "いっしゅうかん、にほんにいました。",
+            "es": "Estuve una semana en Japón."
+          }
+        ],
+        "avisos": [
+          "La duración no lleva に: «二時間に勉強しました» es incorrecto."
+        ]
+      }
+    ],
+    "L5": [
+      {
+        "titulo": "Adjetivos い y adjetivos な",
+        "resumen": "Dos familias con conjugaciones distintas: distinguirlas es imprescindible.",
+        "explicacion": [
+          "Los adjetivos い terminan en い y se conjugan solos, sin ayuda de です: 高い, 高くない, 高かった.",
+          "Los adjetivos な no se conjugan: quien cambia es です. 静かです, 静かじゃないです, 静かでした.",
+          "Al ir delante de un sustantivo, los い se pegan directamente (高い本) y los な necesitan な (静かな部屋). De ahí su nombre.",
+          "Cuidado: きれい, 嫌い, 有名 y 元気 terminan en い pero son adjetivos な. Hay que aprenderlos como excepciones."
+        ],
+        "estructura": [
+          "い: 高い本 / 高いです / 高くないです",
+          "な: 静かな部屋 / 静かです / 静かじゃないです"
+        ],
+        "ejemplos": [
+          {
+            "ja": "この本は高いです。",
+            "kana": "このほんはたかいです。",
+            "es": "Este libro es caro."
+          },
+          {
+            "ja": "この部屋は静かです。",
+            "kana": "このへやはしずかです。",
+            "es": "Esta habitación es tranquila."
+          },
+          {
+            "ja": "きれいな写真ですね。",
+            "kana": "きれいなしゃしんですね。",
+            "es": "Es una foto bonita, ¿verdad?"
+          }
+        ],
+        "avisos": [
+          "きれい, 嫌い, 有名, 元気 acaban en い pero son な. Es la trampa más habitual."
+        ]
+      },
+      {
+        "titulo": "Conjugar los adjetivos い",
+        "resumen": "El い se sustituye: くない, かった, くなかった.",
+        "explicacion": [
+          "El negativo cambia い por くない: 高い → 高くない(です).",
+          "El pasado cambia い por かった: 高い → 高かった(です).",
+          "El pasado negativo combina ambos: 高くなかった(です).",
+          "いい es irregular: sus formas se construyen sobre よ (よくない, よかった, よくなかった), nunca sobre い."
+        ],
+        "estructura": [
+          "高い → 高くないです → 高かったです → 高くなかったです"
+        ],
+        "tabla": {
+          "cabecera": [
+            "",
+            "Afirmativo",
+            "Negativo"
+          ],
+          "filas": [
+            [
+              "Presente",
+              "高いです",
+              "高くないです"
+            ],
+            [
+              "Pasado",
+              "高かったです",
+              "高くなかったです"
+            ],
+            [
+              "いい (presente)",
+              "いいです",
+              "よくないです"
+            ],
+            [
+              "いい (pasado)",
+              "よかったです",
+              "よくなかったです"
+            ]
+          ]
+        },
+        "ejemplos": [
+          {
+            "ja": "昨日は忙しかったです。",
+            "kana": "きのうはいそがしかったです。",
+            "es": "Ayer estuve ocupado."
+          },
+          {
+            "ja": "あまり高くなかったです。",
+            "kana": "あまりたかくなかったです。",
+            "es": "No fue muy caro."
+          },
+          {
+            "ja": "天気がよかったです。",
+            "kana": "てんきがよかったです。",
+            "es": "Hizo buen tiempo."
+          }
+        ],
+        "avisos": [
+          "Nunca «高いでした»: el adjetivo い lleva su propio pasado, 高かったです.",
+          "いい nunca es «いかった», siempre よかった."
+        ]
+      },
+      {
+        "titulo": "好き y 嫌い — lo que te gusta va con が",
+        "resumen": "Son adjetivos な, y el objeto de tu gusto se marca con が, no con を.",
+        "explicacion": [
+          "好き («que gusta») y 嫌い («que desagrada») son adjetivos な, no verbos. Por eso van con です y no con ます.",
+          "Lo que te gusta se marca con が: 私は魚が好きです. La lógica japonesa es «en cuanto a mí, el pescado es agradable».",
+          "Para intensificar se usan 大好き («encantar») y 大嫌い («odiar»)."
+        ],
+        "estructura": [
+          "[persona] は [cosa] が 好きです / 嫌いです"
+        ],
+        "ejemplos": [
+          {
+            "ja": "私は魚が好きです。",
+            "kana": "わたしはさかながすきです。",
+            "es": "Me gusta el pescado."
+          },
+          {
+            "ja": "犬はあまり好きじゃないです。",
+            "kana": "いぬはあまりすきじゃないです。",
+            "es": "No me gustan mucho los perros."
+          },
+          {
+            "ja": "日本の音楽が大好きです。",
+            "kana": "にほんのおんがくがだいすきです。",
+            "es": "Me encanta la música japonesa."
+          }
+        ],
+        "avisos": [
+          "Es が, no を: «魚を好きです» es incorrecto.",
+          "嫌い acaba en い pero es adjetivo な: 嫌いな食べ物, 嫌いでした."
+        ]
+      },
+      {
+        "titulo": "～ましょう y ～ましょうか — proponer",
+        "resumen": "«Hagamos…» y «¿te ayudo?».",
+        "explicacion": [
+          "ましょう sustituye a ます y propone hacer algo juntos, dando por hecho que ambos estáis de acuerdo: 行きましょう, «vamos».",
+          "ましょうか añade か y suaviza: puede ser «¿lo hacemos?» o, muy a menudo, un ofrecimiento: 手伝いましょうか, «¿te ayudo?».",
+          "Frente a ませんか (lección 3), que consulta si te apetece, ましょう ya empuja a la acción."
+        ],
+        "estructura": [
+          "[verbo]ましょう   →  «hagamos…»",
+          "[verbo]ましょうか →  «¿lo hacemos?» / «¿te ayudo?»"
+        ],
+        "ejemplos": [
+          {
+            "ja": "一緒に行きましょう。",
+            "kana": "いっしょにいきましょう。",
+            "es": "Vamos juntos."
+          },
+          {
+            "ja": "荷物を持ちましょうか。",
+            "kana": "にもつをもちましょうか。",
+            "es": "¿Te llevo el equipaje?"
+          },
+          {
+            "ja": "そろそろ帰りましょう。",
+            "kana": "そろそろかえりましょう。",
+            "es": "Vámonos ya a casa."
+          }
+        ]
+      },
+      {
+        "titulo": "Contadores",
+        "resumen": "Los números no van solos: cada tipo de cosa tiene su contador.",
+        "explicacion": [
+          "En japonés no se dice «dos libros» sino «libros, dos-unidades-planas». El contador depende de la forma o naturaleza del objeto.",
+          "El contador genérico 〜つ (ひとつ, ふたつ, みっつ…) sirve para casi todo hasta diez y es el salvavidas cuando dudas.",
+          "Los más frecuentes: 〜人 (personas), 〜枚 (cosas planas), 〜本 (cosas alargadas), 〜冊 (libros), 〜匹 (animales pequeños), 〜台 (máquinas).",
+          "Varios tienen lecturas irregulares: 一人 (ひとり), 二人 (ふたり), 一本 (いっぽん), 三本 (さんぼん)."
+        ],
+        "estructura": [
+          "[cosa] を [número + contador] ください"
+        ],
+        "ejemplos": [
+          {
+            "ja": "りんごを三つください。",
+            "kana": "りんごをみっつください。",
+            "es": "Tres manzanas, por favor."
+          },
+          {
+            "ja": "学生が二人います。",
+            "kana": "がくせいがふたりいます。",
+            "es": "Hay dos estudiantes."
+          },
+          {
+            "ja": "切手を五枚買いました。",
+            "kana": "きってをごまいかいました。",
+            "es": "Compré cinco sellos."
+          }
+        ],
+        "avisos": [
+          "一人 y 二人 son irregulares: ひとり y ふたり, no «いちにん» ni «ににん»."
+        ]
+      }
+    ],
+    "L6": [
+      {
+        "titulo": "La forma て",
+        "resumen": "La forma más versátil del japonés: de ella cuelgan decenas de estructuras.",
+        "explicacion": [
+          "La forma て no tiene significado propio ni marca tiempo: es una forma de enlace sobre la que se montan muchas construcciones.",
+          "En el Grupo 2 es inmediata: se quita る y se añade て. 食べる → 食べて.",
+          "En el Grupo 1 depende de la última sílaba, y ahí está toda la dificultad. Conviene aprenderse el patrón por bloques (ver la tabla).",
+          "する → して y 来る → 来て. Y hay una excepción muy usada: 行く → 行って, no «行いて»."
+        ],
+        "estructura": [
+          "Grupo 2: 食べる → 食べて",
+          "Grupo 1: según la terminación (ver tabla)",
+          "Irregulares: する → して · 来る → 来て · 行く → 行って"
+        ],
+        "tabla": {
+          "cabecera": [
+            "Terminación",
+            "Cambia a",
+            "Ejemplo"
+          ],
+          "filas": [
+            [
+              "う・つ・る",
+              "って",
+              "買う → 買って"
+            ],
+            [
+              "む・ぶ・ぬ",
+              "んで",
+              "飲む → 飲んで"
+            ],
+            [
+              "く",
+              "いて",
+              "書く → 書いて"
+            ],
+            [
+              "ぐ",
+              "いで",
+              "泳ぐ → 泳いで"
+            ],
+            [
+              "す",
+              "して",
+              "話す → 話して"
+            ],
+            [
+              "行く (excep.)",
+              "って",
+              "行く → 行って"
+            ]
+          ]
+        },
+        "ejemplos": [
+          {
+            "ja": "朝ご飯を食べて、会社に行きます。",
+            "kana": "あさごはんをたべて、かいしゃにいきます。",
+            "es": "Desayuno y voy a la empresa."
+          },
+          {
+            "ja": "ちょっと待ってください。",
+            "kana": "ちょっとまってください。",
+            "es": "Espera un momento, por favor."
+          },
+          {
+            "ja": "音楽を聞いて、寝ます。",
+            "kana": "おんがくをきいて、ねます。",
+            "es": "Escucho música y me duermo."
+          }
+        ],
+        "avisos": [
+          "行く es la gran excepción: 行って, no «行いて»."
+        ]
+      },
+      {
+        "titulo": "～てください — pedir algo",
+        "resumen": "La petición cortés estándar.",
+        "explicacion": [
+          "Añadiendo ください a la forma て se pide algo de manera educada: 待ってください, «espere, por favor».",
+          "Es una petición normal y corriente, no especialmente humilde. Para pedidos más formales existen fórmulas más largas que se ven más adelante.",
+          "Con un verbo negativo se usa ないでください: 心配しないでください, «no se preocupe»."
+        ],
+        "estructura": [
+          "[verbo て] ください"
+        ],
+        "ejemplos": [
+          {
+            "ja": "ここに名前を書いてください。",
+            "kana": "ここになまえをかいてください。",
+            "es": "Escriba su nombre aquí, por favor."
+          },
+          {
+            "ja": "もう一度言ってください。",
+            "kana": "もういちどいってください。",
+            "es": "Dígalo otra vez, por favor."
+          },
+          {
+            "ja": "ちょっと待ってください。",
+            "kana": "ちょっとまってください。",
+            "es": "Espere un momento."
+          }
+        ]
+      },
+      {
+        "titulo": "～てもいいです y ～てはいけません — permiso y prohibición",
+        "resumen": "Pedir permiso y prohibir, ambos sobre la forma て.",
+        "explicacion": [
+          "てもいいです da o pide permiso: 写真を撮ってもいいですか, «¿puedo hacer fotos?».",
+          "てはいけません prohíbe con firmeza: ここで写真を撮ってはいけません, «aquí no se pueden hacer fotos».",
+          "En el habla cotidiana ては se contrae a ちゃ: 撮っちゃいけません. Conviene reconocerlo aunque de momento uses la forma completa.",
+          "Para negar el permiso de forma suave se prefiere ちょっと… o だめです, menos tajantes que いけません."
+        ],
+        "estructura": [
+          "[verbo て] もいいです(か)   →  permiso",
+          "[verbo て] はいけません     →  prohibición"
+        ],
+        "ejemplos": [
+          {
+            "ja": "ここに座ってもいいですか。",
+            "kana": "ここにすわってもいいですか。",
+            "es": "¿Puedo sentarme aquí?"
+          },
+          {
+            "ja": "写真を撮ってもいいです。",
+            "kana": "しゃしんをとってもいいです。",
+            "es": "Puede hacer fotos."
+          },
+          {
+            "ja": "ここでたばこを吸ってはいけません。",
+            "kana": "ここでたばこをすってはいけません。",
+            "es": "Aquí no se puede fumar."
+          }
+        ],
+        "avisos": [
+          "てはいけません es bastante tajante: entre iguales suele sonar demasiado duro."
+        ]
+      },
+      {
+        "titulo": "Encadenar acciones con て",
+        "resumen": "La forma て une frases: «hago esto, y luego esto otro».",
+        "explicacion": [
+          "Para unir varias acciones, todas las intermedias van en forma て y solo la última marca el tiempo y la cortesía.",
+          "El orden importa: se entiende que las acciones ocurren en la secuencia en que las dices.",
+          "Sirve también para encadenar descripciones: 安くておいしいです, «es barato y está bueno»."
+        ],
+        "estructura": [
+          "[verbo て]、[verbo て]、[verbo final ます/ました]"
+        ],
+        "ejemplos": [
+          {
+            "ja": "朝起きて、シャワーを浴びて、朝ご飯を食べます。",
+            "kana": "あさおきて、シャワーをあびて、あさごはんをたべます。",
+            "es": "Me levanto, me ducho y desayuno."
+          },
+          {
+            "ja": "この店は安くておいしいです。",
+            "kana": "このみせはやすくておいしいです。",
+            "es": "Esta tienda es barata y está buena."
+          },
+          {
+            "ja": "家に帰って、すぐ寝ました。",
+            "kana": "いえにかえって、すぐねました。",
+            "es": "Volví a casa y me dormí enseguida."
+          }
+        ],
+        "avisos": [
+          "Solo el último verbo lleva el tiempo: no digas «食べました、行きました» para una secuencia."
+        ]
+      },
+      {
+        "titulo": "～から y ～ので — dar la razón",
+        "resumen": "Ambos significan «porque»; ので es más suave.",
+        "explicacion": [
+          "から expresa la razón de forma directa y va detrás de una frase completa: 忙しいですから、行きません.",
+          "ので es más suave y explicativo, y suena algo más cortés. Es el que se prefiere al justificarse ante alguien.",
+          "Con ので, un sustantivo o adjetivo な necesita な delante: 静かなので, 病気なので. Con から se puede usar la forma cortés directamente.",
+          "En japonés la razón va SIEMPRE antes de la consecuencia, al revés que en español, donde puedes decir «no voy porque estoy ocupado»."
+        ],
+        "estructura": [
+          "[razón] から、[consecuencia]",
+          "[razón] ので、[consecuencia]"
+        ],
+        "ejemplos": [
+          {
+            "ja": "疲れているので、早く寝ます。",
+            "kana": "つかれているので、はやくねます。",
+            "es": "Como estoy cansado, me acuesto pronto."
+          },
+          {
+            "ja": "忙しいですから、行きません。",
+            "kana": "いそがしいですから、いきません。",
+            "es": "Como estoy ocupado, no voy."
+          },
+          {
+            "ja": "病気なので、学校を休みます。",
+            "kana": "びょうきなので、がっこうをやすみます。",
+            "es": "Como estoy enfermo, falto a clase."
+          }
+        ],
+        "avisos": [
+          "La razón va delante: «行きませんから忙しいです» invierte el sentido.",
+          "Con ので, sustantivos y adjetivos な llevan な: 病気なので, no «病気ので»."
+        ]
+      }
+    ]
+  }
+}

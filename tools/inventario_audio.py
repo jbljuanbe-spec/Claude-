@@ -62,6 +62,14 @@ def main(salida='data/audio/manifest.json'):
         for f in k.get('frases', []):
             add(f.get('ja'))
 
+    # --- data/teoria.json ---
+    # Los ejemplos de cada punto gramatical llevan botón de audio.
+    teoria = cargar('data/teoria.json') or {}
+    for puntos in (teoria.get('lecciones') or {}).values():
+        for pt in puntos:
+            for e in pt.get('ejemplos', []):
+                add(e.get('ja'))
+
     # --- bancos de ejercicios ---
     ej_base = cargar('data/ejercicios.json') or {}
     ej_cur = cargar('data/ejercicios_japones.json') or {}

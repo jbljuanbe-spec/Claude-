@@ -26,11 +26,19 @@ ni los JSON de contenido. Se puede borrar entera sin que Kotoba se entere.
 ### Media y nivel
 
 Tu **media** es el número grande de la barra superior, como el OVR de un juego de fútbol.
-Sube sola cada temporada por experiencia: rápido de crío, más despacio a partir de los 22 y
-casi nada pasados los 26. Cada partida tiene un potencial distinto y **el juego nunca te lo
-dice**: simplemente notarás que un año dejas de crecer. Algunos eventos concretos (el
-programa del Profesor, capturar un legendario, invertir en instalaciones) lo empujan hacia
-arriba, y ahí está la gracia.
+**No hay un techo calculado al empezar la partida**: cada temporada se tira un crecimiento
+propio, con mucha varianza, y los años buenos y malos se acumulan. Dos carreras que empiezan
+igual pueden separarse quince puntos: una acaba en 75 y otra en 90.
+
+De crío se dan saltos, a partir de los 22 cuesta más, y pasados los treinta un buen año es
+no perder nada. Lo único que se hereda entre temporadas es el **talento**, un multiplicador
+que suben ciertos eventos (el programa del Profesor, el coaching de Riopaser, capturar un
+legendario): no te da media hoy, te hace crecer más cada año a partir de ahí.
+
+Repartido en tramos, una carrera típica acaba así: en torno al **42%** entre 65 y 75 (lo
+más habitual), un **31%** entre 75 y 83, un **12%** entre 83 y 90, y solo un **7%** pasa de
+90. El rango de Leyenda Inmortal exige justamente eso: media de 90 o más, además del
+palmarés.
 
 Tus Pokémon tienen su propio **nivel del 1 al 100**, que sube cada temporada según tu media,
 su vínculo contigo y cómo entrenéis. La fuerza en combate sale de combinar el potencial de

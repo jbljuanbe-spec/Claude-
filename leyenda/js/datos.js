@@ -271,7 +271,7 @@ export const LOGROS = [
   { id: 'nemesis', emoji: '⚔️', nombre: 'El duelo eterno', desc: e => `Le ganaste la carrera a ${e.rival.nombre} por ${e.rival.derrotasTuyas}-${e.rival.victoriasSuyas}.`, cond: e => e.rival.derrotasTuyas > e.rival.victoriasSuyas && e.rival.derrotasTuyas >= 3 },
   { id: 'maquina', emoji: '💥', nombre: 'La máquina', desc: e => `${e.victorias} victorias en la carrera.`, cond: e => e.victorias >= 300 },
   { id: 'invicto', emoji: '📈', nombre: 'Récord impecable', desc: e => `${e.victorias}-${e.derrotas}: ganaste el triple de lo que perdiste.`, cond: e => e.victorias > e.derrotas * 3 },
-  { id: 'techo', emoji: '🚀', nombre: 'Techo roto', desc: e => `Alcanzaste una media de ${Math.round(e.media)}. Muy pocos llegan ahí.`, cond: e => e.media >= 88 },
+  { id: 'techo', emoji: '🚀', nombre: 'Los noventa', desc: e => `Alcanzaste una media de ${Math.round(e.media)}. Ahí arriba no hay casi nadie.`, cond: e => e.media >= 90 },
   { id: 'maestroobj', emoji: '🎒', nombre: 'Mochila legendaria', desc: e => `Reuniste ${e.objetos.length} objetos de entrenamiento.`, cond: e => e.objetos.length >= 5 },
   { id: 'santuario', emoji: '🏞️', nombre: 'El santuario', desc: () => 'Fundaste un refugio para Pokémon retirados.', cond: e => !!e.flags.santuario },
   { id: 'maestro', emoji: '🌱', nombre: 'Maestro de una generación', desc: () => 'Formaste al que vino después de ti.', cond: e => !!e.flags.discipulo },
@@ -280,14 +280,15 @@ export const LOGROS = [
 
 // ── Rangos finales por puntuación de legado ─────────────────────────────────
 export const RANGOS = [
-  { min: 1360, titulo: 'Leyenda Inmortal',      emoji: '🌟', desc: 'Tu nombre está en los libros de texto. Los niños juegan a ser tú.' },
-  { min: 1100,  titulo: 'Maestro Pokémon',       emoji: '👑', desc: 'Llegaste a la cima y te quedaste allí. Nadie discute tu lugar.' },
-  { min: 900,  titulo: 'Campeón Regional',      emoji: '🏆', desc: 'Levantaste la copa. La región entera coreó tu nombre.' },
-  { min: 820,  titulo: 'Élite del Circuito',    emoji: '🥇', desc: 'Uno de los grandes de tu generación, aunque el título máximo se te resistió.' },
-  { min: 730,  titulo: 'Profesional Respetado', emoji: '🎖️', desc: 'Viviste de esto con dignidad. Muchos matarían por tu carrera.' },
-  { min: 610,  titulo: 'Veterano de Circuito',  emoji: '🎽', desc: 'Aguantaste años ahí arriba sin llegar a lo más alto.' },
+  // Leyenda pide llegar de verdad a los noventa, no solo acumular trofeos
+  { min: 1790, minMedia: 90, titulo: 'Leyenda Inmortal', emoji: '🌟', desc: 'Media de 90 y una vitrina imposible. Tu nombre está en los libros de texto.' },
+  { min: 1380,  titulo: 'Maestro Pokémon',       emoji: '👑', desc: 'Llegaste a la cima y te quedaste allí. Nadie discute tu lugar.' },
+  { min: 1020,  titulo: 'Campeón Regional',      emoji: '🏆', desc: 'Levantaste la copa. La región entera coreó tu nombre.' },
+  { min: 855,  titulo: 'Élite del Circuito',    emoji: '🥇', desc: 'Uno de los grandes de tu generación, aunque el título máximo se te resistió.' },
+  { min: 758,  titulo: 'Profesional Respetado', emoji: '🎖️', desc: 'Viviste de esto con dignidad. Muchos matarían por tu carrera.' },
+  { min: 643,  titulo: 'Veterano de Circuito',  emoji: '🎽', desc: 'Aguantaste años ahí arriba sin llegar a lo más alto.' },
   { min: 500,  titulo: 'Entrenador Sólido',     emoji: '⚡', desc: 'Buenos momentos, buen equipo, ningún titular de portada.' },
-  { min: 380,  titulo: 'Promesa Incumplida',    emoji: '🌱', desc: 'Todos decían que ibas a ser el mejor. La vida dijo otra cosa.' },
+  { min: 360,  titulo: 'Promesa Incumplida',    emoji: '🌱', desc: 'Todos decían que ibas a ser el mejor. La vida dijo otra cosa.' },
   { min: -999, titulo: 'Entrenador de Pueblo',  emoji: '🍃', desc: 'Volviste a casa. Tus Pokémon te siguen queriendo igual.' },
 ];
 

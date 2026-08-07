@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=10';
+} from './datos.js?v=11';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -55,9 +55,11 @@ export function nuevaPartida({ nombre, region, estilo, inicial, ritmo }) {
     ritmo: ritmo.id, cada: ritmo.cada,
     edad: 10, año: 1, retirado: false, causaRetiro: null,
 
-    // Media del entrenador (el "OVR"): sube con experiencia hasta su techo
+    // Media del entrenador (el "OVR"). No hay techo fijo por partida: cada
+    // temporada se tira un crecimiento con mucha varianza, así que la misma
+    // carrera puede acabar en 75 o en 90 según cómo venga dada.
     media: 42 + entero(-3, 3),
-    techo: 65 + entero(0, 20),          // potencial: solo los eventos lo mueven
+    talento: 1,                         // multiplica lo que creces; lo suben los eventos
     experiencia: 0,
 
     stats: { poder: 30, estrategia: 30, vinculo: 45, fama: 5, salud: 90, moral: 75 },
@@ -213,17 +215,20 @@ function evolucionar(estado) {
 }
 
 // ── Crecimiento de la media ──────────────────────────────────────────────────
-// Sube rápido de crío, se frena al madurar y se para al tocar tu techo.
-// Solo los eventos (con su %) pueden levantar el techo.
-export function subirTecho(estado, n) {
-  estado.techo = limitar(estado.techo + n, 30, 99);
-  return estado.techo;
+// No hay un techo calculado al empezar la partida. Cada temporada se tira un
+// crecimiento propio, con mucha varianza, y los años buenos y malos se
+// acumulan: dos carreras idénticas de inicio pueden separarse quince puntos.
+// Lo único que se hereda es el "talento", un multiplicador que suben ciertos
+// eventos (el programa del Profesor, el coaching, un legendario...).
+export function subirTalento(estado, n) {
+  estado.talento = Math.min(1.6, estado.talento + n * 0.035);
+  return estado.talento;
 }
 
 // Sube (o baja) la media ya mismo, pero marcado para deshacerse solo al cabo
 // de N temporadas: la indigestión de un experimento pasa, la sanción no.
 export function mediaTemporal(estado, delta, temporadas = 1) {
-  estado.media = limitar(Math.min(estado.techo, estado.media + delta));
+  estado.media = limitar(estado.media + delta);
   estado.temporales.push({ delta, restantes: temporadas });
 }
 
@@ -232,29 +237,40 @@ function resolverTemporales(estado) {
   estado.temporales = estado.temporales.filter(t => {
     t.restantes--;
     if (t.restantes > 0) return true;
-    estado.media = limitar(Math.min(estado.techo, estado.media - t.delta));
+    estado.media = limitar(estado.media - t.delta);
     notas.push(t.delta > 0 ? 'Se te pasa el subidón: la media vuelve a su sitio.' : 'Superado el bache, recuperas la media que habías perdido.');
     return false;
   });
   return notas;
 }
 
+// Lo que puedes crecer en bruto según la edad: de crío das saltos, pasados
+// los treinta el año bueno es no perder nada.
+function rangoPorEdad(edad) {
+  if (edad <= 15) return [2.6, 6.4];
+  if (edad <= 18) return [2.0, 5.4];
+  if (edad <= 21) return [1.2, 4.2];
+  if (edad <= 24) return [0.6, 3.2];
+  if (edad <= 27) return [0.1, 2.3];
+  if (edad <= 30) return [-0.4, 1.5];
+  return [-1.6, 0.7];
+}
+
 function crecerMedia(estado) {
   const p = pasivos(estado);
-  const margen = estado.techo - estado.media;
-  if (margen <= 0) {
-    // Ya estás en tu techo: solo queda mantenerte (y con los años, caer)
-    if (estado.edad >= 30) estado.media = limitar(estado.media - azar(0.4, 1.6));
-    return null;
-  }
-  // Factor de edad: 10-17 aprendes a toda velocidad, 25+ ya casi nada
-  const factorEdad = estado.edad <= 17 ? 1 : estado.edad <= 21 ? 0.75 : estado.edad <= 25 ? 0.45 : 0.2;
-  const base = (margen / 11) * factorEdad;
-  const bonus = 1 + p.crecimiento + (estado.stats.moral > 70 ? 0.15 : 0) + (estado.stats.salud < 45 ? -0.35 : 0);
-  const sube = Math.max(0, base * bonus * azar(0.55, 1.5));   // siempre con azar
-  estado.media = Math.min(estado.techo, estado.media + sube);
+  const [min, max] = rangoPorEdad(estado.edad);
+  // Frena solo al acercarse a 99: no es un tope de la partida, es que
+  // ganarle un punto al mejor del mundo cuesta cada vez más.
+  const freno = Math.max(0.12, Math.pow(1 - estado.media / 101, 0.85));
+  const contexto = 1 + p.crecimiento
+    + (estado.stats.moral > 70 ? 0.12 : 0)
+    + (estado.stats.salud < 45 ? -0.3 : 0);
+
+  let sube = azar(min, max) * estado.talento * contexto;
+  if (sube > 0) sube *= freno;               // el freno solo afecta a lo que sube
+  estado.media = limitar(estado.media + sube);
   estado.experiencia++;
-  return sube >= 0.35 ? sube : null;
+  return Math.abs(sube) >= 0.35 ? sube : null;
 }
 
 // ── Simulación de temporada ──────────────────────────────────────────────────
@@ -289,10 +305,10 @@ export function simularTemporada(estado) {
     subirNivel(pk, estado);
   }
 
-  // El techo existe, pero el jugador nunca lo ve: solo nota que deja de subir.
   resolverTemporales(estado).forEach(n => linea.sucesos.push(n));
   const subida = crecerMedia(estado);
-  if (subida) linea.sucesos.push(`Un año más de oficio: media ${Math.round(estado.media)} (+${subida.toFixed(1)}).`);
+  if (subida > 0) linea.sucesos.push(`Buen año de trabajo: media ${Math.round(estado.media)} (+${subida.toFixed(1)}).`);
+  else if (subida < 0) linea.sucesos.push(`Los años pesan: media ${Math.round(estado.media)} (${subida.toFixed(1)}).`);
 
   evolucionar(estado).forEach(f => linea.sucesos.push(f));
 
@@ -441,7 +457,11 @@ export function legado(estado) {
   return Math.round(pts);
 }
 
-export function rangoDe(pts) { return RANGOS.find(r => pts >= r.min) ?? RANGOS[RANGOS.length - 1]; }
+// Un rango puede exigir además una media mínima: ser Leyenda no va solo de
+// palmarés, hay que haber llegado de verdad ahí arriba.
+export function rangoDe(pts, media = 0) {
+  return RANGOS.find(r => pts >= r.min && media >= (r.minMedia ?? 0)) ?? RANGOS[RANGOS.length - 1];
+}
 
 export function logrosDe(estado) {
   return LOGROS.filter(l => { try { return l.cond(estado); } catch { return false; } })

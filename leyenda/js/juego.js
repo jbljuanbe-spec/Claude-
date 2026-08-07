@@ -2,13 +2,13 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=10';
+} from './datos.js?v=11';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
-} from './motor.js?v=10';
-import { siguienteEvento } from './eventos.js?v=10';
-import { descargarTarjeta } from './tarjeta.js?v=10';
+} from './motor.js?v=11';
+import { siguienteEvento } from './eventos.js?v=11';
+import { descargarTarjeta } from './tarjeta.js?v=11';
 
 const app = document.getElementById('app');
 let estado = null;
@@ -201,8 +201,9 @@ function pintarFicha() {
         <div class="pie"><span>Media ${media}</span><span>100</span></div>
       </div>
       <p style="font-size:12.5px;color:var(--suave);margin-top:8px">
-        La media sube con la experiencia: rápido de joven, más despacio con los años.
-        Hasta dónde puedes llegar, eso ya se verá.
+        Cada temporada creces lo que toque: los años buenos y los malos se acumulan y
+        no hay dos carreras iguales. De joven se dan saltos; pasados los treinta, un
+        buen año es no perder nada.
       </p>
       <div class="barras" style="margin-top:14px">
         ${BARRAS.map(([k, n, c]) => `<div class="barra">
@@ -477,7 +478,7 @@ const TEXTO_RETIRO = {
 
 function pantallaFinal() {
   const pts = legado(estado);
-  const rango = rangoDe(pts);
+  const rango = rangoDe(pts, estado.media);
   const premios = logrosDe(estado);
   const equipo = estado.equipo.filter(p => !p.retirado).sort((a, b) => b.nivel - a.nivel).slice(0, 6);
   const apodo = apodoDe(estado);

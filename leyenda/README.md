@@ -48,6 +48,13 @@ nivel 90.
   Cintia, Lance o Lionel; y los gimnasios los llevan Brock, Misty, Erika, Fantina o Kabu.
 - **Cambiar de región es una decisión más**: te ofrecen el gimnasio de tu región para
   hacerte líder, o te pagan por irte a competir a otra liga (con su riesgo de no adaptarte).
+- **Guiños a la escena competitiva española**: la dieta de Sekiam, el manifiesto de Kasty
+  contra la organización del circuito, el dualocke con Folagor, la Creators Cup de Victory
+  Road, el speed tie que te cuesta una final, perseguir puntos por media Europa para entrar
+  al Mundial y el expediente por retuitear un meme. Todo ficción y cariño: los creadores
+  salen como cameos amables, nunca haciendo nada reprochable.
+- **Ganar se celebra**: al llevarte un título o completar las ocho medallas salta una copa
+  dibujada, con la cinta del color del torneo y confeti.
 
 Ninguna partida se repite: los eventos son aleatorios con pesos por etapa de carrera, y hay
 condiciones que solo se cumplen si tu carrera ha ido por cierto camino.

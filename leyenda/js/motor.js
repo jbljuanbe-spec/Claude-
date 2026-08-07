@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=3';
+} from './datos.js?v=5';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -252,7 +252,7 @@ export function simularTemporada(estado) {
   const p = pasivos(estado);
   estado.año++; estado.edad++;
 
-  const linea = { año: estado.año, edad: estado.edad, etapa, sucesos: [], destacado: null };
+  const linea = { año: estado.año, edad: estado.edad, etapa, sucesos: [], destacado: null, trofeo: null };
 
   // Desgaste natural, amortiguado por los objetos que llevas
   s.salud = limitar(s.salud - entero(estado.edad > 26 ? 2 : 0, estado.edad > 26 ? 6 : 3)
@@ -311,6 +311,7 @@ export function simularTemporada(estado) {
     if (estado.medallas === 8 && !estado.flags.ochoMedallas) {
       estado.flags.ochoMedallas = true;
       hito(estado, '🎖️', `Las 8 medallas de ${estado.regionNombre}`);
+      linea.trofeo = { tipo: 'medallas', nombre: `Las 8 medallas de ${estado.regionNombre}`, año: estado.año };
       s.fama = limitar(s.fama + rango(6, 14));
     }
   } else if (rendimiento > 84 && etapa !== 'novato') {
@@ -319,7 +320,7 @@ export function simularTemporada(estado) {
     if (etapa === 'cima') estado.mundiales++; else estado.ligasGanadas++;
     s.fama = limitar(s.fama + rango(9, 18)); s.moral = limitar(s.moral + rango(8, 16));
     linea.destacado = `🏆 ¡GANAS ${titulo.toUpperCase()}!`;
-    linea.sucesos.push(linea.destacado);
+    linea.trofeo = { tipo: etapa === 'cima' ? 'mundial' : 'liga', nombre: titulo, año: estado.año };
     hito(estado, '🏆', `${titulo} (año ${estado.año})`);
   } else if (rendimiento > 70) {
     linea.sucesos.push(`Finalista en ${torneo}. Tan cerca.`);

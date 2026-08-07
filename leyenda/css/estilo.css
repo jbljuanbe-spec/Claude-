@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=3') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=3') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=5') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=5') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=3') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=3') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=5') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=5') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=3') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=5') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -314,6 +314,12 @@ input[type=text]:focus { border-color: var(--azul); }
 .ruleta-pista .seg.bien { background: var(--verde); }
 .ruleta-pista .seg.mal { background: var(--rojo); }
 .ruleta-pista.en-bien .seg.bien, .ruleta-pista.en-mal .seg.mal { filter: brightness(1.35); }
+/* Al parar, el tramo ganador se queda encendido y el otro se apaga:
+   lo que marca la aguja es lo que se aplica, sin ambigüedad. */
+.ruleta-pista.gana-bien .seg.bien, .ruleta-pista.gana-mal .seg.mal {
+  filter: brightness(1.15); box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .55);
+}
+.ruleta-pista.gana-bien .seg.mal, .ruleta-pista.gana-mal .seg.bien { filter: grayscale(.75) opacity(.45); }
 .ruleta-pista .aguja {
   position: absolute; top: -3px; bottom: -3px; width: 4px; margin-left: -2px;
   background: var(--tinta); border: 1.5px solid #fff; border-radius: 3px;
@@ -327,3 +333,45 @@ input[type=text]:focus { border-color: var(--azul); }
 .ruleta.salio-bien .ruleta-estado { color: var(--verde); }
 .ruleta.salio-mal .ruleta-estado { color: var(--rojo); }
 .opcion-evento .ruleta-pista { margin-top: 6px; }
+
+
+/* ── Celebración de título ───────────────────────────────── */
+.trofeo {
+  position: relative; overflow: hidden; text-align: center;
+  border: 2px solid var(--cinta);
+  background: radial-gradient(120% 90% at 50% 0%, #fffdf4, #fff 55%);
+  animation: sale-copa .5s cubic-bezier(.18, 1.2, .4, 1) both;
+}
+@keyframes sale-copa {
+  from { opacity: 0; transform: scale(.82) translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.trofeo .copa {
+  width: 104px; height: 122px; display: block; margin: 4px auto 6px;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .18));
+  animation: brilla-copa 2.4s ease-in-out infinite;
+}
+@keyframes brilla-copa {
+  0%, 100% { transform: rotate(-2.5deg) translateY(0); }
+  50% { transform: rotate(2.5deg) translateY(-4px); }
+}
+.trofeo-et {
+  font-family: var(--f-mini); font-size: 10px; letter-spacing: 1.3px;
+  color: var(--cinta);
+}
+.trofeo-nombre { font-family: var(--f-display); font-size: 21px; font-weight: 700; margin-top: 4px; }
+.trofeo-anio { font-size: 12.5px; color: var(--suave); }
+
+.confeti { position: absolute; inset: 0; pointer-events: none; }
+.confeti i {
+  position: absolute; top: -14px; width: 7px; height: 12px; border-radius: 2px;
+  animation: cae-confeti 1.9s linear both;
+}
+@keyframes cae-confeti {
+  0% { transform: translateY(-20px) rotate(0); opacity: 1; }
+  100% { transform: translateY(260px) rotate(520deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trofeo, .trofeo .copa, .confeti i { animation: none; }
+  .confeti { display: none; }
+}

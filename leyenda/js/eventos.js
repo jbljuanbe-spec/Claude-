@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTecho, mudarse,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=3';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=3';
+} from './motor.js?v=5';
+import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=5';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -30,6 +30,13 @@ const activos = e => e.equipo.filter(p => !p.retirado);
 const masFuerte = e => activos(e).slice().sort((a, b) => poderPokemon(b) - poderPokemon(a))[0];
 const efecto = (txt, res) => (res ? `${txt}\n\n▸ ${res}` : txt);
 const objeto = (e, id) => { const o = darObjeto(e, id); return o ? `Consigues ${o.nombre}.` : ''; };
+
+// Mueve el nivel de todo el equipo (grabar contenido desentrena, un campus intensivo sube)
+function nivelEquipo(e, delta) {
+  const eq = activos(e);
+  for (const p of eq) p.nivel = Math.max(1, Math.min(100, p.nivel + delta));
+  return eq.length ? `${delta > 0 ? '+' : ''}${delta} de nivel a todo el equipo.` : '';
+}
 
 function lesionar(e, p) {
   if (!p) return '';
@@ -481,6 +488,127 @@ export const EVENTOS = [
       { txt: 'Retirarte ahora, en lo alto', sub: 'Tú decides cuándo.',
         efecto: e => { e.flags.retiroElegido = true; hito(e, '🎬', 'Se retiró en la cima, por decisión propia');
           return efecto('Anuncias la retirada en rueda de prensa. Sin lesiones, sin declive público.', m(e, { fama: [12, 20], moral: [16, 26] })); } },
+    ],
+  },
+
+  // ── COMUNIDAD COMPETITIVA ──────────────────────────────────────────────────
+  // Guiños a la escena VGC española. Todo es ficción y cariño: los nombres
+  // aparecen como cameos amables, nunca haciendo nada reprochable.
+  {
+    id: 'sekiam_dieta', etapas: ['liga', 'pro', 'cima'], peso: 15, unico: true,
+    titulo: 'Sekiam te habla de la dieta',
+    texto: () => 'Coincidís en la sala de espera de un regional. Sekiam lleva un táper y una teoría: que se rinde mejor comiendo distinto, que él lleva un año probándolo y que a ver si te atreves.',
+    opciones: [
+      { txt: 'Hacerte vegano un año', sub: 'Probar en serio, sin trampas.', icono: 'oran', riesgo: 0.6,
+        efecto: (e, ok) => ok
+          ? efecto('Legumbres, planificación y cero resacas de torneo. Llegas a las finales con la cabeza mucho más despejada.', m(e, { salud: [8, 15], media: [2, 5], moral: [3, 8] }))
+          : efecto('Lo llevas fatal: te faltan fuerzas en las rondas largas y acabas dejándolo en marzo.', m(e, { media: [-4, -1], salud: [-8, -3], moral: [-6, -2] })) },
+      { txt: 'Copiarle solo lo del descanso', sub: 'Quedarte con lo fácil.',
+        efecto: e => efecto('Te llevas la parte de dormir ocho horas y cenar pronto. Menos épico, pero funciona.', m(e, { salud: [4, 9], estrategia: [1, 4] })) },
+      { txt: 'Reírte y pedir un kebab', sub: 'Cada uno a lo suyo.',
+        efecto: e => efecto('Cenáis juntos igual y os reís mucho. Al año siguiente él sigue con el táper y tú con el kebab.', m(e, { moral: [4, 9], salud: [-4, -1] })) },
+    ],
+  },
+  {
+    id: 'kasty_manifiesto', etapas: ['pro', 'cima', 'veterano'], peso: 14, unico: true,
+    cond: e => e.stats.fama >= 30,
+    titulo: 'Kasty pasa el manifiesto',
+    texto: () => 'Los jugadores están hartos: viajes pagados de su bolsillo, premios que no compensan y un calendario decidido sin preguntar a nadie. Kasty ha escrito un manifiesto pidiendo cambios a la organización del circuito y quiere tu firma.',
+    opciones: [
+      { txt: 'Firmar y dar la cara', sub: 'Que se te vea en la foto.', riesgo: 0.55,
+        efecto: (e, ok) => { e.flags.sindicalista = true;
+          if (ok) { hito(e, '✊', 'Firmó el manifiesto que cambió el circuito');
+            return efecto('El manifiesto se hace enorme y la organización cede en la mitad de los puntos. Los jugadores no lo olvidan.', m(e, { fama: [12, 22], moral: [10, 18] })); }
+          return efecto('La organización no mueve un dedo y de repente tu nombre aparece menos en las invitaciones.', m(e, { fama: [-9, -3], moral: [-9, -4], dinero: -rango(15000, 40000) })); } },
+      { txt: 'Firmar sin publicarlo', sub: 'Apoyo sí, foto no.',
+        efecto: e => efecto('Tu firma está ahí, pero no sales en ningún vídeo. Kasty te lo agradece igual.', m(e, { moral: [3, 8], fama: [1, 3] })) },
+      { txt: 'No firmar', sub: 'Tú a competir.',
+        efecto: e => efecto('Prefieres no meterte. Algunos compañeros tardan meses en volver a hablarte del tema.', m(e, { moral: [-6, -2], estrategia: [1, 4] })) },
+    ],
+  },
+  {
+    id: 'retuit', etapas: ['liga', 'pro', 'cima'], peso: 13, unico: true,
+    titulo: 'El retuit del mono bomba',
+    texto: () => 'Son las dos de la mañana y le das retuit al meme del mono bomba que ha subido LeN. A la mañana siguiente el comité de conducta te ha abierto expediente por "difundir contenido inapropiado". Por un meme.',
+    opciones: [
+      { txt: 'Defenderte en el expediente', sub: 'Es un meme, señores.', riesgo: 0.2,
+        efecto: (e, ok) => ok
+          ? efecto('Contra todo pronóstico, el comité archiva el expediente. Media comunidad celebra la sentencia como propia.', m(e, { fama: [8, 16], moral: [8, 15] }))
+          : (e.flags.sancionado = true, e.flags.sancionadoAños = 1, e.flags.exsancionado = true,
+             efecto('Un año de sanción por un mono. La comunidad flipa, tú también, pero la sanción es firme.', m(e, { fama: [3, 9], moral: [-16, -8] }))) },
+      { txt: 'Borrar y pedir perdón', sub: 'Tragar y seguir.',
+        efecto: e => efecto('Borras el retuit y publicas un comunicado que no se cree nadie. El expediente se queda en advertencia.', m(e, { moral: [-8, -3], fama: [-4, -1] })) },
+      { txt: 'Doblar la apuesta', sub: 'Ponerlo de foto de perfil.', riesgo: 0.35,
+        efecto: (e, ok) => { if (ok) { hito(e, '🐒', 'El del mono bomba');
+            return efecto('El mono bomba se convierte en tu marca personal. Vendes camisetas. El comité se rinde.', m(e, { fama: [16, 28], dinero: [20000, 60000], moral: [8, 15] })); }
+          e.flags.sancionado = true; e.flags.sancionadoAños = 1; e.flags.exsancionado = true;
+          return efecto('Dos años de expediente y uno de sanción. Eso sí, tu foto de perfil sigue intacta.', m(e, { fama: [6, 12], moral: [-13, -6] })); } },
+    ],
+  },
+  {
+    id: 'folagor_dualocke', etapas: ['liga', 'pro', 'cima', 'veterano'], peso: 15, unico: true,
+    titulo: 'Folagor te invita a un dualocke',
+    texto: () => 'Serie grabada, reglas de nuzlocke, dos entrenadores unidos por el mismo destino y un público enorme esperando que se muera algo. Son semanas de grabación que no vas a dedicar a entrenar.',
+    opciones: [
+      { txt: 'Grabar la serie entera', sub: 'Muchísima gente te va a ver.',
+        efecto: e => { const n = nivelEquipo(e, -20); hito(e, '🎬', 'Grabó un dualocke con Folagor');
+          return efecto(`La serie es un éxito y te conoce gente que no había visto un VGC en su vida. Tu equipo, eso sí, llega a la pretemporada oxidado. ${n}`,
+            m(e, { fama: [40, 55], dinero: [30000, 70000], media: [-4, -1] })); } },
+      { txt: 'Grabar solo un par de capítulos', sub: 'Un cameo y a entrenar.',
+        efecto: e => { nivelEquipo(e, -6);
+          return efecto('Sales en dos capítulos, la gente te descubre y sigues con tu temporada casi intacta.', m(e, { fama: [12, 22], dinero: [8000, 20000] })); } },
+      { txt: 'Decir que no', sub: 'Esta temporada va en serio.',
+        efecto: e => efecto('Le dices que este año no. Él lo entiende perfectamente y te desea suerte en directo.', m(e, { media: [2, 5], estrategia: [2, 6] })) },
+    ],
+  },
+  {
+    id: 'creators_cup', etapas: ['pro', 'cima', 'veterano'], peso: 13,
+    cond: e => e.stats.fama >= 25,
+    titulo: 'Creators Cup',
+    texto: () => 'Victory Road organiza el torneo donde los creadores de contenido se mezclan con los jugadores de verdad. Reglas raras, mucho público y cero puntos de circuito en juego.',
+    opciones: [
+      { txt: 'Ir a ganarlo', sub: 'No sabes competir de otra forma.', riesgo: 0.5,
+        efecto: (e, ok) => ok
+          ? (hito(e, '🎙️', 'Ganó la Creators Cup'), efecto('Lo ganas con un equipo ridículo que preparaste en dos tardes. El clip da la vuelta a España.', m(e, { fama: [14, 24], moral: [8, 15] })))
+          : efecto('Caes en cuartos contra un creador que jugaba con un equipo monotipo. El clip también da la vuelta a España.', m(e, { fama: [6, 12], moral: [-8, -3] })) },
+      { txt: 'Ir a pasarlo bien y enseñar', sub: 'Explicar el juego a quien mira.',
+        efecto: e => efecto('Comentas tus turnos en voz alta y media grada aprende a jugar contigo. Ganas cariño, que también cuenta.', m(e, { fama: [8, 16], vinculo: [4, 9], moral: [6, 12] })) },
+      { txt: 'Quedarte preparando el regional', sub: 'Lo otro es ruido.',
+        efecto: e => efecto('Te quedas en casa haciendo cálculos mientras todos se divierten. Llegas al regional afiladísimo.', m(e, { media: [2, 6], estrategia: [5, 10], fama: [-5, -1] })) },
+    ],
+  },
+  {
+    id: 'speedtie', etapas: ['liga', 'pro', 'cima'], peso: 14,
+    titulo: 'El speed tie',
+    texto: e => `Final de un regional. Mismo Pokémon, misma velocidad, moneda al aire: si ganas el empate de velocidad, ganas el torneo. Lo pierdes. ${e.rival.nombre} levanta la copa por una tirada.`,
+    opciones: [
+      { txt: 'Rehacer el equipo entero', sub: 'Que no dependa nunca de una moneda.',
+        efecto: e => efecto('Te pasas el invierno recalculando velocidades y puntos de esfuerzo. No vuelves a perder así.', m(e, { estrategia: [9, 16], media: [1, 4], salud: [-5, -1] })) },
+      { txt: 'Aceptar que el juego es así', sub: 'Hay varianza y punto.',
+        efecto: e => efecto('Lo asumes deportivamente, felicitas en el escenario y duermes tranquilo. Casi.', m(e, { moral: [-4, 4], fama: [3, 7] })) },
+      { txt: 'Estallar en la entrevista', sub: 'Decir lo que piensas del formato.', riesgo: 0.45,
+        efecto: (e, ok) => ok
+          ? efecto('Tu discurso sobre la varianza se hace viral y abre un debate serio en la comunidad.', m(e, { fama: [12, 20], moral: [4, 9] }))
+          : efecto('Suena a mal perdedor. El clip te persigue durante temporadas.', m(e, { fama: [4, 9], moral: [-12, -6] })) },
+    ],
+  },
+  {
+    id: 'invitacion_mundial', etapas: ['pro', 'cima'], peso: 14,
+    cond: e => e.stats.fama >= 35,
+    titulo: 'Te faltan puntos para el Mundial',
+    texto: () => 'Vas a quedarte fuera del Mundial por un puñado de puntos de campeonato. La única forma de sacarlos es encadenar regionales por media Europa, pagándotelos tú.',
+    opciones: [
+      { txt: 'Gastarte los ahorros en vuelos', sub: 'Perseguir los puntos.', riesgo: 0.55,
+        efecto: (e, ok) => { const coste = rango(25000, 70000);
+          if (ok) { hito(e, '🌍', 'Se ganó la invitación al Mundial a base de vuelos');
+            return efecto('Cuatro países en seis semanas y los puntos justos. Entras en el Mundial por la puerta de atrás, pero entras.', m(e, { dinero: -coste, fama: [10, 18], media: [1, 4], salud: [-10, -4] })); }
+          return efecto('Cuatro países, cero suerte y la cuenta temblando. Te quedas fuera por dos puntos.', m(e, { dinero: -coste, moral: [-14, -7], salud: [-9, -3] })); } },
+      { txt: 'Buscar quien te patrocine el viaje', sub: 'Pedirlo sin vergüenza.', riesgo: 0.6,
+        efecto: (e, ok) => ok
+          ? efecto('Una tienda de tu ciudad te paga los vuelos a cambio de llevar su logo. Trato justo.', m(e, { fama: [6, 12], dinero: [10000, 30000], moral: [5, 11] }))
+          : efecto('Nadie responde a los correos. Te quedas en casa viendo el Mundial por Twitch.', m(e, { moral: [-11, -5], estrategia: [2, 5] })) },
+      { txt: 'Aceptar que este año no', sub: 'Guardar fuerzas y dinero.',
+        efecto: e => efecto('Te lo ahorras todo y preparas la temporada siguiente desde enero, con calma.', m(e, { media: [2, 5], salud: [6, 12], moral: [-4, -1] })) },
     ],
   },
   {

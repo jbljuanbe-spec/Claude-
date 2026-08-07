@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=14';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=14';
+} from './motor.js?v=15';
+import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=15';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -840,6 +840,22 @@ export const EVENTOS = [
       { txt: 'Agradecérselo y seguir solo', sub: 'Aprender a tu ritmo.',
         efecto: e => efecto('Le dices que prefieres equivocarte por tu cuenta. Tardas más en aprender, pero lo que aprendes es tuyo.',
           m(e, { media: [1, 4], moral: [3, 7] })) },
+    ],
+  },
+  {
+    id: 'ducha', etapas: ['liga', 'pro', 'cima'], peso: 14, unico: true,
+    titulo: 'Llevas tres días testeando',
+    texto: () => 'Sábado, pabellón lleno, y tú llevas desde el jueves encerrado probando el equipo. La ronda empieza en veinte minutos: te da justo para una ducha rápida en el hotel o para dos partidas más de prueba. Tu compañero de piso te mira y no dice nada, que ya es decir.',
+    opciones: [
+      { txt: 'Dos partidas más', sub: 'La ducha puede esperar.', riesgo: 0.65,
+        efecto: (e, ok) => ok
+          ? efecto('En esas dos partidas das con el detalle que te faltaba. Nadie te dice nada del olor, pero alguien abre una ventana.',
+              m(e, { estrategia: [6, 12], media: [1, 4], fama: [-3, -1] }))
+          : efecto('A media ronda un juez te aparta con mucha educación y te lee la parte del reglamento sobre higiene personal. Te vas del pabellón antes de terminar el torneo, y el mote te dura años.',
+              m(e, { fama: [-14, -7], moral: [-16, -8], media: [-2, -1] })) },
+      { txt: 'Ducharte y llegar decente', sub: 'Entras con lo que tengas probado.',
+        efecto: e => efecto('Llegas justo, oliendo a gel de hotel y sin ese último ajuste. Los de tu mesa lo agradecen más que tú.',
+          m(e, { media: [-2, -1], moral: [4, 9], fama: [2, 5] })) },
     ],
   },
   {

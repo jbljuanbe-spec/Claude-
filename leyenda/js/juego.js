@@ -2,14 +2,14 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=14';
+} from './datos.js?v=15';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida,
-} from './motor.js?v=14';
-import { siguienteEvento } from './eventos.js?v=14';
-import { descargarTarjeta } from './tarjeta.js?v=14';
+} from './motor.js?v=15';
+import { siguienteEvento } from './eventos.js?v=15';
+import { descargarTarjeta } from './tarjeta.js?v=15';
 
 const app = document.getElementById('app');
 let estado = null;
@@ -39,6 +39,11 @@ function pantallaInicio() {
       <div class="bolas">⚡ 🔴 ⚡</div>
       <h1>Hazte<br>con Todos</h1>
       <p class="sub">Veinte años de carrera como entrenador Pokémon.<br>Solo tomas las decisiones que importan.</p>
+      <p class="premisa">
+        Un mundo donde la Liga es un deporte profesional de verdad: empiezas con diez años
+        cazando bichos por las rutas y acabas en regionales con jueces, patrocinadores y
+        control de legalidad.
+      </p>
     </div>
 
     ${guardada ? `

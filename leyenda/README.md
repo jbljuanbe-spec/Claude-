@@ -9,6 +9,11 @@ inicial y estilo, y en un par de minutos vives veinte años de carrera a base de
 (`leyenda/`) y no comparte ni un solo fichero con ella: ni `index.html`, ni `js/`, ni `css/`,
 ni los JSON de contenido. Se puede borrar entera sin que Kotoba se entere.
 
+**La premisa**: un mundo donde la Liga es un deporte profesional de verdad. Empiezas con diez
+años cazando bichos por las rutas y acabas en regionales con jueces, patrocinadores y control
+de legalidad. Por eso la primera mitad de la carrera va de medallas y capturas, y la segunda
+de circuito, puntos de campeonato y comunidad: es un arco, no una mezcla.
+
 ## Cómo funciona
 
 1. **Creas al entrenador**: nombre, región natal (9 disponibles), Pokémon inicial de esa

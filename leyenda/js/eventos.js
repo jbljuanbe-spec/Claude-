@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTecho, mudarse,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=2';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=2';
+} from './motor.js?v=3';
+import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=3';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {

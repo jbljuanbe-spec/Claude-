@@ -2,13 +2,13 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=2';
+} from './datos.js?v=3';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
-} from './motor.js?v=2';
-import { siguienteEvento } from './eventos.js?v=2';
-import { descargarTarjeta } from './tarjeta.js?v=2';
+} from './motor.js?v=3';
+import { siguienteEvento } from './eventos.js?v=3';
+import { descargarTarjeta } from './tarjeta.js?v=3';
 
 const app = document.getElementById('app');
 let estado = null;
@@ -191,22 +191,18 @@ const BARRAS = [
 
 function pintarFicha() {
   const s = estado.stats;
-  const equipo = estado.equipo.filter(p => !p.retirado).sort((a, b) => poderPokemon(b) - poderPokemon(a));
-  const media = Math.round(estado.media), techo = Math.round(estado.techo);
+  const equipo = estado.equipo.filter(p => !p.retirado).sort((a, b) => b.nivel - a.nivel);
+  const media = Math.round(estado.media);
   document.getElementById('vista').innerHTML = `
     <div class="tarjeta">
       <div class="etiqueta-anio">Progresión</div>
       <div class="medidor-techo">
-        <div class="pista">
-          <div class="actual" style="width:${media}%"></div>
-          <div class="marca" style="left:calc(${techo}% - 1px)"></div>
-        </div>
-        <div class="pie"><span>Media ${media}</span><span>Techo ${techo}</span></div>
+        <div class="pista"><div class="actual" style="width:${media}%"></div></div>
+        <div class="pie"><span>Media ${media}</span><span>100</span></div>
       </div>
       <p style="font-size:12.5px;color:var(--suave);margin-top:8px">
-        ${media >= techo - 0.5
-          ? 'Estás en tu techo: solo un evento excepcional puede subirlo.'
-          : 'Cada temporada de experiencia te acerca a tu techo. Cuanto más mayor, más despacio.'}
+        La media sube con la experiencia: rápido de joven, más despacio con los años.
+        Hasta dónde puedes llegar, eso ya se verá.
       </p>
       <div class="barras" style="margin-top:14px">
         ${BARRAS.map(([k, n, c]) => `<div class="barra">
@@ -221,17 +217,26 @@ function pintarFicha() {
       <div class="equipo-rejilla">
         ${equipo.map(p => `<div class="carta-poke">
           ${img(p.dex)}<div class="n">${esc(p.nombre)}${p.socio ? ' ★' : ''}</div>
-          <div class="p">Poder ${Math.round(poderPokemon(p))}${p.lesionado ? ' · 🩹' : ''}</div>
+          <div class="p">Nivel ${Math.round(p.nivel)}${p.lesionado ? ' · 🩹' : ''}</div>
           ${badgesTipo(p.tipos)}</div>`).join('') || '<p class="cuerpo">Sin equipo ahora mismo.</p>'}
       </div>
     </div>
 
     <div class="tarjeta">
       <div class="etiqueta-anio">Mochila (${estado.objetos.length})</div>
-      ${estado.objetos.length ? `<div class="objetos-rejilla">
-        ${estado.objetos.map(id => { const o = POROBJETO[id]; return `<div class="objeto">
-          <img src="${iconoObjeto(o.icono)}" alt=""><span>${esc(o.nombre)}</span></div>`; }).join('')}
-      </div>` : '<p class="cuerpo" style="font-size:13.5px;color:var(--suave)">Todavía no llevas nada encima.</p>'}
+      ${estado.objetos.length ? `
+        <div class="objetos-rejilla">
+          ${estado.objetos.map(id => { const o = POROBJETO[id]; return `<div class="objeto">
+            <img src="${iconoObjeto(o.icono)}" alt="">
+            <div class="objeto-txt">
+              <span class="n">${esc(o.nombre)}</span>
+              <span class="ef">${textoPasivo(o.pasivo) || 'Recuerdo de carrera'}</span>
+            </div></div>`; }).join('')}
+        </div>
+        <div class="mochila-total">Cada temporada: ${textoPasivo(sumaPasivos()) || 'sin efecto'}</div>`
+      : `<p class="cuerpo" style="font-size:13.5px;color:var(--suave)">
+          Todavía no llevas nada. Los objetos se ganan en eventos y aplican su efecto
+          <b>cada temporada</b>: más salud, más media, más dinero o crecer más rápido.</p>`}
     </div>
 
     <div class="tarjeta">
@@ -252,6 +257,73 @@ function pintarFicha() {
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
+// ── Objetos: traducir sus pasivos a algo legible ─────────────────────────────
+const ETIQ_PASIVO = {
+  salud: 'Salud', moral: 'Moral', media: 'Media', estrategia: 'Estrategia',
+  vinculo: 'Vínculo', crecimiento: 'ritmo de mejora', suerte: 'Suerte',
+};
+
+function textoPasivo(pasivo = {}) {
+  return Object.entries(pasivo).map(([k, v]) => {
+    if (!v) return null;
+    if (k === 'dineroExtra') return `+${v.toLocaleString('es')} ₽/año`;
+    if (k === 'crecimiento') return `+${Math.round(v * 100)}% ritmo de mejora`;
+    return `${v > 0 ? '+' : ''}${v} ${ETIQ_PASIVO[k] ?? k}`;
+  }).filter(Boolean).join(' · ');
+}
+
+function sumaPasivos() {
+  const t = {};
+  for (const id of estado.objetos) {
+    for (const [k, v] of Object.entries(POROBJETO[id]?.pasivo ?? {})) t[k] = (t[k] ?? 0) + v;
+  }
+  return t;
+}
+
+// ── Ruleta de probabilidad ───────────────────────────────────────────────────
+// La barra reparte el espacio entre lo que puede salir bien y lo que puede
+// salir mal. La aguja recorre la barra, frena y se para donde toca.
+function barraProb(riesgo, grande = false) {
+  const bien = Math.round(riesgo * 100);
+  return `
+    <div class="ruleta-pista ${grande ? 'grande' : ''}">
+      <div class="seg bien" style="width:${bien}%"><span>${bien}%</span></div>
+      <div class="seg mal" style="width:${100 - bien}%"><span>${100 - bien}%</span></div>
+      <div class="aguja" style="left:50%"></div>
+    </div>`;
+}
+
+function girarRuleta(caja, riesgo, ok) {
+  return new Promise(resolve => {
+    const aguja = caja.querySelector('.aguja');
+    const pista = caja.querySelector('.ruleta-pista');
+    const estadoTxt = caja.querySelector('.ruleta-estado');
+    const bien = riesgo * 100;
+    // Destino: un punto al azar dentro del tramo que ha salido
+    const destino = ok ? azarUI(4, Math.max(6, bien - 4)) : azarUI(bien + 4, 96);
+    const vueltas = 2.4 + Math.random();          // recorridos completos antes de frenar
+    const dur = 1500 + Math.random() * 400;
+    const t0 = performance.now();
+
+    const paso = ahora => {
+      const t = Math.min(1, (ahora - t0) / dur);
+      const suave = 1 - Math.pow(1 - t, 3);        // frena al final
+      const pos = (vueltas * 100 * suave + destino) % 100;
+      aguja.style.left = `${pos}%`;
+      pista.classList.toggle('en-bien', pos <= bien);
+      pista.classList.toggle('en-mal', pos > bien);
+      if (t < 1) return requestAnimationFrame(paso);
+      aguja.style.left = `${destino}%`;
+      caja.classList.add(ok ? 'salio-bien' : 'salio-mal');
+      estadoTxt.textContent = ok ? '¡Sale bien!' : 'Sale mal…';
+      setTimeout(resolve, 620);
+    };
+    requestAnimationFrame(paso);
+  });
+}
+
+const azarUI = (a, b) => a + Math.random() * (b - a);
+
 // ── Bucle: una decisión + sus temporadas ─────────────────────────────────────
 function siguientePaso() {
   const causa = debeRetirarse(estado);
@@ -265,7 +337,6 @@ function siguientePaso() {
   const texto = typeof ev.texto === 'function' ? ev.texto(estado) : ev.texto;
   const ops = ev.opciones.filter(o => !o.cond || o.cond(estado));
 
-  const clase = p => (p >= 0.65 ? 'alta' : p >= 0.45 ? 'media' : 'baja');
   const html = `
     <div class="tarjeta">
       <div class="etiqueta-anio">Año ${estado.año} · ${estado.edad} años · ${nombreEtapa(estado.flags.etapaActual)}</div>
@@ -276,17 +347,28 @@ function siguientePaso() {
           ${o.icono ? `<img class="ico" src="${iconoObjeto(o.icono)}" alt="">` : '<span class="ico-txt">▸</span>'}
           <span class="nom">${esc(o.txt)}</span>
           ${o.sub ? `<span class="des">${esc(o.sub)}</span>` : ''}
-          ${o.riesgo != null
-            ? `<span class="prob ${clase(o.riesgo)}">${Math.round(o.riesgo * 100)}% sale bien</span>`
-            : '<span class="prob segura">Seguro</span>'}
+          ${o.riesgo != null ? barraProb(o.riesgo) : '<span class="prob segura">Sin riesgo</span>'}
         </button>`).join('')}
       </div>
     </div>`;
 
-  const elegir = v => { v.querySelector('.opciones').onclick = e => {
+  const elegir = v => { v.querySelector('.opciones').onclick = async e => {
     const b = e.target.closest('.opcion-evento'); if (!b) return;
     const op = ops[+b.dataset.i];
     const ok = op.riesgo == null ? true : dado(op.riesgo);
+
+    // Con riesgo: se gira la ruleta delante del jugador antes de saber nada
+    if (op.riesgo != null) {
+      const caja = v.querySelector('.opciones');
+      caja.outerHTML = `
+        <div class="ruleta">
+          <div class="ruleta-titulo">${esc(op.txt)}</div>
+          ${barraProb(op.riesgo, true)}
+          <div class="ruleta-estado">Girando…</div>
+        </div>`;
+      await girarRuleta(document.querySelector('.ruleta'), op.riesgo, ok);
+    }
+
     const res = String(op.efecto(estado, ok));
     const [cuerpo, efectos] = res.split('\n\n▸ ');
 
@@ -323,7 +405,7 @@ function correrTemporadas() {
       return pantallaFinal();
     }
   }
-  html += `<button class="boton-grande" id="seguir">Siguiente decisión ▸</button>`;
+  html += `<button class="boton-grande" id="seguir">Sigue tu aventura ▸</button>`;
   pintarCarrera(html, {
     añadir: true,
     enlazar: v => { v.querySelector('#seguir').onclick = siguientePaso; },
@@ -344,7 +426,7 @@ function pantallaFinal() {
   const pts = legado(estado);
   const rango = rangoDe(pts);
   const premios = logrosDe(estado);
-  const equipo = estado.equipo.filter(p => !p.retirado).sort((a, b) => poderPokemon(b) - poderPokemon(a)).slice(0, 6);
+  const equipo = estado.equipo.filter(p => !p.retirado).sort((a, b) => b.nivel - a.nivel).slice(0, 6);
   const apodo = apodoDe(estado);
 
   app.innerHTML = `<div id="vista"></div>`;
@@ -373,7 +455,7 @@ function pantallaFinal() {
       <div class="equipo-rejilla">
         ${equipo.map(p => `<div class="carta-poke">${img(p.dex)}
           <div class="n">${esc(p.nombre)}${p.socio ? ' ★' : ''}</div>
-          <div class="p">Poder ${Math.round(poderPokemon(p))}</div>${badgesTipo(p.tipos)}</div>`).join('')
+          <div class="p">Nivel ${Math.round(p.nivel)}</div>${badgesTipo(p.tipos)}</div>`).join('')
           || '<p class="cuerpo">Te retiraste sin equipo.</p>'}
       </div>
     </div>

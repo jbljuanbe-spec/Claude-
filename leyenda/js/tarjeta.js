@@ -1,7 +1,6 @@
 // Dibuja la tarjeta final en un canvas y la descarga como PNG
 // (en móvil intenta compartirla como archivo, que es lo cómodo).
-import { spriteUrl } from './datos.js?v=2';
-import { poderPokemon } from './motor.js?v=2';
+import { spriteUrl } from './datos.js?v=3';
 
 const A = 1080, ALTO = 1600;
 
@@ -96,7 +95,7 @@ export async function descargarTarjeta(estado, { pts, rango, premios, equipo, ap
     caja(c, cx + 4, y, anP - 8, 176, 16, '#ffffff', '#dfe4f0');
     if (sp) { c.imageSmoothingEnabled = false; c.drawImage(sp, cx + anP / 2 - 48, y + 8, 96, 96); }
     texto(c, equipo[i].nombre, cx + anP / 2, y + 132, { tam: 20, fuente: 'Pixelify Sans', peso: '700', centro: true, maxAncho: anP - 16 });
-    texto(c, `PODER ${Math.round(poderPokemon(equipo[i]))}`, cx + anP / 2, y + 158, { tam: 16, fuente: 'Silkscreen', color: '#8b93b0', centro: true });
+    texto(c, `NIVEL ${Math.round(equipo[i].nivel)}`, cx + anP / 2, y + 158, { tam: 16, fuente: 'Silkscreen', color: '#8b93b0', centro: true });
   });
   y += 226;
 

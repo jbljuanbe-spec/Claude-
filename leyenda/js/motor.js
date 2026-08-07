@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=2';
+} from './datos.js?v=3';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -123,9 +123,16 @@ const tiposDe = (linea, etapa) => linea.etapas[etapa].tipos ?? linea.tipos;
 
 export function crearPokemon(lineaId, opts = {}) {
   const linea = PORLINEA[lineaId];
-  const etapa = Math.min(opts.etapa ?? 0, linea.etapas.length - 1);
+  // Cada Pokémon tiene su nivel (1-100) y sus propios umbrales de evolución,
+  // así que dos Charmander de la misma partida no evolucionan a la vez.
+  const umbrales = [16 + entero(0, 5), 34 + entero(0, 8)];
+  let nivel = Math.min(100, opts.nivel ?? 5);
+  let etapa = opts.etapa ?? 0;
+  // Si nace ya crecido (un fichaje, un regalo), ajusta la etapa a su nivel
+  while (etapa < linea.etapas.length - 1 && nivel >= umbrales[etapa]) etapa++;
+  etapa = Math.min(etapa, linea.etapas.length - 1);
   return {
-    uid: uidSeq++, linea: lineaId, etapa,
+    uid: uidSeq++, linea: lineaId, etapa, nivel, umbrales,
     nombre: linea.etapas[etapa].nombre,
     dex: linea.etapas[etapa].dex,
     tipos: tiposDe(linea, etapa),
@@ -138,9 +145,24 @@ export function crearPokemon(lineaId, opts = {}) {
   };
 }
 
+// Fuerza de combate: el potencial de su etapa, aprovechado según su nivel.
+// Un Charizard de nivel 30 pega mucho menos que uno de nivel 90.
 export function poderPokemon(p) {
-  const base = PORLINEA[p.linea].etapas[p.etapa].poder;
-  return Math.max(1, base + p.forma + (p.vinculo - 40) * 0.12 - (p.lesionado ? 18 : 0));
+  const potencial = PORLINEA[p.linea].etapas[p.etapa].poder;
+  const aprovecha = 0.42 + 0.58 * ((p.nivel ?? 1) / 100);
+  return Math.max(1, potencial * aprovecha + p.forma * 0.5
+    + (p.vinculo - 40) * 0.1 - (p.lesionado ? 15 : 0));
+}
+
+// El nivel sube cada temporada: rápido al principio, muy lento cerca de 100.
+function subirNivel(p, estado) {
+  if (p.nivel >= 100) return 0;
+  const margen = 1 - p.nivel / 108;
+  const empuje = 5 + estado.media / 22 + (p.vinculo - 40) / 45
+    + (estado.flags.entrenaFuerte ? 1.5 : 0) + (estado.stats.salud < 40 ? -1.5 : 0);
+  const sube = Math.max(0.6, empuje * margen * azar(0.7, 1.35));
+  p.nivel = Math.min(100, p.nivel + sube);
+  return sube;
 }
 
 export function poderEquipo(estado) {
@@ -152,7 +174,9 @@ export function poderEquipo(estado) {
 }
 
 export function fichar(estado, lineaId, opts = {}) {
-  const p = crearPokemon(lineaId, { ...opts, año: estado.año });
+  // Lo que capturas ahora es acorde a lo avanzada que esté tu carrera
+  const nivel = opts.nivel ?? Math.min(88, entero(6, 15) + (estado.año - 1) * entero(2, 4));
+  const p = crearPokemon(lineaId, { ...opts, nivel, año: estado.año });
   estado.equipo.push(p);
   estado.capturasTotales++;
   return p;
@@ -168,23 +192,19 @@ export function capturaAleatoria(estado, { rarezaMin = 'comun', region = null } 
   return fichar(estado, pesado(pool, l => PESO_RAREZA[l.rareza]).id);
 }
 
-// Evoluciones: se narran con el nombre anterior ("Marshtomp evolucionó a Swampert")
+// Evoluciones por nivel, narradas con el nombre anterior
+// ("Marshtomp evolucionó a Swampert").
 function evolucionar(estado) {
   const frases = [];
   for (const p of estado.equipo) {
     if (p.retirado) continue;
     const linea = PORLINEA[p.linea];
-    if (p.etapa >= linea.etapas.length - 1) continue;
-    const años = estado.año - p.añoCaptura;
-    const listo = años >= (p.etapa === 0 ? 1 : 2) || p.rareza === 'legendario';
-    const empuje = (estado.media + p.vinculo) / 2;
-    const umbral = p.etapa === 0 ? 34 : 58;
-    if (listo && empuje > umbral - años * 4) {
+    while (p.etapa < linea.etapas.length - 1 && p.nivel >= p.umbrales[p.etapa]) {
       const antes = p.nombre;
       p.etapa++;
       const et = linea.etapas[p.etapa];
       p.nombre = et.nombre; p.dex = et.dex; p.tipos = tiposDe(linea, p.etapa);
-      frases.push(`${antes} evolucionó a ${p.nombre}.`);
+      frases.push(`${antes} evolucionó a ${p.nombre} (nivel ${Math.round(p.nivel)}).`);
     }
   }
   return frases;
@@ -245,13 +265,12 @@ export function simularTemporada(estado) {
     if (pk.retirado) continue;
     pk.vinculo = limitar(pk.vinculo + entero(1, 4) + (estado.estilo === 'criador' ? 2 : 0) + p.vinculo * 0.5);
     if (pk.lesionado && dado(0.5)) pk.lesionado = false;
+    subirNivel(pk, estado);
   }
 
+  // El techo existe, pero el jugador nunca lo ve: solo nota que deja de subir.
   const subida = crecerMedia(estado);
   if (subida) linea.sucesos.push(`Un año más de oficio: media ${Math.round(estado.media)} (+${subida.toFixed(1)}).`);
-  else if (estado.media >= estado.techo - 0.5 && estado.edad < 30) {
-    linea.sucesos.push(`Has tocado tu techo (${Math.round(estado.techo)}). Para crecer más hace falta algo fuera de lo normal.`);
-  }
 
   evolucionar(estado).forEach(f => linea.sucesos.push(f));
 

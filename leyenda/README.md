@@ -13,28 +13,36 @@ ni los JSON de contenido. Se puede borrar entera sin que Kotoba se entere.
 
 1. **Creas al entrenador**: nombre, región natal (9 disponibles), Pokémon inicial de esa
    región, estilo de entrenador y ritmo de partida (una decisión cada 1, 2 o 3 temporadas).
-2. **Decides**: cada evento ofrece 3 opciones en horizontal, cada una con su **probabilidad
-   de salir bien** bien visible (o "Seguro" si no hay dado). Las consecuencias siempre caen
-   dentro de un rango aleatorio, así que la misma decisión nunca da lo mismo dos veces.
+2. **Decides**: cada evento ofrece 3 opciones en horizontal. Las arriesgadas llevan una
+   **barra de ruleta** que reparte lo que puede salir bien y lo que puede salir mal (60/40,
+   45/55…). Al elegir, la ruleta **gira delante de ti** y la aguja frena donde toca. Las
+   consecuencias caen dentro de un rango aleatorio, así que nunca dan lo mismo dos veces.
 3. **Se simulan las temporadas**: torneos, medallas, títulos, duelos con tu rival y dinero.
-   Tus Pokémon evolucionan solos y se narra quién evolucionó en quién.
+   Tus Pokémon **suben de nivel** (1-100, como en los juegos) y evolucionan al alcanzar su
+   propio umbral, que es distinto para cada ejemplar; se narra quién evolucionó en quién.
 4. **Te retiras** y recibes la pantalla final con rango, palmarés, equipo, **premios de
    carrera** y una tarjeta que puedes **guardar como imagen** (o compartir desde el móvil).
 
-### Media y techo
+### Media y nivel
 
 Tu **media** es el número grande de la barra superior, como el OVR de un juego de fútbol.
 Sube sola cada temporada por experiencia: rápido de crío, más despacio a partir de los 22 y
-casi nada pasados los 26. Deja de subir cuando alcanza tu **techo**, que es tu potencial y
-solo se mueve con eventos concretos (el programa del Profesor, capturar un legendario,
-invertir en instalaciones…). Ahí está la gracia: llegar arriba pronto y luego buscar cómo
-romper tu propio techo.
+casi nada pasados los 26. Cada partida tiene un potencial distinto y **el juego nunca te lo
+dice**: simplemente notarás que un año dejas de crecer. Algunos eventos concretos (el
+programa del Profesor, capturar un legendario, invertir en instalaciones) lo empujan hacia
+arriba, y ahí está la gracia.
+
+Tus Pokémon tienen su propio **nivel del 1 al 100**, que sube cada temporada según tu media,
+su vínculo contigo y cómo entrenéis. La fuerza en combate sale de combinar el potencial de
+su etapa evolutiva con el nivel al que esté: un Charizard de nivel 30 no pelea como uno de
+nivel 90.
 
 ### Objetos, personajes y regiones
 
-- **Objetos reales de Pokémon** con efecto pasivo cada temporada: huerto de Bayas Aranja,
-  Vidasfera, Restos, Multiexp, Cinta Elección, Amuleto Moneda, Mineral Evolutivo, Huevo
-  Suerte… Se ven en la mochila de tu ficha con su icono original.
+- **Objetos reales de Pokémon** que aplican su efecto **cada temporada** mientras los lleves:
+  el huerto de Bayas Aranja da salud, la Vidasfera sube media a costa de salud, el Huevo
+  Suerte acelera tu ritmo de mejora, el Amuleto Moneda añade dinero fijo al año… En la
+  mochila de tu ficha se ve cada objeto con su efecto y el total acumulado.
 - **Personajes de la versión española**: te llama el Profesor Oak, el Profesor Serbal o la
   Profesora Encina; te plantan cara Giovanni, Helio, Ghechis, Lysson o Guzmán; te retan
   Cintia, Lance o Lionel; y los gimnasios los llevan Brock, Misty, Erika, Fantina o Kabu.

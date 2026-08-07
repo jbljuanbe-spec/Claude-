@@ -65,8 +65,10 @@ nivel 90.
   del límite de 34) puede llegarte una oferta real — dirigir una academia, comentar el
   circuito, un asiento en el Alto Mando — para cerrar la carrera por tu cuenta.
 
-Ninguna partida se repite: los eventos son aleatorios con pesos por etapa de carrera, y hay
-condiciones que solo se cumplen si tu carrera ha ido por cierto camino.
+Ninguna partida se repite: los eventos son aleatorios con pesos por etapa de carrera, hay
+condiciones que solo se cumplen si tu carrera ha ido por cierto camino, y **nunca te sale la
+misma decisión dos turnos seguidos**. Algunos eventos, además, solo aparecen a cierta edad
+(al torneo del bar se va de cañas: mayores de 18).
 
 ## Estructura
 

@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=9';
+} from './datos.js?v=10';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -68,6 +68,7 @@ export function nuevaPartida({ nombre, region, estilo, inicial, ritmo }) {
     regionesVisitadas: [region.nombre],
     objetos: [],
     equipo: [], hitos: [], cronica: [], vistos: new Set(),
+    ultimoEvento: null,   // para no repetir la misma decisión dos turnos seguidos
     temporales: [],   // efectos que se revierten solos al cabo de N temporadas
     flags: {},
     rival: crearRival(),

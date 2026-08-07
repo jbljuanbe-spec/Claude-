@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTecho, mediaTemporal, mudarse,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=9';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=9';
+} from './motor.js?v=10';
+import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=10';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -655,6 +655,7 @@ export const EVENTOS = [
   },
   {
     id: 'juanan_talavera', etapas: TODAS, peso: 14, unico: true,
+    cond: e => e.edad >= 18,   // hay cañas de por medio: solo mayores de edad
     titulo: 'El torneo del bar de Talavera',
     texto: () => 'Juanan monta un torneo en el bar de siempre, en Talavera: dieciséis personas, una tele vieja, premios de la casa y cañas entre rondas. No da un solo punto de circuito, pero es el mismo finde que tienes reservado para entrenar a tope.',
     opciones: [
@@ -709,6 +710,137 @@ export const EVENTOS = [
         efecto: e => efecto('Apagas y duermes siete horas. Al día siguiente juegas con la cabeza donde tiene que estar, con el equipo que ya conocías.', m(e, { salud: [6, 12], estrategia: [1, 4], media: [1, 3] })) },
     ],
   },
+
+  // ── MÁS SITUACIONES DE CARRERA ─────────────────────────────────────────────
+  {
+    id: 'shiny', etapas: ['novato', 'gimnasios', 'liga', 'pro'], peso: 12, unico: true,
+    titulo: 'Sale distinto',
+    texto: () => 'Un Pokémon salvaje aparece con los colores cambiados. Sabes lo que es: uno de esos que la gente busca durante años sin encontrarlo. Un coleccionista de la zona ya te ha ofrecido una cifra que no deberías ni escuchar.',
+    opciones: [
+      { txt: 'Quedártelo y entrenarlo', sub: 'Vale más que el dinero.',
+        efecto: e => { const p = capturaAleatoria(e, { rarezaMin: 'raro' });
+          if (p) { p.forma += rango(3, 8); p.vinculo = limitar(p.vinculo + rango(10, 20)); }
+          hito(e, '✨', `Capturó un ${p?.nombre ?? 'ejemplar'} de colores raros`);
+          return efecto(`${p?.nombre ?? 'El ejemplar'} entra en el equipo y no hay foto tuya en la que no salga él.`,
+            m(e, { fama: [6, 13], vinculo: [4, 9] })); } },
+      { txt: 'Venderlo al coleccionista', sub: 'Ese dinero cambia tu temporada.',
+        efecto: e => efecto('Firmas el traspaso sin mirarle. Con ese dinero pagas la temporada entera, pero te acuerdas de él más de lo que esperabas.',
+          m(e, { dinero: [80000, 180000], moral: [-10, -4], vinculo: [-6, -2] })) },
+    ],
+  },
+  {
+    id: 'muñeca', etapas: ['liga', 'pro', 'cima', 'veterano'], peso: 14,
+    cond: e => e.edad >= 17,
+    titulo: 'Te duele la muñeca',
+    texto: () => 'Llevas meses con molestias en la mano de jugar. El fisio es claro: o paras tres meses ahora, o esto va a más y para de verdad más adelante.',
+    opciones: [
+      { txt: 'Parar los tres meses', sub: 'Perder media temporada y curarte.',
+        efecto: e => efecto('Te pierdes dos torneos grandes, pero vuelves sin dolor y sin miedo a que la mano falle en el turno decisivo.',
+          m(e, { salud: [12, 20], media: [-3, -1], fama: [-5, -1] })) },
+      { txt: 'Infiltrarte y seguir compitiendo', sub: 'La temporada está en juego.', riesgo: 0.45,
+        efecto: (e, ok) => { if (ok) return efecto('Aguantas la temporada a base de antiinflamatorios y hielo. Llegas justo, pero llegas.',
+            m(e, { fama: [4, 10], salud: [-8, -3] }));
+          e.flags.lesionCronica = true;
+          return efecto('La muñeca dice basta en mitad de un regional. A partir de aquí, el dolor va contigo a todos lados.',
+            m(e, { salud: [-18, -10], media: [-4, -2], moral: [-12, -5] })); } },
+    ],
+  },
+  {
+    id: 'meta_nuevo', etapas: ['liga', 'pro', 'cima'], peso: 15,
+    titulo: 'Cambia la regulación',
+    texto: () => 'Anuncian nuevas reglas para la temporada que viene: entran Pokémon que estaban prohibidos y tu equipo de siempre se queda a medias. Todo el mundo empieza de cero al mismo tiempo.',
+    opciones: [
+      { txt: 'Ser de los primeros en romperlo', sub: 'Encontrar la combinación antes que nadie.', riesgo: 0.45,
+        efecto: (e, ok) => { if (ok) { hito(e, '🔬', 'Descifró el meta nuevo antes que nadie');
+            return efecto('Das con una pareja que nadie había probado y arrasas los dos primeros torneos antes de que se copie.',
+              m(e, { media: [4, 8], fama: [10, 18], estrategia: [5, 10] })); }
+          return efecto('Pruebas veinte cosas raras y ninguna funciona. Pierdes el arranque de temporada experimentando.',
+            m(e, { media: [-3, -1], moral: [-9, -4], estrategia: [3, 7] })); } },
+      { txt: 'Copiar lo que funcione y afinarlo', sub: 'Dejar que otros exploren.',
+        efecto: e => efecto('Esperas un mes, coges el equipo que gana y lo ajustas mejor que su creador. Poco glamour, muchos puntos.',
+          m(e, { media: [2, 5], estrategia: [4, 9], fama: [-4, -1] })) },
+    ],
+  },
+  {
+    id: 'sorteo_grupo', etapas: ['liga', 'pro', 'cima'], peso: 13,
+    titulo: 'El sorteo te odia',
+    texto: e => `Sale el cuadro del torneo y te ha tocado el peor lado posible: tres cabezas de serie y ${e.rival.nombre} esperando en octavos.`,
+    opciones: [
+      { txt: 'Preparar solo ese cuadro', sub: 'Estudiar a los tres, uno por uno.',
+        efecto: e => efecto('Te aprendes sus equipos de memoria y llegas sabiendo cada movimiento que van a hacer. Duermes fatal esa semana.',
+          m(e, { estrategia: [8, 14], salud: [-6, -2] })) },
+      { txt: 'Ignorar el cuadro y jugar tu juego', sub: 'Ronda a ronda, sin mirar más allá.', riesgo: 0.5,
+        efecto: (e, ok) => ok
+          ? efecto('Sin la presión de pensar en la siguiente ronda, juegas suelto y te llevas por delante a dos cabezas de serie.',
+              m(e, { media: [2, 6], fama: [8, 15], moral: [6, 12] }))
+          : efecto('Te cruzas con el primer cabeza de serie sin haberle estudiado y te pasa por encima en la segunda ronda.',
+              m(e, { moral: [-10, -4], fama: [-4, -1] })) },
+    ],
+  },
+  {
+    id: 'fan', etapas: ['liga', 'pro', 'cima', 'veterano'], peso: 12,
+    cond: e => e.stats.fama >= 25,
+    titulo: 'Una carta de una cría',
+    texto: () => 'Entre el correo hay una carta escrita a mano. Una cría de nueve años te cuenta que empezó a competir porque te vio a ti, y que su Pokémon se llama como el tuyo. Pide una foto firmada. La dirección está a cuatro horas de aquí.',
+    opciones: [
+      { txt: 'Presentarte en su casa sin avisar', sub: 'Ocho horas de coche por una foto.',
+        efecto: e => { hito(e, '💌', 'Condujo cuatro horas para responder una carta');
+          return efecto('Su madre no se lo cree, ella menos. El vídeo lo sube un vecino y le da la vuelta al país en dos días.',
+            m(e, { fama: [12, 22], moral: [14, 22], media: [-2, -1] })); } },
+      { txt: 'Mandarle la foto firmada y una carta', sub: 'Contestar bien, sin dramatizar.',
+        efecto: e => efecto('Le escribes tres párrafos de verdad y le mandas la foto. Nadie se entera, pero ella la tiene enmarcada.',
+          m(e, { moral: [6, 12], fama: [1, 4] })) },
+    ],
+  },
+  {
+    id: 'patrocinador_equipo', etapas: ['pro', 'cima', 'veterano'], peso: 16, unico: true,
+    cond: e => !!e.flags.patrocinio,
+    titulo: 'Tu patrocinador quiere mandar en tu equipo',
+    texto: e => `Marketing tiene una idea: que lleves siempre al mismo Pokémon, el que sale en los anuncios, aunque no encaje en el meta. Ofrecen renovar por el doble si aceptas. Ahora mismo tu mejor carta es ${masFuerte(e)?.nombre ?? 'tu titular'}.`,
+    opciones: [
+      { txt: 'Aceptar y jugar con la mascota', sub: 'Cobrar el doble a costa del equipo.',
+        efecto: e => efecto('Firmas. Compites con un hueco condicionado por un contrato y se te nota en los resultados, pero la cuenta corriente no se queja.',
+          m(e, { dinero: [200000, 400000], media: [-5, -2], moral: [-6, -2] })) },
+      { txt: 'Negarte y arriesgar el contrato', sub: 'El equipo lo eliges tú.', riesgo: 0.55,
+        efecto: (e, ok) => ok
+          ? efecto('Aguantan tu negativa porque ganas, y la historia del jugador que dijo que no acaba siendo mejor publicidad que el anuncio.',
+              m(e, { fama: [8, 15], moral: [8, 14], media: [1, 4] }))
+          : (e.flags.patrocinio = false,
+             efecto('Rompen el contrato en enero. Te quedas sin ese dinero justo cuando más viajes tenías por delante.',
+               m(e, { dinero: -rango(30000, 80000), moral: [-8, -3], media: [1, 3] }))) },
+    ],
+  },
+  {
+    id: 'benefico', etapas: ['pro', 'cima', 'veterano'], peso: 12,
+    cond: e => e.stats.fama >= 30,
+    titulo: 'Torneo benéfico',
+    texto: () => 'Un hospital infantil organiza un torneo para recaudar fondos y quiere cabezas conocidas. Es el mismo fin de semana que un regional con puntos en juego.',
+    opciones: [
+      { txt: 'Ir al benéfico', sub: 'Los puntos ya llegarán.',
+        efecto: e => { hito(e, '🎗️', 'Jugó el benéfico en vez del regional');
+          return efecto('Pasas el sábado jugando con críos ingresados y el domingo viendo el regional por el móvil. Volverías a hacerlo.',
+            m(e, { fama: [8, 15], moral: [12, 20], media: [-2, -1] })); } },
+      { txt: 'Ir al regional', sub: 'Estás para competir.',
+        efecto: e => efecto('Vas a por los puntos y los sacas. En redes alguien comenta quién sí fue al hospital y quién no.',
+          m(e, { media: [2, 5], fama: [-5, -1], moral: [-6, -2] })) },
+    ],
+  },
+  {
+    id: 'mentor', etapas: ['novato', 'gimnasios', 'liga'], peso: 14, unico: true,
+    titulo: 'Alguien se ofrece a enseñarte',
+    texto: e => `Un veterano del circuito de ${e.regionNombre}, de los que ya no compiten, te ve entrenar y se ofrece a llevarte. Método antiguo, mucha disciplina y cero paciencia con las excusas.`,
+    opciones: [
+      { txt: 'Ponerte en sus manos', sub: 'Hacer lo que te diga, sin discutir.', riesgo: 0.7,
+        efecto: (e, ok) => { if (ok) { hito(e, '🥋', 'Se formó con un veterano del circuito');
+            return efecto('Te corrige cosas que llevabas años haciendo mal sin saberlo. Es duro, pero sales de ahí siendo otro jugador.',
+              m(e, { estrategia: [8, 14], media: [3, 6], techo: [2, 5], moral: [-4, -1] })); }
+          return efecto('Su método es de otra época y chocáis todo el rato. Lo dejáis a los seis meses, cada uno pensando que el otro no entendía nada.',
+            m(e, { moral: [-8, -3], estrategia: [1, 4] })); } },
+      { txt: 'Agradecérselo y seguir solo', sub: 'Aprender a tu ritmo.',
+        efecto: e => efecto('Le dices que prefieres equivocarte por tu cuenta. Tardas más en aprender, pero lo que aprendes es tuyo.',
+          m(e, { media: [1, 4], moral: [3, 7] })) },
+    ],
+  },
   {
     id: 'retiro_anticipado', etapas: ['pro', 'cima', 'veterano'], peso: 16, unico: true,
     cond: e => e.edad >= 28,
@@ -748,15 +880,23 @@ export const EVENTOS = [
 
 export function siguienteEvento(estado) {
   const etapa = estado.flags.etapaActual;
-  const pool = EVENTOS.filter(ev =>
+  const disponible = ev =>
     ev.etapas.includes(etapa) &&
     !(ev.unico && estado.vistos.has(ev.id)) &&
-    (!ev.cond || ev.cond(estado)));
+    (!ev.cond || ev.cond(estado));
+
+  // Nunca la misma decisión dos turnos seguidos: se descarta la última que
+  // salió. Si por lo que sea era la única posible, se permite antes que
+  // quedarse sin evento.
+  let pool = EVENTOS.filter(ev => disponible(ev) && ev.id !== estado.ultimoEvento);
+  if (!pool.length) pool = EVENTOS.filter(disponible);
   if (!pool.length) return null;
+
   const total = pool.reduce((s, ev) => s + ev.peso, 0);
   let r = Math.random() * total;
   let elegido = pool[pool.length - 1];
   for (const ev of pool) { r -= ev.peso; if (r <= 0) { elegido = ev; break; } }
   estado.vistos.add(elegido.id);
+  estado.ultimoEvento = elegido.id;
   return elegido;
 }

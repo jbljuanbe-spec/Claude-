@@ -3,10 +3,10 @@
 // efecto(e, ok) recibe si el dado salió a favor. Sin `riesgo`, la opción es segura.
 import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
-  poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTecho, mudarse,
+  poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTecho, mediaTemporal, mudarse,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=8';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=8';
+} from './motor.js?v=9';
+import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=9';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -16,6 +16,9 @@ function m(e, deltas) {
     const v = Array.isArray(def) ? rango(def[0], def[1]) : def;
     if (!v) continue;
     if (k === 'dinero') { e.dinero = Math.max(0, e.dinero + v); partes.push(`${v > 0 ? '+' : ''}${v.toLocaleString('es')} ₽`); continue; }
+    // mediaTexto: solo para mostrar el número tras un mediaTemporal() ya aplicado.
+    // No toca e.media otra vez (evita duplicar el efecto).
+    if (k === 'mediaTexto') { partes.push(`${v > 0 ? '+' : ''}${v} Media (temporal)`); continue; }
     if (k === 'media') { e.media = limitar(Math.min(e.techo, e.media + v)); partes.push(`${v > 0 ? '+' : ''}${v} Media`); continue; }
     if (k === 'techo') { subirTecho(e, v); partes.push(`${v > 0 ? '+' : ''}${v} Techo`); continue; }
     e.stats[k] = limitar(e.stats[k] + v);
@@ -71,7 +74,7 @@ export const EVENTOS = [
       { txt: 'Investigar', sub: 'Podría ser una captura rara.', riesgo: 0.55,
         efecto: (e, ok) => ok
           ? efecto(`Es un ${capturaAleatoria(e, { rarezaMin: 'raro' })?.nombre ?? 'ejemplar raro'} y logras capturarlo.`, m(e, { fama: [2, 6] }))
-          : efecto('Era una manada de Ursaring. Corres. Corres mucho.', m(e, { salud: [-11, -5], moral: [-6, -2] })) },
+          : efecto('Era una manada de Ursaring. Sales de allí a base de Poké Balls lanzadas al aire y piernas.', m(e, { salud: [-11, -5], moral: [-6, -2] })) },
       { txt: 'Acampar y dormir', sub: 'Descansar también entrena.',
         efecto: e => efecto('Duermes ocho horas seguidas por primera vez en semanas.', m(e, { salud: [6, 11], moral: [4, 9] })) },
       { txt: 'Entrenar toda la noche', sub: 'El miedo se combate a golpes.', riesgo: 0.7,
@@ -175,7 +178,8 @@ export const EVENTOS = [
     opciones: [
       { txt: 'Usarlos', sub: 'Todos lo hacen, dice.', icono: 'life-orb', riesgo: 0.6,
         efecto: (e, ok) => { e.flags.dopaje = true;
-          if (ok) return efecto('Vuelas media temporada y nadie sospecha. Duermes mal, pero ganas.', m(e, { media: [4, 9], salud: [-12, -5], vinculo: [-9, -3] }));
+          if (ok) { mediaTemporal(e, 6, 2);
+            return efecto('Vuelas media temporada y nadie sospecha. Duermes mal, pero ganas.', m(e, { salud: [-12, -5], vinculo: [-9, -3], mediaTexto: 6 })); }
           e.flags.sancionado = true; e.flags.sancionadoAños = 2; e.flags.exsancionado = true;
           return efecto('Llega el control antidopaje. Dos años fuera y tu nombre por el barro.', m(e, { media: [2, 5], fama: [-34, -22], moral: [-24, -14] })); } },
       { txt: 'Rechazarlos y denunciarlo', sub: 'Hay una línea.', riesgo: 0.75,
@@ -198,7 +202,7 @@ export const EVENTOS = [
         efecto: (e, ok) => { const s = socioDe(e);
           if (ok) return efecto(`Aguanta de sobra y ganáis. El susto queda en nada y vuelve más fuerte.`, m(e, { fama: [5, 11], media: [1, 3] }));
           s.forma -= rango(4, 9); e.flags.lesionCronica = true;
-          return efecto(`Se rompe del todo. ${s.nombre} ya nunca vuelve a correr igual.`, m(e, { vinculo: [-14, -7], salud: [-9, -3], media: [-3, -1] })); } },
+          return efecto(`Se rompe del todo. ${s.nombre} ya nunca vuelve a moverse en combate igual.`, m(e, { vinculo: [-14, -7], salud: [-9, -3], media: [-3, -1] })); } },
       { txt: 'Rotar y dar minutos al banquillo', sub: 'Confiar en el resto.',
         efecto: e => { for (const p of activos(e)) p.vinculo = limitar(p.vinculo + rango(3, 9));
           return efecto('El equipo entero da un paso adelante. No dependías de uno solo.', m(e, { estrategia: [5, 10], vinculo: [4, 9] })); } },
@@ -509,9 +513,10 @@ export const EVENTOS = [
     texto: () => 'Coincidís en la sala de espera de un regional. Sekiam lleva un táper y una teoría: que se rinde mejor comiendo distinto, que él lleva un año probándolo y que a ver si te atreves.',
     opciones: [
       { txt: 'Hacerte vegano un año', sub: 'Probar en serio, sin trampas.', icono: 'oran', riesgo: 0.6,
-        efecto: (e, ok) => ok
-          ? efecto('Legumbres, planificación y cero resacas de torneo. Llegas a las finales con la cabeza mucho más despejada.', m(e, { salud: [8, 15], media: [2, 5], moral: [3, 8] }))
-          : efecto('Lo llevas fatal: te faltan fuerzas en las rondas largas y acabas dejándolo en marzo.', m(e, { media: [-4, -1], salud: [-8, -3], moral: [-6, -2] })) },
+        efecto: (e, ok) => { if (ok) { mediaTemporal(e, 5, 3);
+            return efecto('Legumbres, planificación y cero resacas de torneo. Llegas a las finales con la cabeza mucho más despejada.', m(e, { salud: [8, 15], moral: [3, 8], mediaTexto: 5 })); }
+          mediaTemporal(e, -3, 1);
+          return efecto('Una indigestión de restaurante vegano dudoso te deja hecho polvo justo antes de un torneo. Se te pasa en un año, pero ese torneo lo pierdes con el estómago revuelto.', m(e, { salud: [-8, -3], moral: [-6, -2], mediaTexto: -3 })); } },
       { txt: 'Seguir con tu dieta y entrenar más duro', sub: 'Compensarlo a base de horas.',
         efecto: e => efecto('No cambias ni un plato, pero le metes el doble de sesiones al gimnasio. El cuerpo lo nota.', m(e, { media: [3, 6], salud: [-7, -3] })) },
     ],
@@ -697,11 +702,31 @@ export const EVENTOS = [
     texto: () => 'Son las dos de la mañana del sábado. Llevas doscientas partidas de ladder con el mismo equipo y de repente te parece que todo está mal. Tienes la lista de equipo en blanco delante.',
     opciones: [
       { txt: 'Cambiar dos huecos', sub: 'El clásico error de las dos de la mañana.', riesgo: 0.4,
-        efecto: (e, ok) => ok
-          ? efecto('Los dos cambios eran exactamente lo que necesitabas contra lo que se ha llevado todo el mundo.', m(e, { media: [3, 7], estrategia: [4, 9], fama: [4, 9] }))
-          : efecto('Los dos huecos nuevos no encajan con nada. Pierdes tres rondas por combinaciones que nunca probaste.', m(e, { media: [-4, -1], moral: [-11, -5], salud: [-5, -1] })) },
+        efecto: (e, ok) => { if (ok) { mediaTemporal(e, 4, 2);
+            return efecto('Los dos cambios eran exactamente lo que necesitabas contra lo que se ha llevado todo el mundo.', m(e, { estrategia: [4, 9], fama: [4, 9], mediaTexto: 4 })); }
+          return efecto('Los dos huecos nuevos no encajan con nada. Pierdes tres rondas por combinaciones que nunca probaste.', m(e, { media: [-4, -1], moral: [-11, -5], salud: [-5, -1] })); } },
       { txt: 'Cerrar el portátil y dormir', sub: 'Lo que hay es lo que hay.',
         efecto: e => efecto('Apagas y duermes siete horas. Al día siguiente juegas con la cabeza donde tiene que estar, con el equipo que ya conocías.', m(e, { salud: [6, 12], estrategia: [1, 4], media: [1, 3] })) },
+    ],
+  },
+  {
+    id: 'retiro_anticipado', etapas: ['pro', 'cima', 'veterano'], peso: 16, unico: true,
+    cond: e => e.edad >= 28,
+    titulo: 'La oferta que te hace pensar en dejarlo',
+    texto: e => { const opciones = [
+        `Una academia de ${e.regionNombre} te ofrece dirigirla a tiempo completo: formar a la próxima generación en vez de competir contra ella.`,
+        'Una cadena de televisión te propone ser comentarista fijo del circuito: dejar la raqueta, coger el micrófono.',
+        `El Alto Mando de ${e.regionNombre} tiene una plaza libre y tu nombre en la lista corta.`,
+        'Llevas media vida en hoteles y aeropuertos. Por primera vez, alguien te pregunta qué quieres tú, no qué necesita el circuito.',
+      ]; e._motivoRetiro = elegir(opciones);
+      return `${e._motivoRetiro} Nadie te obliga a decidir hoy, pero la oferta no va a esperar para siempre.`; },
+    opciones: [
+      { txt: 'Aceptar y retirarte ahora', sub: 'Cerrar esta etapa por decisión propia.',
+        efecto: e => { e.flags.retiroElegido = true; hito(e, '🎬', `Se retiró a los ${e.edad} para empezar algo nuevo`);
+          return efecto(`Aceptas. ${e._motivoRetiro?.startsWith('Una academia') ? 'Cuelgas las Poké Balls de competición y te pones a formar entrenadores.' : e._motivoRetiro?.startsWith('Una cadena') ? 'La próxima vez que te vean será en un plató, no en un escenario.' : e._motivoRetiro?.startsWith('El Alto Mando') ? 'Te sientas en la silla que veías por la tele de crío.' : 'Por primera vez en años, el calendario lo decides tú.'} No hay marcha atrás, y por una vez eso te alivia.`,
+            m(e, { moral: [14, 24], fama: [4, 10] })); } },
+      { txt: 'Rechazarla y seguir compitiendo', sub: 'Todavía te queda cuerda.',
+        efecto: e => efecto('Le dices que no. La oferta se enfría, pero tú sigues en el campo, que es donde quieres estar.', m(e, { media: [1, 4], moral: [3, 7] })) },
     ],
   },
   {

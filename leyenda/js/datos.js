@@ -280,14 +280,14 @@ export const LOGROS = [
 
 // ── Rangos finales por puntuación de legado ─────────────────────────────────
 export const RANGOS = [
-  { min: 1150, titulo: 'Leyenda Inmortal',      emoji: '🌟', desc: 'Tu nombre está en los libros de texto. Los niños juegan a ser tú.' },
-  { min: 950,  titulo: 'Maestro Pokémon',       emoji: '👑', desc: 'Llegaste a la cima y te quedaste allí. Nadie discute tu lugar.' },
-  { min: 855,  titulo: 'Campeón Regional',      emoji: '🏆', desc: 'Levantaste la copa. La región entera coreó tu nombre.' },
-  { min: 770,  titulo: 'Élite del Circuito',    emoji: '🥇', desc: 'Uno de los grandes de tu generación, aunque el título máximo se te resistió.' },
-  { min: 625,  titulo: 'Profesional Respetado', emoji: '🎖️', desc: 'Viviste de esto con dignidad. Muchos matarían por tu carrera.' },
-  { min: 480,  titulo: 'Veterano de Circuito',  emoji: '🎽', desc: 'Aguantaste años ahí arriba sin llegar a lo más alto.' },
-  { min: 378,  titulo: 'Entrenador Sólido',     emoji: '⚡', desc: 'Buenos momentos, buen equipo, ningún titular de portada.' },
-  { min: 258,  titulo: 'Promesa Incumplida',    emoji: '🌱', desc: 'Todos decían que ibas a ser el mejor. La vida dijo otra cosa.' },
+  { min: 1360, titulo: 'Leyenda Inmortal',      emoji: '🌟', desc: 'Tu nombre está en los libros de texto. Los niños juegan a ser tú.' },
+  { min: 1100,  titulo: 'Maestro Pokémon',       emoji: '👑', desc: 'Llegaste a la cima y te quedaste allí. Nadie discute tu lugar.' },
+  { min: 900,  titulo: 'Campeón Regional',      emoji: '🏆', desc: 'Levantaste la copa. La región entera coreó tu nombre.' },
+  { min: 820,  titulo: 'Élite del Circuito',    emoji: '🥇', desc: 'Uno de los grandes de tu generación, aunque el título máximo se te resistió.' },
+  { min: 730,  titulo: 'Profesional Respetado', emoji: '🎖️', desc: 'Viviste de esto con dignidad. Muchos matarían por tu carrera.' },
+  { min: 610,  titulo: 'Veterano de Circuito',  emoji: '🎽', desc: 'Aguantaste años ahí arriba sin llegar a lo más alto.' },
+  { min: 500,  titulo: 'Entrenador Sólido',     emoji: '⚡', desc: 'Buenos momentos, buen equipo, ningún titular de portada.' },
+  { min: 380,  titulo: 'Promesa Incumplida',    emoji: '🌱', desc: 'Todos decían que ibas a ser el mejor. La vida dijo otra cosa.' },
   { min: -999, titulo: 'Entrenador de Pueblo',  emoji: '🍃', desc: 'Volviste a casa. Tus Pokémon te siguen queriendo igual.' },
 ];
 

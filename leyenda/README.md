@@ -58,6 +58,12 @@ nivel 90.
   ficción y cariño: los creadores salen como cameos amables, nunca haciendo nada reprochable.
 - **Ganar se celebra**: al llevarte un título o completar las ocho medallas salta una copa
   dibujada, con la cinta del color del torneo y confeti.
+- **Efectos temporales**: algunas decisiones arriesgadas mueven la media al momento y se
+  deshacen solas al cabo de una o dos temporadas (una indigestión, un subidón de doping, un
+  cambio de última hora que funcionó). No todo lo que sube o baja es para siempre.
+- **Retirarte antes de tiempo es una decisión, no un castigo**: desde los 28 años (seis antes
+  del límite de 34) puede llegarte una oferta real — dirigir una academia, comentar el
+  circuito, un asiento en el Alto Mando — para cerrar la carrera por tu cuenta.
 
 Ninguna partida se repite: los eventos son aleatorios con pesos por etapa de carrera, y hay
 condiciones que solo se cumplen si tu carrera ha ido por cierto camino.

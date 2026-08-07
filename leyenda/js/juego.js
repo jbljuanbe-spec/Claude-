@@ -2,13 +2,14 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=12';
+} from './datos.js?v=13';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
-} from './motor.js?v=12';
-import { siguienteEvento } from './eventos.js?v=12';
-import { descargarTarjeta } from './tarjeta.js?v=12';
+  guardarPartida, cargarPartida, borrarPartida,
+} from './motor.js?v=13';
+import { siguienteEvento } from './eventos.js?v=13';
+import { descargarTarjeta } from './tarjeta.js?v=13';
 
 const app = document.getElementById('app');
 let estado = null;
@@ -31,13 +32,30 @@ const seleccion = { region: REGIONES[0], estilo: ESTILOS[0], inicial: null, ritm
 
 function pantallaInicio() {
   seleccion.inicial = null;
+  const guardada = cargarPartida();
   const porRegion = INICIALES.filter(l => l.region === seleccion.region.id);
   app.innerHTML = `
     <div class="portada">
       <div class="bolas">⚡ 🔴 ⚡</div>
-      <h1>Conviértete<br>en Leyenda</h1>
+      <h1>Hazte<br>con Todos</h1>
       <p class="sub">Veinte años de carrera como entrenador Pokémon.<br>Solo tomas las decisiones que importan.</p>
     </div>
+
+    ${guardada ? `
+      <div class="tarjeta continuar">
+        <div class="etiqueta-anio">Tienes una carrera a medias</div>
+        <div class="continuar-datos">
+          <span class="ovr" style="background:${colorOvr(Math.round(guardada.media))}">
+            <span class="n">${Math.round(guardada.media)}</span><span class="k">Media</span>
+          </span>
+          <div>
+            <div class="continuar-nombre">${esc(guardada.nombre)}</div>
+            <div class="continuar-meta">${guardada.regionEmoji} ${esc(guardada.regionNombre)} · Año ${guardada.año} · ${guardada.edad} años</div>
+          </div>
+        </div>
+        <button class="boton-grande" id="continuar">Continuar esa carrera ▸</button>
+        <button class="boton-secundario" id="descartar">Empezar una nueva y descartarla</button>
+      </div>` : ''}
 
     <div class="bloque">
       <label for="nombre">Tu nombre</label>
@@ -114,6 +132,23 @@ function pantallaInicio() {
   const rits = document.getElementById('ritmos');
   rits.onclick = ev => { const b = ev.target.closest('.opcion'); if (!b) return; seleccion.ritmo = RITMOS[+b.dataset.i]; marcar(rits, b); };
   document.getElementById('nombre').oninput = revisar;
+
+  if (guardada) {
+    document.getElementById('continuar').onclick = () => {
+      estado = guardada;
+      pestaña = 'carrera';
+      app.innerHTML = `<div id="barra"></div><div id="vista"></div>`;
+      pintarBarra();
+      pintarCarrera(`
+        <div class="tarjeta">
+          <div class="etiqueta-anio">Año ${estado.año} · ${estado.edad} años</div>
+          <h2>De vuelta al circuito</h2>
+          <p class="cuerpo">Retomas la carrera donde la dejaste, con ${esc(estado.nombre)} y su equipo.</p>
+        </div>`);
+      siguientePaso();
+    };
+    document.getElementById('descartar').onclick = () => { borrarPartida(); pantallaInicio(); };
+  }
 
   document.getElementById('empezar').onclick = () => {
     estado = nuevaPartida({
@@ -388,6 +423,8 @@ const azarUI = (a, b) => a + Math.random() * (b - a);
 function siguientePaso() {
   const causa = debeRetirarse(estado);
   if (causa) { retirar(estado, causa); return pantallaFinal(); }
+  // Punto estable: si cierras aquí, al volver retomas por esta misma decisión
+  guardarPartida(estado);
 
   estado.flags.etapaActual = etapaDe(estado);
   const ev = siguienteEvento(estado);
@@ -484,6 +521,7 @@ const TEXTO_RETIRO = {
 };
 
 function pantallaFinal() {
+  borrarPartida();
   const pts = legado(estado);
   const rango = rangoDe(pts, estado.media);
   const premios = logrosDe(estado);
@@ -568,7 +606,7 @@ function copiarResumen(pts, rango, equipo, apodo, premios) {
     `👥 ${equipo.map(p => p.nombre).join(', ')}`,
     `🏅 ${premios.map(p => p.nombre).join(' · ')}`,
     ``,
-    `Legado: ${pts} puntos · Conviértete en Leyenda`,
+    `Legado: ${pts} puntos · Hazte con Todos`,
   ].join('\n');
   const ok = () => aviso('¡Resumen copiado!');
   if (navigator.clipboard?.writeText) navigator.clipboard.writeText(txt).then(ok).catch(() => respaldo(txt, ok));

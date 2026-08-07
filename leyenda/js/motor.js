@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=12';
+} from './datos.js?v=13';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -119,6 +119,39 @@ function pasivos(estado) {
     for (const [k, v] of Object.entries(POROBJETO[id]?.pasivo ?? {})) t[k] = (t[k] ?? 0) + v;
   }
   return t;
+}
+
+// ── Guardar y recuperar la partida ───────────────────────────────────────────
+// En móvil se cierra la pestaña cada dos por tres (una llamada, cambiar de
+// app), así que la carrera en curso se guarda en el navegador. No sale de tu
+// dispositivo: es localStorage, no hay servidor ni cuenta de nadie.
+const CLAVE = 'hazteconTodos.partida';
+const VERSION_GUARDADO = 1;
+
+export function guardarPartida(estado) {
+  try {
+    const plano = { ...estado, vistos: [...estado.vistos], v: VERSION_GUARDADO };
+    localStorage.setItem(CLAVE, JSON.stringify(plano));
+    return true;
+  } catch { return false; }   // modo incógnito, cuota llena: no es motivo para romper el juego
+}
+
+export function cargarPartida() {
+  try {
+    const bruto = localStorage.getItem(CLAVE);
+    if (!bruto) return null;
+    const plano = JSON.parse(bruto);
+    if (plano.v !== VERSION_GUARDADO || plano.retirado || !plano.equipo?.length) return null;
+    plano.vistos = new Set(plano.vistos ?? []);
+    // Los uid siguen contando desde el más alto guardado, para que un Pokémon
+    // nuevo no choque con uno que ya estaba en el equipo.
+    uidSeq = Math.max(uidSeq, ...plano.equipo.map(p => p.uid ?? 0)) + 1;
+    return plano;
+  } catch { return null; }
+}
+
+export function borrarPartida() {
+  try { localStorage.removeItem(CLAVE); } catch { /* da igual */ }
 }
 
 // ── Pokémon ──────────────────────────────────────────────────────────────────

@@ -1,4 +1,4 @@
-# ⚡ Conviértete en Leyenda
+# ⚡ Hazte con Todos
 
 Simulador de carrera de entrenador Pokémon al estilo *Copero*: eliges nombre, región,
 inicial y estilo, y en un par de minutos vives veinte años de carrera a base de decisiones.
@@ -22,6 +22,10 @@ ni los JSON de contenido. Se puede borrar entera sin que Kotoba se entere.
    propio umbral, que es distinto para cada ejemplar; se narra quién evolucionó en quién.
 4. **Te retiras** y recibes la pantalla final con rango, palmarés, equipo, **premios de
    carrera** y una tarjeta que puedes **guardar como imagen** (o compartir desde el móvil).
+
+La carrera en curso **se guarda sola en el navegador**: si cierras la pestaña a mitad (o te
+entra una llamada en el móvil), al volver te ofrece continuar donde lo dejaste. No sale nada
+de tu dispositivo: es `localStorage`, sin servidor ni cuentas.
 
 ### Media y nivel
 

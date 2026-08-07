@@ -1,6 +1,6 @@
 // Dibuja la tarjeta final en un canvas y la descarga como PNG
 // (en móvil intenta compartirla como archivo, que es lo cómodo).
-import { spriteUrl } from './datos.js?v=12';
+import { spriteUrl } from './datos.js?v=13';
 
 const A = 1080, ALTO = 1600;
 
@@ -50,7 +50,7 @@ export async function descargarTarjeta(estado, { pts, rango, premios, equipo, ap
   c.fillStyle = '#e94b5c'; c.fillRect(0, 0, A, 12);
 
   let y = 92;
-  texto(c, 'CONVIÉRTETE EN LEYENDA', A / 2, y, { tam: 26, fuente: 'Silkscreen', color: '#8b93b0', centro: true });
+  texto(c, 'HAZTE CON TODOS', A / 2, y, { tam: 26, fuente: 'Silkscreen', color: '#8b93b0', centro: true });
   y += 78;
   texto(c, rango.emoji, A / 2, y + 14, { tam: 78, centro: true });
   y += 92;
@@ -114,7 +114,7 @@ export async function descargarTarjeta(estado, { pts, rango, premios, equipo, ap
 
   // El pie sale del dominio real donde esté alojado el juego, no de una URL fija
   const dominio = (location.host + location.pathname).replace(/\/index\.html$/, '').replace(/\/$/, '');
-  texto(c, dominio || 'Conviértete en Leyenda', A / 2, ALTO - 42, { tam: 22, fuente: 'Silkscreen', color: '#b0b7cd', centro: true });
+  texto(c, dominio || 'Hazte con Todos', A / 2, ALTO - 42, { tam: 22, fuente: 'Silkscreen', color: '#b0b7cd', centro: true });
 
   const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
   if (!blob) throw new Error('sin blob');

@@ -4140,6 +4140,9604 @@
       "alt": [
         "きたばかり"
       ]
+    },
+    {
+      "id": "gk_ba24d0ac",
+      "l": "L1",
+      "kanji": "アジア研究",
+      "reading": "アジアけんきゅう",
+      "es": "estudios asiáticos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_08900059",
+      "l": "L1",
+      "kanji": "あのう",
+      "reading": "あのう",
+      "es": "esto… (para empezar a hablar)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_79b0d1c2",
+      "l": "L1",
+      "kanji": "アメリカ",
+      "reading": "アメリカ",
+      "es": "Estados Unidos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_48525762",
+      "l": "L1",
+      "kanji": "イギリス",
+      "reading": "イギリス",
+      "es": "Reino Unido",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_39b301f4",
+      "l": "L1",
+      "kanji": "一時",
+      "reading": "いちじ",
+      "es": "la una",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_57d9debb",
+      "l": "L1",
+      "kanji": "一年生",
+      "reading": "いちねんせい",
+      "es": "estudiante de primer año",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_54c58168",
+      "l": "L1",
+      "kanji": "一分",
+      "reading": "いっぷん",
+      "es": "1 minuto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_00f91336",
+      "l": "L1",
+      "kanji": "今",
+      "reading": "いま",
+      "es": "ahora",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1c0050e4",
+      "l": "L1",
+      "kanji": "インド",
+      "reading": "インド",
+      "es": "India",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_26e8ff69",
+      "l": "L1",
+      "kanji": "エジプト",
+      "reading": "エジプト",
+      "es": "Egipto",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_08092d15",
+      "l": "L1",
+      "kanji": "オーストラリア",
+      "reading": "オーストラリア",
+      "es": "Australia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4a74334f",
+      "l": "L1",
+      "kanji": "お兄さん",
+      "reading": "おにいさん",
+      "es": "hermano mayor (de otro)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cada5673",
+      "l": "L1",
+      "kanji": "お姉さん",
+      "reading": "おねえさん",
+      "es": "hermana mayor (de otro)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ea3f16f0",
+      "l": "L1",
+      "kanji": "カナダ",
+      "reading": "カナダ",
+      "es": "Canadá",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ba8119e3",
+      "l": "L1",
+      "kanji": "韓国",
+      "reading": "かんこく",
+      "es": "Corea",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c35f8fd8",
+      "l": "L1",
+      "kanji": "看護師",
+      "reading": "かんごし",
+      "es": "enfermero/a",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_925e64bc",
+      "l": "L1",
+      "kanji": "九分",
+      "reading": "きゅうふん",
+      "es": "9 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e8f1292b",
+      "l": "L1",
+      "kanji": "九時",
+      "reading": "くじ",
+      "es": "las nueve",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ffebb45e",
+      "l": "L1",
+      "kanji": "経済",
+      "reading": "けいざい",
+      "es": "economía",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ecf04094",
+      "l": "L1",
+      "kanji": "～語",
+      "reading": "～ご",
+      "es": "idioma (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_af969025",
+      "l": "L1",
+      "kanji": "高校",
+      "reading": "こうこう",
+      "es": "instituto, bachillerato",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_45a80d49",
+      "l": "L1",
+      "kanji": "高校生",
+      "reading": "こうこうせい",
+      "es": "estudiante de instituto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ee16999d",
+      "l": "L1",
+      "kanji": "国際関係",
+      "reading": "こくさいかんけい",
+      "es": "relaciones internacionales",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5df4cac5",
+      "l": "L1",
+      "kanji": "午後",
+      "reading": "ごご",
+      "es": "de la tarde, p. m.",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_34b823f6",
+      "l": "L1",
+      "kanji": "五時",
+      "reading": "ごじ",
+      "es": "las cinco",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4e9a1105",
+      "l": "L1",
+      "kanji": "午前",
+      "reading": "ごぜん",
+      "es": "de la mañana, a. m.",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0b339935",
+      "l": "L1",
+      "kanji": "五分",
+      "reading": "ごふん",
+      "es": "5 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_61dc4871",
+      "l": "L1",
+      "kanji": "～歳",
+      "reading": "～さい",
+      "es": "años de edad (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8feee5b4",
+      "l": "L1",
+      "kanji": "～さん",
+      "reading": "～さん",
+      "es": "señor/señora (sufijo de cortesía)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e423a508",
+      "l": "L1",
+      "kanji": "三時",
+      "reading": "さんじ",
+      "es": "las tres",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0e7d1716",
+      "l": "L1",
+      "kanji": "三十分",
+      "reading": "さんじっぷん",
+      "es": "30 minutos",
+      "dir": "es-jp",
+      "readingAlt": [
+        "さんじゅっぷん"
+      ]
+    },
+    {
+      "id": "gk_4857dd07",
+      "l": "L1",
+      "kanji": "三分",
+      "reading": "さんぷん",
+      "es": "3 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_18e1d15d",
+      "l": "L1",
+      "kanji": "～時",
+      "reading": "～じ",
+      "es": "en punto, hora (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_938ed4c0",
+      "l": "L1",
+      "kanji": "七時",
+      "reading": "しちじ",
+      "es": "las siete",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3e348139",
+      "l": "L1",
+      "kanji": "十分",
+      "reading": "じっぷん",
+      "es": "10 minutos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f9891953",
+      "l": "L1",
+      "kanji": "十一時",
+      "reading": "じゅういちじ",
+      "es": "las once",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ed1fbc1f",
+      "l": "L1",
+      "kanji": "十一分",
+      "reading": "じゅういっぷん",
+      "es": "11 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_04eb8cc0",
+      "l": "L1",
+      "kanji": "十九分",
+      "reading": "じゅうきゅうふん",
+      "es": "19 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7b39a5d4",
+      "l": "L1",
+      "kanji": "十五分",
+      "reading": "じゅうごふん",
+      "es": "15 minutos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a39b5540",
+      "l": "L1",
+      "kanji": "十三分",
+      "reading": "じゅうさんぷん",
+      "es": "13 minutos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_19be5d9e",
+      "l": "L1",
+      "kanji": "十時",
+      "reading": "じゅうじ",
+      "es": "las diez",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_79a73658",
+      "l": "L1",
+      "kanji": "十七分",
+      "reading": "じゅうななふん",
+      "es": "17 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_09db5045",
+      "l": "L1",
+      "kanji": "十二時",
+      "reading": "じゅうにじ",
+      "es": "las doce",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f13cceff",
+      "l": "L1",
+      "kanji": "十二分",
+      "reading": "じゅうにふん",
+      "es": "12 minutos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_61eeeed6",
+      "l": "L1",
+      "kanji": "十八分",
+      "reading": "じゅうはちふん",
+      "es": "18 minutos",
+      "dir": "jp-es",
+      "readingAlt": [
+        "じゅうはっぷん"
+      ]
+    },
+    {
+      "id": "gk_a8e1998e",
+      "l": "L1",
+      "kanji": "十四分",
+      "reading": "じゅうよんぷん",
+      "es": "14 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_bde3f18c",
+      "l": "L1",
+      "kanji": "十六分",
+      "reading": "じゅうろっぷん",
+      "es": "16 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_60a6ff88",
+      "l": "L1",
+      "kanji": "主婦",
+      "reading": "しゅふ",
+      "es": "ama de casa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c6ab3c3d",
+      "l": "L1",
+      "kanji": "～人",
+      "reading": "～じん",
+      "es": "persona de… (sufijo de nacionalidad)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6cb600f0",
+      "l": "L1",
+      "kanji": "政治",
+      "reading": "せいじ",
+      "es": "política",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ad89b316",
+      "l": "L1",
+      "kanji": "生物学",
+      "reading": "せいぶつがく",
+      "es": "biología",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_526012b8",
+      "l": "L1",
+      "kanji": "専攻",
+      "reading": "せんこう",
+      "es": "especialidad, carrera",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_177fe25e",
+      "l": "L1",
+      "kanji": "そうですか",
+      "reading": "そうですか",
+      "es": "ah, ¿sí?, ya veo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dbc368f3",
+      "l": "L1",
+      "kanji": "大学",
+      "reading": "だいがく",
+      "es": "universidad",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4ba77b32",
+      "l": "L1",
+      "kanji": "大学院生",
+      "reading": "だいがくいんせい",
+      "es": "estudiante de posgrado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9329d0cb",
+      "l": "L1",
+      "kanji": "大学生",
+      "reading": "だいがくせい",
+      "es": "estudiante universitario",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_405ec898",
+      "l": "L1",
+      "kanji": "中国",
+      "reading": "ちゅうごく",
+      "es": "China",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_283dc21f",
+      "l": "L1",
+      "kanji": "友だち",
+      "reading": "ともだち",
+      "es": "amigo/a",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_94d6b9b3",
+      "l": "L1",
+      "kanji": "七分",
+      "reading": "ななふん",
+      "es": "7 minutos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9925c846",
+      "l": "L1",
+      "kanji": "二時",
+      "reading": "にじ",
+      "es": "las dos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_71a984ef",
+      "l": "L1",
+      "kanji": "二十分",
+      "reading": "にじっぷん",
+      "es": "20 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fd623aa1",
+      "l": "L1",
+      "kanji": "二時半",
+      "reading": "にじはん",
+      "es": "las dos y media",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_46a17fc0",
+      "l": "L1",
+      "kanji": "二分",
+      "reading": "にふん",
+      "es": "2 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_926d7550",
+      "l": "L1",
+      "kanji": "日本語",
+      "reading": "にほんご",
+      "es": "japonés (idioma)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_66791d11",
+      "l": "L1",
+      "kanji": "日本人",
+      "reading": "にほんじん",
+      "es": "japonés/a (persona)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_35763c2f",
+      "l": "L1",
+      "kanji": "～年生",
+      "reading": "～ねんせい",
+      "es": "estudiante de … curso (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a6049498",
+      "l": "L1",
+      "kanji": "はい",
+      "reading": "はい",
+      "es": "sí",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e9adcd32",
+      "l": "L1",
+      "kanji": "八時",
+      "reading": "はちじ",
+      "es": "las ocho",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c94ed837",
+      "l": "L1",
+      "kanji": "八分",
+      "reading": "はちふん",
+      "es": "8 minutos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0eb4e055",
+      "l": "L1",
+      "kanji": "半",
+      "reading": "はん",
+      "es": "y media (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_605180f7",
+      "l": "L1",
+      "kanji": "～番",
+      "reading": "～ばん",
+      "es": "número … (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_62244ba9",
+      "l": "L1",
+      "kanji": "番号",
+      "reading": "ばんごう",
+      "es": "número",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_73ddaa4a",
+      "l": "L1",
+      "kanji": "ビジネス",
+      "reading": "ビジネス",
+      "es": "negocios",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dd2734c3",
+      "l": "L1",
+      "kanji": "フィリピン",
+      "reading": "フィリピン",
+      "es": "Filipinas",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c17bb06e",
+      "l": "L1",
+      "kanji": "文学",
+      "reading": "ぶんがく",
+      "es": "literatura",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0cd8d1e9",
+      "l": "L1",
+      "kanji": "弁護士",
+      "reading": "べんごし",
+      "es": "abogado/a",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f6c1867c",
+      "l": "L1",
+      "kanji": "四時",
+      "reading": "よじ",
+      "es": "las cuatro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e4d5026e",
+      "l": "L1",
+      "kanji": "四分",
+      "reading": "よんぷん",
+      "es": "4 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d37a2410",
+      "l": "L1",
+      "kanji": "留学生",
+      "reading": "りゅうがくせい",
+      "es": "estudiante extranjero",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_66c1e2f1",
+      "l": "L1",
+      "kanji": "歴史",
+      "reading": "れきし",
+      "es": "historia",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_400adbb8",
+      "l": "L1",
+      "kanji": "六時",
+      "reading": "ろくじ",
+      "es": "las seis",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d0183ea9",
+      "l": "L1",
+      "kanji": "六分",
+      "reading": "ろっぷん",
+      "es": "6 minutos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3ad4e1aa",
+      "l": "L2",
+      "kanji": "あそこ",
+      "reading": "あそこ",
+      "es": "allí (lejos de los dos)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1c468c9f",
+      "l": "L2",
+      "kanji": "あの",
+      "reading": "あの",
+      "es": "aquel… (lejos)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_65171e79",
+      "l": "L2",
+      "kanji": "あれ",
+      "reading": "あれ",
+      "es": "aquello (lejos)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1a36dc93",
+      "l": "L2",
+      "kanji": "いくら",
+      "reading": "いくら",
+      "es": "cuánto (precio)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_94dc37c4",
+      "l": "L2",
+      "kanji": "いらっしゃいませ",
+      "reading": "いらっしゃいませ",
+      "es": "bienvenido (en una tienda)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_515468d0",
+      "l": "L2",
+      "kanji": "英語",
+      "reading": "えいご",
+      "es": "inglés (idioma)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2474ff6b",
+      "l": "L2",
+      "kanji": "～円",
+      "reading": "～えん",
+      "es": "yenes (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_53a00cc3",
+      "l": "L2",
+      "kanji": "おねがいします（～を）",
+      "reading": "おねがいします",
+      "es": "…, por favor",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_95a9e37e",
+      "l": "L2",
+      "kanji": "カーテン",
+      "reading": "カーテン",
+      "es": "cortina",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c9a8d608",
+      "l": "L2",
+      "kanji": "ください（～を）",
+      "reading": "ください",
+      "es": "deme…, por favor",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5181e201",
+      "l": "L2",
+      "kanji": "消しゴム",
+      "reading": "けしゴム",
+      "es": "goma de borrar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a0cb3385",
+      "l": "L2",
+      "kanji": "黒板",
+      "reading": "こくばん",
+      "es": "pizarra",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5d7aa91a",
+      "l": "L2",
+      "kanji": "ここ",
+      "reading": "ここ",
+      "es": "aquí",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e138cd99",
+      "l": "L2",
+      "kanji": "この",
+      "reading": "この",
+      "es": "este…",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d0cbc7c6",
+      "l": "L2",
+      "kanji": "これ",
+      "reading": "これ",
+      "es": "esto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_11a9bf9a",
+      "l": "L2",
+      "kanji": "財布",
+      "reading": "さいふ",
+      "es": "cartera, monedero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3a48030e",
+      "l": "L2",
+      "kanji": "ジーンズ",
+      "reading": "ジーンズ",
+      "es": "vaqueros",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c5ca920c",
+      "l": "L2",
+      "kanji": "じゃあ",
+      "reading": "じゃあ",
+      "es": "entonces, pues",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0383ef49",
+      "l": "L2",
+      "kanji": "スマホ",
+      "reading": "スマホ",
+      "es": "móvil, smartphone",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7a1fa8ce",
+      "l": "L2",
+      "kanji": "そこ",
+      "reading": "そこ",
+      "es": "ahí",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_83b66f2a",
+      "l": "L2",
+      "kanji": "その",
+      "reading": "その",
+      "es": "ese…",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c753cdfd",
+      "l": "L2",
+      "kanji": "それ",
+      "reading": "それ",
+      "es": "eso",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6436d104",
+      "l": "L2",
+      "kanji": "Ｔシャツ",
+      "reading": "ティーシャツ",
+      "es": "camiseta",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c1258df4",
+      "l": "L2",
+      "kanji": "電気",
+      "reading": "でんき",
+      "es": "luz, electricidad",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d5c023b5",
+      "l": "L2",
+      "kanji": "トイレ",
+      "reading": "トイレ",
+      "es": "baño, servicio",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fc6f932e",
+      "l": "L2",
+      "kanji": "どうぞ",
+      "reading": "どうぞ",
+      "es": "adelante, tenga",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_977f416e",
+      "l": "L2",
+      "kanji": "どうも",
+      "reading": "どうも",
+      "es": "gracias",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_65467b96",
+      "l": "L2",
+      "kanji": "どこ",
+      "reading": "どこ",
+      "es": "dónde",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_af4f2cea",
+      "l": "L2",
+      "kanji": "図書館",
+      "reading": "としょかん",
+      "es": "biblioteca",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cde17a2e",
+      "l": "L2",
+      "kanji": "どの",
+      "reading": "どの",
+      "es": "cuál… (de varios)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5334d724",
+      "l": "L2",
+      "kanji": "どれ",
+      "reading": "どれ",
+      "es": "cuál (de varios)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4a7aba89",
+      "l": "L2",
+      "kanji": "とんかつ",
+      "reading": "とんかつ",
+      "es": "tonkatsu, filete de cerdo empanado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_33f53cd3",
+      "l": "L2",
+      "kanji": "ノート",
+      "reading": "ノート",
+      "es": "cuaderno",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cf623ab2",
+      "l": "L2",
+      "kanji": "ペン",
+      "reading": "ペン",
+      "es": "bolígrafo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_780391a0",
+      "l": "L2",
+      "kanji": "メニュー",
+      "reading": "メニュー",
+      "es": "carta, menú",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c8632bb2",
+      "l": "L3",
+      "kanji": "アイスクリーム",
+      "reading": "アイスクリーム",
+      "es": "helado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8e2a1947",
+      "l": "L3",
+      "kanji": "朝",
+      "reading": "あさ",
+      "es": "mañana (parte del día)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_66ec37b9",
+      "l": "L3",
+      "kanji": "朝ご飯",
+      "reading": "あさごはん",
+      "es": "desayuno",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_bff46361",
+      "l": "L3",
+      "kanji": "あまり ＋ negative",
+      "reading": "あまり",
+      "es": "no mucho (con verbo negativo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cf5074e3",
+      "l": "L3",
+      "kanji": "いい",
+      "reading": "いい",
+      "es": "bueno, bien",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0d162fc1",
+      "l": "L3",
+      "kanji": "家",
+      "reading": "いえ",
+      "es": "casa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6f0ca2ae",
+      "l": "L3",
+      "kanji": "行く",
+      "reading": "いく",
+      "es": "ir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a16d7e70",
+      "l": "L3",
+      "kanji": "いつ",
+      "reading": "いつ",
+      "es": "cuándo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b450547e",
+      "l": "L3",
+      "kanji": "うち",
+      "reading": "うち",
+      "es": "casa, mi casa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_040f28b1",
+      "l": "L3",
+      "kanji": "映画",
+      "reading": "えいが",
+      "es": "película",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_62abdd58",
+      "l": "L3",
+      "kanji": "ええ",
+      "reading": "ええ",
+      "es": "sí (informal)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9c2d0ab9",
+      "l": "L3",
+      "kanji": "起きる",
+      "reading": "おきる",
+      "es": "levantarse, despertarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ad70ad96",
+      "l": "L3",
+      "kanji": "お酒",
+      "reading": "おさけ",
+      "es": "sake, bebida alcohólica",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_87a35c1c",
+      "l": "L3",
+      "kanji": "音楽",
+      "reading": "おんがく",
+      "es": "música",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6bfb718a",
+      "l": "L3",
+      "kanji": "帰る",
+      "reading": "かえる",
+      "es": "volver, regresar a casa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a181ce6d",
+      "l": "L3",
+      "kanji": "カフェ",
+      "reading": "カフェ",
+      "es": "cafetería",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a08e6407",
+      "l": "L3",
+      "kanji": "聞く",
+      "reading": "きく",
+      "es": "escuchar, oír, preguntar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_60605f0b",
+      "l": "L3",
+      "kanji": "来る",
+      "reading": "くる",
+      "es": "venir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_414f7154",
+      "l": "L3",
+      "kanji": "～ごろ",
+      "reading": "～ごろ",
+      "es": "sobre las…, aproximadamente (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_539a2462",
+      "l": "L3",
+      "kanji": "今晩",
+      "reading": "こんばん",
+      "es": "esta noche",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b473a44f",
+      "l": "L3",
+      "kanji": "酒",
+      "reading": "さけ",
+      "es": "sake, alcohol",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6b3adca3",
+      "l": "L3",
+      "kanji": "週末",
+      "reading": "しゅうまつ",
+      "es": "fin de semana",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_56065289",
+      "l": "L3",
+      "kanji": "スポーツ",
+      "reading": "スポーツ",
+      "es": "deporte",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ccc66f93",
+      "l": "L3",
+      "kanji": "する",
+      "reading": "する",
+      "es": "hacer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2e05b2ba",
+      "l": "L3",
+      "kanji": "全然",
+      "reading": "ぜんぜん",
+      "es": "nada en absoluto (con verbo negativo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_376ed2a2",
+      "l": "L3",
+      "kanji": "食べる",
+      "reading": "たべる",
+      "es": "comer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7809d6b1",
+      "l": "L3",
+      "kanji": "茶",
+      "reading": "ちゃ",
+      "es": "té",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d6ae52ce",
+      "l": "L3",
+      "kanji": "寝る",
+      "reading": "ねる",
+      "es": "dormir, acostarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_fb11e9d5",
+      "l": "L3",
+      "kanji": "飲む",
+      "reading": "のむ",
+      "es": "beber",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1503fc9c",
+      "l": "L3",
+      "kanji": "早い",
+      "reading": "はやい",
+      "es": "temprano",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a53d35ee",
+      "l": "L3",
+      "kanji": "晩ご飯",
+      "reading": "ばんごはん",
+      "es": "cena",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e4117d3a",
+      "l": "L3",
+      "kanji": "昼ご飯",
+      "reading": "ひるごはん",
+      "es": "comida, almuerzo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ec7dee74",
+      "l": "L3",
+      "kanji": "勉強する",
+      "reading": "べんきょうする",
+      "es": "estudiar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_052521d5",
+      "l": "L3",
+      "kanji": "毎晩",
+      "reading": "まいばん",
+      "es": "todas las noches",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b62653f0",
+      "l": "L3",
+      "kanji": "水",
+      "reading": "みず",
+      "es": "agua",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d7d81b43",
+      "l": "L3",
+      "kanji": "見る",
+      "reading": "みる",
+      "es": "ver, mirar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a1b0cafa",
+      "l": "L3",
+      "kanji": "読む",
+      "reading": "よむ",
+      "es": "leer",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3b8723c0",
+      "l": "L4",
+      "kanji": "間",
+      "reading": "あいだ",
+      "es": "entre",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ed550f3e",
+      "l": "L4",
+      "kanji": "会う",
+      "reading": "あう",
+      "es": "quedar con alguien, encontrarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d7bc7965",
+      "l": "L4",
+      "kanji": "一月",
+      "reading": "いちがつ",
+      "es": "enero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a26d7786",
+      "l": "L4",
+      "kanji": "一時間",
+      "reading": "いちじかん",
+      "es": "una hora (duración)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ba14058b",
+      "l": "L4",
+      "kanji": "五日",
+      "reading": "いつか",
+      "es": "día 5 del mes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_363bd87f",
+      "l": "L4",
+      "kanji": "お寺",
+      "reading": "おてら",
+      "es": "templo budista",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d604f73a",
+      "l": "L4",
+      "kanji": "買い物",
+      "reading": "かいもの",
+      "es": "compras",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fa3660ef",
+      "l": "L4",
+      "kanji": "買う",
+      "reading": "かう",
+      "es": "comprar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2d51f7da",
+      "l": "L4",
+      "kanji": "書く",
+      "reading": "かく",
+      "es": "escribir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_af403593",
+      "l": "L4",
+      "kanji": "去年",
+      "reading": "きょねん",
+      "es": "el año pasado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d7137b02",
+      "l": "L4",
+      "kanji": "九月",
+      "reading": "くがつ",
+      "es": "septiembre",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a412072e",
+      "l": "L4",
+      "kanji": "五月",
+      "reading": "ごがつ",
+      "es": "mayo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c23ba18c",
+      "l": "L4",
+      "kanji": "九日",
+      "reading": "ここのか",
+      "es": "día 9 del mes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c1a44c14",
+      "l": "L4",
+      "kanji": "今年",
+      "reading": "ことし",
+      "es": "este año",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ae8126c4",
+      "l": "L4",
+      "kanji": "ご飯",
+      "reading": "ごはん",
+      "es": "arroz cocido, comida",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9edd5ff6",
+      "l": "L4",
+      "kanji": "今月",
+      "reading": "こんげつ",
+      "es": "este mes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a0810d1f",
+      "l": "L4",
+      "kanji": "今週",
+      "reading": "こんしゅう",
+      "es": "esta semana",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5c4203e7",
+      "l": "L4",
+      "kanji": "再来月",
+      "reading": "さらいげつ",
+      "es": "dentro de dos meses",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0054acd7",
+      "l": "L4",
+      "kanji": "再来週",
+      "reading": "さらいしゅう",
+      "es": "dentro de dos semanas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f6de7c18",
+      "l": "L4",
+      "kanji": "再来年",
+      "reading": "さらいねん",
+      "es": "dentro de dos años",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_08bb427a",
+      "l": "L4",
+      "kanji": "三月",
+      "reading": "さんがつ",
+      "es": "marzo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d68939d7",
+      "l": "L4",
+      "kanji": "四月",
+      "reading": "しがつ",
+      "es": "abril",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9271b5f7",
+      "l": "L4",
+      "kanji": "七月",
+      "reading": "しちがつ",
+      "es": "julio",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_84ef0993",
+      "l": "L4",
+      "kanji": "写真",
+      "reading": "しゃしん",
+      "es": "foto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b53921d6",
+      "l": "L4",
+      "kanji": "十一月",
+      "reading": "じゅういちがつ",
+      "es": "noviembre",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5e9b4621",
+      "l": "L4",
+      "kanji": "十一日",
+      "reading": "じゅういちにち",
+      "es": "día 11 del mes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_210b1f90",
+      "l": "L4",
+      "kanji": "十月",
+      "reading": "じゅうがつ",
+      "es": "octubre",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1088d567",
+      "l": "L4",
+      "kanji": "十二月",
+      "reading": "じゅうにがつ",
+      "es": "diciembre",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2d332267",
+      "l": "L4",
+      "kanji": "十四日",
+      "reading": "じゅうよっか",
+      "es": "día 14 del mes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f940bc44",
+      "l": "L4",
+      "kanji": "先月",
+      "reading": "せんげつ",
+      "es": "el mes pasado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c385de90",
+      "l": "L4",
+      "kanji": "先週",
+      "reading": "せんしゅう",
+      "es": "la semana pasada",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_608f51c9",
+      "l": "L4",
+      "kanji": "一日",
+      "reading": "ついたち",
+      "es": "día 1 del mes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ac275851",
+      "l": "L4",
+      "kanji": "寺",
+      "reading": "てら",
+      "es": "templo budista",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b963bee1",
+      "l": "L4",
+      "kanji": "十日",
+      "reading": "とおか",
+      "es": "día 10 del mes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6d227044",
+      "l": "L4",
+      "kanji": "撮る",
+      "reading": "とる",
+      "es": "hacer (una foto)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5d515492",
+      "l": "L4",
+      "kanji": "七日",
+      "reading": "なのか",
+      "es": "día 7 del mes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a8b74b87",
+      "l": "L4",
+      "kanji": "二か月前",
+      "reading": "にかげつまえ",
+      "es": "hace dos meses",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_84ba40c0",
+      "l": "L4",
+      "kanji": "二月",
+      "reading": "にがつ",
+      "es": "febrero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c364d45e",
+      "l": "L4",
+      "kanji": "二週間前",
+      "reading": "にしゅうかんまえ",
+      "es": "hace dos semanas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e7a56a36",
+      "l": "L4",
+      "kanji": "二十四日",
+      "reading": "にじゅうよっか",
+      "es": "día 24 del mes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_baa6f8c5",
+      "l": "L4",
+      "kanji": "バス停",
+      "reading": "バスてい",
+      "es": "parada de autobús",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7c3cbc6b",
+      "l": "L4",
+      "kanji": "八月",
+      "reading": "はちがつ",
+      "es": "agosto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8d04988e",
+      "l": "L4",
+      "kanji": "二十日",
+      "reading": "はつか",
+      "es": "día 20 del mes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7182333a",
+      "l": "L4",
+      "kanji": "花",
+      "reading": "はな",
+      "es": "flor",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b159b0cd",
+      "l": "L4",
+      "kanji": "一人で",
+      "reading": "ひとりで",
+      "es": "solo, por mi cuenta",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_53c3199a",
+      "l": "L4",
+      "kanji": "二日",
+      "reading": "ふつか",
+      "es": "día 2 del mes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7b44d829",
+      "l": "L4",
+      "kanji": "本屋",
+      "reading": "ほんや",
+      "es": "librería",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6afcab63",
+      "l": "L4",
+      "kanji": "町",
+      "reading": "まち",
+      "es": "pueblo, ciudad",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_291c3915",
+      "l": "L4",
+      "kanji": "三日",
+      "reading": "みっか",
+      "es": "día 3 del mes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d89893dd",
+      "l": "L4",
+      "kanji": "六日",
+      "reading": "むいか",
+      "es": "día 6 del mes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_78f9f9db",
+      "l": "L4",
+      "kanji": "八日",
+      "reading": "ようか",
+      "es": "día 8 del mes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a0c321b5",
+      "l": "L4",
+      "kanji": "四日",
+      "reading": "よっか",
+      "es": "día 4 del mes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7adf95df",
+      "l": "L4",
+      "kanji": "来月",
+      "reading": "らいげつ",
+      "es": "el mes que viene",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b6a15d13",
+      "l": "L4",
+      "kanji": "来週",
+      "reading": "らいしゅう",
+      "es": "la semana que viene",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2647c25d",
+      "l": "L4",
+      "kanji": "来年",
+      "reading": "らいねん",
+      "es": "el año que viene",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_64cd6d98",
+      "l": "L4",
+      "kanji": "六月",
+      "reading": "ろくがつ",
+      "es": "junio",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_164e8579",
+      "l": "L5",
+      "kanji": "新しい",
+      "reading": "あたらしい",
+      "es": "nuevo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_aa657292",
+      "l": "L5",
+      "kanji": "熱い",
+      "reading": "あつい",
+      "es": "caliente (cosa)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c4ef05c5",
+      "l": "L5",
+      "kanji": "忙しい",
+      "reading": "いそがしい",
+      "es": "ocupado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3d332b7d",
+      "l": "L5",
+      "kanji": "一緒に",
+      "reading": "いっしょに",
+      "es": "juntos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_16c7f5b8",
+      "l": "L5",
+      "kanji": "Ｌサイズ",
+      "reading": "エルサイズ",
+      "es": "talla L",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_65ae379d",
+      "l": "L5",
+      "kanji": "お土産",
+      "reading": "おみやげ",
+      "es": "recuerdo, souvenir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d497bffd",
+      "l": "L5",
+      "kanji": "泳ぐ",
+      "reading": "およぐ",
+      "es": "nadar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0e13d9aa",
+      "l": "L5",
+      "kanji": "嫌い",
+      "reading": "きらい",
+      "es": "que no gusta, odiado (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_50fd66a4",
+      "l": "L5",
+      "kanji": "元気",
+      "reading": "げんき",
+      "es": "sano, con energía (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_71874b16",
+      "l": "L5",
+      "kanji": "好き",
+      "reading": "すき",
+      "es": "que gusta (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0c591b91",
+      "l": "L5",
+      "kanji": "大嫌い",
+      "reading": "だいきらい",
+      "es": "que se odia (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b66a7250",
+      "l": "L5",
+      "kanji": "大好き",
+      "reading": "だいすき",
+      "es": "que encanta (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_60ff703b",
+      "l": "L5",
+      "kanji": "食べ物",
+      "reading": "たべもの",
+      "es": "comida, alimento",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ee431eb4",
+      "l": "L5",
+      "kanji": "出かける",
+      "reading": "でかける",
+      "es": "salir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_94fe33d1",
+      "l": "L5",
+      "kanji": "飲み物",
+      "reading": "のみもの",
+      "es": "bebida",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e124b4fa",
+      "l": "L5",
+      "kanji": "乗る",
+      "reading": "のる",
+      "es": "montar en, subirse a",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c501f1cf",
+      "l": "L5",
+      "kanji": "古い",
+      "reading": "ふるい",
+      "es": "viejo (cosa)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6a0376fe",
+      "l": "L5",
+      "kanji": "僕",
+      "reading": "ぼく",
+      "es": "yo (lo usan los hombres)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_067fff48",
+      "l": "L5",
+      "kanji": "～枚",
+      "reading": "～まい",
+      "es": "contador de cosas planas (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_523b6710",
+      "l": "L5",
+      "kanji": "土産",
+      "reading": "みやげ",
+      "es": "recuerdo, souvenir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b6a3cec5",
+      "l": "L5",
+      "kanji": "安い",
+      "reading": "やすい",
+      "es": "barato",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a710d9a9",
+      "l": "L6",
+      "kanji": "遊ぶ",
+      "reading": "あそぶ",
+      "es": "jugar, pasarlo bien",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f9acb0b4",
+      "l": "L6",
+      "kanji": "後で",
+      "reading": "あとで",
+      "es": "después, más tarde",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c5a58adc",
+      "l": "L6",
+      "kanji": "降りる",
+      "reading": "おりる",
+      "es": "bajarse (de un vehículo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b75638e8",
+      "l": "L6",
+      "kanji": "返す",
+      "reading": "かえす",
+      "es": "devolver (una cosa)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cdb117de",
+      "l": "L6",
+      "kanji": "角",
+      "reading": "かど",
+      "es": "esquina",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c7869889",
+      "l": "L6",
+      "kanji": "金",
+      "reading": "かね",
+      "es": "dinero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_614f4c3a",
+      "l": "L6",
+      "kanji": "漢字",
+      "reading": "かんじ",
+      "es": "kanji, carácter chino",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b097ed24",
+      "l": "L6",
+      "kanji": "北",
+      "reading": "きた",
+      "es": "norte",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1850e96b",
+      "l": "L6",
+      "kanji": "教科書",
+      "reading": "きょうかしょ",
+      "es": "libro de texto",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d8e19303",
+      "l": "L6",
+      "kanji": "国",
+      "reading": "くに",
+      "es": "país, lugar de origen",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8d90a97a",
+      "l": "L6",
+      "kanji": "結構です",
+      "reading": "けっこうです",
+      "es": "está bien así; no hace falta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5efcfbd6",
+      "l": "L6",
+      "kanji": "死ぬ",
+      "reading": "しぬ",
+      "es": "morir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4997644a",
+      "l": "L6",
+      "kanji": "シャワーを浴びる",
+      "reading": "シャワーをあびる",
+      "es": "ducharse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f43a9bb0",
+      "l": "L6",
+      "kanji": "たばこを吸う",
+      "reading": "たばこをすう",
+      "es": "fumar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_538f8610",
+      "l": "L6",
+      "kanji": "次",
+      "reading": "つぎ",
+      "es": "siguiente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_47b07e43",
+      "l": "L6",
+      "kanji": "連れてくる",
+      "reading": "つれてくる",
+      "es": "traer (a una persona)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ae0403df",
+      "l": "L6",
+      "kanji": "西",
+      "reading": "にし",
+      "es": "oeste",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c482d845",
+      "l": "L6",
+      "kanji": "荷物",
+      "reading": "にもつ",
+      "es": "equipaje, bultos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_535e0819",
+      "l": "L6",
+      "kanji": "入る",
+      "reading": "はいる",
+      "es": "entrar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d55fc968",
+      "l": "L6",
+      "kanji": "東",
+      "reading": "ひがし",
+      "es": "este",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_97d5ab96",
+      "l": "L6",
+      "kanji": "左側",
+      "reading": "ひだりがわ",
+      "es": "lado izquierdo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7e39381b",
+      "l": "L6",
+      "kanji": "一つ目",
+      "reading": "ひとつめ",
+      "es": "el primero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_62334ee1",
+      "l": "L6",
+      "kanji": "二つ目",
+      "reading": "ふたつめ",
+      "es": "el segundo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7c4035cc",
+      "l": "L6",
+      "kanji": "本当ですか",
+      "reading": "ほんとうですか",
+      "es": "¿en serio?",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4a97059b",
+      "l": "L6",
+      "kanji": "曲がる",
+      "reading": "まがる",
+      "es": "girar (a la derecha/izquierda)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e53ce82e",
+      "l": "L6",
+      "kanji": "右側",
+      "reading": "みぎがわ",
+      "es": "lado derecho",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0d12e3fd",
+      "l": "L6",
+      "kanji": "三つ目",
+      "reading": "みっつめ",
+      "es": "el tercero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a1707565",
+      "l": "L6",
+      "kanji": "南",
+      "reading": "みなみ",
+      "es": "sur",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a77aaf09",
+      "l": "L6",
+      "kanji": "持つ",
+      "reading": "もつ",
+      "es": "llevar, sostener",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e690ce62",
+      "l": "L6",
+      "kanji": "持ってくる",
+      "reading": "もってくる",
+      "es": "traer (una cosa)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_531b670d",
+      "l": "L6",
+      "kanji": "夜",
+      "reading": "よる",
+      "es": "noche",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_49216035",
+      "l": "L6",
+      "kanji": "渡る",
+      "reading": "わたる",
+      "es": "cruzar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c0a0acdf",
+      "l": "L7",
+      "kanji": "頭がいい",
+      "reading": "あたまがいい",
+      "es": "listo, inteligente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5b42d1fc",
+      "l": "L7",
+      "kanji": "歌",
+      "reading": "うた",
+      "es": "canción",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_de097c4f",
+      "l": "L7",
+      "kanji": "歌う",
+      "reading": "うたう",
+      "es": "cantar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0a0bfee9",
+      "l": "L7",
+      "kanji": "おじいさん",
+      "reading": "おじいさん",
+      "es": "abuelo; anciano",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_965b0928",
+      "l": "L7",
+      "kanji": "お尻",
+      "reading": "おしり",
+      "es": "trasero",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_356ada86",
+      "l": "L7",
+      "kanji": "男の人",
+      "reading": "おとこのひと",
+      "es": "hombre",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5da865db",
+      "l": "L7",
+      "kanji": "おばあさん",
+      "reading": "おばあさん",
+      "es": "abuela; anciana",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6ae854e8",
+      "l": "L7",
+      "kanji": "女の人",
+      "reading": "おんなのひと",
+      "es": "mujer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ddc584d2",
+      "l": "L7",
+      "kanji": "～が",
+      "reading": "～が",
+      "es": "…, pero (partícula)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_605eea15",
+      "l": "L7",
+      "kanji": "かける（眼鏡を）",
+      "reading": "かける",
+      "es": "ponerse (las gafas)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_dc21eccc",
+      "l": "L7",
+      "kanji": "肩",
+      "reading": "かた",
+      "es": "hombro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a603b345",
+      "l": "L7",
+      "kanji": "かぶる",
+      "reading": "かぶる",
+      "es": "ponerse (un sombrero)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ec04af0a",
+      "l": "L7",
+      "kanji": "髪",
+      "reading": "かみ",
+      "es": "pelo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_57829b5c",
+      "l": "L7",
+      "kanji": "かわいい",
+      "reading": "かわいい",
+      "es": "mono, adorable",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_344b7041",
+      "l": "L7",
+      "kanji": "兄弟",
+      "reading": "きょうだい",
+      "es": "hermanos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_39267c88",
+      "l": "L7",
+      "kanji": "着る",
+      "reading": "きる",
+      "es": "ponerse (ropa de cintura para arriba)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_336ae420",
+      "l": "L7",
+      "kanji": "首",
+      "reading": "くび",
+      "es": "cuello",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2ee507b1",
+      "l": "L7",
+      "kanji": "車",
+      "reading": "くるま",
+      "es": "coche",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_eac2d9db",
+      "l": "L7",
+      "kanji": "サークル",
+      "reading": "サークル",
+      "es": "club, actividad extraescolar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e847ca9d",
+      "l": "L7",
+      "kanji": "知っています",
+      "reading": "しっています",
+      "es": "lo sé",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_82ab2d22",
+      "l": "L7",
+      "kanji": "食堂",
+      "reading": "しょくどう",
+      "es": "comedor, cantina",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1be5886f",
+      "l": "L7",
+      "kanji": "尻",
+      "reading": "しり",
+      "es": "trasero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_78ac0a75",
+      "l": "L7",
+      "kanji": "知る",
+      "reading": "しる",
+      "es": "llegar a saber, enterarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3c883cad",
+      "l": "L7",
+      "kanji": "親切",
+      "reading": "しんせつ",
+      "es": "amable (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_26a821db",
+      "l": "L7",
+      "kanji": "住む",
+      "reading": "すむ",
+      "es": "vivir, residir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1ee29b94",
+      "l": "L7",
+      "kanji": "背が高い",
+      "reading": "せがたかい",
+      "es": "alto (de estatura)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fc414559",
+      "l": "L7",
+      "kanji": "背が低い",
+      "reading": "せがひくい",
+      "es": "bajo (de estatura)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6c95444b",
+      "l": "L7",
+      "kanji": "背中",
+      "reading": "せなか",
+      "es": "espalda",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b9cdcd15",
+      "l": "L7",
+      "kanji": "何も",
+      "reading": "なにも",
+      "es": "nada (con verbo negativo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6185a93b",
+      "l": "L7",
+      "kanji": "歯",
+      "reading": "は",
+      "es": "diente",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8bd21c50",
+      "l": "L7",
+      "kanji": "はく",
+      "reading": "はく",
+      "es": "ponerse (ropa de cintura para abajo, zapatos)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b4531ddf",
+      "l": "L7",
+      "kanji": "一人",
+      "reading": "ひとり",
+      "es": "una persona",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fe6aa46b",
+      "l": "L7",
+      "kanji": "二人",
+      "reading": "ふたり",
+      "es": "dos personas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_70f7fd4e",
+      "l": "L7",
+      "kanji": "太っています",
+      "reading": "ふとっています",
+      "es": "estar gordito",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d492d367",
+      "l": "L7",
+      "kanji": "太る",
+      "reading": "ふとる",
+      "es": "engordar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_69848ca2",
+      "l": "L7",
+      "kanji": "別に",
+      "reading": "べつに",
+      "es": "nada en particular (con verbo negativo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_eda633b8",
+      "l": "L7",
+      "kanji": "眉毛",
+      "reading": "まゆげ",
+      "es": "ceja",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fb37e9df",
+      "l": "L7",
+      "kanji": "胸",
+      "reading": "むね",
+      "es": "pecho",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2d9c9259",
+      "l": "L7",
+      "kanji": "眼鏡",
+      "reading": "めがね",
+      "es": "gafas",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3e3d6bc7",
+      "l": "L7",
+      "kanji": "もちろん",
+      "reading": "もちろん",
+      "es": "por supuesto",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ad8cf989",
+      "l": "L7",
+      "kanji": "やせています",
+      "reading": "やせています",
+      "es": "estar delgado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b315ed55",
+      "l": "L7",
+      "kanji": "やせる",
+      "reading": "やせる",
+      "es": "adelgazar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_686874da",
+      "l": "L7",
+      "kanji": "指",
+      "reading": "ゆび",
+      "es": "dedo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a9a8d9c8",
+      "l": "L7",
+      "kanji": "よかったら",
+      "reading": "よかったら",
+      "es": "si te apetece",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f6df6217",
+      "l": "L8",
+      "kanji": "アボカド",
+      "reading": "アボカド",
+      "es": "aguacate",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_756a9015",
+      "l": "L8",
+      "kanji": "アレルギー",
+      "reading": "アレルギー",
+      "es": "alergia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a6acdea1",
+      "l": "L8",
+      "kanji": "言う",
+      "reading": "いう",
+      "es": "decir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_de07b906",
+      "l": "L8",
+      "kanji": "いちご",
+      "reading": "いちご",
+      "es": "fresa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8257b445",
+      "l": "L8",
+      "kanji": "ううん",
+      "reading": "ううん",
+      "es": "no (informal)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e549bfd2",
+      "l": "L8",
+      "kanji": "うん",
+      "reading": "うん",
+      "es": "sí (informal)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a6aa85d6",
+      "l": "L8",
+      "kanji": "運転する",
+      "reading": "うんてんする",
+      "es": "conducir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a395d409",
+      "l": "L8",
+      "kanji": "遅く",
+      "reading": "おそく",
+      "es": "tarde (hacer algo tarde)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_199f5721",
+      "l": "L8",
+      "kanji": "遅くなる",
+      "reading": "おそくなる",
+      "es": "retrasarse, llegar tarde",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_47d6bde5",
+      "l": "L8",
+      "kanji": "お風呂",
+      "reading": "おふろ",
+      "es": "baño (bañera)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_23e007bd",
+      "l": "L8",
+      "kanji": "お風呂に入る",
+      "reading": "おふろにはいる",
+      "es": "darse un baño",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9926f9d5",
+      "l": "L8",
+      "kanji": "思う",
+      "reading": "おもう",
+      "es": "pensar, creer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7f12c074",
+      "l": "L8",
+      "kanji": "カラオケ",
+      "reading": "カラオケ",
+      "es": "karaoke",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_93a4d13a",
+      "l": "L8",
+      "kanji": "気温",
+      "reading": "きおん",
+      "es": "temperatura (del tiempo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4cb76d93",
+      "l": "L8",
+      "kanji": "キャベツ",
+      "reading": "キャベツ",
+      "es": "col, repollo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7f2bbd34",
+      "l": "L8",
+      "kanji": "牛肉",
+      "reading": "ぎゅうにく",
+      "es": "carne de ternera",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1bc93ac1",
+      "l": "L8",
+      "kanji": "きゅうり",
+      "reading": "きゅうり",
+      "es": "pepino",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_038a3f8f",
+      "l": "L8",
+      "kanji": "曇り",
+      "reading": "くもり",
+      "es": "nublado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f9e44858",
+      "l": "L8",
+      "kanji": "今朝",
+      "reading": "けさ",
+      "es": "esta mañana",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_17eb9feb",
+      "l": "L8",
+      "kanji": "残念（ですね）",
+      "reading": "ざんねん",
+      "es": "qué pena, qué lástima",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_42912748",
+      "l": "L8",
+      "kanji": "じゃがいも",
+      "reading": "じゃがいも",
+      "es": "patata",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d5645ead",
+      "l": "L8",
+      "kanji": "上手",
+      "reading": "じょうず",
+      "es": "hábil, que se le da bien (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f2fe07be",
+      "l": "L8",
+      "kanji": "すいか",
+      "reading": "すいか",
+      "es": "sandía",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_86bf0c6f",
+      "l": "L8",
+      "kanji": "捨てる",
+      "reading": "すてる",
+      "es": "tirar, deshacerse de",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_faa7b33c",
+      "l": "L8",
+      "kanji": "洗濯する",
+      "reading": "せんたくする",
+      "es": "lavar la ropa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_baf29262",
+      "l": "L8",
+      "kanji": "掃除する",
+      "reading": "そうじする",
+      "es": "limpiar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_dc452e89",
+      "l": "L8",
+      "kanji": "たまねぎ",
+      "reading": "たまねぎ",
+      "es": "cebolla",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_23974169",
+      "l": "L8",
+      "kanji": "～度",
+      "reading": "～ど",
+      "es": "grados de temperatura (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7fa10a84",
+      "l": "L8",
+      "kanji": "どう",
+      "reading": "どう",
+      "es": "cómo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fe8ad0a1",
+      "l": "L8",
+      "kanji": "所",
+      "reading": "ところ",
+      "es": "lugar, sitio",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_44c3eae7",
+      "l": "L8",
+      "kanji": "トマト",
+      "reading": "トマト",
+      "es": "tomate",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8238a539",
+      "l": "L8",
+      "kanji": "鶏肉",
+      "reading": "とりにく",
+      "es": "carne de pollo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_52e6b67a",
+      "l": "L8",
+      "kanji": "なす",
+      "reading": "なす",
+      "es": "berenjena",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_487125be",
+      "l": "L8",
+      "kanji": "何か",
+      "reading": "なにか",
+      "es": "algo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f563a84e",
+      "l": "L8",
+      "kanji": "～について",
+      "reading": "～について",
+      "es": "sobre…, acerca de… (partícula)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cb7ea2fd",
+      "l": "L8",
+      "kanji": "にんじん",
+      "reading": "にんじん",
+      "es": "zanahoria",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ecc5f9d8",
+      "l": "L8",
+      "kanji": "パーティー",
+      "reading": "パーティー",
+      "es": "fiesta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_468f84cd",
+      "l": "L8",
+      "kanji": "バーベキュー",
+      "reading": "バーベキュー",
+      "es": "barbacoa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1a71c518",
+      "l": "L8",
+      "kanji": "はし",
+      "reading": "はし",
+      "es": "palillos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c0212377",
+      "l": "L8",
+      "kanji": "始める",
+      "reading": "はじめる",
+      "es": "empezar (algo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_aa0b69b8",
+      "l": "L8",
+      "kanji": "ハラルフード",
+      "reading": "ハラルフード",
+      "es": "comida halal",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a971f277",
+      "l": "L8",
+      "kanji": "晴れ",
+      "reading": "はれ",
+      "es": "despejado, soleado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a8c6838e",
+      "l": "L8",
+      "kanji": "ピーナッツ",
+      "reading": "ピーナッツ",
+      "es": "cacahuete",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f56625d3",
+      "l": "L8",
+      "kanji": "袋",
+      "reading": "ふくろ",
+      "es": "bolsa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e9973dda",
+      "l": "L8",
+      "kanji": "豚肉",
+      "reading": "ぶたにく",
+      "es": "carne de cerdo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9c6d3ecc",
+      "l": "L8",
+      "kanji": "ぶどう",
+      "reading": "ぶどう",
+      "es": "uva",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7c371141",
+      "l": "L8",
+      "kanji": "風呂",
+      "reading": "ふろ",
+      "es": "baño (bañera)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e9a7cd29",
+      "l": "L8",
+      "kanji": "風呂に入る",
+      "reading": "ふろにはいる",
+      "es": "darse un baño",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e3e632e1",
+      "l": "L8",
+      "kanji": "下手",
+      "reading": "へた",
+      "es": "torpe, que se le da mal (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f0b74df1",
+      "l": "L8",
+      "kanji": "ホームステイ",
+      "reading": "ホームステイ",
+      "es": "estancia en casa de una familia",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_96ad78f5",
+      "l": "L8",
+      "kanji": "毎週",
+      "reading": "まいしゅう",
+      "es": "todas las semanas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d2457f30",
+      "l": "L8",
+      "kanji": "まだ ＋ negative",
+      "reading": "まだ",
+      "es": "todavía no (con verbo negativo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_55c5c2ba",
+      "l": "L8",
+      "kanji": "みかん",
+      "reading": "みかん",
+      "es": "mandarina",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_277d20a9",
+      "l": "L8",
+      "kanji": "みんなで",
+      "reading": "みんなで",
+      "es": "todos juntos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_179e7ef8",
+      "l": "L8",
+      "kanji": "持っていく",
+      "reading": "もっていく",
+      "es": "llevar (una cosa)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a614efa5",
+      "l": "L8",
+      "kanji": "もも",
+      "reading": "もも",
+      "es": "melocotón",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_893580cc",
+      "l": "L8",
+      "kanji": "有名",
+      "reading": "ゆうめい",
+      "es": "famoso (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_294acf51",
+      "l": "L8",
+      "kanji": "りんご",
+      "reading": "りんご",
+      "es": "manzana",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a850a881",
+      "l": "L9",
+      "kanji": "青信号",
+      "reading": "あおしんごう",
+      "es": "semáforo en verde",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5dbe59b3",
+      "l": "L9",
+      "kanji": "いい子",
+      "reading": "いいこ",
+      "es": "niño bueno",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3e39614a",
+      "l": "L9",
+      "kanji": "意地悪",
+      "reading": "いじわる",
+      "es": "malintencionado, con mala idea (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2dd4001f",
+      "l": "L9",
+      "kanji": "五つ",
+      "reading": "いつつ",
+      "es": "cinco (contador general)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_10d7d7af",
+      "l": "L9",
+      "kanji": "色",
+      "reading": "いろ",
+      "es": "color",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5bcff046",
+      "l": "L9",
+      "kanji": "運動する",
+      "reading": "うんどうする",
+      "es": "hacer ejercicio",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_37363a94",
+      "l": "L9",
+      "kanji": "踊る",
+      "reading": "おどる",
+      "es": "bailar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_66c90cb1",
+      "l": "L9",
+      "kanji": "お弁当",
+      "reading": "おべんとう",
+      "es": "bentō, comida para llevar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ac680c79",
+      "l": "L9",
+      "kanji": "覚える",
+      "reading": "おぼえる",
+      "es": "memorizar, aprenderse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3b23293b",
+      "l": "L9",
+      "kanji": "オレンジ",
+      "reading": "オレンジ",
+      "es": "naranja (color)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_466a1d57",
+      "l": "L9",
+      "kanji": "顔が青い",
+      "reading": "かおがあおい",
+      "es": "tener mala cara, estar pálido",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cd52515c",
+      "l": "L9",
+      "kanji": "歌舞伎",
+      "reading": "かぶき",
+      "es": "kabuki, teatro tradicional japonés",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_66057ea7",
+      "l": "L9",
+      "kanji": "～から",
+      "reading": "～から",
+      "es": "desde… (partícula)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b0ccde86",
+      "l": "L9",
+      "kanji": "ギター",
+      "reading": "ギター",
+      "es": "guitarra",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0192efdc",
+      "l": "L9",
+      "kanji": "金色",
+      "reading": "きんいろ",
+      "es": "dorado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_bd46cad8",
+      "l": "L9",
+      "kanji": "銀色",
+      "reading": "ぎんいろ",
+      "es": "plateado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e7e92062",
+      "l": "L9",
+      "kanji": "薬を飲む",
+      "reading": "くすりをのむ",
+      "es": "tomarse una medicina",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b0f74cb9",
+      "l": "L9",
+      "kanji": "グリーン",
+      "reading": "グリーン",
+      "es": "verde",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1e7ab92f",
+      "l": "L9",
+      "kanji": "グレー",
+      "reading": "グレー",
+      "es": "gris",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a8470e65",
+      "l": "L9",
+      "kanji": "ゴールド",
+      "reading": "ゴールド",
+      "es": "dorado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_db6b48b9",
+      "l": "L9",
+      "kanji": "九つ",
+      "reading": "ここのつ",
+      "es": "nueve (contador general)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d43a1250",
+      "l": "L9",
+      "kanji": "紺色",
+      "reading": "こんいろ",
+      "es": "azul marino",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b68f6bcb",
+      "l": "L9",
+      "kanji": "コンサート",
+      "reading": "コンサート",
+      "es": "concierto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f7def269",
+      "l": "L9",
+      "kanji": "今度",
+      "reading": "こんど",
+      "es": "la próxima vez, dentro de poco",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_11bd919b",
+      "l": "L9",
+      "kanji": "作文",
+      "reading": "さくぶん",
+      "es": "redacción",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_010c155f",
+      "l": "L9",
+      "kanji": "散歩する",
+      "reading": "さんぽする",
+      "es": "pasear",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b2e14afa",
+      "l": "L9",
+      "kanji": "試験",
+      "reading": "しけん",
+      "es": "examen",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_2161fa84",
+      "l": "L9",
+      "kanji": "シルバー",
+      "reading": "シルバー",
+      "es": "plateado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0b018cdf",
+      "l": "L9",
+      "kanji": "白黒",
+      "reading": "しろくろ",
+      "es": "blanco y negro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6f8dc7f5",
+      "l": "L9",
+      "kanji": "スキー",
+      "reading": "スキー",
+      "es": "esquí",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6197e821",
+      "l": "L9",
+      "kanji": "是非",
+      "reading": "ぜひ",
+      "es": "sin falta, no dejes de…",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_de0010f7",
+      "l": "L9",
+      "kanji": "単語",
+      "reading": "たんご",
+      "es": "palabra, vocabulario",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_eab2a363",
+      "l": "L9",
+      "kanji": "チケット",
+      "reading": "チケット",
+      "es": "entrada, billete",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3a62434e",
+      "l": "L9",
+      "kanji": "茶色い",
+      "reading": "ちゃいろい",
+      "es": "marrón",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dc542113",
+      "l": "L9",
+      "kanji": "手紙",
+      "reading": "てがみ",
+      "es": "carta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b03c012f",
+      "l": "L9",
+      "kanji": "出る",
+      "reading": "でる",
+      "es": "salir; asistir; aparecer",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9f070c07",
+      "l": "L9",
+      "kanji": "十",
+      "reading": "とお",
+      "es": "diez (contador general)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5a8264b2",
+      "l": "L9",
+      "kanji": "ところで",
+      "reading": "ところで",
+      "es": "por cierto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c529279c",
+      "l": "L9",
+      "kanji": "七つ",
+      "reading": "ななつ",
+      "es": "siete (contador general)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d55b8d37",
+      "l": "L9",
+      "kanji": "人気がある",
+      "reading": "にんきがある",
+      "es": "tener éxito, ser popular",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f031c32a",
+      "l": "L9",
+      "kanji": "灰色",
+      "reading": "はいいろ",
+      "es": "gris",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c0117f42",
+      "l": "L9",
+      "kanji": "ピアノ",
+      "reading": "ピアノ",
+      "es": "piano",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a7ac83b9",
+      "l": "L9",
+      "kanji": "弾く",
+      "reading": "ひく",
+      "es": "tocar (piano o instrumento de cuerda)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2617da92",
+      "l": "L9",
+      "kanji": "ピザ",
+      "reading": "ピザ",
+      "es": "pizza",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_90372871",
+      "l": "L9",
+      "kanji": "一つ",
+      "reading": "ひとつ",
+      "es": "uno (contador general)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_317b8687",
+      "l": "L9",
+      "kanji": "ピンク",
+      "reading": "ピンク",
+      "es": "rosa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_df1a8b77",
+      "l": "L9",
+      "kanji": "二つ",
+      "reading": "ふたつ",
+      "es": "dos (contador general)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0ce2b588",
+      "l": "L9",
+      "kanji": "ベージュ",
+      "reading": "ベージュ",
+      "es": "beige",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1617eb2e",
+      "l": "L9",
+      "kanji": "弁当",
+      "reading": "べんとう",
+      "es": "bentō, comida para llevar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d5239a6e",
+      "l": "L9",
+      "kanji": "水色",
+      "reading": "みずいろ",
+      "es": "azul claro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5066d883",
+      "l": "L9",
+      "kanji": "三つ",
+      "reading": "みっつ",
+      "es": "tres (contador general)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_944cdb7f",
+      "l": "L9",
+      "kanji": "みんな",
+      "reading": "みんな",
+      "es": "todos, todo el mundo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_774d4e5d",
+      "l": "L9",
+      "kanji": "六つ",
+      "reading": "むっつ",
+      "es": "seis (contador general)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_093ecde7",
+      "l": "L9",
+      "kanji": "紫",
+      "reading": "むらさき",
+      "es": "morado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6d6e816b",
+      "l": "L9",
+      "kanji": "メール",
+      "reading": "メール",
+      "es": "correo electrónico",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_90a29626",
+      "l": "L9",
+      "kanji": "もらう",
+      "reading": "もらう",
+      "es": "recibir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_73316392",
+      "l": "L9",
+      "kanji": "八つ",
+      "reading": "やっつ",
+      "es": "ocho (contador general)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9549e3cf",
+      "l": "L9",
+      "kanji": "四つ",
+      "reading": "よっつ",
+      "es": "cuatro (contador general)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_07a1f5b7",
+      "l": "L9",
+      "kanji": "若い",
+      "reading": "わかい",
+      "es": "joven",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_478a2213",
+      "l": "L10",
+      "kanji": "歩いて",
+      "reading": "あるいて",
+      "es": "a pie, andando",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b0677b82",
+      "l": "L10",
+      "kanji": "一番",
+      "reading": "いちばん",
+      "es": "el más…, el mejor",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_73d06baa",
+      "l": "L10",
+      "kanji": "入口",
+      "reading": "いりぐち",
+      "es": "entrada",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_332ecb3a",
+      "l": "L10",
+      "kanji": "往復",
+      "reading": "おうふく",
+      "es": "ida y vuelta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b7cb7df6",
+      "l": "L10",
+      "kanji": "お金持ち",
+      "reading": "おかねもち",
+      "es": "persona rica",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_84d2590f",
+      "l": "L10",
+      "kanji": "～か～",
+      "reading": "～か～",
+      "es": "o (partícula)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ef921a76",
+      "l": "L10",
+      "kanji": "改札",
+      "reading": "かいさつ",
+      "es": "torno de acceso, control de billetes",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ef3f07b2",
+      "l": "L10",
+      "kanji": "階段",
+      "reading": "かいだん",
+      "es": "escaleras",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e0990ead",
+      "l": "L10",
+      "kanji": "かかる",
+      "reading": "かかる",
+      "es": "costar, llevar (tiempo o dinero)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cf44c207",
+      "l": "L10",
+      "kanji": "学割",
+      "reading": "がくわり",
+      "es": "descuento de estudiante",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_65ff5eb3",
+      "l": "L10",
+      "kanji": "～か月",
+      "reading": "～かげつ",
+      "es": "durante … meses (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ccedc4bb",
+      "l": "L10",
+      "kanji": "片道",
+      "reading": "かたみち",
+      "es": "solo ida",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a6b0cfef",
+      "l": "L10",
+      "kanji": "金持ち",
+      "reading": "かねもち",
+      "es": "persona rica",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6eac4959",
+      "l": "L10",
+      "kanji": "季節",
+      "reading": "きせつ",
+      "es": "estación del año",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3adecec5",
+      "l": "L10",
+      "kanji": "切符売り場",
+      "reading": "きっぷうりば",
+      "es": "taquilla de billetes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_de0e4ef7",
+      "l": "L10",
+      "kanji": "急行",
+      "reading": "きゅうこう",
+      "es": "tren exprés",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_90df645e",
+      "l": "L10",
+      "kanji": "ケーキ",
+      "reading": "ケーキ",
+      "es": "tarta, pastel",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6529b558",
+      "l": "L10",
+      "kanji": "交通系ICカード",
+      "reading": "こうつうけいアイシーカード",
+      "es": "tarjeta de transporte recargable (Suica, Icoca…)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4376df51",
+      "l": "L10",
+      "kanji": "このごろ",
+      "reading": "このごろ",
+      "es": "últimamente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2b4008f0",
+      "l": "L10",
+      "kanji": "ごろごろする",
+      "reading": "ごろごろする",
+      "es": "estar en casa sin hacer nada",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_03bf027f",
+      "l": "L10",
+      "kanji": "サッカー",
+      "reading": "サッカー",
+      "es": "fútbol",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cff3b7e6",
+      "l": "L10",
+      "kanji": "指定席",
+      "reading": "していせき",
+      "es": "asiento reservado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_219a26fe",
+      "l": "L10",
+      "kanji": "次発",
+      "reading": "じはつ",
+      "es": "el siguiente en salir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_390429cf",
+      "l": "L10",
+      "kanji": "～週間",
+      "reading": "～しゅうかん",
+      "es": "durante … semanas (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_01823824",
+      "l": "L10",
+      "kanji": "自由席",
+      "reading": "じゆうせき",
+      "es": "asiento libre, sin reserva",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a206759f",
+      "l": "L10",
+      "kanji": "終電",
+      "reading": "しゅうでん",
+      "es": "último tren del día",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ebc655c4",
+      "l": "L10",
+      "kanji": "乗車券",
+      "reading": "じょうしゃけん",
+      "es": "billete de tren",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_fedefd0c",
+      "l": "L10",
+      "kanji": "新幹線",
+      "reading": "しんかんせん",
+      "es": "shinkansen, tren bala",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_155434ff",
+      "l": "L10",
+      "kanji": "生活",
+      "reading": "せいかつ",
+      "es": "vida, vida diaria",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0d3ecf54",
+      "l": "L10",
+      "kanji": "世界",
+      "reading": "せかい",
+      "es": "mundo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f2be478a",
+      "l": "L10",
+      "kanji": "先発",
+      "reading": "せんぱつ",
+      "es": "el primero en salir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8e7daefa",
+      "l": "L10",
+      "kanji": "地下鉄",
+      "reading": "ちかてつ",
+      "es": "metro",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f33038e7",
+      "l": "L10",
+      "kanji": "ツアー",
+      "reading": "ツアー",
+      "es": "tour, excursión organizada",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3f8ba9a6",
+      "l": "L10",
+      "kanji": "次は～",
+      "reading": "つぎは～",
+      "es": "próxima parada: …",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e51465e3",
+      "l": "L10",
+      "kanji": "冷たい",
+      "reading": "つめたい",
+      "es": "frío (al tacto); frío (de trato)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9acad705",
+      "l": "L10",
+      "kanji": "～で",
+      "reading": "～で",
+      "es": "en (medio de transporte); con (herramienta)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9aa3ebd7",
+      "l": "L10",
+      "kanji": "定期券",
+      "reading": "ていきけん",
+      "es": "abono de transporte",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cef54d4d",
+      "l": "L10",
+      "kanji": "出口",
+      "reading": "でぐち",
+      "es": "salida",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ba70e66c",
+      "l": "L10",
+      "kanji": "手袋",
+      "reading": "てぶくろ",
+      "es": "guantes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b576b0c3",
+      "l": "L10",
+      "kanji": "天ぷら",
+      "reading": "てんぷら",
+      "es": "tempura",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_644f7fdd",
+      "l": "L10",
+      "kanji": "動物園",
+      "reading": "どうぶつえん",
+      "es": "zoo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_01f94fe8",
+      "l": "L10",
+      "kanji": "どうやって",
+      "reading": "どうやって",
+      "es": "cómo, de qué manera",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d797daed",
+      "l": "L10",
+      "kanji": "年上",
+      "reading": "としうえ",
+      "es": "mayor (de edad)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4dd6139a",
+      "l": "L10",
+      "kanji": "どちら",
+      "reading": "どちら",
+      "es": "cuál (de dos)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fa6a59e1",
+      "l": "L10",
+      "kanji": "特急",
+      "reading": "とっきゅう",
+      "es": "tren superexprés",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_44cf1f93",
+      "l": "L10",
+      "kanji": "どっち",
+      "reading": "どっち",
+      "es": "cuál (de dos, informal)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3be0bf2b",
+      "l": "L10",
+      "kanji": "どのぐらい",
+      "reading": "どのぐらい",
+      "es": "cuánto (tiempo o cantidad)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c290782b",
+      "l": "L10",
+      "kanji": "泊まる",
+      "reading": "とまる",
+      "es": "alojarse, hospedarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4cca05d3",
+      "l": "L10",
+      "kanji": "なる",
+      "reading": "なる",
+      "es": "llegar a ser, volverse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f350c728",
+      "l": "L10",
+      "kanji": "～年",
+      "reading": "～ねん",
+      "es": "años (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1f7066d9",
+      "l": "L10",
+      "kanji": "乗り換え",
+      "reading": "のりかえ",
+      "es": "transbordo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8ebfc8bf",
+      "l": "L10",
+      "kanji": "売店",
+      "reading": "ばいてん",
+      "es": "quiosco, tienda de andén",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a4728245",
+      "l": "L10",
+      "kanji": "早く/速く",
+      "reading": "はやく",
+      "es": "temprano; deprisa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_155abff3",
+      "l": "L10",
+      "kanji": "～番線",
+      "reading": "～ばんせん",
+      "es": "vía número … (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_bfe704d7",
+      "l": "L10",
+      "kanji": "美容院",
+      "reading": "びよういん",
+      "es": "peluquería",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2c5861b2",
+      "l": "L10",
+      "kanji": "普通",
+      "reading": "ふつう",
+      "es": "tren local",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_74428704",
+      "l": "L10",
+      "kanji": "～方面",
+      "reading": "～ほうめん",
+      "es": "dirección a … (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b7720002",
+      "l": "L10",
+      "kanji": "ホーム",
+      "reading": "ホーム",
+      "es": "andén",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_911b0474",
+      "l": "L10",
+      "kanji": "野球",
+      "reading": "やきゅう",
+      "es": "béisbol",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_55f75062",
+      "l": "L10",
+      "kanji": "有名人",
+      "reading": "ゆうめいじん",
+      "es": "famoso, celebridad",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_372608a4",
+      "l": "L10",
+      "kanji": "予約",
+      "reading": "よやく",
+      "es": "reserva",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fbe886e9",
+      "l": "L10",
+      "kanji": "練習する",
+      "reading": "れんしゅうする",
+      "es": "practicar, ensayar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_982f70e8",
+      "l": "L11",
+      "kanji": "後",
+      "reading": "あと",
+      "es": "después de (un acontecimiento)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f0c6a72a",
+      "l": "L11",
+      "kanji": "意味",
+      "reading": "いみ",
+      "es": "significado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_de9dbdbf",
+      "l": "L11",
+      "kanji": "うそをつく",
+      "reading": "うそをつく",
+      "es": "mentir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_af98be34",
+      "l": "L11",
+      "kanji": "宇宙飛行士",
+      "reading": "うちゅうひこうし",
+      "es": "astronauta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_bd8ea69b",
+      "l": "L11",
+      "kanji": "お菓子",
+      "reading": "おかし",
+      "es": "dulces, aperitivo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_2b196abd",
+      "l": "L11",
+      "kanji": "お正月",
+      "reading": "おしょうがつ",
+      "es": "Año Nuevo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1e6d222b",
+      "l": "L11",
+      "kanji": "お祭り",
+      "reading": "おまつり",
+      "es": "fiesta popular, matsuri",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b9070f2d",
+      "l": "L11",
+      "kanji": "おもちゃ",
+      "reading": "おもちゃ",
+      "es": "juguete",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7f5a03aa",
+      "l": "L11",
+      "kanji": "温泉",
+      "reading": "おんせん",
+      "es": "onsen, aguas termales",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0136d982",
+      "l": "L11",
+      "kanji": "外国",
+      "reading": "がいこく",
+      "es": "el extranjero",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b538b9e7",
+      "l": "L11",
+      "kanji": "菓子",
+      "reading": "かし",
+      "es": "dulces, aperitivo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7a37da9d",
+      "l": "L11",
+      "kanji": "歌手",
+      "reading": "かしゅ",
+      "es": "cantante",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_14ba96ce",
+      "l": "L11",
+      "kanji": "かたい言い方",
+      "reading": "かたいいいかた",
+      "es": "expresión formal, de registro culto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6e800039",
+      "l": "L11",
+      "kanji": "かっこ",
+      "reading": "かっこ",
+      "es": "paréntesis",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6d9d6094",
+      "l": "L11",
+      "kanji": "キャンプ",
+      "reading": "キャンプ",
+      "es": "acampada",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7181ab66",
+      "l": "L11",
+      "kanji": "教師",
+      "reading": "きょうし",
+      "es": "docente, profesor",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e50c5b73",
+      "l": "L11",
+      "kanji": "共通語",
+      "reading": "きょうつうご",
+      "es": "lengua común, estándar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e634eb3b",
+      "l": "L11",
+      "kanji": "～行目",
+      "reading": "～ぎょうめ",
+      "es": "línea número … (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_530253a5",
+      "l": "L11",
+      "kanji": "くだけた言い方",
+      "reading": "くだけたいいかた",
+      "es": "expresión coloquial",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fe45b2bd",
+      "l": "L11",
+      "kanji": "警察官",
+      "reading": "けいさつかん",
+      "es": "policía (persona)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5e8e5690",
+      "l": "L11",
+      "kanji": "研究者",
+      "reading": "けんきゅうしゃ",
+      "es": "investigador",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_00490a09",
+      "l": "L11",
+      "kanji": "こちら",
+      "reading": "こちら",
+      "es": "esta persona (cortés)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f3f3ad3c",
+      "l": "L11",
+      "kanji": "今学期",
+      "reading": "こんがっき",
+      "es": "este cuatrimestre",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fe2dfb48",
+      "l": "L11",
+      "kanji": "作家",
+      "reading": "さっか",
+      "es": "escritor",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c851ee73",
+      "l": "L11",
+      "kanji": "サボる",
+      "reading": "サボる",
+      "es": "saltarse (una clase)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_426fcf02",
+      "l": "L11",
+      "kanji": "シェフ",
+      "reading": "シェフ",
+      "es": "chef",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6f9d1222",
+      "l": "L11",
+      "kanji": "締め切り",
+      "reading": "しめきり",
+      "es": "fecha límite",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4dcc9c30",
+      "l": "L11",
+      "kanji": "ジャーナリスト",
+      "reading": "ジャーナリスト",
+      "es": "periodista",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fb4914c1",
+      "l": "L11",
+      "kanji": "社長",
+      "reading": "しゃちょう",
+      "es": "director de una empresa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_545e04cf",
+      "l": "L11",
+      "kanji": "授業",
+      "reading": "じゅぎょう",
+      "es": "clase, lección",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a579cc84",
+      "l": "L11",
+      "kanji": "出身",
+      "reading": "しゅっしん",
+      "es": "procedencia, lugar de origen",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ed005a31",
+      "l": "L11",
+      "kanji": "紹介する",
+      "reading": "しょうかいする",
+      "es": "presentar (a alguien)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_20362138",
+      "l": "L11",
+      "kanji": "正月",
+      "reading": "しょうがつ",
+      "es": "Año Nuevo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_706da51e",
+      "l": "L11",
+      "kanji": "消防士",
+      "reading": "しょうぼうし",
+      "es": "bombero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f1c65b8c",
+      "l": "L11",
+      "kanji": "将来",
+      "reading": "しょうらい",
+      "es": "futuro",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_44064bba",
+      "l": "L11",
+      "kanji": "神社",
+      "reading": "じんじゃ",
+      "es": "santuario sintoísta",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_01a5e4c3",
+      "l": "L11",
+      "kanji": "スポーツ選手",
+      "reading": "スポーツせんしゅ",
+      "es": "deportista profesional",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c7373ce1",
+      "l": "L11",
+      "kanji": "そして",
+      "reading": "そして",
+      "es": "y entonces, y además",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5deab857",
+      "l": "L11",
+      "kanji": "ダイエットする",
+      "reading": "ダイエットする",
+      "es": "hacer dieta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_73dcf752",
+      "l": "L11",
+      "kanji": "大統領",
+      "reading": "だいとうりょう",
+      "es": "presidente de un país",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c863db03",
+      "l": "L11",
+      "kanji": "～だけ",
+      "reading": "～だけ",
+      "es": "solo…, únicamente… (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3043c4da",
+      "l": "L11",
+      "kanji": "例えば",
+      "reading": "たとえば",
+      "es": "por ejemplo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2be716da",
+      "l": "L11",
+      "kanji": "遅刻する",
+      "reading": "ちこくする",
+      "es": "llegar tarde (a una cita)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b1791f14",
+      "l": "L11",
+      "kanji": "疲れる",
+      "reading": "つかれる",
+      "es": "cansarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_332376d2",
+      "l": "L11",
+      "kanji": "つり",
+      "reading": "つり",
+      "es": "pesca",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3633c534",
+      "l": "L11",
+      "kanji": "ていねいな言い方",
+      "reading": "ていねいないいかた",
+      "es": "expresión cortés",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_90c4c08d",
+      "l": "L11",
+      "kanji": "～点",
+      "reading": "～てん",
+      "es": "puntos (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0dd95d1e",
+      "l": "L11",
+      "kanji": "ドライブ",
+      "reading": "ドライブ",
+      "es": "paseo en coche",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9b895959",
+      "l": "L11",
+      "kanji": "登る",
+      "reading": "のぼる",
+      "es": "subir, escalar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_253f68a4",
+      "l": "L11",
+      "kanji": "俳優",
+      "reading": "はいゆう",
+      "es": "actor, actriz",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_372d7ae3",
+      "l": "L11",
+      "kanji": "走る",
+      "reading": "はしる",
+      "es": "correr",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_516b61f9",
+      "l": "L11",
+      "kanji": "ばつ",
+      "reading": "ばつ",
+      "es": "× (incorrecto)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_02445638",
+      "l": "L11",
+      "kanji": "発音",
+      "reading": "はつおん",
+      "es": "pronunciación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8768f501",
+      "l": "L11",
+      "kanji": "ビール",
+      "reading": "ビール",
+      "es": "cerveza",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f29fc5ba",
+      "l": "L11",
+      "kanji": "久しぶり",
+      "reading": "ひさしぶり",
+      "es": "cuánto tiempo sin vernos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_87cb0a7b",
+      "l": "L11",
+      "kanji": "美術館",
+      "reading": "びじゅつかん",
+      "es": "museo de arte",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9d148c2b",
+      "l": "L11",
+      "kanji": "二人ずつ",
+      "reading": "ふたりずつ",
+      "es": "de dos en dos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dbe34a4d",
+      "l": "L11",
+      "kanji": "文法",
+      "reading": "ぶんぽう",
+      "es": "gramática",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_02037745",
+      "l": "L11",
+      "kanji": "方言",
+      "reading": "ほうげん",
+      "es": "dialecto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b65c1c7a",
+      "l": "L11",
+      "kanji": "ほかに",
+      "reading": "ほかに",
+      "es": "aparte de eso, algo más",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8be9ffbf",
+      "l": "L11",
+      "kanji": "ホストファミリー",
+      "reading": "ホストファミリー",
+      "es": "familia de acogida",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_fb1388e7",
+      "l": "L11",
+      "kanji": "まあまあ",
+      "reading": "まあまあ",
+      "es": "regular, así así",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1fd9b95b",
+      "l": "L11",
+      "kanji": "祭り",
+      "reading": "まつり",
+      "es": "fiesta popular, matsuri",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_276f7af6",
+      "l": "L11",
+      "kanji": "まる",
+      "reading": "まる",
+      "es": "○ (correcto)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_59140e5c",
+      "l": "L11",
+      "kanji": "漫画家",
+      "reading": "まんがか",
+      "es": "dibujante de manga",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9fdebcdf",
+      "l": "L11",
+      "kanji": "湖",
+      "reading": "みずうみ",
+      "es": "lago",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5be2aa34",
+      "l": "L11",
+      "kanji": "もっと",
+      "reading": "もっと",
+      "es": "más",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b70c9963",
+      "l": "L11",
+      "kanji": "やめる",
+      "reading": "やめる",
+      "es": "dejar (algo), abandonar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4fcf45e8",
+      "l": "L11",
+      "kanji": "夢",
+      "reading": "ゆめ",
+      "es": "sueño",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a684f3e2",
+      "l": "L11",
+      "kanji": "来学期",
+      "reading": "らいがっき",
+      "es": "el cuatrimestre que viene",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e900f95f",
+      "l": "L11",
+      "kanji": "留学する",
+      "reading": "りゅうがくする",
+      "es": "estudiar en el extranjero",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a6801267",
+      "l": "L11",
+      "kanji": "ルームメイト",
+      "reading": "ルームメイト",
+      "es": "compañero de piso",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8057cdd3",
+      "l": "L11",
+      "kanji": "例",
+      "reading": "れい",
+      "es": "ejemplo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_918bad9f",
+      "l": "L12",
+      "kanji": "甘い",
+      "reading": "あまい",
+      "es": "dulce",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e6bab4ed",
+      "l": "L12",
+      "kanji": "歩く",
+      "reading": "あるく",
+      "es": "andar, caminar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_02d61211",
+      "l": "L12",
+      "kanji": "痛み止め",
+      "reading": "いたみどめ",
+      "es": "analgésico",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_62edb08c",
+      "l": "L12",
+      "kanji": "インフルエンザ",
+      "reading": "インフルエンザ",
+      "es": "gripe",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e132e01a",
+      "l": "L12",
+      "kanji": "多い",
+      "reading": "おおい",
+      "es": "abundante, que hay muchos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_795a32de",
+      "l": "L12",
+      "kanji": "お大事に",
+      "reading": "おだいじに",
+      "es": "que te mejores",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_658c15b5",
+      "l": "L12",
+      "kanji": "お手洗い",
+      "reading": "おてあらい",
+      "es": "servicio, aseo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_94d9a14d",
+      "l": "L12",
+      "kanji": "同じ",
+      "reading": "おなじ",
+      "es": "igual, el mismo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_018b4ed6",
+      "l": "L12",
+      "kanji": "風邪をひく",
+      "reading": "かぜをひく",
+      "es": "coger un resfriado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_37e28b42",
+      "l": "L12",
+      "kanji": "彼女",
+      "reading": "かのじょ",
+      "es": "ella; novia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6f62a6a9",
+      "l": "L12",
+      "kanji": "花粉症",
+      "reading": "かふんしょう",
+      "es": "alergia al polen",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8964f546",
+      "l": "L12",
+      "kanji": "彼",
+      "reading": "かれ",
+      "es": "él; novio",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7900c013",
+      "l": "L12",
+      "kanji": "彼氏",
+      "reading": "かれし",
+      "es": "novio",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_656e84e9",
+      "l": "L12",
+      "kanji": "眼科",
+      "reading": "がんか",
+      "es": "oftalmología",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_63ca383c",
+      "l": "L12",
+      "kanji": "切符",
+      "reading": "きっぷ",
+      "es": "billete de tren",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_09f1c8db",
+      "l": "L12",
+      "kanji": "気分が悪い",
+      "reading": "きぶんがわるい",
+      "es": "encontrarse mal",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_66ddbba8",
+      "l": "L12",
+      "kanji": "興味がある",
+      "reading": "きょうみがある",
+      "es": "tener interés en",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c054401f",
+      "l": "L12",
+      "kanji": "緊張する",
+      "reading": "きんちょうする",
+      "es": "ponerse nervioso",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_57155f05",
+      "l": "L12",
+      "kanji": "くしゃみ",
+      "reading": "くしゃみ",
+      "es": "estornudo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_57c70c2b",
+      "l": "L12",
+      "kanji": "けが",
+      "reading": "けが",
+      "es": "herida, lesión",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_509eba1a",
+      "l": "L12",
+      "kanji": "外科",
+      "reading": "げか",
+      "es": "cirugía",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3691f90b",
+      "l": "L12",
+      "kanji": "下痢",
+      "reading": "げり",
+      "es": "diarrea",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c1e002b9",
+      "l": "L12",
+      "kanji": "元気がない",
+      "reading": "げんきがない",
+      "es": "tener mal aspecto, estar decaído",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_040e9f6b",
+      "l": "L12",
+      "kanji": "抗生物質",
+      "reading": "こうせいぶっしつ",
+      "es": "antibiótico",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6c4ed49c",
+      "l": "L12",
+      "kanji": "骨折する",
+      "reading": "こっせつする",
+      "es": "romperse un hueso",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_422da86b",
+      "l": "L12",
+      "kanji": "産婦人科",
+      "reading": "さんふじんか",
+      "es": "ginecología y obstetricia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6fc69243",
+      "l": "L12",
+      "kanji": "試合",
+      "reading": "しあい",
+      "es": "partido, encuentro",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0b699add",
+      "l": "L12",
+      "kanji": "歯科",
+      "reading": "しか",
+      "es": "odontología",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_62af625d",
+      "l": "L12",
+      "kanji": "耳鼻科",
+      "reading": "じびか",
+      "es": "otorrinolaringología",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6fab5d4c",
+      "l": "L12",
+      "kanji": "ジュース",
+      "reading": "ジュース",
+      "es": "zumo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_74eef6df",
+      "l": "L12",
+      "kanji": "手術",
+      "reading": "しゅじゅつ",
+      "es": "operación quirúrgica",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c41ae5ff",
+      "l": "L12",
+      "kanji": "食後",
+      "reading": "しょくご",
+      "es": "después de las comidas",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_99c0c5b5",
+      "l": "L12",
+      "kanji": "素敵",
+      "reading": "すてき",
+      "es": "estupendo, precioso (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_551cb561",
+      "l": "L12",
+      "kanji": "整形外科",
+      "reading": "せいけいげか",
+      "es": "traumatología",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_593d3286",
+      "l": "L12",
+      "kanji": "成績",
+      "reading": "せいせき",
+      "es": "nota, calificación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_65b23383",
+      "l": "L12",
+      "kanji": "生理",
+      "reading": "せいり",
+      "es": "regla, menstruación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1412cda8",
+      "l": "L12",
+      "kanji": "せき",
+      "reading": "せき",
+      "es": "tos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0db09998",
+      "l": "L12",
+      "kanji": "せきが出る",
+      "reading": "せきがでる",
+      "es": "tener tos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d83807e5",
+      "l": "L12",
+      "kanji": "狭い",
+      "reading": "せまい",
+      "es": "estrecho, con poco espacio",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5d3371bd",
+      "l": "L12",
+      "kanji": "それに",
+      "reading": "それに",
+      "es": "además",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6eefe718",
+      "l": "L12",
+      "kanji": "～代",
+      "reading": "～だい",
+      "es": "tarifa, coste de… (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b1a283a5",
+      "l": "L12",
+      "kanji": "体温計",
+      "reading": "たいおんけい",
+      "es": "termómetro",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7404438c",
+      "l": "L12",
+      "kanji": "多分",
+      "reading": "たぶん",
+      "es": "seguramente, quizá",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8bd0519c",
+      "l": "L12",
+      "kanji": "注射",
+      "reading": "ちゅうしゃ",
+      "es": "inyección",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_38e9be8e",
+      "l": "L12",
+      "kanji": "できるだけ",
+      "reading": "できるだけ",
+      "es": "en la medida de lo posible",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f64826f4",
+      "l": "L12",
+      "kanji": "点滴",
+      "reading": "てんてき",
+      "es": "gotero, suero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a9dbd8ce",
+      "l": "L12",
+      "kanji": "内科",
+      "reading": "ないか",
+      "es": "medicina interna",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1bea9292",
+      "l": "L12",
+      "kanji": "なくす",
+      "reading": "なくす",
+      "es": "perder (algo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1237737f",
+      "l": "L12",
+      "kanji": "二三日",
+      "reading": "にさんにち",
+      "es": "dos o tres días",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7d643d50",
+      "l": "L12",
+      "kanji": "熱がある",
+      "reading": "ねつがある",
+      "es": "tener fiebre",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_60c8167f",
+      "l": "L12",
+      "kanji": "喉",
+      "reading": "のど",
+      "es": "garganta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_72778067",
+      "l": "L12",
+      "kanji": "喉が渇く",
+      "reading": "のどがかわく",
+      "es": "tener sed",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c6b2f859",
+      "l": "L12",
+      "kanji": "初めて",
+      "reading": "はじめて",
+      "es": "por primera vez",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e61bb9bb",
+      "l": "L12",
+      "kanji": "発疹",
+      "reading": "はっしん",
+      "es": "sarpullido, erupción",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_50ea5246",
+      "l": "L12",
+      "kanji": "鼻水",
+      "reading": "はなみず",
+      "es": "mocos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c5f29ca4",
+      "l": "L12",
+      "kanji": "払う",
+      "reading": "はらう",
+      "es": "pagar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f1675669",
+      "l": "L12",
+      "kanji": "皮膚科",
+      "reading": "ひふか",
+      "es": "dermatología",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e581ed92",
+      "l": "L12",
+      "kanji": "広い",
+      "reading": "ひろい",
+      "es": "amplio, espacioso",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f8179f37",
+      "l": "L12",
+      "kanji": "二日酔い",
+      "reading": "ふつかよい",
+      "es": "resaca",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7a823496",
+      "l": "L12",
+      "kanji": "便秘",
+      "reading": "べんぴ",
+      "es": "estreñimiento",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8bb97c3e",
+      "l": "L12",
+      "kanji": "ホームシック",
+      "reading": "ホームシック",
+      "es": "morriña, nostalgia de casa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ed85b37e",
+      "l": "L12",
+      "kanji": "保険証",
+      "reading": "ほけんしょう",
+      "es": "tarjeta sanitaria",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_05d30db0",
+      "l": "L12",
+      "kanji": "虫歯",
+      "reading": "むしば",
+      "es": "caries",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_380ee61b",
+      "l": "L12",
+      "kanji": "めまいがする",
+      "reading": "めまいがする",
+      "es": "marearse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0dbbdde3",
+      "l": "L12",
+      "kanji": "もうすぐ",
+      "reading": "もうすぐ",
+      "es": "dentro de nada, muy pronto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_47f545f3",
+      "l": "L12",
+      "kanji": "物",
+      "reading": "もの",
+      "es": "cosa (objeto concreto)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b7c87592",
+      "l": "L12",
+      "kanji": "やけどをする",
+      "reading": "やけどをする",
+      "es": "quemarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_121cd2d8",
+      "l": "L12",
+      "kanji": "用事",
+      "reading": "ようじ",
+      "es": "asunto que atender, recado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a74fb33f",
+      "l": "L12",
+      "kanji": "レントゲン",
+      "reading": "レントゲン",
+      "es": "radiografía",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c6f14a21",
+      "l": "L12",
+      "kanji": "別れる",
+      "reading": "わかれる",
+      "es": "romper, separarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_de273986",
+      "l": "L12",
+      "kanji": "悪い",
+      "reading": "わるい",
+      "es": "malo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4177e1e1",
+      "l": "L13",
+      "kanji": "預け入れ",
+      "reading": "あずけいれ",
+      "es": "ingreso (de dinero)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_494e5aff",
+      "l": "L13",
+      "kanji": "アパート",
+      "reading": "アパート",
+      "es": "piso, apartamento (edificio pequeño)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e7c93a22",
+      "l": "L13",
+      "kanji": "アプリ",
+      "reading": "アプリ",
+      "es": "aplicación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0adeb370",
+      "l": "L13",
+      "kanji": "編む",
+      "reading": "あむ",
+      "es": "tejer, hacer punto",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_02736e26",
+      "l": "L13",
+      "kanji": "いろいろ（な）",
+      "reading": "いろいろ",
+      "es": "variado, de todo tipo (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_49363e03",
+      "l": "L13",
+      "kanji": "お預け入れ",
+      "reading": "おあずけいれ",
+      "es": "ingreso (de dinero)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e45ddb5c",
+      "l": "L13",
+      "kanji": "大人",
+      "reading": "おとな",
+      "es": "adulto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_414ba65b",
+      "l": "L13",
+      "kanji": "お引き出し",
+      "reading": "おひきだし",
+      "es": "reintegro, sacar dinero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a581d381",
+      "l": "L13",
+      "kanji": "お振込",
+      "reading": "おふりこみ",
+      "es": "transferencia bancaria",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_75bcff5c",
+      "l": "L13",
+      "kanji": "外国語",
+      "reading": "がいこくご",
+      "es": "lengua extranjera",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9cffd30e",
+      "l": "L13",
+      "kanji": "楽器",
+      "reading": "がっき",
+      "es": "instrumento musical",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_de9d0ff8",
+      "l": "L13",
+      "kanji": "辛い",
+      "reading": "からい",
+      "es": "picante; salado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d946eadc",
+      "l": "L13",
+      "kanji": "体",
+      "reading": "からだ",
+      "es": "cuerpo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_37bc9ba5",
+      "l": "L13",
+      "kanji": "空手",
+      "reading": "からて",
+      "es": "kárate",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1d4be309",
+      "l": "L13",
+      "kanji": "カレー",
+      "reading": "カレー",
+      "es": "curry",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f764184b",
+      "l": "L13",
+      "kanji": "感動する",
+      "reading": "かんどうする",
+      "es": "emocionarse, conmoverse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0cc1724e",
+      "l": "L13",
+      "kanji": "厳しい",
+      "reading": "きびしい",
+      "es": "estricto, severo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ec32e2d2",
+      "l": "L13",
+      "kanji": "キャッシュカード",
+      "reading": "キャッシュカード",
+      "es": "tarjeta de débito",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_31b57b20",
+      "l": "L13",
+      "kanji": "～キロ",
+      "reading": "～キロ",
+      "es": "kilómetros; kilos (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8f987576",
+      "l": "L13",
+      "kanji": "金額",
+      "reading": "きんがく",
+      "es": "importe, cantidad de dinero",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6f00638e",
+      "l": "L13",
+      "kanji": "空港",
+      "reading": "くうこう",
+      "es": "aeropuerto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e092f1c3",
+      "l": "L13",
+      "kanji": "クレジットカード",
+      "reading": "クレジットカード",
+      "es": "tarjeta de crédito",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_00e09ddc",
+      "l": "L13",
+      "kanji": "広告",
+      "reading": "こうこく",
+      "es": "anuncio, publicidad",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_64503df1",
+      "l": "L13",
+      "kanji": "紅茶",
+      "reading": "こうちゃ",
+      "es": "té negro",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c8b32a67",
+      "l": "L13",
+      "kanji": "言葉",
+      "reading": "ことば",
+      "es": "palabra, lengua",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_93d375a6",
+      "l": "L13",
+      "kanji": "ゴルフ",
+      "reading": "ゴルフ",
+      "es": "golf",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8196add8",
+      "l": "L13",
+      "kanji": "残高照会",
+      "reading": "ざんだかしょうかい",
+      "es": "consulta de saldo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_13df2fec",
+      "l": "L13",
+      "kanji": "幸せ",
+      "reading": "しあわせ",
+      "es": "feliz (felicidad duradera) (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1269ada8",
+      "l": "L13",
+      "kanji": "すごい",
+      "reading": "すごい",
+      "es": "increíble, impresionante",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ea890ea1",
+      "l": "L13",
+      "kanji": "セーター",
+      "reading": "セーター",
+      "es": "jersey",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cc600a82",
+      "l": "L13",
+      "kanji": "全部",
+      "reading": "ぜんぶ",
+      "es": "todo, por completo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_38ebc0ed",
+      "l": "L13",
+      "kanji": "象",
+      "reading": "ぞう",
+      "es": "elefante",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ddcd283b",
+      "l": "L13",
+      "kanji": "だめ（な）",
+      "reading": "だめ",
+      "es": "que no vale, que no se puede (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e6fb3dcd",
+      "l": "L13",
+      "kanji": "近い",
+      "reading": "ちかい",
+      "es": "cercano, cerca",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a4fc1548",
+      "l": "L13",
+      "kanji": "通帳",
+      "reading": "つうちょう",
+      "es": "cartilla bancaria",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a372be33",
+      "l": "L13",
+      "kanji": "通帳記入",
+      "reading": "つうちょうきにゅう",
+      "es": "actualización de la cartilla",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8020fab1",
+      "l": "L13",
+      "kanji": "手数料",
+      "reading": "てすうりょう",
+      "es": "comisión",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3809ea9a",
+      "l": "L13",
+      "kanji": "特に",
+      "reading": "とくに",
+      "es": "especialmente, sobre todo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d48b6c5d",
+      "l": "L13",
+      "kanji": "～と申します",
+      "reading": "～ともうします",
+      "es": "me llamo… (cortés)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_27495a89",
+      "l": "L13",
+      "kanji": "泣く",
+      "reading": "なく",
+      "es": "llorar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d221fa11",
+      "l": "L13",
+      "kanji": "バイク",
+      "reading": "バイク",
+      "es": "moto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_911ab4af",
+      "l": "L13",
+      "kanji": "引き出し",
+      "reading": "ひきだし",
+      "es": "reintegro, sacar dinero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1afd1ef7",
+      "l": "L13",
+      "kanji": "物価",
+      "reading": "ぶっか",
+      "es": "precios, coste de la vida",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0438ee3e",
+      "l": "L13",
+      "kanji": "振込",
+      "reading": "ふりこみ",
+      "es": "transferencia bancaria",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b23d5eaf",
+      "l": "L13",
+      "kanji": "募集",
+      "reading": "ぼしゅう",
+      "es": "convocatoria, búsqueda de personal",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e6842f49",
+      "l": "L13",
+      "kanji": "マンション",
+      "reading": "マンション",
+      "es": "piso (edificio grande), apartamento",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8e6fbb07",
+      "l": "L13",
+      "kanji": "磨く",
+      "reading": "みがく",
+      "es": "cepillarse (los dientes); pulir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7e43c172",
+      "l": "L13",
+      "kanji": "約束を守る",
+      "reading": "やくそくをまもる",
+      "es": "cumplir una promesa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5a657d4e",
+      "l": "L13",
+      "kanji": "預金",
+      "reading": "よきん",
+      "es": "ahorros, depósito",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c89ae2cf",
+      "l": "L13",
+      "kanji": "両替",
+      "reading": "りょうがえ",
+      "es": "cambio de divisa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9c87d8ee",
+      "l": "L14",
+      "kanji": "あきらめる",
+      "reading": "あきらめる",
+      "es": "rendirse, darse por vencido",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_885ed11c",
+      "l": "L14",
+      "kanji": "あげる",
+      "reading": "あげる",
+      "es": "dar (a otra persona)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_41de8b2c",
+      "l": "L14",
+      "kanji": "鉛筆",
+      "reading": "えんぴつ",
+      "es": "lápiz",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9b1f4642",
+      "l": "L14",
+      "kanji": "大家さん",
+      "reading": "おおやさん",
+      "es": "casero, propietario del piso",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ef59b9bd",
+      "l": "L14",
+      "kanji": "奥さん",
+      "reading": "おくさん",
+      "es": "esposa (de otro)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ecdb0ea6",
+      "l": "L14",
+      "kanji": "お皿",
+      "reading": "おさら",
+      "es": "plato",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c0fcf6cb",
+      "l": "L14",
+      "kanji": "おじさん",
+      "reading": "おじさん",
+      "es": "tío; señor de mediana edad",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d645580c",
+      "l": "L14",
+      "kanji": "おしゃれ（な）",
+      "reading": "おしゃれ",
+      "es": "con estilo, arreglado (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d92cd2b1",
+      "l": "L14",
+      "kanji": "おばさん",
+      "reading": "おばさん",
+      "es": "tía; señora de mediana edad",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_aed65a55",
+      "l": "L14",
+      "kanji": "急に",
+      "reading": "きゅうに",
+      "es": "de repente",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e9917b3f",
+      "l": "L14",
+      "kanji": "クリスマス",
+      "reading": "クリスマス",
+      "es": "Navidad",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3cc18be3",
+      "l": "L14",
+      "kanji": "くれる",
+      "reading": "くれる",
+      "es": "darme (a mí)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_870a486e",
+      "l": "L14",
+      "kanji": "～君",
+      "reading": "～くん",
+      "es": "sufijo informal para chicos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6c9f8024",
+      "l": "L14",
+      "kanji": "化粧品",
+      "reading": "けしょうひん",
+      "es": "cosméticos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_699127f7",
+      "l": "L14",
+      "kanji": "けち（な）",
+      "reading": "けち",
+      "es": "tacaño (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f481ef9c",
+      "l": "L14",
+      "kanji": "～個",
+      "reading": "～こ",
+      "es": "contador general de objetos pequeños (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_87c067f6",
+      "l": "L14",
+      "kanji": "ご主人",
+      "reading": "ごしゅじん",
+      "es": "marido (de otra)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d66fa217",
+      "l": "L14",
+      "kanji": "こんな～",
+      "reading": "こんな～",
+      "es": "este tipo de…, así de…",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9940ffa6",
+      "l": "L14",
+      "kanji": "さあ",
+      "reading": "さあ",
+      "es": "pues no sé…",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4559ae13",
+      "l": "L14",
+      "kanji": "～冊",
+      "reading": "～さつ",
+      "es": "contador de libros y volúmenes (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_945f010c",
+      "l": "L14",
+      "kanji": "皿",
+      "reading": "さら",
+      "es": "plato",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7e1864dd",
+      "l": "L14",
+      "kanji": "相談する",
+      "reading": "そうだんする",
+      "es": "consultar, pedir consejo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3af8ea28",
+      "l": "L14",
+      "kanji": "～たち",
+      "reading": "～たち",
+      "es": "sufijo de plural para personas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9c4f77ea",
+      "l": "L14",
+      "kanji": "注意する",
+      "reading": "ちゅういする",
+      "es": "avisar, llamar la atención",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_04d0a963",
+      "l": "L14",
+      "kanji": "ちょうど",
+      "reading": "ちょうど",
+      "es": "justo, exactamente",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a5661b2a",
+      "l": "L14",
+      "kanji": "チョコレート",
+      "reading": "チョコレート",
+      "es": "chocolate",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4c0004b6",
+      "l": "L14",
+      "kanji": "できる",
+      "reading": "できる",
+      "es": "hacerse, formarse; surgir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_41c3cf7c",
+      "l": "L14",
+      "kanji": "どうしたらいい",
+      "reading": "どうしたらいい",
+      "es": "qué debería hacer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dd3d1f50",
+      "l": "L14",
+      "kanji": "トレーナー",
+      "reading": "トレーナー",
+      "es": "sudadera",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_65f9c375",
+      "l": "L14",
+      "kanji": "似合う",
+      "reading": "にあう",
+      "es": "quedar bien (la ropa a alguien)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1a3c079e",
+      "l": "L14",
+      "kanji": "ぬいぐるみ",
+      "reading": "ぬいぐるみ",
+      "es": "peluche",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_febda5de",
+      "l": "L14",
+      "kanji": "ネクタイ",
+      "reading": "ネクタイ",
+      "es": "corbata",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_34d17ad4",
+      "l": "L14",
+      "kanji": "パートナー",
+      "reading": "パートナー",
+      "es": "pareja, compañero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_baf67405",
+      "l": "L14",
+      "kanji": "バレンタインデー",
+      "reading": "バレンタインデー",
+      "es": "San Valentín",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_69b3db8b",
+      "l": "L14",
+      "kanji": "～匹",
+      "reading": "～ひき",
+      "es": "contador de animales pequeños (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a7dc2f4e",
+      "l": "L14",
+      "kanji": "プロポーズする",
+      "reading": "プロポーズする",
+      "es": "pedir matrimonio",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c55a0191",
+      "l": "L14",
+      "kanji": "欲しい",
+      "reading": "ほしい",
+      "es": "querer (algo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2743b0e0",
+      "l": "L14",
+      "kanji": "ホワイトデー",
+      "reading": "ホワイトデー",
+      "es": "White Day (14 de marzo, se devuelve el regalo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e83fe319",
+      "l": "L14",
+      "kanji": "マフラー",
+      "reading": "マフラー",
+      "es": "bufanda",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5a8bb765",
+      "l": "L14",
+      "kanji": "漫画",
+      "reading": "まんが",
+      "es": "manga, cómic",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_984c9bc0",
+      "l": "L14",
+      "kanji": "皆さん",
+      "reading": "みなさん",
+      "es": "todos ustedes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_477e6489",
+      "l": "L14",
+      "kanji": "指輪",
+      "reading": "ゆびわ",
+      "es": "anillo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_847463d5",
+      "l": "L14",
+      "kanji": "ラジオ",
+      "reading": "ラジオ",
+      "es": "radio",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_db8dc61d",
+      "l": "L14",
+      "kanji": "私たち",
+      "reading": "わたしたち",
+      "es": "nosotros",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3c5bc8d9",
+      "l": "L15",
+      "kanji": "一日中",
+      "reading": "いちにちじゅう",
+      "es": "todo el día",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_73748b81",
+      "l": "L15",
+      "kanji": "一日目",
+      "reading": "いちにちめ",
+      "es": "el primer día",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_917be2e9",
+      "l": "L15",
+      "kanji": "一泊二食付き",
+      "reading": "いっぱくにしょくつき",
+      "es": "una noche con dos comidas incluidas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_58079c65",
+      "l": "L15",
+      "kanji": "インターネット",
+      "reading": "インターネット",
+      "es": "internet",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0790fa27",
+      "l": "L15",
+      "kanji": "売る",
+      "reading": "うる",
+      "es": "vender",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6c8a0449",
+      "l": "L15",
+      "kanji": "絵",
+      "reading": "え",
+      "es": "cuadro, dibujo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3fc3bab9",
+      "l": "L15",
+      "kanji": "下ろす",
+      "reading": "おろす",
+      "es": "sacar (dinero)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_aa019c7d",
+      "l": "L15",
+      "kanji": "外国人",
+      "reading": "がいこくじん",
+      "es": "extranjero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_49d8074c",
+      "l": "L15",
+      "kanji": "家具",
+      "reading": "かぐ",
+      "es": "muebles",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0ad2d5b8",
+      "l": "L15",
+      "kanji": "活動",
+      "reading": "かつどう",
+      "es": "actividad",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9e1b44bd",
+      "l": "L15",
+      "kanji": "観光する",
+      "reading": "かんこうする",
+      "es": "hacer turismo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_97b5ce09",
+      "l": "L15",
+      "kanji": "喫煙",
+      "reading": "きつえん",
+      "es": "zona de fumadores",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_233ab309",
+      "l": "L15",
+      "kanji": "気をつける",
+      "reading": "きをつける",
+      "es": "tener cuidado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ac1bb910",
+      "l": "L15",
+      "kanji": "禁煙",
+      "reading": "きんえん",
+      "es": "prohibido fumar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_43ca0514",
+      "l": "L15",
+      "kanji": "結婚式",
+      "reading": "けっこんしき",
+      "es": "boda, ceremonia nupcial",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3e639258",
+      "l": "L15",
+      "kanji": "～けど",
+      "reading": "～けど",
+      "es": "…, pero (partícula)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c62b878b",
+      "l": "L15",
+      "kanji": "最近",
+      "reading": "さいきん",
+      "es": "últimamente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_92527880",
+      "l": "L15",
+      "kanji": "探す",
+      "reading": "さがす",
+      "es": "buscar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3d6ac0cb",
+      "l": "L15",
+      "kanji": "誘う",
+      "reading": "さそう",
+      "es": "invitar, proponer un plan",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c6fea2ca",
+      "l": "L15",
+      "kanji": "参加する",
+      "reading": "さんかする",
+      "es": "participar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5b2ffe20",
+      "l": "L15",
+      "kanji": "地震",
+      "reading": "じしん",
+      "es": "terremoto",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_42d17b27",
+      "l": "L15",
+      "kanji": "ジャケット",
+      "reading": "ジャケット",
+      "es": "chaqueta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c98d1cfd",
+      "l": "L15",
+      "kanji": "しゃべる",
+      "reading": "しゃべる",
+      "es": "charlar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7c41c57d",
+      "l": "L15",
+      "kanji": "調べる",
+      "reading": "しらべる",
+      "es": "consultar, investigar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a19caf41",
+      "l": "L15",
+      "kanji": "シングル",
+      "reading": "シングル",
+      "es": "habitación individual",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_830bd756",
+      "l": "L15",
+      "kanji": "税金",
+      "reading": "ぜいきん",
+      "es": "impuestos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7e066a37",
+      "l": "L15",
+      "kanji": "卒業式",
+      "reading": "そつぎょうしき",
+      "es": "ceremonia de graduación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ce1ea7fa",
+      "l": "L15",
+      "kanji": "卒業する",
+      "reading": "そつぎょうする",
+      "es": "graduarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5420c875",
+      "l": "L15",
+      "kanji": "そば",
+      "reading": "そば",
+      "es": "soba, fideos de alforfón",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e7237faf",
+      "l": "L15",
+      "kanji": "大浴場",
+      "reading": "だいよくじょう",
+      "es": "baño termal grande",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d4c03f17",
+      "l": "L15",
+      "kanji": "建物",
+      "reading": "たてもの",
+      "es": "edificio",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_86560b70",
+      "l": "L15",
+      "kanji": "楽しみです",
+      "reading": "たのしみです",
+      "es": "tengo muchas ganas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f5d94811",
+      "l": "L15",
+      "kanji": "ダブル",
+      "reading": "ダブル",
+      "es": "habitación doble (cama de matrimonio)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_50aa30a9",
+      "l": "L15",
+      "kanji": "チェックアウト（する）",
+      "reading": "チェックアウト",
+      "es": "hacer el check-out",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9525df36",
+      "l": "L15",
+      "kanji": "チェックイン（する）",
+      "reading": "チェックイン",
+      "es": "hacer el check-in",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_53471863",
+      "l": "L15",
+      "kanji": "地図",
+      "reading": "ちず",
+      "es": "mapa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_725a987e",
+      "l": "L15",
+      "kanji": "朝食付き",
+      "reading": "ちょうしょくつき",
+      "es": "con desayuno incluido",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_675a1d97",
+      "l": "L15",
+      "kanji": "ツイン",
+      "reading": "ツイン",
+      "es": "habitación doble (dos camas)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_463cd631",
+      "l": "L15",
+      "kanji": "付き合う",
+      "reading": "つきあう",
+      "es": "salir con alguien; acompañar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e1b2af5e",
+      "l": "L15",
+      "kanji": "着く",
+      "reading": "つく",
+      "es": "llegar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d478673a",
+      "l": "L15",
+      "kanji": "電池",
+      "reading": "でんち",
+      "es": "pila, batería",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_09a3dc5f",
+      "l": "L15",
+      "kanji": "庭",
+      "reading": "にわ",
+      "es": "jardín",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c13f9b79",
+      "l": "L15",
+      "kanji": "発表する",
+      "reading": "はっぴょうする",
+      "es": "presentar, exponer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_bf261dc9",
+      "l": "L15",
+      "kanji": "プール",
+      "reading": "プール",
+      "es": "piscina",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_da99dc20",
+      "l": "L15",
+      "kanji": "フロント",
+      "reading": "フロント",
+      "es": "recepción (de un hotel)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4b6fb881",
+      "l": "L15",
+      "kanji": "ペット",
+      "reading": "ペット",
+      "es": "mascota",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ecaa8721",
+      "l": "L15",
+      "kanji": "保険",
+      "reading": "ほけん",
+      "es": "seguro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ae50fa6e",
+      "l": "L15",
+      "kanji": "保険に入る",
+      "reading": "ほけんにはいる",
+      "es": "contratar un seguro",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d20cdd7c",
+      "l": "L15",
+      "kanji": "ボランティア",
+      "reading": "ボランティア",
+      "es": "voluntariado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3d77f329",
+      "l": "L15",
+      "kanji": "見える",
+      "reading": "みえる",
+      "es": "verse, ser visible",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_93f11f2a",
+      "l": "L15",
+      "kanji": "～名",
+      "reading": "～めい",
+      "es": "contador cortés de personas (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_613ee6a8",
+      "l": "L15",
+      "kanji": "もう一度",
+      "reading": "もういちど",
+      "es": "otra vez, una vez más",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6c2220a5",
+      "l": "L15",
+      "kanji": "旅館",
+      "reading": "りょかん",
+      "es": "ryokan, posada tradicional japonesa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1a2a58b5",
+      "l": "L15",
+      "kanji": "割引券",
+      "reading": "わりびきけん",
+      "es": "cupón de descuento",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_eab484d7",
+      "l": "L16",
+      "kanji": "アイロンをかける",
+      "reading": "アイロンをかける",
+      "es": "planchar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ab1433ec",
+      "l": "L16",
+      "kanji": "朝寝坊する",
+      "reading": "あさねぼうする",
+      "es": "quedarse dormido",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_27e95433",
+      "l": "L16",
+      "kanji": "集める",
+      "reading": "あつめる",
+      "es": "reunir, coleccionar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_675337d9",
+      "l": "L16",
+      "kanji": "～以外",
+      "reading": "～いがい",
+      "es": "aparte de…, excepto… (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a653f734",
+      "l": "L16",
+      "kanji": "入れる",
+      "reading": "いれる",
+      "es": "meter, introducir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e0d924d5",
+      "l": "L16",
+      "kanji": "ええと",
+      "reading": "ええと",
+      "es": "a ver…, pues…",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a2a527bc",
+      "l": "L16",
+      "kanji": "駅員（さん）",
+      "reading": "えきいん",
+      "es": "empleado de la estación",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e27d1482",
+      "l": "L16",
+      "kanji": "大きさ",
+      "reading": "おおきさ",
+      "es": "tamaño",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1aceb54c",
+      "l": "L16",
+      "kanji": "起こす",
+      "reading": "おこす",
+      "es": "despertar (a alguien)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f8378aab",
+      "l": "L16",
+      "kanji": "おごる",
+      "reading": "おごる",
+      "es": "invitar (pagar la comida)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4ed6ad48",
+      "l": "L16",
+      "kanji": "落ち込む",
+      "reading": "おちこむ",
+      "es": "venirse abajo, desanimarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_fb89d2c5",
+      "l": "L16",
+      "kanji": "親",
+      "reading": "おや",
+      "es": "padre o madre, progenitor",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5a11db9a",
+      "l": "L16",
+      "kanji": "汚い",
+      "reading": "きたない",
+      "es": "sucio",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_bc04f1a6",
+      "l": "L16",
+      "kanji": "期末試験",
+      "reading": "きまつしけん",
+      "es": "examen final",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a007e5d2",
+      "l": "L16",
+      "kanji": "今日中に",
+      "reading": "きょうじゅうに",
+      "es": "a lo largo de hoy",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_efec2e0d",
+      "l": "L16",
+      "kanji": "研究",
+      "reading": "けんきゅう",
+      "es": "investigación",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1268c19e",
+      "l": "L16",
+      "kanji": "この間",
+      "reading": "このあいだ",
+      "es": "el otro día",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_110789d8",
+      "l": "L16",
+      "kanji": "このぐらい",
+      "reading": "このぐらい",
+      "es": "más o menos así, esta cantidad",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_03e1786a",
+      "l": "L16",
+      "kanji": "困る",
+      "reading": "こまる",
+      "es": "verse en un apuro, no saber qué hacer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7e0be5a6",
+      "l": "L16",
+      "kanji": "ごみ",
+      "reading": "ごみ",
+      "es": "basura",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_64d773bc",
+      "l": "L16",
+      "kanji": "ごめん",
+      "reading": "ごめん",
+      "es": "perdona (informal)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a8b57c53",
+      "l": "L16",
+      "kanji": "これから",
+      "reading": "これから",
+      "es": "a partir de ahora",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f7586679",
+      "l": "L16",
+      "kanji": "砂糖",
+      "reading": "さとう",
+      "es": "azúcar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2ccdb61a",
+      "l": "L16",
+      "kanji": "実は",
+      "reading": "じつは",
+      "es": "en realidad, la verdad es que",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2f5be858",
+      "l": "L16",
+      "kanji": "失礼します",
+      "reading": "しつれいします",
+      "es": "con permiso, disculpe la molestia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2e030d69",
+      "l": "L16",
+      "kanji": "自分で",
+      "reading": "じぶんで",
+      "es": "por uno mismo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_577fcedf",
+      "l": "L16",
+      "kanji": "授業中に",
+      "reading": "じゅぎょうちゅうに",
+      "es": "durante la clase",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_10c190de",
+      "l": "L16",
+      "kanji": "奨学金",
+      "reading": "しょうがくきん",
+      "es": "beca",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dca0cc3a",
+      "l": "L16",
+      "kanji": "親せき",
+      "reading": "しんせき",
+      "es": "parientes, familia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_396b6078",
+      "l": "L16",
+      "kanji": "推薦状",
+      "reading": "すいせんじょう",
+      "es": "carta de recomendación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dea0b2e9",
+      "l": "L16",
+      "kanji": "大学院",
+      "reading": "だいがくいん",
+      "es": "posgrado, escuela de posgrado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c39f4c8f",
+      "l": "L16",
+      "kanji": "出す",
+      "reading": "だす",
+      "es": "sacar; entregar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_257a98a8",
+      "l": "L16",
+      "kanji": "連れていく",
+      "reading": "つれていく",
+      "es": "llevar (a una persona)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_becca0a6",
+      "l": "L16",
+      "kanji": "直す",
+      "reading": "なおす",
+      "es": "corregir, arreglar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f3904fdd",
+      "l": "L16",
+      "kanji": "乗り遅れる",
+      "reading": "のりおくれる",
+      "es": "perder (el tren, el autobús)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d0dc5b80",
+      "l": "L16",
+      "kanji": "日",
+      "reading": "ひ",
+      "es": "día",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_50679ff0",
+      "l": "L16",
+      "kanji": "ファイル",
+      "reading": "ファイル",
+      "es": "carpeta, archivo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b48739cd",
+      "l": "L16",
+      "kanji": "返事",
+      "reading": "へんじ",
+      "es": "respuesta, contestación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c17d3e50",
+      "l": "L16",
+      "kanji": "他の",
+      "reading": "ほかの",
+      "es": "otro, los demás",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_04f3bee6",
+      "l": "L16",
+      "kanji": "見せる",
+      "reading": "みせる",
+      "es": "enseñar, mostrar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_69abed58",
+      "l": "L16",
+      "kanji": "道",
+      "reading": "みち",
+      "es": "camino, calle",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_eabff769",
+      "l": "L16",
+      "kanji": "道に迷う",
+      "reading": "みちにまよう",
+      "es": "perderse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c51a5c37",
+      "l": "L16",
+      "kanji": "見つかる",
+      "reading": "みつかる",
+      "es": "aparecer, ser encontrado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ef8fb126",
+      "l": "L16",
+      "kanji": "迎えに行く",
+      "reading": "むかえにいく",
+      "es": "ir a recoger a alguien",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_40e596c9",
+      "l": "L16",
+      "kanji": "迎えに来る",
+      "reading": "むかえにくる",
+      "es": "venir a recoger a alguien",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_12852456",
+      "l": "L16",
+      "kanji": "訳す",
+      "reading": "やくす",
+      "es": "traducir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8fade261",
+      "l": "L17",
+      "kanji": "赤ちゃん",
+      "reading": "あかちゃん",
+      "es": "bebé",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6f9948ee",
+      "l": "L17",
+      "kanji": "危ない",
+      "reading": "あぶない",
+      "es": "peligroso",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d1091782",
+      "l": "L17",
+      "kanji": "生まれる",
+      "reading": "うまれる",
+      "es": "nacer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2ee8117d",
+      "l": "L17",
+      "kanji": "うらやましい",
+      "reading": "うらやましい",
+      "es": "envidioso, que da envidia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_03534d56",
+      "l": "L17",
+      "kanji": "選ぶ",
+      "reading": "えらぶ",
+      "es": "elegir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c73f8c30",
+      "l": "L17",
+      "kanji": "お祈りする",
+      "reading": "おいのりする",
+      "es": "rezar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_310050b9",
+      "l": "L17",
+      "kanji": "お客さん",
+      "reading": "おきゃくさん",
+      "es": "cliente, invitado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3f82b579",
+      "l": "L17",
+      "kanji": "おめでとうございます",
+      "reading": "おめでとうございます",
+      "es": "enhorabuena, felicidades",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c4c3259d",
+      "l": "L17",
+      "kanji": "お湯",
+      "reading": "おゆ",
+      "es": "agua caliente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d77cb1b3",
+      "l": "L17",
+      "kanji": "お湯を沸かす",
+      "reading": "おゆをわかす",
+      "es": "hervir agua",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ff23c1be",
+      "l": "L17",
+      "kanji": "鍵",
+      "reading": "かぎ",
+      "es": "llave; cerradura",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_351c5711",
+      "l": "L17",
+      "kanji": "鍵をかける",
+      "reading": "かぎをかける",
+      "es": "cerrar con llave",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_32301008",
+      "l": "L17",
+      "kanji": "火事",
+      "reading": "かじ",
+      "es": "incendio",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6220af29",
+      "l": "L17",
+      "kanji": "カット",
+      "reading": "カット",
+      "es": "corte de pelo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7f1bee55",
+      "l": "L17",
+      "kanji": "～かな（あ）",
+      "reading": "～かな",
+      "es": "me pregunto si… (informal)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_53639354",
+      "l": "L17",
+      "kanji": "髪形",
+      "reading": "かみがた",
+      "es": "peinado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_dd0ce0df",
+      "l": "L17",
+      "kanji": "髪をとかす",
+      "reading": "かみをとかす",
+      "es": "peinarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b6d2ddb8",
+      "l": "L17",
+      "kanji": "カラー",
+      "reading": "カラー",
+      "es": "tinte, color de pelo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4890e058",
+      "l": "L17",
+      "kanji": "刈る",
+      "reading": "かる",
+      "es": "cortar al rape",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_15687525",
+      "l": "L17",
+      "kanji": "給料",
+      "reading": "きゅうりょう",
+      "es": "sueldo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cbd2c50a",
+      "l": "L17",
+      "kanji": "化粧する",
+      "reading": "けしょうする",
+      "es": "maquillarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_88414923",
+      "l": "L17",
+      "kanji": "混む",
+      "reading": "こむ",
+      "es": "llenarse de gente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_704c73d7",
+      "l": "L17",
+      "kanji": "コンタクト（レンズ）",
+      "reading": "コンタクト",
+      "es": "lentillas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_79ab9dff",
+      "l": "L17",
+      "kanji": "最悪",
+      "reading": "さいあく",
+      "es": "malísimo, lo peor (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_157a7c40",
+      "l": "L17",
+      "kanji": "サラリーマン",
+      "reading": "サラリーマン",
+      "es": "oficinista, asalariado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7c30db98",
+      "l": "L17",
+      "kanji": "残業",
+      "reading": "ざんぎょう",
+      "es": "horas extra",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_81b365be",
+      "l": "L17",
+      "kanji": "自分",
+      "reading": "じぶん",
+      "es": "uno mismo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7ca6102f",
+      "l": "L17",
+      "kanji": "シャンプー",
+      "reading": "シャンプー",
+      "es": "champú",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_df833992",
+      "l": "L17",
+      "kanji": "就職する",
+      "reading": "しゅうしょくする",
+      "es": "encontrar trabajo fijo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1ca5733e",
+      "l": "L17",
+      "kanji": "首相",
+      "reading": "しゅしょう",
+      "es": "primer ministro",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5878ecda",
+      "l": "L17",
+      "kanji": "ショッピングモール",
+      "reading": "ショッピングモール",
+      "es": "centro comercial",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5b7a0a55",
+      "l": "L17",
+      "kanji": "ずいぶん",
+      "reading": "ずいぶん",
+      "es": "bastante, muchísimo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6cb39007",
+      "l": "L17",
+      "kanji": "すく",
+      "reading": "すく",
+      "es": "entresacar (el pelo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_441f168a",
+      "l": "L17",
+      "kanji": "少ない",
+      "reading": "すくない",
+      "es": "escaso, poco",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5134e7e4",
+      "l": "L17",
+      "kanji": "スプーン",
+      "reading": "スプーン",
+      "es": "cuchara",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5ca95aed",
+      "l": "L17",
+      "kanji": "セット",
+      "reading": "セット",
+      "es": "peinado, marcado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_bd1489c1",
+      "l": "L17",
+      "kanji": "そうか",
+      "reading": "そうか",
+      "es": "ah, ya (informal)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_150f1ceb",
+      "l": "L17",
+      "kanji": "そめる",
+      "reading": "そめる",
+      "es": "teñir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_182ca725",
+      "l": "L17",
+      "kanji": "そる",
+      "reading": "そる",
+      "es": "afeitar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_30507471",
+      "l": "L17",
+      "kanji": "そろえる",
+      "reading": "そろえる",
+      "es": "igualar, recortar (el pelo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e4183647",
+      "l": "L17",
+      "kanji": "宝くじ",
+      "reading": "たからくじ",
+      "es": "lotería",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0014ca2c",
+      "l": "L17",
+      "kanji": "宝くじに当たる",
+      "reading": "たからくじにあたる",
+      "es": "tocarle a uno la lotería",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e204e043",
+      "l": "L17",
+      "kanji": "足りる",
+      "reading": "たりる",
+      "es": "bastar, ser suficiente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_de8501a8",
+      "l": "L17",
+      "kanji": "違い",
+      "reading": "ちがい",
+      "es": "diferencia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6748b96e",
+      "l": "L17",
+      "kanji": "都合が悪い",
+      "reading": "つごうがわるい",
+      "es": "no venir bien, no poder por horario",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a8068a48",
+      "l": "L17",
+      "kanji": "電子レンジ",
+      "reading": "でんしレンジ",
+      "es": "microondas",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0606edd7",
+      "l": "L17",
+      "kanji": "慣れる",
+      "reading": "なれる",
+      "es": "acostumbrarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_52aac7a5",
+      "l": "L17",
+      "kanji": "～に比べて",
+      "reading": "～にくらべて",
+      "es": "comparado con… (partícula)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_07a0fd5c",
+      "l": "L17",
+      "kanji": "ニュース",
+      "reading": "ニュース",
+      "es": "noticias",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_79de0fcb",
+      "l": "L17",
+      "kanji": "～によると",
+      "reading": "～によると",
+      "es": "según… (partícula)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8cb72d94",
+      "l": "L17",
+      "kanji": "脱ぐ",
+      "reading": "ぬぐ",
+      "es": "quitarse (la ropa)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4b014bec",
+      "l": "L17",
+      "kanji": "パーマ",
+      "reading": "パーマ",
+      "es": "permanente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_96606ab3",
+      "l": "L17",
+      "kanji": "パーマをかける",
+      "reading": "パーマをかける",
+      "es": "hacerse la permanente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f03bf0f7",
+      "l": "L17",
+      "kanji": "パンダ",
+      "reading": "パンダ",
+      "es": "panda",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e4fdbb98",
+      "l": "L17",
+      "kanji": "ヒーター",
+      "reading": "ヒーター",
+      "es": "calefactor",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c7e41e63",
+      "l": "L17",
+      "kanji": "ひげ",
+      "reading": "ひげ",
+      "es": "barba",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0b0617bc",
+      "l": "L17",
+      "kanji": "ひげをそる",
+      "reading": "ひげをそる",
+      "es": "afeitarse la barba",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_879a4b69",
+      "l": "L17",
+      "kanji": "秘密",
+      "reading": "ひみつ",
+      "es": "secreto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_93a8ce85",
+      "l": "L17",
+      "kanji": "ブーツ",
+      "reading": "ブーツ",
+      "es": "botas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fbeaf8e8",
+      "l": "L17",
+      "kanji": "ブロー",
+      "reading": "ブロー",
+      "es": "secado con secador",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c9744022",
+      "l": "L17",
+      "kanji": "やっぱり",
+      "reading": "やっぱり",
+      "es": "al final, como era de esperar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a0c42dd1",
+      "l": "L17",
+      "kanji": "湯",
+      "reading": "ゆ",
+      "es": "agua caliente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c5ed8d9c",
+      "l": "L17",
+      "kanji": "離婚する",
+      "reading": "りこんする",
+      "es": "divorciarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_19c59904",
+      "l": "L17",
+      "kanji": "寮",
+      "reading": "りょう",
+      "es": "residencia de estudiantes",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9432c54c",
+      "l": "L18",
+      "kanji": "開く",
+      "reading": "あく",
+      "es": "abrirse (algo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_678d33b5",
+      "l": "L18",
+      "kanji": "謝る",
+      "reading": "あやまる",
+      "es": "pedir perdón, disculparse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6bfbf519",
+      "l": "L18",
+      "kanji": "今すぐ",
+      "reading": "いますぐ",
+      "es": "ahora mismo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_669ad0df",
+      "l": "L18",
+      "kanji": "おかげで",
+      "reading": "おかげで",
+      "es": "gracias a… (partícula)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_760e3dec",
+      "l": "L18",
+      "kanji": "お先に失礼します",
+      "reading": "おさきにしつれいします",
+      "es": "me voy antes que ustedes (al salir del trabajo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8b7c2e31",
+      "l": "L18",
+      "kanji": "押す",
+      "reading": "おす",
+      "es": "pulsar, empujar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_60a5dd2b",
+      "l": "L18",
+      "kanji": "落ちる",
+      "reading": "おちる",
+      "es": "caerse (algo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c271a40c",
+      "l": "L18",
+      "kanji": "お疲れ様（でした）",
+      "reading": "おつかれさま",
+      "es": "buen trabajo, gracias por el esfuerzo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cdd04fe6",
+      "l": "L18",
+      "kanji": "落とす",
+      "reading": "おとす",
+      "es": "dejar caer, tirar (algo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f7073831",
+      "l": "L18",
+      "kanji": "お湯が沸く",
+      "reading": "おゆがわく",
+      "es": "hervir el agua (sola)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_df8f471c",
+      "l": "L18",
+      "kanji": "片付ける",
+      "reading": "かたづける",
+      "es": "recoger, ordenar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cee8a7ef",
+      "l": "L18",
+      "kanji": "消える",
+      "reading": "きえる",
+      "es": "apagarse (algo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ed58b780",
+      "l": "L18",
+      "kanji": "携帯（電話）",
+      "reading": "けいたい",
+      "es": "móvil, teléfono móvil",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_46bc1c7e",
+      "l": "L18",
+      "kanji": "転ぶ",
+      "reading": "ころぶ",
+      "es": "caerse (una persona)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1230ccf6",
+      "l": "L18",
+      "kanji": "壊す",
+      "reading": "こわす",
+      "es": "romper (algo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_962713b9",
+      "l": "L18",
+      "kanji": "壊れる",
+      "reading": "こわれる",
+      "es": "romperse (algo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_17088864",
+      "l": "L18",
+      "kanji": "桜",
+      "reading": "さくら",
+      "es": "cerezo, flor de cerezo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_478246f3",
+      "l": "L18",
+      "kanji": "閉まる",
+      "reading": "しまる",
+      "es": "cerrarse (algo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_965714f2",
+      "l": "L18",
+      "kanji": "しょう油",
+      "reading": "しょうゆ",
+      "es": "salsa de soja",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a430a350",
+      "l": "L18",
+      "kanji": "スイッチ",
+      "reading": "スイッチ",
+      "es": "interruptor",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_279f614a",
+      "l": "L18",
+      "kanji": "スープ",
+      "reading": "スープ",
+      "es": "sopa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ac361b80",
+      "l": "L18",
+      "kanji": "スカート",
+      "reading": "スカート",
+      "es": "falda",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_314b8bf7",
+      "l": "L18",
+      "kanji": "外",
+      "reading": "そと",
+      "es": "fuera, exterior",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_df73b9ed",
+      "l": "L18",
+      "kanji": "ソファ",
+      "reading": "ソファ",
+      "es": "sofá",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5bd043c2",
+      "l": "L18",
+      "kanji": "大切",
+      "reading": "たいせつ",
+      "es": "importante, valioso (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6a76aa8e",
+      "l": "L18",
+      "kanji": "タオル",
+      "reading": "タオル",
+      "es": "toalla",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cbe47771",
+      "l": "L18",
+      "kanji": "助かる",
+      "reading": "たすかる",
+      "es": "salvarse; venir muy bien",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_eed2a938",
+      "l": "L18",
+      "kanji": "頼む",
+      "reading": "たのむ",
+      "es": "pedir (un favor)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cbc5ab74",
+      "l": "L18",
+      "kanji": "～（ん）だろう",
+      "reading": "～だろう",
+      "es": "forma llana de ～（ん）でしょう",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d881d858",
+      "l": "L18",
+      "kanji": "注文する",
+      "reading": "ちゅうもんする",
+      "es": "pedir, hacer un pedido",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cbf41f2c",
+      "l": "L18",
+      "kanji": "どうしよう",
+      "reading": "どうしよう",
+      "es": "¿qué hago?, ¿qué hacemos?",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ab926168",
+      "l": "L18",
+      "kanji": "日記",
+      "reading": "にっき",
+      "es": "diario",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7edbd1f0",
+      "l": "L18",
+      "kanji": "恥ずかしい",
+      "reading": "はずかしい",
+      "es": "vergonzoso, dar vergüenza",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f66c3f1b",
+      "l": "L18",
+      "kanji": "バナナ",
+      "reading": "バナナ",
+      "es": "plátano",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8bd878e9",
+      "l": "L18",
+      "kanji": "不安",
+      "reading": "ふあん",
+      "es": "inquieto, preocupado (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7f74d952",
+      "l": "L18",
+      "kanji": "ポップコーン",
+      "reading": "ポップコーン",
+      "es": "palomitas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_01367a69",
+      "l": "L18",
+      "kanji": "本当に",
+      "reading": "ほんとうに",
+      "es": "de verdad, realmente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a2d71d06",
+      "l": "L18",
+      "kanji": "まず",
+      "reading": "まず",
+      "es": "primero de todo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c77ac0c5",
+      "l": "L18",
+      "kanji": "～までに",
+      "reading": "～までに",
+      "es": "antes de… (fecha u hora)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b6648fa9",
+      "l": "L18",
+      "kanji": "虫",
+      "reading": "むし",
+      "es": "insecto",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9771e95a",
+      "l": "L18",
+      "kanji": "無理",
+      "reading": "むり",
+      "es": "imposible, inviable (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3bf1283a",
+      "l": "L18",
+      "kanji": "家賃",
+      "reading": "やちん",
+      "es": "alquiler",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ff618de6",
+      "l": "L18",
+      "kanji": "夕方",
+      "reading": "ゆうがた",
+      "es": "atardecer, última hora de la tarde",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1f5c29ce",
+      "l": "L18",
+      "kanji": "汚す",
+      "reading": "よごす",
+      "es": "ensuciar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c37d2db6",
+      "l": "L18",
+      "kanji": "汚れる",
+      "reading": "よごれる",
+      "es": "ensuciarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_424ecd67",
+      "l": "L18",
+      "kanji": "冷蔵庫",
+      "reading": "れいぞうこ",
+      "es": "frigorífico",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2fef4354",
+      "l": "L18",
+      "kanji": "ろうそく",
+      "reading": "ろうそく",
+      "es": "vela",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b70f805f",
+      "l": "L19",
+      "kanji": "いらっしゃる",
+      "reading": "いらっしゃる",
+      "es": "forma respetuosa de ir, venir y estar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9410e558",
+      "l": "L19",
+      "kanji": "遠慮する",
+      "reading": "えんりょする",
+      "es": "abstenerse, no querer molestar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_31fb7465",
+      "l": "L19",
+      "kanji": "奥様",
+      "reading": "おくさま",
+      "es": "esposa (de otro, muy cortés)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c1c4f093",
+      "l": "L19",
+      "kanji": "遅れる",
+      "reading": "おくれる",
+      "es": "retrasarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9ab5531e",
+      "l": "L19",
+      "kanji": "お子さん",
+      "reading": "おこさん",
+      "es": "hijo/a (de otro, cortés)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b5a1f3d2",
+      "l": "L19",
+      "kanji": "おっしゃる",
+      "reading": "おっしゃる",
+      "es": "forma respetuosa de decir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6ec85fc9",
+      "l": "L19",
+      "kanji": "お休みになる",
+      "reading": "おやすみになる",
+      "es": "forma respetuosa de dormir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f4930d6a",
+      "l": "L19",
+      "kanji": "お礼",
+      "reading": "おれい",
+      "es": "agradecimiento",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_2a01ab3c",
+      "l": "L19",
+      "kanji": "決まる",
+      "reading": "きまる",
+      "es": "decidirse, quedar decidido",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3e3a1568",
+      "l": "L19",
+      "kanji": "下さる",
+      "reading": "くださる",
+      "es": "forma respetuosa de darme",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_99a9a633",
+      "l": "L19",
+      "kanji": "敬語",
+      "reading": "けいご",
+      "es": "keigo, lenguaje honorífico",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5a94ade6",
+      "l": "L19",
+      "kanji": "ごちそうする",
+      "reading": "ごちそうする",
+      "es": "invitar a comer",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f2510e7e",
+      "l": "L19",
+      "kanji": "ご覧になる",
+      "reading": "ごらんになる",
+      "es": "forma respetuosa de ver",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cdd48372",
+      "l": "L19",
+      "kanji": "出張",
+      "reading": "しゅっちょう",
+      "es": "viaje de trabajo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c71b2471",
+      "l": "L19",
+      "kanji": "種類",
+      "reading": "しゅるい",
+      "es": "tipo, clase",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fa441a2b",
+      "l": "L19",
+      "kanji": "少々",
+      "reading": "しょうしょう",
+      "es": "un momentito",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fd4a1832",
+      "l": "L19",
+      "kanji": "知り合う",
+      "reading": "しりあう",
+      "es": "conocerse, trabar conocimiento",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_326b76fb",
+      "l": "L19",
+      "kanji": "性格",
+      "reading": "せいかく",
+      "es": "carácter, personalidad",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1d2d7def",
+      "l": "L19",
+      "kanji": "それで",
+      "reading": "それで",
+      "es": "entonces, por eso",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_498fe14e",
+      "l": "L19",
+      "kanji": "中学生",
+      "reading": "ちゅうがくせい",
+      "es": "estudiante de secundaria",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d793ee7c",
+      "l": "L19",
+      "kanji": "～ていらっしゃる",
+      "reading": "～ていらっしゃる",
+      "es": "forma respetuosa de ～ている",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fd09e34a",
+      "l": "L19",
+      "kanji": "仲がいい",
+      "reading": "なかがいい",
+      "es": "llevarse bien",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_906c0beb",
+      "l": "L19",
+      "kanji": "なさる",
+      "reading": "なさる",
+      "es": "forma respetuosa de hacer",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_556fc9ea",
+      "l": "L19",
+      "kanji": "なぜ",
+      "reading": "なぜ",
+      "es": "por qué",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ec863b77",
+      "l": "L19",
+      "kanji": "怠け者",
+      "reading": "なまけもの",
+      "es": "vago, holgazán",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_50e650d2",
+      "l": "L19",
+      "kanji": "悩み",
+      "reading": "なやみ",
+      "es": "preocupación, problema",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e460ed9c",
+      "l": "L19",
+      "kanji": "恥ずかしがり屋",
+      "reading": "はずかしがりや",
+      "es": "persona tímida",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1bc91e23",
+      "l": "L19",
+      "kanji": "話",
+      "reading": "はなし",
+      "es": "conversación, historia",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_501d45a6",
+      "l": "L19",
+      "kanji": "話をする",
+      "reading": "はなしをする",
+      "es": "hablar, tener una conversación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a22d711e",
+      "l": "L19",
+      "kanji": "晴れる",
+      "reading": "はれる",
+      "es": "despejarse (el tiempo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c65bc418",
+      "l": "L19",
+      "kanji": "引っ越す",
+      "reading": "ひっこす",
+      "es": "mudarse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4d09fffc",
+      "l": "L19",
+      "kanji": "部長",
+      "reading": "ぶちょう",
+      "es": "jefe de departamento",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d3c08697",
+      "l": "L19",
+      "kanji": "本当は",
+      "reading": "ほんとうは",
+      "es": "en realidad",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b7cf55eb",
+      "l": "L19",
+      "kanji": "毎朝",
+      "reading": "まいあさ",
+      "es": "todas las mañanas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7e7fd348",
+      "l": "L19",
+      "kanji": "まじめ（な）",
+      "reading": "まじめ",
+      "es": "serio, formal, aplicado (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f50d5928",
+      "l": "L19",
+      "kanji": "間違い",
+      "reading": "まちがい",
+      "es": "error, equivocación",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_16fdd0d0",
+      "l": "L19",
+      "kanji": "～名様",
+      "reading": "～めいさま",
+      "es": "grupo de … personas (cortés)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1b0aae48",
+      "l": "L19",
+      "kanji": "召し上がる",
+      "reading": "めしあがる",
+      "es": "forma respetuosa de comer y beber",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ee32a8b2",
+      "l": "L19",
+      "kanji": "もてる",
+      "reading": "もてる",
+      "es": "tener éxito con la gente, gustar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_954b9e4a",
+      "l": "L19",
+      "kanji": "ようこそ",
+      "reading": "ようこそ",
+      "es": "bienvenido",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_86d3990d",
+      "l": "L19",
+      "kanji": "よろしくお伝えください",
+      "reading": "よろしくおつたえください",
+      "es": "dele recuerdos de mi parte",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d10b2d56",
+      "l": "L20",
+      "kanji": "あちら",
+      "reading": "あちら",
+      "es": "por allí, aquello (cortés)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5d9fdc4b",
+      "l": "L20",
+      "kanji": "アニメ",
+      "reading": "アニメ",
+      "es": "anime, animación",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_754c1375",
+      "l": "L20",
+      "kanji": "致す",
+      "reading": "いたす",
+      "es": "forma humilde de hacer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3c808823",
+      "l": "L20",
+      "kanji": "頂く",
+      "reading": "いただく",
+      "es": "forma humilde de comer, beber y recibir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_70458b6e",
+      "l": "L20",
+      "kanji": "一階",
+      "reading": "いっかい",
+      "es": "planta baja, primera planta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cf36999d",
+      "l": "L20",
+      "kanji": "伺う",
+      "reading": "うかがう",
+      "es": "visitar o preguntar (humilde)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_24bfa20d",
+      "l": "L20",
+      "kanji": "宇宙人",
+      "reading": "うちゅうじん",
+      "es": "extraterrestre",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_06e9f54c",
+      "l": "L20",
+      "kanji": "お宅",
+      "reading": "おたく",
+      "es": "casa (de otro, cortés)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_949cf944",
+      "l": "L20",
+      "kanji": "音",
+      "reading": "おと",
+      "es": "sonido, ruido",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3eb876da",
+      "l": "L20",
+      "kanji": "おにぎり",
+      "reading": "おにぎり",
+      "es": "onigiri, bola de arroz",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_68500dd0",
+      "l": "L20",
+      "kanji": "重い",
+      "reading": "おもい",
+      "es": "pesado; grave (enfermedad)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_40217a9b",
+      "l": "L20",
+      "kanji": "おる",
+      "reading": "おる",
+      "es": "forma humilde de estar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1433ddc2",
+      "l": "L20",
+      "kanji": "係の者",
+      "reading": "かかりのもの",
+      "es": "la persona encargada (humilde)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a1bcf22b",
+      "l": "L20",
+      "kanji": "かしこまりました",
+      "reading": "かしこまりました",
+      "es": "de acuerdo, por supuesto (muy cortés)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_812766c0",
+      "l": "L20",
+      "kanji": "軽い",
+      "reading": "かるい",
+      "es": "ligero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d91e1900",
+      "l": "L20",
+      "kanji": "聞こえる",
+      "reading": "きこえる",
+      "es": "oírse, ser audible",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e77e67af",
+      "l": "L20",
+      "kanji": "交換する",
+      "reading": "こうかんする",
+      "es": "cambiar, intercambiar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_eaad966f",
+      "l": "L20",
+      "kanji": "ござる",
+      "reading": "ござる",
+      "es": "forma humilde de haber",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_aa6e9f63",
+      "l": "L20",
+      "kanji": "差し上げる",
+      "reading": "さしあげる",
+      "es": "forma humilde de dar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_83ead1da",
+      "l": "L20",
+      "kanji": "支店",
+      "reading": "してん",
+      "es": "sucursal",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_aac95733",
+      "l": "L20",
+      "kanji": "趣味",
+      "reading": "しゅみ",
+      "es": "afición, hobby",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_93794e27",
+      "l": "L20",
+      "kanji": "小説",
+      "reading": "しょうせつ",
+      "es": "novela",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_77d403db",
+      "l": "L20",
+      "kanji": "スニーカー",
+      "reading": "スニーカー",
+      "es": "zapatillas deportivas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_75696dfc",
+      "l": "L20",
+      "kanji": "扇子",
+      "reading": "せんす",
+      "es": "abanico plegable",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a8d58472",
+      "l": "L20",
+      "kanji": "続ける",
+      "reading": "つづける",
+      "es": "continuar (algo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_644b4c08",
+      "l": "L20",
+      "kanji": "～ておる",
+      "reading": "～ておる",
+      "es": "forma humilde de ～ている",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d7752374",
+      "l": "L20",
+      "kanji": "できれば",
+      "reading": "できれば",
+      "es": "si es posible",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0a220b8a",
+      "l": "L20",
+      "kanji": "～でござる",
+      "reading": "～でござる",
+      "es": "forma humilde de です",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_24c26621",
+      "l": "L20",
+      "kanji": "では",
+      "reading": "では",
+      "es": "pues bien, entonces (cortés)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_99531a5f",
+      "l": "L20",
+      "kanji": "ドイツ",
+      "reading": "ドイツ",
+      "es": "Alemania",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fc889275",
+      "l": "L20",
+      "kanji": "動物",
+      "reading": "どうぶつ",
+      "es": "animal",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1375050b",
+      "l": "L20",
+      "kanji": "不思議",
+      "reading": "ふしぎ",
+      "es": "misterioso, curioso (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4df3976a",
+      "l": "L20",
+      "kanji": "ヘッドホン",
+      "reading": "ヘッドホン",
+      "es": "auriculares",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_bb578cda",
+      "l": "L20",
+      "kanji": "返品する",
+      "reading": "へんぴんする",
+      "es": "devolver (un producto)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0436ac5d",
+      "l": "L20",
+      "kanji": "参る",
+      "reading": "まいる",
+      "es": "forma humilde de ir y venir",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_393d5fca",
+      "l": "L20",
+      "kanji": "誠に",
+      "reading": "まことに",
+      "es": "verdaderamente (muy cortés)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5f4c62b3",
+      "l": "L20",
+      "kanji": "また",
+      "reading": "また",
+      "es": "otra vez",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_85573729",
+      "l": "L20",
+      "kanji": "待たせる",
+      "reading": "またせる",
+      "es": "hacer esperar a alguien",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d11b4940",
+      "l": "L20",
+      "kanji": "～みたいなX",
+      "reading": "～みたいなX",
+      "es": "una X como…, del estilo de…",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3839876f",
+      "l": "L20",
+      "kanji": "申し訳ありません",
+      "reading": "もうしわけありません",
+      "es": "le pido disculpas",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_df85463a",
+      "l": "L20",
+      "kanji": "申す",
+      "reading": "もうす",
+      "es": "forma humilde de decir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_2ec28819",
+      "l": "L20",
+      "kanji": "戻る",
+      "reading": "もどる",
+      "es": "volver, regresar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_387a1504",
+      "l": "L20",
+      "kanji": "～屋",
+      "reading": "～や",
+      "es": "tienda de… (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_1ee51005",
+      "l": "L20",
+      "kanji": "よろしかったら",
+      "reading": "よろしかったら",
+      "es": "si le parece bien (cortés)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_18311ebb",
+      "l": "L21",
+      "kanji": "いじめる",
+      "reading": "いじめる",
+      "es": "acosar, meterse con alguien",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_de974a58",
+      "l": "L21",
+      "kanji": "置く",
+      "reading": "おく",
+      "es": "poner, colocar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_d30fd4e0",
+      "l": "L21",
+      "kanji": "ガソリン",
+      "reading": "ガソリン",
+      "es": "gasolina",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c9c55852",
+      "l": "L21",
+      "kanji": "環境",
+      "reading": "かんきょう",
+      "es": "medio ambiente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dc71a3c7",
+      "l": "L21",
+      "kanji": "着替える",
+      "reading": "きがえる",
+      "es": "cambiarse de ropa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_6e129fb9",
+      "l": "L21",
+      "kanji": "気が付く",
+      "reading": "きがつく",
+      "es": "darse cuenta",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d94b68d0",
+      "l": "L21",
+      "kanji": "比べる",
+      "reading": "くらべる",
+      "es": "comparar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c481f87d",
+      "l": "L21",
+      "kanji": "警察",
+      "reading": "けいさつ",
+      "es": "policía, comisaría",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_93b1dde4",
+      "l": "L21",
+      "kanji": "ける",
+      "reading": "ける",
+      "es": "dar una patada",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d911e15d",
+      "l": "L21",
+      "kanji": "工場",
+      "reading": "こうじょう",
+      "es": "fábrica",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2a821251",
+      "l": "L21",
+      "kanji": "午前中",
+      "reading": "ごぜんちゅう",
+      "es": "por la mañana",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cabd2e5f",
+      "l": "L21",
+      "kanji": "こと",
+      "reading": "こと",
+      "es": "cosas, asuntos",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8b1fbf76",
+      "l": "L21",
+      "kanji": "～ころ",
+      "reading": "～ころ",
+      "es": "época de…, cuando… (sufijo)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a99a26ba",
+      "l": "L21",
+      "kanji": "刺す",
+      "reading": "さす",
+      "es": "picar (un insecto)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ab19e02d",
+      "l": "L21",
+      "kanji": "触る",
+      "reading": "さわる",
+      "es": "tocar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d8a48195",
+      "l": "L21",
+      "kanji": "授業料",
+      "reading": "じゅぎょうりょう",
+      "es": "matrícula, tasas de clase",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f9b414f0",
+      "l": "L21",
+      "kanji": "信じる",
+      "reading": "しんじる",
+      "es": "creer",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0fbdaa27",
+      "l": "L21",
+      "kanji": "少し",
+      "reading": "すこし",
+      "es": "un poco",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8f917048",
+      "l": "L21",
+      "kanji": "スピーチ",
+      "reading": "スピーチ",
+      "es": "discurso",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_91f6f468",
+      "l": "L21",
+      "kanji": "政府",
+      "reading": "せいふ",
+      "es": "gobierno",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5bc88343",
+      "l": "L21",
+      "kanji": "ためる",
+      "reading": "ためる",
+      "es": "ahorrar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_115c9d6d",
+      "l": "L21",
+      "kanji": "ちかん",
+      "reading": "ちかん",
+      "es": "acosador, sobón",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_96cc9101",
+      "l": "L21",
+      "kanji": "捕まる",
+      "reading": "つかまる",
+      "es": "ser detenido, ser pillado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_18ad016c",
+      "l": "L21",
+      "kanji": "包む",
+      "reading": "つつむ",
+      "es": "envolver",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ed8a8a37",
+      "l": "L21",
+      "kanji": "同僚",
+      "reading": "どうりょう",
+      "es": "compañero de trabajo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2758e048",
+      "l": "L21",
+      "kanji": "遠い",
+      "reading": "とおい",
+      "es": "lejano, lejos",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8055d6d0",
+      "l": "L21",
+      "kanji": "とにかく",
+      "reading": "とにかく",
+      "es": "en cualquier caso, el caso es que",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_987b2ba1",
+      "l": "L21",
+      "kanji": "殴る",
+      "reading": "なぐる",
+      "es": "golpear, pegar un puñetazo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_a4ae4e13",
+      "l": "L21",
+      "kanji": "ばかにする",
+      "reading": "ばかにする",
+      "es": "burlarse de, tomar por tonto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0afc52cd",
+      "l": "L21",
+      "kanji": "犯人",
+      "reading": "はんにん",
+      "es": "culpable, autor del delito",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cee95e3c",
+      "l": "L21",
+      "kanji": "びっくりする",
+      "reading": "びっくりする",
+      "es": "sorprenderse, llevarse un susto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ddcc36cf",
+      "l": "L21",
+      "kanji": "ひどい",
+      "reading": "ひどい",
+      "es": "horrible, muy feo (comportamiento)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e8591439",
+      "l": "L21",
+      "kanji": "昼寝をする",
+      "reading": "ひるねをする",
+      "es": "echarse la siesta",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_20336412",
+      "l": "L21",
+      "kanji": "踏む",
+      "reading": "ふむ",
+      "es": "pisar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_15febcbf",
+      "l": "L21",
+      "kanji": "ふる",
+      "reading": "ふる",
+      "es": "dar calabazas, rechazar a alguien",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ce6daeab",
+      "l": "L21",
+      "kanji": "変",
+      "reading": "へん",
+      "es": "raro, extraño (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_38df4ac1",
+      "l": "L21",
+      "kanji": "ポスター",
+      "reading": "ポスター",
+      "es": "póster, cartel",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5ab177aa",
+      "l": "L21",
+      "kanji": "間違える",
+      "reading": "まちがえる",
+      "es": "equivocarse, confundir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_dccff142",
+      "l": "L21",
+      "kanji": "見つける",
+      "reading": "みつける",
+      "es": "encontrar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9317da37",
+      "l": "L21",
+      "kanji": "昔",
+      "reading": "むかし",
+      "es": "antiguamente, el pasado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_499713f4",
+      "l": "L21",
+      "kanji": "めちゃくちゃ（な）",
+      "reading": "めちゃくちゃ",
+      "es": "hecho un desastre, desordenado (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a0773730",
+      "l": "L21",
+      "kanji": "文句",
+      "reading": "もんく",
+      "es": "queja",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_ac42ba65",
+      "l": "L21",
+      "kanji": "文句を言う",
+      "reading": "もんくをいう",
+      "es": "quejarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b84f223b",
+      "l": "L21",
+      "kanji": "焼く",
+      "reading": "やく",
+      "es": "asar, hornear, quemar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_63eb8ccc",
+      "l": "L21",
+      "kanji": "留守",
+      "reading": "るす",
+      "es": "ausencia, no estar en casa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_534b01d0",
+      "l": "L21",
+      "kanji": "連絡する",
+      "reading": "れんらくする",
+      "es": "ponerse en contacto, avisar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_59837260",
+      "l": "L22",
+      "kanji": "相手",
+      "reading": "あいて",
+      "es": "la otra persona, el interlocutor",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_20e4366d",
+      "l": "L22",
+      "kanji": "受付",
+      "reading": "うけつけ",
+      "es": "recepción, mostrador",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7a5d63e0",
+      "l": "L22",
+      "kanji": "受ける",
+      "reading": "うける",
+      "es": "presentarse a (un examen)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8b6a9296",
+      "l": "L22",
+      "kanji": "英会話",
+      "reading": "えいかいわ",
+      "es": "conversación en inglés",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ca2275ea",
+      "l": "L22",
+      "kanji": "多くの～",
+      "reading": "おおくの～",
+      "es": "muchos…",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c6864904",
+      "l": "L22",
+      "kanji": "お嬢さん",
+      "reading": "おじょうさん",
+      "es": "hija (de otro, cortés)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3f0f47e0",
+      "l": "L22",
+      "kanji": "お願いする",
+      "reading": "おねがいする",
+      "es": "pedir ayuda, rogar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7034d06a",
+      "l": "L22",
+      "kanji": "風が吹く",
+      "reading": "かぜがふく",
+      "es": "soplar el viento",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_416e640f",
+      "l": "L22",
+      "kanji": "勝つ",
+      "reading": "かつ",
+      "es": "ganar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cbff7635",
+      "l": "L22",
+      "kanji": "神様",
+      "reading": "かみさま",
+      "es": "Dios",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_32970caf",
+      "l": "L22",
+      "kanji": "計画を立てる",
+      "reading": "けいかくをたてる",
+      "es": "hacer un plan",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_514e6168",
+      "l": "L22",
+      "kanji": "後輩",
+      "reading": "こうはい",
+      "es": "miembro más joven del grupo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_39bdcebf",
+      "l": "L22",
+      "kanji": "コピーを取る",
+      "reading": "コピーをとる",
+      "es": "hacer una fotocopia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9ae769db",
+      "l": "L22",
+      "kanji": "こんなふう",
+      "reading": "こんなふう",
+      "es": "de esta manera, así",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b5a8a08c",
+      "l": "L22",
+      "kanji": "猿",
+      "reading": "さる",
+      "es": "mono",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_abe73b4a",
+      "l": "L22",
+      "kanji": "賛成する",
+      "reading": "さんせいする",
+      "es": "estar de acuerdo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_56c28b12",
+      "l": "L22",
+      "kanji": "失敗する",
+      "reading": "しっぱいする",
+      "es": "fracasar, salir mal",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_587060b9",
+      "l": "L22",
+      "kanji": "自由",
+      "reading": "じゆう",
+      "es": "libertad",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_78e799e4",
+      "l": "L22",
+      "kanji": "自由に",
+      "reading": "じゆうに",
+      "es": "libremente",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_08c5b62a",
+      "l": "L22",
+      "kanji": "塾",
+      "reading": "じゅく",
+      "es": "academia particular",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c0c8f996",
+      "l": "L22",
+      "kanji": "ずっと",
+      "reading": "ずっと",
+      "es": "todo el rato; mucho tiempo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8779cb5b",
+      "l": "L22",
+      "kanji": "絶対に",
+      "reading": "ぜったいに",
+      "es": "sin falta, pase lo que pase",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c4bd1dcd",
+      "l": "L22",
+      "kanji": "先輩",
+      "reading": "せんぱい",
+      "es": "miembro veterano del grupo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_094e3f5c",
+      "l": "L22",
+      "kanji": "そんなこと（は）ない",
+      "reading": "そんなことない",
+      "es": "qué va, no es para tanto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_61c7d7dc",
+      "l": "L22",
+      "kanji": "助ける",
+      "reading": "たすける",
+      "es": "ayudar, rescatar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8609009b",
+      "l": "L22",
+      "kanji": "～ちゃん",
+      "reading": "～ちゃん",
+      "es": "sufijo cariñoso para nombres",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8c866d42",
+      "l": "L22",
+      "kanji": "徹夜する",
+      "reading": "てつやする",
+      "es": "pasar la noche en vela",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_1ae861e9",
+      "l": "L22",
+      "kanji": "～とか",
+      "reading": "～とか",
+      "es": "…, por ejemplo (partícula)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cd613cb7",
+      "l": "L22",
+      "kanji": "何度も",
+      "reading": "なんども",
+      "es": "muchas veces",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a5ab11b9",
+      "l": "L22",
+      "kanji": "運ぶ",
+      "reading": "はこぶ",
+      "es": "transportar, llevar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2808d521",
+      "l": "L22",
+      "kanji": "反対する",
+      "reading": "はんたいする",
+      "es": "oponerse, estar en contra",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_24aaf2a5",
+      "l": "L22",
+      "kanji": "一人暮らし",
+      "reading": "ひとりぐらし",
+      "es": "vivir solo",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_18f1dfea",
+      "l": "L22",
+      "kanji": "拾う",
+      "reading": "ひろう",
+      "es": "recoger (algo del suelo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_57d54762",
+      "l": "L22",
+      "kanji": "貧乏",
+      "reading": "びんぼう",
+      "es": "pobre (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9903b1f3",
+      "l": "L22",
+      "kanji": "部下",
+      "reading": "ぶか",
+      "es": "subordinado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f880ee8d",
+      "l": "L22",
+      "kanji": "復習",
+      "reading": "ふくしゅう",
+      "es": "repaso",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_33bf2a08",
+      "l": "L22",
+      "kanji": "プロジェクト",
+      "reading": "プロジェクト",
+      "es": "proyecto",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_44371f29",
+      "l": "L22",
+      "kanji": "ぺらぺら（な）",
+      "reading": "ぺらぺら",
+      "es": "que habla con fluidez (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_36f5a3ce",
+      "l": "L22",
+      "kanji": "放っておく",
+      "reading": "ほっておく",
+      "es": "dejar en paz, desatender",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_970266f0",
+      "l": "L22",
+      "kanji": "ボール",
+      "reading": "ボール",
+      "es": "pelota, balón",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9df30b4a",
+      "l": "L22",
+      "kanji": "翻訳する",
+      "reading": "ほんやくする",
+      "es": "traducir",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_78e51214",
+      "l": "L22",
+      "kanji": "負ける",
+      "reading": "まける",
+      "es": "perder (un partido)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5785ff2a",
+      "l": "L22",
+      "kanji": "間に合う",
+      "reading": "まにあう",
+      "es": "llegar a tiempo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c11b41d3",
+      "l": "L22",
+      "kanji": "無駄遣い",
+      "reading": "むだづかい",
+      "es": "derroche, gasto inútil",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_aca98e43",
+      "l": "L22",
+      "kanji": "免許",
+      "reading": "めんきょ",
+      "es": "carné, licencia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4cd3b12a",
+      "l": "L22",
+      "kanji": "もう少し",
+      "reading": "もうすこし",
+      "es": "un poco más",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_e83b3818",
+      "l": "L22",
+      "kanji": "ヨーロッパ",
+      "reading": "ヨーロッパ",
+      "es": "Europa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3199d4d6",
+      "l": "L22",
+      "kanji": "予習",
+      "reading": "よしゅう",
+      "es": "preparación previa de la lección",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4d441cba",
+      "l": "L22",
+      "kanji": "楽",
+      "reading": "らく",
+      "es": "cómodo, llevadero (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b74604af",
+      "l": "L23",
+      "kanji": "雨がやむ",
+      "reading": "あめがやむ",
+      "es": "dejar de llover",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_cddf1f8b",
+      "l": "L23",
+      "kanji": "いなくなる",
+      "reading": "いなくなる",
+      "es": "desaparecer, dejar de estar",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5c084136",
+      "l": "L23",
+      "kanji": "お世話になる",
+      "reading": "おせわになる",
+      "es": "estar al cuidado de alguien, deberle mucho",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_4b808799",
+      "l": "L23",
+      "kanji": "おなかをこわす",
+      "reading": "おなかをこわす",
+      "es": "tener el estómago revuelto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d92a67b6",
+      "l": "L23",
+      "kanji": "思い出",
+      "reading": "おもいで",
+      "es": "recuerdo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dc04e273",
+      "l": "L23",
+      "kanji": "海外旅行",
+      "reading": "かいがいりょこう",
+      "es": "viaje al extranjero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a54bcb0c",
+      "l": "L23",
+      "kanji": "～顔をする",
+      "reading": "～かおをする",
+      "es": "poner cara de…",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_15654178",
+      "l": "L23",
+      "kanji": "がっかりする",
+      "reading": "がっかりする",
+      "es": "llevarse una decepción",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_06a2baab",
+      "l": "L23",
+      "kanji": "我慢する",
+      "reading": "がまんする",
+      "es": "aguantar, tener paciencia",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9e2c4b89",
+      "l": "L23",
+      "kanji": "かわいそう（な）",
+      "reading": "かわいそう",
+      "es": "que da pena, pobrecito (adj. な)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d3e7abc2",
+      "l": "L23",
+      "kanji": "カンニングする",
+      "reading": "カンニングする",
+      "es": "copiar en un examen",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_2ba438b7",
+      "l": "L23",
+      "kanji": "気に入る",
+      "reading": "きにいる",
+      "es": "gustarle a uno, caer en gracia",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_c6371756",
+      "l": "L23",
+      "kanji": "結果",
+      "reading": "けっか",
+      "es": "resultado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_77ff903b",
+      "l": "L23",
+      "kanji": "元気でね",
+      "reading": "げんきでね",
+      "es": "cuídate",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ac3eb7a8",
+      "l": "L23",
+      "kanji": "健康",
+      "reading": "けんこう",
+      "es": "salud",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_44fafa8e",
+      "l": "L23",
+      "kanji": "答える",
+      "reading": "こたえる",
+      "es": "responder",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_d0a8a7f1",
+      "l": "L23",
+      "kanji": "最後に",
+      "reading": "さいごに",
+      "es": "por último, al final",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_105a832f",
+      "l": "L23",
+      "kanji": "社会",
+      "reading": "しゃかい",
+      "es": "sociedad",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_33379039",
+      "l": "L23",
+      "kanji": "小学校",
+      "reading": "しょうがっこう",
+      "es": "colegio de primaria",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9f31c047",
+      "l": "L23",
+      "kanji": "世話をする",
+      "reading": "せわをする",
+      "es": "cuidar de alguien",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0bfb000e",
+      "l": "L23",
+      "kanji": "そうそう",
+      "reading": "そうそう",
+      "es": "eso es, exacto",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_ece98186",
+      "l": "L23",
+      "kanji": "そろそろ",
+      "reading": "そろそろ",
+      "es": "ya va siendo hora de…",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_fa3ef796",
+      "l": "L23",
+      "kanji": "そんな～",
+      "reading": "そんな～",
+      "es": "ese tipo de…",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6c57aa54",
+      "l": "L23",
+      "kanji": "ただ",
+      "reading": "ただ",
+      "es": "gratis",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_0a8c444a",
+      "l": "L23",
+      "kanji": "～ために",
+      "reading": "～ために",
+      "es": "para…, por el bien de…",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_35d7c09f",
+      "l": "L23",
+      "kanji": "チェックする",
+      "reading": "チェックする",
+      "es": "comprobar, revisar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_47504464",
+      "l": "L23",
+      "kanji": "違う",
+      "reading": "ちがう",
+      "es": "ser distinto; estar equivocado",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_8911f90c",
+      "l": "L23",
+      "kanji": "調査",
+      "reading": "ちょうさ",
+      "es": "encuesta, investigación",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f598f2f7",
+      "l": "L23",
+      "kanji": "同情する",
+      "reading": "どうじょうする",
+      "es": "compadecerse",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_c5a1ff72",
+      "l": "L23",
+      "kanji": "なくなる",
+      "reading": "なくなる",
+      "es": "perderse, desaparecer",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3cda10c0",
+      "l": "L23",
+      "kanji": "場所",
+      "reading": "ばしょ",
+      "es": "lugar, sitio",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_fa950fb9",
+      "l": "L23",
+      "kanji": "離れる",
+      "reading": "はなれる",
+      "es": "separarse, alejarse",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f04771d5",
+      "l": "L23",
+      "kanji": "盆踊り",
+      "reading": "ぼんおどり",
+      "es": "bon-odori, baile tradicional de Obon",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_93c3b425",
+      "l": "L23",
+      "kanji": "まずい",
+      "reading": "まずい",
+      "es": "que sabe mal",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_82a53fcf",
+      "l": "L23",
+      "kanji": "メッセージ",
+      "reading": "メッセージ",
+      "es": "mensaje",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_20aee50f",
+      "l": "L23",
+      "kanji": "戻ってくる",
+      "reading": "もどってくる",
+      "es": "volver, regresar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_362a9fed",
+      "l": "L23",
+      "kanji": "ものすごく",
+      "reading": "ものすごく",
+      "es": "tremendamente",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_9c29d661",
+      "l": "L23",
+      "kanji": "優勝する",
+      "reading": "ゆうしょうする",
+      "es": "quedar campeón",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_0fddfc91",
+      "l": "L23",
+      "kanji": "夕食",
+      "reading": "ゆうしょく",
+      "es": "cena",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_86d81358",
+      "l": "L23",
+      "kanji": "理想",
+      "reading": "りそう",
+      "es": "ideal",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a16367cf",
+      "l": "L23",
+      "kanji": "留守番",
+      "reading": "るすばん",
+      "es": "quedarse cuidando la casa",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4a9e8696",
+      "l": "L23",
+      "kanji": "悪口を言う",
+      "reading": "わるぐちをいう",
+      "es": "criticar a alguien a sus espaldas",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_5094571e",
+      "l": "L3",
+      "kanji": "そうですね",
+      "reading": "そうですね",
+      "es": "sí, es verdad; a ver…",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b80ee32e",
+      "l": "L3",
+      "kanji": "ちょっと",
+      "reading": "ちょっと",
+      "es": "un poco",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f13cd3ca",
+      "l": "L3",
+      "kanji": "デート",
+      "reading": "デート",
+      "es": "cita (romántica)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_f51fda3b",
+      "l": "L3",
+      "kanji": "テニス",
+      "reading": "テニス",
+      "es": "tenis",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_cb41c647",
+      "l": "L3",
+      "kanji": "でも",
+      "reading": "でも",
+      "es": "pero",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_dd4fd1bf",
+      "l": "L3",
+      "kanji": "テレビ",
+      "reading": "テレビ",
+      "es": "televisión",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f2307dff",
+      "l": "L3",
+      "kanji": "どうですか",
+      "reading": "どうですか",
+      "es": "¿qué tal…?, ¿le apetece…?",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_9b7cba8b",
+      "l": "L3",
+      "kanji": "ハンバーガー",
+      "reading": "ハンバーガー",
+      "es": "hamburguesa",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_255a01d8",
+      "l": "L4",
+      "kanji": "あさって",
+      "reading": "あさって",
+      "es": "pasado mañana",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_b3cc600d",
+      "l": "L4",
+      "kanji": "ある",
+      "reading": "ある",
+      "es": "haber, estar (cosas)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_7e9a5ab9",
+      "l": "L4",
+      "kanji": "アルバイト",
+      "reading": "アルバイト",
+      "es": "trabajo a tiempo parcial",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_56ff9539",
+      "l": "L4",
+      "kanji": "いる",
+      "reading": "いる",
+      "es": "estar (personas y animales)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_97d8dca3",
+      "l": "L4",
+      "kanji": "おととい",
+      "reading": "おととい",
+      "es": "anteayer",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_67947638",
+      "l": "L4",
+      "kanji": "おととし",
+      "reading": "おととし",
+      "es": "hace dos años",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_7a821048",
+      "l": "L4",
+      "kanji": "～ぐらい",
+      "reading": "～ぐらい",
+      "es": "más o menos, unos… (sufijo)",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_4876b8ca",
+      "l": "L4",
+      "kanji": "クラス",
+      "reading": "クラス",
+      "es": "clase",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_f44e4b0e",
+      "l": "L4",
+      "kanji": "ゲーム",
+      "reading": "ゲーム",
+      "es": "videojuego, juego",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_8ccf813e",
+      "l": "L4",
+      "kanji": "ごめんなさい",
+      "reading": "ごめんなさい",
+      "es": "lo siento",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_626e1f72",
+      "l": "L4",
+      "kanji": "それから",
+      "reading": "それから",
+      "es": "y luego, después",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6e6ccf09",
+      "l": "L4",
+      "kanji": "だから",
+      "reading": "だから",
+      "es": "por eso, así que",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_a6b449ca",
+      "l": "L4",
+      "kanji": "～と",
+      "reading": "～と",
+      "es": "con (una persona); y",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_21c89714",
+      "l": "L4",
+      "kanji": "どうして",
+      "reading": "どうして",
+      "es": "por qué",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_27bc7025",
+      "l": "L4",
+      "kanji": "もしもし",
+      "reading": "もしもし",
+      "es": "¿diga? (al teléfono)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_efa6862d",
+      "l": "L4",
+      "kanji": "レストラン",
+      "reading": "レストラン",
+      "es": "restaurante",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_70f18249",
+      "l": "L4",
+      "kanji": "レポート",
+      "reading": "レポート",
+      "es": "trabajo, informe",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_15efdc7b",
+      "l": "L4",
+      "kanji": "わかる",
+      "reading": "わかる",
+      "es": "entender, comprender",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_b309d8d2",
+      "l": "L5",
+      "kanji": "かっこいい",
+      "reading": "かっこいい",
+      "es": "atractivo, con estilo",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_22252383",
+      "l": "L5",
+      "kanji": "サーフィン",
+      "reading": "サーフィン",
+      "es": "surf",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_38c87bb6",
+      "l": "L5",
+      "kanji": "すごく",
+      "reading": "すごく",
+      "es": "muchísimo, tremendamente",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_efa5b056",
+      "l": "L5",
+      "kanji": "つまらない",
+      "reading": "つまらない",
+      "es": "aburrido",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_06b8b94c",
+      "l": "L5",
+      "kanji": "とても",
+      "reading": "とても",
+      "es": "muy",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_e8d1e02d",
+      "l": "L5",
+      "kanji": "どんな",
+      "reading": "どんな",
+      "es": "qué tipo de…",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_3e84b789",
+      "l": "L5",
+      "kanji": "にぎやか",
+      "reading": "にぎやか",
+      "es": "animado, con ambiente (adj. な)",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_45ac2c3d",
+      "l": "L5",
+      "kanji": "バス",
+      "reading": "バス",
+      "es": "autobús",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_aa6c74cf",
+      "l": "L5",
+      "kanji": "やさしい",
+      "reading": "やさしい",
+      "es": "fácil; amable",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_39ab3509",
+      "l": "L5",
+      "kanji": "やる",
+      "reading": "やる",
+      "es": "hacer, realizar",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_139df2ce",
+      "l": "L6",
+      "kanji": "エアコン",
+      "reading": "エアコン",
+      "es": "aire acondicionado",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_5d1978bf",
+      "l": "L6",
+      "kanji": "シャワー",
+      "reading": "シャワー",
+      "es": "ducha",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_6b27565b",
+      "l": "L6",
+      "kanji": "すぐ",
+      "reading": "すぐ",
+      "es": "enseguida, inmediatamente",
+      "dir": "jp-es"
+    },
+    {
+      "id": "gk_3ac21b33",
+      "l": "L6",
+      "kanji": "パソコン",
+      "reading": "パソコン",
+      "es": "ordenador",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_87dbc18f",
+      "l": "L6",
+      "kanji": "ページ",
+      "reading": "ページ",
+      "es": "página",
+      "dir": "es-jp"
+    },
+    {
+      "id": "gk_bc6cd756",
+      "l": "L6",
+      "kanji": "ゆっくり",
+      "reading": "ゆっくり",
+      "es": "despacio, con calma",
+      "dir": "es-jp"
     }
   ]
 }

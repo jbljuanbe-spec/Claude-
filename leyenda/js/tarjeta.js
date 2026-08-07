@@ -1,6 +1,6 @@
 // Dibuja la tarjeta final en un canvas y la descarga como PNG
 // (en móvil intenta compartirla como archivo, que es lo cómodo).
-import { spriteUrl } from './datos.js?v=6';
+import { spriteUrl } from './datos.js?v=8';
 
 const A = 1080, ALTO = 1600;
 

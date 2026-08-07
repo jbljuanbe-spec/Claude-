@@ -2,13 +2,13 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=3';
+} from './datos.js?v=6';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
-} from './motor.js?v=3';
-import { siguienteEvento } from './eventos.js?v=3';
-import { descargarTarjeta } from './tarjeta.js?v=3';
+} from './motor.js?v=6';
+import { siguienteEvento } from './eventos.js?v=6';
+import { descargarTarjeta } from './tarjeta.js?v=6';
 
 const app = document.getElementById('app');
 let estado = null;
@@ -257,6 +257,51 @@ function pintarFicha() {
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
+// ── Celebración de títulos ───────────────────────────────────────────────────
+// Copa dibujada a mano (SVG) con la cinta del color del torneo, para que
+// ganar se note en pantalla en vez de pasar como una línea más del resumen.
+const COPAS = {
+  liga:     { cinta: '#3b6fe0', metal: '#f5c344', metal2: '#e09a12', pie: '#8b5e2b', et: 'CAMPEÓN DE LIGA' },
+  mundial:  { cinta: '#e94b5c', metal: '#ffd970', metal2: '#f2a516', pie: '#5c3c18', et: 'CAMPEÓN DEL MUNDO' },
+  medallas: { cinta: '#17a673', metal: '#d8dce8', metal2: '#a8b0c6', pie: '#6c7391', et: 'LAS OCHO MEDALLAS' },
+};
+
+function copaSvg(tipo) {
+  const c = COPAS[tipo] ?? COPAS.liga;
+  return `
+  <svg class="copa" viewBox="0 0 120 140" role="img" aria-label="Trofeo">
+    <defs>
+      <linearGradient id="oro-${tipo}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="${c.metal}"/><stop offset="100%" stop-color="${c.metal2}"/>
+      </linearGradient>
+    </defs>
+    <path d="M28 18h64v26a32 32 0 0 1-64 0z" fill="url(#oro-${tipo})"/>
+    <path d="M28 24H16a14 14 0 0 0 14 22z" fill="url(#oro-${tipo})"/>
+    <path d="M92 24h12a14 14 0 0 1-14 22z" fill="url(#oro-${tipo})"/>
+    <rect x="52" y="74" width="16" height="20" fill="${c.metal2}"/>
+    <path d="M36 94h48l6 14H30z" fill="url(#oro-${tipo})"/>
+    <rect x="26" y="108" width="68" height="12" rx="3" fill="${c.pie}"/>
+    <path d="M60 26l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L60 49.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="#fff" opacity=".85"/>
+    <rect x="44" y="120" width="32" height="7" rx="3" fill="${c.cinta}"/>
+  </svg>`;
+}
+
+function tarjetaTrofeo(t) {
+  const c = COPAS[t.tipo] ?? COPAS.liga;
+  const confeti = Array.from({ length: 14 }, (_, i) => {
+    const col = [c.cinta, c.metal, '#17a673', '#e94b5c', '#7a5cf0'][i % 5];
+    return `<i style="left:${6 + i * 6.6}%;background:${col};animation-delay:${(i % 7) * 0.12}s"></i>`;
+  }).join('');
+  return `
+    <div class="tarjeta trofeo" style="--cinta:${c.cinta}">
+      <div class="confeti">${confeti}</div>
+      ${copaSvg(t.tipo)}
+      <div class="trofeo-et">${c.et}</div>
+      <div class="trofeo-nombre">${esc(t.nombre)}</div>
+      <div class="trofeo-anio">Año ${t.año}</div>
+    </div>`;
+}
+
 // ── Objetos: traducir sus pasivos a algo legible ─────────────────────────────
 const ETIQ_PASIVO = {
   salud: 'Salud', moral: 'Moral', media: 'Media', estrategia: 'Estrategia',
@@ -299,24 +344,31 @@ function girarRuleta(caja, riesgo, ok) {
     const pista = caja.querySelector('.ruleta-pista');
     const estadoTxt = caja.querySelector('.ruleta-estado');
     const bien = riesgo * 100;
-    // Destino: un punto al azar dentro del tramo que ha salido
-    const destino = ok ? azarUI(4, Math.max(6, bien - 4)) : azarUI(bien + 4, 96);
-    const vueltas = 2.4 + Math.random();          // recorridos completos antes de frenar
-    const dur = 1500 + Math.random() * 400;
+    // Destino: un punto al azar dentro del tramo que ha salido de verdad.
+    // Los márgenes evitan que la aguja pare justo encima de la frontera.
+    const margen = Math.min(3, bien / 4, (100 - bien) / 4);
+    const destino = ok ? azarUI(margen, Math.max(margen + 0.5, bien - margen))
+                       : azarUI(bien + margen, 100 - margen);
+    // Vueltas ENTERAS: así el último fotograma cae exactamente en el destino
+    // y la aguja nunca da un salto al terminar.
+    const vueltas = 3;
+    const dur = 1600 + Math.random() * 350;
     const t0 = performance.now();
 
     const paso = ahora => {
       const t = Math.min(1, (ahora - t0) / dur);
-      const suave = 1 - Math.pow(1 - t, 3);        // frena al final
-      const pos = (vueltas * 100 * suave + destino) % 100;
+      const suave = 1 - Math.pow(1 - t, 3);            // frena al final
+      const pos = t < 1 ? (vueltas * 100 * suave + destino) % 100 : destino;
       aguja.style.left = `${pos}%`;
       pista.classList.toggle('en-bien', pos <= bien);
       pista.classList.toggle('en-mal', pos > bien);
       if (t < 1) return requestAnimationFrame(paso);
-      aguja.style.left = `${destino}%`;
+      // Estado final: lo que marca la aguja es exactamente lo que se aplica
+      pista.classList.remove('en-bien', 'en-mal');
+      pista.classList.add(ok ? 'gana-bien' : 'gana-mal');
       caja.classList.add(ok ? 'salio-bien' : 'salio-mal');
       estadoTxt.textContent = ok ? '¡Sale bien!' : 'Sale mal…';
-      setTimeout(resolve, 620);
+      setTimeout(resolve, 700);
     };
     requestAnimationFrame(paso);
   });
@@ -393,6 +445,7 @@ function correrTemporadas() {
   let html = '';
   for (let i = 0; i < estado.cada; i++) {
     const linea = simularTemporada(estado);
+    if (linea.trofeo) html += tarjetaTrofeo(linea.trofeo);
     html += `
       <div class="tarjeta temporada">
         <div class="etiqueta-anio">Temporada ${linea.año} · ${linea.edad} años</div>

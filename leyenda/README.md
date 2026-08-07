@@ -49,10 +49,13 @@ nivel 90.
 - **Cambiar de región es una decisión más**: te ofrecen el gimnasio de tu región para
   hacerte líder, o te pagan por irte a competir a otra liga (con su riesgo de no adaptarte).
 - **Guiños a la escena competitiva española**: la dieta de Sekiam, el manifiesto de Kasty
-  contra la organización del circuito, el dualocke con Folagor, la Creators Cup de Victory
-  Road, el speed tie que te cuesta una final, perseguir puntos por media Europa para entrar
-  al Mundial y el expediente por retuitear un meme. Todo ficción y cariño: los creadores
-  salen como cameos amables, nunca haciendo nada reprochable.
+  contra la organización del circuito, el dualocke con Folagor, el coaching con Riopaser, el
+  torneo del bar de Juanan en Talavera, la Creators Cup de Victory Road, la cola del hack
+  check, el equipo filtrado dos días antes del regional, el piso compartido de ocho personas
+  en un Internacional, la noche antes del torneo tocando el equipo a las dos de la mañana, el
+  speed tie que te cuesta una final, perseguir puntos por media Europa para entrar al Mundial,
+  el lío de Twitter por opinar de algo que no era Pokémon y el expediente por un retuit. Todo
+  ficción y cariño: los creadores salen como cameos amables, nunca haciendo nada reprochable.
 - **Ganar se celebra**: al llevarte un título o completar las ocho medallas salta una copa
   dibujada, con la cinta del color del torneo y confeti.
 

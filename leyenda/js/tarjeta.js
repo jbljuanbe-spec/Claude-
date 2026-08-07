@@ -1,6 +1,6 @@
 // Dibuja la tarjeta final en un canvas y la descarga como PNG
 // (en móvil intenta compartirla como archivo, que es lo cómodo).
-import { spriteUrl } from './datos.js?v=13';
+import { spriteUrl } from './datos.js?v=14';
 
 const A = 1080, ALTO = 1600;
 
@@ -112,9 +112,11 @@ export async function descargarTarjeta(estado, { pts, rango, premios, equipo, ap
     texto(c, p.desc, cx + 74, cy + 62, { tam: 19, color: '#8b93b0', maxAncho: an - 92 });
   });
 
-  // El pie sale del dominio real donde esté alojado el juego, no de una URL fija
+  // Pie de la imagen: la firma (que es lo que viaja cuando alguien la comparte)
+  // y el dominio real donde esté alojado el juego, sin URLs escritas a fuego.
   const dominio = (location.host + location.pathname).replace(/\/index\.html$/, '').replace(/\/$/, '');
-  texto(c, dominio || 'Hazte con Todos', A / 2, ALTO - 42, { tam: 22, fuente: 'Silkscreen', color: '#b0b7cd', centro: true });
+  texto(c, '@SoyPalo_', A / 2, ALTO - 62, { tam: 30, fuente: 'Silkscreen', color: '#6c7391', centro: true });
+  if (dominio) texto(c, dominio, A / 2, ALTO - 30, { tam: 20, fuente: 'Silkscreen', color: '#b0b7cd', centro: true });
 
   const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
   if (!blob) throw new Error('sin blob');

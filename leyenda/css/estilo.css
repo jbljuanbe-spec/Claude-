@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=13') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=13') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=14') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=14') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=13') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=13') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=14') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=14') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=13') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=14') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -393,3 +393,20 @@ input[type=text]:focus { border-color: var(--azul); }
 .continuar-nombre { font-family: var(--f-display); font-size: 18px; font-weight: 700; }
 .continuar-meta { font-size: 12.5px; color: var(--suave); }
 .continuar .boton-grande { margin-top: 14px; background: linear-gradient(100deg, var(--azul), #6a8ff0); }
+
+
+/* Firma del autor: en la portada, en la pantalla final y en la imagen */
+.firma {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin: 14px auto 0; padding: 10px 14px; max-width: 380px;
+  background: var(--panel); border: 1.5px solid var(--linea); border-radius: 30px;
+  color: var(--suave); font-size: 12.5px; text-decoration: none; transition: .14s;
+}
+.firma:hover { border-color: var(--tinta); color: var(--tinta); transform: translateY(-1px); }
+.firma b { color: var(--tinta); font-weight: 700; }
+.firma-x {
+  display: grid; place-items: center; flex: 0 0 22px; width: 22px; height: 22px;
+  background: var(--tinta); color: #fff; border-radius: 6px;
+  font-family: var(--f-display); font-size: 14px; font-weight: 700; line-height: 1;
+}
+.firma-final { margin-top: 18px; }

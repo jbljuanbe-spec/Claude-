@@ -2,14 +2,14 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=13';
+} from './datos.js?v=14';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida,
-} from './motor.js?v=13';
-import { siguienteEvento } from './eventos.js?v=13';
-import { descargarTarjeta } from './tarjeta.js?v=13';
+} from './motor.js?v=14';
+import { siguienteEvento } from './eventos.js?v=14';
+import { descargarTarjeta } from './tarjeta.js?v=14';
 
 const app = document.getElementById('app');
 let estado = null;
@@ -98,6 +98,10 @@ function pantallaInicio() {
 
     <button class="boton-grande" id="empezar" disabled>Empezar la carrera</button>
     <p class="pie">Cada partida es distinta. Nadie llega dos veces igual al final.</p>
+    <a class="firma" href="https://x.com/soypalo_" target="_blank" rel="noopener noreferrer">
+      <span class="firma-x">X</span>
+      <span>Hecho por <b>@SoyPalo_</b> · sígueme para más cosas así</span>
+    </a>
     <p class="aviso-legal">
       Proyecto de fan, sin ánimo de lucro y sin relación con Nintendo, Creatures o GAME FREAK.
       Pokémon es marca registrada de sus propietarios. Sprites de
@@ -575,7 +579,12 @@ function pantallaFinal() {
 
     <button class="boton-grande" id="guardar">📸 Guardar la tarjeta como imagen</button>
     <button class="boton-secundario" id="copiar">Copiar resumen en texto</button>
-    <button class="boton-secundario" id="otra">Jugar otra vez</button>`;
+    <button class="boton-secundario" id="otra">Jugar otra vez</button>
+
+    <a class="firma firma-final" href="https://x.com/soypalo_" target="_blank" rel="noopener noreferrer">
+      <span class="firma-x">X</span>
+      <span>Si te ha molado, sígueme en X: <b>@SoyPalo_</b></span>
+    </a>`;
 
   window.scrollTo({ top: 0, behavior: 'instant' });
   document.getElementById('otra').onclick = () => pantallaInicio();
@@ -607,6 +616,7 @@ function copiarResumen(pts, rango, equipo, apodo, premios) {
     `🏅 ${premios.map(p => p.nombre).join(' · ')}`,
     ``,
     `Legado: ${pts} puntos · Hazte con Todos`,
+    `Juego de @SoyPalo_`,
   ].join('\n');
   const ok = () => aviso('¡Resumen copiado!');
   if (navigator.clipboard?.writeText) navigator.clipboard.writeText(txt).then(ok).catch(() => respaldo(txt, ok));

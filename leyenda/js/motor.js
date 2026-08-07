@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=6';
+} from './datos.js?v=9';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -57,7 +57,7 @@ export function nuevaPartida({ nombre, region, estilo, inicial, ritmo }) {
 
     // Media del entrenador (el "OVR"): sube con experiencia hasta su techo
     media: 42 + entero(-3, 3),
-    techo: 61 + entero(0, 17),          // potencial: solo los eventos lo mueven
+    techo: 65 + entero(0, 20),          // potencial: solo los eventos lo mueven
     experiencia: 0,
 
     stats: { poder: 30, estrategia: 30, vinculo: 45, fama: 5, salud: 90, moral: 75 },
@@ -68,6 +68,7 @@ export function nuevaPartida({ nombre, region, estilo, inicial, ritmo }) {
     regionesVisitadas: [region.nombre],
     objetos: [],
     equipo: [], hitos: [], cronica: [], vistos: new Set(),
+    temporales: [],   // efectos que se revierten solos al cabo de N temporadas
     flags: {},
     rival: crearRival(),
     apodo: null,
@@ -218,6 +219,25 @@ export function subirTecho(estado, n) {
   return estado.techo;
 }
 
+// Sube (o baja) la media ya mismo, pero marcado para deshacerse solo al cabo
+// de N temporadas: la indigestión de un experimento pasa, la sanción no.
+export function mediaTemporal(estado, delta, temporadas = 1) {
+  estado.media = limitar(Math.min(estado.techo, estado.media + delta));
+  estado.temporales.push({ delta, restantes: temporadas });
+}
+
+function resolverTemporales(estado) {
+  const notas = [];
+  estado.temporales = estado.temporales.filter(t => {
+    t.restantes--;
+    if (t.restantes > 0) return true;
+    estado.media = limitar(Math.min(estado.techo, estado.media - t.delta));
+    notas.push(t.delta > 0 ? 'Se te pasa el subidón: la media vuelve a su sitio.' : 'Superado el bache, recuperas la media que habías perdido.');
+    return false;
+  });
+  return notas;
+}
+
 function crecerMedia(estado) {
   const p = pasivos(estado);
   const margen = estado.techo - estado.media;
@@ -257,7 +277,7 @@ export function simularTemporada(estado) {
   // Desgaste natural, amortiguado por los objetos que llevas
   s.salud = limitar(s.salud - entero(estado.edad > 26 ? 2 : 0, estado.edad > 26 ? 6 : 3)
     - (estado.flags.lesionCronica ? 2 : 0) + p.salud);
-  s.moral = limitar(s.moral + entero(-4, 4) + p.moral);
+  s.moral = limitar(s.moral + entero(-4, 4) + p.moral + (48 - s.moral) * 0.07);
   s.estrategia = limitar(s.estrategia + p.estrategia * 0.5);
   if (etapa === 'veterano') s.fama = limitar(s.fama - entero(1, 3));
 
@@ -269,6 +289,7 @@ export function simularTemporada(estado) {
   }
 
   // El techo existe, pero el jugador nunca lo ve: solo nota que deja de subir.
+  resolverTemporales(estado).forEach(n => linea.sucesos.push(n));
   const subida = crecerMedia(estado);
   if (subida) linea.sucesos.push(`Un año más de oficio: media ${Math.round(estado.media)} (+${subida.toFixed(1)}).`);
 
@@ -374,12 +395,19 @@ export function mudarse(estado, nombreRegion = null) {
 }
 
 // ── Retiro ───────────────────────────────────────────────────────────────────
+// Antes de esta edad una mala racha de salud o moral es un bache, no el fin
+// de la carrera: con 13 años nadie "se retira", simplemente lo pasa mal un
+// tiempo y sigue. El límite por edad (34) es el único techo real.
+const EDAD_MIN_RETIRO_FORZOSO = 20;
+
 export function debeRetirarse(estado) {
   if (estado.retirado) return false;
   if (estado.edad >= 34) return 'edad';
-  if (estado.stats.salud <= 12) return 'salud';
-  if (estado.stats.moral <= 8) return 'moral';
-  if (estado.edad >= 29 && estado.stats.fama < 18 && dado(0.35)) return 'olvido';
+  if (estado.edad >= EDAD_MIN_RETIRO_FORZOSO) {
+    if (estado.stats.salud <= 12) return 'salud';
+    if (estado.stats.moral <= 5) return 'moral';
+    if (estado.edad >= 29 && estado.stats.fama < 18 && dado(0.35)) return 'olvido';
+  }
   return false;
 }
 

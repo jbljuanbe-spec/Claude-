@@ -1,6 +1,6 @@
 // Dibuja la tarjeta final en un canvas y la descarga como PNG
 // (en móvil intenta compartirla como archivo, que es lo cómodo).
-import { spriteUrl } from './datos.js?v=11';
+import { spriteUrl } from './datos.js?v=12';
 
 const A = 1080, ALTO = 1600;
 
@@ -112,7 +112,9 @@ export async function descargarTarjeta(estado, { pts, rango, premios, equipo, ap
     texto(c, p.desc, cx + 74, cy + 62, { tam: 19, color: '#8b93b0', maxAncho: an - 92 });
   });
 
-  texto(c, 'jbljuanbe-spec.github.io/Claude-/leyenda', A / 2, ALTO - 42, { tam: 22, fuente: 'Silkscreen', color: '#b0b7cd', centro: true });
+  // El pie sale del dominio real donde esté alojado el juego, no de una URL fija
+  const dominio = (location.host + location.pathname).replace(/\/index\.html$/, '').replace(/\/$/, '');
+  texto(c, dominio || 'Conviértete en Leyenda', A / 2, ALTO - 42, { tam: 22, fuente: 'Silkscreen', color: '#b0b7cd', centro: true });
 
   const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
   if (!blob) throw new Error('sin blob');

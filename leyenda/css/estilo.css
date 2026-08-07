@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=11') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=11') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=12') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=12') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=11') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=11') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=12') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=12') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=11') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=12') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -375,3 +375,11 @@ input[type=text]:focus { border-color: var(--azul); }
   .trofeo, .trofeo .copa, .confeti i { animation: none; }
   .confeti { display: none; }
 }
+
+
+/* Aviso de la portada: fan project, marcas y créditos */
+.aviso-legal {
+  margin-top: 14px; font-size: 10.5px; line-height: 1.5; text-align: center;
+  color: #98a0bb; max-width: 560px; margin-left: auto; margin-right: auto;
+}
+.aviso-legal b { color: #7d86a5; font-weight: 600; }

@@ -2,13 +2,13 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=11';
+} from './datos.js?v=12';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
-} from './motor.js?v=11';
-import { siguienteEvento } from './eventos.js?v=11';
-import { descargarTarjeta } from './tarjeta.js?v=11';
+} from './motor.js?v=12';
+import { siguienteEvento } from './eventos.js?v=12';
+import { descargarTarjeta } from './tarjeta.js?v=12';
 
 const app = document.getElementById('app');
 let estado = null;
@@ -79,7 +79,14 @@ function pantallaInicio() {
     </div>
 
     <button class="boton-grande" id="empezar" disabled>Empezar la carrera</button>
-    <p class="pie">Cada partida es distinta. Nadie llega dos veces igual al final.</p>`;
+    <p class="pie">Cada partida es distinta. Nadie llega dos veces igual al final.</p>
+    <p class="aviso-legal">
+      Proyecto de fan, sin ánimo de lucro y sin relación con Nintendo, Creatures o GAME FREAK.
+      Pokémon es marca registrada de sus propietarios. Sprites de
+      <b>PokeAPI</b> y <b>pokesprite</b>; tipografías de <b>Google Fonts</b> (OFL).<br>
+      Los guiños a personas reales de la comunidad competitiva son <b>ficción y cariño</b>:
+      las situaciones están inventadas y nadie las ha dicho ni hecho.
+    </p>`;
 
   const marcar = (cont, btn) => {
     cont.querySelectorAll('.opcion').forEach(b => b.setAttribute('aria-pressed', 'false'));

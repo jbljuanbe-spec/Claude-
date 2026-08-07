@@ -2,13 +2,13 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js';
+} from './datos.js?v=2';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
-} from './motor.js';
-import { siguienteEvento } from './eventos.js';
-import { descargarTarjeta } from './tarjeta.js';
+} from './motor.js?v=2';
+import { siguienteEvento } from './eventos.js?v=2';
+import { descargarTarjeta } from './tarjeta.js?v=2';
 
 const app = document.getElementById('app');
 let estado = null;

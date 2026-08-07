@@ -1,7 +1,7 @@
 // Dibuja la tarjeta final en un canvas y la descarga como PNG
 // (en móvil intenta compartirla como archivo, que es lo cómodo).
-import { spriteUrl } from './datos.js';
-import { poderPokemon } from './motor.js';
+import { spriteUrl } from './datos.js?v=2';
+import { poderPokemon } from './motor.js?v=2';
 
 const A = 1080, ALTO = 1600;
 

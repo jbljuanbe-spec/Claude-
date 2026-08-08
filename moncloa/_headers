@@ -1,0 +1,6 @@
+# Cloudflare Pages: los assets con versión (?v=) pueden cachearse mucho tiempo;
+# el HTML no, para que un cambio se vea al momento.
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+/fuentes/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=17';
+} from './datos.js?v=18';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -293,8 +293,10 @@ function crecerMedia(estado) {
   const p = pasivos(estado);
   const [min, max] = rangoPorEdad(estado.edad);
   // Frena solo al acercarse a 99: no es un tope de la partida, es que
-  // ganarle un punto al mejor del mundo cuesta cada vez más.
-  const freno = Math.max(0.12, Math.pow(1 - estado.media / 101, 0.85));
+  // ganarle un punto al mejor del mundo cuesta cada vez más. A partir de 80
+  // se aprieta un extra: llegar a la élite es asequible, consolidarse en 90 no.
+  const elite = estado.media > 80 ? Math.max(0.3, 1 - (estado.media - 80) * 0.062) : 1;
+  const freno = Math.max(0.1, Math.pow(1 - estado.media / 101, 0.85)) * elite;
   const contexto = 1 + p.crecimiento
     + (estado.stats.moral > 70 ? 0.12 : 0)
     + (estado.stats.salud < 45 ? -0.3 : 0);
@@ -385,7 +387,8 @@ export function simularTemporada(estado) {
       linea.trofeo = { tipo: 'medallas', nombre: `Las 8 medallas de ${estado.regionNombre}`, año: estado.año };
       s.fama = limitar(s.fama + rango(6, 14));
     }
-  } else if (rendimiento > 84 && etapa !== 'novato') {
+  // El Mundial pide bastante más que un regional: es el techo del circuito.
+  } else if (rendimiento > (etapa === 'cima' ? 88 : 84) && etapa !== 'novato') {
     const titulo = etapa === 'cima' ? 'Campeonato Mundial' : `${torneo} de ${estado.regionNombre}`;
     estado.titulos.push({ año: estado.año, nombre: titulo });
     if (etapa === 'cima') estado.mundiales++; else estado.ligasGanadas++;

@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse, sumarMedia,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=20';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=20';
+} from './motor.js?v=21';
+import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=21';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -582,6 +582,59 @@ export const EVENTOS = [
           : efecto('Caes en cuartos contra un creador que jugaba con un equipo monotipo. El clip también da la vuelta a España.', m(e, { fama: [6, 12], moral: [-8, -3] })) },
       { txt: 'Quedarte preparando el regional', sub: 'Lo otro es ruido.',
         efecto: e => efecto('Te quedas en casa haciendo cálculos mientras todos se divierten. Llegas al regional afiladísimo, pero pierdes la exposición del torneo.', m(e, { media: [3, 7], estrategia: [5, 10], fama: [-6, -2] })) },
+    ],
+  },
+  {
+    id: 'fosil', etapas: ['gimnasios', 'liga', 'pro'], peso: 14, unico: true,
+    titulo: 'Dos fósiles y una máquina',
+    texto: () => 'En un museo de carretera te dejan elegir: hay dos fósiles en una vitrina polvorienta y una máquina de resurrección que, según el conserje, "va casi siempre". Solo puedes revivir uno, y el conserje ya está mirando el reloj.',
+    opciones: [
+      { txt: 'La Hélix o la Domo', sub: 'Lo que salga del mar antiguo.', icono: 'poke', riesgo: 0.7,
+        efecto: (e, ok) => { if (!ok) return efecto('La máquina se traga el fósil, pita tres veces y se apaga. El conserje se encoge de hombros: "pues nada". Te vas con las manos vacías y una lección sobre museos de carretera.',
+            m(e, { moral: [-8, -3], dinero: -rango(2000, 6000) }));
+          const p = fichar(e, elegir(['omanyte', 'kabuto']));
+          hito(e, '🦴', `Revivió a ${p?.nombre ?? 'un fósil'}`);
+          return efecto(`La máquina zumba, se abre, y ahí está: ${p?.nombre ?? 'el fósil'}, vivo, parpadeando con cara de no entender nada. Tiene millones de años y acaba de conocerte.`,
+            m(e, { fama: [6, 13], vinculo: [5, 11], moral: [6, 12] })); } },
+      { txt: 'El Ámbar Viejo', sub: 'Más caro, más raro, más riesgo.', icono: 'poke', riesgo: 0.45,
+        efecto: (e, ok) => { if (!ok) return efecto('Pagas lo que te piden y la resurrección sale mal: del ámbar no se levanta nada. Te quedas mirando la máquina un rato largo, como si fuera a cambiar de opinión.',
+            m(e, { dinero: -rango(9000, 20000), moral: [-11, -5] }));
+          const p = fichar(e, 'aerodactyl');
+          hito(e, '🦖', 'Revivió a Aerodactyl del Ámbar Viejo');
+          return efecto(`Del ámbar sale ${p?.nombre ?? 'Aerodactyl'} y el chillido rompe una vitrina. El conserje se esconde detrás del mostrador. Tú ya sabes que este entra en el equipo.`,
+            m(e, { dinero: -rango(9000, 20000), fama: [12, 20], media: [1, 4] })); } },
+    ],
+  },
+  {
+    id: 'huevo_misterioso', etapas: ['novato', 'gimnasios', 'liga'], peso: 13, unico: true,
+    titulo: 'El huevo que nadie reclama',
+    texto: () => 'Una criadora te para en la ruta con un huevo entre las manos: apareció en su granja, no sabe de quién es y a ella no le cabe uno más. Te lo da sin preguntar, como quien suelta un problema.',
+    opciones: [
+      { txt: 'Llevarlo encima hasta que rompa', sub: 'Kilómetros, calor y paciencia.', riesgo: 0.75,
+        efecto: (e, ok) => { if (!ok) return efecto('Pasan meses y el huevo no rompe. Un criador de verdad le echa un vistazo y te dice, con mucho tacto, que eso ya no va a eclosionar.',
+            m(e, { moral: [-9, -4], vinculo: [3, 7] }));
+          const p = capturaAleatoria(e, { rarezaMin: dado(0.35) ? 'raro' : 'comun' });
+          return efecto(`Rompe una noche cualquiera, en un centro Pokémon vacío. Es ${p?.nombre ?? 'un bichito'} y lo primero que ve eres tú.`,
+            m(e, { vinculo: [10, 18], moral: [7, 13] })); } },
+      { txt: 'Dejarlo en el centro Pokémon', sub: 'Que lo cuide quien sepa.',
+        efecto: e => efecto('Lo entregas en el mostrador y sigues tu camino más ligero. La enfermera te da las gracias; tú te quedas pensando en él más de lo que esperabas.',
+          m(e, { moral: [-3, -1], estrategia: [3, 7], salud: [3, 7] })) },
+    ],
+  },
+  {
+    id: 'apagon_regional', etapas: ['liga', 'pro', 'cima'], peso: 13,
+    titulo: 'Se va la luz en el pabellón',
+    texto: () => 'Ronda 6, tú con ventaja, y el pabellón entero se queda a oscuras. Media hora después los jueces siguen sin saber si se reanuda desde donde iba o se repite el combate entero. Alguien tiene que decir algo y todos te miran a ti.',
+    opciones: [
+      { txt: 'Exigir que se reanude', sub: 'Ibas ganando y lo sabe todo el mundo.', riesgo: 0.5,
+        efecto: (e, ok) => ok
+          ? efecto('Los jueces te dan la razón, se reanuda y cierras el combate en dos turnos. Nadie discute, pero tampoco nadie te aplaude.',
+              m(e, { media: [2, 5], fama: [3, 8], moral: [4, 9] }))
+          : efecto('Deciden repetirlo entero. Pierdes el combate que ya tenías ganado y te comes la fama de protestón por partida doble.',
+              m(e, { moral: [-13, -6], fama: [-7, -2] })) },
+      { txt: 'Aceptar lo que digan los jueces', sub: 'No pelear una cosa que no depende de ti.',
+        efecto: e => efecto('Dices que por ti lo que decidan. Se repite el combate y lo pierdes, pero el vídeo de ti diciéndolo se comparte más que ningún resultado de ese fin de semana.',
+          m(e, { fama: [7, 14], moral: [-6, -2], estrategia: [2, 6] })) },
     ],
   },
   {

@@ -51,7 +51,12 @@ export const RITMOS = [
 // poder: potencial de combate de cada etapa (0-100). rareza: peso al aparecer.
 // tipos de la línea = los de su primera etapa; cada etapa puede sobrescribirlos
 // (Charmander es solo Fuego; Charizard ya es Fuego/Volador).
-const L = (id, region, rareza, tipos, etapas) => ({ id, region, rareza, tipos, etapas });
+// `ramas` son evoluciones ALTERNATIVAS, no consecutivas: cada ejemplar coge
+// una sola (Eevee no pasa por Vaporeon camino de Jolteon).
+const L = (id, region, rareza, tipos, etapas, ramas) => ({ id, region, rareza, tipos, etapas, ramas });
+// Fósil: igual que una línea rara, pero `soloEvento` la saca del pool de
+// capturas por ruta. Un Omanyte no te sale paseando: lo revive un laboratorio.
+const F = (id, region, tipos, etapas) => ({ id, region, rareza: 'raro', tipos, etapas, soloEvento: true });
 const E = (dex, nombre, poder, tipos) => (tipos ? { dex, nombre, poder, tipos } : { dex, nombre, poder });
 
 export const LINEAS = [
@@ -93,7 +98,13 @@ export const LINEAS = [
   L('machop', 'kanto', 'comun', ['lucha'], [E(66, 'Machop', 30), E(67, 'Machoke', 52), E(68, 'Machamp', 76)]),
   L('abra', 'kanto', 'comun', ['psiquico'], [E(63, 'Abra', 24), E(64, 'Kadabra', 54), E(65, 'Alakazam', 80)]),
   L('gastly', 'kanto', 'raro', ['fantasma', 'veneno'], [E(92, 'Gastly', 28), E(93, 'Haunter', 54), E(94, 'Gengar', 79)]),
-  L('eevee', 'kanto', 'raro', ['normal'], [E(133, 'Eevee', 32), E(134, 'Vaporeon', 70, ['agua']), E(135, 'Jolteon', 72, ['electrico'])]),
+  L('eevee', 'kanto', 'raro', ['normal'], [E(133, 'Eevee', 32)],
+    [E(134, 'Vaporeon', 70, ['agua']), E(135, 'Jolteon', 72, ['electrico']), E(136, 'Flareon', 71, ['fuego']),
+     E(196, 'Espeon', 73, ['psiquico']), E(197, 'Umbreon', 73, ['siniestro']), E(700, 'Sylveon', 73, ['hada'])]),
+  // Fósiles: solo salen del laboratorio, no se cruzan por una ruta
+  F('omanyte', 'kanto', ['roca', 'agua'], [E(138, 'Omanyte', 40), E(139, 'Omastar', 74)]),
+  F('kabuto', 'kanto', ['roca', 'agua'], [E(140, 'Kabuto', 40), E(141, 'Kabutops', 76)]),
+  F('aerodactyl', 'kanto', ['roca', 'volador'], [E(142, 'Aerodactyl', 78)]),
   L('growlithe', 'kanto', 'comun', ['fuego'], [E(58, 'Growlithe', 32), E(59, 'Arcanine', 76)]),
   L('magikarp', 'kanto', 'comun', ['agua'], [E(129, 'Magikarp', 6), E(130, 'Gyarados', 79, ['agua', 'volador'])]),
   L('pikachu', 'kanto', 'raro', ['electrico'], [E(172, 'Pichu', 20), E(25, 'Pikachu', 46), E(26, 'Raichu', 72)]),

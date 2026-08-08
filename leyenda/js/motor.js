@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=20';
+} from './datos.js?v=21';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -156,7 +156,13 @@ export function borrarPartida() {
 
 // ── Pokémon ──────────────────────────────────────────────────────────────────
 let uidSeq = 1;
-const tiposDe = (linea, etapa) => linea.etapas[etapa].tipos ?? linea.tipos;
+// Etapas efectivas de un ejemplar: si su línea tiene evoluciones alternativas,
+// la suya es la rama que le tocó al aparecer, y solo esa.
+function etapasDe(linea, rama = 0) {
+  if (!linea.ramas?.length) return linea.etapas;
+  return [...linea.etapas, linea.ramas[rama % linea.ramas.length]];
+}
+const tiposDe = (linea, etapa, rama = 0) => etapasDe(linea, rama)[etapa].tipos ?? linea.tipos;
 
 export function crearPokemon(lineaId, opts = {}) {
   const linea = PORLINEA[lineaId];
@@ -165,14 +171,17 @@ export function crearPokemon(lineaId, opts = {}) {
   const umbrales = [16 + entero(0, 5), 34 + entero(0, 8)];
   let nivel = Math.min(100, opts.nivel ?? 5);
   let etapa = opts.etapa ?? 0;
+  // Si su línea ramifica, este ejemplar ya nace con la suya decidida
+  const rama = linea.ramas?.length ? entero(0, linea.ramas.length - 1) : 0;
+  const etapas = etapasDe(linea, rama);
   // Si nace ya crecido (un fichaje, un regalo), ajusta la etapa a su nivel
-  while (etapa < linea.etapas.length - 1 && nivel >= umbrales[etapa]) etapa++;
-  etapa = Math.min(etapa, linea.etapas.length - 1);
+  while (etapa < etapas.length - 1 && nivel >= umbrales[etapa]) etapa++;
+  etapa = Math.min(etapa, etapas.length - 1);
   return {
-    uid: uidSeq++, linea: lineaId, etapa, nivel, umbrales,
-    nombre: linea.etapas[etapa].nombre,
-    dex: linea.etapas[etapa].dex,
-    tipos: tiposDe(linea, etapa),
+    uid: uidSeq++, linea: lineaId, etapa, nivel, umbrales, rama,
+    nombre: etapas[etapa].nombre,
+    dex: etapas[etapa].dex,
+    tipos: tiposDe(linea, etapa, rama),
     rareza: linea.rareza,
     socio: !!opts.socio,
     forma: opts.forma ?? entero(-4, 6),
@@ -185,7 +194,7 @@ export function crearPokemon(lineaId, opts = {}) {
 // Fuerza de combate: el potencial de su etapa, aprovechado según su nivel.
 // Un Charizard de nivel 30 pega mucho menos que uno de nivel 90.
 export function poderPokemon(p) {
-  const potencial = PORLINEA[p.linea].etapas[p.etapa].poder;
+  const potencial = etapasDe(PORLINEA[p.linea], p.rama ?? 0)[p.etapa].poder;
   const aprovecha = 0.42 + 0.58 * ((p.nivel ?? 1) / 100);
   return Math.max(1, potencial * aprovecha + p.forma * 0.5
     + (p.vinculo - 40) * 0.1 - (p.lesionado ? 15 : 0));
@@ -222,7 +231,7 @@ export function fichar(estado, lineaId, opts = {}) {
 export function capturaAleatoria(estado, { rarezaMin = 'comun', region = null } = {}) {
   const permitidas = rarezaMin === 'raro' ? ['raro', 'pseudo'] : ['comun', 'raro', 'pseudo'];
   const pool = LINEAS.filter(l =>
-    permitidas.includes(l.rareza) &&
+    permitidas.includes(l.rareza) && !l.soloEvento &&
     !estado.equipo.some(p => p.linea === l.id) &&
     (!region || l.region === region));
   if (!pool.length) return null;
@@ -236,11 +245,12 @@ function evolucionar(estado) {
   for (const p of estado.equipo) {
     if (p.retirado) continue;
     const linea = PORLINEA[p.linea];
-    while (p.etapa < linea.etapas.length - 1 && p.nivel >= p.umbrales[p.etapa]) {
+    const etapas = etapasDe(linea, p.rama ?? 0);
+    while (p.etapa < etapas.length - 1 && p.nivel >= p.umbrales[p.etapa]) {
       const antes = p.nombre;
       p.etapa++;
-      const et = linea.etapas[p.etapa];
-      p.nombre = et.nombre; p.dex = et.dex; p.tipos = tiposDe(linea, p.etapa);
+      const et = etapas[p.etapa];
+      p.nombre = et.nombre; p.dex = et.dex; p.tipos = tiposDe(linea, p.etapa, p.rama ?? 0);
       frases.push(`${antes} evolucionó a ${p.nombre} (nivel ${Math.round(p.nivel)}).`);
     }
   }

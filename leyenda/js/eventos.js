@@ -3,10 +3,10 @@
 // efecto(e, ok) recibe si el dado salió a favor. Sin `riesgo`, la opción es segura.
 import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
-  poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse,
+  poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse, sumarMedia,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=19';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=19';
+} from './motor.js?v=20';
+import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=20';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -19,7 +19,10 @@ function m(e, deltas) {
     // mediaTexto: solo para mostrar el número tras un mediaTemporal() ya aplicado.
     // No toca e.media otra vez (evita duplicar el efecto).
     if (k === 'mediaTexto') { partes.push(`${v > 0 ? '+' : ''}${v} Media (temporal)`); continue; }
-    if (k === 'media') { e.media = limitar(e.media + v); partes.push(`${v > 0 ? '+' : ''}${v} Media`); continue; }
+    // Pasa por el freno de la élite: cuanto más alto estés, menos te da cada
+    // acierto. Se muestra lo que realmente entra, no lo que pedía el evento.
+    if (k === 'media') { const r = sumarMedia(e, v); const n = Math.round(r * 10) / 10;
+      if (n) partes.push(`${n > 0 ? '+' : ''}${n} Media`); continue; }
     // talento: no sube la media hoy, sino lo que crecerás cada temporada
     if (k === 'talento') { subirTalento(e, v); partes.push(`+${v} Talento`); continue; }
     e.stats[k] = limitar(e.stats[k] + v);

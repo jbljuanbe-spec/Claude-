@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=19';
+} from './datos.js?v=20';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -254,7 +254,7 @@ function evolucionar(estado) {
 // Lo único que se hereda es el "talento", un multiplicador que suben ciertos
 // eventos (el programa del Profesor, el coaching, un legendario...).
 export function subirTalento(estado, n) {
-  estado.talento = Math.min(1.6, estado.talento + n * 0.035);
+  estado.talento = Math.min(1.35, estado.talento + n * 0.022);
   return estado.talento;
 }
 
@@ -279,24 +279,48 @@ function resolverTemporales(estado) {
 
 // Lo que puedes crecer en bruto según la edad: de crío das saltos, pasados
 // los treinta el año bueno es no perder nada.
+// Cuánto puede moverse la media en una temporada, por edad: [centro, amplitud].
+// VARIANZA ensancha el abanico sin mover el centro, así que un año puede salir
+// redondo o irse al garete sin que tú hayas hecho nada distinto.
+const VARIANZA = 1.8;
+const CURVA_EDAD = [
+  [15, 4.5, 1.9], [18, 3.7, 1.7], [21, 2.7, 1.5],
+  [24, 1.9, 1.3], [27, 1.2, 1.1], [30, 0.55, 0.95],
+];
 function rangoPorEdad(edad) {
-  if (edad <= 15) return [2.6, 6.4];
-  if (edad <= 18) return [2.0, 5.4];
-  if (edad <= 21) return [1.2, 4.2];
-  if (edad <= 24) return [0.6, 3.2];
-  if (edad <= 27) return [0.1, 2.3];
-  if (edad <= 30) return [-0.4, 1.5];
-  return [-1.6, 0.7];
+  const [, centro, ancho] = CURVA_EDAD.find(([tope]) => edad <= tope) ?? [0, -0.45, 1.15];
+  const w = ancho * VARIANZA;
+  return [centro - w, centro + w];
+}
+
+// El freno de la élite: subir de 92 a 93 no puede costar lo mismo que de 60 a
+// 61. Lo comparten el crecimiento anual y las subidas que dan los eventos, así
+// que encadenar buenas decisiones tampoco te dispara hasta 98.
+const ELITE_DESDE = 82, ELITE_PENDIENTE = 0.12, ELITE_SUELO = 0.2;
+
+// Solo el tramo de élite: hasta ELITE_DESDE no recorta nada, a partir de ahí
+// cada punto cuesta más. Es lo que impide que encadenar aciertos te lleve a 98.
+function frenoElite(media) {
+  return media > ELITE_DESDE ? Math.max(ELITE_SUELO, 1 - (media - ELITE_DESDE) * ELITE_PENDIENTE) : 1;
+}
+
+// Freno del crecimiento anual: el de élite más el de acercarse al 100.
+function frenoDe(media) {
+  return Math.max(0.08, Math.pow(1 - media / 101, 0.85)) * frenoElite(media);
+}
+
+// Suma media aplicando solo el freno de élite a lo que sube (lo que baja entra
+// entero). Así un acierto vale lo mismo a media 60 que antes, pero a 90 no.
+export function sumarMedia(estado, v) {
+  const real = v > 0 ? v * frenoElite(estado.media) : v;
+  estado.media = limitar(estado.media + real);
+  return real;
 }
 
 function crecerMedia(estado) {
   const p = pasivos(estado);
   const [min, max] = rangoPorEdad(estado.edad);
-  // Frena solo al acercarse a 99: no es un tope de la partida, es que
-  // ganarle un punto al mejor del mundo cuesta cada vez más. A partir de 80
-  // se aprieta un extra: llegar a la élite es asequible, consolidarse en 90 no.
-  const elite = estado.media > 80 ? Math.max(0.3, 1 - (estado.media - 80) * 0.062) : 1;
-  const freno = Math.max(0.1, Math.pow(1 - estado.media / 101, 0.85)) * elite;
+  const freno = frenoDe(estado.media);
   const contexto = 1 + p.crecimiento
     + (estado.stats.moral > 70 ? 0.12 : 0)
     + (estado.stats.salud < 45 ? -0.3 : 0);
@@ -365,7 +389,7 @@ export function simularTemporada(estado) {
   // Un título se juega en un fin de semana, no en una media anual: ser el mejor
   // te pone en la pelea, pero el sorteo, el speed tie y el día que tengas
   // deciden. Por eso el trofeo lleva su propia tirada, mucho más loca.
-  const rendTorneo = rendimiento + azar(-26, 26);
+  const rendTorneo = rendimiento + azar(-34, 34);
 
   if (estado.rival.activo) estado.rival.poder = limitar(estado.rival.poder + entero(2, 7));
 
@@ -393,7 +417,7 @@ export function simularTemporada(estado) {
       s.fama = limitar(s.fama + rango(6, 14));
     }
   // El Mundial pide bastante más que un regional: es el techo del circuito.
-  } else if (rendTorneo > (etapa === 'cima' ? 104 : 98) && etapa !== 'novato') {
+  } else if (rendTorneo > (etapa === 'cima' ? 113 : 104) && etapa !== 'novato') {
     const titulo = etapa === 'cima' ? 'Campeonato Mundial' : `${torneo} de ${estado.regionNombre}`;
     estado.titulos.push({ año: estado.año, nombre: titulo });
     if (etapa === 'cima') estado.mundiales++; else estado.ligasGanadas++;

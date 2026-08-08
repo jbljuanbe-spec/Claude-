@@ -539,8 +539,8 @@ export const EVENTOS = [
   },
   {
     id: 'retuit', etapas: ['liga', 'pro', 'cima'], peso: 13, unico: true,
-    titulo: 'El retuit del mono bomba',
-    texto: () => 'Son las dos de la mañana y le das retuit al meme del mono bomba que ha subido LeN, la típica hipérbole absurda de toda la vida en internet. A la mañana siguiente el comité de conducta te ha abierto expediente por "difundir contenido inapropiado". Por un meme con faltas de ortografía a propósito.',
+    titulo: 'El retuit del bombardeo',
+    texto: () => 'Son las dos de la mañana y le das retuit al tuit de LeN, el que dice que como le vuelvan a sancionar va a bombardear la sede de la Liga con Pokémon, escrito a propósito con faltas de ortografía para que quede aún más absurdo, la típica hipérbole de toda la vida en internet. A la mañana siguiente el comité de conducta te ha abierto expediente por "amenazas en línea". Por un meme.',
     opciones: [
       { txt: 'Defenderte en el expediente', sub: 'Explicar que era una broma, con pruebas.', riesgo: 0.35,
         efecto: (e, ok) => ok

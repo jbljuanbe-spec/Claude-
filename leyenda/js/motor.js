@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=18';
+} from './datos.js?v=19';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -362,6 +362,11 @@ export function simularTemporada(estado) {
   const rendimiento = forma + azar(-13, 13) + p.suerte
     - (estado.flags.sancionado ? 30 : 0) - (estado.flags.lesionado ? 12 : 0);
 
+  // Un título se juega en un fin de semana, no en una media anual: ser el mejor
+  // te pone en la pelea, pero el sorteo, el speed tie y el día que tengas
+  // deciden. Por eso el trofeo lleva su propia tirada, mucho más loca.
+  const rendTorneo = rendimiento + azar(-26, 26);
+
   if (estado.rival.activo) estado.rival.poder = limitar(estado.rival.poder + entero(2, 7));
 
   const partidos = entero(14, 26);
@@ -388,7 +393,7 @@ export function simularTemporada(estado) {
       s.fama = limitar(s.fama + rango(6, 14));
     }
   // El Mundial pide bastante más que un regional: es el techo del circuito.
-  } else if (rendimiento > (etapa === 'cima' ? 88 : 84) && etapa !== 'novato') {
+  } else if (rendTorneo > (etapa === 'cima' ? 104 : 98) && etapa !== 'novato') {
     const titulo = etapa === 'cima' ? 'Campeonato Mundial' : `${torneo} de ${estado.regionNombre}`;
     estado.titulos.push({ año: estado.año, nombre: titulo });
     if (etapa === 'cima') estado.mundiales++; else estado.ligasGanadas++;

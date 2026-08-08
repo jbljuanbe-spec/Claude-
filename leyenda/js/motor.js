@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=21';
+} from './datos.js?v=22';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -47,7 +47,18 @@ export const liderDe = region => elegir(LIDERES.filter(l => l.region === region)
   ? LIDERES.filter(l => l.region === region) : LIDERES);
 
 // ── Creación del estado ──────────────────────────────────────────────────────
+// Easter egg: llamarte Satoshi desbloquea el arco de Kanto del anime. Fuerza
+// Kanto, Pikachu de compañero, a Shigeru de rival y una decisión por temporada,
+// que si no la historia no cabe en la carrera.
+export const esSatoshi = nombre => /^\s*satoshi\s*$/i.test(nombre ?? '');
+
 export function nuevaPartida({ nombre, region, estilo, inicial, ritmo }) {
+  const ash = esSatoshi(nombre);
+  if (ash) {
+    region = REGIONES.find(r => r.id === 'kanto') ?? region;
+    inicial = PORLINEA['pikachu'] ?? inicial;
+    ritmo = { ...ritmo, cada: 1 };
+  }
   const estado = {
     nombre, region: region.id, regionNombre: region.nombre, regionEmoji: region.emoji,
     liga: region.liga,
@@ -72,19 +83,22 @@ export function nuevaPartida({ nombre, region, estilo, inicial, ritmo }) {
     equipo: [], hitos: [], cronica: [], vistos: new Set(),
     ultimoEvento: null,   // para no repetir la misma decisión dos turnos seguidos
     temporales: [],   // efectos que se revierten solos al cabo de N temporadas
-    flags: {},
-    rival: crearRival(),
+    flags: ash ? { esAsh: true, ash: 1 } : {},
+    rival: crearRival(ash),
     apodo: null,
   };
   aplicarBonus(estado, estilo.bonus);
-  const socio = crearPokemon(inicial.id, { socio: true });
+  // El de Ash empieza ya siendo Pikachu (no Pichu) y no evoluciona por su
+  // cuenta: lo de la piedra trueno es una decisión suya, no del nivel.
+  const socio = ash ? crearPokemon('pikachu', { socio: true, etapa: 1, nivel: 8 }) : crearPokemon(inicial.id, { socio: true });
+  if (ash) socio.umbrales = [0, 999];
   estado.equipo.push(socio);
   estado.socio = socio.uid;
   return estado;
 }
 
-function crearRival() {
-  return { nombre: elegir(NOMBRES_RIVAL), poder: 34, derrotasTuyas: 0, victoriasSuyas: 0, activo: true };
+function crearRival(ash = false) {
+  return { nombre: ash ? 'Shigeru' : elegir(NOMBRES_RIVAL), poder: 34, derrotasTuyas: 0, victoriasSuyas: 0, activo: true };
 }
 
 function aplicarBonus(estado, bonus = {}) {

@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=21') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=21') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=22') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=22') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=21') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=21') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=22') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=22') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=21') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=22') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -88,6 +88,15 @@ input[type=text] {
   border: 1.5px solid var(--linea); border-radius: var(--radio); outline: none;
 }
 input[type=text]:focus { border-color: var(--azul); }
+
+/* Pista del easter egg: aparece al escribir el nombre secreto */
+.pista-secreta {
+  margin-top: 9px; padding: 10px 12px; border-radius: 11px;
+  background: linear-gradient(100deg, rgba(245,165,36,.16), rgba(233,75,92,.12));
+  border: 1.5px solid rgba(245,165,36,.45);
+  font-size: 12.5px; line-height: 1.45;
+  animation: entra .25s ease both;
+}
 
 .rejilla { display: grid; gap: 8px; }
 .rejilla.dos { grid-template-columns: 1fr 1fr; }

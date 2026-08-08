@@ -2,14 +2,14 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=21';
+} from './datos.js?v=22';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
-  guardarPartida, cargarPartida, borrarPartida,
-} from './motor.js?v=21';
-import { siguienteEvento } from './eventos.js?v=21';
-import { descargarTarjeta } from './tarjeta.js?v=21';
+  guardarPartida, cargarPartida, borrarPartida, esSatoshi,
+} from './motor.js?v=22';
+import { siguienteEvento } from './eventos.js?v=22';
+import { descargarTarjeta } from './tarjeta.js?v=22';
 
 const app = document.getElementById('app');
 let estado = null;
@@ -65,6 +65,10 @@ function pantallaInicio() {
     <div class="bloque">
       <label for="nombre">Tu nombre</label>
       <input id="nombre" type="text" maxlength="18" placeholder="Escribe tu nombre" autocomplete="off">
+      <p class="pista-secreta oculto" id="pista-ash">
+        ⚡ <b>Arco de Kanto desbloqueado.</b> Jugarás en Kanto, con Pikachu de compañero,
+        Shigeru de rival y una decisión por temporada. La historia manda.
+      </p>
     </div>
 
     <div class="bloque">
@@ -120,8 +124,9 @@ function pantallaInicio() {
     btn.setAttribute('aria-pressed', 'true');
   };
   const revisar = () => {
-    document.getElementById('empezar').disabled =
-      !(document.getElementById('nombre').value.trim() && seleccion.inicial);
+    const nom = document.getElementById('nombre').value;
+    document.getElementById('empezar').disabled = !(nom.trim() && seleccion.inicial);
+    document.getElementById('pista-ash').classList.toggle('oculto', !esSatoshi(nom));
   };
 
   document.getElementById('regiones').onclick = ev => {

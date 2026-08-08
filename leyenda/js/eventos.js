@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=16';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=16';
+} from './motor.js?v=17';
+import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=17';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -579,6 +579,62 @@ export const EVENTOS = [
           : efecto('Caes en cuartos contra un creador que jugaba con un equipo monotipo. El clip también da la vuelta a España.', m(e, { fama: [6, 12], moral: [-8, -3] })) },
       { txt: 'Quedarte preparando el regional', sub: 'Lo otro es ruido.',
         efecto: e => efecto('Te quedas en casa haciendo cálculos mientras todos se divierten. Llegas al regional afiladísimo, pero pierdes la exposición del torneo.', m(e, { media: [3, 7], estrategia: [5, 10], fama: [-6, -2] })) },
+    ],
+  },
+  {
+    id: 'pokealex_analisis', etapas: ['liga', 'pro', 'cima', 'veterano'], peso: 14, unico: true,
+    cond: e => e.stats.fama >= 18,
+    titulo: 'Pokéalex quiere analizar tu equipo',
+    texto: () => 'Pokéalex prepara un vídeo desmenuzando el equipo con el que has llegado hasta aquí: los EVs, los objetos, por qué ese cuarto hueco y no otro. Lo va a ver muchísima gente, incluida la que se va a sentar enfrente de ti el mes que viene.',
+    opciones: [
+      { txt: 'Enseñarlo todo', sub: 'Sin esconder ni un EV.', riesgo: 0.55,
+        efecto: (e, ok) => ok
+          ? efecto('El vídeo explota y de repente eres el que explica las cosas bien. Ganas una capa de respeto que no da ningún torneo, y encima te sobra tiempo para rehacer el equipo antes del regional.',
+              m(e, { fama: [14, 24], estrategia: [4, 9], moral: [5, 10] }))
+          : efecto('El vídeo explota y medio circuito se aprende tu equipo de memoria. En el siguiente regional te esperan con la respuesta preparada desde la primera ronda.',
+              m(e, { fama: [12, 20], media: [-5, -2], moral: [-6, -2] })) },
+      { txt: 'Contarlo por encima', sub: 'Guardarte lo que de verdad gana partidas.',
+        efecto: e => efecto('Vas al vídeo, sonríes y no sueltas prenda de lo que hace funcionar al equipo. En los comentarios te llaman rata; tú duermes tranquilo.',
+          m(e, { media: [2, 5], estrategia: [2, 5], fama: [-4, -1] })) },
+    ],
+  },
+  {
+    id: 'juanfi_mufa', etapas: ['liga', 'pro', 'cima', 'veterano'], peso: 14, unico: true,
+    titulo: 'La mufa de Juanfi',
+    texto: e => `Víspera de final. Juanfi tiene el tuit escrito y el dedo encima del botón: "vamos ${e.nombre}, este año es el suyo". Todo el circuito sabe lo que pasa cuando Juanfi apoya a alguien en público. Él también lo sabe. Le hace gracia.`,
+    opciones: [
+      { txt: 'Dejar que lo publique', sub: 'La mufa es superstición… ¿no?', riesgo: 0.1,
+        efecto: (e, ok) => ok
+          ? (hito(e, '🧿', 'Sobrevivió a la mufa de Juanfi'),
+             efecto('Ganas. Ganas con el tuit fijado y todo. Juanfi se cuelga la medalla de haber roto su propia maldición y tú entras en la lista cortísima de gente que le ha sobrevivido.',
+               m(e, { fama: [16, 28], moral: [10, 18] })))
+          : efecto('Caes al día siguiente de la forma más tonta posible. El tuit se queda ahí, con cuatro mil citas riéndose de los dos. Al menos ahora te conoce todo el mundo.',
+              m(e, { fama: [10, 18], moral: [-18, -10] })) },
+      { txt: 'Bloquearle por si acaso', sub: 'Sin tuit no hay mufa.',
+        efecto: e => efecto('Le bloqueas veinticuatro horas y él se lo toma a broma, pero la captura del bloqueo circula igual y te quedas de supersticioso oficial del circuito. Duermes de un tirón, eso sí.',
+          m(e, { moral: [6, 12], fama: [-5, -1], estrategia: [1, 4] })) },
+    ],
+  },
+  {
+    id: 'tierlist', etapas: ['pro', 'cima', 'veterano'], peso: 15, unico: true,
+    cond: e => e.stats.fama >= 22,
+    titulo: 'La tier list de jugadores',
+    texto: e => {
+      const escala = [[88, 'S', 'A'], [80, 'A', 'B'], [72, 'B', 'C'], [62, 'C', 'D']];
+      const [, merecida, puesta] = escala.find(([min]) => e.media >= min) ?? [0, 'D', 'F'];
+      e._tierMerecida = merecida; e._tierPuesta = puesta;
+      return `Un canal grande publica la tier list de jugadores españoles de la temporada. Vas bajando la imagen buscándote en ${merecida}, que es donde sabes perfectamente que estás. Y te encuentras en ${puesta}, entre dos nombres que llevan años sin ganar nada. En los comentarios hay gente defendiéndote y gente diciendo que hasta ahí te han puesto por pena.`;
+    },
+    opciones: [
+      { txt: 'Contestar en Twitter', sub: 'Con datos y a las tres de la mañana.', riesgo: 0.4,
+        efecto: (e, ok) => ok
+          ? efecto(`Sacas el hilo con los resultados de los últimos tres años y no hay debate posible. Rectifican el vídeo y te suben a ${e._tierMerecida} en la edición corregida.`,
+              m(e, { fama: [10, 18], moral: [6, 12] }))
+          : efecto('El hilo huele a rabia desde el primer tuit y las citas te pasan por encima. Ahora la tier list la recuerda todo el mundo por tu respuesta, no por dónde te pusieron.',
+              m(e, { fama: [6, 12], moral: [-14, -7] })) },
+      { txt: 'No decir nada y anotarlo', sub: 'Guardarte la captura para el año que viene.',
+        efecto: e => efecto(`No comentas, no citas, no das like. Te pones la captura de fondo de pantalla y entrenas con ella delante toda la temporada. Alguien va a pagar esa ${e._tierPuesta}.`,
+          m(e, { media: [4, 8], estrategia: [4, 9], moral: [-6, -2], salud: [-5, -1] })) },
     ],
   },
   {

@@ -214,8 +214,7 @@ export function votarLey(estado, ley, sentido) {
   const s = estado.stats;
 
   // ¿Sale adelante? Depende del bloque y de si el tuyo empuja o frena
-  const bloqueIzq = ['podemos', 'sumar', 'psoe'].includes(estado.partido)
-    || (estado.partidoPropio && estado.partidoPropio.eje.eco < 0);
+  const bloqueIzq = esIzq(estado, estado.partido);
   const empujeIzq = -ley.eje.eco / 100 * 0.5 - ley.eje.soc / 100 * 0.5;
   let prob = 0.5 + empujeIzq * (bloqueIzq ? 0.22 : -0.22) + ley.popular * 0.16 + signo * 0.1;
   prob += (estado.media - 55) / 320;
@@ -243,7 +242,7 @@ export function votarLey(estado, ley, sentido) {
       partes.push('Tu electorado no lo entiende');
     } else if (coherencia > 0.25) {
       estado.votosCoherentes++;
-      estado.media = limitar(estado.media + azar(0.2, 1.1));
+      subirMedia(estado, azar(0.2, 1.1));
     }
     // Votar en dirección "mercado" abre agendas de conferencias. Todo legal,
     // todo declarado, y todo el mundo mirando.
@@ -265,10 +264,25 @@ const ETIQ = {
 export { ETIQ };
 
 // ── Encuestas ────────────────────────────────────────────────────────────────
-export function moverApoyo(estado, delta) {
+// El techo de un partido no es una constante de la naturaleza. Un líder
+// generacional lo rompe: por eso un partido que sacaba el 4% puede plantarse
+// en el 30 en dos ciclos. Sin esto, con los partidos pequeños era literalmente
+// imposible llegar a Moncloa por bien que hicieras la carrera.
+export function techoDe(estado) {
   const p = partidoDe(estado);
-  const techo = p.techo ?? 40;
-  estado.panorama[estado.partido] = limitar((estado.panorama[estado.partido] ?? 3) + delta, 0.8, techo);
+  const base = p.techo ?? 40;
+  const s = estado.stats;
+  const extra = Math.max(0, estado.media - 52) * 0.62
+    + Math.max(0, s.mediatico - 55) * 0.14
+    + Math.max(0, s.carisma - 55) * 0.09;
+  // Nadie pasa del 40% salvo los que ya nacieron ahí (el bipartidismo tiene
+  // su propio techo histórico y ese no se rompe con carisma).
+  return Math.min(Math.max(base, 40), base + extra);
+}
+
+export function moverApoyo(estado, delta) {
+  estado.panorama[estado.partido] = limitar(
+    (estado.panorama[estado.partido] ?? 3) + delta, 0.8, techoDe(estado));
   return estado.panorama[estado.partido];
 }
 export const apoyoDe = estado => estado.panorama[estado.partido] ?? 0;
@@ -277,6 +291,16 @@ export const apoyoDe = estado => estado.panorama[estado.partido] ?? 0;
 export function subirTalento(estado, n) {
   estado.talento = Math.min(1.7, estado.talento + n * 0.04);
   return estado.talento;
+}
+
+// Subida de peso político por un evento. Cerca del techo cada punto cuesta
+// muchísimo más: si no, bastaba con encadenar tres eventos buenos para
+// plantarse en 100 y el número dejaba de significar nada.
+export function subirMedia(estado, delta) {
+  if (delta > 0 && estado.media > 87) delta *= Math.max(0.12, (100 - estado.media) / 13);
+  const antes = estado.media;
+  estado.media = limitar(estado.media + delta);
+  return estado.media - antes;
 }
 
 // Sube (o baja) la media ya mismo, pero marcado para deshacerse solo al cabo
@@ -331,6 +355,13 @@ function crecerMedia(estado) {
 // ── Elecciones ───────────────────────────────────────────────────────────────
 const IZQ = ['podemos', 'sumar', 'psoe'];
 
+// A qué bloque pertenece un partido. El tuyo propio se coloca según su
+// posición económica, que es la que decide con quién pactas.
+function esIzq(estado, id) {
+  if (id === 'propio') return (estado.partidoPropio?.eje.eco ?? 0) < 0;
+  return IZQ.includes(id);
+}
+
 // Reparto de escaños tipo D'Hondt, aproximado: los pequeños pierden mucho,
 // los grandes ganan prima. Calibrado con los resultados reales recientes.
 export function escanosDe(apoyo) {
@@ -356,7 +387,41 @@ function derivaPanorama(estado) {
     + (s.mediatico - 45) / 74
     + (gobierna ? -0.55 : 0.15)          // desgaste de gobernar
     + azar(-1.5, 1.5);
-  moverApoyo(estado, deriva * 0.62);
+
+  // Crecer es más fácil cuanto más lejos estás de tu techo (el efecto novedad
+  // de un partido pequeño con un líder que funciona) y caer duele más cuanto
+  // más grande eres. Si se sumaran puntos absolutos iguales para todos, a un
+  // partido del 4% no le daría la vida para alcanzar al del 30.
+  const actual = estado.panorama[estado.partido] ?? (partidoDe(estado).apoyo ?? 3);
+  const hueco = Math.max(0, techoDe(estado) - actual);
+  moverApoyo(estado, deriva > 0
+    ? deriva * Math.max(0.5, hueco * 0.085)     // el suelo evita que subir sea
+    : deriva * Math.max(1.4, actual * 0.1));    // más lento que bajar
+
+  // Los votos no salen de la nada: lo que creces por encima del suelo
+  // histórico de tu partido se lo estás quitando al vecino de tu propio
+  // bloque, que es de donde se mueve el voto en la vida real.
+  const mio = partidoDe(estado);
+  const suelo = mio.apoyo ?? 3;
+  const exceso = (estado.panorama[estado.partido] ?? suelo) - suelo;
+  if (exceso > 0.5) {
+    // Se lo quitas a todo tu bloque, no solo al de al lado: si solo cayera el
+    // vecino más próximo, el partido grande del bloque nunca se movería y
+    // nunca podrías adelantarlo. Cada uno cede en proporción a su tamaño.
+    const bloque = PARTIDOS.filter(x => x.id !== estado.partido
+      && esIzq(estado, x.id) === esIzq(estado, estado.partido));
+    const total = bloque.reduce((t, x) => t + (estado.panorama[x.id] ?? x.apoyo), 0);
+    if (total > 0) {
+      for (const x of bloque) {
+        const suyo = estado.panorama[x.id] ?? x.apoyo;
+        // Un sorpasso hunde al vecino, pero no lo borra del mapa: por debajo
+        // de un tercio de su suelo histórico ya no le sacas más votos, y si
+        // los sacaras te quedarías tú solo sin bloque con el que gobernar.
+        const minimo = Math.max(1.5, (x.apoyo ?? 3) * 0.35);
+        estado.panorama[x.id] = Math.max(minimo, suyo - exceso * 0.28 * (suyo / total));
+      }
+    }
+  }
 }
 
 export function celebrarElecciones(estado) {
@@ -374,18 +439,17 @@ export function celebrarElecciones(estado) {
   const otrosDer = entero(2, 6);
   const juntsApoya = dado(0.45);        // el comodín de cada investidura
 
-  const esIzq = id => IZQ.includes(id) || (id === 'propio' && estado.partidoPropio?.eje.eco < 0);
   let izq = otrosIzq, der = otrosDer;
-  for (const [id, n] of Object.entries(reparto)) (esIzq(id) ? (izq += n) : (der += n));
+  for (const [id, n] of Object.entries(reparto)) (esIzq(estado, id) ? (izq += n) : (der += n));
   if (juntsApoya) izq += junts; else der += junts;
 
   const ganaIzq = izq >= 176;
-  const mioIzq = esIzq(estado.partido);
+  const mioIzq = esIzq(estado, estado.partido);
   const gobierno = ganaIzq === mioIzq && (ganaIzq ? izq : der) >= 176;
   const bloqueado = izq < 176 && der < 176;
 
   // ¿Eres el partido más votado de tu bloque? De ahí sale quién es candidato.
-  const deMiBloque = Object.entries(reparto).filter(([id]) => esIzq(id) === mioIzq);
+  const deMiBloque = Object.entries(reparto).filter(([id]) => esIzq(estado, id) === mioIzq);
   const lider = deMiBloque.sort((a, b) => b[1] - a[1])[0]?.[0] === estado.partido;
 
   estado.legislaturas++;
@@ -414,7 +478,7 @@ export function celebrarElecciones(estado) {
     if (mios >= 176) estado.flags.mayoriaAbsoluta = true;
     estado.stats.mediatico = limitar(estado.stats.mediatico + rango(10, 20));
     estado.stats.aparato = limitar(estado.stats.aparato + rango(6, 14));
-    estado.media = limitar(estado.media + rango(2, 5));
+    subirMedia(estado, rango(2, 5));
     res.trofeo = { tipo: mios >= 176 ? 'absoluta' : 'moncloa', nombre: mios >= 176 ? 'Mayoría absoluta' : 'Presidencia del Gobierno', año: estado.año, detalle: `${mios} escaños` };
     res.sucesos.push('🏛️ ERES PRESIDENTE DEL GOBIERNO.');
     hito(estado, '🏛️', `Investidura ganada (${mios} escaños)`);
@@ -434,7 +498,7 @@ export function celebrarElecciones(estado) {
       if (min.nombre === 'Transportes') estado.flags.ministroTransportes = true;
       estado.stats.gestion = limitar(estado.stats.gestion + rango(5, 12));
       estado.stats.mediatico = limitar(estado.stats.mediatico + rango(4, 11));
-      estado.media = limitar(estado.media + rango(1, 4));
+      subirMedia(estado, rango(1, 4));
       res.trofeo = { tipo: 'ministerio', nombre: `Ministerio de ${min.nombre}`, año: estado.año, detalle: min.sabor };
       res.sucesos.push(`🎖️ Entras en el Consejo de Ministros: ${min.nombre}.`);
       hito(estado, '🎖️', `Ministro de ${min.nombre}`);

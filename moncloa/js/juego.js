@@ -4,7 +4,7 @@ import {
 } from './datos.js?v=1';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
-  legado, rangoDe, logrosDe, apodoDe, dado, partidoDe, afinidad, apoyoDe,
+  legado, rangoDe, logrosDe, apodoDe, dado, partidoDe, apoyoDe,
   escanosDe, guardarPartida, cargarPartida, borrarPartida, ETIQ,
 } from './motor.js?v=1';
 import { siguienteEvento } from './eventos.js?v=1';
@@ -490,18 +490,13 @@ function siguientePaso() {
 
 // Bloque de contexto para las leyes: hacia dónde empuja, cómo de popular es y
 // cuánto se parece a lo que defiende tu partido.
+// Se enseñan los dos mapas y ya está. Ni veredicto, ni "esto le gusta a tu
+// partido", ni consejo: si te sientas en esa bancada, se supone que sabes lo
+// que defiende. Leer las dos brújulas es tu trabajo, no el del juego.
 function bloqueLey(ley, partido) {
-  const af = afinidad(partido.eje, ley.eje);
-  const et = af > 0.5 ? 'Muy afín a tu programa' : af > 0.15 ? 'Compatible con lo tuyo'
-    : af > -0.15 ? 'Ni tuya ni suya' : af > -0.5 ? 'Choca con tu programa' : 'Es lo contrario de lo tuyo';
-  const cls = af > 0.15 ? 'afin' : af < -0.15 ? 'contra' : 'neutro';
-  const pop = ley.popular > 0.4 ? 'La gente la quiere' : ley.popular > 0.1 ? 'Gusta a medias'
-    : ley.popular > -0.1 ? 'A la gente le da igual' : 'La gente no la pide';
   return `
     <div class="bloque-ley">
-      <div class="ley-cab"><span class="emoji">${ley.emoji}</span>
-        <span class="afin-tag ${cls}">${et}</span>
-        <span class="pop-tag">${pop}</span></div>
+      <div class="ley-cab"><span class="emoji">${ley.emoji}</span></div>
       <div class="ley-brujulas">
         <div><span class="mini">Empuja la ley</span>${brujula(ley.eje, 'ley')}</div>
         <div><span class="mini">Está ${esc(partido.corto ?? partido.nombre)}</span>${brujula(partido.eje, 'mia')}</div>
@@ -541,8 +536,10 @@ const TEXTO_RETIRO = {
   moral: 'Un día te levantaste y ya no querías esto. Lo anunciaste sin dramatismo y sin rueda de prensa.',
   listas: 'No te pusieron en las listas. No hubo comunicado ni despedida: simplemente no aparecías en el papel.',
   eleccion: 'Lo dejaste cuando quisiste, como quisiste y con el discurso escrito por ti. Muy pocos pueden decir eso.',
-  puertas: 'Consejo de administración, dos reuniones al mes y ninguna rueda de prensa nunca más. Legal, publicado y comentadísimo.',
+  puertas: 'Consejo de administración de Iberdrola, dos reuniones al mes y ninguna rueda de prensa nunca más. Legal, publicado y comentadísimo.',
   bruselas: 'Bruselas, un despacho con vistas y una vida de reuniones en inglés. Aquí, a los tres meses, ya nadie se acordaba.',
+  plato: 'Cambiaste el escaño por una silla de tertulia diaria. Cobras el triple por opinar de lo que antes tenías que resolver.',
+  expulsion: 'No te retiraste: te echaron. Expediente del comité de garantías, suspensión de militancia y tu nombre fuera de la web del partido antes del fin de semana.',
 };
 
 function pantallaFinal() {

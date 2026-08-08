@@ -66,6 +66,21 @@ nacionalista y un comodín de siete escaños que cae de un lado o de otro. Segú
 bloque y cuánto peso tengas, sales de ahí como presidente, ministro, líder de la oposición o
 diputado de la fila de atrás.
 
+**El techo del partido se puede romper.** Cada partido tiene un techo histórico, pero no es
+una constante: un líder generacional lo sube (`techoDe`). Sin esto, con Podemos y Sumar era
+*literalmente* imposible llegar a Moncloa —medido: 0 de 400 carreras perfectas— porque para
+ser presidente hay que ser el más votado de tu bloque y nunca alcanzabas al PSOE. Dos reglas
+más lo mantienen honesto: creces más rápido cuanto más lejos estás de tu techo (el efecto
+novedad de un partido pequeño que arranca), y lo que subes por encima de tu suelo histórico
+**se lo quitas a tu propio bloque**, repartido según su tamaño y con un suelo por debajo del
+cual ya no le sacas más votos a nadie. Si te comieras entero a tus socios te quedarías sin
+bloque con el que gobernar, que es exactamente lo que pasaba antes de poner ese suelo.
+
+**Rama catastrófica.** Las opciones más temerarias llevan colgada una probabilidad pequeña de
+que el partido te expulse y se acabe la carrera ahí mismo (`expulsion()`). Está calibrada para
+saltar en **menos del 1% de las partidas** (medido: 0,80% jugando al azar en el ritmo más
+expuesto), lo justo para que dé miedo sin ser una lotería.
+
 **Transfuguismo.** Mecánica central. Lo que te ofrecen y lo que te cuesta salen de la
 *distancia ideológica* entre tu partido y el que te llama: cuanto más escandaloso el salto,
 más dinero encima de la mesa y más caro en credibilidad y en peso. La alternativa siempre es
@@ -75,6 +90,11 @@ propio partido, y entonces el color de la web pasa a ser el tuyo.
 **El fondo es el color de tu partido.** Lo escribe el JS en `--partido` / `--partido-osc` /
 `--partido-claro`. `background-color` transiciona, así que un cambio de bancada se ve como un
 fundido de color en toda la página.
+
+**Nada de consejos.** El juego enseña las dos brújulas —hacia dónde empuja la ley y dónde está
+tu partido— y se calla. No hay etiqueta de "esto le gusta a tu electorado" ni veredicto: si te
+sientas en esa bancada, se supone que sabes lo que defiende. Leer el mapa es trabajo del
+jugador.
 
 **Eventos.** Peso por etapa, algunos únicos, algunos condicionados, y nunca sale el mismo dos
 turnos seguidos. Las opciones con `riesgo` giran una ruleta animada delante del jugador antes

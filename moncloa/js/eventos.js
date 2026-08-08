@@ -6,7 +6,7 @@
 // mediático y todas las situaciones están inventadas. No se atribuye a nadie
 // ningún hecho delictivo ni ninguna declaración real.
 import {
-  dado, elegir, limitar, rango, hito, subirTalento, moverApoyo, partidoDe,
+  dado, elegir, limitar, rango, hito, subirTalento, moverApoyo, partidoDe, subirMedia,
   distancia, ofertaFichaje, cambiarPartido, fundarPartido, votarLey,
   comunidadAleatoria, ETIQ,
 } from './motor.js?v=1';
@@ -23,7 +23,12 @@ function m(e, deltas) {
     // mediaTexto: solo para mostrar el número tras un mediaTemporal() ya
     // aplicado. No vuelve a tocar e.media (evita duplicar el efecto).
     if (k === 'mediaTexto') { partes.push(`${v > 0 ? '+' : ''}${v} Peso político (temporal)`); continue; }
-    if (k === 'media') { e.media = limitar(e.media + v); partes.push(`${v > 0 ? '+' : ''}${v} Peso político`); continue; }
+    if (k === 'media') {
+      const real = subirMedia(e, v);
+      const n = Math.round(real * 10) / 10;
+      if (n) partes.push(`${n > 0 ? '+' : ''}${n} Peso político`);
+      continue;
+    }
     if (k === 'talento') { subirTalento(e, v); partes.push(`+${v} Proyección`); continue; }
     e.stats[k] = limitar(e.stats[k] + v);
     partes.push(`${v > 0 ? '+' : ''}${v} ${ETIQ[k] ?? k}`);
@@ -36,6 +41,19 @@ const esIzquierda = e => ['podemos', 'sumar', 'psoe'].includes(e.partido)
   || (e.partidoPropio && e.partidoPropio.eje.eco < 0);
 const nombreP = e => e.partidoNombre;
 const rivalDe = e => e.rival.nombre;
+
+// Rama catastrófica: la carrera se acaba aquí y ahora. Va colgada de las
+// opciones más temerarias con una probabilidad muy baja, para que exista de
+// verdad el miedo a que una sola tarde te cueste la vida política, pero salte
+// en mucho menos del 1% de las partidas.
+function expulsion(e, prob = 0.05) {
+  if (!dado(prob)) return '';
+  e.flags.expulsado = true;
+  e.flags.retiroElegido = true;
+  e.flags.causaElegida = 'expulsion';
+  hito(e, '🚫', `Expulsado de ${e.partidoNombre}`);
+  return ' Y esta vez no hay comunicado de apoyo: el comité de garantías abre expediente esa misma noche, la dirección te suspende de militancia a las 48 horas y tu nombre desaparece de la web del partido antes del fin de semana.';
+}
 
 const TODAS = ['base', 'local', 'autonomica', 'congreso', 'direccion', 'liderazgo', 'moncloa'];
 const DESDE_CONGRESO = ['congreso', 'direccion', 'liderazgo', 'moncloa'];
@@ -615,8 +633,8 @@ export const EVENTOS = [
   },
   {
     id: 'puertas_giratorias', etapas: CUPULA, peso: 14, cond: e => e.edad >= 52,
-    titulo: 'El consejo de administración',
-    texto: () => 'Una eléctrica del IBEX te ofrece un puesto de consejero externo: 240.000 € al año, dos reuniones al mes y ninguna rueda de prensa nunca más. Cumples los plazos de la ley de incompatibilidades. Es legal, está publicado y todo el mundo lo verá.',
+    titulo: 'Iberdrola te quiere en el consejo',
+    texto: () => 'Consejero externo en Iberdrola: 240.000 € al año, dos reuniones al mes, un almuerzo en el que no se habla de nada y ninguna rueda de prensa nunca más. Cumples los plazos de incompatibilidades, así que es legal, se publica en la CNMV y lo va a ver absolutamente todo el mundo. El mismo día que firmes, catorce cuentas recuperarán tus discursos sobre las puertas giratorias.',
     opciones: [
       { txt: 'Aceptar y dejar el escaño', sub: 'Se acabó. A cobrar.',
         efecto: e => { e.flags.retiroElegido = true; e.flags.causaElegida = 'puertas';
@@ -836,6 +854,178 @@ export const EVENTOS = [
         efecto: e => efecto('Dices que no. Te mantienen donde estás y te apuntan en la lista mental de "no está disponible". Esa lista existe y pesa.', m(e, { aparato: [-7, -3], moral: [4, 9], credibilidad: [3, 7] })) },
       { txt: 'Pedir el Senado', sub: 'La cámara donde no pasa nada.',
         efecto: e => efecto('Pides ir al Senado. Te lo dan encantados. Cuatro años de comisiones tranquilas, buena vida y cero relevancia. Descansas de verdad.', m(e, { aguante: [12, 20], moral: [5, 10], media: [-4, -2], mediatico: [-7, -3] })) },
+    ],
+  },
+
+  // ── LA PREGUNTA DE MOTOS, LA CRISIS, EL SOBRECOSTE Y EL FALCON ────────────
+  {
+    id: 'motos_pregunta', etapas: ['direccion', 'liderazgo', 'moncloa'], peso: 22, unico: true,
+    cond: e => !!e.flags.hormiguero,
+    titulo: 'Motos saca el papelito',
+    texto: e => `Segunda visita a El Hormiguero. Todo va bien hasta que Pablo Motos baja el tono, coge un papel de debajo de la mesa y dice "esto me lo han mandado y yo se lo tengo que preguntar". Es tu declaración de bienes cruzada con una promesa que hiciste en campaña hace nueve años y no cumpliste. Tres millones de personas. Trancito de anuncios en cuatro minutos.`,
+    opciones: [
+      { txt: 'Reconocerlo en seco', sub: 'Sí, lo prometí y no lo hice.',
+        efecto: e => efecto('Dices que sí, que lo prometiste, que no lo cumpliste y por qué. Sin "contexto", sin "herencia recibida" y sin echarle la culpa a la anterior legislatura. Se hace un silencio de dos segundos que en televisión es un año, y el aplauso que viene después es de verdad.', m(e, { credibilidad: [14, 22], mediatico: [8, 14], carisma: [5, 10], apoyo: [3, 9] })) },
+      { txt: 'Girarlo contra el papel', sub: '¿Y quién se lo ha mandado?', riesgo: 0.4,
+        efecto: (e, ok) => { e.flags.viral = true; return ok
+          ? efecto('Le preguntas quién le ha pasado el papel y lo dejas colgado ocho segundos. El debate del día siguiente ya no va de tu promesa, va de quién escribe las preguntas de los platós. Has cambiado el tema, que es lo único que se puede hacer.', m(e, { mediatico: [12, 20], carisma: [6, 12], credibilidad: [-5, 1] }))
+          : efecto('Sales por la tangente atacando al programa y queda exactamente como lo que es: no tienes respuesta. El corte de tu cara buscando la salida acumula nueve millones antes del jueves.' + expulsion(e, 0.006), m(e, { credibilidad: [-16, -9], mediatico: [10, 17], apoyo: [-7, -2], moral: [-9, -4] })); } },
+      { txt: 'Prometerlo otra vez, en directo', sub: 'Esta vez con fecha.', riesgo: 0.5,
+        efecto: (e, ok) => ok
+          ? efecto('Das una fecha concreta, en directo, mirando a cámara. Tu jefe de gabinete se lleva las manos a la cabeza desde el control, pero el titular de mañana es tuyo y lo has escrito tú.', m(e, { apoyo: [6, 13], mediatico: [9, 15], credibilidad: [3, 8] }))
+          : efecto('Prometes lo mismo con fecha nueva. Se hace un montaje con las tres veces que lo has prometido, cada una con su fecha, cada una incumplida. Ya son cuatro.', m(e, { credibilidad: [-14, -8], apoyo: [-6, -1], mediatico: [6, 11] })) },
+    ],
+  },
+  {
+    id: 'crisis_migratoria', etapas: ['direccion', 'liderazgo', 'moncloa'], peso: 20,
+    titulo: 'Semana de crisis migratoria',
+    texto: e => `Cuatro mil personas en una semana en Canarias, los centros de menores al 400% y un pueblo de dos mil habitantes al que le anuncian un centro de acogida sin avisar al alcalde. Todos los platós te esperan y tu gabinete tiene tres borradores encima de la mesa, uno por cada cosa que podrías ser.`,
+    opciones: [
+      { txt: 'Ir a Canarias y callarte', sub: 'Ver el muelle antes de opinar.', riesgo: 0.7,
+        efecto: (e, ok) => ok
+          ? efecto('Te plantas en el muelle de Arguineguín a las seis de la mañana sin convocar a nadie, hablas dos horas con Cruz Roja y con la Guardia Civil y sales diciendo tres cifras y ninguna consigna. Es la comparecencia menos compartida de la semana y la única que envejece bien.', m(e, { credibilidad: [12, 19], gestion: [7, 12], mediatico: [-2, 4], apoyo: [-2, 4] }))
+          : efecto('Vas, y el vídeo que circula son once segundos tuyos mirando el móvil mientras un voluntario te explica algo. No se ve lo que hiciste las otras dos horas.', m(e, { credibilidad: [-7, -2], mediatico: [5, 10], moral: [-6, -2] })) },
+      { txt: 'Endurecer el discurso', sub: 'Fronteras, orden y expulsiones.', riesgo: 0.55,
+        efecto: (e, ok) => ok
+          ? efecto('Sacas la palabra "descontrol" catorce veces en nueve minutos. Funciona: las encuestas se mueven esa misma semana y en tu grupo hay quien te aplaude y quien no te mira a la cara en el pasillo.', m(e, { apoyo: [6, 13], mediatico: [8, 14], credibilidad: [-8, -3], moral: [-7, -2] }))
+          : efecto('Te pasas de frenada con una frase sobre "los que vienen" y la retiras a las tres horas. Ya la ha recogido la prensa internacional y tu propio partido emite una nota aclaratoria que te desautoriza sin nombrarte.' + expulsion(e, 0.007), m(e, { credibilidad: [-13, -7], apoyo: [-4, 3], aparato: [-9, -4] })) },
+      { txt: 'Defender el reparto', sub: 'Solidaridad entre comunidades.', riesgo: 0.6,
+        efecto: (e, ok) => ok
+          ? efecto('Defiendes el reparto obligatorio con los números en la mano y consigues que dos presidentes autonómicos de tu propio partido lo acepten por teléfono un domingo. No sale en ningún titular y es lo más difícil que has hecho este año.', m(e, { gestion: [10, 16], credibilidad: [9, 15], apoyo: [-5, 1], aparato: [4, 9] }))
+          : efecto('Defiendes el reparto y cuatro comunidades anuncian recurso el mismo día, dos de ellas gobernadas por los tuyos. El asunto se pudre en los tribunales y los menores siguen donde estaban.', m(e, { credibilidad: [3, 8], apoyo: [-8, -3], aparato: [-7, -2], moral: [-8, -3] })) },
+    ],
+  },
+  {
+    id: 'sobrecoste', etapas: DESDE_AUTONOMICA, peso: 15, unico: true,
+    titulo: 'El sobrecoste de la obra',
+    texto: e => `La adjudicación del centro cultural sale con un 34% de sobrecoste y un modificado firmado en agosto. El interventor ha puesto un reparo por escrito. La empresa es de las de siempre y el director general que lo firmó lo puso ${rivalDe(e)}. Tú tienes la carpeta encima de la mesa y nadie más la ha abierto todavía.`,
+    opciones: [
+      { txt: 'Llevarlo a Fiscalía tú mismo', sub: 'Antes de que salga fuera.',
+        efecto: e => { e.flags.limpio = true; hito(e, '🧹', 'Llevaste un sobrecoste a Fiscalía');
+          return efecto(`Lo llevas tú, con la carpeta entera y el reparo del interventor grapado. Dentro del partido no te lo perdona nadie —"esto se arregla en casa"— y fuera te conviertes en el ejemplo que todos los editoriales piden y ningún partido quiere tener.`, m(e, { credibilidad: [16, 25], moral: [8, 14], aparato: [-14, -7], apoyo: [2, 7] })); } },
+      { txt: 'Guardar la carpeta', sub: 'Por si algún día hace falta.', riesgo: 0.65,
+        efecto: (e, ok) => { e.flags.carpeta = true; return ok
+          ? efecto(`Te la guardas. Dos años después, cuando ${rivalDe(e)} va a por tu puesto en el comité, la carpeta aparece sola en la redacción de un periódico. Nadie sabe cómo. Tú tampoco.`, m(e, { aparato: [10, 17], media: [2, 6], credibilidad: [-8, -3], moral: [-6, -1] }))
+          : efecto('Te la guardas y la carpeta sale igual, pero con la fecha en que llegó a tu mesa. La pregunta deja de ser quién lo firmó y pasa a ser por qué lo sabías y te callaste.', m(e, { credibilidad: [-18, -11], media: [-4, -2], moral: [-11, -5] })); } },
+      { txt: 'Meter mano y llevarte una parte', sub: 'Nadie mira los modificados.', riesgo: 0.22,
+        efecto: (e, ok) => { if (ok) { e.flags.corrupto = true;
+            return efecto('Se coloca a dos personas de confianza, se aprueba un modificado más y aparece una consultora que factura informes que nadie lee. Entra dinero, no salta ninguna alarma y descubres lo fácil que era. Eso es lo que peor se lleva.', m(e, { dinero: 180000, credibilidad: [-6, -2], moral: [-14, -7] })); }
+          e.flags.imputado = true; e.flags.corrupto = true;
+          hito(e, '⚖️', 'Imputado por el caso del sobrecoste');
+          return efecto('La UCO entra en la consejería un martes a las ocho de la mañana con los ordenadores en el punto de mira. Sales imputado, el partido te suspende de militancia el mismo día y tu carrera se convierte en un rótulo rojo permanente.' + expulsion(e, 0.05), m(e, { credibilidad: [-40, -28], media: [-12, -7], moral: [-20, -12], apoyo: [-12, -5] })); } },
+    ],
+  },
+  {
+    id: 'falcon_boda', etapas: CUPULA, peso: 14, unico: true, cond: e => !!e.flags.gobierno,
+    titulo: 'El Falcon y la boda de tu sobrina',
+    texto: () => 'Tienes cumbre en Bruselas el viernes por la mañana y la boda de tu sobrina el viernes por la tarde en Jerez. Con el avión oficial llegas al banquete. En comercial, llegas al baile. Tu jefa de gabinete dice que técnicamente el desplazamiento es oficial porque el domingo tienes acto en Cádiz, y ese "técnicamente" es exactamente el problema.',
+    opciones: [
+      { txt: 'Usar el Falcon', sub: 'Técnicamente es un viaje oficial.', riesgo: 0.3,
+        efecto: (e, ok) => { e.flags.falcon = true; return ok
+          ? efecto('Vas, llegas al banquete y nadie se entera porque el domingo, efectivamente, tienes acto en Cádiz y sales en las fotos. La palabra "técnicamente" ha sostenido cosas peores.', m(e, { moral: [6, 11], credibilidad: [-4, 0] }))
+          : efecto('Un invitado sube a redes una foto del avión oficial en la pista de Jerez con la etiqueta de la boda. En 48 horas hay tres preguntas parlamentarias registradas, un reportaje sobre el coste por hora de vuelo y una foto tuya con copa en la mano recortada en todas partes.' + expulsion(e, 0.005), m(e, { credibilidad: [-20, -12], mediatico: [12, 20], apoyo: [-8, -3] })); } },
+      { txt: 'Comercial y llegar al baile', sub: 'Perderte el banquete.',
+        efecto: e => efecto('Vuelas en comercial, aterrizas a las once y llegas a tiempo del baile con el traje arrugado. Tu hermana te dice que has llegado tarde. Nadie más se entera, que es exactamente el objetivo.', m(e, { credibilidad: [5, 10], moral: [3, 8], aguante: [-6, -2] })) },
+      { txt: 'No ir a la boda', sub: 'Bruselas y punto.',
+        efecto: e => efecto('Mandas un vídeo que se ve en la pantalla del salón mientras los novios cortan la tarta. Tu hermana no te habla en catorce meses. En Bruselas cierras el asunto y a nadie de allí le importa que fuera viernes.', m(e, { gestion: [5, 10], media: [1, 4], moral: [-10, -5] })) },
+    ],
+  },
+  {
+    id: 'entrevista_fatal', etapas: DESDE_AUTONOMICA, peso: 16,
+    titulo: 'Cuarenta minutos a cara de perro',
+    texto: e => `Entrevista larga, sin cortes y con un periodista que se ha leído tu programa entero, cosa que no esperabas. En el minuto 29 te pregunta por la cifra que llevas repitiendo dos años y que resulta que está mal. Es tu cifra, la has dicho en el Congreso y no la has comprobado nunca.`,
+    opciones: [
+      { txt: 'Admitir que no la has comprobado', sub: 'Se acabó repetirla.',
+        efecto: e => efecto('Dices que la cifra la traías de un informe interno, que no la has verificado y que dejas de usarla desde hoy. El periodista se queda sin la segunda pregunta, que era la buena.', m(e, { credibilidad: [10, 17], mediatico: [3, 8], apoyo: [-2, 3] })) },
+      { txt: 'Sostenerla y subir el tono', sub: 'La cifra es la cifra.', riesgo: 0.35,
+        efecto: (e, ok) => { e.flags.viral = true; return ok
+          ? efecto('La sostienes, subes el tono y consigues llevarte la entrevista al terreno de "los medios contra mí". A tu electorado le encanta y esa noche eres tendencia por arriba.', m(e, { mediatico: [11, 18], apoyo: [3, 9], credibilidad: [-9, -4] }))
+          : efecto('La sostienes, el periodista saca la fuente original en pantalla y te quedas doce segundos sin decir nada. Luego dices una frase que no deberías haber dicho. Ese es el clip, y lo va a poner todo el mundo, incluidos los tuyos.' + expulsion(e, 0.010), m(e, { credibilidad: [-19, -11], mediatico: [12, 20], apoyo: [-9, -3], moral: [-11, -5] })); } },
+      { txt: 'Cortar la entrevista', sub: 'Levantarte y quitarte el micro.', riesgo: 0.25,
+        efecto: (e, ok) => { e.flags.viral = true; return ok
+          ? efecto('Te quitas el micro y te vas. Es un desastre y sin embargo funciona: durante una semana la conversación es sobre si el periodista se pasó, y nadie vuelve a hablar de la cifra.', m(e, { mediatico: [10, 17], credibilidad: [-8, -3], apoyo: [-2, 4] }))
+          : efecto('Te quitas el micro, te levantas y el plano sigue grabando doce segundos más mientras le dices algo al periodista creyendo que ya no hay cámara. Sí que hay cámara.' + expulsion(e, 0.014), m(e, { credibilidad: [-22, -14], mediatico: [14, 22], apoyo: [-11, -4], moral: [-12, -6] })); } },
+    ],
+  },
+  {
+    id: 'cena_ibex', etapas: CUPULA, peso: 15,
+    titulo: 'La cena de los treinta cubiertos',
+    texto: e => `Un salón privado, treinta cubiertos y los consejeros delegados de media bolsa española. No se pide nada, no se firma nada y no hay cámaras: solo se cena y se comenta el marco regulatorio con mucha educación. ${esIzquierda(e) ? 'Tu militancia se enteraría por una filtración y no lo entendería jamás.' : 'Es tu gente y todo el mundo lo da por hecho, lo cual tiene su propio problema.'}`,
+    opciones: [
+      { txt: 'Ir y escuchar', sub: 'Saber qué piensan los que mandan.',
+        efecto: e => efecto('Vas, escuchas tres horas y hablas ocho minutos. Sales sabiendo qué va a pasar con la reforma antes de que pase, que es lo único que se compra en esas cenas.', m(e, { gestion: [7, 12], aparato: [4, 9], credibilidad: [-6, -2], dinero: 0 })) },
+      { txt: 'Ir y decirles que no', sub: 'A la cara y con postre.', riesgo: 0.55,
+        efecto: (e, ok) => ok
+          ? efecto('Vas, te comes el solomillo y les dices en la sobremesa exactamente lo que vas a hacer y por qué no les va a gustar. Alguien lo filtra al día siguiente en tu favor. Nunca sabrás quién ni por qué.', m(e, { credibilidad: [11, 18], mediatico: [6, 11], apoyo: [3, 8] }))
+          : efecto('Vas, les dices que no y a la semana siguiente tres periódicos económicos publican el mismo análisis sobre tu "falta de seguridad jurídica". Es una casualidad extraordinaria.', m(e, { credibilidad: [4, 9], mediatico: [-6, -2], apoyo: [-6, -2] })) },
+      { txt: 'No ir', sub: 'Que conste que no fuiste.',
+        efecto: e => efecto('No vas y lo dices. Te ahorras la foto que no existía y te ganas una fama de inaccesible que te va a costar tres llamadas sin devolver cada vez que necesites algo.', m(e, { credibilidad: [7, 13], moral: [4, 9], gestion: [-5, -1], aparato: [-4, 0] })) },
+    ],
+  },
+  {
+    id: 'enchufe_familiar', etapas: DESDE_AUTONOMICA, peso: 13, unico: true,
+    titulo: 'Tu cuñado tiene un currículum',
+    texto: () => 'Hay una plaza de asesor en tu área. Tu cuñado lleva ocho meses en el paro, tiene el perfil justito y, técnicamente, cumple los requisitos. Nadie lo miraría dos veces. Nadie, hasta que alguien lo mire.',
+    opciones: [
+      { txt: 'Contratarlo', sub: 'Cumple los requisitos.', riesgo: 0.5,
+        efecto: (e, ok) => ok
+          ? efecto('Entra, trabaja bien y nadie dice nada en cuatro años. La mitad de las veces la historia es exactamente esta y no da para ningún titular.', m(e, { moral: [4, 9], credibilidad: [-7, -3] }))
+          : efecto('Alguien cruza apellidos con el BOE y sale publicado con foto de los dos en una comunión. Tú explicas que cumplía los requisitos. Nadie escucha la segunda parte de esa frase jamás.', m(e, { credibilidad: [-17, -10], mediatico: [8, 14], apoyo: [-6, -2] })) },
+      { txt: 'Decirle que no', sub: 'Y aguantar la Nochebuena.',
+        efecto: e => efecto('Le dices que no y le explicas por qué. No lo entiende, tu pareja tampoco del todo, y la Nochebuena es larga. Duermes bien igualmente.', m(e, { credibilidad: [8, 14], moral: [-4, 2] })) },
+      { txt: 'Colocarlo en otro sitio', sub: 'Una llamada a un amigo.', riesgo: 0.45,
+        efecto: (e, ok) => ok
+          ? efecto('Una llamada, otra consejería, otro apellido en la nómina. Nadie cruza nada porque no hay nada que cruzar contigo. Así funciona y por eso casi nunca se pilla.', m(e, { aparato: [5, 10], moral: [2, 6], credibilidad: [-5, -1] }))
+          : efecto('La llamada existe, y el que la recibió se la cuenta a alguien en una comida. Dos años después aparece en un reportaje sobre redes de favores con tu nombre en el tercer párrafo.', m(e, { credibilidad: [-13, -7], aparato: [-5, -1], mediatico: [5, 10] })) },
+    ],
+  },
+  {
+    id: 'tractorada', etapas: DESDE_AUTONOMICA, peso: 14,
+    titulo: 'Tractores en la Castellana',
+    texto: e => `Seis mil tractores cortando Madrid sin convocatoria oficial de nadie, sin interlocutor claro y con las cámaras en directo desde las siete de la mañana. Piden precios justos, menos papeleo de Bruselas y agua. Las tres cosas dependen de tres administraciones distintas y ninguna es del todo la tuya.`,
+    opciones: [
+      { txt: 'Bajar a la calle con ellos', sub: 'A pie, entre los tractores.', riesgo: 0.5,
+        efecto: (e, ok) => ok
+          ? efecto('Bajas sin escolta visible y te comes hora y media de bronca de pie. Al final un agricultor de Cuenca te da la mano delante de las cámaras y esa imagen vale toda la mañana.', m(e, { carisma: [8, 14], credibilidad: [8, 14], apoyo: [4, 10], aguante: [-5, -2] }))
+          : efecto('Bajas y te reciben con un abucheo que dura los cuatro minutos que aguantas. El plano de tu equipo sacándote de allí es el que abre los informativos.', m(e, { mediatico: [7, 13], moral: [-10, -4], apoyo: [-6, -2] })) },
+      { txt: 'Recibir a una delegación', sub: 'Doce personas y un acta.',
+        efecto: e => efecto('Los recibes, sale un acta con siete puntos y tres de ellos son competencia de Bruselas. Se levanta la protesta, no se resuelve nada y todo el mundo puede decir que ha ganado algo.', m(e, { gestion: [7, 12], aparato: [4, 8], apoyo: [1, 5], credibilidad: [-2, 3] })) },
+      { txt: 'Culpar a Bruselas', sub: 'La PAC, el Pacto Verde y ya.',
+        efecto: e => efecto('Sacas la palabra "Bruselas" once veces. Funciona esa tarde, no arregla nada y en seis meses vuelven los tractores con la misma pancarta y una tuya nueva.', m(e, { apoyo: [3, 8], mediatico: [4, 9], credibilidad: [-8, -3], gestion: [-4, 0] })) },
+    ],
+  },
+  {
+    id: 'plato_fichaje', etapas: DESDE_AUTONOMICA, peso: 12, cond: e => e.stats.mediatico >= 55,
+    titulo: 'Te ofrecen un sillón de tertuliano',
+    texto: () => 'Una productora te ofrece silla fija en una tertulia diaria: 9.000 € al mes, dos horas de trabajo, ni un solo votante al que rendirle cuentas y la posibilidad de opinar de todo sin gestionar nada. El contrato empieza el día que entregues el acta.',
+    opciones: [
+      { txt: 'Firmar y dejar la política', sub: 'Opinar paga mejor que decidir.',
+        efecto: e => { e.flags.retiroElegido = true; e.flags.causaElegida = 'plato';
+          hito(e, '📺', 'Fichas por una tertulia diaria');
+          return efecto('Entregas el acta un jueves y el lunes ya estás sentado en el plató comentando lo que hacen los que siguen dentro. Se te da bien. Se te da muy bien, y eso es lo que más rabia debería darte.', m(e, { dinero: 190000, mediatico: [12, 20] })); } },
+      { txt: 'Compaginar los fines de semana', sub: 'Un rato el domingo.', riesgo: 0.5,
+        efecto: (e, ok) => ok
+          ? efecto('Vas los domingos, cobras poco y ganas una ventana semanal donde marcas tú la agenda. Tus rivales tardan dos años en entender lo que has montado.', m(e, { mediatico: [9, 15], dinero: 26000, credibilidad: [-4, 0] }))
+          : efecto('Compaginar sale mal: dos domingos seguidos dices en el plató cosas que tu grupo no había pactado. Te retiran la invitación desde tu propio partido, no desde la cadena.', m(e, { aparato: [-9, -4], credibilidad: [-6, -2], mediatico: [4, 8] })) },
+      { txt: 'Decir que no', sub: 'Todavía queda trabajo.',
+        efecto: e => efecto('Dices que no. La silla la ocupa otro compañero tuyo de escaño al mes siguiente y, sinceramente, se le ve más contento que a ti.', m(e, { moral: [3, 8], credibilidad: [4, 9] })) },
+    ],
+  },
+  {
+    id: 'fango', etapas: CUPULA, peso: 14,
+    titulo: 'La semana del fango',
+    texto: e => `Alguien de tu entorno filtra a un periódico una historia sobre la vida privada de un adversario. No es delito, no es de interés público y es rigurosamente cierto. Tu jefe de campaña dice que "esto se cuenta solo". Todavía no ha salido y todavía puedes pararlo.`,
+    opciones: [
+      { txt: 'Pararlo y decirlo dentro', sub: 'Aquí no se hace eso.',
+        efecto: e => { e.flags.limpio = true; return efecto('Llamas al director, lo paras y reúnes a tu equipo para dejar claro que quien vuelva a hacerlo se va. Dos personas de tu gabinete piensan que eres un ingenuo y una de ellas tiene razón.', m(e, { credibilidad: [12, 19], moral: [9, 15], mediatico: [-4, 0] })); } },
+      { txt: 'Dejar que salga', sub: 'Tú no has hecho nada.', riesgo: 0.6,
+        efecto: (e, ok) => ok
+          ? efecto('Sale, hace dos días de ruido y tu adversario pierde una semana entera explicándose. Tú no has dicho nada, no has firmado nada y no vas a dormir peor por ello. Aparentemente.', m(e, { apoyo: [4, 9], mediatico: [5, 10], moral: [-7, -3], credibilidad: [-4, 0] }))
+          : efecto('Sale, y a las 36 horas se sabe de dónde salió. El asunto pasa a ser tu equipo, tus métodos y una palabra que ya no te vas a quitar de encima en toda la legislatura.', m(e, { credibilidad: [-17, -10], apoyo: [-7, -2], moral: [-10, -4] })) },
+      { txt: 'Avisar al adversario', sub: 'Llamarle tú antes.', riesgo: 0.7,
+        efecto: (e, ok) => ok
+          ? efecto('Le llamas y se lo cuentas. Se queda callado, te da las gracias y cuelga. Tres años después, en una votación imposible, hay un voto que no te explicas. Te lo explicas perfectamente.', m(e, { credibilidad: [9, 15], moral: [10, 16], aparato: [3, 8] }))
+          : efecto('Le llamas y a la semana siguiente él cuenta en una entrevista que le llamaste, como prueba de que en tu partido se hacen esas cosas. Te ha usado y ha hecho bien.', m(e, { credibilidad: [-8, -3], moral: [-8, -3], aparato: [-5, -1] })) },
     ],
   },
 ];

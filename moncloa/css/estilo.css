@@ -1,0 +1,447 @@
+/* A la Moncloa en Cercanías — simulador satírico de carrera política española */
+
+/* Tipografía autoalojada (OFL), tomada de github.com/google/fonts.
+   Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt
+   Cero CDN: el juego no hace ni una petición a terceros. */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../fuentes/SpaceGrotesk.woff2?v=1') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=1') format('woff2');
+  font-weight: 300 700; font-display: swap;
+}
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=1') format('woff2');
+  font-weight: 400 700; font-display: swap;
+}
+
+:root {
+  --f-cuerpo: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --f-mini: 'Silkscreen', monospace;
+
+  /* El color del partido en el que estás ahora mismo. Lo escribe el JS y es lo
+     que pinta el fondo entero: si te vas a otro partido, cambia contigo. */
+  --partido: #d3121a;
+  --partido-osc: #7d0a10;
+  --partido-claro: #ef6a70;
+
+  --panel: #ffffff;
+  --panel2: #f4f5fa;
+  --linea: #dfe3ee;
+  --tinta: #14161f;
+  --suave: #6a7186;
+  --rojo: #d63b4b;
+  --oro: #e8a417;
+  --verde: #17a673;
+  --azul: #2f7fe0;
+  --radio: 14px;
+  --sombra: 0 2px 10px rgba(10, 12, 20, .09);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--f-cuerpo);
+  color: var(--tinta);
+  /* background-color transiciona; el degradado va aparte en ::before para que
+     el cambio de partido se vea como un fundido y no como un salto. */
+  background-color: var(--partido-osc);
+  transition: background-color .7s ease;
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(120% 70% at 50% 0%, rgba(255, 255, 255, .22), transparent 62%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 26px),
+    linear-gradient(180deg, transparent, rgba(0, 0, 0, .38));
+}
+
+button { font-family: inherit; cursor: pointer; border: 0; color: inherit; }
+
+#app { max-width: 720px; margin: 0 auto; padding: 0 12px calc(30px + env(safe-area-inset-bottom)); }
+
+/* ── Portada / creación ──────────────────────────────────── */
+.portada { text-align: center; padding: 24px 0 6px; color: #fff; }
+.portada h1 {
+  font-weight: 700; font-size: clamp(30px, 8.6vw, 48px); line-height: 1.03;
+  letter-spacing: -1px; text-shadow: 0 2px 18px rgba(0, 0, 0, .3);
+}
+.portada .sub { margin-top: 9px; font-size: 14.5px; color: rgba(255, 255, 255, .84); }
+.marquesina {
+  display: inline-block; font-family: var(--f-mini); font-size: 9.5px; letter-spacing: 1.2px;
+  text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 12px;
+  background: rgba(0, 0, 0, .3); color: rgba(255, 255, 255, .82);
+}
+.premisa {
+  max-width: 480px; margin: 14px auto 0; padding: 12px 16px;
+  background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: var(--radio); font-size: 13px; line-height: 1.55; color: rgba(255, 255, 255, .92);
+}
+
+.bloque { margin: 18px 0; }
+.bloque > label, .titulo-campo {
+  display: block; font-family: var(--f-mini); font-size: 9.5px; letter-spacing: 1.1px;
+  text-transform: uppercase; color: rgba(255, 255, 255, .8); margin-bottom: 8px;
+}
+input[type=text], select {
+  width: 100%; padding: 13px 15px; font-size: 16px; font-family: inherit;
+  background: var(--panel); color: var(--tinta);
+  border: 1.5px solid var(--linea); border-radius: var(--radio); outline: none;
+  appearance: none;
+}
+input[type=text]:focus, select:focus { border-color: var(--partido); }
+
+.rejilla { display: grid; gap: 8px; }
+.rejilla.dos { grid-template-columns: 1fr 1fr; }
+.rejilla.tres { grid-template-columns: repeat(3, 1fr); }
+.rejilla.cinco { grid-template-columns: repeat(5, 1fr); }
+
+.opcion {
+  background: var(--panel); border: 1.5px solid var(--linea); box-shadow: var(--sombra);
+  border-radius: var(--radio); padding: 11px 12px; text-align: left; width: 100%;
+  transition: .14s;
+}
+.opcion:hover { transform: translateY(-1px); }
+.opcion[aria-pressed=true] { border-color: var(--tinta); box-shadow: 0 0 0 3px rgba(255, 255, 255, .55); }
+.opcion .nom { display: block; font-weight: 700; font-size: 15px; letter-spacing: -.2px; }
+.opcion .des { display: block; font-size: 12px; color: var(--suave); margin-top: 2px; line-height: 1.3; }
+
+.op-partido {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 10px 4px; text-align: center;
+}
+.op-partido .pastilla { width: 26px; height: 26px; border-radius: 50%; box-shadow: inset 0 -3px 6px rgba(0, 0, 0, .22); }
+.op-partido .nom { font-size: 12px; }
+.op-partido[aria-pressed=true] { border-color: var(--c); box-shadow: 0 0 0 3px rgba(255, 255, 255, .6); }
+
+.ficha-partido {
+  margin-top: 10px; padding: 13px 15px; border-radius: var(--radio);
+  background: var(--panel); border: 1px solid var(--linea); box-shadow: var(--sombra);
+  font-size: 13px; color: #3c4257;
+}
+.ficha-partido .lema { font-weight: 700; font-size: 15px; color: var(--partido); margin-bottom: 5px; }
+.ficha-partido p + p { margin-top: 6px; }
+.electorado { font-size: 12.5px; color: var(--suave); }
+.apoyo-ini { margin-top: 8px; font-size: 12.5px; color: var(--suave); }
+
+.boton-grande {
+  width: 100%; margin-top: 18px; padding: 16px;
+  font-size: 19px; font-weight: 700; letter-spacing: -.3px;
+  background: var(--tinta); color: #fff; border-radius: var(--radio);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .3);
+}
+.boton-grande:disabled { opacity: .45; box-shadow: none; cursor: not-allowed; }
+.boton-secundario {
+  width: 100%; margin-top: 9px; padding: 13px; font-size: 15px; font-weight: 600;
+  background: rgba(255, 255, 255, .92); border: 1.5px solid var(--linea); border-radius: var(--radio);
+  color: var(--tinta);
+}
+
+/* ── Brújula ideológica ──────────────────────────────────── */
+.brujula { margin-top: 10px; display: grid; gap: 7px; }
+/* Etiquetas de los ejes en la fuente de cuerpo, no en la de píxeles: Silkscreen
+   es demasiado ancha y "Plurinacional / Centralista" se pegaban en una columna
+   estrecha hasta parecer una sola palabra. */
+.eje-et {
+  display: flex; justify-content: space-between; gap: 8px;
+  font-size: 9.5px; font-weight: 600; color: var(--suave);
+  text-transform: uppercase; letter-spacing: .2px;
+}
+.eje-pista {
+  position: relative; height: 8px; margin-top: 3px; border-radius: 5px;
+  background: linear-gradient(90deg, #cfd6e6, #eef0f6 50%, #cfd6e6);
+}
+.eje-pista::after {
+  content: ''; position: absolute; left: 50%; top: -2px; bottom: -2px;
+  width: 1px; background: rgba(0, 0, 0, .16);
+}
+.eje-pista i {
+  position: absolute; top: -3px; width: 14px; height: 14px; margin-left: -7px;
+  border-radius: 50%; background: var(--tinta); border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+.brujula.ley .eje-pista i { background: var(--oro); }
+.brujula.mia .eje-pista i { background: var(--partido); }
+
+/* ── Barra superior fija ─────────────────────────────────── */
+.barra {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(255, 255, 255, .96); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linea);
+  margin: 0 -12px 12px; padding: 8px 12px calc(8px + env(safe-area-inset-top));
+}
+.barra-fila { display: flex; align-items: center; gap: 11px; }
+
+.ovr {
+  width: 58px; height: 58px; flex: 0 0 58px; border-radius: 12px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #fff; box-shadow: 0 3px 10px rgba(0, 0, 0, .18);
+}
+.ovr .n { font-size: 26px; font-weight: 700; line-height: 1; letter-spacing: -1px; }
+.ovr .k { font-family: var(--f-mini); font-size: 7.5px; letter-spacing: .8px; opacity: .9; }
+
+.barra-datos { flex: 1; min-width: 0; }
+.barra-nombre { font-size: 18px; font-weight: 700; line-height: 1.1; letter-spacing: -.3px; }
+.barra-meta { font-size: 12px; color: var(--suave); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.barra-etapa {
+  font-family: var(--f-mini); font-size: 8.5px; letter-spacing: .8px; text-transform: uppercase;
+  color: var(--partido); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.barra-dinero { text-align: right; font-size: 15px; font-weight: 700; }
+/* Cifras en la fuente de cuerpo: en Silkscreen el símbolo % se confunde con
+   una Z y estos son los dos números que más se miran de la barra. */
+.barra-dinero small { display: block; font-size: 10.5px; font-weight: 600; color: var(--suave); }
+
+.tabs { display: flex; gap: 6px; margin-top: 9px; }
+.tabs button {
+  flex: 1; padding: 8px; border-radius: 10px; background: var(--panel2);
+  font-family: var(--f-mini); font-size: 9.5px; letter-spacing: .8px; text-transform: uppercase;
+  color: var(--suave);
+}
+.tabs button[aria-selected=true] { background: var(--tinta); color: #fff; }
+
+/* ── Tarjetas ────────────────────────────────────────────── */
+.tarjeta {
+  background: var(--panel); border: 1px solid var(--linea); box-shadow: var(--sombra);
+  border-radius: var(--radio); padding: 16px; margin-bottom: 11px;
+  animation: entra .28s ease both;
+}
+@keyframes entra { from { opacity: 0; transform: translateY(8px); } }
+
+.tarjeta h2 { font-size: 21px; font-weight: 700; margin-bottom: 7px; letter-spacing: -.4px; }
+.tarjeta p.cuerpo { font-size: 15px; color: #363c50; }
+.etiqueta-anio {
+  font-family: var(--f-mini); font-size: 9px; letter-spacing: 1.1px; text-transform: uppercase;
+  color: var(--suave); margin-bottom: 6px;
+}
+.nota { font-size: 12.5px; color: var(--suave); margin-top: 9px; line-height: 1.5; }
+
+/* Decisiones: tarjetas en horizontal */
+.opciones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+.opciones.dos { grid-template-columns: repeat(2, 1fr); }
+.opcion-evento {
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5px;
+  background: var(--panel2); border: 1.5px solid var(--linea);
+  border-radius: 12px; padding: 12px 8px 10px; transition: .14s;
+}
+.opcion-evento:hover { border-color: var(--partido); background: #fff; transform: translateY(-2px); box-shadow: var(--sombra); }
+.opcion-evento .nom { font-weight: 700; font-size: 14.5px; line-height: 1.15; letter-spacing: -.2px; }
+.opcion-evento .des { font-size: 11.5px; color: var(--suave); line-height: 1.28; }
+.prob {
+  font-family: var(--f-mini); font-size: 9px; letter-spacing: .5px;
+  padding: 3px 8px; border-radius: 20px; margin-top: auto;
+}
+.prob.segura { background: #e8edfb; color: #35509c; }
+
+/* Contexto de una ley: brújulas y etiquetas */
+.bloque-ley {
+  margin-top: 13px; padding: 12px; border-radius: 12px;
+  background: var(--panel2); border: 1px solid var(--linea);
+}
+.ley-cab { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.ley-cab .emoji { font-size: 22px; }
+.afin-tag, .pop-tag {
+  font-family: var(--f-mini); font-size: 8.5px; letter-spacing: .5px;
+  padding: 4px 9px; border-radius: 20px; text-transform: uppercase;
+}
+.afin-tag.afin { background: #dff5ec; color: #0e7a53; }
+.afin-tag.contra { background: #fde3e6; color: #b3283a; }
+.afin-tag.neutro { background: #eceff7; color: #5a6178; }
+.pop-tag { background: #fdf2d9; color: #96690a; }
+.ley-brujulas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+.ley-brujulas .mini {
+  display: block; font-family: var(--f-mini); font-size: 8px; letter-spacing: .5px;
+  text-transform: uppercase; color: var(--suave);
+  min-height: 20px;   /* las dos columnas arrancan a la misma altura */
+}
+
+.elegida { margin-top: 4px; font-weight: 700; color: var(--partido); font-size: 15px; }
+.consecuencia { border-left: 4px solid var(--rojo); }
+.consecuencia.bien { border-left-color: var(--verde); }
+.efectos {
+  margin-top: 10px; padding-top: 9px; border-top: 1px dashed var(--linea);
+  font-size: 13px; font-weight: 700; color: var(--tinta);
+}
+.veredicto {
+  display: inline-block; font-family: var(--f-mini); font-size: 9px; letter-spacing: .6px;
+  padding: 3px 9px; border-radius: 20px; margin: 8px 0;
+}
+.veredicto.bien { background: #dff5ec; color: #0e7a53; }
+.veredicto.mal { background: #fde3e6; color: #b3283a; }
+
+.temporada { border-left: 4px solid var(--partido); }
+.temporada ul { list-style: none; margin-top: 5px; }
+.temporada li { font-size: 14px; padding: 2px 0 2px 17px; position: relative; color: #363c50; }
+.temporada li::before { content: '▸'; position: absolute; left: 2px; color: var(--suave); }
+.temporada li.grande { font-weight: 700; color: var(--oro); font-size: 16px; }
+
+/* ── Ficha política ──────────────────────────────────────── */
+.barras { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 14px; margin-top: 12px; }
+.medidor .et { display: flex; justify-content: space-between; font-size: 10.5px; font-weight: 600; color: var(--suave); }
+.medidor .pista { height: 7px; background: #e7eaf3; border-radius: 5px; overflow: hidden; margin-top: 3px; }
+.medidor .relleno { height: 100%; border-radius: 5px; transition: width .5s; }
+
+.medidor-techo { margin-top: 10px; }
+.medidor-techo .pista { position: relative; height: 12px; background: #e7eaf3; border-radius: 6px; overflow: hidden; }
+.medidor-techo .actual { height: 100%; background: linear-gradient(90deg, var(--partido-claro), var(--partido)); }
+.medidor-techo .pie { display: flex; justify-content: space-between; font-size: 11px; color: var(--suave); margin-top: 4px; }
+
+.encuestas { display: grid; gap: 6px; margin-top: 4px; }
+.fila-enc { display: grid; grid-template-columns: 74px 1fr 92px; align-items: center; gap: 8px; font-size: 12.5px; }
+.fila-enc .nom { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fila-enc .pista { height: 10px; background: #e7eaf3; border-radius: 5px; overflow: hidden; }
+.fila-enc .pista i { display: block; height: 100%; border-radius: 5px; }
+.fila-enc .val { text-align: right; font-size: 11.5px; color: var(--suave); }
+.fila-enc.mio .nom { color: var(--partido); font-weight: 700; }
+
+.lista-leyes { list-style: none; display: grid; gap: 5px; margin-top: 4px; }
+.lista-leyes li {
+  display: grid; grid-template-columns: 42px 1fr auto; align-items: center; gap: 9px;
+  background: var(--panel2); border: 1px solid var(--linea); border-radius: 10px;
+  padding: 7px 9px; font-size: 13px;
+}
+.lista-leyes .v {
+  font-family: var(--f-mini); font-size: 9px; text-align: center; padding: 4px 0;
+  border-radius: 6px; background: #8b93a8; color: #fff;
+}
+.lista-leyes li.coh .v { background: var(--verde); }
+.lista-leyes li.inc .v { background: var(--rojo); }
+.lista-leyes .t { line-height: 1.25; }
+.lista-leyes .r { font-family: var(--f-mini); font-size: 8px; color: var(--suave); letter-spacing: .4px; }
+
+.lista-limpia { list-style: none; }
+.lista-limpia li { font-size: 14px; padding: 3px 0; color: #363c50; }
+.lista-limpia .año { color: var(--suave); font-size: 12px; }
+
+/* ── Trofeos electorales ─────────────────────────────────── */
+.trofeo {
+  position: relative; overflow: hidden; text-align: center;
+  border: 2px solid var(--cinta);
+  background: radial-gradient(120% 90% at 50% 0%, #fffdf3, #fff 58%);
+  animation: sale-copa .5s cubic-bezier(.18, 1.2, .4, 1) both;
+}
+@keyframes sale-copa {
+  from { opacity: 0; transform: scale(.84) translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.trofeo-icono {
+  font-size: 62px; line-height: 1; margin: 6px 0 4px;
+  animation: brilla 2.4s ease-in-out infinite;
+}
+@keyframes brilla {
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-5px); }
+}
+.trofeo-et { font-family: var(--f-mini); font-size: 10px; letter-spacing: 1.3px; color: var(--cinta); }
+.trofeo-nombre { font-size: 22px; font-weight: 700; margin-top: 4px; letter-spacing: -.3px; }
+.trofeo-anio { font-size: 12.5px; color: var(--suave); }
+
+.confeti { position: absolute; inset: 0; pointer-events: none; }
+.confeti i {
+  position: absolute; top: -14px; width: 7px; height: 12px; border-radius: 2px;
+  animation: cae-confeti 1.9s linear both;
+}
+@keyframes cae-confeti {
+  0% { transform: translateY(-20px) rotate(0); opacity: 1; }
+  100% { transform: translateY(260px) rotate(520deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trofeo, .trofeo-icono, .confeti i { animation: none; }
+  .confeti { display: none; }
+}
+
+/* ── Ruleta de probabilidad ──────────────────────────────── */
+.ruleta-pista {
+  position: relative; display: flex; height: 20px; width: 100%;
+  border-radius: 20px; overflow: hidden; background: var(--linea); margin-top: auto;
+}
+.ruleta-pista.grande { height: 40px; margin: 14px 0 0; }
+.opcion-evento .ruleta-pista { margin-top: 6px; }
+.ruleta-pista .seg {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: #fff; transition: filter .12s;
+}
+.ruleta-pista.grande .seg { font-size: 15px; }
+.ruleta-pista .seg.bien { background: var(--verde); }
+.ruleta-pista .seg.mal { background: var(--rojo); }
+.ruleta-pista.en-bien .seg.bien, .ruleta-pista.en-mal .seg.mal { filter: brightness(1.35); }
+/* Al parar, el tramo ganador se queda encendido y el otro se apaga:
+   lo que marca la aguja es exactamente lo que se aplica. */
+.ruleta-pista.gana-bien .seg.bien, .ruleta-pista.gana-mal .seg.mal {
+  filter: brightness(1.15); box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .55);
+}
+.ruleta-pista.gana-bien .seg.mal, .ruleta-pista.gana-mal .seg.bien { filter: grayscale(.75) opacity(.45); }
+.ruleta-pista .aguja {
+  position: absolute; top: -3px; bottom: -3px; width: 4px; margin-left: -2px;
+  background: var(--tinta); border: 1.5px solid #fff; border-radius: 3px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .35);
+}
+.ruleta { text-align: center; margin-top: 14px; }
+.ruleta-titulo { font-weight: 700; font-size: 17px; color: var(--partido); }
+.ruleta-estado { font-size: 19px; font-weight: 700; margin-top: 10px; color: var(--suave); }
+.ruleta.salio-bien .ruleta-estado { color: var(--verde); }
+.ruleta.salio-mal .ruleta-estado { color: var(--rojo); }
+
+/* ── Pantalla final ──────────────────────────────────────── */
+.final { text-align: center; border: 2px solid var(--partido); }
+.final .emoji-rango { font-size: 54px; line-height: 1; }
+.final h2 { font-size: 28px; margin-top: 4px; }
+.final .desc-rango { color: var(--suave); font-size: 14px; margin-top: 5px; }
+.final .puntos { font-size: 12px; color: var(--suave); margin-top: 11px; }
+.final .puntos b { display: block; font-size: 32px; font-weight: 700; color: var(--tinta); }
+
+.stats-final { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+.stats-final div { background: var(--panel2); border-radius: 11px; padding: 9px 4px; }
+.stats-final .v { font-size: 20px; font-weight: 700; letter-spacing: -.4px; }
+.stats-final .k { font-family: var(--f-mini); font-size: 7.5px; color: var(--suave); text-transform: uppercase; }
+
+.premios { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; text-align: left; }
+.premio {
+  background: linear-gradient(160deg, #fff, #f7f8fd);
+  border: 1px solid var(--linea); border-left: 4px solid var(--partido);
+  border-radius: 11px; padding: 9px 10px;
+}
+.premio .e { font-size: 20px; }
+.premio .n { font-size: 13.5px; font-weight: 700; }
+.premio .d { font-size: 11.5px; color: var(--suave); line-height: 1.3; }
+
+.aviso {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+  background: var(--tinta); color: #fff; padding: 11px 20px; border-radius: 30px;
+  font-size: 15px; font-weight: 600; box-shadow: 0 8px 24px rgba(0, 0, 0, .32); z-index: 60;
+}
+
+.pie { text-align: center; color: rgba(255, 255, 255, .78); font-size: 11.5px; margin-top: 16px; }
+
+/* Retomar una carrera a medias */
+.continuar { border: 2px solid var(--partido); }
+.continuar-datos { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.continuar-datos .ovr { width: 52px; height: 52px; flex: 0 0 52px; }
+.continuar-datos .ovr .n { font-size: 23px; }
+.continuar-nombre { font-size: 18px; font-weight: 700; }
+.continuar-meta { font-size: 12.5px; color: var(--suave); }
+.continuar .boton-grande { margin-top: 14px; background: var(--partido); }
+
+/* Aviso de sátira y no afiliación */
+.aviso-legal {
+  margin-top: 16px; font-size: 10.5px; line-height: 1.55; text-align: center;
+  color: rgba(255, 255, 255, .72); max-width: 580px; margin-left: auto; margin-right: auto;
+}
+.aviso-legal b { color: #fff; font-weight: 600; }
+
+@media (max-width: 420px) {
+  .rejilla.tres { grid-template-columns: 1fr 1fr; }
+  /* Las decisiones se quedan en horizontal también en móvil: es la lectura
+     rápida de "estas son mis tres salidas" lo que hace el juego. */
+  .opciones { gap: 6px; }
+  .opcion-evento { padding: 10px 5px 9px; }
+  .opcion-evento .nom { font-size: 12.5px; }
+  .opcion-evento .des { font-size: 10.5px; }
+  .ruleta-pista .seg { font-size: 9px; }
+  .premios { grid-template-columns: 1fr; }
+  .ley-brujulas { grid-template-columns: 1fr; }
+  .fila-enc { grid-template-columns: 64px 1fr 80px; }
+}

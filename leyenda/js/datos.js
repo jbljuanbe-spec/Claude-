@@ -372,4 +372,4 @@ export const RANGOS = [
 ];
 
 // Sprites vendorizados desde github.com/PokeAPI/sprites
-export const spriteUrl = dex => `sprites/${dex}.png`;
+export const spriteUrl = (dex, shiny = false) => `sprites/${shiny ? 'shiny/' : ''}${dex}.png`;

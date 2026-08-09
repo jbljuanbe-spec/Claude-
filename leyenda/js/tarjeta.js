@@ -1,6 +1,6 @@
 // Dibuja la tarjeta final en un canvas y la descarga como PNG
 // (en móvil intenta compartirla como archivo, que es lo cómodo).
-import { spriteUrl } from './datos.js?v=32';
+import { spriteUrl } from './datos.js?v=33';
 
 const A = 1080, ALTO = 1600;
 
@@ -104,7 +104,7 @@ export async function descargarTarjeta(estado, { pts, rango, premios, equipo, ap
   // Equipo
   texto(c, 'EQUIPO FINAL', 60, y, { tam: 22, fuente: 'Silkscreen', color: '#8b93b0' });
   y += 26;
-  const sprites = await Promise.all(equipo.slice(0, 6).map(p => cargar(spriteUrl(p.dex))));
+  const sprites = await Promise.all(equipo.slice(0, 6).map(p => cargar(spriteUrl(p.dex, p.shiny))));
   const anP = (A - 120) / 6;
   sprites.forEach((sp, i) => {
     const cx = 60 + i * anP;

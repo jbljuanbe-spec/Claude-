@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=32';
+} from './datos.js?v=33';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -253,6 +253,7 @@ export function crearPokemon(lineaId, opts = {}) {
     tipos: tiposDe(linea, etapa, rama),
     rareza: linea.rareza,
     socio: !!opts.socio,
+    shiny: !!opts.shiny,   // los colores raros se conservan al evolucionar
     forma: opts.forma ?? entero(-4, 6),
     vinculo: opts.socio ? 60 : entero(20, 45),
     añoCaptura: opts.año ?? 1,
@@ -297,14 +298,16 @@ export function fichar(estado, lineaId, opts = {}) {
   return p;
 }
 
-export function capturaAleatoria(estado, { rarezaMin = 'comun', region = null } = {}) {
+export function capturaAleatoria(estado, { rarezaMin = 'comun', region = null, ...opts } = {}) {
   const permitidas = rarezaMin === 'raro' ? ['raro', 'pseudo'] : ['comun', 'raro', 'pseudo'];
   const pool = LINEAS.filter(l =>
     permitidas.includes(l.rareza) && !l.soloEvento &&
     !estado.equipo.some(p => p.linea === l.id) &&
     (!region || l.region === region));
   if (!pool.length) return null;
-  return fichar(estado, pesado(pool, l => PESO_RAREZA[l.rareza]).id);
+  // `opts` deja que quien llama fuerce cosas: que salga shiny, o que nazca
+  // como cría de nivel 5 si viene de un huevo.
+  return fichar(estado, pesado(pool, l => PESO_RAREZA[l.rareza]).id, opts);
 }
 
 // Evoluciones por nivel, narradas con el nombre anterior

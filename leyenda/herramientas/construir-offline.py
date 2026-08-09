@@ -28,6 +28,7 @@ js = "\n".join(partes)
 # ── 3. Imágenes: mapa dex -> data URI, y el resolutor apunta ahí ─────────────
 dex = sorted({int(d) for d in re.findall(r"E\((\d+),", leer('js/datos.js'))})
 sprites = {str(d): f"data:image/png;base64,{b64(f'sprites/{d}.png')}" for d in dex}
+brillos = {str(d): f"data:image/png;base64,{b64(f'sprites/shiny/{d}.png')}" for d in dex}
 objetos = {}
 for p in sorted((raiz / 'objetos').glob('*.png')):
     objetos[p.stem] = f"data:image/png;base64,{b64('objetos/'+p.name)}"
@@ -39,8 +40,9 @@ js = re.sub(r"^(const|function)\s+iconoObjeto", r"\1 iconoObjetoOriginal", js, f
 js = re.sub(r"const dominio = .*?;", "const dominio = 'hazte-con-todos.pages.dev';", js, count=1, flags=re.S)
 
 js = ("const SPRITES_INCRUSTADOS = " + json.dumps(sprites) + ";\n"
+      + "const BRILLOS_INCRUSTADOS = " + json.dumps(brillos) + ";\n"
       + "const OBJETOS_INCRUSTADOS = " + json.dumps(objetos) + ";\n"
-      + "const spriteUrl = d => SPRITES_INCRUSTADOS[String(d)] ?? OBJETOS_INCRUSTADOS['poke'];\n"
+      + "const spriteUrl = (d, shiny = false) => (shiny ? BRILLOS_INCRUSTADOS : SPRITES_INCRUSTADOS)[String(d)] ?? OBJETOS_INCRUSTADOS['poke'];\n"
       + "const iconoObjeto = i => OBJETOS_INCRUSTADOS[i] ?? OBJETOS_INCRUSTADOS['poke'];\n"
       + js)
 
@@ -55,4 +57,4 @@ html = html.replace('<title>Hazte con Todos', '<title>Hazte con Todos (sin conex
 destino = pathlib.Path('/tmp/hazte-con-todos-offline.html')
 destino.write_text(html, encoding='utf-8')
 print(f"{destino}  ·  {destino.stat().st_size/1024/1024:.2f} MB")
-print(f"sprites incrustados: {len(sprites)} · iconos: {len(objetos)}")
+print(f"sprites: {len(sprites)} normales + {len(brillos)} shiny · iconos: {len(objetos)}")

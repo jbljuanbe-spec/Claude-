@@ -2,15 +2,15 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=32';
+} from './datos.js?v=33';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida, esSatoshi,
   leerPalmares, apuntarEnPalmares, borrarPalmares, exportarPalmares, importarPalmares,
-} from './motor.js?v=32';
-import { siguienteEvento } from './eventos.js?v=32';
-import { descargarTarjeta } from './tarjeta.js?v=32';
+} from './motor.js?v=33';
+import { siguienteEvento } from './eventos.js?v=33';
+import { descargarTarjeta } from './tarjeta.js?v=33';
 
 // ── Tema claro / oscuro ──────────────────────────────────────────────────────
 // Sin elección guardada seguimos al sistema; al pulsar, se fija a mano.
@@ -48,7 +48,7 @@ let estado = null;
 let pestaña = 'carrera';
 
 const BALL = 'objetos/poke.png';
-const img = (dex, cls = '') => `<img class="${cls}" src="${spriteUrl(dex)}" alt="" loading="lazy">`;
+const img = (dex, cls = '', shiny = false) => `<img class="${cls}" src="${spriteUrl(dex, shiny)}" alt="" loading="lazy">`;
 document.addEventListener('error', ev => {
   const t = ev.target;
   if (t?.tagName === 'IMG' && !t.src.endsWith(BALL)) t.src = BALL;
@@ -409,7 +409,7 @@ function pintarFicha() {
       <div class="etiqueta-anio">Equipo (${equipo.length})</div>
       <div class="equipo-rejilla">
         ${equipo.map(p => `<div class="carta-poke">
-          ${img(p.dex)}<div class="n">${esc(p.nombre)}${p.socio ? ' ★' : ''}</div>
+          ${img(p.dex, '', p.shiny)}<div class="n">${esc(p.nombre)}${p.socio ? ' ★' : ''}${p.shiny ? ' ✨' : ''}</div>
           <div class="p">Nivel ${Math.round(p.nivel)}${p.lesionado ? ' · 🩹' : ''}</div>
           ${badgesTipo(p.tipos)}</div>`).join('') || '<p class="cuerpo">Sin equipo ahora mismo.</p>'}
       </div>
@@ -649,8 +649,15 @@ function correrTemporadas() {
     const causa = debeRetirarse(estado);
     if (causa || estado.flags.retiroElegido) {
       retirar(estado, causa || 'eleccion');
-      pintarCarrera(html, { añadir: true }); pintarBarra();
-      return pantallaFinal();
+      // Antes saltaba directo al resumen y te quedabas sin ver la última
+      // temporada, que es justo donde se decidió cómo acaba todo.
+      html += `<button class="boton-grande" id="cerrar">Ver cómo acabó todo ▸</button>`;
+      pintarCarrera(html, {
+        añadir: true,
+        enlazar: v => { v.querySelector('#cerrar').onclick = pantallaFinal; },
+      });
+      pintarBarra();
+      return;
     }
   }
   html += `<button class="boton-grande" id="seguir">Sigue tu aventura ▸</button>`;
@@ -689,7 +696,7 @@ function pantallaFinal() {
       rango: rango.titulo, rangoEmoji: rango.emoji,
       titulos: estado.titulos.length, medallas: estado.medallas, mundiales: estado.mundiales,
       victorias: estado.victorias, derrotas: estado.derrotas, dinero: estado.dinero,
-      equipo: equipo.map(p => ({ dex: p.dex, nombre: p.nombre, nivel: Math.round(p.nivel) })),
+      equipo: equipo.map(p => ({ dex: p.dex, nombre: p.nombre, nivel: Math.round(p.nivel), shiny: !!p.shiny })),
       premios: premios.map(p => ({ emoji: p.emoji, nombre: p.nombre, desc: p.desc })),
       ash: !!estado.flags.esAsh,
     });
@@ -719,7 +726,7 @@ function pantallaFinal() {
     <div class="tarjeta">
       <div class="etiqueta-anio">Equipo final</div>
       <div class="equipo-rejilla">
-        ${equipo.map(p => `<div class="carta-poke">${img(p.dex)}
+        ${equipo.map(p => `<div class="carta-poke">${img(p.dex, '', p.shiny)}
           <div class="n">${esc(p.nombre)}${p.socio ? ' ★' : ''}</div>
           <div class="p">Nivel ${Math.round(p.nivel)}</div>${badgesTipo(p.tipos)}</div>`).join('')
           || '<p class="cuerpo">Te retiraste sin equipo.</p>'}

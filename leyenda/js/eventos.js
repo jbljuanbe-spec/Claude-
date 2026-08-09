@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse, sumarMedia,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=32';
-import { LINEAS, POROBJETO, REGIONES, TIPOS } from './datos.js?v=32';
+} from './motor.js?v=33';
+import { LINEAS, POROBJETO, REGIONES, TIPOS } from './datos.js?v=33';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -633,7 +633,8 @@ const EVENTOS = [
       { txt: 'Llevarlo encima hasta que rompa', sub: 'Kilómetros, calor y paciencia.', riesgo: 0.75,
         efecto: (e, ok) => { if (!ok) return efecto('Pasan meses y el huevo no rompe. Un criador de verdad le echa un vistazo y te dice, con mucho tacto, que eso ya no va a eclosionar.',
             m(e, { moral: [-9, -4], vinculo: [3, 7] }));
-          const p = capturaAleatoria(e, { rarezaMin: dado(0.35) ? 'raro' : 'comun' });
+          // De un huevo sale una cría: nivel 5 y primera etapa, pase lo que pase
+          const p = capturaAleatoria(e, { rarezaMin: dado(0.35) ? 'raro' : 'comun', nivel: 5, etapa: 0 });
           return efecto(`Rompe una noche cualquiera, en un centro Pokémon vacío. Es ${p?.nombre ?? 'un bichito'} y lo primero que ve eres tú.`,
             m(e, { vinculo: [10, 18], moral: [7, 13] })); } },
       { txt: 'Dejarlo en el centro Pokémon', sub: 'Que lo cuide quien sepa.',
@@ -816,8 +817,8 @@ const EVENTOS = [
   {
     id: 'internacional_piso', etapas: ['pro', 'cima'], peso: 14,
     cond: e => e.stats.fama >= 28,
-    titulo: 'Internacional fuera de España',
-    texto: () => 'Toca un Internacional al otro lado de Europa. El truco de siempre: piso compartido con siete personas más, colchón hinchable y testear hasta las cuatro de la mañana. O pagarte un hotel y dormir.',
+    titulo: 'Internacional fuera de tu región',
+    texto: e => `Toca un Internacional al otro lado del mundo, lejísimos de ${e.regionNombre}. El truco de siempre: piso compartido con siete personas más, colchón hinchable y testear hasta las cuatro de la mañana. O pagarte un hotel y dormir.`,
     opciones: [
       { txt: 'Piso compartido y testear de noche', sub: 'Barato y con equipo.', riesgo: 0.55,
         efecto: (e, ok) => ok
@@ -851,9 +852,9 @@ const EVENTOS = [
     texto: () => 'Un Pokémon salvaje aparece con los colores cambiados. Sabes lo que es: uno de esos que la gente busca durante años sin encontrarlo. Un coleccionista de la zona ya te ha ofrecido una cifra que no deberías ni escuchar.',
     opciones: [
       { txt: 'Quedártelo y entrenarlo', sub: 'Vale más que el dinero.',
-        efecto: e => { const p = capturaAleatoria(e, { rarezaMin: 'raro' });
+        efecto: e => { const p = capturaAleatoria(e, { rarezaMin: 'raro', shiny: true });
           if (p) { p.forma += rango(3, 8); p.vinculo = limitar(p.vinculo + rango(10, 20)); }
-          hito(e, '✨', `Capturó un ${p?.nombre ?? 'ejemplar'} de colores raros`);
+          hito(e, '✨', `Capturó un ${p?.nombre ?? 'ejemplar'} variocolor`);
           return efecto(`${p?.nombre ?? 'El ejemplar'} entra en el equipo y no hay foto tuya en la que no salga él.`,
             m(e, { fama: [6, 13], vinculo: [4, 9] })); } },
       { txt: 'Venderlo al coleccionista', sub: 'Ese dinero cambia tu temporada.',

@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse, sumarMedia,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=25';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=25';
+} from './motor.js?v=26';
+import { LINEAS, POROBJETO, REGIONES, TIPOS } from './datos.js?v=26';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -214,12 +214,13 @@ const EVENTOS = [
   },
   {
     id: 'villano', etapas: ['gimnasios', 'liga', 'pro'], peso: 15, unico: true,
-    titulo: e => `${villanoDe(e.region).equipo.replace(/^el |^la /, '').replace(/^./, c => c.toUpperCase())} en el puerto`,
-    texto: e => { const v = villanoDe(e.region);
+    preparar: e => { e._villano = villanoDe(e.region); },
+    titulo: e => `${(e._villano ?? villanoDe(e.region)).equipo.replace(/^el |^la /, '').replace(/^./, c => c.toUpperCase())} en el puerto`,
+    texto: e => { const v = e._villano ?? villanoDe(e.region);
       return `Descubres a ${v.equipo} robando Pokémon en el puerto de ${e.regionNombre}. ${v.nombre} en persona supervisa la operación.`; },
     opciones: [
       { txt: 'Entrar tú solo', sub: 'No hay tiempo.', riesgo: 0.55,
-        efecto: (e, ok) => { const v = villanoDe(e.region);
+        efecto: (e, ok) => { const v = e._villano ?? villanoDe(e.region);
           if (ok) { e.flags.heroe = true; hito(e, '🦸', `Frenó a ${v.nombre} en el puerto`);
             const p = capturaAleatoria(e, { rarezaMin: 'raro' });
             return efecto(`Los detienes. Uno de los liberados, un ${p?.nombre ?? 'superviviente'}, no se separa de ti.`, m(e, { fama: [14, 24], moral: [8, 16], salud: [-11, -4] })); }
@@ -266,9 +267,11 @@ const EVENTOS = [
   {
     id: 'oferta_gimnasio', etapas: ['liga', 'pro', 'cima', 'veterano'], peso: 18,
     cond: e => e.stats.fama >= 30 && !e.flags.liderGimnasio,
-    titulo: e => `${liderDe(e.region).nombre} se retira`,
-    texto: e => { const l = liderDe(e.region);
-      return `El gimnasio de tipo ${l.tipo} de ${e.regionNombre} se queda sin líder y la Liga te ofrece la plaza. Sueldo fijo, casa y dejar de viajar.`; },
+    preparar: e => { e._lider = liderDe(e.region); },
+    // Vito y Leti son dos, así que el verbo tiene que concordar
+    titulo: e => { const l = e._lider ?? liderDe(e.region); return `${l.nombre} se retira${l.plural ? 'n' : ''}`; },
+    texto: e => { const l = e._lider ?? liderDe(e.region);
+      return `El gimnasio de tipo ${TIPOS[l.tipo]?.nombre ?? l.tipo} de ${e.regionNombre} se queda sin líder y la Liga te ofrece la plaza. Sueldo fijo, casa y dejar de viajar.`; },
     opciones: [
       { txt: 'Aceptar el gimnasio', sub: 'Echar raíces aquí.',
         efecto: e => { e.flags.liderGimnasio = true; hito(e, '🏛️', `Líder de Gimnasio en ${e.regionNombre}`);
@@ -1260,6 +1263,9 @@ export function siguienteEvento(estado) {
   let r = Math.random() * total;
   let elegido = pool[pool.length - 1];
   for (const ev of pool) { r -= ev.peso; if (r <= 0) { elegido = ev; break; } }
+  // Se fija aquí lo que el evento sortee (un líder, un rival...), UNA sola vez.
+  // Si no, `titulo` y `texto` tirarían el dado por separado y se contradirían.
+  elegido.preparar?.(estado);
   estado.vistos.add(elegido.id);
   estado.ultimoEvento = elegido.id;
   return elegido;

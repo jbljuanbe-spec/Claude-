@@ -244,6 +244,8 @@ export const PROFESORES = [
 
 export const VILLANOS = [
   { nombre: 'Giovanni', equipo: 'el Team Rocket', region: 'kanto' },
+  // En Johto el Team Rocket lo dirige Atlas, líder provisional sin Giovanni
+  { nombre: 'Atlas', equipo: 'el Team Rocket', region: 'johto' },
   { nombre: 'Aquiles', equipo: 'el Equipo Aqua', region: 'hoenn' },
   { nombre: 'Magno', equipo: 'el Equipo Magma', region: 'hoenn' },
   { nombre: 'Helio', equipo: 'el Equipo Galaxia', region: 'sinnoh' },
@@ -271,14 +273,22 @@ export const LIDERES = [
   { nombre: 'Pegaso', region: 'johto', tipo: 'volador' },
   { nombre: 'Morti', region: 'johto', tipo: 'fantasma' },
   { nombre: 'Norman', region: 'hoenn', tipo: 'normal' },
-  { nombre: 'Vito', region: 'hoenn', tipo: 'fuego' },
+  // Vito y Leti son mellizos y llevan juntos el gimnasio psíquico de Algaria
+  { nombre: 'Vito y Leti', region: 'hoenn', tipo: 'psiquico', plural: true },
+  { nombre: 'Candela', region: 'hoenn', tipo: 'fuego' },
   { nombre: 'Gardenia', region: 'sinnoh', tipo: 'planta' },
   { nombre: 'Fantina', region: 'sinnoh', tipo: 'fantasma' },
-  { nombre: 'Camila', region: 'unova', tipo: 'normal' },
-  { nombre: 'Amaro', region: 'kalos', tipo: 'lucha' },
+  { nombre: 'Camila', region: 'unova', tipo: 'electrico' },
+  { nombre: 'Amaro', region: 'kalos', tipo: 'planta' },
+  { nombre: 'Corelia', region: 'kalos', tipo: 'lucha' },
   { nombre: 'Kabu', region: 'galar', tipo: 'fuego' },
-  { nombre: 'Nerea', region: 'galar', tipo: 'agua' },
-  { nombre: 'Iona', region: 'paldea', tipo: 'bicho' },
+  { nombre: 'Cathy', region: 'galar', tipo: 'agua' },
+  // Alola no tiene gimnasios sino pruebas: aquí valen sus kahunas y capitanes
+  { nombre: 'Mayla', region: 'alola', tipo: 'roca' },
+  { nombre: 'Nereida', region: 'alola', tipo: 'agua' },
+  { nombre: 'Kiawe', region: 'alola', tipo: 'fuego' },
+  { nombre: 'Araceli', region: 'paldea', tipo: 'bicho' },
+  { nombre: 'Lima', region: 'paldea', tipo: 'fantasma' },
 ];
 
 export const PERIODISTAS = ['Rafa Pokémon', 'la revista Poké-Semanal', 'el canal Liga TV', 'Radio Kanto'];

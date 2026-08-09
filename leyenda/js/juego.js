@@ -1,17 +1,16 @@
 // Interfaz y bucle de juego.
 import {
-  REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO, LOGROS,
+  REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=31';
+} from './datos.js?v=32';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida, esSatoshi,
   leerPalmares, apuntarEnPalmares, borrarPalmares, exportarPalmares, importarPalmares,
-  leerLogros, desbloquearLogros, borrarLogros,
-} from './motor.js?v=31';
-import { siguienteEvento } from './eventos.js?v=31';
-import { descargarTarjeta } from './tarjeta.js?v=31';
+} from './motor.js?v=32';
+import { siguienteEvento } from './eventos.js?v=32';
+import { descargarTarjeta } from './tarjeta.js?v=32';
 
 // ── Tema claro / oscuro ──────────────────────────────────────────────────────
 // Sin elección guardada seguimos al sistema; al pulsar, se fija a mano.
@@ -43,29 +42,6 @@ function alternarTema() {
 document.addEventListener('click', ev => {
   if (ev.target.closest('#tema')) alternarTema();
 });
-
-// ── Aviso de trofeo desbloqueado ─────────────────────────────────────────────
-// Se anuncian en el momento, como en una consola. Si caen varios seguidos se
-// encolan para que no se pisen.
-let colaTrofeos = Promise.resolve();
-function anunciarTrofeos(nuevos) {
-  for (const l of nuevos) {
-    colaTrofeos = colaTrofeos.then(() => new Promise(res => {
-      const d = document.createElement('div');
-      d.className = 'trofeo-aviso';
-      d.innerHTML = `<span class="ta-emoji">${l.emoji}</span>
-        <span class="ta-txt"><small>Trofeo desbloqueado</small><b>${esc(l.nombre)}</b></span>`;
-      document.body.appendChild(d);
-      setTimeout(() => { d.classList.add('sale'); }, 2600);
-      setTimeout(() => { d.remove(); res(); }, 3100);
-    }));
-  }
-}
-
-// Comprueba si la partida acaba de desbloquear algo y lo anuncia.
-function revisarTrofeos() {
-  try { anunciarTrofeos(desbloquearLogros(estado)); } catch { /* nunca debe romper la partida */ }
-}
 
 const app = document.getElementById('app');
 let estado = null;
@@ -119,7 +95,6 @@ function pantallaInicio() {
   seleccion.inicial = null;
   const guardada = cargarPartida();
   const palmares = leerPalmares();
-  const conseguidos = new Set(leerLogros());
   const porRegion = INICIALES.filter(l => l.region === seleccion.region.id);
   app.innerHTML = `
     <div class="portada">
@@ -171,19 +146,6 @@ function pantallaInicio() {
         <button id="importar">Recupera tu palmarés</button>
         <input type="file" id="fichero" accept="application/json,.json" hidden>
       </p>`}
-
-    <div class="tarjeta vitrina">
-        <div class="etiqueta-anio">Vitrina · ${conseguidos.size} de ${LOGROS.length} trofeos</div>
-        <div class="vitrina-barra"><span style="width:${Math.round(100 * conseguidos.size / LOGROS.length)}%"></span></div>
-        <div class="vitrina-rejilla">
-          ${LOGROS.map(l => conseguidos.has(l.id)
-            ? `<span class="trofeo" title="${esc(l.nombre)}"><b>${l.emoji}</b><small>${esc(l.nombre)}</small></span>`
-            : `<span class="trofeo bloqueado" title="Aún por conseguir"><b>🔒</b><small>${esc(l.nombre)}</small></span>`).join('')}
-        </div>
-      <p class="palmares-nota">${conseguidos.size
-        ? 'Los trofeos no se pierden al acabar una carrera: una vez conseguidos, son tuyos. Viajan en la copia de seguridad.'
-        : 'Todavía no tienes ninguno. Se desbloquean solos según cómo te vaya la carrera, y una vez conseguidos son tuyos para siempre.'}</p>
-    </div>
 
     <div class="bloque">
       <label for="nombre">Tu nombre</label>
@@ -314,8 +276,8 @@ function pantallaInicio() {
     };
 
     document.getElementById('olvidar').onclick = () => {
-      if (!confirm('¿Borrar tu palmarés y tus trofeos? No se puede deshacer.')) return;
-      borrarPalmares(); borrarLogros();
+      if (!confirm('¿Borrar tu palmarés entero? No se puede deshacer.')) return;
+      borrarPalmares();
       pantallaInicio();
     };
   }
@@ -678,7 +640,6 @@ function correrTemporadas() {
   let html = '';
   for (let i = 0; i < estado.cada; i++) {
     const linea = simularTemporada(estado);
-    revisarTrofeos();
     if (linea.trofeo) html += tarjetaTrofeo(linea.trofeo);
     html += `
       <div class="tarjeta temporada">
@@ -714,7 +675,6 @@ function pantallaFinal() {
   const pts = legado(estado);
   const rango = rangoDe(pts, estado.media);
   const premios = logrosDe(estado);
-  revisarTrofeos();
   const equipo = estado.equipo.filter(p => !p.retirado).sort((a, b) => b.nivel - a.nivel).slice(0, 6);
   const apodo = apodoDe(estado);
   // Al palmarés va un resumen, no la partida entera. Solo la primera vez que

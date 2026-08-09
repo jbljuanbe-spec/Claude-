@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=31';
+} from './datos.js?v=32';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -203,38 +203,8 @@ export function borrarPalmares() {
   try { localStorage.removeItem(CLAVE_PALMARES); } catch { /* da igual */ }
 }
 
-// ── Vitrina de trofeos ───────────────────────────────────────────────────────
-// Los logros no se pierden al acabar la carrera: una vez desbloqueado, tuyo.
-// Se guarda solo la lista de ids, que ocupa nada.
-const CLAVE_LOGROS = 'hazteconTodos.logros';
-
-export function leerLogros() {
-  try {
-    const b = localStorage.getItem(CLAVE_LOGROS);
-    const l = b ? JSON.parse(b) : [];
-    return Array.isArray(l) ? l.filter(x => typeof x === 'string') : [];
-  } catch { return []; }
-}
-
-function escribirLogros(ids) {
-  try { localStorage.setItem(CLAVE_LOGROS, JSON.stringify([...new Set(ids)])); } catch { /* da igual */ }
-}
-
-// Mira qué logros cumple la partida ahora mismo y devuelve SOLO los que son
-// nuevos, para poder anunciarlos en el momento en que se consiguen.
-export function desbloquearLogros(estado) {
-  const ya = new Set(leerLogros());
-  const nuevos = logrosDe(estado).filter(l => !ya.has(l.id));
-  if (nuevos.length) escribirLogros([...ya, ...nuevos.map(l => l.id)]);
-  return nuevos;
-}
-
-export function borrarLogros() {
-  try { localStorage.removeItem(CLAVE_LOGROS); } catch { /* da igual */ }
-}
-
 export function exportarPalmares() {
-  return JSON.stringify({ juego: 'hazte-con-todos', v: 1, carreras: leerPalmares(), logros: leerLogros() }, null, 1);
+  return JSON.stringify({ juego: 'hazte-con-todos', v: 1, carreras: leerPalmares() }, null, 1);
 }
 
 // Importar fusiona: lo que ya tienes se queda, y se añade lo que falte.
@@ -250,9 +220,6 @@ export function importarPalmares(texto) {
   const nuevas = validas.filter(c => !tengo.has(c.id));
   const total = [...lista, ...nuevas].sort((a, b) => (b.fecha ?? 0) - (a.fecha ?? 0));
   escribirPalmares(total);
-  // Los trofeos también viajan en la copia, y se suman a los que ya tuvieras
-  const trofeos = Array.isArray(datos?.logros) ? datos.logros.filter(x => typeof x === 'string') : [];
-  if (trofeos.length) escribirLogros([...leerLogros(), ...trofeos]);
   return { nuevas: nuevas.length, total: Math.min(total.length, MAX_PALMARES) };
 }
 
@@ -641,9 +608,8 @@ export function rangoDe(pts, media = 0) {
 }
 
 export function logrosDe(estado) {
-  return LOGROS.filter(l => (!l.final || estado.retirado))
-    .filter(l => { try { return l.cond(estado); } catch { return false; } })
-    .map(l => ({ id: l.id, emoji: l.emoji, nombre: l.nombre, desc: l.desc(estado) }));
+  return LOGROS.filter(l => { try { return l.cond(estado); } catch { return false; } })
+    .map(l => ({ emoji: l.emoji, nombre: l.nombre, desc: l.desc(estado) }));
 }
 
 export function apodoDe(estado) {

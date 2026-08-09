@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=31') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=31') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=32') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=32') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=31') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=31') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=32') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=32') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=31') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=32') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -180,55 +180,6 @@ input[type=text]:focus { border-color: var(--azul); }
 .palmares-acciones button:hover { border-color: var(--borde-fuerte); }
 .palmares-acciones .peligro { flex: 0 0 68px; color: var(--rojo); }
 .palmares-nota { font-size: 11.5px; color: var(--suave); margin-top: 9px; line-height: 1.45; }
-
-/* ── Vitrina de trofeos ─────────────────────────────────────── */
-.vitrina { margin-bottom: 16px; }
-.vitrina-barra {
-  height: 7px; background: var(--panel2); border: 1px solid var(--linea);
-  border-radius: 99px; overflow: hidden; margin: 2px 0 12px;
-}
-.vitrina-barra span {
-  display: block; height: 100%;
-  background: linear-gradient(90deg, var(--oro), var(--rojo));
-}
-.vitrina-rejilla { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-.trofeo {
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
-  background: var(--panel2); border: 1px solid var(--linea);
-  border-radius: 10px; padding: 7px 3px;
-}
-.trofeo b { font-size: 20px; line-height: 1; font-weight: 400; }
-.trofeo small {
-  font-size: 8.5px; line-height: 1.15; text-align: center; color: var(--suave);
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
-.trofeo.bloqueado { opacity: .4; }
-.trofeo.bloqueado b { filter: grayscale(1); }
-
-/* Aviso de trofeo, estilo consola: entra por abajo y se va solo */
-.trofeo-aviso {
-  position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom));
-  transform: translateX(-50%); z-index: 60;
-  display: flex; align-items: center; gap: 10px;
-  background: var(--tinta); color: var(--sobre-tinta);
-  border-radius: 13px; padding: 10px 16px 10px 13px;
-  box-shadow: 0 8px 26px rgba(0, 0, 0, .3);
-  animation: trofeoEntra .32s cubic-bezier(.2, 1.3, .5, 1) both;
-  max-width: calc(100% - 24px);
-}
-.trofeo-aviso.sale { animation: trofeoSale .4s ease both; }
-.trofeo-aviso .ta-emoji { font-size: 26px; }
-.trofeo-aviso .ta-txt { display: flex; flex-direction: column; min-width: 0; }
-.trofeo-aviso small {
-  font-family: var(--f-mini); font-size: 8px; letter-spacing: .9px;
-  text-transform: uppercase; opacity: .7;
-}
-.trofeo-aviso b {
-  font-family: var(--f-display); font-size: 15px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-@keyframes trofeoEntra { from { opacity: 0; transform: translate(-50%, 24px); } }
-@keyframes trofeoSale { to { opacity: 0; transform: translate(-50%, 16px); } }
 
 /* Sin palmarés todavía: la única puerta de entrada para quien cambia de móvil */
 .recuperar { font-size: 12.5px; color: var(--suave); text-align: center; margin: -4px 0 14px; }

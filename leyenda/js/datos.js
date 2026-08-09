@@ -327,6 +327,9 @@ export const iconoObjeto = icono => `objetos/${icono}.png`;
 
 // ── Logros de carrera ────────────────────────────────────────────────────────
 // Se evalúan al retirarte; cada uno es una tarjeta en la pantalla final.
+// `final: true` = solo se puede juzgar con la carrera acabada. "No te has
+// lesionado nunca" es cierto por defecto en la temporada 1, así que estos no
+// se comprueban hasta el retiro.
 export const LOGROS = [
   { id: 'campeon', emoji: '🏆', nombre: 'Campeón', desc: e => `Levantaste ${e.ligasGanadas} título${e.ligasGanadas > 1 ? 's' : ''} de Liga.`, cond: e => e.ligasGanadas >= 1 },
   { id: 'mundial', emoji: '🌍', nombre: 'Campeón del Mundo', desc: e => `${e.mundiales} Campeonato${e.mundiales > 1 ? 's' : ''} Mundial${e.mundiales > 1 ? 'es' : ''}. El mejor del planeta.`, cond: e => e.mundiales >= 1 },
@@ -335,11 +338,11 @@ export const LOGROS = [
   { id: 'coleccionista', emoji: '📦', nombre: 'Coleccionista', desc: e => `${e.capturasTotales} Pokémon distintos pasaron por tu equipo.`, cond: e => e.capturasTotales >= 12 },
   { id: 'legendario', emoji: '⚡', nombre: 'Domador de leyendas', desc: () => 'Capturaste un Pokémon legendario. Casi nadie puede decirlo.', cond: e => e.equipo.some(p => p.rareza === 'legendario') },
   { id: 'pseudo', emoji: '🐲', nombre: 'Criador de dragones', desc: () => 'Criaste un pseudolegendario desde su primera etapa.', cond: e => e.equipo.some(p => p.rareza === 'pseudo' && p.etapa >= 2) },
-  { id: 'fiel', emoji: '💚', nombre: 'Hasta el final', desc: () => 'Tu primer compañero siguió contigo toda la carrera.', cond: e => e.equipo.some(p => p.uid === e.socio && !p.retirado) },
+  { id: 'fiel', final: true, emoji: '💚', nombre: 'Hasta el final', desc: () => 'Tu primer compañero siguió contigo toda la carrera.', cond: e => e.equipo.some(p => p.uid === e.socio && !p.retirado) },
   { id: 'vinculo', emoji: '🫂', nombre: 'Alma gemela', desc: () => 'Vínculo máximo con tu equipo. Se lanzarían al fuego por ti.', cond: e => e.stats.vinculo >= 90 },
   { id: 'idolo', emoji: '📣', nombre: 'Ídolo de masas', desc: () => 'Fama por encima de 85. Te paran por la calle.', cond: e => e.stats.fama >= 85 },
   { id: 'millonario', emoji: '💰', nombre: 'Millonario', desc: e => `Te retiraste con ${Math.round(e.dinero / 1000)}k ₽ en el banco.`, cond: e => e.dinero >= 1000000 },
-  { id: 'hierro', emoji: '🦾', nombre: 'De hierro', desc: () => 'Ni una sola lesión grave en toda la carrera. Otra pasta.', cond: e => !e.flags.lesionCronica && e.stats.salud >= 55 },
+  { id: 'hierro', final: true, emoji: '🦾', nombre: 'De hierro', desc: () => 'Ni una sola lesión grave en toda la carrera. Otra pasta.', cond: e => !e.flags.lesionCronica && e.stats.salud >= 55 },
   { id: 'eterno', emoji: '⏳', nombre: 'Eterno', desc: e => `Competiste hasta los ${e.edad}.`, cond: e => e.edad >= 32 },
   { id: 'trotamundos', emoji: '✈️', nombre: 'Trotamundos', desc: e => `Compitiste en ${e.regionesVisitadas.length} regiones distintas.`, cond: e => e.regionesVisitadas.length >= 3 },
   { id: 'lider', emoji: '🏛️', nombre: 'Líder de Gimnasio', desc: () => 'Te dieron un gimnasio propio y lo aceptaste.', cond: e => !!e.flags.liderGimnasio },
@@ -349,7 +352,7 @@ export const LOGROS = [
   { id: 'sancionado', emoji: '⛔', nombre: 'El sancionado', desc: () => 'La federación te apartó del circuito. Volviste igual.', cond: e => !!e.flags.exsancionado },
   { id: 'nemesis', emoji: '⚔️', nombre: 'El duelo eterno', desc: e => `Le ganaste la carrera a ${e.rival.nombre} por ${e.rival.derrotasTuyas}-${e.rival.victoriasSuyas}.`, cond: e => e.rival.derrotasTuyas > e.rival.victoriasSuyas && e.rival.derrotasTuyas >= 3 },
   { id: 'maquina', emoji: '💥', nombre: 'La máquina', desc: e => `${e.victorias} victorias en la carrera.`, cond: e => e.victorias >= 300 },
-  { id: 'invicto', emoji: '📈', nombre: 'Récord impecable', desc: e => `${e.victorias}-${e.derrotas}: ganaste el triple de lo que perdiste.`, cond: e => e.victorias > e.derrotas * 3 },
+  { id: 'invicto', final: true, emoji: '📈', nombre: 'Récord impecable', desc: e => `${e.victorias}-${e.derrotas}: ganaste el triple de lo que perdiste.`, cond: e => e.victorias > e.derrotas * 3 },
   { id: 'techo', emoji: '🚀', nombre: 'Los noventa', desc: e => `Alcanzaste una media de ${Math.round(e.media)}. Ahí arriba no hay casi nadie.`, cond: e => e.media >= 90 },
   { id: 'maestroobj', emoji: '🎒', nombre: 'Mochila legendaria', desc: e => `Reuniste ${e.objetos.length} objetos de entrenamiento.`, cond: e => e.objetos.length >= 5 },
   { id: 'santuario', emoji: '🏞️', nombre: 'El santuario', desc: () => 'Fundaste un refugio para Pokémon retirados.', cond: e => !!e.flags.santuario },

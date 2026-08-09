@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=30';
+} from './datos.js?v=31';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -641,7 +641,8 @@ export function rangoDe(pts, media = 0) {
 }
 
 export function logrosDe(estado) {
-  return LOGROS.filter(l => { try { return l.cond(estado); } catch { return false; } })
+  return LOGROS.filter(l => (!l.final || estado.retirado))
+    .filter(l => { try { return l.cond(estado); } catch { return false; } })
     .map(l => ({ id: l.id, emoji: l.emoji, nombre: l.nombre, desc: l.desc(estado) }));
 }
 

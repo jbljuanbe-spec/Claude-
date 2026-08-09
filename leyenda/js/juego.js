@@ -2,16 +2,16 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO, LOGROS,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=30';
+} from './datos.js?v=31';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida, esSatoshi,
   leerPalmares, apuntarEnPalmares, borrarPalmares, exportarPalmares, importarPalmares,
   leerLogros, desbloquearLogros, borrarLogros,
-} from './motor.js?v=30';
-import { siguienteEvento } from './eventos.js?v=30';
-import { descargarTarjeta } from './tarjeta.js?v=30';
+} from './motor.js?v=31';
+import { siguienteEvento } from './eventos.js?v=31';
+import { descargarTarjeta } from './tarjeta.js?v=31';
 
 // ── Tema claro / oscuro ──────────────────────────────────────────────────────
 // Sin elección guardada seguimos al sistema; al pulsar, se fija a mano.
@@ -172,8 +172,7 @@ function pantallaInicio() {
         <input type="file" id="fichero" accept="application/json,.json" hidden>
       </p>`}
 
-    ${conseguidos.size ? `
-      <div class="tarjeta vitrina">
+    <div class="tarjeta vitrina">
         <div class="etiqueta-anio">Vitrina · ${conseguidos.size} de ${LOGROS.length} trofeos</div>
         <div class="vitrina-barra"><span style="width:${Math.round(100 * conseguidos.size / LOGROS.length)}%"></span></div>
         <div class="vitrina-rejilla">
@@ -181,9 +180,10 @@ function pantallaInicio() {
             ? `<span class="trofeo" title="${esc(l.nombre)}"><b>${l.emoji}</b><small>${esc(l.nombre)}</small></span>`
             : `<span class="trofeo bloqueado" title="Aún por conseguir"><b>🔒</b><small>${esc(l.nombre)}</small></span>`).join('')}
         </div>
-        <p class="palmares-nota">Los trofeos no se pierden al acabar una carrera: una vez
-          conseguidos, son tuyos. Viajan en la copia de seguridad.</p>
-      </div>` : ''}
+      <p class="palmares-nota">${conseguidos.size
+        ? 'Los trofeos no se pierden al acabar una carrera: una vez conseguidos, son tuyos. Viajan en la copia de seguridad.'
+        : 'Todavía no tienes ninguno. Se desbloquean solos según cómo te vaya la carrera, y una vez conseguidos son tuyos para siempre.'}</p>
+    </div>
 
     <div class="bloque">
       <label for="nombre">Tu nombre</label>

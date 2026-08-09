@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=27';
+} from './datos.js?v=28';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -166,6 +166,61 @@ export function cargarPartida() {
 
 export function borrarPartida() {
   try { localStorage.removeItem(CLAVE); } catch { /* da igual */ }
+}
+
+// ── Palmarés: las carreras terminadas ────────────────────────────────────────
+// Se guarda un resumen de cada carrera acabada, no la partida entera: ocupa
+// menos de 1 KB, así que caben cientos sin acercarse al límite del navegador.
+// Sigue sin salir del dispositivo, y se puede exportar a fichero para llevarlo
+// a otro móvil sin cuentas ni servidor de por medio.
+const CLAVE_PALMARES = 'hazteconTodos.palmares';
+const MAX_PALMARES = 100;
+
+export function leerPalmares() {
+  try {
+    const bruto = localStorage.getItem(CLAVE_PALMARES);
+    const lista = bruto ? JSON.parse(bruto) : [];
+    return Array.isArray(lista) ? lista.filter(c => c && c.id) : [];
+  } catch { return []; }
+}
+
+function escribirPalmares(lista) {
+  try {
+    localStorage.setItem(CLAVE_PALMARES, JSON.stringify(lista.slice(0, MAX_PALMARES)));
+    return true;
+  } catch { return false; }   // cuota llena o modo incógnito: no rompe el juego
+}
+
+export function apuntarEnPalmares(resumen) {
+  const lista = leerPalmares();
+  if (lista.some(c => c.id === resumen.id)) return lista;   // no duplicar
+  lista.unshift(resumen);
+  escribirPalmares(lista);
+  return lista;
+}
+
+export function borrarPalmares() {
+  try { localStorage.removeItem(CLAVE_PALMARES); } catch { /* da igual */ }
+}
+
+export function exportarPalmares() {
+  return JSON.stringify({ juego: 'hazte-con-todos', v: 1, carreras: leerPalmares() }, null, 1);
+}
+
+// Importar fusiona: lo que ya tienes se queda, y se añade lo que falte.
+// Devuelve cuántas entraron para poder decírselo al jugador.
+export function importarPalmares(texto) {
+  const datos = JSON.parse(texto);
+  const entrantes = Array.isArray(datos) ? datos : datos?.carreras;
+  if (!Array.isArray(entrantes)) throw new Error('formato');
+  const validas = entrantes.filter(c => c && c.id && c.rango && typeof c.media === 'number');
+  if (!validas.length) throw new Error('vacio');
+  const lista = leerPalmares();
+  const tengo = new Set(lista.map(c => c.id));
+  const nuevas = validas.filter(c => !tengo.has(c.id));
+  const total = [...lista, ...nuevas].sort((a, b) => (b.fecha ?? 0) - (a.fecha ?? 0));
+  escribirPalmares(total);
+  return { nuevas: nuevas.length, total: Math.min(total.length, MAX_PALMARES) };
 }
 
 // ── Pokémon ──────────────────────────────────────────────────────────────────

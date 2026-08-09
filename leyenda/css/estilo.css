@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=27') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=27') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=28') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=28') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=27') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=27') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=28') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=28') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=27') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=28') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -149,6 +149,41 @@ input[type=text] {
   border: 1.5px solid var(--linea); border-radius: var(--radio); outline: none;
 }
 input[type=text]:focus { border-color: var(--azul); }
+
+/* ── Palmarés: las carreras terminadas, guardadas en este navegador ── */
+.palmares { margin-bottom: 16px; }
+.palmares-lista { display: flex; flex-direction: column; gap: 6px; }
+.palmares-fila {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--panel2); border: 1px solid var(--linea);
+  border-radius: 11px; padding: 8px 10px;
+}
+.palmares-emoji { font-size: 21px; flex: 0 0 auto; }
+.palmares-datos { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.palmares-datos b { font-family: var(--f-display); font-size: 14px; }
+.palmares-datos small {
+  font-size: 11.5px; color: var(--suave);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.palmares-cifras { flex: 0 0 auto; text-align: right; display: flex; flex-direction: column; }
+.palmares-cifras b { font-family: var(--f-display); font-size: 17px; line-height: 1.1; }
+.palmares-cifras small { font-family: var(--f-mini); font-size: 8.5px; color: var(--suave); }
+
+.palmares-acciones { display: flex; gap: 6px; margin-top: 10px; }
+.palmares-acciones button {
+  flex: 1; padding: 9px 4px; font-size: 12.5px; font-weight: 600;
+  background: var(--panel); border: 1.5px solid var(--linea); border-radius: 10px;
+}
+.palmares-acciones button:hover { border-color: var(--borde-fuerte); }
+.palmares-acciones .peligro { flex: 0 0 68px; color: var(--rojo); }
+.palmares-nota { font-size: 11.5px; color: var(--suave); margin-top: 9px; line-height: 1.45; }
+
+/* Sin palmarés todavía: la única puerta de entrada para quien cambia de móvil */
+.recuperar { font-size: 12.5px; color: var(--suave); text-align: center; margin: -4px 0 14px; }
+.recuperar button {
+  background: none; border: 0; padding: 0 2px;
+  font-size: 12.5px; font-weight: 700; color: var(--azul); text-decoration: underline;
+}
 
 /* Pista del easter egg: aparece al escribir el nombre secreto */
 .pista-secreta {

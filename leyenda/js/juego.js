@@ -2,14 +2,15 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=27';
+} from './datos.js?v=28';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida, esSatoshi,
-} from './motor.js?v=27';
-import { siguienteEvento } from './eventos.js?v=27';
-import { descargarTarjeta } from './tarjeta.js?v=27';
+  leerPalmares, apuntarEnPalmares, borrarPalmares, exportarPalmares, importarPalmares,
+} from './motor.js?v=28';
+import { siguienteEvento } from './eventos.js?v=28';
+import { descargarTarjeta } from './tarjeta.js?v=28';
 
 // ── Tema claro / oscuro ──────────────────────────────────────────────────────
 // Sin elección guardada seguimos al sistema; al pulsar, se fija a mano.
@@ -61,9 +62,20 @@ const colorOvr = v => (v >= 85 ? '#7a5cf0' : v >= 75 ? '#17a673' : v >= 62 ? '#3
 // ── Pantalla de creación ─────────────────────────────────────────────────────
 const seleccion = { region: REGIONES[0], estilo: ESTILOS[0], inicial: null, ritmo: RITMOS[1] };
 
+// Una línea del palmarés: rango, quién fue y cómo acabó.
+const fila = c => `<div class="palmares-fila">
+  <span class="palmares-emoji">${c.rangoEmoji ?? '🎖️'}</span>
+  <span class="palmares-datos">
+    <b>${esc(c.rango)}</b>
+    <small>${esc(c.nombre)} · ${c.emoji ?? ''} ${esc(c.region)} · ${c.años} temporadas${c.ash ? ' · ⚡ Kanto' : ''}</small>
+  </span>
+  <span class="palmares-cifras"><b>${c.media}</b><small>${c.pts} pts</small></span>
+</div>`;
+
 function pantallaInicio() {
   seleccion.inicial = null;
   const guardada = cargarPartida();
+  const palmares = leerPalmares();
   const porRegion = INICIALES.filter(l => l.region === seleccion.region.id);
   app.innerHTML = `
     <div class="portada">
@@ -93,6 +105,28 @@ function pantallaInicio() {
         <button class="boton-grande" id="continuar">Continuar esa carrera ▸</button>
         <button class="boton-secundario" id="descartar">Empezar una nueva y descartarla</button>
       </div>` : ''}
+
+    ${palmares.length ? `
+      <div class="tarjeta palmares">
+        <div class="etiqueta-anio">Tu palmarés · ${palmares.length} carrera${palmares.length > 1 ? 's' : ''}</div>
+        <div class="palmares-lista">
+          ${palmares.slice(0, 5).map(fila).join('')}
+        </div>
+        ${palmares.length > 5 ? `<div class="palmares-lista oculto" id="palmares-resto">${palmares.slice(5).map(fila).join('')}</div>
+        <button class="boton-secundario" id="ver-todas">Ver las ${palmares.length}</button>` : ''}
+        <div class="palmares-acciones">
+          <button id="exportar">⬇️ Guardar copia</button>
+          <button id="importar">⬆️ Recuperar copia</button>
+          <button id="olvidar" class="peligro">Borrar</button>
+        </div>
+        <input type="file" id="fichero" accept="application/json,.json" hidden>
+        <p class="palmares-nota">Se guarda solo en este navegador, sin cuentas ni servidores.
+          Si cambias de móvil, usa <b>Guardar copia</b> y luego <b>Recuperar copia</b> allí.</p>
+      </div>` : `
+      <p class="recuperar">¿Vienes de otro móvil?
+        <button id="importar">Recupera tu palmarés</button>
+        <input type="file" id="fichero" accept="application/json,.json" hidden>
+      </p>`}
 
     <div class="bloque">
       <label for="nombre">Tu nombre</label>
@@ -178,6 +212,47 @@ function pantallaInicio() {
   const rits = document.getElementById('ritmos');
   rits.onclick = ev => { const b = ev.target.closest('.opcion'); if (!b) return; seleccion.ritmo = RITMOS[+b.dataset.i]; marcar(rits, b); };
   document.getElementById('nombre').oninput = revisar;
+
+  // Recuperar copia tiene que estar SIEMPRE, incluso sin palmarés: es
+  // justo lo que necesita alguien que acaba de estrenar móvil.
+  const fichero = document.getElementById('fichero');
+  document.getElementById('importar').onclick = () => fichero.click();
+  fichero.onchange = async () => {
+    const f = fichero.files?.[0];
+    if (!f) return;
+    try {
+      const { nuevas, total } = importarPalmares(await f.text());
+      aviso(nuevas ? `Recuperadas ${nuevas} carrera${nuevas > 1 ? 's' : ''} (${total} en total).` : 'Ya las tenías todas.');
+      const nom = document.getElementById('nombre').value;
+      pantallaInicio();
+      document.getElementById('nombre').value = nom;
+    } catch { aviso('Ese fichero no es un palmarés válido.'); }
+    fichero.value = '';
+  };
+
+  if (palmares.length) {
+    document.getElementById('ver-todas')?.addEventListener('click', ev => {
+      document.getElementById('palmares-resto').classList.remove('oculto');
+      ev.target.remove();
+    });
+
+    // Guardar copia: un fichero pequeño que el jugador se lleva donde quiera.
+    document.getElementById('exportar').onclick = () => {
+      const blob = new Blob([exportarPalmares()], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'palmares-hazte-con-todos.json';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+      aviso('Copia guardada. Llévatela al otro móvil.');
+    };
+
+    document.getElementById('olvidar').onclick = () => {
+      if (!confirm('¿Borrar tu palmarés entero? No se puede deshacer.')) return;
+      borrarPalmares();
+      pantallaInicio();
+    };
+  }
 
   if (guardada) {
     document.getElementById('continuar').onclick = () => {
@@ -574,6 +649,23 @@ function pantallaFinal() {
   const premios = logrosDe(estado);
   const equipo = estado.equipo.filter(p => !p.retirado).sort((a, b) => b.nivel - a.nivel).slice(0, 6);
   const apodo = apodoDe(estado);
+  // Al palmarés va un resumen, no la partida entera. Solo la primera vez que
+  // se pinta esta pantalla, que si no se duplicaría al volver atrás.
+  if (!estado.apuntada) {
+    estado.apuntada = true;
+    apuntarEnPalmares({
+      id: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
+      fecha: Date.now(),
+      nombre: estado.nombre, apodo, region: estado.regionNombre, emoji: estado.regionEmoji,
+      años: estado.año, edad: estado.edad, media: Math.round(estado.media), pts,
+      rango: rango.titulo, rangoEmoji: rango.emoji,
+      titulos: estado.titulos.length, medallas: estado.medallas, mundiales: estado.mundiales,
+      victorias: estado.victorias, derrotas: estado.derrotas, dinero: estado.dinero,
+      equipo: equipo.map(p => ({ dex: p.dex, nombre: p.nombre, nivel: Math.round(p.nivel) })),
+      premios: premios.map(p => ({ emoji: p.emoji, nombre: p.nombre })),
+      ash: !!estado.flags.esAsh,
+    });
+  }
 
   app.innerHTML = `<div id="vista"></div>`;
   document.getElementById('vista').innerHTML = `

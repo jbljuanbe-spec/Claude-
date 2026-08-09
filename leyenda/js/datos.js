@@ -138,7 +138,9 @@ export const LINEAS = [
   L('applin', 'galar', 'comun', ['planta', 'dragon'], [E(840, 'Applin', 24), E(841, 'Flapple', 68)]),
   L('pawmi', 'paldea', 'comun', ['electrico'], [E(921, 'Pawmi', 24), E(923, 'Pawmot', 70, ['electrico', 'lucha'])]),
   L('tinkatink', 'paldea', 'raro', ['hada', 'acero'], [E(957, 'Tinkatink', 26), E(959, 'Tinkaton', 76)]),
-  L('charcadet', 'paldea', 'raro', ['fuego'], [E(935, 'Charcadet', 30), E(937, 'Armarouge', 78, ['fuego', 'psiquico'])]),
+  // Charcadet evoluciona a uno de los dos, nunca a los dos: cada ejemplar coge rama
+  L('charcadet', 'paldea', 'raro', ['fuego'], [E(935, 'Charcadet', 30)],
+    [E(936, 'Armarouge', 78, ['fuego', 'psiquico']), E(937, 'Ceruledge', 78, ['fuego', 'fantasma'])]),
 
   // Legendarios (solo por evento)
   L('articuno', 'kanto', 'legendario', ['hielo', 'volador'], [E(144, 'Articuno', 94)]),

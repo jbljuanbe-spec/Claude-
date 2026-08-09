@@ -1,6 +1,6 @@
 // Dibuja la tarjeta final en un canvas y la descarga como PNG
 // (en móvil intenta compartirla como archivo, que es lo cómodo).
-import { spriteUrl } from './datos.js?v=26';
+import { spriteUrl } from './datos.js?v=27';
 
 const A = 1080, ALTO = 1600;
 
@@ -11,9 +11,25 @@ const cargar = src => new Promise(res => {
   i.src = src;
 });
 
-function texto(c, t, x, y, { tam = 32, fuente = 'Space Grotesk', color = '#171b2e', peso = '400', centro = false, maxAncho = 0 } = {}) {
+function texto(c, t, x, y, { tam = 32, fuente = 'Space Grotesk', color = '#171b2e', peso = '400', centro = false, maxAncho = 0, optico = false } = {}) {
   c.font = `${peso} ${tam}px "${fuente}", sans-serif`;
   c.fillStyle = color;
+
+  // Centrado óptico: cada móvil trae su propia fuente de emoji y algunos glifos
+  // (el 🎖️ es el peor) llevan más aire a un lado que al otro. Centrar por la
+  // caja de la fuente los deja torcidos, así que centramos por la tinta real.
+  if (centro && optico) {
+    // Ojo: actualBoundingBox se mide respecto al punto de alineación, así que
+    // hay que fijar textAlign ANTES de medir o las cuentas salen al revés.
+    c.textAlign = 'left';
+    const m = c.measureText(t);
+    const izq = m.actualBoundingBoxLeft, der = m.actualBoundingBoxRight;
+    if (Number.isFinite(izq) && Number.isFinite(der) && (izq || der)) {
+      c.fillText(t, x + (izq - der) / 2, y);
+      return;
+    }
+  }
+
   c.textAlign = centro ? 'center' : 'left';
   if (maxAncho) {
     let s = t;
@@ -52,7 +68,7 @@ export async function descargarTarjeta(estado, { pts, rango, premios, equipo, ap
   let y = 92;
   texto(c, 'HAZTE CON TODOS', A / 2, y, { tam: 26, fuente: 'Silkscreen', color: '#8b93b0', centro: true });
   y += 78;
-  texto(c, rango.emoji, A / 2, y + 14, { tam: 78, centro: true });
+  texto(c, rango.emoji, A / 2, y + 14, { tam: 78, centro: true, optico: true });
   y += 92;
   texto(c, rango.titulo, A / 2, y, { tam: 64, fuente: 'Pixelify Sans', peso: '700', centro: true });
   y += 52;

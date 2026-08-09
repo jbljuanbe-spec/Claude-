@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=23') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=23') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=24') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=24') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=23') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=23') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=24') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=24') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=23') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=24') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -38,6 +38,56 @@
   --morado: #7a5cf0;
   --radio: 14px;
   --sombra: 0 2px 10px rgba(23, 27, 46, .07);
+
+  /* Derivados: existen para que el modo oscuro solo tenga que redefinir tokens */
+  --texto2: #3a4059;             /* cuerpo de texto secundario */
+  --sobre-tinta: #ffffff;        /* texto encima de un fondo color --tinta */
+  --borde-fuerte: #b9c4e0;       /* borde al pasar el ratón */
+  --barra-fondo: rgba(255, 255, 255, .95);
+  --velo1: rgba(255, 255, 255, .93);
+  --velo2: rgba(238, 241, 250, .93);
+  --trofeo-bg: radial-gradient(120% 90% at 50% 0%, #fffdf4, #ffffff 55%);
+  --realce: linear-gradient(160deg, #ffffff, #f7f9ff);
+}
+
+/* ── Modo oscuro ──────────────────────────────────────────────
+   Solo se redefinen tokens: ni una regla de layout cambia.
+   Sigue al sistema salvo que hayas elegido tema a mano. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --fondo: #101320;
+    --panel: #1a1e2d;
+    --panel2: #222739;
+    --linea: #2e3447;
+    --tinta: #eaeefa;
+    --suave: #969ec0;
+    --sombra: 0 2px 12px rgba(0, 0, 0, .35);
+    --texto2: #c3cade;
+    --sobre-tinta: #151827;
+    --borde-fuerte: #47506e;
+    --barra-fondo: rgba(26, 30, 45, .95);
+    --velo1: rgba(16, 19, 32, .94);
+    --velo2: rgba(11, 13, 23, .94);
+    --trofeo-bg: radial-gradient(120% 90% at 50% 0%, #2a2434, #1a1e2d 55%);
+    --realce: linear-gradient(160deg, #212637, #1a1e2d);
+  }
+}
+:root[data-tema="oscuro"] {
+  --fondo: #101320;
+  --panel: #1a1e2d;
+  --panel2: #222739;
+  --linea: #2e3447;
+  --tinta: #eaeefa;
+  --suave: #969ec0;
+  --sombra: 0 2px 12px rgba(0, 0, 0, .35);
+  --texto2: #c3cade;
+  --sobre-tinta: #151827;
+  --borde-fuerte: #47506e;
+  --barra-fondo: rgba(26, 30, 45, .95);
+  --velo1: rgba(16, 19, 32, .94);
+  --velo2: rgba(11, 13, 23, .94);
+  --trofeo-bg: radial-gradient(120% 90% at 50% 0%, #2a2434, #1a1e2d 55%);
+  --realce: linear-gradient(160deg, #212637, #1a1e2d);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,7 +99,7 @@ body {
   /* Patrón de Poké Balls (sprite de github.com/msikma/pokesprite) muy tenue:
      el velo blanco cubre toda la página, no solo la primera pantalla. */
   background-image:
-    linear-gradient(180deg, rgba(255, 255, 255, .93), rgba(238, 241, 250, .93)),
+    linear-gradient(180deg, var(--velo1), var(--velo2)),
     url('../objetos/poke.png');
   background-size: 100% 100%, 38px 38px;
   background-repeat: no-repeat, repeat;
@@ -66,8 +116,19 @@ button { font-family: inherit; cursor: pointer; border: 0; color: inherit; }
 
 .oculto { display: none !important; }
 
+/* Botón de tema: discreto, siempre a mano */
+.boton-tema {
+  background: var(--panel); border: 1.5px solid var(--linea); border-radius: 10px;
+  width: 38px; height: 34px; flex: 0 0 38px; font-size: 15px; line-height: 1;
+  box-shadow: var(--sombra); transition: .14s;
+}
+.boton-tema:hover { border-color: var(--borde-fuerte); transform: translateY(-1px); }
+.portada .boton-tema { position: absolute; top: 0; right: 0; }
+/* Dentro de la barra convive con las pestañas, que son flex:1 */
+.tabs .boton-tema { flex: 0 0 42px; height: auto; }
+
 /* ── Portada / creación ──────────────────────────────────── */
-.portada { text-align: center; padding: 26px 0 6px; }
+.portada { text-align: center; padding: 26px 0 6px; position: relative; }
 .portada h1 {
   font-family: var(--f-display); font-weight: 700;
   font-size: clamp(32px, 9.5vw, 50px); line-height: 1.02; letter-spacing: -.5px;
@@ -107,7 +168,7 @@ input[type=text]:focus { border-color: var(--azul); }
   border-radius: var(--radio); padding: 11px 12px; text-align: left; width: 100%;
   transition: .14s;
 }
-.opcion:hover { border-color: #b9c4e0; transform: translateY(-1px); }
+.opcion:hover { border-color: var(--borde-fuerte); transform: translateY(-1px); }
 .opcion[aria-pressed=true] { border-color: var(--azul); box-shadow: 0 0 0 3px rgba(59, 111, 224, .14); }
 .opcion .nom { display: block; font-family: var(--f-display); font-weight: 700; font-size: 15px; }
 .opcion .des { display: block; font-size: 12px; color: var(--suave); margin-top: 2px; }
@@ -132,7 +193,7 @@ input[type=text]:focus { border-color: var(--azul); }
 /* ── Barra superior fija: ficha resumida + tabs ───────── */
 .barra {
   position: sticky; top: 0; z-index: 20;
-  background: rgba(255, 255, 255, .95); backdrop-filter: blur(10px);
+  background: var(--barra-fondo); backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--linea);
   margin: 0 -12px 12px; padding: 8px 12px calc(8px + env(safe-area-inset-top));
 }
@@ -162,7 +223,7 @@ input[type=text]:focus { border-color: var(--azul); }
   font-family: var(--f-mini); font-size: 10px; letter-spacing: .8px; text-transform: uppercase;
   color: var(--suave); border: 1.5px solid transparent;
 }
-.tabs button[aria-selected=true] { background: var(--tinta); color: #fff; }
+.tabs button[aria-selected=true] { background: var(--tinta); color: var(--sobre-tinta); }
 
 /* ── Tarjetas ────────────────────────────────────────────── */
 .tarjeta {
@@ -173,7 +234,7 @@ input[type=text]:focus { border-color: var(--azul); }
 @keyframes entra { from { opacity: 0; transform: translateY(8px); } }
 
 .tarjeta h2 { font-family: var(--f-display); font-size: 20px; font-weight: 700; margin-bottom: 7px; }
-.tarjeta p.cuerpo { font-size: 15px; color: #3a4059; }
+.tarjeta p.cuerpo { font-size: 15px; color: var(--texto2); }
 .etiqueta-anio {
   font-family: var(--f-mini); font-size: 9.5px; letter-spacing: 1.1px; text-transform: uppercase;
   color: var(--suave); margin-bottom: 6px;
@@ -187,7 +248,7 @@ input[type=text]:focus { border-color: var(--azul); }
   background: var(--panel2); border: 1.5px solid var(--linea);
   border-radius: 12px; padding: 11px 8px 10px; transition: .14s;
 }
-.opcion-evento:hover { border-color: var(--azul); background: #fff; transform: translateY(-2px); box-shadow: var(--sombra); }
+.opcion-evento:hover { border-color: var(--azul); background: var(--panel); transform: translateY(-2px); box-shadow: var(--sombra); }
 .opcion-evento .ico { width: 30px; height: 30px; object-fit: contain; }
 .opcion-evento .ico-txt { font-size: 22px; line-height: 30px; }
 .opcion-evento .nom { font-family: var(--f-display); font-weight: 700; font-size: 14px; line-height: 1.15; }
@@ -220,7 +281,7 @@ input[type=text]:focus { border-color: var(--azul); }
 
 .temporada { border-left: 4px solid var(--azul); }
 .temporada ul { list-style: none; margin-top: 5px; }
-.temporada li { font-size: 14px; padding: 2px 0 2px 17px; position: relative; color: #3a4059; }
+.temporada li { font-size: 14px; padding: 2px 0 2px 17px; position: relative; color: var(--texto2); }
 .temporada li::before { content: '▸'; position: absolute; left: 2px; color: var(--suave); }
 .temporada li.grande { font-family: var(--f-display); font-weight: 700; color: var(--oro); font-size: 16px; }
 
@@ -265,7 +326,7 @@ input[type=text]:focus { border-color: var(--azul); }
 }
 
 .lista-limpia { list-style: none; }
-.lista-limpia li { font-size: 14px; padding: 3px 0; color: #3a4059; }
+.lista-limpia li { font-size: 14px; padding: 3px 0; color: var(--texto2); }
 .lista-limpia .año { color: var(--suave); font-size: 12px; }
 
 /* ── Pantalla final ──────────────────────────────────────── */
@@ -283,7 +344,7 @@ input[type=text]:focus { border-color: var(--azul); }
 
 .premios { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; text-align: left; }
 .premio {
-  background: linear-gradient(160deg, #fff, #f7f9ff);
+  background: var(--realce);
   border: 1px solid var(--linea); border-left: 4px solid var(--oro);
   border-radius: 11px; padding: 9px 10px;
 }
@@ -293,7 +354,7 @@ input[type=text]:focus { border-color: var(--azul); }
 
 .aviso {
   position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
-  font-family: var(--f-display); background: var(--tinta); color: #fff;
+  font-family: var(--f-display); background: var(--tinta); color: var(--sobre-tinta);
   padding: 11px 20px; border-radius: 30px; font-size: 15px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .28); z-index: 60;
 }
@@ -331,7 +392,7 @@ input[type=text]:focus { border-color: var(--azul); }
 .ruleta-pista.gana-bien .seg.mal, .ruleta-pista.gana-mal .seg.bien { filter: grayscale(.75) opacity(.45); }
 .ruleta-pista .aguja {
   position: absolute; top: -3px; bottom: -3px; width: 4px; margin-left: -2px;
-  background: var(--tinta); border: 1.5px solid #fff; border-radius: 3px;
+  background: var(--tinta); border: 1.5px solid var(--sobre-tinta); border-radius: 3px;
   box-shadow: 0 0 6px rgba(0, 0, 0, .35);
 }
 .ruleta { text-align: center; margin-top: 14px; }
@@ -348,7 +409,7 @@ input[type=text]:focus { border-color: var(--azul); }
 .trofeo {
   position: relative; overflow: hidden; text-align: center;
   border: 2px solid var(--cinta);
-  background: radial-gradient(120% 90% at 50% 0%, #fffdf4, #fff 55%);
+  background: var(--trofeo-bg);
   animation: sale-copa .5s cubic-bezier(.18, 1.2, .4, 1) both;
 }
 @keyframes sale-copa {
@@ -415,7 +476,7 @@ input[type=text]:focus { border-color: var(--azul); }
 .firma b { color: var(--tinta); font-weight: 700; }
 .firma-x {
   display: grid; place-items: center; flex: 0 0 22px; width: 22px; height: 22px;
-  background: var(--tinta); color: #fff; border-radius: 6px;
+  background: var(--tinta); color: var(--sobre-tinta); border-radius: 6px;
   font-family: var(--f-display); font-size: 14px; font-weight: 700; line-height: 1;
 }
 .firma-final { margin-top: 18px; }

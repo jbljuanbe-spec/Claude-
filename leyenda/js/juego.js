@@ -2,14 +2,45 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=23';
+} from './datos.js?v=24';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida, esSatoshi,
-} from './motor.js?v=23';
-import { siguienteEvento } from './eventos.js?v=23';
-import { descargarTarjeta } from './tarjeta.js?v=23';
+} from './motor.js?v=24';
+import { siguienteEvento } from './eventos.js?v=24';
+import { descargarTarjeta } from './tarjeta.js?v=24';
+
+// ── Tema claro / oscuro ──────────────────────────────────────────────────────
+// Sin elección guardada seguimos al sistema; al pulsar, se fija a mano.
+const CLAVE_TEMA = 'hazteconTodos.tema';
+const temaSistema = () => (matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro');
+const temaActual = () => document.documentElement.dataset.tema || temaSistema();
+
+function botonTema() {
+  const oscuro = temaActual() === 'oscuro';
+  return `<button class="boton-tema" id="tema" type="button"
+    aria-label="Cambiar a modo ${oscuro ? 'claro' : 'oscuro'}"
+    title="Cambiar a modo ${oscuro ? 'claro' : 'oscuro'}">${oscuro ? '☀️' : '🌙'}</button>`;
+}
+
+function alternarTema() {
+  const nuevo = temaActual() === 'oscuro' ? 'claro' : 'oscuro';
+  document.documentElement.dataset.tema = nuevo;
+  try { localStorage.setItem(CLAVE_TEMA, nuevo); } catch { /* da igual */ }
+  document.querySelector('meta[name=theme-color]')
+    ?.setAttribute('content', nuevo === 'oscuro' ? '#101320' : '#eaeef7');
+  document.querySelectorAll('#tema').forEach(b => {
+    const osc = nuevo === 'oscuro';
+    b.textContent = osc ? '☀️' : '🌙';
+    const t = `Cambiar a modo ${osc ? 'claro' : 'oscuro'}`;
+    b.setAttribute('aria-label', t); b.setAttribute('title', t);
+  });
+}
+// Delegado: el botón se repinta muchas veces, el listener vive una sola vez.
+document.addEventListener('click', ev => {
+  if (ev.target.closest('#tema')) alternarTema();
+});
 
 const app = document.getElementById('app');
 let estado = null;
@@ -36,6 +67,7 @@ function pantallaInicio() {
   const porRegion = INICIALES.filter(l => l.region === seleccion.region.id);
   app.innerHTML = `
     <div class="portada">
+      ${botonTema()}
       <div class="bolas">⚡ 🔴 ⚡</div>
       <h1>Hazte<br>con Todos</h1>
       <p class="sub">Veinte años de carrera como entrenador Pokémon.<br>Solo tomas las decisiones que importan.</p>
@@ -206,6 +238,7 @@ function pintarBarra() {
         <div class="barra-dinero">${(estado.dinero / 1000).toFixed(0)}k<small>₽ · 🎖️${estado.medallas} · 🏆${estado.titulos.length}</small></div>
       </div>
       <div class="tabs">
+        ${botonTema()}
         <button data-p="carrera" aria-selected="${pestaña === 'carrera'}">Carrera</button>
         <button data-p="ficha" aria-selected="${pestaña === 'ficha'}">Ficha del entrenador</button>
       </div>

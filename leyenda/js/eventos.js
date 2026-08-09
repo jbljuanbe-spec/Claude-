@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse, sumarMedia,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=24';
-import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=24';
+} from './motor.js?v=25';
+import { LINEAS, POROBJETO, REGIONES } from './datos.js?v=25';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -609,7 +609,7 @@ const EVENTOS = [
       { txt: 'La Hélix o la Domo', sub: 'Lo que salga del mar antiguo.', icono: 'poke', riesgo: 0.7,
         efecto: (e, ok) => { if (!ok) return efecto('La máquina se traga el fósil, pita tres veces y se apaga. El conserje se encoge de hombros: "pues nada". Te vas con las manos vacías y una lección sobre museos de carretera.',
             m(e, { moral: [-8, -3], dinero: -rango(2000, 6000) }));
-          const p = fichar(e, elegir(['omanyte', 'kabuto']));
+          const p = fichar(e, elegir(['omanyte', 'kabuto', 'cranidos', 'shieldon', 'tirtouga', 'archen']));
           hito(e, '🦴', `Revivió a ${p?.nombre ?? 'un fósil'}`);
           return efecto(`La máquina zumba, se abre, y ahí está: ${p?.nombre ?? 'el fósil'}, vivo, parpadeando con cara de no entender nada. Tiene millones de años y acaba de conocerte.`,
             m(e, { fama: [6, 13], vinculo: [5, 11], moral: [6, 12] })); } },

@@ -142,6 +142,62 @@ export const LINEAS = [
   L('charcadet', 'paldea', 'raro', ['fuego'], [E(935, 'Charcadet', 30)],
     [E(936, 'Armarouge', 78, ['fuego', 'psiquico']), E(937, 'Ceruledge', 78, ['fuego', 'fantasma'])]),
 
+  // Comunes de ruta (segunda tanda: más variedad para que no se repita el mismo bicho)
+  L('sentret', 'johto', 'comun', ['normal'], [E(161, 'Sentret', 20), E(162, 'Furret', 52)]),
+  L('hoothoot', 'johto', 'comun', ['normal', 'volador'], [E(163, 'Hoothoot', 22), E(164, 'Noctowl', 56)]),
+  L('chinchou', 'johto', 'comun', ['agua', 'electrico'], [E(170, 'Chinchou', 24), E(171, 'Lanturn', 58)]),
+  L('wooper', 'johto', 'comun', ['agua', 'tierra'], [E(194, 'Wooper', 20), E(195, 'Quagsire', 54)]),
+  L('slugma', 'johto', 'comun', ['fuego'], [E(218, 'Slugma', 22), E(219, 'Magcargo', 54, ['fuego', 'roca'])]),
+  L('phanpy', 'johto', 'comun', ['tierra'], [E(231, 'Phanpy', 26), E(232, 'Donphan', 62)]),
+  L('teddiursa', 'johto', 'comun', ['normal'], [E(216, 'Teddiursa', 26), E(217, 'Ursaring', 64)]),
+  L('swinub', 'johto', 'raro', ['hielo', 'tierra'], [E(220, 'Swinub', 24), E(221, 'Piloswine', 52), E(473, 'Mamoswine', 76)]),
+
+  L('poochyena', 'hoenn', 'comun', ['siniestro'], [E(261, 'Poochyena', 20), E(262, 'Mightyena', 54)]),
+  L('zigzagoon', 'hoenn', 'comun', ['normal'], [E(263, 'Zigzagoon', 18), E(264, 'Linoone', 52)]),
+  L('wingull', 'hoenn', 'comun', ['agua', 'volador'], [E(278, 'Wingull', 20), E(279, 'Pelipper', 56)]),
+  L('shroomish', 'hoenn', 'comun', ['planta'], [E(285, 'Shroomish', 22), E(286, 'Breloom', 64, ['planta', 'lucha'])]),
+  L('numel', 'hoenn', 'comun', ['fuego', 'tierra'], [E(322, 'Numel', 24), E(323, 'Camerupt', 62)]),
+  L('spheal', 'hoenn', 'comun', ['hielo', 'agua'], [E(363, 'Spheal', 22), E(364, 'Sealeo', 44), E(365, 'Walrein', 66)]),
+  L('aron', 'hoenn', 'raro', ['acero', 'roca'], [E(304, 'Aron', 26), E(305, 'Lairon', 50), E(306, 'Aggron', 76)]),
+  L('feebas', 'hoenn', 'raro', ['agua'], [E(349, 'Feebas', 12), E(350, 'Milotic', 76)]),
+
+  L('buizel', 'sinnoh', 'comun', ['agua'], [E(418, 'Buizel', 24), E(419, 'Floatzel', 60)]),
+  L('hippopotas', 'sinnoh', 'comun', ['tierra'], [E(449, 'Hippopotas', 26), E(450, 'Hippowdon', 66)]),
+  L('croagunk', 'sinnoh', 'comun', ['veneno', 'lucha'], [E(453, 'Croagunk', 24), E(454, 'Toxicroak', 62)]),
+  L('snover', 'sinnoh', 'comun', ['planta', 'hielo'], [E(459, 'Snover', 24), E(460, 'Abomasnow', 64)]),
+  F('cranidos', 'sinnoh', ['roca'], [E(408, 'Cranidos', 34), E(409, 'Rampardos', 74)]),
+  F('shieldon', 'sinnoh', ['roca', 'acero'], [E(410, 'Shieldon', 32), E(411, 'Bastiodon', 72)]),
+
+  L('lillipup', 'unova', 'comun', ['normal'], [E(506, 'Lillipup', 20), E(507, 'Herdier', 44), E(508, 'Stoutland', 64)]),
+  L('roggenrola', 'unova', 'comun', ['roca'], [E(524, 'Roggenrola', 22), E(525, 'Boldore', 46), E(526, 'Gigalith', 70)]),
+  L('ferroseed', 'unova', 'comun', ['planta', 'acero'], [E(597, 'Ferroseed', 24), E(598, 'Ferrothorn', 68)]),
+  L('sandile', 'unova', 'raro', ['tierra', 'siniestro'], [E(551, 'Sandile', 26), E(552, 'Krokorok', 50), E(553, 'Krookodile', 74)]),
+  L('axew', 'unova', 'raro', ['dragon'], [E(610, 'Axew', 28), E(611, 'Fraxure', 54), E(612, 'Haxorus', 78)]),
+  F('tirtouga', 'unova', ['agua', 'roca'], [E(564, 'Tirtouga', 32), E(565, 'Carracosta', 70)]),
+  F('archen', 'unova', ['roca', 'volador'], [E(566, 'Archen', 34), E(567, 'Archeops', 74)]),
+
+  L('fletchling', 'kalos', 'comun', ['normal', 'volador'], [E(661, 'Fletchling', 20), E(662, 'Fletchinder', 48, ['fuego', 'volador']), E(663, 'Talonflame', 68, ['fuego', 'volador'])]),
+  L('espurr', 'kalos', 'comun', ['psiquico'], [E(677, 'Espurr', 22), E(678, 'Meowstic', 58)]),
+  L('honedge', 'kalos', 'raro', ['acero', 'fantasma'], [E(679, 'Honedge', 28), E(680, 'Doublade', 54), E(681, 'Aegislash', 78)]),
+  L('noibat', 'kalos', 'raro', ['volador', 'dragon'], [E(714, 'Noibat', 22), E(715, 'Noivern', 72)]),
+
+  L('rockruff', 'alola', 'comun', ['roca'], [E(744, 'Rockruff', 24), E(745, 'Lycanroc', 64)]),
+  L('mudbray', 'alola', 'comun', ['tierra'], [E(749, 'Mudbray', 26), E(750, 'Mudsdale', 66)]),
+  L('wimpod', 'alola', 'raro', ['bicho', 'agua'], [E(767, 'Wimpod', 18), E(768, 'Golisopod', 72)]),
+  L('salandit', 'alola', 'raro', ['veneno', 'fuego'], [E(757, 'Salandit', 24), E(758, 'Salazzle', 68)]),
+
+  L('rookidee', 'galar', 'comun', ['volador'], [E(821, 'Rookidee', 20), E(822, 'Corvisquire', 46), E(823, 'Corviknight', 72, ['volador', 'acero'])]),
+  L('wooloo', 'galar', 'comun', ['normal'], [E(831, 'Wooloo', 20), E(832, 'Dubwool', 58)]),
+  L('hatenna', 'galar', 'raro', ['psiquico'], [E(856, 'Hatenna', 22), E(857, 'Hattrem', 48), E(858, 'Hatterene', 74, ['psiquico', 'hada'])]),
+  L('impidimp', 'galar', 'raro', ['siniestro', 'hada'], [E(859, 'Impidimp', 22), E(860, 'Morgrem', 48), E(861, 'Grimmsnarl', 74)]),
+
+  L('lechonk', 'paldea', 'comun', ['normal'], [E(915, 'Lechonk', 20), E(916, 'Oinkologne', 56)]),
+  L('tandemaus', 'paldea', 'comun', ['normal'], [E(924, 'Tandemaus', 22), E(925, 'Maushold', 58)]),
+  L('nacli', 'paldea', 'comun', ['roca'], [E(932, 'Nacli', 22), E(933, 'Naclstack', 48), E(934, 'Garganacl', 70)]),
+  L('maschiff', 'paldea', 'comun', ['siniestro'], [E(942, 'Maschiff', 24), E(943, 'Mabosstiff', 62)]),
+  L('cetoddle', 'paldea', 'comun', ['hielo'], [E(974, 'Cetoddle', 26), E(975, 'Cetitan', 66)]),
+  L('frigibax', 'paldea', 'pseudo', ['dragon', 'hielo'], [E(996, 'Frigibax', 30), E(997, 'Arctibax', 56), E(998, 'Baxcalibur', 86)]),
+
   // Legendarios (solo por evento)
   L('articuno', 'kanto', 'legendario', ['hielo', 'volador'], [E(144, 'Articuno', 94)]),
   L('zapdos', 'kanto', 'legendario', ['electrico', 'volador'], [E(145, 'Zapdos', 94)]),
@@ -152,7 +208,7 @@ export const LINEAS = [
   L('giratina', 'sinnoh', 'legendario', ['fantasma', 'dragon'], [E(487, 'Giratina', 97)]),
   L('zekrom', 'unova', 'legendario', ['dragon', 'electrico'], [E(644, 'Zekrom', 97)]),
   L('xerneas', 'kalos', 'legendario', ['hada'], [E(716, 'Xerneas', 97)]),
-  L('zacian', 'galar', 'legendario', ['hada', 'acero'], [E(888, 'Zacian', 98)]),
+  L('zacian', 'galar', 'legendario', ['hada'], [E(888, 'Zacian', 98)]),
   L('koraidon', 'paldea', 'legendario', ['lucha', 'dragon'], [E(1007, 'Koraidon', 97)]),
   L('mew', 'kanto', 'legendario', ['psiquico'], [E(151, 'Mew', 96)]),
 ];

@@ -2,15 +2,15 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=28';
+} from './datos.js?v=29';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida, esSatoshi,
   leerPalmares, apuntarEnPalmares, borrarPalmares, exportarPalmares, importarPalmares,
-} from './motor.js?v=28';
-import { siguienteEvento } from './eventos.js?v=28';
-import { descargarTarjeta } from './tarjeta.js?v=28';
+} from './motor.js?v=29';
+import { siguienteEvento } from './eventos.js?v=29';
+import { descargarTarjeta } from './tarjeta.js?v=29';
 
 // ── Tema claro / oscuro ──────────────────────────────────────────────────────
 // Sin elección guardada seguimos al sistema; al pulsar, se fija a mano.
@@ -63,14 +63,33 @@ const colorOvr = v => (v >= 85 ? '#7a5cf0' : v >= 75 ? '#17a673' : v >= 62 ? '#3
 const seleccion = { region: REGIONES[0], estilo: ESTILOS[0], inicial: null, ritmo: RITMOS[1] };
 
 // Una línea del palmarés: rango, quién fue y cómo acabó.
-const fila = c => `<div class="palmares-fila">
+const fila = c => `<button class="palmares-fila" data-id="${c.id}" type="button"
+  title="Recuperar la tarjeta de esta carrera">
   <span class="palmares-emoji">${c.rangoEmoji ?? '🎖️'}</span>
   <span class="palmares-datos">
     <b>${esc(c.rango)}</b>
     <small>${esc(c.nombre)} · ${c.emoji ?? ''} ${esc(c.region)} · ${c.años} temporadas${c.ash ? ' · ⚡ Kanto' : ''}</small>
   </span>
   <span class="palmares-cifras"><b>${c.media}</b><small>${c.pts} pts</small></span>
-</div>`;
+  <span class="palmares-compartir">📸</span>
+</button>`;
+
+// Reconstruye la tarjeta de una carrera vieja a partir de su resumen guardado.
+// La tarjeta solo lee un puñado de campos, así que basta con recomponerlos.
+async function tarjetaDeCarrera(c) {
+  await descargarTarjeta({
+    nombre: c.nombre, regionNombre: c.region, media: c.media,
+    año: c.años, edad: c.edad, titulos: Array(c.titulos ?? 0),
+    medallas: c.medallas, mundiales: c.mundiales,
+    victorias: c.victorias, derrotas: c.derrotas, dinero: c.dinero,
+  }, {
+    pts: c.pts,
+    rango: { emoji: c.rangoEmoji ?? '🎖️', titulo: c.rango },
+    premios: (c.premios ?? []).map(p => ({ ...p, desc: p.desc ?? '' })),
+    equipo: c.equipo ?? [],
+    apodo: c.apodo ?? '',
+  });
+}
 
 function pantallaInicio() {
   seleccion.inicial = null;
@@ -231,6 +250,15 @@ function pantallaInicio() {
   };
 
   if (palmares.length) {
+    for (const b of document.querySelectorAll('.palmares-fila')) {
+      b.onclick = async () => {
+        const c = palmares.find(x => x.id === b.dataset.id);
+        if (!c) return;
+        try { await tarjetaDeCarrera(c); aviso('Tarjeta de esa carrera lista.'); }
+        catch { aviso('No se ha podido generar la tarjeta.'); }
+      };
+    }
+
     document.getElementById('ver-todas')?.addEventListener('click', ev => {
       document.getElementById('palmares-resto').classList.remove('oculto');
       ev.target.remove();
@@ -662,7 +690,7 @@ function pantallaFinal() {
       titulos: estado.titulos.length, medallas: estado.medallas, mundiales: estado.mundiales,
       victorias: estado.victorias, derrotas: estado.derrotas, dinero: estado.dinero,
       equipo: equipo.map(p => ({ dex: p.dex, nombre: p.nombre, nivel: Math.round(p.nivel) })),
-      premios: premios.map(p => ({ emoji: p.emoji, nombre: p.nombre })),
+      premios: premios.map(p => ({ emoji: p.emoji, nombre: p.nombre, desc: p.desc })),
       ash: !!estado.flags.esAsh,
     });
   }

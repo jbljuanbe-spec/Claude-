@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=35') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=35') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=36') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=36') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=35') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=35') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=36') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=36') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=35') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=36') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -519,16 +519,17 @@ input[type=text]:focus { border-color: var(--azul); }
 }
 .firma-final { margin-top: 18px; }
 
-/* Café: solo en la pantalla final, discreto a propósito — que done quien
-   de verdad quiera, no un reclamo. Enlace externo, sin seguimiento. */
+/* Café: solo en la pantalla final. Pequeño, pero con color propio para que
+   se vea de verdad — que done quien de verdad quiera, sin que sea un reclamo
+   enorme, pero tampoco escondido. Enlace externo, sin seguimiento. */
 .cafe {
-  display: flex; align-items: center; justify-content: center; gap: 5px;
-  margin: 10px auto 0; padding: 5px 12px; width: fit-content;
-  background: transparent; border: 1px solid var(--linea);
-  border-radius: 30px; color: var(--suave); font-size: 11px;
-  text-decoration: none; transition: .14s; opacity: .75;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin: 10px auto 0; padding: 7px 14px; width: fit-content;
+  background: var(--oro); border: 1px solid var(--oro);
+  border-radius: 30px; color: #fff; font-size: 12.5px; font-weight: 700;
+  text-decoration: none; transition: .14s;
 }
-.cafe:hover { border-color: var(--oro); color: var(--tinta); opacity: 1; }
+.cafe:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
 
 /* Premisa de la portada: encuadra el arco de crío de ruta a profesional */

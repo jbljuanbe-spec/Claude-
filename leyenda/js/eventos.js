@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse, sumarMedia,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=38';
-import { LINEAS, POROBJETO, REGIONES, TIPOS } from './datos.js?v=38';
+} from './motor.js?v=39';
+import { LINEAS, POROBJETO, REGIONES, TIPOS } from './datos.js?v=39';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -1390,6 +1390,101 @@ const ARCO_ANIME = [
             m(e, { media: [3, 7], poder: [7, 13], estrategia: [4, 8] }));
           return efecto('En un torneo con público se lía a golpes con el entrenador rival y hay que sacarlo entre cuatro. Sanción, multa y una semana entera de titulares.',
             m(e, { fama: [-11, -6], dinero: -rango(4000, 9000), moral: [-4, -2] })); } },
+    ],
+  },
+  // Variantes: comparten el mismo paso del guion que el evento de al lado, así
+  // que en cada partida de Satoshi sale una u otra. La historia es la misma,
+  // los años intermedios no.
+  {
+    id: 'ash_6b_faro', ...paso(6),
+    titulo: 'El faro del acantilado',
+    texto: () => 'Un investigador que vive solo en un faro lleva años emitiendo una llamada grabada hacia el mar, esperando a un Pokémon gigante del que nadie tiene una foto decente. La noche que te quedas a dormir allí, algo del tamaño del faro contesta desde la niebla.',
+    opciones: [
+      { txt: 'Salir al acantilado a verlo', sub: 'Sin Poké Balls, solo mirar.',
+        efecto: e => { avanzar(e, 6);
+          hito(e, '🗼', 'Vio de cerca al gigante del faro');
+          return efecto('Sales sin nada en las manos y os miráis durante un minuto entero antes de que se hunda otra vez. No hay foto, no hay prueba y nadie te va a creer nunca. Da igual.',
+            m(e, { moral: [10, 17], vinculo: [7, 12], estrategia: [4, 8] })); } },
+      { txt: 'Intentar capturarlo', sub: 'Una oportunidad así no se repite.', riesgo: 0.15,
+        efecto: (e, ok) => { avanzar(e, 6);
+          if (ok) { const p = fichar(e, 'dratini', { nivel: 22 });
+            hito(e, '🐉', 'Le lanzó una Ball al gigante del faro');
+            return efecto(`La bola rebota en algo que no era él: un ${p?.nombre ?? 'Dratini'} que iba en su estela y que sí cae. Del grande no vuelves a saber nada, y el investigador no te habla en un mes.`,
+              m(e, { fama: [4, 9], moral: [5, 10] })); }
+          return efecto('La bola sale despedida y él se va. El faro se queda a oscuras esa noche, el investigador llorando en la escalera y tú sin saber dónde meterte.',
+            m(e, { moral: [-9, -4], fama: [-3, -1], estrategia: [3, 6] })); } },
+    ],
+  },
+  {
+    id: 'ash_8b_central', ...paso(8),
+    titulo: 'La central abandonada',
+    texto: () => 'La central eléctrica que alimenta media región lleva tres días sin dar corriente y los operarios no entran: dentro hay una colonia de Pokémon de lodo metida en las turbinas y algo eléctrico rebotando por los pasillos. El alcalde ofrece dinero a quien lo resuelva.',
+    opciones: [
+      { txt: 'Entrar tú a limpiar aquello', sub: 'Con el equipo y una linterna.', riesgo: 0.6,
+        efecto: (e, ok) => { avanzar(e, 8);
+          if (ok) return efecto('Tardáis dos días en sacarlos de las turbinas sin hacerles daño y reubicarlos en una charca a diez kilómetros. Vuelve la luz a media región y sales en el informativo de la noche.',
+            m(e, { dinero: rango(6000, 14000), fama: [7, 13], moral: [7, 12] }));
+          return efecto('Tocas lo que no debías y la descarga os manda a los dos al centro de salud. La luz vuelve sola tres días después y nadie se acuerda de que estuviste allí.',
+            m(e, { salud: [-8, -4], moral: [-4, -2], estrategia: [4, 8] })); } },
+      { txt: 'Avisar de que ahí viven', sub: 'No es una avería, es una colonia.',
+        efecto: e => { avanzar(e, 8);
+          return efecto('Explicas en el ayuntamiento que eso lleva años siendo su casa y que la central se construyó encima. Te miran como si hablaras en otro idioma, pero acaban montando el traslado bien hecho.',
+            m(e, { fama: [3, 7], moral: [6, 11], vinculo: [7, 12] })); } },
+    ],
+  },
+  {
+    id: 'ash_9b_ponyta', ...paso(9),
+    titulo: 'La carrera del rancho',
+    texto: () => 'Un rancho enorme donde crían Pokémon de fuego y montan una carrera anual con más público que muchos torneos oficiales. La favorita es una Ponyta que no deja que la monte nadie y cuya criadora te ofrece el puesto porque su hermano se ha roto una pierna.',
+    opciones: [
+      { txt: 'Correr la carrera', sub: 'Sin haberte subido nunca a una.', riesgo: 0.5,
+        efecto: (e, ok) => { avanzar(e, 9);
+          if (ok) { hito(e, '🐎', 'Ganó la carrera del rancho a lomos de una Ponyta');
+            return efecto('Te deja subir a la tercera vuelta de calentamiento y ganáis por medio cuerpo entre las llamas. La criadora te paga y te dice que vuelvas cuando quieras.',
+              m(e, { dinero: rango(4000, 11000), fama: [7, 12], moral: [9, 15], salud: [-4, -2] })); }
+          return efecto('Te tira en la segunda curva delante de mil personas y acabas la carrera andando, con el sombrero en la mano. La criadora te invita a comer para que no te vayas así.',
+            m(e, { salud: [-7, -3], moral: [-5, -2], vinculo: [5, 9] })); } },
+      { txt: 'Quedarte a cuidar la cuadra', sub: 'Aprender por dentro cómo se cría.',
+        efecto: e => { avanzar(e, 9);
+          return efecto('Te pasas la temporada entera limpiando establos y viendo cómo se prepara a un Pokémon de verdad: comida, descanso, cuándo parar. No sales en ninguna foto y te llevas dos años de conocimiento.',
+            m(e, { estrategia: [8, 14], vinculo: [9, 15], media: [1, 3] })); } },
+    ],
+  },
+  {
+    id: 'ash_13b_dojo', ...paso(13),
+    titulo: 'El dojo de la ciudad',
+    texto: () => 'Dos escuelas de lucha llevan veinte años peleándose por el mismo barrio y por si es mejor pegar con los puños o con las piernas. Te ofrecen combatir por una de las dos, y de premio te llevas al alumno que sobra: un Tyrogue que no encaja en ninguna de las dos formas.',
+    opciones: [
+      { txt: 'Combatir y llevarte al que sobra', sub: 'A ese no lo quiere nadie.', riesgo: 0.65,
+        efecto: (e, ok) => { avanzar(e, 13); const p = fichar(e, 'tyrogue', { nivel: 18 });
+          if (ok) return efecto(`Ganas el combate y te llevas al pequeño delante de los dos maestros, que discuten hasta en eso. ${p?.nombre ?? 'Tyrogue'} entra en el equipo y todavía no sabe en qué va a acabar convirtiéndose.`,
+            m(e, { media: [1, 4], vinculo: [7, 12], moral: [6, 11] }));
+          return efecto(`Pierdes el combate y aun así te dejan llevártelo, básicamente para quitárselo de en medio. ${p?.nombre ?? 'Tyrogue'} se sube a tu hombro sin que nadie le aplauda.`,
+            m(e, { moral: [-3, -1], vinculo: [8, 13], estrategia: [4, 8] })); } },
+      { txt: 'Negarte a elegir bando', sub: 'Esa pelea no es tuya.',
+        efecto: e => { avanzar(e, 13);
+          return efecto('Les dices que se peleen ellos y te vas del barrio sin combatir. Los dos maestros te dedican una semana de insultos por la radio local y tú llegas fresco a la siguiente ciudad.',
+            m(e, { fama: [-4, -1], salud: [5, 9], estrategia: [3, 6] })); } },
+    ],
+  },
+  {
+    id: 'ash_16b_seis', ...paso(16),
+    titulo: 'La norma de los seis',
+    texto: e => `Un inspector de la Liga se planta en el hotel con una carpeta: llevas años acumulando capturas y la norma dice seis en activo, el resto al rancho del laboratorio. Te da a elegir a quién dejas fuera, ahora mismo, con la carpeta abierta encima de la mesa.`,
+    opciones: [
+      { txt: 'Cumplir la norma y mandarlos al rancho', sub: 'Elegir a quién dejas fuera.',
+        efecto: e => { avanzar(e, 16);
+          const eq = activos(e).filter(p => p.uid !== e.socio).sort((a, b) => poderPokemon(a) - poderPokemon(b));
+          const fuera = eq.slice(0, Math.max(0, eq.length - 5));
+          for (const p of fuera) p.retirado = true;
+          return efecto(`Firmas la carpeta y los subes tú mismo al transporte, uno por uno, explicándoles algo que no entienden.${fuera.length ? ` Se van al rancho ${fuera.map(p => p.nombre).join(', ')}.` : ' Resulta que ya cumplías, y encima te disculpas.'}`,
+            m(e, { moral: [-6, -3], fama: [4, 8], estrategia: [4, 8] })); } },
+      { txt: 'Discutirle la norma al inspector', sub: 'Te vas a comer el expediente.', riesgo: 0.45,
+        efecto: (e, ok) => { avanzar(e, 16);
+          if (ok) return efecto('Le montas tal escena en la recepción del hotel que acaba dándote una prórroga por escrito. Te quedas con el equipo entero y con un inspector que ya no te va a quitar ojo en toda tu carrera.',
+            m(e, { vinculo: [9, 15], moral: [7, 12], fama: [-3, -1] }));
+          return efecto('Le montas una escena, alguien la graba y sale en todas partes. Multa, apercibimiento y la obligación de cumplir igual, solo que ahora con público.',
+            m(e, { dinero: -rango(5000, 12000), fama: [-8, -4], moral: [-5, -2] })); } },
     ],
   },
   {

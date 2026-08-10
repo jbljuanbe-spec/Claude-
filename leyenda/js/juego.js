@@ -1,16 +1,17 @@
 // Interfaz y bucle de juego.
 import {
-  REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO,
+  REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO, LOGROS,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=36';
+} from './datos.js?v=37';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida, esSatoshi,
   leerPalmares, apuntarEnPalmares, borrarPalmares, exportarPalmares, importarPalmares,
-} from './motor.js?v=36';
-import { siguienteEvento } from './eventos.js?v=36';
-import { descargarTarjeta } from './tarjeta.js?v=36';
+  leerLogros, desbloquearLogros, borrarLogros,
+} from './motor.js?v=37';
+import { siguienteEvento } from './eventos.js?v=37';
+import { descargarTarjeta } from './tarjeta.js?v=37';
 
 // ── Tema claro / oscuro ──────────────────────────────────────────────────────
 // Sin elección guardada seguimos al sistema; al pulsar, se fija a mano.
@@ -91,6 +92,35 @@ async function tarjetaDeCarrera(c) {
   });
 }
 
+// ── Medallero ────────────────────────────────────────────────────────────────
+// Lo único que se acumula entre carreras: las insignias que has llegado a
+// conseguir alguna vez. Las que faltan se ven, con su pista, para que sepas
+// qué te queda por hacer.
+function pantallaMedallero() {
+  const tengo = new Set(leerLogros());
+  const conseguidas = LOGROS.filter(l => tengo.has(l.id)).length;
+  app.innerHTML = `
+    <div class="tarjeta medallero">
+      <div class="etiqueta-anio">Medallero</div>
+      <h2>${conseguidas} de ${LOGROS.length}</h2>
+      <p class="cuerpo">Las insignias se quedan aquí de una carrera a otra. Se guardan solo en
+        este navegador: viajan con la copia del palmarés, sin cuentas ni servidores.</p>
+      <div class="barra-medallero"><span style="width:${Math.round(100 * conseguidas / LOGROS.length)}%"></span></div>
+      <div class="rejilla-insignias">
+        ${LOGROS.map(l => {
+          const ok = tengo.has(l.id);
+          return `<div class="insignia${ok ? '' : ' bloqueada'}">
+            <span class="ins-emoji">${ok ? l.emoji : '🔒'}</span>
+            <span class="ins-txt"><b>${esc(l.nombre)}</b><small>${esc(l.pista)}</small></span>
+          </div>`;
+        }).join('')}
+      </div>
+      <button class="boton-grande" id="volver-inicio">◂ Volver</button>
+    </div>`;
+  document.getElementById('volver-inicio').onclick = pantallaInicio;
+  scrollTo(0, 0);
+}
+
 function pantallaInicio() {
   seleccion.inicial = null;
   const guardada = cargarPartida();
@@ -146,6 +176,10 @@ function pantallaInicio() {
         <button id="importar">Recupera tu palmarés</button>
         <input type="file" id="fichero" accept="application/json,.json" hidden>
       </p>`}
+
+    <button class="boton-medallero" id="ir-medallero" type="button">
+      🎖️ Medallero <b>${leerLogros().length}/${LOGROS.length}</b>
+    </button>
 
     <div class="bloque">
       <label for="nombre">Tu nombre</label>
@@ -231,6 +265,7 @@ function pantallaInicio() {
   const rits = document.getElementById('ritmos');
   rits.onclick = ev => { const b = ev.target.closest('.opcion'); if (!b) return; seleccion.ritmo = RITMOS[+b.dataset.i]; marcar(rits, b); };
   document.getElementById('nombre').oninput = revisar;
+  document.getElementById('ir-medallero').onclick = pantallaMedallero;
 
   // Recuperar copia tiene que estar SIEMPRE, incluso sin palmarés: es
   // justo lo que necesita alguien que acaba de estrenar móvil.
@@ -276,8 +311,9 @@ function pantallaInicio() {
     };
 
     document.getElementById('olvidar').onclick = () => {
-      if (!confirm('¿Borrar tu palmarés entero? No se puede deshacer.')) return;
+      if (!confirm('¿Borrar tu palmarés entero y las insignias del medallero? No se puede deshacer.')) return;
       borrarPalmares();
+      borrarLogros();
       pantallaInicio();
     };
   }
@@ -700,6 +736,8 @@ function pantallaFinal() {
       premios: premios.map(p => ({ emoji: p.emoji, nombre: p.nombre, desc: p.desc })),
       ash: !!estado.flags.esAsh,
     });
+    // Las insignias de esta carrera se suman al medallero permanente.
+    desbloquearLogros(premios.map(p => p.id));
   }
 
   app.innerHTML = `<div id="vista"></div>`;

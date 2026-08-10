@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=36') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=36') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=37') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=37') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=36') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=36') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=37') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=37') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=36') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=37') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -538,3 +538,32 @@ input[type=text]:focus { border-color: var(--azul); }
   background: var(--panel); border: 1.5px solid var(--linea); border-radius: var(--radio);
   font-size: 13px; line-height: 1.5; color: #4a5170;
 }
+
+/* ── Medallero ─────────────────────────────────────────── */
+.boton-medallero {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; margin: 0 0 14px; padding: 12px;
+  background: var(--panel); border: 1.5px solid var(--linea); border-radius: var(--radio);
+  color: var(--tinta); font-family: var(--f-cuerpo); font-size: 15px; font-weight: 600;
+  box-shadow: var(--sombra);
+}
+.boton-medallero b { color: var(--oro); font-family: var(--f-mini); font-size: 13px; }
+
+.barra-medallero {
+  height: 8px; margin: 10px 0 14px; border-radius: 6px;
+  background: var(--panel2); border: 1px solid var(--linea); overflow: hidden;
+}
+.barra-medallero span { display: block; height: 100%; background: var(--oro); }
+
+.rejilla-insignias { display: grid; gap: 8px; }
+.insignia {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 11px; border: 1px solid var(--linea); border-radius: 12px;
+  background: var(--panel2);
+}
+.insignia .ins-emoji { font-size: 24px; line-height: 1; width: 30px; text-align: center; }
+.insignia .ins-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.insignia .ins-txt b { font-size: 14px; }
+.insignia .ins-txt small { color: var(--suave); font-size: 12.5px; }
+.insignia.bloqueada { opacity: .55; }
+.insignia.bloqueada .ins-txt b { color: var(--suave); font-weight: 600; }

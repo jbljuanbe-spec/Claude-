@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse, sumarMedia,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=36';
-import { LINEAS, POROBJETO, REGIONES, TIPOS } from './datos.js?v=36';
+} from './motor.js?v=37';
+import { LINEAS, POROBJETO, REGIONES, TIPOS } from './datos.js?v=37';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -1026,14 +1026,55 @@ const EVENTOS = [
         efecto: e => efecto('Lo dejas quieto. Cuando te retires no tendrás que trabajar nunca más.', m(e, { moral: [3, 8] })) },
     ],
   },
+  {
+    id: 'mo_esclavo', etapas: ['gimnasios', 'liga', 'pro'], peso: 13, unico: true,
+    titulo: 'Corte, Fuerza y Surf',
+    texto: e => `La ruta al torneo está cortada por un río, un árbol y una roca del tamaño de una casa. Hacen falta tres movimientos de utilidad y ninguno de tus titulares quiere gastar un hueco de ataques en eso. ${masFuerte(e)?.nombre ?? 'Tu estrella'} directamente te da la espalda.`,
+    opciones: [
+      { txt: 'Capturar un Zigzagoon para eso', sub: 'Que aprenda las tres y punto.', icono: 'poke', riesgo: 0.6,
+        efecto: (e, ok) => { const p = fichar(e, 'zigzagoon', { nivel: 12 });
+          if (ok) return efecto(`Cruzas la ruta en un día. ${p?.nombre ?? 'El Zigzagoon'} resulta ser incansable y acaba haciéndose un hueco de verdad en el equipo.`,
+            m(e, { media: [1, 3], estrategia: [4, 8], vinculo: [2, 5] }));
+          return efecto(`Cruzas la ruta, sí, pero una foto tuya obligándole a partir el árbol de madrugada da la vuelta al circuito. "Mula de carga", titulan. ${p?.nombre ?? 'El Zigzagoon'} se queda en el equipo y tú te comes la portada.`,
+            m(e, { fama: [-10, -5], moral: [-6, -2], estrategia: [3, 6] })); } },
+      { txt: 'Que tu estrella olvide su mejor ataque', sub: 'Tú pierdes, la imagen no.',
+        efecto: e => { const p = masFuerte(e); if (p) p.forma = Math.max(-20, (p.forma ?? 0) - rango(6, 12));
+          return efecto(`${p?.nombre ?? 'Tu mejor Pokémon'} aprende Corte encima de lo que mejor hacía. Pasas la ruta con la cabeza alta y con un ataque menos en el torneo.`,
+            m(e, { media: [-2, -1], fama: [2, 5], vinculo: [5, 10] })); } },
+      { txt: 'Rodear la ruta a pie', sub: 'Tres días más de camino.',
+        efecto: e => efecto('Bordeáis la montaña entera cargando con todo. Llegas tarde, agotado y sin haberle pedido nada raro a nadie. El equipo lo nota y te lo devuelve.',
+          m(e, { salud: [-9, -4], dinero: -rango(1500, 4000), vinculo: [8, 14], moral: [2, 6] })) },
+    ],
+  },
+  {
+    id: 'guarderia_olvido', etapas: ['pro', 'cima', 'veterano'], peso: 11, unico: true,
+    titulo: 'La factura de la guardería',
+    texto: e => `Auditando tus cuentas, tu gestor encuentra un cargo pequeño que se repite desde hace ocho años: una guardería de la Ruta 3. Llamas. Sigue allí el Pidgey que dejaste "una semana" cuando tenías ${Math.max(11, e.edad - 8)} años. Con los intereses, la cuenta es obscena.`,
+    opciones: [
+      { txt: 'Pagar la factura entera', sub: 'Ocho años cuestan lo que cuestan.', cond: e => e.dinero >= 40000,
+        efecto: e => { const p = fichar(e, 'pidgey', { nivel: 100 });
+          hito(e, '🕊️', 'Recuperó al Pidgey que olvidó ocho años en una guardería');
+          return efecto(`Pagas sin mirar el total. Lo que sale del recinto no es un Pidgey: es un ${p?.nombre ?? 'Pidgeot'} enorme que lleva ocho años comiendo y entrenando con los cuidadores, y que te reconoce igualmente.`,
+            m(e, { dinero: -Math.round(Math.max(40000, e.dinero * 0.55)), moral: [8, 15], vinculo: [10, 17], media: [1, 3] })); } },
+      { txt: 'Pagar y dejarlo donde está', sub: 'Su casa es esa, no la tuya.',
+        efecto: e => efecto('Saldas la cuenta y firmas que se queda de por vida, con todo pagado. Los ancianos te mandan una foto suya cada temporada y tú la guardas siempre.',
+          m(e, { dinero: -Math.round(Math.min(e.dinero * 0.3, 90000)), moral: [5, 11], fama: [2, 6] })) },
+      { txt: 'Bloquear el número de la guardería', sub: 'Problema resuelto.', riesgo: 0.55,
+        efecto: (e, ok) => ok
+          ? efecto('Bloqueas el teléfono y no vuelves a pensar en ello. Ahorras una fortuna. Alguna noche, en hoteles de torneo, te acuerdas.', m(e, { moral: [-7, -3], estrategia: [1, 3] }))
+          : efecto('Los ancianos cuentan la historia en televisión, con el Pidgey delante de la cámara. "Ocho años", repiten. Te llueve durante meses.',
+            m(e, { fama: [-13, -7], moral: [-9, -4] })) },
+    ],
+  },
   // ── ARCO DE KANTO (easter egg: nombre "Satoshi") ────────────────────────────
   // La carrera del anime, beat a beat y en orden estricto: cada evento exige el
   // paso anterior (flags.ash) y deja puesto el siguiente. Peso altísimo para que
   // mande sobre el resto mientras la historia esté abierta.
 ];
 
-// Nota de guion: el arco cubre Kanto y termina en la Liga Añil. A partir de ahí
-// la carrera sigue siendo la tuya, con los eventos normales.
+// Nota de guion: el arco cubre la carrera entera del anime, de Pueblo Paleta al
+// Torneo de los Ocho Maestros, un paso por temporada y en orden estricto. En esa
+// partida no salen los eventos normales: solo pasa lo que pasó de verdad.
 const paso = (n, extra = {}) => ({
   // `prioritario`: mientras la historia esté abierta manda sobre todo lo demás,
   // y `TODAS` las etapas para que no se quede a medias si la carrera se alarga.
@@ -1042,7 +1083,7 @@ const paso = (n, extra = {}) => ({
 });
 const avanzar = (e, n) => { e.flags.ash = n + 1; };
 
-const ARCO_KANTO = [
+const ARCO_ANIME = [
   {
     id: 'ash_1_pikachu', ...paso(1),
     titulo: 'Te has dormido el primer día',
@@ -1052,7 +1093,7 @@ const ARCO_KANTO = [
         efecto: (e, ok) => { avanzar(e, 1);
           if (ok) return efecto('Contra todo pronóstico entra. Sale a los diez segundos y se sienta encima de la Ball, pero al menos ha entrado una vez.', m(e, { estrategia: [2, 5], vinculo: [-4, -1] }));
           return efecto('Te suelta una descarga que te deja el pelo de punta y el pijama humeando. El Profesor no disimula la risa. Empezamos bien.',
-            m(e, { salud: [-8, -3], moral: [-6, -2], vinculo: [3, 7] })); } },
+            m(e, { salud: [-4, -2], moral: [-3, -1], vinculo: [3, 7] })); } },
       { txt: 'Dejarle andar a tu lado', sub: 'Si no quiere, no quiere.',
         efecto: e => { avanzar(e, 1);
           return efecto('Sales del pueblo con él caminando detrás, a tres metros, sin mirarte. No es afecto todavía, pero es un principio.',
@@ -1071,12 +1112,12 @@ const ARCO_KANTO = [
           if (ok) return efecto(`Te pones encima de él y les dices que vengan. Lo que pasa después no lo entiendes del todo: un trueno que parte el cielo, la bandada desapareciendo, y un pájaro dorado cruzando el arcoíris a lo lejos. ${s?.nombre ?? 'Pikachu'} ya no camina detrás de ti: camina en tu hombro.`,
             m(e, { vinculo: [20, 30], moral: [16, 26], fama: [4, 9], talento: [2, 5] }));
           return efecto(`Te pones encima de él y les dices que vengan. Funciona, pero acabas los dos en el Centro Pokémon una semana. ${s?.nombre ?? 'Pikachu'} no se despega de la camilla en todo ese tiempo.`,
-            m(e, { salud: [-16, -9], vinculo: [20, 30], moral: [8, 15] })); } },
+            m(e, { salud: [-9, -5], vinculo: [20, 30], moral: [8, 15] })); } },
       { txt: 'Cogerlo y correr', sub: 'Salvar lo que se pueda.',
         efecto: e => { avanzar(e, 2); const s = socioDe(e);
           if (s) s.vinculo = limitar(s.vinculo + rango(10, 18));
           return efecto('Lo coges en brazos y corres hasta que las piernas dejan de responderte. Llegáis vivos de milagro y él te mira distinto, aunque no tanto como te habría mirado si te hubieras quedado.',
-            m(e, { salud: [-9, -4], vinculo: [8, 14] })); } },
+            m(e, { salud: [-5, -2], vinculo: [8, 14] })); } },
     ],
   },
   {
@@ -1089,11 +1130,11 @@ const ARCO_KANTO = [
           if (ok) return efecto('Le firmas un pagaré en una servilleta. Ella lo guarda, dice que te va a seguir hasta cobrarlo, y de paso te enseña más de tipo agua en un mes que tú en toda tu vida.',
             m(e, { estrategia: [7, 13], dinero: -rango(3000, 8000), moral: [4, 9] }));
           return efecto('Le dices que se la pagas y no te cree ni un poco. Te sigue igualmente, pero te lo recuerda absolutamente cada día durante años.',
-            m(e, { moral: [-7, -3], estrategia: [5, 10] })); } },
+            m(e, { moral: [-4, -2], estrategia: [5, 10] })); } },
       { txt: 'Salir corriendo', sub: 'Ya te buscará.',
         efecto: e => { avanzar(e, 3);
           return efecto('Sales por patas con Pikachu bajo el brazo. Te alcanza dos pueblos después, obviamente, y ahora además está enfadada. Sigue viniendo contigo.',
-            m(e, { fama: [-4, -1], moral: [-4, -1], salud: [3, 7] })); } },
+            m(e, { fama: [-4, -1], moral: [-2, -1], salud: [3, 7] })); } },
     ],
   },
   {
@@ -1112,7 +1153,7 @@ const ARCO_KANTO = [
             return efecto(`Te pasas el bosque entero buscando y sale bien: ${p?.nombre ?? 'algo raro'} cae en la Ball. Tardas tres días más de la cuenta, pero mereció la pena.`,
               m(e, { fama: [5, 10], media: [1, 4] })); }
           return efecto('Dejas pasar al Caterpie buscando algo mejor y no aparece nada en tres días. Sales del bosque con el mismo equipo con el que entraste y con hambre.',
-            m(e, { moral: [-8, -3], salud: [-5, -2] })); } },
+            m(e, { moral: [-4, -2], salud: [-3, -1] })); } },
     ],
   },
   {
@@ -1126,29 +1167,125 @@ const ARCO_KANTO = [
             return efecto('Vuelves un mes después con un plan que no depende del tipo y le ganas limpiamente. Brock te da la medalla y, unas semanas más tarde, te pide ir contigo.',
               m(e, { media: [3, 7], estrategia: [8, 14], moral: [8, 14] })); }
           return efecto('Vuelves y pierdes otra vez, esta vez sin excusas. Brock te da consejos en lugar de la medalla y te dice que no tengas prisa.',
-            m(e, { estrategia: [6, 11], moral: [-7, -3] })); } },
+            m(e, { estrategia: [6, 11], moral: [-4, -2] })); } },
       { txt: 'Aceptar la medalla que te ofrece', sub: 'Te la da él, no la ganas tú.',
         efecto: e => { avanzar(e, 5); e.medallas = Math.min(8, e.medallas + 1);
           return efecto('Los aspersores del gimnasio deciden el combate y Brock te pone la medalla en la mano diciendo que no la has ganado. Te la quedas. Vas a pensar en eso más veces de las que te gustaría.',
-            m(e, { moral: [-6, -2], estrategia: [2, 6], fama: [3, 7] })); } },
+            m(e, { moral: [-3, -1], estrategia: [2, 6], fama: [3, 7] })); } },
     ],
   },
   {
-    id: 'ash_6_surge', ...paso(6),
+    id: 'ash_6_montemoon', ...paso(6),
+    titulo: 'El Monte Moon',
+    texto: () => 'Dentro del monte hay un científico obsesionado con los fósiles, una piedra enorme que brilla y un montón de Clefairy bailando a su alrededor. También hay cuatro tipos de uniforme negro con una excavadora, y no han venido a mirar.',
+    opciones: [
+      { txt: 'Plantarles cara dentro de la cueva', sub: 'Cuatro contra ti.', riesgo: 0.6,
+        efecto: (e, ok) => { avanzar(e, 6);
+          hito(e, '🌙', 'Defendió la piedra lunar del Monte Moon');
+          if (ok) return efecto('Los echáis de allí a base de descargas en un pasillo de dos metros. Los Clefairy os despiden desde la entrada y el científico cuenta la historia en televisión con tu nombre bien alto.',
+            m(e, { fama: [7, 13], moral: [8, 15], estrategia: [3, 7] }));
+          return efecto('Se llevan un trozo de la piedra y a ti te llevan en camilla. Los Clefairy te acompañan hasta la salida del monte, que es lo único bueno de la noche.',
+            m(e, { salud: [-8, -4], moral: [-3, -1], fama: [3, 7] })); } },
+      { txt: 'Comprarle un fósil al científico', sub: 'Dice que dentro hay algo vivo.', riesgo: 0.5,
+        efecto: (e, ok) => { avanzar(e, 6);
+          if (ok) { const p = fichar(e, elegir(['omanyte', 'kabuto']), { nivel: 12 });
+            return efecto(`Le sueltas todo lo que llevas por una piedra con forma de caracol. En el laboratorio de la isla la reviven meses después: ${p?.nombre ?? 'el fósil'} sale de ahí y se une al equipo.`,
+              m(e, { dinero: -rango(2000, 5000), fama: [4, 9], moral: [6, 11] })); }
+          return efecto('Le sueltas todo lo que llevas por una piedra que resulta ser, literalmente, una piedra. El hombre ya no está cuando vuelves a buscarle.',
+            m(e, { dinero: -rango(2000, 5000), moral: [-4, -2], estrategia: [3, 6] })); } },
+    ],
+  },
+  {
+    id: 'ash_7_celeste', ...paso(7),
+    titulo: 'El gimnasio de las tres hermanas',
+    texto: () => 'El gimnasio de Ciudad Celeste es medio espectáculo acuático, medio gimnasio. Cuando estás a punto de perder el combate, aparecen los mismos ladrones de siempre con una aspiradora gigante para robar los Pokémon del acuario. Los echas tú solo, y las hermanas te ofrecen la medalla por eso.',
+    opciones: [
+      { txt: 'Aceptar la medalla', sub: 'Te la has ganado, aunque no combatiendo.',
+        efecto: e => { avanzar(e, 7); e.medallas = Math.min(8, e.medallas + 1);
+          return efecto('Te la guardas en la caja con las otras y evitas mirarla mucho tiempo. Dos medallas, y ninguna de las dos ganada en un combate limpio. Empieza a pesarte.',
+            m(e, { fama: [5, 10], moral: [-3, -1], estrategia: [2, 5] })); } },
+      { txt: 'Exigir el combate igualmente', sub: 'Con el acuario hecho un desastre.', riesgo: 0.55,
+        efecto: (e, ok) => { avanzar(e, 7);
+          if (ok) { e.medallas = Math.min(8, e.medallas + 1);
+            hito(e, '💧', 'Se negó a que le regalaran una medalla');
+            return efecto('Les dices que no y que combatáis con el agua por las rodillas. Ganas por poco, con todo el mundo empapado, y la medalla pesa el triple.',
+              m(e, { media: [2, 5], moral: [10, 17], estrategia: [4, 8] })); }
+          return efecto('Les dices que no, combatís y pierdes. Te vas de la ciudad sin medalla y con la sensación rarísima de haber hecho lo correcto perdiendo.',
+            m(e, { moral: [-3, -1], estrategia: [7, 12], fama: [2, 5] })); } },
+    ],
+  },
+  {
+    id: 'ash_8_squirtle', ...paso(8),
+    titulo: 'El escuadrón de las gafas de sol',
+    texto: () => 'Cinco Squirtle abandonados por sus entrenadores llevan meses aterrorizando la carretera con gamberradas: trampas, robos de comida y unas gafas de sol robadas cada uno. El pueblo quiere que los saquen de ahí como sea. Su jefe te mira desde una roca, esperando a ver de qué lado estás.',
+    opciones: [
+      { txt: 'Hablar con el jefe del escuadrón', sub: 'Nadie más lo ha intentado.', riesgo: 0.7,
+        efecto: (e, ok) => { avanzar(e, 8);
+          if (ok) { const p = fichar(e, 'squirtle', { nivel: 14 });
+            hito(e, '🕶️', 'Se ganó al jefe del escuadrón Squirtle');
+            return efecto(`Le cuentas que a ti también te dejaron tirado alguna vez y funciona. Los otros cuatro acaban de bomberos voluntarios del pueblo y ${p?.nombre ?? 'el jefe'} se viene contigo, con gafas incluidas.`,
+              m(e, { vinculo: [10, 17], fama: [6, 11], moral: [8, 14] })); }
+          return efecto('Le cuentas tu vida y te responde con un hidrochorro en la cara. Se van todos a otra carretera y el pueblo te cobra los desperfectos a ti por haberte metido.',
+            m(e, { dinero: -rango(1500, 4000), moral: [-3, -1], estrategia: [3, 6] })); } },
+      { txt: 'Avisar a la agente de la Liga', sub: 'Es un asunto de las autoridades.',
+        efecto: e => { avanzar(e, 8);
+          return efecto('Vienen, los recogen y los reparten por centros de acogida de media región. El pueblo respira, tú cobras una recompensa pequeña y no vuelves a saber de ellos.',
+            m(e, { dinero: rango(2000, 5000), fama: [3, 7], vinculo: [-4, -1] })); } },
+    ],
+  },
+  {
+    id: 'ash_9_bulbasaur', ...paso(9),
+    titulo: 'La aldea escondida',
+    texto: () => 'Un claro en el bosque donde una mujer recoge Pokémon abandonados y heridos y los cuida hasta que se recuperan. En la entrada hay un Bulbasaur que hace de guardián y que no deja pasar a ningún entrenador, porque casi todos los que han llegado allí venían a llevarse algo.',
+    opciones: [
+      { txt: 'Ganarte su confianza combatiendo', sub: 'Es lo único que va a entender.', riesgo: 0.7,
+        efecto: (e, ok) => { avanzar(e, 9);
+          if (ok) { const p = fichar(e, 'bulbasaur', { nivel: 15 });
+            hito(e, '🌿', 'Se ganó al guardián de la aldea escondida');
+            return efecto(`Combatís de igual a igual y, cuando acabáis, es él quien decide. ${p?.nombre ?? 'Bulbasaur'} deja el puesto de guardián y se sube a tu mochila. La cuidadora te dice que no le falles.`,
+              m(e, { vinculo: [12, 19], moral: [8, 14], media: [1, 3] })); }
+          return efecto('Combatís y te gana con una facilidad que no esperabas. Te acompaña hasta la salida del claro sin quitarte ojo. Al menos ahora sabes lo que es que un guardián haga bien su trabajo.',
+            m(e, { estrategia: [5, 10], moral: [-2, -1], salud: [-3, -1] })); } },
+      { txt: 'Echar una mano y marcharte', sub: 'Allí hace más falta que en tu equipo.',
+        efecto: e => { avanzar(e, 9);
+          return efecto('Te quedas dos semanas cargando sacos, curando alas rotas y limpiando establos, y te vas sin llevarte a nadie. La cuidadora te manda cartas durante años.',
+            m(e, { moral: [9, 15], vinculo: [8, 14], salud: [-2, -1], media: [-1, -1] })); } },
+    ],
+  },
+  {
+    id: 'ash_10_barco', ...paso(10),
+    titulo: 'El transatlántico',
+    texto: () => 'Una convención de entrenadores en un barco de lujo con bufé libre y camarotes con vistas. A mitad de travesía, la tripulación entera se quita el uniforme: eran ladrones y estaban ahí por los Pokémon de todo el pasaje. Con el follón, el barco choca y empieza a irse a pique con medio equipaje en la bodega.',
+    opciones: [
+      { txt: 'Bajar a la bodega inundada', sub: 'Ahí abajo hay Poké Balls de gente.', riesgo: 0.65,
+        efecto: (e, ok) => { avanzar(e, 10);
+          hito(e, '🚢', 'Volvió a la bodega del barco por los Pokémon de otros');
+          if (ok) return efecto('Bajas con el agua por el pecho y subes con una red llena de Poké Balls ajenas. Al llegar a puerto hay veinte entrenadores esperando a que les devuelvas a los suyos, y una foto tuya en todos los periódicos de la región.',
+            m(e, { fama: [12, 20], moral: [12, 20], salud: [-5, -2] }));
+          return efecto('Bajas, se cierra un mamparo y sales por un ojo de buey con medio equipo tirando de ti. Salvas cuatro Poké Balls y pierdes casi todo lo que llevabas encima.',
+            m(e, { salud: [-8, -4], dinero: -rango(3000, 7000), fama: [5, 10] })); } },
+      { txt: 'Salir a cubierta y salvarte', sub: 'Tampoco es tu barco.',
+        efecto: e => { avanzar(e, 10);
+          return efecto('Llegas al bote salvavidas de los primeros, seco y entero. En el muelle, un periodista te pregunta por la gente que se quedó abajo y no sabes qué contestarle.',
+            m(e, { salud: [3, 7], moral: [-4, -2], fama: [-5, -2] })); } },
+    ],
+  },
+  {
+    id: 'ash_11_surge', ...paso(11),
     titulo: 'La piedra trueno',
     texto: e => `El Teniente te ha machacado con un Raichu y te suelta que tu ${socioDe(e)?.nombre ?? 'Pikachu'} es un bebé que nunca va a estar a la altura. En el mostrador del Centro Pokémon hay una piedra trueno. Tu compañero la mira y luego te mira a ti, y niega con la cabeza.`,
     opciones: [
       { txt: 'Guardar la piedra', sub: 'Ganar siendo lo que ya es.', riesgo: 0.65,
-        efecto: (e, ok) => { avanzar(e, 6); const s = socioDe(e);
+        efecto: (e, ok) => { avanzar(e, 11); const s = socioDe(e);
           if (s) s.vinculo = limitar(s.vinculo + rango(18, 28));
           if (ok) { e.medallas = Math.min(8, e.medallas + 1);
             hito(e, '⚡', 'Ganó al Raichu sin evolucionar a su Pikachu');
             return efecto('Devuelves la piedra al mostrador y ganáis a base de velocidad, esquivando todo lo que el Raichu tira. La medalla sabe distinta cuando la ganas así.',
               m(e, { media: [2, 6], vinculo: [10, 18], fama: [7, 13], moral: [10, 17] })); }
           return efecto('Devuelves la piedra y perdéis igual, pero él sale del gimnasio con la cabeza alta y tú detrás. Volveréis.',
-            m(e, { vinculo: [10, 18], moral: [-5, -1] })); } },
+            m(e, { vinculo: [10, 18], moral: [-3, -1] })); } },
       { txt: 'Usar la piedra trueno', sub: 'Potencia bruta, hoy.', icono: 'poke',
-        efecto: e => { avanzar(e, 6); const s = socioDe(e);
+        efecto: e => { avanzar(e, 11); const s = socioDe(e);
           if (s) { s.umbrales = [0, 1]; s.vinculo = limitar(s.vinculo - rango(12, 20)); }
           e.medallas = Math.min(8, e.medallas + 1);
           return efecto('La piedra hace su trabajo y de golpe tienes un Raichu enorme y muchísimo más fuerte. Ganas la medalla ese mismo día. Tardas semanas en acostumbrarte a que ya no te quepa en el hombro.',
@@ -1156,44 +1293,166 @@ const ARCO_KANTO = [
     ],
   },
   {
-    id: 'ash_7_charmander', ...paso(7),
+    id: 'ash_12_charmander', ...paso(12),
     titulo: 'El Charmander de la roca',
     texto: () => 'Lleva horas sobre una roca, bajo la lluvia, tapándose la cola con la mano para que no se le apague. Su entrenador le dijo que volvería a por él y lo dijo riéndose, con sus amigos, en un bar a dos kilómetros de aquí.',
     opciones: [
       { txt: 'Cargar con él hasta el Centro', sub: 'Corriendo, bajo el agua.', riesgo: 0.85,
-        efecto: (e, ok) => { avanzar(e, 7); const p = fichar(e, 'charmander');
+        efecto: (e, ok) => { avanzar(e, 12); const p = fichar(e, 'charmander');
           hito(e, '🔥', 'Salvó a un Charmander abandonado bajo la lluvia');
           if (ok) return efecto(`Llegáis empapados y la llama aguanta. Cuando despierta y ve que has sido tú, decide que se queda. ${p?.nombre ?? 'Charmander'} entra en el equipo y no vuelve a mirar atrás.`,
-            m(e, { vinculo: [14, 22], moral: [12, 20], fama: [4, 9], salud: [-6, -2] }));
+            m(e, { vinculo: [14, 22], moral: [12, 20], fama: [4, 9], salud: [-3, -1] }));
           return efecto(`Llegáis por los pelos y los sanitarios tardan toda la noche. Se salva, pero tú sales de allí con una fiebre que te dura un mes. ${p?.nombre ?? 'Charmander'} se queda contigo igual.`,
-            m(e, { vinculo: [14, 22], salud: [-16, -9], moral: [7, 13] })); } },
+            m(e, { vinculo: [14, 22], salud: [-9, -5], moral: [7, 13] })); } },
       { txt: 'Avisar a su entrenador', sub: 'Es suyo, no tuyo.',
-        efecto: e => { avanzar(e, 7);
+        efecto: e => { avanzar(e, 12);
           return efecto('Vas al bar a buscarle y se ríe en tu cara delante de todos. Cuando vuelves a la roca ya no hay nadie: alguien se lo ha llevado antes que tú. No te lo perdonas en mucho tiempo.',
-            m(e, { moral: [-14, -7], estrategia: [3, 7] })); } },
+            m(e, { moral: [-8, -4], estrategia: [3, 7] })); } },
     ],
   },
   {
-    id: 'ash_8_charizard', ...paso(8),
-    cond: e => e.flags.esAsh && e.flags.ash === 8,
+    id: 'ash_13_lavanda', ...paso(13),
+    titulo: 'La torre de Lavanda',
+    texto: () => 'Siete plantas de tumbas de Pokémon y, según todo el pueblo, algo que se mueve dentro por las noches. La líder psíquica de la ciudad de al lado es imbatible y solo hay una cosa en toda la región que le pueda hacer daño, y vive aquí arriba.',
+    opciones: [
+      { txt: 'Pasar la noche en la torre', sub: 'A ver quién aparece.', riesgo: 0.6,
+        efecto: (e, ok) => { avanzar(e, 13);
+          if (ok) { const p = fichar(e, 'gastly', { nivel: 20 });
+            hito(e, '👻', 'Pasó una noche entera en la torre de Lavanda');
+            return efecto(`Te pasan de todo: sustos, muebles volando y una escalera que no acaba nunca. Al amanecer, uno de ellos decide que le caes bien porque te has reído en vez de salir corriendo. ${p?.nombre ?? 'Gastly'} se viene contigo.`,
+              m(e, { vinculo: [8, 14], moral: [5, 10], estrategia: [4, 8] })); }
+          return efecto('Te pasan de todo, y a las tres de la mañana sales de la torre corriendo por la calle principal en pijama, con medio pueblo asomado a la ventana. No consigues nada salvo la anécdota.',
+            m(e, { moral: [-4, -2], salud: [-3, -1], fama: [-3, -1] })); } },
+      { txt: 'Rodear la torre y seguir camino', sub: 'No vas a perder una semana en esto.',
+        efecto: e => { avanzar(e, 13);
+          return efecto('Sigues ruta y llegas a la ciudad siguiente con el equipo fresco y sin ningún fantasma en el bolsillo. Vas a acordarte de esta decisión muy pronto.',
+            m(e, { salud: [5, 9], media: [1, 2], estrategia: [-3, -1] })); } },
+    ],
+  },
+  {
+    id: 'ash_14_sabrina', ...paso(14),
+    titulo: 'La líder psíquica',
+    texto: e => `El gimnasio de Ciudad Azafrán está vacío y helado. La líder combate con la mirada perdida y con una muñeca en la mano, y del último entrenador que perdió aquí nadie ha vuelto a saber nada. Tu ${socioDe(e)?.nombre ?? 'Pikachu'} no quiere entrar por la puerta.`,
+    opciones: [
+      { txt: 'Sacar al fantasma que te trajiste', sub: 'Es lo único que le hace daño.', riesgo: 0.75,
+        efecto: (e, ok) => { avanzar(e, 14);
+          const tieneFantasma = e.equipo.some(p => p.linea === 'gastly' && !p.retirado);
+          if (ok && tieneFantasma) { e.medallas = Math.min(8, e.medallas + 1);
+            hito(e, '🔮', 'Ganó a la líder psíquica haciéndola reír');
+            return efecto('No gana el combate: lo gana el bicho haciendo el idiota hasta que la líder se ríe por primera vez en años. Se acaba el combate ahí, con ella llorando de risa y dándote la medalla.',
+              m(e, { fama: [8, 14], moral: [12, 19], estrategia: [5, 9], vinculo: [7, 12] })); }
+          if (!tieneFantasma) return efecto('No tienes ningún fantasma que sacar, así que improvisas y te barre en dos turnos. Te despiertas fuera del gimnasio sin recordar cómo saliste y con el equipo temblando.',
+            m(e, { moral: [-7, -3], salud: [-4, -2], estrategia: [6, 11] }));
+          return efecto('El fantasma se pone a hacer el tonto y a ella no le hace ninguna gracia. Os saca del gimnasio por los aires a los dos y tardas tres días en volver a sentirte tú.',
+            m(e, { moral: [-5, -2], salud: [-3, -1], estrategia: [5, 9] })); } },
+      { txt: 'Ir de frente con tu mejor equipo', sub: 'Sin trucos.', riesgo: 0.3,
+        efecto: (e, ok) => { avanzar(e, 14);
+          if (ok) { e.medallas = Math.min(8, e.medallas + 1);
+            return efecto('Aguantas lo que no aguanta nadie y le ganas de puro empeño, con medio equipo fuera de combate. Ella te da la medalla y te dice que no vuelvas.',
+              m(e, { media: [3, 7], fama: [7, 12], salud: [-5, -2], moral: [8, 14] })); }
+          return efecto('Te barre. A ti y al equipo. Sales de allí sin medalla, sin memoria de la última media hora y con la certeza de que hay entrenadores en otra liga distinta a la tuya.',
+            m(e, { moral: [-7, -4], salud: [-4, -2], estrategia: [8, 13] })); } },
+    ],
+  },
+  {
+    id: 'ash_15_charizard', ...paso(15),
     titulo: 'El que ya no te hace caso',
     texto: e => `Aquel Charmander de la roca ya es otra cosa: enorme, con alas, y desde que evolucionó no obedece una sola orden. En mitad de un combate importante se tumba a echarse una siesta mientras el rival le pega. La grada se ríe. ${e.rival.nombre} se ríe.`,
     opciones: [
       { txt: 'Seguir sacándolo igual', sub: 'Que vuelva cuando quiera volver.', riesgo: 0.55,
-        efecto: (e, ok) => { avanzar(e, 8);
+        efecto: (e, ok) => { avanzar(e, 15);
           if (ok) { hito(e, '🐉', 'Se ganó otra vez el respeto de su Charizard');
             return efecto('Una noche helada te quedas horas dándole calor sin decirle nada. A la mañana siguiente, por primera vez en un año, hace lo que le pides. Y a partir de ahí no hay quien le pare.',
               m(e, { media: [5, 10], vinculo: [16, 26], moral: [12, 20] })); }
           return efecto('Sigues sacándolo y sigue pasando de ti temporada tras temporada. Pierdes combates que tenías ganados y una parte del vestuario deja de entenderte.',
-            m(e, { media: [-5, -2], moral: [-12, -6], vinculo: [-6, -2] })); } },
+            m(e, { media: [-5, -2], moral: [-7, -3], vinculo: [-6, -2] })); } },
       { txt: 'Dejarlo fuera del equipo', sub: 'Competir con los que sí responden.',
-        efecto: e => { avanzar(e, 8);
+        efecto: e => { avanzar(e, 15);
           return efecto('Lo dejas descansar y tiras con el resto, que responden siempre. Ganas más y discutes menos, pero cada vez que ves un Charizard ajeno se te queda una cosa rara en el cuerpo.',
-            m(e, { media: [2, 6], estrategia: [5, 10], moral: [-8, -3], vinculo: [-5, -2] })); } },
+            m(e, { media: [2, 6], estrategia: [5, 10], moral: [-4, -2], vinculo: [-5, -2] })); } },
     ],
   },
   {
-    id: 'ash_9_despedidas', ...paso(9),
+    id: 'ash_16_primeape', ...paso(16),
+    titulo: 'El que te robó la gorra',
+    texto: () => 'Empezó robándote la gorra en una ruta y ahora es un Primeape de treinta kilos de mal genio que te ha ganado combates importantes a base de furia. El problema es que últimamente no distingue entre un rival y un juez de silla. Un maestro de lucha del monte te ofrece quedárselo un par de años y enseñarle a canalizar eso.',
+    opciones: [
+      { txt: 'Dejarlo con el maestro', sub: 'Volverá siendo otra cosa.',
+        efecto: e => { avanzar(e, 16);
+          hito(e, '🥊', 'Dejó a su Primeape con un maestro de lucha');
+          return efecto('Le dices adiós desde la puerta del dojo y él no se gira, porque ya está pegándole a un saco. Años después ganará un campeonato de lucha con tu gorra puesta y tú lo verás por televisión desde un hotel.',
+            m(e, { media: [-3, -1], moral: [8, 14], fama: [4, 8], vinculo: [6, 11] })); } },
+      { txt: 'Quedártelo y aguantar el genio', sub: 'Gana combates, y eso es lo que cuenta.', riesgo: 0.5,
+        efecto: (e, ok) => { avanzar(e, 16);
+          if (ok) return efecto('Aprendes a leerle: cuándo dejarle salir y cuándo no. Se convierte en tu arma pesada durante tres temporadas y no vuelve a tocar a un juez.',
+            m(e, { media: [3, 7], poder: [7, 13], estrategia: [4, 8] }));
+          return efecto('En un torneo con público se lía a golpes con el entrenador rival y hay que sacarlo entre cuatro. Sanción, multa y una semana entera de titulares.',
+            m(e, { fama: [-11, -6], dinero: -rango(4000, 9000), moral: [-4, -2] })); } },
+    ],
+  },
+  {
+    id: 'ash_17_safari', ...paso(17),
+    titulo: 'Media hora en el Parque Safari',
+    texto: () => 'Treinta Poké Balls, media hora de reloj y una reserva enorme llena de bichos que no vas a ver en ningún otro sitio de la región. El guarda te avisa: ni una bola más de las que te dan, y si te pilla saliéndote del recorrido te expulsa de por vida.',
+    opciones: [
+      { txt: 'Tirar a todo lo que se mueva', sub: 'Cantidad antes que calidad.', riesgo: 0.7,
+        efecto: (e, ok) => { avanzar(e, 17);
+          if (ok) { const a = capturaAleatoria(e, { region: 'kanto' }), b = capturaAleatoria(e, { region: 'kanto' });
+            hito(e, '🐂', 'Salió del Parque Safari con media reserva en la mochila');
+            return efecto(`Sales de allí con la mochila llena y una manada entera registrada a tu nombre. Al equipo se suman ${a?.nombre ?? 'un par'} y ${b?.nombre ?? 'otro más'}, y el resto se queda en el rancho comiéndose tu presupuesto.`,
+              m(e, { fama: [5, 10], dinero: -rango(2000, 6000), moral: [7, 12] })); }
+          return efecto('Vacías las treinta bolas en veinte minutos y no cae ni una. El guarda te lo dice a la cara delante de todo el grupo de la visita escolar.',
+            m(e, { moral: [-4, -2], dinero: -rango(1000, 3000), estrategia: [2, 5] })); } },
+      { txt: 'Esperar a una sola pieza buena', sub: 'Media hora quieto, sin respirar.', riesgo: 0.45,
+        efecto: (e, ok) => { avanzar(e, 17);
+          if (ok) { const p = capturaAleatoria(e, { rarezaMin: 'raro', region: 'kanto' });
+            return efecto(`Te pasas veintiocho minutos tumbado entre juncos y a falta de dos aparece. ${p?.nombre ?? 'La pieza'} cae a la primera bola y sales del parque sin usar las otras veintinueve.`,
+              m(e, { estrategia: [6, 11], media: [2, 5], fama: [3, 7] })); }
+          return efecto('Te pasas la media hora entera tumbado entre juncos esperando algo que no llega. Sales del parque con las treinta bolas intactas y con dos horas de sueño perdidas.',
+            m(e, { moral: [-3, -1], estrategia: [4, 8] })); } },
+    ],
+  },
+  {
+    id: 'ash_18_canela', ...paso(18),
+    titulo: 'La isla del volcán',
+    texto: () => 'Séptima medalla. El gimnasio está escondido debajo de un hostal cutre y el líder combate en una plataforma sobre el cráter de un volcán activo, con el aire a cincuenta grados. En la misma isla hay un laboratorio que lleva veinte años intentando resucitar Pokémon extintos, y te dejan pasar.',
+    opciones: [
+      { txt: 'Combatir sobre el cráter', sub: 'Con tu equipo cocido a medio combate.', riesgo: 0.55,
+        efecto: (e, ok) => { avanzar(e, 18);
+          if (ok) { e.medallas = Math.min(8, e.medallas + 1);
+            hito(e, '🌋', 'Ganó la medalla del gimnasio del volcán');
+            return efecto('Aguantáis el calor mejor que ellos y ganas en la plataforma de arriba, con la lava a treinta metros. Sales de allí con la medalla, sin cejas y con el récord del gimnasio.',
+              m(e, { media: [3, 6], fama: [6, 11], salud: [-4, -2], moral: [9, 15] })); }
+          return efecto('El calor os funde antes que el rival. Pierdes en la plataforma y bajas del volcán con medio equipo en camilla y la medalla sin conseguir.',
+            m(e, { salud: [-7, -3], moral: [-4, -2], estrategia: [5, 9] })); } },
+      { txt: 'Pasar por el laboratorio de fósiles', sub: 'Hoy no combates, hoy compras futuro.',
+        efecto: e => { avanzar(e, 18); const p = fichar(e, 'aerodactyl', { nivel: 30 });
+          hito(e, '🦴', 'Revivió a un Pokémon extinto en el laboratorio de la isla');
+          return efecto(`Pagas la reanimación completa y esperas seis semanas en la isla. Lo que sale del tanque lleva cien millones de años enfadado: ${p?.nombre ?? 'Aerodactyl'} entra en el equipo y todavía no le has visto obedecer a nadie.`,
+            m(e, { dinero: -Math.round(Math.min(e.dinero * 0.6, 120000)), media: [2, 5], poder: [6, 11], vinculo: [-5, -2] })); } },
+    ],
+  },
+  {
+    id: 'ash_19_verde', ...paso(19),
+    titulo: 'El gimnasio del jefe',
+    texto: e => `La octava medalla, en la ciudad por la que pasaste el primer día. El líder no está: dicen que dirige otras cosas. En su lugar te reciben tres suplentes con uniforme, un decorado montado a toda prisa y una máquina de combate que te toca desmontar tú solo cuando se les va de las manos.`,
+    opciones: [
+      { txt: 'Combatir igualmente y llevarte la medalla', sub: 'Está en el reglamento.', riesgo: 0.6,
+        efecto: (e, ok) => { avanzar(e, 19);
+          if (ok) { e.medallas = Math.min(8, e.medallas + 1);
+            hito(e, '🎖️', 'Completó las ocho medallas de Kanto');
+            return efecto('Les ganas, desmontas su máquina de un trueno y te vas con la octava medalla en la mano. La Liga te acepta la inscripción esa misma tarde.',
+              m(e, { fama: [7, 13], moral: [12, 19], media: [2, 5] })); }
+          return efecto('La máquina te fríe a dos Pokémon y los suplentes salen corriendo con la caja del gimnasio. Sin medalla, sin explicaciones y con la inscripción a la Liga en el aire.',
+            m(e, { moral: [-6, -3], salud: [-3, -1], fama: [2, 5] })); } },
+      { txt: 'Denunciar el gimnasio a la Liga', sub: 'Eso de ahí dentro no es un gimnasio.',
+        efecto: e => { avanzar(e, 19);
+          return efecto('Presentas la denuncia con fotos. La Liga tarda meses en moverse, pero acaba interviniendo el gimnasio entero y a ti te dan la medalla por vía administrativa, que es la forma menos épica posible de conseguir una.',
+            m(e, { fama: [4, 9], estrategia: [7, 12], moral: [-2, -1] })); } },
+    ],
+  },
+  {
+    id: 'ash_20_despedidas', ...paso(20),
     titulo: 'Las despedidas',
     texto: () => 'Dos el mismo año. Tu Butterfree ha encontrado pareja y la bandada se va cruzando el mar. Y en la ruta de vuelta, el Pidgeot que te lleva años acompañando se queda mirando a una bandada de Pidgey a los que alguien tiene que proteger. Ninguno de los dos se irá si no se lo dices tú.',
     opciones: [
@@ -1201,44 +1460,105 @@ const ARCO_KANTO = [
         efecto: e => { const eq = activos(e);
           const suelta = eq.filter(p => ['caterpie', 'pidgey'].includes(p.linea));
           for (const p of suelta) p.retirado = true;
-          avanzar(e, 9);
+          avanzar(e, 20);
           hito(e, '👋', 'Los dejó marchar cuando tocaba');
           return efecto(`Les dices adiós desde un acantilado, gritando, hasta que no se les ve. Es la primera vez que un entrenador te ve llorar y no te importa lo más mínimo.${suelta.length ? ` Se van ${suelta.map(p => p.nombre).join(' y ')}.` : ''}`,
             m(e, { media: [-3, -1], moral: [10, 18], vinculo: [12, 20], fama: [4, 9] })); } },
       { txt: 'Pedirles que se queden', sub: 'Los necesitas para competir.',
-        efecto: e => { avanzar(e, 9);
+        efecto: e => { avanzar(e, 20);
           return efecto('Se quedan, porque te harían caso hasta en esto. Tu equipo es más fuerte esta temporada y tú te pasas el año evitando mirarles a la cara.',
-            m(e, { media: [4, 8], moral: [-12, -6], vinculo: [-8, -3] })); } },
+            m(e, { media: [4, 8], moral: [-7, -3], vinculo: [-8, -3] })); } },
     ],
   },
   {
-    id: 'ash_10_anil', ...paso(10),
+    id: 'ash_21_anil', ...paso(21),
     titulo: 'Liga Añil',
     texto: e => `Las ocho medallas, el estadio lleno y la antorcha encendida. Vas pasando rondas hasta que en el top 16 te toca un chico normal, de esos que nadie tiene fichados. Y en mitad del combate, tu Charizard vuelve a hacer lo de siempre: se sienta. ${e.rival.nombre} lo está viendo desde la grada.`,
     opciones: [
       { txt: 'Rogarle que se levante', sub: 'Delante de todo el estadio.', riesgo: 0.25,
-        efecto: (e, ok) => { avanzar(e, 10); e.flags.arcoKantoHecho = true;
+        efecto: (e, ok) => { avanzar(e, 21); e.flags.arcoKantoHecho = true;
           if (ok) { e.titulos.push({ año: e.año, nombre: 'Liga Añil' }); e.ligasGanadas++;
             hito(e, '🏆', 'Ganó la Liga Añil contra todo pronóstico');
             return efecto('Se levanta. No sabes por qué, pero se levanta, y lo que pasa después no lo olvida nadie que estuviera allí. Ganas la Liga Añil en tu primer intento.',
               m(e, { fama: [25, 40], moral: [20, 32], media: [4, 9], talento: [3, 6] })); }
           hito(e, '😔', 'Cayó en el top 16 de su primera Liga Añil');
           return efecto('No se levanta. Te descalifican por Pokémon incapacitado y te vas del estadio en el top 16, con la antorcha todavía encendida a tu espalda. Tu madre te dice que ha estado muy bien. Tú sabes que no.',
-            m(e, { fama: [8, 15], moral: [-16, -9], estrategia: [7, 13] })); } },
+            m(e, { fama: [8, 15], moral: [-9, -5], estrategia: [7, 13] })); } },
       { txt: 'Cambiarlo y seguir con otro', sub: 'Salvar el combate como sea.', riesgo: 0.45,
-        efecto: (e, ok) => { avanzar(e, 10); e.flags.arcoKantoHecho = true;
+        efecto: (e, ok) => { avanzar(e, 21); e.flags.arcoKantoHecho = true;
           if (ok) { hito(e, '🔥', 'Llegó a semifinales de la Liga Añil');
             return efecto('Lo retiras sin discutir y tiras con el resto, que dan la cara. Caes en semifinales peleando cada punto, y sales del estadio con la sensación de haber competido de verdad.',
               m(e, { fama: [14, 24], moral: [6, 12], estrategia: [8, 14] })); }
           return efecto('Lo retiras, pero el daño ya está hecho y caes en la misma ronda igualmente. Al menos esta vez no te fuiste sin intentarlo.',
-            m(e, { fama: [7, 13], moral: [-9, -4], estrategia: [5, 10] })); } },
+            m(e, { fama: [7, 13], moral: [-5, -2], estrategia: [5, 10] })); } },
+    ],
+  },
+  {
+    id: 'ash_22_frente', ...paso(22),
+    titulo: 'El Frente de Batalla',
+    texto: () => 'Años después de la Liga, la federación monta en la región un circuito paralelo para los que no encajan en el oficial: siete instalaciones, siete cerebros, un símbolo por cada uno. Nada de rankings ni de patrocinadores. Solo siete puertas y siete personas que combaten mejor que tú.',
+    opciones: [
+      { txt: 'Recorrerlo instalación por instalación', sub: 'Dos años, sin competir en nada más.', riesgo: 0.6,
+        efecto: (e, ok) => { avanzar(e, 22);
+          if (ok) { hito(e, '🛡️', 'Reunió seis símbolos del Frente de Batalla');
+            return efecto('Caes en las tres primeras y ganas las seis siguientes. Con seis símbolos en la vitrina eres, por primera vez en tu vida, favorito para algo.',
+              m(e, { media: [4, 8], estrategia: [10, 16], fama: [7, 12], moral: [10, 16] })); }
+          return efecto('Dos años dando vueltas por la región para reunir tres símbolos de siete. Aprendes muchísimo y pierdes dos temporadas de circuito oficial que no vuelven.',
+            m(e, { estrategia: [9, 15], fama: [-5, -2], moral: [-4, -2] })); } },
+      { txt: 'Compaginarlo con el circuito oficial', sub: 'No vas a dejar la Liga por esto.',
+        efecto: e => { avanzar(e, 22);
+          return efecto('Vas alternando torneos y instalaciones, durmiendo en trenes. Reúnes cuatro símbolos y mantienes el puesto en el ranking, a base de no descansar un solo mes en dos años.',
+            m(e, { media: [2, 5], estrategia: [6, 11], salud: [-6, -3], fama: [3, 7] })); } },
+    ],
+  },
+  {
+    id: 'ash_23_piramide', ...paso(23),
+    titulo: 'La Pirámide de Batalla',
+    texto: e => `La última instalación del Frente es una pirámide que su dueño mueve por la región con un globo. Dentro combate un tipo con pinta de explorador que ha capturado él solo tres Pokémon legendarios y que no ha perdido nunca contra un aspirante. Llevas dos intentos y dos derrotas. ${socioDe(e)?.nombre ?? 'Tu compañero'}, el mismo del primer día, se pone delante sin que se lo pidas.`,
+    opciones: [
+      { txt: 'Tercer intento, tú y él', sub: 'Como el primer día, veinte años después.', riesgo: 0.5,
+        efecto: (e, ok) => { avanzar(e, 23); e.flags.arcoAnimeHecho = true;
+          const s = socioDe(e); if (s) s.vinculo = limitar(s.vinculo + rango(20, 30));
+          if (ok) { e.titulos.push({ año: e.año, nombre: 'Símbolo Valiente del Frente de Batalla' }); e.ligasGanadas++;
+            hito(e, '🏆', 'Ganó el Símbolo Valiente al último cerebro del Frente');
+            return efecto('El combate dura cuarenta minutos y el estadio de piedra no respira. Cuando cae el legendario y el explorador te tiende el símbolo, no te sale ni una palabra. Veinte años después de llegar tarde al laboratorio en pijama, has ganado el título más difícil de la región.',
+              m(e, { fama: [22, 34], moral: [26, 38], media: [5, 10], vinculo: [12, 20] })); }
+          hito(e, '🥈', 'Cayó tres veces contra el cerebro de la Pirámide');
+          return efecto('Aguantáis hasta el último turno y cae de rodillas antes que de espaldas. Tercera derrota. El explorador te dice que vuelvas cuando quieras y tú sabes, por la forma en que te duele, que esta era la buena.',
+            m(e, { fama: [10, 17], moral: [-7, -3], estrategia: [9, 15], vinculo: [10, 17] })); } },
+      { txt: 'Entrar con todo el equipo de tu carrera', sub: 'Los seis, uno de cada año.', riesgo: 0.35,
+        efecto: (e, ok) => { avanzar(e, 23); e.flags.arcoAnimeHecho = true;
+          if (ok) { e.titulos.push({ año: e.año, nombre: 'Símbolo Valiente del Frente de Batalla' }); e.ligasGanadas++;
+            hito(e, '🏆', 'Ganó el Símbolo Valiente con el equipo de toda su carrera');
+            return efecto('Sacas a los seis, uno por cada etapa de tu vida, y cada uno le arranca un trozo al explorador. Ganas el Símbolo Valiente con el mejor combate que ha visto esa pirámide y con seis Pokémon reventados en el suelo, celebrándolo.',
+              m(e, { fama: [20, 32], moral: [24, 36], media: [4, 9], vinculo: [14, 22] })); }
+          return efecto('Le plantas cara con todo y aun así se lleva el último combate. Pierdes por un margen mínimo y te vas de la pirámide sabiendo que ese día no te faltó equipo: te faltó un turno.',
+            m(e, { fama: [9, 15], moral: [-6, -3], estrategia: [8, 13] })); } },
+    ],
+  },
+  {
+    id: 'ash_24_epilogo', ...paso(24),
+    titulo: 'Y ahora qué',
+    texto: () => 'Se acabó el guion. Has recorrido la región entera cuatro veces, dejado Pokémon en media docena de sitios y llegado al último combate que te quedaba por jugar. Tienes treinta y tantos, el cuerpo regular y una pregunta que llevas evitando desde los diez años: qué es exactamente ser un maestro Pokémon.',
+    opciones: [
+      { txt: 'Coger la mochila otra vez', sub: 'Todavía queda región por ver.',
+        efecto: e => { avanzar(e, 24);
+          hito(e, '🎒', 'Volvió a coger la mochila cuando ya no le hacía falta');
+          return efecto('Coges la mochila otra vez, sin equipo de trabajo, sin patrocinadores y sin calendario. Compites cuando te apetece y desapareces del ranking sin que te importe lo más mínimo.',
+            m(e, { moral: [14, 22], salud: [5, 10], fama: [-6, -2], media: [-2, -1] })); } },
+      { txt: 'Volver a Pueblo Paleta', sub: 'A entrenar a los que vienen.',
+        efecto: e => { avanzar(e, 24); e.flags.discipulo = true;
+          hito(e, '🌱', 'Volvió al pueblo a formar a los que venían detrás');
+          return efecto('Vuelves a la casa de tu madre, que sigue exactamente igual, y montas un campo de entrenamiento para críos del valle. El primero que sale de ahí gana su Liga seis años después y dice tu nombre en la entrevista.',
+            m(e, { moral: [12, 20], fama: [4, 9], estrategia: [8, 14], vinculo: [7, 12] })); } },
     ],
   },
 ];
 
 // El arco vive en el mismo catálogo: sus `cond` lo mantienen invisible salvo
 // que estés jugando la partida de Satoshi.
-EVENTOS.push(...ARCO_KANTO);
+const esDelArco = ev => ev.id.startsWith('ash_');
+EVENTOS.push(...ARCO_ANIME);
 export { EVENTOS };
 
 export function siguienteEvento(estado) {
@@ -1255,10 +1575,13 @@ export function siguienteEvento(estado) {
   if (!pool.length) pool = EVENTOS.filter(disponible);
   if (!pool.length) return null;
 
-  // Si hay un paso de historia esperando (el arco de Kanto), va primero: una
-  // rama argumental no puede depender de una tirada de pesos.
+  // Si hay un paso de historia esperando (el arco del anime), va primero: una
+  // rama argumental no puede depender de una tirada de pesos. Y en la partida
+  // de Satoshi el arco es lo único que pasa: nada de eventos de carrera normal
+  // mientras quede guion por contar.
   const guion = pool.filter(ev => ev.prioritario);
-  if (guion.length) pool = guion;
+  if (guion.length) pool = estado.flags.esAsh ? guion.filter(esDelArco) : guion;
+  if (!pool.length) return null;
 
   const total = pool.reduce((s, ev) => s + ev.peso, 0);
   let r = Math.random() * total;

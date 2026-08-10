@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=36';
+} from './datos.js?v=37';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -204,7 +204,7 @@ export function borrarPalmares() {
 }
 
 export function exportarPalmares() {
-  return JSON.stringify({ juego: 'hazte-con-todos', v: 1, carreras: leerPalmares() }, null, 1);
+  return JSON.stringify({ juego: 'hazte-con-todos', v: 1, carreras: leerPalmares(), insignias: leerLogros() }, null, 1);
 }
 
 // Importar fusiona: lo que ya tienes se queda, y se añade lo que falte.
@@ -215,6 +215,10 @@ export function importarPalmares(texto) {
   if (!Array.isArray(entrantes)) throw new Error('formato');
   const validas = entrantes.filter(c => c && c.id && c.rango && typeof c.media === 'number');
   if (!validas.length) throw new Error('vacio');
+  // Las insignias viajan con la copia; si el fichero es antiguo y no las trae,
+  // se reconstruyen a partir de los premios de cada carrera guardada.
+  desbloquearLogros(Array.isArray(datos?.insignias) ? datos.insignias
+    : validas.flatMap(c => (c.premios ?? []).map(p => p.id).filter(Boolean)));
   const lista = leerPalmares();
   const tengo = new Set(lista.map(c => c.id));
   const nuevas = validas.filter(c => !tengo.has(c.id));
@@ -424,6 +428,37 @@ const NOMBRE_TORNEO = {
   veterano: ['Copa Máster', 'Liga Sénior', 'Torneo de Veteranos'],
 };
 
+// Golpes de suerte: lo que no decides tú. Un torneo se juega un fin de semana y
+// a veces lo arruina un autobús que no pasa, o te lo regala un cuadro amable.
+// Van en dos caras simétricas para que la carrera no sea solo la suma de tus
+// decisiones: hay años en los que simplemente toca.
+const GOLPES_MALOS = [
+  { txt: 'Te quedas sin repelentes a mitad de la cueva y los Zubat os retrasan dos días: llegas al torneo con tu primera ronda ya jugada. Eliminado sin combatir.', pronto: true },
+  { txt: 'El ferry se cancela por temporal y llegas al pabellón con la primera ronda perdida por incomparecencia.' },
+  { txt: 'Una gastroenteritis en el hotel oficial se lleva por delante a media expedición, tú incluido. Caes a la primera.' },
+  { txt: 'El control de legalidad te tumba el equipo por una nimiedad del registro. Combates con el equipo B y caes en la primera ronda.' },
+  { txt: 'Te toca el peor cuadro posible: el vigente campeón en primera ronda. Fuera el viernes por la mañana.' },
+];
+const GOLPES_BUENOS = [
+  { txt: 'El sorteo te regala un bye en la primera ronda: entras descansado mientras los demás se destrozan entre ellos.' },
+  { txt: 'Tu rival de octavos no se presenta y pasas de ronda desde el hotel.' },
+  { txt: 'El cuadro se abre entero: los tres favoritos de tu lado caen antes de cruzarse contigo.' },
+  { txt: 'Media hora de retraso por lluvia y a tu equipo le viene de cine: salís enchufados y arrasáis las primeras rondas.' },
+];
+
+// Se tira una vez por temporada. Nunca las dos caras a la vez.
+function golpeDeSuerte(estado, etapa) {
+  if (estado.flags.sancionado) return null;
+  if (dado(0.10)) {
+    const pool = etapa === 'novato' || etapa === 'gimnasios'
+      ? GOLPES_MALOS
+      : GOLPES_MALOS.filter(g => !g.pronto);
+    return { ...elegir(pool), fuera: true };
+  }
+  if (dado(0.09)) return { ...elegir(GOLPES_BUENOS), delta: 6 };
+  return null;
+}
+
 export function simularTemporada(estado) {
   const etapa = etapaDe(estado);
   const s = estado.stats;
@@ -471,7 +506,8 @@ export function simularTemporada(estado) {
   // Un título se juega en un fin de semana, no en una media anual: ser el mejor
   // te pone en la pelea, pero el sorteo, el speed tie y el día que tengas
   // deciden. Por eso el trofeo lleva su propia tirada, mucho más loca.
-  const rendTorneo = rendimiento + azar(-34, 34);
+  const golpe = golpeDeSuerte(estado, etapa);
+  const rendTorneo = rendimiento + azar(-34, 34) + (golpe?.delta ?? 0);
 
   if (estado.rival.activo) estado.rival.poder = limitar(estado.rival.poder + entero(2, 7));
 
@@ -486,8 +522,11 @@ export function simularTemporada(estado) {
   // Resultado del torneo
   const torneo = elegir(NOMBRE_TORNEO[etapa]);
   estado.apariciones++;
+  if (golpe) linea.sucesos.push(golpe.txt);
   if (etapa === 'gimnasios' && estado.medallas < 8) {
-    const nuevas = Math.min(8 - estado.medallas, Math.max(0, Math.round((rendimiento - 25) / 12)));
+    // En el circuito de medallas el golpe se nota en una medalla arriba o abajo.
+    const ajuste = golpe ? (golpe.fuera ? -1 : 1) : 0;
+    const nuevas = Math.min(8 - estado.medallas, Math.max(0, Math.round((rendimiento - 25) / 12) + ajuste));
     estado.medallas += nuevas;
     linea.sucesos.push(nuevas
       ? `Consigues ${nuevas} medalla${nuevas > 1 ? 's' : ''} (${estado.medallas}/8).`
@@ -498,6 +537,10 @@ export function simularTemporada(estado) {
       linea.trofeo = { tipo: 'medallas', nombre: `Las 8 medallas de ${estado.regionNombre}`, año: estado.año };
       s.fama = limitar(s.fama + rango(6, 14));
     }
+  // Un golpe malo te deja fuera antes de empezar: ese año no hay torneo que valga.
+  } else if (golpe?.fuera) {
+    linea.sucesos.push(`Adiós a ${torneo} sin haber podido competir.`);
+    s.moral = limitar(s.moral - rango(4, 10));
   // El Mundial pide bastante más que un regional: es el techo del circuito.
   } else if (rendTorneo > (etapa === 'cima' ? 113 : 104) && etapa !== 'novato') {
     const titulo = etapa === 'cima' ? 'Campeonato Mundial' : `${torneo} de ${estado.regionNombre}`;
@@ -612,7 +655,33 @@ export function rangoDe(pts, media = 0) {
 
 export function logrosDe(estado) {
   return LOGROS.filter(l => { try { return l.cond(estado); } catch { return false; } })
-    .map(l => ({ emoji: l.emoji, nombre: l.nombre, desc: l.desc(estado) }));
+    .map(l => ({ id: l.id, emoji: l.emoji, nombre: l.nombre, desc: l.desc(estado) }));
+}
+
+// ── Medallero: las insignias que llevas coleccionadas ────────────────────────
+// Es la única cosa que sobrevive de una carrera a otra. Igual que el palmarés:
+// una lista de ids en este navegador, sin cuenta y sin servidor.
+const CLAVE_LOGROS = 'hazteconTodos.logros';
+
+export function leerLogros() {
+  try {
+    const bruto = localStorage.getItem(CLAVE_LOGROS);
+    const lista = bruto ? JSON.parse(bruto) : [];
+    return Array.isArray(lista) ? lista.filter(id => typeof id === 'string') : [];
+  } catch { return []; }
+}
+
+// Devuelve solo los que no tenías, para poder cantarlos si hace falta.
+export function desbloquearLogros(ids = []) {
+  const tengo = new Set(leerLogros());
+  const nuevos = ids.filter(id => id && !tengo.has(id));
+  if (!nuevos.length) return [];
+  try { localStorage.setItem(CLAVE_LOGROS, JSON.stringify([...tengo, ...nuevos])); } catch { /* cuota llena */ }
+  return nuevos;
+}
+
+export function borrarLogros() {
+  try { localStorage.removeItem(CLAVE_LOGROS); } catch { /* da igual */ }
 }
 
 export function apodoDe(estado) {

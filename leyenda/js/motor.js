@@ -2,7 +2,7 @@
 import {
   LINEAS, PORLINEA, PESO_RAREZA, NOMBRES_RIVAL, APODOS_PRENSA, RANGOS,
   OBJETOS, POROBJETO, LOGROS, REGIONES, PROFESORES, VILLANOS, CAMPEONES, LIDERES,
-} from './datos.js?v=39';
+} from './datos.js?v=40';
 
 // ── Utilidades ───────────────────────────────────────────────────────────────
 export const azar = (a, b) => a + Math.random() * (b - a);
@@ -446,16 +446,22 @@ const GOLPES_BUENOS = [
   { txt: 'Media hora de retraso por lluvia y a tu equipo le viene de cine: salís enchufados y arrasáis las primeras rondas.' },
 ];
 
-// Se tira una vez por temporada. Nunca las dos caras a la vez.
+// Rarísimo a propósito: como mucho uno malo y uno bueno en TODA la carrera,
+// al 1% cada uno por temporada. Que sea anecdótico, no un mecanismo del juego.
+// La carrera de Satoshi no lo tira nunca: ahí la historia es la del anime.
 function golpeDeSuerte(estado, etapa) {
-  if (estado.flags.sancionado) return null;
-  if (dado(0.10)) {
+  if (estado.flags.sancionado || estado.flags.esAsh) return null;
+  if (!estado.flags.golpeMalo && dado(0.01)) {
+    estado.flags.golpeMalo = true;
     const pool = etapa === 'novato' || etapa === 'gimnasios'
       ? GOLPES_MALOS
       : GOLPES_MALOS.filter(g => !g.pronto);
     return { ...elegir(pool), fuera: true };
   }
-  if (dado(0.09)) return { ...elegir(GOLPES_BUENOS), delta: 6 };
+  if (!estado.flags.golpeBueno && dado(0.01)) {
+    estado.flags.golpeBueno = true;
+    return { ...elegir(GOLPES_BUENOS), delta: 6 };
+  }
   return null;
 }
 

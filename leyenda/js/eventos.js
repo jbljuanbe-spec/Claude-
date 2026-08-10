@@ -5,8 +5,8 @@ import {
   azar, entero, dado, elegir, limitar, rango, capturaAleatoria, fichar, hito,
   poderPokemon, darObjeto, objetoAleatorio, tieneObjeto, subirTalento, mediaTemporal, mudarse, sumarMedia,
   profesorDe, campeonDe, villanoDe, liderDe,
-} from './motor.js?v=37';
-import { LINEAS, POROBJETO, REGIONES, TIPOS } from './datos.js?v=37';
+} from './motor.js?v=38';
+import { LINEAS, POROBJETO, REGIONES, TIPOS } from './datos.js?v=38';
 
 // Aplica cambios. Los valores pueden ser un número o un rango [min, max].
 function m(e, deltas) {
@@ -1048,12 +1048,14 @@ const EVENTOS = [
   },
   {
     id: 'guarderia_olvido', etapas: ['pro', 'cima', 'veterano'], peso: 11, unico: true,
+    // Nunca antes de la novena temporada: la gracia es que lleve años ahí.
+    cond: e => e.año >= 9,
     titulo: 'La factura de la guardería',
-    texto: e => `Auditando tus cuentas, tu gestor encuentra un cargo pequeño que se repite desde hace ocho años: una guardería de la Ruta 3. Llamas. Sigue allí el Pidgey que dejaste "una semana" cuando tenías ${Math.max(11, e.edad - 8)} años. Con los intereses, la cuenta es obscena.`,
+    texto: e => `Auditando tus cuentas, tu gestor encuentra un cargo pequeño que se repite desde hace ${e.año - 1} años: una guardería de la Ruta 3. Llamas. Sigue allí el Pidgey que dejaste "una semana" cuando tenías ${e.edad - (e.año - 1)} años. Con los intereses, la cuenta es obscena.`,
     opciones: [
       { txt: 'Pagar la factura entera', sub: 'Ocho años cuestan lo que cuestan.', cond: e => e.dinero >= 40000,
         efecto: e => { const p = fichar(e, 'pidgey', { nivel: 100 });
-          hito(e, '🕊️', 'Recuperó al Pidgey que olvidó ocho años en una guardería');
+          hito(e, '🕊️', `Recuperó al Pidgey que olvidó ${e.año - 1} años en una guardería`);
           return efecto(`Pagas sin mirar el total. Lo que sale del recinto no es un Pidgey: es un ${p?.nombre ?? 'Pidgeot'} enorme que lleva ocho años comiendo y entrenando con los cuidadores, y que te reconoce igualmente.`,
             m(e, { dinero: -Math.round(Math.max(40000, e.dinero * 0.55)), moral: [8, 15], vinculo: [10, 17], media: [1, 3] })); } },
       { txt: 'Pagar y dejarlo donde está', sub: 'Su casa es esa, no la tuya.',
@@ -1062,7 +1064,7 @@ const EVENTOS = [
       { txt: 'Bloquear el número de la guardería', sub: 'Problema resuelto.', riesgo: 0.55,
         efecto: (e, ok) => ok
           ? efecto('Bloqueas el teléfono y no vuelves a pensar en ello. Ahorras una fortuna. Alguna noche, en hoteles de torneo, te acuerdas.', m(e, { moral: [-7, -3], estrategia: [1, 3] }))
-          : efecto('Los ancianos cuentan la historia en televisión, con el Pidgey delante de la cámara. "Ocho años", repiten. Te llueve durante meses.',
+          : efecto(`Los ancianos cuentan la historia en televisión, con el Pidgey delante de la cámara. "${e.año - 1} años", repiten. Te llueve durante meses.`,
             m(e, { fama: [-13, -7], moral: [-9, -4] })) },
     ],
   },

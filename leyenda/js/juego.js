@@ -2,16 +2,16 @@
 import {
   REGIONES, ESTILOS, RITMOS, INICIALES, TIPOS, PORLINEA, POROBJETO, LOGROS,
   spriteUrl, iconoObjeto,
-} from './datos.js?v=37';
+} from './datos.js?v=38';
 import {
   nuevaPartida, simularTemporada, etapaDe, nombreEtapa, debeRetirarse, retirar,
   legado, rangoDe, logrosDe, poderEquipo, poderPokemon, apodoDe, dado,
   guardarPartida, cargarPartida, borrarPartida, esSatoshi,
   leerPalmares, apuntarEnPalmares, borrarPalmares, exportarPalmares, importarPalmares,
   leerLogros, desbloquearLogros, borrarLogros,
-} from './motor.js?v=37';
-import { siguienteEvento } from './eventos.js?v=37';
-import { descargarTarjeta } from './tarjeta.js?v=37';
+} from './motor.js?v=38';
+import { siguienteEvento } from './eventos.js?v=38';
+import { descargarTarjeta } from './tarjeta.js?v=38';
 
 // ── Tema claro / oscuro ──────────────────────────────────────────────────────
 // Sin elección guardada seguimos al sistema; al pulsar, se fija a mano.

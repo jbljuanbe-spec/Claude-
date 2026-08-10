@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hazte-con-todos.pages.dev/sitemap.xml

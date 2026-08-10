@@ -196,6 +196,9 @@ function pantallaInicio() {
       <span class="firma-x">X</span>
       <span>Hecho por <b>@SoyPalo_</b> · sígueme para más cosas así</span>
     </a>
+    <a class="cafe" href="https://ko-fi.com/TU_USUARIO" target="_blank" rel="noopener noreferrer">
+      ☕ <span>¿Te ha molado? Invítame a un café <small>(cubre dominio y herramientas)</small></span>
+    </a>
     <p class="aviso-legal">
       Proyecto de fan, sin ánimo de lucro y sin relación con Nintendo, Creatures o GAME FREAK.
       Pokémon es marca registrada de sus propietarios. Sprites de
@@ -754,6 +757,9 @@ function pantallaFinal() {
     <a class="firma firma-final" href="https://x.com/soypalo_" target="_blank" rel="noopener noreferrer">
       <span class="firma-x">X</span>
       <span>Si te ha molado, sígueme en X: <b>@SoyPalo_</b></span>
+    </a>
+    <a class="cafe" href="https://ko-fi.com/TU_USUARIO" target="_blank" rel="noopener noreferrer">
+      ☕ <span>Invítame a un café <small>(cubre dominio y herramientas)</small></span>
     </a>`;
 
   window.scrollTo({ top: 0, behavior: 'instant' });

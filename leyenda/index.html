@@ -38,19 +38,33 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="it_IT">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hazte con Todos">
   <meta name="twitter:description" content="Simula 20 años de carrera como entrenador Pokémon. ¿Hasta dónde llegas?">
   <meta name="twitter:image" content="https://hazte-con-todos.pages.dev/portada.png">
-  <link rel="preload" href="fuentes/SpaceGrotesk.woff2?v=40" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fuentes/PixelifySans.woff2?v=40" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/estilo.css?v=40">
+  <link rel="preload" href="fuentes/SpaceGrotesk.woff2?v=41" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fuentes/PixelifySans.woff2?v=41" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/estilo.css?v=41">
   <script>
     // Antes de pintar nada: si hay tema elegido a mano, se aplica ya. Si no,
     // manda el del sistema (lo resuelve el CSS). Así no hay fogonazo blanco.
     try {
       var t = localStorage.getItem('hazteconTodos.tema');
       if (t) document.documentElement.dataset.tema = t;
+    } catch (e) {}
+    // Idioma: igual que el tema, se decide antes de pintar para no parpadear.
+    // Sin elección guardada, se detecta por el idioma del navegador. El resto
+    // de textos (título, descripción) los ajusta juego.js una vez carga.
+    try {
+      var IDS = ['es', 'en', 'it'];
+      var idi = localStorage.getItem('hazteconTodos.idioma');
+      if (!idi || IDS.indexOf(idi) === -1) {
+        var nav = (navigator.language || 'es').slice(0, 2).toLowerCase();
+        idi = IDS.indexOf(nav) !== -1 ? nav : 'es';
+      }
+      document.documentElement.lang = idi;
     } catch (e) {}
   </script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
@@ -77,6 +91,6 @@
       </p>
     </noscript>
   </div>
-  <script type="module" src="js/juego.js?v=40"></script>
+  <script type="module" src="js/juego.js?v=41"></script>
 </body>
 </html>

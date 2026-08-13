@@ -4,19 +4,19 @@
    Subconjunto latino en woff2. Licencias en fuentes/OFL-*.txt */
 @font-face {
   font-family: 'Pixelify Sans';
-  src: url('../fuentes/PixelifySans.woff2?v=40') format('woff2-variations'),
-       url('../fuentes/PixelifySans.woff2?v=40') format('woff2');
+  src: url('../fuentes/PixelifySans.woff2?v=41') format('woff2-variations'),
+       url('../fuentes/PixelifySans.woff2?v=41') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('../fuentes/SpaceGrotesk.woff2?v=40') format('woff2-variations'),
-       url('../fuentes/SpaceGrotesk.woff2?v=40') format('woff2');
+  src: url('../fuentes/SpaceGrotesk.woff2?v=41') format('woff2-variations'),
+       url('../fuentes/SpaceGrotesk.woff2?v=41') format('woff2');
   font-weight: 300 700; font-display: swap;
 }
 @font-face {
   font-family: 'Silkscreen';
-  src: url('../fuentes/Silkscreen-Bold.woff2?v=40') format('woff2');
+  src: url('../fuentes/Silkscreen-Bold.woff2?v=41') format('woff2');
   font-weight: 400 700; font-display: swap;
 }
 
@@ -126,6 +126,16 @@ button { font-family: inherit; cursor: pointer; border: 0; color: inherit; }
 .portada .boton-tema { position: absolute; top: 0; right: 0; }
 /* Dentro de la barra convive con las pestañas, que son flex:1 */
 .tabs .boton-tema { flex: 0 0 42px; height: auto; }
+
+/* Botón de idioma: mismo estilo, justo a la izquierda del de tema */
+.boton-idioma {
+  background: var(--panel); border: 1.5px solid var(--linea); border-radius: 10px;
+  width: 38px; height: 34px; flex: 0 0 38px; font-size: 15px; line-height: 1;
+  box-shadow: var(--sombra); transition: .14s;
+}
+.boton-idioma:hover { border-color: var(--borde-fuerte); transform: translateY(-1px); }
+.portada .boton-idioma { position: absolute; top: 0; right: 44px; }
+.tabs .boton-idioma { flex: 0 0 42px; height: auto; }
 
 /* ── Portada / creación ──────────────────────────────────── */
 .portada { text-align: center; padding: 26px 0 6px; position: relative; }

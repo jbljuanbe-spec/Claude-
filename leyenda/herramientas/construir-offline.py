@@ -14,7 +14,9 @@ for f, fam in [('SpaceGrotesk.woff2','woff2'), ('PixelifySans.woff2','woff2'), (
 css = css.replace("url('../objetos/poke.png')", f"url('data:image/png;base64,{b64('objetos/poke.png')}')")
 
 # ── 2. JS: concatenar en orden de dependencias, quitando import/export ───────
-orden = ['datos.js', 'motor.js', 'eventos.js', 'tarjeta.js', 'juego.js']
+# i18n.js va primero: todos los demás lo importan (algunos con el alias T,
+# usado en datos.js para no chocar con la L de líneas evolutivas).
+orden = ['i18n.js', 'datos.js', 'motor.js', 'eventos.js', 'tarjeta.js', 'juego.js']
 partes = []
 for f in orden:
     s = leer('js/' + f)
@@ -22,6 +24,8 @@ for f in orden:
     s = re.sub(r"^import\s*\{[^}]*\}\s*from\s*'[^']+';", '', s, flags=re.M | re.S)
     s = re.sub(r"^export\s+\{[^}]*\};?\s*$", '', s, flags=re.M)
     s = re.sub(r"^export\s+", '', s, flags=re.M)
+    if f == 'i18n.js':
+        s += "\nconst T = L;  // alias usado por datos.js\n"
     partes.append(f"\n/* ── {f} ── */\n" + s)
 js = "\n".join(partes)
 

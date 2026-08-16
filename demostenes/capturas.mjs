@@ -5,12 +5,32 @@ const dir = "/tmp/claude-0/-home-user-Claude--/829d3f21-cfbf-5c90-bd09-3ae2adea5
 const prisma = new PrismaClient();
 const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
 
+// El overlay de desarrollo de Next.js no es parte del producto y ensucia las
+// capturas: lo ocultamos en el navegador, sin tocar next.config.
+const ocultarOverlay = (contexto) =>
+  contexto.addInitScript(() => {
+    const estilo = document.createElement("style");
+    estilo.textContent = "nextjs-portal{display:none!important}";
+    document.addEventListener("DOMContentLoaded", () => document.head.append(estilo));
+  });
+
 const escritorio = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+await ocultarOverlay(escritorio);
 const page = await escritorio.newPage();
 let n = 0;
-const shot = async (nombre, opts = {}) => {
+
+/// Las pantallas de la app son cortas y el navegador alto, así que una captura
+/// normal sale con dos tercios de blanco. Recortamos a la altura real del
+/// contenido, manteniendo el ancho completo para que se vea la barra superior.
+const shot = async (nombre) => {
   const file = `${dir}/${String(++n).padStart(2, "0")}-${nombre}.png`;
-  await page.screenshot({ path: file, ...opts });
+  const alto = await page.evaluate(() => {
+    const main = document.querySelector("main");
+    const fin = main ? main.getBoundingClientRect().bottom + window.scrollY : 0;
+    return Math.ceil(Math.max(fin + 28, 220));
+  });
+  const { width } = page.viewportSize();
+  await page.screenshot({ path: file, clip: { x: 0, y: 0, width, height: alto } });
   console.log("capturada", file.split("/").pop());
 };
 
@@ -32,7 +52,7 @@ await shot("login-relleno");
 // 2. Agenda del profesional
 await Promise.all([page.waitForURL(/agenda/), page.click('button[type="submit"]')]);
 await page.waitForLoadState("networkidle");
-await shot("agenda", { fullPage: true });
+await shot("agenda");
 
 // 3. Pantalla de cita, antes de generar la ficha
 const cita = await prisma.appointment.findFirst({
@@ -41,12 +61,12 @@ const cita = await prisma.appointment.findFirst({
 });
 await page.goto(`http://localhost:3000/citas/${cita.id}`);
 await page.waitForLoadState("networkidle");
-await shot("cita-sin-ficha", { fullPage: true });
+await shot("cita-sin-ficha");
 
 // 4. El aviso cuando falta la clave de IA
 await page.click('button:has-text("Generar ficha")');
 await page.waitForTimeout(3500);
-await shot("cita-aviso-sin-clave", { fullPage: true });
+await shot("cita-aviso-sin-clave");
 
 // 5. La ficha ya generada (contenido de ejemplo: aquí no hay clave de API)
 const anterior = await prisma.appointment.findFirst({
@@ -83,7 +103,7 @@ Marco ha registrado cuatro entradas desde la sesión anterior. Practicó los eje
 });
 await page.reload();
 await page.waitForLoadState("networkidle");
-await shot("cita-con-ficha", { fullPage: true });
+await shot("cita-con-ficha");
 
 // 6. Notas de sesión escritas
 await page.fill(
@@ -92,25 +112,25 @@ await page.fill(
 );
 await page.click('button:has-text("Guardar notas")');
 await page.waitForTimeout(2500);
-await shot("cita-notas-guardadas", { fullPage: true });
+await shot("cita-notas-guardadas");
 
 // 7. Listado de pacientes y ficha completa
 await page.goto("http://localhost:3000/pacientes");
 await page.waitForLoadState("networkidle");
-await shot("pacientes-listado", { fullPage: true });
+await shot("pacientes-listado");
 
 await Promise.all([
   page.waitForURL(/\/pacientes\/\w/),
   page.locator('a[href^="/pacientes/"]').first().click(),
 ]);
 await page.waitForLoadState("networkidle");
-await shot("paciente-ficha", { fullPage: true });
+await shot("paciente-ficha");
 
 // --- Lado paciente ---
 await page.click('button:has-text("Salir")');
 await page.waitForURL(/login/);
 await login(page, "paciente@demostenes.test");
-await shot("diario-paciente", { fullPage: true });
+await shot("diario-paciente");
 
 await page.fill(
   'textarea[name="body"]',
@@ -121,7 +141,7 @@ await shot("diario-escribiendo");
 
 await page.click('button:has-text("Guardar entrada")');
 await page.waitForTimeout(2500);
-await shot("diario-entrada-guardada", { fullPage: true });
+await shot("diario-entrada-guardada");
 
 // 8. El diario del paciente en un móvil, que es como lo usarán de verdad
 const movil = await browser.newContext({
@@ -130,6 +150,7 @@ const movil = await browser.newContext({
   isMobile: true,
   hasTouch: true,
 });
+await ocultarOverlay(movil);
 const mp = await movil.newPage();
 await login(mp, "paciente@demostenes.test");
 await mp.screenshot({ path: `${dir}/${String(++n).padStart(2, "0")}-diario-movil.png`, fullPage: true });

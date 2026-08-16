@@ -39,6 +39,14 @@ async function main() {
 
   const patientId = patientUser.patientProfile!.id;
 
+  // El seed se ejecuta más de una vez (al reinstalar, al reiniciar la base de
+  // datos). Sin este borrado, cada pasada duplicaba el diario y las citas:
+  // `skipDuplicates` no lo evita porque estas tablas no tienen clave única.
+  await prisma.preSessionBrief.deleteMany({ where: { appointment: { patientId } } });
+  await prisma.appointment.deleteMany({ where: { patientId } });
+  await prisma.diaryEntry.deleteMany({ where: { patientId } });
+  await prisma.goal.deleteMany({ where: { patientId } });
+
   await prisma.goal.createMany({
     data: [
       { patientId, title: "Fonema /r/ en posición inicial", description: "Praxias diarias y lectura en voz alta" },

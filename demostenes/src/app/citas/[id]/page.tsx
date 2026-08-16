@@ -4,6 +4,7 @@ import { requireTherapist } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { formatDate, formatDateTime } from "@/lib/format";
 import { Nav } from "@/components/Nav";
+import { BriefContent } from "@/components/BriefContent";
 import { GenerateBriefButton } from "./GenerateBriefButton";
 import { saveSessionNotes } from "./actions";
 
@@ -48,9 +49,7 @@ export default async function CitaPage({ params }: PageProps<"/citas/[id]">) {
           </div>
 
           {appointment.brief ? (
-            <article className="whitespace-pre-wrap rounded border border-stone-200 bg-white p-4 text-sm">
-              {appointment.brief.summary}
-            </article>
+            <BriefContent summary={appointment.brief.summary} />
           ) : (
             <p className="text-sm text-stone-600">
               Todavía no has generado la ficha para esta cita.

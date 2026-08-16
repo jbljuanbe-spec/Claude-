@@ -27,7 +27,15 @@ check("el logopeda aterriza en la agenda", page.url().endsWith("/agenda"), page.
 await page.screenshot({ path: `${shots}/1-agenda.png` });
 
 const citas = await page.locator('a[href^="/citas/"]').count();
-check("la agenda lista la cita próxima", citas === 1, `${citas} cita(s)`);
+check("la agenda lista las citas próximas", citas >= 1, `${citas} cita(s)`);
+
+// La tarjeta debe traer las señales del diario sin abrir la cita.
+const agenda = await page.locator("main").innerText();
+check("la tarjeta muestra la adherencia al diario", /\d+ de \d+ días con registro/.test(agenda));
+check(
+  "la tarjeta avisa del paciente sin diario",
+  agenda.includes("Sin entradas de diario"),
+);
 
 await Promise.all([
   page.waitForURL(/\/citas\//),

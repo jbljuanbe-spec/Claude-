@@ -77,14 +77,17 @@ await prisma.preSessionBrief.upsert({
 await page.reload();
 await page.waitForLoadState("networkidle");
 const conFicha = await page.locator("main").innerText();
-check("la ficha guardada se renderiza en la pantalla de cita", conFicha.includes("Avance por objetivo"));
+check(
+  "la ficha guardada se renderiza en la pantalla de cita",
+  /avance por objetivo/i.test(conFicha) && conFicha.includes("leyó un cuento entero"),
+);
 check("muestra el número de entradas cubiertas", conFicha.includes(`${entradas} entradas`), `${entradas} entradas`);
 check("el botón pasa a ofrecer regenerar", conFicha.includes("Regenerar ficha"));
 check(
-  "la agenda marca la cita como lista",
+  "la agenda muestra la ficha en la tarjeta",
   await (async () => {
     await page.goto("http://localhost:3000/agenda");
-    return (await page.locator("main").innerText()).includes("Ficha lista");
+    return (await page.locator("main").innerText()).includes("Ficha pre-sesión");
   })(),
 );
 

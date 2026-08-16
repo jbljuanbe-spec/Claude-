@@ -5,9 +5,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { requireTherapist } from "@/lib/auth";
 import { BriefError, generateBrief } from "@/lib/brief";
-
-/// Ventana de diario que entra en la ficha: desde la cita anterior, o los 30 días previos.
-const DEFAULT_WINDOW_DAYS = 30;
+import { resolveWindow } from "@/lib/session-window";
 
 async function loadOwnedAppointment(therapistId: string, appointmentId: string) {
   const appointment = await prisma.appointment.findFirst({
@@ -29,22 +27,12 @@ export async function generatePreSessionBrief(
   const therapist = await requireTherapist();
   const appointment = await loadOwnedAppointment(therapist.id, appointmentId);
 
-  const previous = await prisma.appointment.findFirst({
-    where: {
-      patientId: appointment.patientId,
-      startsAt: { lt: appointment.startsAt },
-    },
-    orderBy: { startsAt: "desc" },
-  });
-
-  const coveredFrom =
-    previous?.startsAt ??
-    new Date(appointment.startsAt.getTime() - DEFAULT_WINDOW_DAYS * 24 * 60 * 60 * 1000);
+  const window = await resolveWindow(appointment.patientId, appointment.startsAt);
 
   const entries = await prisma.diaryEntry.findMany({
     where: {
       patientId: appointment.patientId,
-      createdAt: { gte: coveredFrom, lte: appointment.startsAt },
+      createdAt: { gte: window.from, lte: window.until },
     },
     orderBy: { createdAt: "asc" },
   });
@@ -56,7 +44,7 @@ export async function generatePreSessionBrief(
       discipline: appointment.therapist.discipline,
       goals: appointment.patient.goals,
       entries,
-      previousSessionNotes: previous?.sessionNotes ?? null,
+      previousSessionNotes: window.previous?.sessionNotes ?? null,
     });
   } catch (error) {
     if (error instanceof BriefError) return error.message;
@@ -72,14 +60,14 @@ export async function generatePreSessionBrief(
       appointmentId,
       summary,
       entryCount: entries.length,
-      coveredFrom,
-      coveredUntil: appointment.startsAt,
+      coveredFrom: window.from,
+      coveredUntil: window.until,
     },
     update: {
       summary,
       entryCount: entries.length,
-      coveredFrom,
-      coveredUntil: appointment.startsAt,
+      coveredFrom: window.from,
+      coveredUntil: window.until,
       generatedAt: new Date(),
     },
   });

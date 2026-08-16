@@ -72,6 +72,47 @@ async function main() {
     data: { patientId, therapistId, startsAt: daysAhead(1) },
   });
 
+  // Segundo paciente: lleva tres semanas sin escribir nada. Existe para que la
+  // agenda muestre también el caso que más importa ver de un vistazo — el
+  // paciente del que no se sabe nada — y no solo el que va bien.
+  const silenciosaUser = await prisma.user.upsert({
+    where: { email: "lucia@demostenes.test" },
+    update: {},
+    create: {
+      email: "lucia@demostenes.test",
+      passwordHash,
+      name: "Lucía Serrano",
+      role: "PATIENT",
+      patientProfile: { create: { therapistId, birthDate: new Date("2014-09-02") } },
+    },
+    include: { patientProfile: true },
+  });
+  const silenciosaId = silenciosaUser.patientProfile!.id;
+
+  await prisma.preSessionBrief.deleteMany({ where: { appointment: { patientId: silenciosaId } } });
+  await prisma.appointment.deleteMany({ where: { patientId: silenciosaId } });
+  await prisma.diaryEntry.deleteMany({ where: { patientId: silenciosaId } });
+  await prisma.goal.deleteMany({ where: { patientId: silenciosaId } });
+
+  await prisma.goal.create({
+    data: {
+      patientId: silenciosaId,
+      title: "Fluidez en lectura en voz alta",
+      description: "Diez minutos diarios con un adulto delante",
+    },
+  });
+  await prisma.appointment.create({
+    data: {
+      patientId: silenciosaId,
+      therapistId,
+      startsAt: daysAgo(21),
+      sessionNotes: "Pautamos lectura diaria. La madre refiere poco tiempo en casa.",
+    },
+  });
+  await prisma.appointment.create({
+    data: { patientId: silenciosaId, therapistId, startsAt: daysAhead(2) },
+  });
+
   console.log("Datos de ejemplo listos. Contraseña de ambas cuentas: demostenes");
 }
 

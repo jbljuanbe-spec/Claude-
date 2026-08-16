@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { requireTherapist } from "@/lib/auth";
-import { generateBrief } from "@/lib/brief";
+import { BriefError, generateBrief } from "@/lib/brief";
 
 /// Ventana de diario que entra en la ficha: desde la cita anterior, o los 30 días previos.
 const DEFAULT_WINDOW_DAYS = 30;
@@ -59,7 +59,11 @@ export async function generatePreSessionBrief(
       previousSessionNotes: previous?.sessionNotes ?? null,
     });
   } catch (error) {
-    return error instanceof Error ? error.message : "No se pudo generar la ficha.";
+    if (error instanceof BriefError) return error.message;
+    // Nunca devolvemos el error interno a la pantalla del profesional: puede
+    // contener detalles del proveedor o del propio contenido clínico.
+    console.error("[brief] fallo generando la ficha", { appointmentId, error });
+    return "No se pudo generar la ficha. Vuelve a intentarlo en unos segundos.";
   }
 
   await prisma.preSessionBrief.upsert({

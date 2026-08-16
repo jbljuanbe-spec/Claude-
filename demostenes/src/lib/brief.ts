@@ -4,7 +4,20 @@ import { MOOD_LABEL } from "@/lib/mood";
 
 const MODEL = "claude-opus-5";
 
-const client = new Anthropic();
+/// Errores cuyo texto es seguro y útil mostrar al profesional.
+export class BriefError extends Error {}
+
+let client: Anthropic | undefined;
+
+function getClient() {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    throw new BriefError(
+      "Falta configurar ANTHROPIC_API_KEY en el servidor. Avisa a quien administre la instalación.",
+    );
+  }
+  client ??= new Anthropic();
+  return client;
+}
 
 const SYSTEM = `Eres el copiloto clínico de un profesional de psicología o logopedia en consulta privada.
 
@@ -66,7 +79,7 @@ export async function generateBrief(input: BriefInput): Promise<string> {
     }\n</diario_paciente>`,
   ].join("\n\n");
 
-  const response = await client.beta.messages.create({
+  const response = await getClient().beta.messages.create({
     model: MODEL,
     max_tokens: 2000,
     system: SYSTEM,
@@ -76,7 +89,9 @@ export async function generateBrief(input: BriefInput): Promise<string> {
   } as Anthropic.Beta.Messages.MessageCreateParamsNonStreaming);
 
   if (response.stop_reason === "refusal") {
-    throw new Error("El modelo declinó generar la ficha para este contenido.");
+    throw new BriefError(
+      "El modelo declinó resumir este contenido. Revisa el diario y vuelve a intentarlo.",
+    );
   }
 
   const text = response.content
@@ -85,6 +100,6 @@ export async function generateBrief(input: BriefInput): Promise<string> {
     .join("\n")
     .trim();
 
-  if (!text) throw new Error("La respuesta del modelo llegó vacía.");
+  if (!text) throw new BriefError("La respuesta del modelo llegó vacía. Inténtalo de nuevo.");
   return text;
 }

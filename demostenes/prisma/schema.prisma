@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  THERAPIST
+  PATIENT
+}
+
+enum Discipline {
+  PSICOLOGIA
+  LOGOPEDIA
+}
+
+enum Mood {
+  MUY_MAL
+  MAL
+  NEUTRO
+  BIEN
+  MUY_BIEN
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role
+  createdAt    DateTime @default(now())
+
+  therapistProfile Therapist?
+  patientProfile   Patient?
+}
+
+model Therapist {
+  id         String     @id @default(cuid())
+  userId     String     @unique
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  discipline Discipline
+
+  patients     Patient[]
+  appointments Appointment[]
+}
+
+model Patient {
+  id          String    @id @default(cuid())
+  userId      String    @unique
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  therapistId String
+  therapist   Therapist @relation(fields: [therapistId], references: [id], onDelete: Cascade)
+
+  birthDate DateTime?
+  notes     String?
+  createdAt DateTime  @default(now())
+
+  goals        Goal[]
+  entries      DiaryEntry[]
+  appointments Appointment[]
+
+  @@index([therapistId])
+}
+
+model Goal {
+  id          String   @id @default(cuid())
+  patientId   String
+  patient     Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@index([patientId])
+}
+
+model DiaryEntry {
+  id        String   @id @default(cuid())
+  patientId String
+  patient   Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  body      String
+  mood      Mood
+  createdAt DateTime @default(now())
+
+  @@index([patientId, createdAt])
+}
+
+model Appointment {
+  id          String    @id @default(cuid())
+  patientId   String
+  patient     Patient   @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  therapistId String
+  therapist   Therapist @relation(fields: [therapistId], references: [id], onDelete: Cascade)
+
+  startsAt        DateTime
+  durationMinutes Int      @default(45)
+  sessionNotes    String?
+
+  brief PreSessionBrief?
+
+  @@index([therapistId, startsAt])
+  @@index([patientId, startsAt])
+}
+
+/// Ficha ejecutiva generada por IA justo antes de la cita.
+model PreSessionBrief {
+  id            String      @id @default(cuid())
+  appointmentId String      @unique
+  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+
+  summary       String
+  entryCount    Int
+  coveredFrom   DateTime
+  coveredUntil  DateTime
+  generatedAt   DateTime @default(now())
+}

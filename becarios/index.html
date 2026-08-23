@@ -50,6 +50,7 @@
     <span id="hud-strikes">⚠ 0/3</span>
     <span class="barra-wrap">Hambre<span class="barra-bg"><i id="barra-hambre" class="barra"></i></span></span>
     <span class="barra-wrap">Estrés<span class="barra-bg"><i id="barra-estres" class="barra"></i></span></span>
+    <button id="btn-cafe" class="btn-cafe" title="Baja estrés y hambre, pero gasta tiempo. Usos limitados.">☕ Café</button>
   </div>
 
   <div class="escritorio">
@@ -67,25 +68,43 @@
       </div>
     </div>
 
-    <!-- Columna derecha: documento y acciones -->
+    <!-- Columna derecha: monitor con pestañas (Trabajo / Skyscanner) -->
     <div class="col-der">
       <div class="monitor">
-        <div class="monitor-barra">📄 Documento — Word 2003</div>
-        <div id="documento" class="documento"></div>
+        <div class="tabs">
+          <button id="tab-trabajo" class="tab activa">📄 Documento — Word 2003</button>
+          <button id="tab-skyscanner" class="tab">✈ Skyscanner</button>
+          <span class="tabs-hint">Tab para cambiar</span>
+        </div>
+        <div id="panel-trabajo" class="panel">
+          <div id="documento" class="documento"></div>
+        </div>
+        <div id="panel-skyscanner" class="panel" style="display:none"></div>
       </div>
+
       <button id="btn-generar" class="btn-generar">⚙ Generar con IA</button>
       <div id="acciones-doc" class="acciones" style="display:none">
-        <button id="btn-filtro" class="btn-tool" title="Resalta frases sospechosas de IA (cuesta tiempo)">🔍 Filtro anti-IA</button>
+        <button id="btn-filtro" class="btn-tool" title="Usos limitados. Solo huele los tics de IA.">🔍 Filtro anti-IA</button>
         <button id="btn-editar" class="btn-tool">✂ Editar (borrar marcadas)</button>
         <button id="btn-rehacer" class="btn-rehacer">↻ Rehacer</button>
         <button id="btn-enviar" class="btn-enviar">✉ Enviar a revisión</button>
       </div>
-      <p class="ayuda">Haz clic en las frases con gazapos de IA o discrepancias para <b>marcarlas</b> antes de decidir.</p>
+      <p class="ayuda">Marca las frases con gazapos de IA, discrepancias o fuentes falsas. El jefe puede preguntarte de dónde sale un dato.</p>
     </div>
   </div>
 
+  <div id="aviso-jefe" class="aviso-jefe"></div>
   <div id="feedback" class="feedback"></div>
 </section>
+
+<!-- MODAL: pregunta de fuente -->
+<div id="modal" class="modal-overlay">
+  <div class="modal-box">
+    <h3 id="modal-titulo"></h3>
+    <div id="modal-cuerpo"></div>
+    <div id="modal-opciones" class="modal-opciones"></div>
+  </div>
+</div>
 
 <!-- RESUMEN DE DÍA -->
 <section id="resumen" class="screen">

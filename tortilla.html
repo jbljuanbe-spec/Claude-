@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Encuentra el Trozo con Cebolla</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80'>🍳</text></svg>">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    height: 100%;
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #ffe9c7 0%, #f6c98a 55%, #e0a35f 100%);
+    color: #5a3a1a;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  #app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: clamp(14px, 4.5vw, 20px);
+    padding: 4px 6px;
+  }
+  header .rec { color: #a85a1a; }
+  h1 {
+    font-size: clamp(18px, 5.5vw, 30px);
+    text-align: center;
+    margin: 4px 0 2px;
+    color: #7a3d0e;
+    text-shadow: 1px 1px 0 #fff4;
+    letter-spacing: .5px;
+  }
+  .sub {
+    font-size: clamp(10px, 3vw, 13px);
+    text-align: center;
+    color: #8a5a2a;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+  #stage {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+  }
+  #board {
+    background: #c98a4a;
+    border-radius: 18px;
+    box-shadow: 0 10px 26px #0004, inset 0 0 0 6px #b3763a, inset 0 0 0 10px #d99a55;
+    padding: 12px;
+    transition: opacity .28s ease;
+    touch-action: manipulation;
+  }
+  canvas { display: block; border-radius: 8px; }
+  #footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 6px 2px;
+    font-weight: 600;
+    font-size: clamp(13px, 4vw, 18px);
+  }
+  #fails { color: #b23a2a; }
+  button {
+    font-family: inherit;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    background: #d4702a;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: clamp(12px, 3.5vw, 15px);
+    box-shadow: 0 3px 0 #a8501a;
+    transition: transform .08s;
+  }
+  button:active { transform: translateY(2px); box-shadow: 0 1px 0 #a8501a; }
+
+  /* Overlays de mensajes */
+  #flash {
+    position: absolute;
+    inset: 0;
+    background: #ff2a2a;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 18px;
+  }
+  #flash.on { animation: flashRed .22s ease; }
+  @keyframes flashRed { 0%{opacity:.55} 100%{opacity:0} }
+  #app.shake { animation: shake .22s ease; }
+  @keyframes shake {
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-7px)}
+    50%{transform:translateX(6px)}
+    75%{transform:translateX(-4px)}
+  }
+  #msg {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%) scale(.4);
+    font-size: clamp(28px, 11vw, 64px);
+    font-weight: 900;
+    color: #1c9c3c;
+    text-shadow: 2px 2px 0 #fff, 4px 4px 0 #0002;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  #msg.win { animation: pop 1s ease forwards; }
+  @keyframes pop {
+    0%{opacity:0; transform:translate(-50%,-50%) scale(.4)}
+    20%{opacity:1; transform:translate(-50%,-50%) scale(1.1)}
+    75%{opacity:1; transform:translate(-50%,-50%) scale(1)}
+    100%{opacity:0; transform:translate(-50%,-50%) scale(1.05)}
+  }
+  #ole {
+    position: absolute;
+    left: 50%; top: 22%;
+    transform: translateX(-50%);
+    font-size: clamp(22px, 8vw, 44px);
+    font-weight: 900;
+    color: #d4702a;
+    text-shadow: 2px 2px 0 #fff;
+    opacity: 0;
+    pointer-events: none;
+  }
+  #ole.win { animation: ole 1s ease forwards; }
+  @keyframes ole {
+    0%{opacity:0; transform:translateX(-50%) translateY(10px)}
+    30%{opacity:1; transform:translateX(-50%) translateY(0)}
+    100%{opacity:0; transform:translateX(-50%) translateY(-20px)}
+  }
+  #miss {
+    position: absolute;
+    left: 50%; top: 40%;
+    transform: translateX(-50%);
+    font-size: clamp(20px, 7vw, 40px);
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 2px 2px 0 #b02020;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    text-align: center;
+  }
+  #miss.on { animation: missA .8s ease forwards; }
+  @keyframes missA {
+    0%{opacity:0; transform:translateX(-50%) scale(.6)}
+    25%{opacity:1; transform:translateX(-50%) scale(1.1)}
+    80%{opacity:1}
+    100%{opacity:0}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <span id="level">Nivel 1</span>
+    <span class="rec" id="record">Récord: 1</span>
+  </header>
+  <h1>¿Dónde está la cebolla?</h1>
+  <div class="sub">La Guerra de la Tortilla · encuentra el único trozo traidor</div>
+  <div id="stage">
+    <div id="board"><canvas id="c"></canvas></div>
+    <div id="flash"></div>
+    <div id="miss"></div>
+    <div id="ole">¡Olé!</div>
+    <div id="msg">¡ENCONTRADA!</div>
+  </div>
+  <div id="footer">
+    <span id="fails">Fallos: 0</span>
+    <button id="reset">Empezar de nuevo</button>
+  </div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  var canvas = document.getElementById("c");
+  var ctx = canvas.getContext("2d");
+  var board = document.getElementById("board");
+  var app = document.getElementById("app");
+  var elLevel = document.getElementById("level");
+  var elRecord = document.getElementById("record");
+  var elFails = document.getElementById("fails");
+  var flash = document.getElementById("flash");
+  var msg = document.getElementById("msg");
+  var ole = document.getElementById("ole");
+  var miss = document.getElementById("miss");
+
+  var REC_KEY = "tortillaRecord";
+  var record = parseInt(localStorage.getItem(REC_KEY) || "1", 10) || 1;
+
+  var level = 1;
+  var fails = 0;
+  var cols = 4, rows = 4;
+  var targetIndex = 0;
+  var cellPx = 0;        // tamaño de celda en px de dibujo
+  var pad = 4;           // hueco entre trozos
+  var boardPx = 0;       // lado del canvas (px lógicos)
+  var locked = false;    // bloquea input durante transiciones
+
+  var msgFrases = ["¡ENCONTRADA!", "¡ESA ES!", "¡CEBOLLISTA!", "¡BIEN VISTO!"];
+  var missFrases = [
+    "¡AY! Esa es sin cebolla",
+    "¡Esa no lleva!",
+    "Prueba otra vez",
+    "¡Nada de cebolla ahí!",
+    "Team sincebollista detectado"
+  ];
+
+  // ---- Configuración procedural del nivel ----
+  function gridForLevel(l) {
+    // Niveles 1-4 fijos; a partir de 5 crece de 2 en 2 hasta 30.
+    var map = { 1: 4, 2: 6, 3: 8, 4: 10 };
+    if (map[l]) return map[l];
+    var g = 12 + (l - 5) * 2; // nivel 5 -> 12x12
+    return Math.min(30, g);
+  }
+
+  function setupLevel() {
+    var g = gridForLevel(level);
+    cols = rows = g;
+    fails = 0;
+    targetIndex = Math.floor(Math.random() * cols * rows);
+    elLevel.textContent = "Nivel " + level;
+    elFails.textContent = "Fallos: 0";
+    resize();
+  }
+
+  // ---- Dimensionado responsive ----
+  function resize() {
+    var stage = document.getElementById("stage");
+    var maxW = board.parentElement.clientWidth - 4;
+    var maxH = stage.clientHeight - 4;
+    var side = Math.min(maxW, maxH);
+    side = Math.max(220, Math.min(side, 640));
+
+    var inner = side - 24; // padding del board (12 por lado)
+    cellPx = inner / cols;
+    pad = Math.max(1, Math.min(4, cellPx * 0.08));
+    boardPx = inner;
+
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(boardPx * dpr);
+    canvas.height = Math.round(boardPx * dpr);
+    canvas.style.width = boardPx + "px";
+    canvas.style.height = boardPx + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+
+  // ---- Dibujo de un trozo de tortilla ----
+  function drawPiece(cx, cy, size, isTarget) {
+    var r = Math.max(2, size * 0.18);
+    var x = cx, y = cy, w = size, h = size;
+
+    // degradado del cuerpo (comida real, no cuadrado plano)
+    var grad = ctx.createLinearGradient(x, y, x + w, y + h);
+    if (level >= 5) {
+      // tortilla dada la vuelta: parte exterior tostada
+      grad.addColorStop(0, "#e8b86f");
+      grad.addColorStop(0.5, "#d99f52");
+      grad.addColorStop(1, "#c98637");
+    } else {
+      grad.addColorStop(0, "#F7DFB0");
+      grad.addColorStop(0.55, "#F5D6A8");
+      grad.addColorStop(1, "#E9C486");
+    }
+    roundRect(x, y, w, h, r);
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // borde tostado irregular (flequillo)
+    ctx.lineWidth = Math.max(1, size * 0.05);
+    ctx.strokeStyle = "#D4A373";
+    ctx.stroke();
+
+    // sombreado interior sutil en los bordes
+    ctx.save();
+    roundRect(x, y, w, h, r);
+    ctx.clip();
+    var vg = ctx.createRadialGradient(
+      x + w / 2, y + h / 2, size * 0.15,
+      x + w / 2, y + h / 2, size * 0.75
+    );
+    vg.addColorStop(0, "rgba(0,0,0,0)");
+    vg.addColorStop(1, "rgba(120,70,20,0.18)");
+    ctx.fillStyle = vg;
+    ctx.fillRect(x, y, w, h);
+
+    // pequeñas motas para textura de huevo
+    ctx.fillStyle = level >= 5 ? "rgba(150,95,40,0.20)" : "rgba(210,160,90,0.35)";
+    var seed = ((cx * 13 + cy * 7) | 0);
+    for (var i = 0; i < 3; i++) {
+      seed = (seed * 9301 + 49297) % 233280;
+      var rx = x + (seed / 233280) * w;
+      seed = (seed * 9301 + 49297) % 233280;
+      var ry = y + (seed / 233280) * h;
+      ctx.beginPath();
+      ctx.arc(rx, ry, size * 0.04, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // ---- La diferencia ----
+    if (isTarget) {
+      if (level < 5) {
+        // fragmento de cebolla caramelizada
+        var frac = [0, 0.33, 0.25, 0.20, 0.125][level] || 0.125;
+        var os = size * frac;
+        // desplazada del centro, más al borde en niveles altos
+        var offx = (level >= 4 ? 0.28 : 0.12) * size;
+        var offy = (level >= 4 ? 0.28 : 0.10) * size;
+        var ox = x + w / 2 + offx - os / 2;
+        var oy = y + h / 2 + offy - os / 2;
+        var og = ctx.createRadialGradient(
+          ox + os / 2, oy + os / 2, os * 0.1,
+          ox + os / 2, oy + os / 2, os * 0.7
+        );
+        var base = level <= 2 ? "#B86B24" : "#8B4513";
+        og.addColorStop(0, "#C57B2E");
+        og.addColorStop(1, base);
+        ctx.save();
+        roundRect(x, y, w, h, r);
+        ctx.clip();
+        ctx.beginPath();
+        ctx.ellipse(ox + os / 2, oy + os / 2, os * 0.6, os * 0.42,
+                    0.6, 0, Math.PI * 2);
+        ctx.fillStyle = og;
+        ctx.fill();
+        ctx.restore();
+      } else {
+        // marca de tostado: círculo más oscuro desplazado, cada vez menor
+        var shrink = Math.max(0.04, 0.22 - (level - 5) * 0.012);
+        var ms = size * shrink;
+        var mox = x + w / 2 + size * 0.18;
+        var moy = y + h / 2 - size * 0.16;
+        ctx.save();
+        roundRect(x, y, w, h, r);
+        ctx.clip();
+        var mg = ctx.createRadialGradient(mox, moy, ms * 0.1, mox, moy, ms);
+        mg.addColorStop(0, "rgba(120,70,25,0.85)");
+        mg.addColorStop(1, "rgba(120,70,25,0)");
+        ctx.beginPath();
+        ctx.arc(mox, moy, ms, 0, Math.PI * 2);
+        ctx.fillStyle = mg;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+  }
+
+  function roundRect(x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, boardPx, boardPx);
+    var step = boardPx / cols;
+    for (var row = 0; row < rows; row++) {
+      for (var col = 0; col < cols; col++) {
+        var idx = row * cols + col;
+        var cx = col * step + pad / 2;
+        var cy = row * step + pad / 2;
+        drawPiece(cx, cy, step - pad, idx === targetIndex);
+      }
+    }
+  }
+
+  // ---- Partículas al acertar ----
+  function particles(px, py) {
+    var parts = [];
+    for (var i = 0; i < 22; i++) {
+      var a = Math.random() * Math.PI * 2;
+      var sp = 1.5 + Math.random() * 3.5;
+      parts.push({
+        x: px, y: py,
+        vx: Math.cos(a) * sp,
+        vy: Math.sin(a) * sp - 1.5,
+        life: 1,
+        col: Math.random() < 0.5 ? "#ffd34d" : "#ffb02e"
+      });
+    }
+    var frames = 0;
+    function step() {
+      draw();
+      var alive = false;
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i];
+        if (p.life <= 0) continue;
+        alive = true;
+        p.x += p.vx; p.y += p.vy; p.vy += 0.18; p.life -= 0.03;
+        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.fillStyle = p.col;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      frames++;
+      if (alive && frames < 60) requestAnimationFrame(step);
+      else draw();
+    }
+    step();
+  }
+
+  // ---- Entrada del jugador ----
+  function cellAt(clientX, clientY) {
+    var rect = canvas.getBoundingClientRect();
+    var x = (clientX - rect.left) * (boardPx / rect.width);
+    var y = (clientY - rect.top) * (boardPx / rect.height);
+    if (x < 0 || y < 0 || x >= boardPx || y >= boardPx) return -1;
+    var step = boardPx / cols;
+    var col = Math.floor(x / step);
+    var row = Math.floor(y / step);
+    return row * cols + col;
+  }
+
+  function handleHit(idx) {
+    if (locked || idx < 0) return;
+    if (idx === targetIndex) win();
+    else fail();
+  }
+
+  function fail() {
+    fails++;
+    elFails.textContent = "Fallos: " + fails;
+    flash.classList.remove("on"); void flash.offsetWidth; flash.classList.add("on");
+    app.classList.remove("shake"); void app.offsetWidth; app.classList.add("shake");
+    miss.textContent = missFrases[Math.floor(Math.random() * missFrases.length)];
+    miss.classList.remove("on"); void miss.offsetWidth; miss.classList.add("on");
+  }
+
+  function win() {
+    locked = true;
+
+    // zoom del trozo acertado
+    var step = boardPx / cols;
+    var col = targetIndex % cols;
+    var row = Math.floor(targetIndex / cols);
+    var cx = col * step + step / 2;
+    var cy = row * step + step / 2;
+
+    zoomTarget(cx, cy, step, function () {
+      particles(cx, cy);
+    });
+
+    msg.textContent = msgFrases[Math.floor(Math.random() * msgFrases.length)];
+    msg.classList.remove("win"); void msg.offsetWidth; msg.classList.add("win");
+    ole.classList.remove("win"); void ole.offsetWidth; ole.classList.add("win");
+
+    // récord
+    var reached = level;
+    if (reached > record) {
+      record = reached;
+      localStorage.setItem(REC_KEY, String(record));
+      elRecord.textContent = "Récord: " + record;
+    }
+
+    setTimeout(function () {
+      board.style.opacity = "0";
+      setTimeout(function () {
+        level++;
+        setupLevel();
+        board.style.opacity = "1";
+        locked = false;
+      }, 300);
+    }, 1000);
+  }
+
+  function zoomTarget(cx, cy, size, done) {
+    var t = 0;
+    function step() {
+      t += 0.08;
+      var s = 1 + Math.sin(Math.min(t, 1) * Math.PI) * 0.5; // hasta 1.5
+      draw();
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(s, s);
+      ctx.translate(-cx, -cy);
+      drawPiece(cx - size / 2 + pad / 2, cy - size / 2 + pad / 2, size - pad, true);
+      ctx.restore();
+      if (t < 1) requestAnimationFrame(step);
+      else if (done) done();
+    }
+    step();
+  }
+
+  // ---- Eventos ----
+  canvas.addEventListener("click", function (e) {
+    handleHit(cellAt(e.clientX, e.clientY));
+  });
+  canvas.addEventListener("touchstart", function (e) {
+    e.preventDefault();
+    var t = e.changedTouches[0];
+    handleHit(cellAt(t.clientX, t.clientY));
+  }, { passive: false });
+
+  document.getElementById("reset").addEventListener("click", function () {
+    if (locked) return;
+    level = 1;
+    setupLevel();
+  });
+
+  window.addEventListener("resize", function () {
+    if (!locked) resize();
+  });
+
+  // ---- Arranque ----
+  elRecord.textContent = "Récord: " + record;
+  setupLevel();
+})();
+</script>
+</body>
+</html>

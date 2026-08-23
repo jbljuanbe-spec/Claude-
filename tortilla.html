@@ -264,129 +264,202 @@
     canvas.style.width = boardPx + "px";
     canvas.style.height = boardPx + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildSprites(cellPx - pad);
     draw();
   }
 
-  // ---- Dibujo de un trozo de tortilla ----
-  function drawPiece(cx, cy, size, isTarget) {
-    var r = Math.max(2, size * 0.18);
-    var x = cx, y = cy, w = size, h = size;
-
-    // degradado del cuerpo (comida real, no cuadrado plano)
-    var grad = ctx.createLinearGradient(x, y, x + w, y + h);
-    if (level >= 5) {
-      // tortilla dada la vuelta: parte exterior tostada
-      grad.addColorStop(0, "#e8b86f");
-      grad.addColorStop(0.5, "#d99f52");
-      grad.addColorStop(1, "#c98637");
-    } else {
-      grad.addColorStop(0, "#F7DFB0");
-      grad.addColorStop(0.55, "#F5D6A8");
-      grad.addColorStop(1, "#E9C486");
-    }
-    roundRect(x, y, w, h, r);
-    ctx.fillStyle = grad;
-    ctx.fill();
-
-    // borde tostado irregular (flequillo)
-    ctx.lineWidth = Math.max(1, size * 0.05);
-    ctx.strokeStyle = "#D4A373";
-    ctx.stroke();
-
-    // sombreado interior sutil en los bordes
-    ctx.save();
-    roundRect(x, y, w, h, r);
-    ctx.clip();
-    var vg = ctx.createRadialGradient(
-      x + w / 2, y + h / 2, size * 0.15,
-      x + w / 2, y + h / 2, size * 0.75
-    );
-    vg.addColorStop(0, "rgba(0,0,0,0)");
-    vg.addColorStop(1, "rgba(120,70,20,0.18)");
-    ctx.fillStyle = vg;
-    ctx.fillRect(x, y, w, h);
-
-    // pequeñas motas para textura de huevo
-    ctx.fillStyle = level >= 5 ? "rgba(150,95,40,0.20)" : "rgba(210,160,90,0.35)";
-    var seed = ((cx * 13 + cy * 7) | 0);
-    for (var i = 0; i < 3; i++) {
-      seed = (seed * 9301 + 49297) % 233280;
-      var rx = x + (seed / 233280) * w;
-      seed = (seed * 9301 + 49297) % 233280;
-      var ry = y + (seed / 233280) * h;
-      ctx.beginPath();
-      ctx.arc(rx, ry, size * 0.04, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.restore();
-
-    // ---- La diferencia ----
-    if (isTarget) {
-      if (level < 5) {
-        // fragmento de cebolla caramelizada
-        var frac = [0, 0.33, 0.25, 0.20, 0.125][level] || 0.125;
-        var os = size * frac;
-        // desplazada del centro, más al borde en niveles altos
-        var offx = (level >= 4 ? 0.28 : 0.12) * size;
-        var offy = (level >= 4 ? 0.28 : 0.10) * size;
-        var ox = x + w / 2 + offx - os / 2;
-        var oy = y + h / 2 + offy - os / 2;
-        var og = ctx.createRadialGradient(
-          ox + os / 2, oy + os / 2, os * 0.1,
-          ox + os / 2, oy + os / 2, os * 0.7
-        );
-        var base = level <= 2 ? "#B86B24" : "#8B4513";
-        og.addColorStop(0, "#C57B2E");
-        og.addColorStop(1, base);
-        ctx.save();
-        roundRect(x, y, w, h, r);
-        ctx.clip();
-        ctx.beginPath();
-        ctx.ellipse(ox + os / 2, oy + os / 2, os * 0.6, os * 0.42,
-                    0.6, 0, Math.PI * 2);
-        ctx.fillStyle = og;
-        ctx.fill();
-        ctx.restore();
-      } else {
-        // marca de tostado: círculo más oscuro desplazado, cada vez menor
-        var shrink = Math.max(0.04, 0.22 - (level - 5) * 0.012);
-        var ms = size * shrink;
-        var mox = x + w / 2 + size * 0.18;
-        var moy = y + h / 2 - size * 0.16;
-        ctx.save();
-        roundRect(x, y, w, h, r);
-        ctx.clip();
-        var mg = ctx.createRadialGradient(mox, moy, ms * 0.1, mox, moy, ms);
-        mg.addColorStop(0, "rgba(120,70,25,0.85)");
-        mg.addColorStop(1, "rgba(120,70,25,0)");
-        ctx.beginPath();
-        ctx.arc(mox, moy, ms, 0, Math.PI * 2);
-        ctx.fillStyle = mg;
-        ctx.fill();
-        ctx.restore();
-      }
-    }
+  // PRNG determinista por celda: misma textura en cada redibujado
+  function makeRng(seed) {
+    var s = (seed | 0) % 233280;
+    if (s < 0) s += 233280;
+    return function () {
+      s = (s * 9301 + 49297) % 233280;
+      return s / 233280;
+    };
   }
 
-  function roundRect(x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.arcTo(x + w, y, x + w, y + h, r);
-    ctx.arcTo(x + w, y + h, x, y + h, r);
-    ctx.arcTo(x, y + h, x, y, r);
-    ctx.arcTo(x, y, x + w, y, r);
-    ctx.closePath();
+  // ---- Sprites cacheados: se dibuja UN trozo y se repite (fluido en 30x30) ----
+  var pieceSize = 0, spriteNormal = null, spriteTarget = null;
+
+  function buildSprites(sizeLogical) {
+    pieceSize = sizeLogical;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    spriteNormal = renderSprite(sizeLogical, dpr, false);
+    spriteTarget = renderSprite(sizeLogical, dpr, true);
+  }
+
+  function renderSprite(sizeLogical, dpr, isTarget) {
+    var pxl = Math.max(1, Math.ceil(sizeLogical * dpr));
+    var cv = document.createElement("canvas");
+    cv.width = pxl; cv.height = pxl;
+    var c = cv.getContext("2d");
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (level >= 5) drawDome(c, sizeLogical, isTarget);
+    else drawWedge(c, sizeLogical, isTarget);
+    return cv;
+  }
+
+  // Silueta de una porción/cuña de tortilla (corteza arriba, punta abajo)
+  function wedgeSil(c, s) {
+    var lX = s * 0.14, rX = s * 0.86, topY = s * 0.30, crestY = s * 0.13, apexY = s * 0.92;
+    c.beginPath();
+    c.moveTo(lX, topY);
+    c.quadraticCurveTo(s / 2, crestY, rX, topY);
+    c.quadraticCurveTo(rX + s * 0.02, topY + s * 0.02, s / 2, apexY);
+    c.quadraticCurveTo(lX - s * 0.02, topY + s * 0.02, lX, topY);
+    c.closePath();
+    return { lX: lX, rX: rX, topY: topY, crestY: crestY, apexY: apexY };
+  }
+
+  // NIVELES 1-4: porción de tortilla vista de perfil (corte con patata + huevo)
+  function drawWedge(c, s, isTarget) {
+    // sombra
+    c.beginPath();
+    c.ellipse(s / 2, s * 0.9, s * 0.30, s * 0.055, 0, 0, Math.PI * 2);
+    c.fillStyle = "rgba(120,70,20,0.22)";
+    c.fill();
+
+    var g = wedgeSil(c, s);
+
+    // relleno de huevo cuajado
+    wedgeSil(c, s);
+    var eg = c.createLinearGradient(0, g.topY, 0, g.apexY);
+    eg.addColorStop(0, "#F4D97F");
+    eg.addColorStop(1, "#E6BB50");
+    c.fillStyle = eg;
+    c.fill();
+
+    // interior: capas de patata (el corte inconfundible)
+    c.save();
+    wedgeSil(c, s);
+    c.clip();
+    var pot = ["#FBEFC4", "#F7E4A6", "#FCF0CC"];
+    for (var i = 0; i < 4; i++) {
+      var f = 0.30 + 0.17 * i;
+      var yy = g.topY + (g.apexY - g.topY) * f;
+      var half = ((g.rX - g.lX) / 2) * (1 - f) * 1.25;
+      var ccx = s / 2 + (i % 2 ? -1 : 1) * half * 0.18;
+      c.beginPath();
+      c.ellipse(ccx, yy, Math.max(2, half * 0.85), Math.max(1.5, s * 0.055), 0, 0, Math.PI * 2);
+      c.fillStyle = pot[i % 3];
+      c.fill();
+      c.strokeStyle = "rgba(198,150,80,0.4)";
+      c.lineWidth = Math.max(0.5, s * 0.008);
+      c.stroke();
+    }
+
+    // cebolla caramelizada en el objetivo, incrustada en el corte
+    if (isTarget) {
+      var frac = [0, 0.33, 0.25, 0.20, 0.125][level] || 0.125;
+      var os = s * frac;
+      var ox = s / 2 + (level >= 4 ? 0.20 : 0.08) * s;
+      var oy = g.topY + (g.apexY - g.topY) * (level >= 4 ? 0.62 : 0.48);
+      c.save();
+      c.translate(ox, oy);
+      c.rotate(0.5);
+      var og = c.createLinearGradient(-os, 0, os, 0);
+      og.addColorStop(0, "#C9812F");
+      og.addColorStop(1, level <= 2 ? "#9A5518" : "#7A3F10");
+      c.beginPath();
+      c.ellipse(0, 0, os * 0.6, os * 0.28, 0, 0, Math.PI * 2);
+      c.fillStyle = og;
+      c.fill();
+      c.strokeStyle = "rgba(80,40,8,0.55)";
+      c.lineWidth = Math.max(0.5, s * 0.01);
+      c.stroke();
+      c.restore();
+    }
+    c.restore();
+
+    // corteza dorada tostada en el borde superior (banda gruesa)
+    c.save();
+    wedgeSil(c, s);
+    c.clip();
+    c.beginPath();
+    c.moveTo(g.lX, g.topY);
+    c.quadraticCurveTo(s / 2, g.crestY, g.rX, g.topY);
+    c.quadraticCurveTo(s / 2, g.topY + s * 0.11, g.lX, g.topY);
+    c.closePath();
+    var cg = c.createLinearGradient(0, g.crestY, 0, g.topY + s * 0.12);
+    cg.addColorStop(0, "#CC8F3E");
+    cg.addColorStop(1, "#E4BA55");
+    c.fillStyle = cg;
+    c.fill();
+    // brillo de la corteza
+    c.beginPath();
+    c.moveTo(g.lX + s * 0.05, g.topY - s * 0.01);
+    c.quadraticCurveTo(s / 2, g.crestY + s * 0.02, g.rX - s * 0.05, g.topY - s * 0.01);
+    c.strokeStyle = "rgba(255,236,185,0.5)";
+    c.lineWidth = Math.max(0.5, s * 0.018);
+    c.stroke();
+    c.restore();
+
+    // contorno
+    wedgeSil(c, s);
+    c.strokeStyle = "#A8681F";
+    c.lineWidth = Math.max(1, s * 0.028);
+    c.stroke();
+  }
+
+  // NIVELES 5+: tortilla "dada la vuelta", cara exterior dorada abombada
+  function drawDome(c, s, isTarget) {
+    var cxp = s / 2, cyp = s / 2, R = s * 0.42;
+    // sombra
+    c.beginPath();
+    c.ellipse(cxp, cyp + s * 0.04, R * 0.98, R * 0.9, 0, 0, Math.PI * 2);
+    c.fillStyle = "rgba(120,70,20,0.2)";
+    c.fill();
+    // cuerpo abombado
+    c.beginPath();
+    c.arc(cxp, cyp, R, 0, Math.PI * 2);
+    var rg = c.createRadialGradient(cxp - R * 0.28, cyp - R * 0.28, R * 0.1, cxp, cyp, R);
+    rg.addColorStop(0, "#EBBA63");
+    rg.addColorStop(0.7, "#D2933F");
+    rg.addColorStop(1, "#AE7228");
+    c.fillStyle = rg;
+    c.fill();
+    // aro tostado
+    c.lineWidth = s * 0.04;
+    c.strokeStyle = "#9C6320";
+    c.stroke();
+    // motas de tostado
+    var rng = makeRng(4321);
+    c.save();
+    c.beginPath(); c.arc(cxp, cyp, R, 0, Math.PI * 2); c.clip();
+    c.fillStyle = "rgba(120,75,30,0.26)";
+    for (var i = 0; i < 7; i++) {
+      var a = rng() * 6.283, rr = rng() * R * 0.85;
+      c.beginPath();
+      c.arc(cxp + Math.cos(a) * rr, cyp + Math.sin(a) * rr, s * (0.015 + rng() * 0.03), 0, 6.283);
+      c.fill();
+    }
+    // marca objetivo: burbuja tostada desplazada, menor con el nivel
+    if (isTarget) {
+      var shrink = Math.max(0.04, 0.20 - (level - 5) * 0.012);
+      var ms = s * shrink;
+      var mox = cxp + s * 0.16, moy = cyp - s * 0.14;
+      var mg = c.createRadialGradient(mox, moy, ms * 0.1, mox, moy, ms);
+      mg.addColorStop(0, "rgba(105,58,18,0.9)");
+      mg.addColorStop(1, "rgba(105,58,18,0)");
+      c.beginPath();
+      c.arc(mox, moy, ms, 0, 6.283);
+      c.fillStyle = mg;
+      c.fill();
+    }
+    c.restore();
   }
 
   function draw() {
     ctx.clearRect(0, 0, boardPx, boardPx);
+    if (!spriteNormal) return;
     var step = boardPx / cols;
     for (var row = 0; row < rows; row++) {
       for (var col = 0; col < cols; col++) {
         var idx = row * cols + col;
-        var cx = col * step + pad / 2;
-        var cy = row * step + pad / 2;
-        drawPiece(cx, cy, step - pad, idx === targetIndex);
+        var x = col * step + pad / 2;
+        var y = row * step + pad / 2;
+        ctx.drawImage(idx === targetIndex ? spriteTarget : spriteNormal,
+                      x, y, pieceSize, pieceSize);
       }
     }
   }
@@ -498,12 +571,8 @@
       t += 0.08;
       var s = 1 + Math.sin(Math.min(t, 1) * Math.PI) * 0.5; // hasta 1.5
       draw();
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.scale(s, s);
-      ctx.translate(-cx, -cy);
-      drawPiece(cx - size / 2 + pad / 2, cy - size / 2 + pad / 2, size - pad, true);
-      ctx.restore();
+      var ps = pieceSize * s;
+      ctx.drawImage(spriteTarget, cx - ps / 2, cy - ps / 2, ps, ps);
       if (t < 1) requestAnimationFrame(step);
       else if (done) done();
     }

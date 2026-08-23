@@ -26,10 +26,27 @@ const CIUDADES_OK = {
 };
 const CIUDADES_MAL = ["Roma", "Nápoles", "Palermo", "Bari", "Cagliari"]; // fuera de región => discrepancia
 
+// Cada empresa lleva su sector coherente. El sector del post-it sale SIEMPRE de la empresa,
+// nunca al azar por separado (así no hay "Calzados" con sector "Maquinaria").
 const EMPRESAS = [
-  "Embutidos García", "Calzados Hermanos Ruiz", "Textiles del Segura", "Bodegas Valdemar",
-  "Maquinaria Ibérica SL", "Muebles Levante", "AutoPartes Norte", "Farma Andalucía",
-  "Conservas Atlántico", "Jamones La Dehesa", "Cerámica Mediterránea", "Aceites del Sur",
+  { nombre: "Embutidos García",       sector: "Agroalimentario" },
+  { nombre: "Conservas Atlántico",    sector: "Agroalimentario" },
+  { nombre: "Jamones La Dehesa",      sector: "Agroalimentario" },
+  { nombre: "Aceites del Sur",        sector: "Agroalimentario" },
+  { nombre: "Calzados Hermanos Ruiz", sector: "Calzado" },
+  { nombre: "Curtidos Levantinos",    sector: "Calzado" },
+  { nombre: "Textiles del Segura",    sector: "Moda" },
+  { nombre: "Confecciones Duero",     sector: "Moda" },
+  { nombre: "Bodegas Valdemar",       sector: "Vino" },
+  { nombre: "Viñedos del Ebro",       sector: "Vino" },
+  { nombre: "Maquinaria Ibérica SL",  sector: "Maquinaria" },
+  { nombre: "Prensas y Tornos Vega",  sector: "Maquinaria" },
+  { nombre: "Muebles Levante",        sector: "Mueble" },
+  { nombre: "Cerámica Mediterránea",  sector: "Mueble" },
+  { nombre: "AutoPartes Norte",       sector: "Automoción" },
+  { nombre: "Componentes Ebro Auto",  sector: "Automoción" },
+  { nombre: "Farma Andalucía",        sector: "Farmacéutico" },
+  { nombre: "Laboratorios Tajo",      sector: "Farmacéutico" },
 ];
 
 const TIPOS_DOC = {
@@ -45,48 +62,116 @@ const GAZAPOS = {
     critico: true,
     etiqueta: "Se delata como IA",
     frases: [
-      "Como modelo de lenguaje, no tengo acceso a datos actualizados sobre este sector.",
-      "Como inteligencia artificial, no puedo navegar por internet para verificar estas cifras.",
-      "Lo siento, pero como IA no dispongo de información posterior a mi fecha de corte.",
+      // Sutiles: no dicen "soy una IA", pero son coletillas que solo pone un modelo.
+      "Es importante recordar que la información puede variar y conviene contrastarla con fuentes actualizadas.",
+      "No dispongo de datos posteriores a mi última actualización, pero en términos generales el sector es relevante.",
+      "Cabe señalar que no puedo garantizar la exactitud de estas cifras en tiempo real.",
+      "Espero que esta información te resulte útil para tu informe.",
     ],
   },
   META_INSTRUCTION: {
     critico: true,
     etiqueta: "Filtra el prompt",
     frases: [
-      "Claro, aquí tienes el informe que me has pedido con un tono formal y profesional:",
-      "¡Por supuesto! Encantado de ayudarte con este estudio de mercado. Aquí va:",
-      "A continuación, redacto el texto solicitado siguiendo tus instrucciones:",
+      // Sutiles: rastros del prompt colados en el texto, fáciles de pasar por alto leyendo en diagonal.
+      "Redactado en tono formal y profesional, con una extensión aproximada de 300 palabras, tal y como se solicita.",
+      "A continuación se desarrolla el punto anterior en tres párrafos, evitando tecnicismos.",
+      "Resumen ejecutivo (opción 2 de las que me pediste):",
     ],
   },
   PLACEHOLDER: {
     critico: true,
     etiqueta: "Deja un placeholder",
     frases: [
-      "Las exportaciones alcanzaron los [INSERTAR CIFRA AQUÍ] millones de euros.",
-      "La empresa [NOMBRE DE LA EMPRESA] lidera el sector en la región.",
-      "Se recomienda contactar con [DATO PENDIENTE] antes de la feria.",
+      // Menos gritones que un [INSERTAR AQUÍ]: huecos que parecen texto pero no lo son.
+      "Las exportaciones alcanzaron los XX millones de euros el año pasado.",
+      "La empresa, fundada en [año], lidera el sector en la región.",
+      "Se recomienda contactar con el responsable (nombre por confirmar) antes de la feria.",
     ],
   },
   HALLUCINATION: {
     critico: false,
     etiqueta: "Dato inventado",
     frases: [
-      "Según el Tratado de Libre Comercio Italo-Manchego de 1998, los aranceles son nulos.",
-      "El 187% de las empresas encuestadas mostró interés inmediato en importar.",
-      "La feria contó con la asistencia confirmada del Papa y de tres astronautas.",
+      // Plausibles pero falsos: suenan a informe real, hay que dudar del dato.
+      "El Acuerdo Bilateral de Cooperación Textil de 2019 eliminó los aranceles para este sector.",
+      "Milán concentra el 63% de las importaciones nacionales italianas de este producto.",
+      "La región lidera el ranking europeo de consumo per cápita desde 2015 sin interrupción.",
     ],
   },
   WRONG_TONE: {
     critico: false,
     etiqueta: "Tono incorrecto",
     frases: [
-      "En plan, el mercado italiano está súper guay y mola un montón para exportar.",
-      "Colega, esto de las exportaciones es un chollo que flipas, no te lo pierdas.",
-      "Total, que si no vendes aquí eres tonto, para qué nos vamos a engañar.",
+      // Sutil: no es jerga chabacana, es un desliz de registro en un texto por lo demás formal.
+      "En definitiva, es una oportunidad buenísima que no se puede dejar escapar.",
+      "La verdad es que el mercado pinta muy bien para nuestras empresas.",
+      "Conviene moverse ya, porque si no otros se nos van a adelantar seguro.",
     ],
   },
+  // Estos dos se inyectan con datos concretos desde game.js (llevan cifra y fuente).
+  FUENTE_FALSA: {
+    critico: true,
+    etiqueta: "Fuente inventada",
+    frases: [], // se generan dinámicamente
+  },
 };
+
+// ---- Datos de mercado y fuentes (para estudios de mercado) ----
+// Fuentes reales que un becario del ICEX citaría de verdad.
+const FUENTES_REALES = [
+  "ISTAT (Instituto Nacional de Estadística italiano)",
+  "ICEX España Exportación e Inversiones",
+  "Cámara de Comercio de Milán",
+  "Eurostat",
+  "Confindustria",
+  "Agencia ICE (Italian Trade Agency)",
+  "Datacomex (Secretaría de Estado de Comercio)",
+];
+// Fuentes falsas: si el documento cita una de estas, es un gazapo. Plausibles pero no válidas:
+// no son fuentes oficiales contrastables, así que hay que dudar.
+const FUENTES_FALSAS = [
+  "estimación propia sin contrastar",
+  "un artículo de prensa de hace ocho años",
+  "Statista (con datos de otro país)",
+  "la página web de la propia empresa cliente",
+  "un informe interno sin publicar",
+  "una consultora no identificada",
+  "cifras redondeadas de memoria",
+];
+// Plantillas de dato de mercado. {n}=cifra, {sector}, {region}.
+const PLANTILLAS_DATO = [
+  "Las exportaciones españolas del sector {sector} a {region} crecieron un {n}% en 2023",
+  "El sector {sector} representa el {n}% del PIB regional de {region}",
+  "Se registraron {n} empresas importadoras activas del sector {sector} en {region}",
+  "El consumo de productos del sector {sector} aumentó un {n}% interanual en {region}",
+  "La cuota de mercado de producto español en {sector} alcanza el {n}% en {region}",
+];
+
+// ---- Tareas dirigidas por jefe ----
+// Andrea manda borradores de correo a SUS becarios. Francesco interrumpe con urgencias.
+const BORRADORES_ANDREA = [
+  { asunto: "Declinar invitación a feria", instru: "Responde a la empresa declinando su invitación a la feria, en tono formal y agradecido." },
+  { asunto: "Pedir catálogo actualizado", instru: "Escribe a la empresa pidiendo su catálogo actualizado en italiano para un cliente." },
+  { asunto: "Concertar reunión", instru: "Propón a la empresa una reunión la semana que viene en la oficina de Milán." },
+  { asunto: "Reclamar factura pendiente", instru: "Reclama con educación una factura pendiente de la cuota de participación en la feria." },
+];
+const URGENCIAS_FRANCESCO = [
+  "DEJA LO QUE ESTÉS HACIENDO. Necesito un estudio de mercado de {sector} en {region} para dentro de nada.",
+  "Perdona, se me olvidó: hazme YA un informe de feria del sector {sector}. Es para una llamada en 5 minutos.",
+  "Urgente. La embajada pide datos de {sector} en {region}. No preguntes, hazlo.",
+  "Cambio de planes, esto es prioritario: un borrador sobre {sector} en {region}, rapidito.",
+];
+
+// ---- Skyscanner (pestaña de escaqueo) ----
+const SKYSCANNER_RUTAS = [
+  { destino: "Madrid",     precio: 39,  hora: "06:50" },
+  { destino: "Barcelona",  precio: 45,  hora: "21:30" },
+  { destino: "Valencia",   precio: 52,  hora: "07:15" },
+  { destino: "Sevilla",    precio: 61,  hora: "22:05" },
+  { destino: "Bilbao",     precio: 58,  hora: "18:40" },
+  { destino: "Cualquier sitio menos aquí", precio: 19, hora: "05:00" },
+];
 
 // Reglas que van cambiando a lo largo de la campaña. Se activan por día.
 const REGLAS_PROGRESIVAS = [

@@ -267,58 +267,123 @@
     draw();
   }
 
+  // PRNG determinista por celda: misma textura en cada redibujado
+  function makeRng(seed) {
+    var s = (seed | 0) % 233280;
+    if (s < 0) s += 233280;
+    return function () {
+      s = (s * 9301 + 49297) % 233280;
+      return s / 233280;
+    };
+  }
+
+  // Contorno irregular de un trozo de tortilla (no un cuadrado perfecto)
+  function tortillaPath(x, y, w, h, rng) {
+    var r = Math.min(w, h) * (0.20 + rng() * 0.10);
+    var j = Math.min(w, h) * 0.06; // amplitud del "flequillo"
+    function w4() { return (rng() - 0.5) * 2 * j; }
+    var x0 = x + r, x1 = x + w - r, y0 = y + r, y1 = y + h - r;
+    ctx.beginPath();
+    ctx.moveTo(x0, y + w4());
+    ctx.lineTo(x1, y + w4());
+    ctx.quadraticCurveTo(x + w + w4(), y + w4(), x + w + w4(), y0);
+    ctx.lineTo(x + w + w4(), y1);
+    ctx.quadraticCurveTo(x + w + w4(), y + h + w4(), x1, y + h + w4());
+    ctx.lineTo(x0, y + h + w4());
+    ctx.quadraticCurveTo(x + w4(), y + h + w4(), x + w4(), y1);
+    ctx.lineTo(x + w4(), y0);
+    ctx.quadraticCurveTo(x + w4(), y + w4(), x0, y + w4());
+    ctx.closePath();
+  }
+
   // ---- Dibujo de un trozo de tortilla ----
   function drawPiece(cx, cy, size, isTarget) {
-    var r = Math.max(2, size * 0.18);
     var x = cx, y = cy, w = size, h = size;
+    var flipped = level >= 5;
+    var rng = makeRng((Math.round(cx) * 131 + Math.round(cy) * 977));
 
-    // degradado del cuerpo (comida real, no cuadrado plano)
-    var grad = ctx.createLinearGradient(x, y, x + w, y + h);
-    if (level >= 5) {
-      // tortilla dada la vuelta: parte exterior tostada
-      grad.addColorStop(0, "#e8b86f");
-      grad.addColorStop(0.5, "#d99f52");
-      grad.addColorStop(1, "#c98637");
+    // cuerpo de huevo cuajado, con degradado cálido
+    var grad = ctx.createLinearGradient(x, y, x + w * 0.4, y + h);
+    if (flipped) {
+      // tortilla dada la vuelta: cara exterior dorada/tostada
+      grad.addColorStop(0, "#E7B15E");
+      grad.addColorStop(0.55, "#D89A44");
+      grad.addColorStop(1, "#BE7C2C");
     } else {
-      grad.addColorStop(0, "#F7DFB0");
-      grad.addColorStop(0.55, "#F5D6A8");
-      grad.addColorStop(1, "#E9C486");
+      grad.addColorStop(0, "#F2C85C");
+      grad.addColorStop(0.5, "#E7B347");
+      grad.addColorStop(1, "#D69A34");
     }
-    roundRect(x, y, w, h, r);
+    tortillaPath(x, y, w, h, makeRng((Math.round(cx) * 131 + Math.round(cy) * 977)));
+    ctx.save();
+    ctx.shadowColor = "rgba(120,70,20,0.35)";
+    ctx.shadowBlur = size * 0.06;
+    ctx.shadowOffsetY = size * 0.03;
     ctx.fillStyle = grad;
     ctx.fill();
+    ctx.restore();
 
-    // borde tostado irregular (flequillo)
-    ctx.lineWidth = Math.max(1, size * 0.05);
-    ctx.strokeStyle = "#D4A373";
-    ctx.stroke();
-
-    // sombreado interior sutil en los bordes
+    // recorta al contorno para pintar textura interior
     ctx.save();
-    roundRect(x, y, w, h, r);
+    tortillaPath(x, y, w, h, makeRng((Math.round(cx) * 131 + Math.round(cy) * 977)));
     ctx.clip();
-    var vg = ctx.createRadialGradient(
-      x + w / 2, y + h / 2, size * 0.15,
-      x + w / 2, y + h / 2, size * 0.75
-    );
-    vg.addColorStop(0, "rgba(0,0,0,0)");
-    vg.addColorStop(1, "rgba(120,70,20,0.18)");
-    ctx.fillStyle = vg;
-    ctx.fillRect(x, y, w, h);
 
-    // pequeñas motas para textura de huevo
-    ctx.fillStyle = level >= 5 ? "rgba(150,95,40,0.20)" : "rgba(210,160,90,0.35)";
-    var seed = ((cx * 13 + cy * 7) | 0);
-    for (var i = 0; i < 3; i++) {
-      seed = (seed * 9301 + 49297) % 233280;
-      var rx = x + (seed / 233280) * w;
-      seed = (seed * 9301 + 49297) % 233280;
-      var ry = y + (seed / 233280) * h;
+    if (!flipped) {
+      // tropezones de patata: polígonos claros irregulares
+      var chunks = 2 + Math.floor(rng() * 2);
+      for (var c = 0; c < chunks; c++) {
+        var pcx = x + w * (0.25 + rng() * 0.5);
+        var pcy = y + h * (0.25 + rng() * 0.5);
+        var pr = size * (0.13 + rng() * 0.10);
+        ctx.beginPath();
+        var n = 5 + Math.floor(rng() * 2);
+        for (var k = 0; k < n; k++) {
+          var ang = (k / n) * Math.PI * 2 + rng() * 0.5;
+          var rr = pr * (0.7 + rng() * 0.5);
+          var px = pcx + Math.cos(ang) * rr;
+          var py = pcy + Math.sin(ang) * rr * 0.85;
+          if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.closePath();
+        var pg = ctx.createRadialGradient(pcx, pcy, pr * 0.1, pcx, pcy, pr);
+        pg.addColorStop(0, "#FBEDBE");
+        pg.addColorStop(1, "#F0D68A");
+        ctx.fillStyle = pg;
+        ctx.fill();
+        ctx.strokeStyle = "rgba(190,140,70,0.45)";
+        ctx.lineWidth = Math.max(0.5, size * 0.012);
+        ctx.stroke();
+      }
+    }
+
+    // motas tostadas (huevo dorado) repartidas
+    ctx.fillStyle = flipped ? "rgba(150,90,35,0.28)" : "rgba(200,140,55,0.35)";
+    var motas = 4 + Math.floor(rng() * 3);
+    for (var i = 0; i < motas; i++) {
+      var rx = x + rng() * w;
+      var ry = y + rng() * h;
       ctx.beginPath();
-      ctx.arc(rx, ry, size * 0.04, 0, Math.PI * 2);
+      ctx.arc(rx, ry, size * (0.015 + rng() * 0.03), 0, Math.PI * 2);
       ctx.fill();
     }
+
+    // brillo superior (aceite) y sombra inferior para dar volumen
+    var vg = ctx.createRadialGradient(
+      x + w * 0.38, y + h * 0.34, size * 0.05,
+      x + w * 0.5, y + h * 0.5, size * 0.8
+    );
+    vg.addColorStop(0, "rgba(255,245,210,0.35)");
+    vg.addColorStop(0.5, "rgba(255,245,210,0)");
+    vg.addColorStop(1, "rgba(110,60,15,0.28)");
+    ctx.fillStyle = vg;
+    ctx.fillRect(x, y, w, h);
     ctx.restore();
+
+    // borde tostado
+    tortillaPath(x, y, w, h, makeRng((Math.round(cx) * 131 + Math.round(cy) * 977)));
+    ctx.lineWidth = Math.max(1, size * 0.045);
+    ctx.strokeStyle = flipped ? "#A9691F" : "#B67C2C";
+    ctx.stroke();
 
     // ---- La diferencia ----
     if (isTarget) {
@@ -339,7 +404,7 @@
         og.addColorStop(0, "#C57B2E");
         og.addColorStop(1, base);
         ctx.save();
-        roundRect(x, y, w, h, r);
+        tortillaPath(x, y, w, h, makeRng((Math.round(cx) * 131 + Math.round(cy) * 977)));
         ctx.clip();
         ctx.beginPath();
         ctx.ellipse(ox + os / 2, oy + os / 2, os * 0.6, os * 0.42,
@@ -354,7 +419,7 @@
         var mox = x + w / 2 + size * 0.18;
         var moy = y + h / 2 - size * 0.16;
         ctx.save();
-        roundRect(x, y, w, h, r);
+        tortillaPath(x, y, w, h, makeRng((Math.round(cx) * 131 + Math.round(cy) * 977)));
         ctx.clip();
         var mg = ctx.createRadialGradient(mox, moy, ms * 0.1, mox, moy, ms);
         mg.addColorStop(0, "rgba(120,70,25,0.85)");

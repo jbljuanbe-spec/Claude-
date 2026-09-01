@@ -1,0 +1,21 @@
+name = "turing-arena"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+# Frontend estatico servido por el propio Worker.
+# Las rutas que no existan como archivo (ej: /ws) las maneja el Worker.
+[assets]
+directory = "./public"
+
+# Modelo de lenguaje gratuito en el edge (cuota diaria del plan Cloudflare).
+[ai]
+binding = "AI"
+
+# Estado en tiempo real: cola de emparejamiento y salas de chat.
+[[durable_objects.bindings]]
+name = "ARENA"
+class_name = "Arena"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["Arena"]

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZoomCine — Adivina la película</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CONFIGURACIÓN -->
+<section id="pantalla-config" class="screen activa">
+  <div class="caja">
+    <h1 class="titulo">🎬 ZoomCine</h1>
+    <p class="subtitulo">Adivina la película con el fotograma más pegado que encontramos.</p>
+
+    <div id="racha-record" class="racha-record oculto"></div>
+
+    <div class="bloque">
+      <label class="etiqueta">Jugadores</label>
+      <div id="selector-jugadores" class="selector-num"></div>
+    </div>
+
+    <div class="bloque">
+      <label class="etiqueta">Nombres</label>
+      <div id="nombres-jugadores" class="lista-nombres"></div>
+    </div>
+
+    <div class="bloque">
+      <label class="etiqueta">Rondas por jugador</label>
+      <div id="selector-rondas" class="selector-num"></div>
+    </div>
+
+    <button id="btn-empezar" class="btn-grande">Empezar partida</button>
+    <p id="error-config" class="error oculto"></p>
+  </div>
+</section>
+
+<!-- CARGANDO -->
+<section id="pantalla-cargando" class="screen">
+  <div class="caja centro">
+    <div class="spinner"></div>
+    <p>Cargando cartelera de TMDb…</p>
+  </div>
+</section>
+
+<!-- JUEGO -->
+<section id="pantalla-juego" class="screen">
+  <div class="hud">
+    <span id="hud-turno" class="hud-turno"></span>
+    <span id="hud-ronda"></span>
+    <span id="hud-racha"></span>
+  </div>
+
+  <div id="marcador-mini" class="marcador-mini"></div>
+
+  <div class="zoom-wrap">
+    <div class="zoom-viewport">
+      <img id="img-zoom" class="img-zoom" alt="fotograma de película">
+    </div>
+    <div class="barra-tiempo-bg"><div id="barra-tiempo" class="barra-tiempo"></div></div>
+  </div>
+
+  <div class="zona-respuesta">
+    <input id="input-respuesta" type="text" placeholder="Escribe el título…" autocomplete="off">
+    <div id="sugerencias" class="sugerencias"></div>
+    <button id="btn-saltar" class="btn-sec">Saltar / no sé</button>
+  </div>
+
+  <div id="panel-resultado" class="panel-resultado oculto">
+    <img id="resultado-poster" class="resultado-poster" alt="">
+    <div class="resultado-info">
+      <h3 id="resultado-titulo"></h3>
+      <p id="resultado-puntos"></p>
+      <button id="btn-siguiente" class="btn-grande">Siguiente turno ▸</button>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section id="pantalla-final" class="screen">
+  <div class="caja centro">
+    <h2 class="titulo">🏁 Fin de la partida</h2>
+    <div id="tabla-final" class="tabla-final"></div>
+    <div class="final-botones">
+      <button id="btn-revancha" class="btn-grande">Revancha (mismos jugadores)</button>
+      <button id="btn-nueva-partida" class="btn-sec">Nueva partida</button>
+    </div>
+  </div>
+</section>
+
+<script src="api.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

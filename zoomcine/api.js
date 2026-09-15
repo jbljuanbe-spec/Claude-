@@ -27,9 +27,19 @@ const MODOS = {
 };
 
 // Bolsa de películas reconocibles del modo elegido (varias páginas de /discover/movie).
+// with_runtime.gte y without_genres=10770 (género "TV Movie") descartan cortos,
+// especiales de streaming ("X Disney+ Day Special") y contenido similar que
+// nunca tuvo el metraje ni el estreno de una película de verdad.
 async function fetchMoviePool(modoKey, pages = 6) {
   const modo = MODOS[modoKey] || MODOS.todas;
-  const base = { sort_by: 'popularity.desc', 'vote_count.gte': 20, include_adult: 'false', ...modo.params };
+  const base = {
+    sort_by: 'popularity.desc',
+    'vote_count.gte': 20,
+    'with_runtime.gte': 75,
+    without_genres: '10770',
+    include_adult: 'false',
+    ...modo.params,
+  };
 
   const primera = await tmdbGet('/discover/movie', { ...base, page: 1 });
   const totalPaginas = Math.min(primera.total_pages || 1, pages);

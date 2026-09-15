@@ -132,14 +132,22 @@ input[type="text"] {
 }
 .marcador-mini span.actual { color: var(--oro); font-weight: 700; }
 
-.zoom-wrap { max-width: 640px; margin: 0 auto; }
+.zoom-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 10px;
+}
 
 .zoom-viewport {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 12px;
-  border: 2px solid var(--borde);
+  border-radius: 10px;
+  border: 2px solid var(--oro);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.4);
   background: #000;
 }
 

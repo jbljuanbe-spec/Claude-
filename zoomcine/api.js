@@ -15,16 +15,33 @@ async function tmdbGet(path, params = {}) {
   return res.json();
 }
 
-// Bolsa de películas populares y reconocibles (varias páginas de /movie/popular).
-async function fetchPopularPool(pages = 8) {
+// Modos de juego: filtran /discover/movie por productora o género de TMDb.
+const MODOS = {
+  todas: { nombre: 'Todas', params: {} },
+  disney: { nombre: 'Disney', params: { with_companies: 2 } },
+  pixar: { nombre: 'Pixar', params: { with_companies: 3 } },
+  marvel: { nombre: 'Marvel', params: { with_companies: 420 } },
+  ghibli: { nombre: 'Studio Ghibli', params: { with_companies: 10342 } },
+  animacion: { nombre: 'Animación', params: { with_genres: 16 } },
+  terror: { nombre: 'Terror', params: { with_genres: 27 } },
+};
+
+// Bolsa de películas reconocibles del modo elegido (varias páginas de /discover/movie).
+async function fetchMoviePool(modoKey, pages = 6) {
+  const modo = MODOS[modoKey] || MODOS.todas;
+  const base = { sort_by: 'popularity.desc', 'vote_count.gte': 20, include_adult: 'false', ...modo.params };
+
+  const primera = await tmdbGet('/discover/movie', { ...base, page: 1 });
+  const totalPaginas = Math.min(primera.total_pages || 1, pages);
   const peticiones = [];
-  for (let p = 1; p <= pages; p++) peticiones.push(tmdbGet('/movie/popular', { page: p }));
-  const resultados = await Promise.all(peticiones);
+  for (let p = 2; p <= totalPaginas; p++) peticiones.push(tmdbGet('/discover/movie', { ...base, page: p }));
+  const paginas = [primera, ...(await Promise.all(peticiones))];
+
   const vistas = new Set();
   const peliculas = [];
-  for (const r of resultados) {
+  for (const r of paginas) {
     for (const m of r.results) {
-      if (vistas.has(m.id) || !m.backdrop_path || m.vote_count < 300) continue;
+      if (vistas.has(m.id) || !m.backdrop_path) continue;
       vistas.add(m.id);
       peliculas.push(m);
     }

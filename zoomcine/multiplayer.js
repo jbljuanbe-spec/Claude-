@@ -42,7 +42,7 @@ async function crearSala(nombreAnfitrion, modo, rondasPorJugador) {
     modo,
     rondasPorJugador,
     ordenJugadores: [miId],
-    jugadores: { [miId]: { nombre: nombreAnfitrion, puntos: 0, racha: 0, mejorRacha: 0, conectado: true } },
+    jugadores: { [miId]: { nombre: nombreAnfitrion, puntos: 0, aciertos: 0, conectado: true } },
   };
   await salaRef(codigo).set(sala);
   salaRef(codigo).child(`jugadores/${miId}/conectado`).onDisconnect().set(false);
@@ -60,7 +60,7 @@ async function unirseSala(codigoIntroducido, nombre) {
   const miId = idAleatorio();
   const orden = [...(sala.ordenJugadores || []), miId];
   await ref.update({
-    [`jugadores/${miId}`]: { nombre, puntos: 0, racha: 0, mejorRacha: 0, conectado: true },
+    [`jugadores/${miId}`]: { nombre, puntos: 0, aciertos: 0, conectado: true },
     ordenJugadores: orden,
   });
   ref.child(`jugadores/${miId}/conectado`).onDisconnect().set(false);

@@ -1,5 +1,3 @@
-import { getApiKey, setApiKey, checkApiKey, fetchPopularPool, fetchBackdrop, searchMovies, IMG_BASE } from './api.js';
-
 const ZOOM_STAGES = [5, 3, 1.8, 1];
 const SEGUNDOS_POR_ETAPA = 7;
 const PUNTOS_POR_ETAPA = [100, 70, 45, 25];

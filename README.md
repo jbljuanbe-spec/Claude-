@@ -4,7 +4,7 @@ App personal de estudio de japonés (Genki I/II + Minna no Nihongo). Repetición
 
 **No hay nada que instalar.** La app es 100% estática y se publica sola en GitHub Pages con cada cambio:
 
-> https://jbljuanbe-spec.github.io/Claude-/
+> https://jbljuanbe-spec.github.io/Kotoba
 
 El progreso se guarda en el navegador (IndexedDB) y se puede descargar/restaurar como copia de seguridad desde la pestaña Progreso.
 

@@ -1,9 +1,26 @@
 const ZOOM_STAGES = [5, 3, 1.8, 1];
 const SEGUNDOS_POR_ETAPA = 7;
 const PUNTOS_POR_ETAPA = [100, 70, 45, 25];
-const RACHA_RECORD_KEY = 'zoomcine_racha_record';
 
 const el = id => document.getElementById(id);
+
+function medalla(posicion) {
+  return posicion === 0 ? '🥇' : posicion === 1 ? '🥈' : posicion === 2 ? '🥉' : `${posicion + 1}º`;
+}
+
+function renderTablaFinal(contenedorId, jugadores) {
+  const cont = el(contenedorId);
+  cont.innerHTML = '';
+  const ordenados = [...jugadores].sort((a, b) => (b.puntos || 0) - (a.puntos || 0));
+  ordenados.forEach((j, i) => {
+    const fila = document.createElement('div');
+    fila.className = 'fila-final' + (i === 0 ? ' ganador' : '');
+    const aciertos = j.aciertos || 0;
+    fila.innerHTML = `<span class="pos">${medalla(i)}</span><span class="nombre">${j.nombre}</span>` +
+      `<span class="stats"><strong>${j.puntos || 0}</strong>pt · ${aciertos} ${aciertos === 1 ? 'acierto' : 'aciertos'}</span>`;
+    cont.appendChild(fila);
+  });
+}
 
 const estado = {
   modo: 'todas',
@@ -82,7 +99,7 @@ function initConfig() {
   el('btn-empezar').addEventListener('click', async () => {
     const nombres = Array.from(el('nombres-jugadores').querySelectorAll('input'))
       .map(i => i.value.trim() || i.placeholder);
-    estado.jugadores = nombres.map(n => ({ nombre: n, puntos: 0, racha: 0, mejorRacha: 0 }));
+    estado.jugadores = nombres.map(n => ({ nombre: n, puntos: 0, aciertos: 0 }));
     estado.rondasPorJugador = rondas;
     estado.rondasTotales = rondas * nombres.length;
     estado.turnoActual = 0;
@@ -151,7 +168,6 @@ async function siguienteRonda() {
   const jugador = estado.jugadores[estado.turnoActual];
   el('hud-turno').textContent = `🎬 Turno de ${jugador.nombre}`;
   el('hud-ronda').textContent = `Ronda ${estado.rondaNumero} / ${estado.rondasTotales}`;
-  el('hud-racha').textContent = `Racha: ${jugador.racha}`;
   renderMarcadorMini();
 
   let peli = estado.pool.pop();
@@ -279,50 +295,31 @@ function resolverRonda(elegida) {
   el('sugerencias').innerHTML = '';
 
   if (acierto) {
-    const puntosBase = PUNTOS_POR_ETAPA[estado.etapa];
-    const bonusRacha = Math.min(jugador.racha * 5, 50);
-    const puntos = puntosBase + bonusRacha;
+    const puntos = PUNTOS_POR_ETAPA[estado.etapa];
     jugador.puntos += puntos;
-    jugador.racha += 1;
-    jugador.mejorRacha = Math.max(jugador.mejorRacha, jugador.racha);
-    guardarRachaRecord(jugador.mejorRacha);
+    jugador.aciertos += 1;
     el('resultado-titulo').textContent = `¡Correcto! ${estado.peliculaActual.title}`;
-    el('resultado-puntos').textContent = `+${puntos} puntos (racha x${jugador.racha})`;
+    el('resultado-puntos').textContent = `+${puntos} puntos`;
   } else {
-    jugador.racha = 0;
     el('resultado-titulo').textContent = `Era: ${estado.peliculaActual.title}`;
-    el('resultado-puntos').textContent = 'Racha reiniciada a 0';
+    el('resultado-puntos').textContent = 'Sin puntos';
   }
 
   const poster = estado.peliculaActual.poster_path;
   el('resultado-poster').src = poster ? `${IMG_BASE}/w200${poster}` : '';
   el('resultado-poster').style.visibility = poster ? 'visible' : 'hidden';
   el('panel-resultado').classList.remove('oculto');
-  el('hud-racha').textContent = `Racha: ${jugador.racha}`;
   renderMarcadorMini();
-}
-
-function guardarRachaRecord(valor) {
-  const actual = parseInt(localStorage.getItem(RACHA_RECORD_KEY) || '0', 10);
-  if (valor > actual) localStorage.setItem(RACHA_RECORD_KEY, String(valor));
 }
 
 // --- Final ---
 
 function mostrarFinal() {
   mostrarPantalla('pantalla-final');
-  const cont = el('tabla-final');
-  cont.innerHTML = '';
-  const ordenados = [...estado.jugadores].sort((a, b) => b.puntos - a.puntos);
-  ordenados.forEach((j, i) => {
-    const fila = document.createElement('div');
-    fila.className = 'fila-final' + (i === 0 ? ' ganador' : '');
-    fila.innerHTML = `<span>${i === 0 ? '🏆 ' : ''}${j.nombre}</span><span>${j.puntos}pt · mejor racha ${j.mejorRacha}</span>`;
-    cont.appendChild(fila);
-  });
+  renderTablaFinal('tabla-final', estado.jugadores);
 
   el('btn-revancha').onclick = () => {
-    estado.jugadores.forEach(j => { j.puntos = 0; j.racha = 0; j.mejorRacha = 0; });
+    estado.jugadores.forEach(j => { j.puntos = 0; j.aciertos = 0; });
     estado.turnoActual = 0;
     estado.rondaNumero = 0;
     estado.rondasTotales = estado.rondasPorJugador * estado.jugadores.length;
@@ -340,11 +337,6 @@ function mostrarFinal() {
 // --- Inicio / navegación entre modos ---
 
 function initInicio() {
-  const record = localStorage.getItem(RACHA_RECORD_KEY);
-  if (record) {
-    el('racha-record').textContent = `🔥 Racha récord en este dispositivo: ${record}`;
-    el('racha-record').classList.remove('oculto');
-  }
   el('btn-modo-local').addEventListener('click', () => mostrarPantalla('pantalla-config'));
   el('btn-modo-multi').addEventListener('click', () => mostrarPantalla('pantalla-multi-inicio'));
 }
@@ -559,24 +551,16 @@ async function resolverRondaMulti(elegida) {
   if (!sala || !sala.ronda || sala.ronda.resuelta || !esMiTurno(sala)) return;
   clearTimeout(etapaTimerId);
   const acierto = elegida && elegida.id === sala.ronda.peliculaId;
-  const miJugador = sala.jugadores[miId] || { puntos: 0, racha: 0, mejorRacha: 0 };
+  const miJugador = sala.jugadores[miId] || { puntos: 0, aciertos: 0 };
   const cambios = {
     'ronda/resuelta': true,
     'ronda/acierto': !!acierto,
   };
   if (acierto) {
-    const puntosBase = PUNTOS_POR_ETAPA[sala.ronda.etapa];
-    const bonusRacha = Math.min((miJugador.racha || 0) * 5, 50);
-    const puntos = puntosBase + bonusRacha;
-    const nuevaRacha = (miJugador.racha || 0) + 1;
-    const mejorRacha = Math.max(miJugador.mejorRacha || 0, nuevaRacha);
+    const puntos = PUNTOS_POR_ETAPA[sala.ronda.etapa];
     cambios['ronda/puntosGanados'] = puntos;
     cambios[`jugadores/${miId}/puntos`] = (miJugador.puntos || 0) + puntos;
-    cambios[`jugadores/${miId}/racha`] = nuevaRacha;
-    cambios[`jugadores/${miId}/mejorRacha`] = mejorRacha;
-    guardarRachaRecord(mejorRacha);
-  } else {
-    cambios[`jugadores/${miId}/racha`] = 0;
+    cambios[`jugadores/${miId}/aciertos`] = (miJugador.aciertos || 0) + 1;
   }
   await actualizarSala(salaCodigo, cambios);
 }
@@ -710,15 +694,7 @@ function renderSugerenciasMulti(resultados) {
 
 function renderFinalMulti(sala) {
   mostrarPantalla('pantalla-multi-final');
-  const cont = el('multi-tabla-final');
-  cont.innerHTML = '';
-  const ordenados = ordenJugadoresArray(sala).sort((a, b) => (b.puntos || 0) - (a.puntos || 0));
-  ordenados.forEach((j, i) => {
-    const fila = document.createElement('div');
-    fila.className = 'fila-final' + (i === 0 ? ' ganador' : '');
-    fila.innerHTML = `<span>${i === 0 ? '🏆 ' : ''}${j.nombre}</span><span>${j.puntos || 0}pt · mejor racha ${j.mejorRacha || 0}</span>`;
-    cont.appendChild(fila);
-  });
+  renderTablaFinal('multi-tabla-final', ordenJugadoresArray(sala));
 }
 
 function initFinalMulti() {

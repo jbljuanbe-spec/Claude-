@@ -1,33 +1,18 @@
-// Wrapper mínimo sobre la API de TMDb (gratuita). La clave la introduce
-// cada usuario y se guarda solo en localStorage: nunca va en el código.
+// Wrapper mínimo sobre la API de TMDb (gratuita, no comercial).
+// TMDb limita por IP, no por clave, así que no hay riesgo de facturación
+// por tenerla aquí: https://developer.themoviedb.org/docs/faq
 const TMDB_BASE = 'https://api.themoviedb.org/3';
 const IMG_BASE = 'https://image.tmdb.org/t/p';
-
-const KEY_STORAGE = 'zoomcine_tmdb_key';
-
-function getApiKey() {
-  return localStorage.getItem(KEY_STORAGE) || '';
-}
-
-function setApiKey(key) {
-  localStorage.setItem(KEY_STORAGE, key.trim());
-}
+const API_KEY = '9a2005ef801e3132fc8c51b6ce5a6161';
 
 async function tmdbGet(path, params = {}) {
   const url = new URL(TMDB_BASE + path);
-  url.searchParams.set('api_key', getApiKey());
+  url.searchParams.set('api_key', API_KEY);
   url.searchParams.set('language', 'es-ES');
   for (const [k, v] of Object.entries(params)) url.searchParams.set(k, v);
   const res = await fetch(url);
   if (!res.ok) throw new Error(`TMDb ${res.status}`);
   return res.json();
-}
-
-async function checkApiKey(key) {
-  const url = new URL(TMDB_BASE + '/configuration');
-  url.searchParams.set('api_key', key.trim());
-  const res = await fetch(url);
-  return res.ok;
 }
 
 // Bolsa de películas populares y reconocibles (varias páginas de /movie/popular).

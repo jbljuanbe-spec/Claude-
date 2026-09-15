@@ -30,22 +30,6 @@ function mostrarPantalla(id) {
 // --- Configuración ---
 
 function initConfig() {
-  el('input-clave').value = getApiKey();
-  actualizarEstadoClave();
-
-  el('btn-guardar-clave').addEventListener('click', async () => {
-    const clave = el('input-clave').value.trim();
-    if (!clave) return;
-    el('estado-clave').textContent = 'Comprobando…';
-    const ok = await checkApiKey(clave).catch(() => false);
-    if (ok) {
-      setApiKey(clave);
-      actualizarEstadoClave();
-    } else {
-      el('estado-clave').textContent = 'Clave inválida. ';
-    }
-  });
-
   let numJugadores = 1;
   const selJug = el('selector-jugadores');
   [1, 2, 3, 4].forEach(n => {
@@ -85,10 +69,6 @@ function initConfig() {
   }
 
   el('btn-empezar').addEventListener('click', async () => {
-    if (!getApiKey()) {
-      mostrarErrorConfig('Guarda antes una clave válida de TMDb.');
-      return;
-    }
     const nombres = Array.from(el('nombres-jugadores').querySelectorAll('input'))
       .map(i => i.value.trim() || i.placeholder);
     estado.jugadores = nombres.map(n => ({ nombre: n, puntos: 0, racha: 0, mejorRacha: 0 }));
@@ -104,16 +84,12 @@ function initConfig() {
       if (estado.pool.length < 5) throw new Error('pool insuficiente');
     } catch (e) {
       mostrarPantalla('pantalla-config');
-      mostrarErrorConfig('No se pudo cargar la cartelera de TMDb. Revisa la clave o tu conexión.');
+      mostrarErrorConfig('No se pudo cargar la cartelera de TMDb. Revisa tu conexión e inténtalo de nuevo.');
       return;
     }
     mostrarPantalla('pantalla-juego');
     siguienteRonda();
   });
-}
-
-function actualizarEstadoClave() {
-  el('estado-clave').textContent = getApiKey() ? '✔ clave guardada. ' : '';
 }
 
 function mostrarErrorConfig(msg) {

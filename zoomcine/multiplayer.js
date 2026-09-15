@@ -4,7 +4,8 @@
 let firebaseApp = null;
 
 function firebaseListo() {
-  return FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey !== 'TU_API_KEY';
+  return FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey !== 'TU_API_KEY'
+    && FIREBASE_CONFIG.databaseURL && FIREBASE_CONFIG.databaseURL !== 'TU_DATABASE_URL';
 }
 
 function initFirebase() {

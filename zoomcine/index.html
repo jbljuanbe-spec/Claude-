@@ -8,13 +8,22 @@
 </head>
 <body>
 
-<!-- CONFIGURACIÓN -->
-<section id="pantalla-config" class="screen activa">
-  <div class="caja">
+<!-- INICIO -->
+<section id="pantalla-inicio" class="screen activa">
+  <div class="caja centro">
     <h1 class="titulo">🎬 ZoomCine</h1>
     <p class="subtitulo">Adivina la película con el fotograma más pegado que encontramos.</p>
-
     <div id="racha-record" class="racha-record oculto"></div>
+    <button id="btn-modo-local" class="btn-grande">Un dispositivo (pasar y jugar)</button>
+    <button id="btn-modo-multi" class="btn-sec btn-ancho">Multijugador (varios dispositivos)</button>
+  </div>
+</section>
+
+<!-- CONFIGURACIÓN (modo local) -->
+<section id="pantalla-config" class="screen">
+  <div class="caja">
+    <button id="btn-config-volver" class="btn-volver">◂ Volver</button>
+    <h2 class="titulo-sec">Un dispositivo</h2>
 
     <div class="bloque">
       <label class="etiqueta">Modo</label>
@@ -94,7 +103,101 @@
   </div>
 </section>
 
+<!-- MULTIJUGADOR: crear o unirse -->
+<section id="pantalla-multi-inicio" class="screen">
+  <div class="caja">
+    <button id="btn-multi-volver" class="btn-volver">◂ Volver</button>
+    <h2 class="titulo-sec">Multijugador</h2>
+
+    <div class="bloque">
+      <label class="etiqueta">Tu nombre</label>
+      <input id="multi-nombre" type="text" placeholder="Tu nombre">
+    </div>
+
+    <div class="sub-caja">
+      <h3 class="titulo-sub">Crear sala</h3>
+      <div class="bloque">
+        <label class="etiqueta">Modo</label>
+        <div id="multi-selector-modo" class="selector-num"></div>
+      </div>
+      <div class="bloque">
+        <label class="etiqueta">Rondas por jugador</label>
+        <div id="multi-selector-rondas" class="selector-num"></div>
+      </div>
+      <button id="btn-crear-sala" class="btn-grande">Crear sala</button>
+    </div>
+
+    <div class="sub-caja">
+      <h3 class="titulo-sub">Unirse a una sala</h3>
+      <div class="bloque">
+        <label class="etiqueta">Código de sala</label>
+        <input id="multi-codigo" type="text" maxlength="4" placeholder="ABCD">
+      </div>
+      <button id="btn-unirse-sala" class="btn-grande">Unirse</button>
+    </div>
+
+    <p id="multi-error" class="error oculto"></p>
+  </div>
+</section>
+
+<!-- LOBBY -->
+<section id="pantalla-lobby" class="screen">
+  <div class="caja centro">
+    <h2 class="titulo-sec">Sala <span id="lobby-codigo" class="lobby-codigo"></span></h2>
+    <p class="ayuda">Comparte este código con quien quieras que se una.</p>
+    <div id="lobby-jugadores" class="lista-lobby"></div>
+    <button id="btn-lobby-empezar" class="btn-grande oculto">Empezar partida</button>
+    <p id="lobby-espera" class="ayuda oculto">Esperando a que el anfitrión empiece la partida…</p>
+  </div>
+</section>
+
+<!-- JUEGO MULTIJUGADOR -->
+<section id="pantalla-multi-juego" class="screen">
+  <div class="hud">
+    <span id="multi-hud-turno" class="hud-turno"></span>
+    <span id="multi-hud-ronda"></span>
+  </div>
+
+  <div id="multi-marcador" class="marcador-mini"></div>
+
+  <div class="zoom-wrap">
+    <div class="zoom-viewport">
+      <img id="multi-img-zoom" class="img-zoom" alt="fotograma de película">
+    </div>
+    <div class="barra-tiempo-bg"><div id="multi-barra-tiempo" class="barra-tiempo"></div></div>
+  </div>
+
+  <div id="multi-zona-respuesta" class="zona-respuesta oculto">
+    <input id="multi-input-respuesta" type="text" placeholder="Escribe el título…" autocomplete="off">
+    <div id="multi-sugerencias" class="sugerencias"></div>
+    <button id="multi-btn-saltar" class="btn-sec">Saltar / no sé</button>
+  </div>
+  <p id="multi-espera-turno" class="ayuda centro oculto">Le toca a <span id="multi-espera-nombre"></span>…</p>
+
+  <div id="multi-panel-resultado" class="panel-resultado oculto">
+    <img id="multi-resultado-poster" class="resultado-poster" alt="">
+    <div class="resultado-info">
+      <h3 id="multi-resultado-titulo"></h3>
+      <p id="multi-resultado-puntos"></p>
+      <button id="multi-btn-siguiente" class="btn-grande oculto">Siguiente turno ▸</button>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL MULTIJUGADOR -->
+<section id="pantalla-multi-final" class="screen">
+  <div class="caja centro">
+    <h2 class="titulo">🏁 Fin de la partida</h2>
+    <div id="multi-tabla-final" class="tabla-final"></div>
+    <button id="btn-multi-otra" class="btn-grande">Volver al inicio</button>
+  </div>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="api.js"></script>
+<script src="multiplayer.js"></script>
 <script src="game.js"></script>
 </body>
 </html>

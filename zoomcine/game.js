@@ -6,6 +6,7 @@ const RACHA_RECORD_KEY = 'zoomcine_racha_record';
 const el = id => document.getElementById(id);
 
 const estado = {
+  modo: 'todas',
   jugadores: [],
   turnoActual: 0,
   rondasPorJugador: 5,
@@ -30,6 +31,20 @@ function mostrarPantalla(id) {
 // --- Configuración ---
 
 function initConfig() {
+  const selModo = el('selector-modo');
+  Object.entries(MODOS).forEach(([clave, modo], i) => {
+    const b = document.createElement('button');
+    b.textContent = modo.nombre;
+    b.type = 'button';
+    if (i === 0) b.classList.add('activo');
+    b.addEventListener('click', () => {
+      estado.modo = clave;
+      selModo.querySelectorAll('button').forEach(x => x.classList.remove('activo'));
+      b.classList.add('activo');
+    });
+    selModo.appendChild(b);
+  });
+
   let numJugadores = 1;
   const selJug = el('selector-jugadores');
   [1, 2, 3, 4].forEach(n => {
@@ -78,15 +93,17 @@ function initConfig() {
     estado.rondaNumero = 0;
 
     mostrarErrorConfig('');
+    el('texto-cargando').textContent = `Cargando cartelera de ${MODOS[estado.modo].nombre}…`;
     mostrarPantalla('pantalla-cargando');
     try {
-      estado.pool = barajar(await fetchPopularPool());
-      if (estado.pool.length < 5) throw new Error('pool insuficiente');
+      estado.pool = barajar(await fetchMoviePool(estado.modo));
+      if (estado.pool.length < 3) throw new Error('pool insuficiente');
     } catch (e) {
       mostrarPantalla('pantalla-config');
       mostrarErrorConfig('No se pudo cargar la cartelera de TMDb. Revisa tu conexión e inténtalo de nuevo.');
       return;
     }
+    estado.rondasTotales = Math.min(estado.rondasTotales, estado.pool.length);
     mostrarPantalla('pantalla-juego');
     siguienteRonda();
   });
@@ -312,9 +329,11 @@ function mostrarFinal() {
     estado.jugadores.forEach(j => { j.puntos = 0; j.racha = 0; j.mejorRacha = 0; });
     estado.turnoActual = 0;
     estado.rondaNumero = 0;
+    estado.rondasTotales = estado.rondasPorJugador * estado.jugadores.length;
     mostrarPantalla('pantalla-cargando');
-    fetchPopularPool().then(pool => {
+    fetchMoviePool(estado.modo).then(pool => {
       estado.pool = barajar(pool);
+      estado.rondasTotales = Math.min(estado.rondasTotales, estado.pool.length);
       mostrarPantalla('pantalla-juego');
       siguienteRonda();
     });
